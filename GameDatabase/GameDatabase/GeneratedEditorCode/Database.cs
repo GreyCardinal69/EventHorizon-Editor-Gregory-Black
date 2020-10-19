@@ -13,6 +13,7 @@ using EditorDatabase.DataModel;
 using EditorDatabase.Storage;
 using EditorDatabase.Model;
 using EditorDatabase.Enums;
+using EditorDatabase.Serializable;
 
 namespace EditorDatabase
 {
@@ -389,6 +390,11 @@ namespace EditorDatabase
 
 
         public ImageData GetImage(string name) { return _content.GetImage(name); }
+        
+        
+        public void LoadJson(string name, string content){
+			_content.LoadJson(name,content);
+        }
 
         private void Clear()
         {

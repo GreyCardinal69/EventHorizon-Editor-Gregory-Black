@@ -1,0 +1,44 @@
+{
+  "Name": "Templates/Satelite with Build and Technology",
+  "NameDialog": "File Name",
+  "IdDialog": "ID",
+  "Items": [
+    {
+      "Filename": "{1}",
+      "Type": "Folder",
+      "Items": [
+        {
+          "Filename": "{1}_satelite",
+          "Content": {
+            "ItemType": 7,
+            "Name": "%s{1}",
+            "Id": "%n{0}",
+            "Barrels": []
+          },
+          "Type": "File"
+        },
+        {
+          "Filename": "{1}_build",
+          "Type": "File",
+          "Content": {
+            "ItemType": 9,
+            "Id": "%n{0}",
+            "SatelliteId": "%n{0}",
+            "Components": []
+          }
+        },
+        {
+          "Filename": "{1}_technology",
+	        "Type": "File",
+          "Content": {
+            "ItemType": 10,
+            "Id": "%n{0}",
+            "ItemId": "%n{0}",
+            "Type": 2,
+            "Dependencies": []
+          }
+        }
+      ]
+    }
+  ]
+}

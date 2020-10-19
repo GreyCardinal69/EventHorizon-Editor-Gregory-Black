@@ -118,6 +118,58 @@ namespace GameDatabase
 
             tableLayoutPanel.ResumeLayout();
         }
+        
+        
+        public void UpdateControls()
+        {
+            foreach(var bind in _binding)
+            {
+                var control = bind.Key;
+                var value = bind.Value;
+                if (bind.Value.Type.IsEnum)
+                {
+                    ((ComboBox)control).SelectedItem = value.Value;
+                }
+                else if (value.Type == typeof(NumericValue<int>))
+                {
+                    var numVal = (NumericUpDown)control;
+                    numVal.Value = ((NumericValue<int>)value.Value).Value;
+                }
+                else if (value.Type == typeof(NumericValue<float>))
+                {
+                    var numVal = (NumericUpDown)control;
+                    numVal.Value = (decimal)((NumericValue<float>)value.Value).Value;
+                }
+                else if (value.Type == typeof(string))
+                {
+                    ((TextBox)control).Text = (string)value.Value;
+                }
+                else if (value.Type == typeof(bool))
+                {
+                    ((CheckBox)control).Checked = (bool)value.Value;
+                }
+                else if (value.Type.IsArray)
+                {
+                    ((CollectionEditor)control).UpdateControls();
+                }
+                else if (value.Type == typeof(Vector2))
+                {
+                    ((VectorEditor)control).Value = (Vector2)value.Value;
+                }
+                else if (typeof(IItemId).IsAssignableFrom(value.Type))
+                {
+                    ((ComboBox) value).SelectedValue = value.Value;
+                }
+                else if (typeof(IDataAdapter).IsAssignableFrom(value.Type))
+                {
+                    ((StructDataEditor)control).UpdateControls();
+                }
+                else if (value.Type.IsClass)
+                {
+                    ((StructDataEditor)control).UpdateControls();
+                }
+            }
+        }
 
         private Control CreateControl(object value, Type type, int rowId)
         {
@@ -308,11 +360,6 @@ namespace GameDatabase
 
         private Control CreateCollection(Array value, int column, int row)
         {
-            if (value.Length > 15)
-            {
-                return CreateLabel("List is too long", column, row);
-            }
-
             var collection = new CollectionEditor
             {
                 Dock = DockStyle.Fill,

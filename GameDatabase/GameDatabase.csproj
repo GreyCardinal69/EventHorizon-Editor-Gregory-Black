@@ -78,12 +78,27 @@
     <Compile Include="ComponentEditorDialog.Designer.cs">
       <DependentUpon>ComponentEditorDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BarrelsCollectionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BarrelsCollectionEditor.Designer.cs" />
+    <Compile Include="Controls\BarrelsEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\BarrelsEditor.Designer.cs" />
+    <Compile Include="Controls\UnscrollablePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\CollectionEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\CollectionEditor.Designer.cs">
       <DependentUpon>CollectionEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LayoutInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\LayoutInfo.Designer.cs" />
     <Compile Include="Controls\ShipLayout\LayoutBrush.cs" />
     <Compile Include="Controls\ShipLayout\LayoutModel.cs" />
     <Compile Include="Controls\RotationHelpers.cs" />
@@ -239,6 +254,8 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\VisualEffectElement.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Weapon.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Storage\DatabaseContent.cs" />
+    <Compile Include="GameDatabase\Helpers\Prompt.cs" />
+    <Compile Include="GameDatabase\Helpers\Templates.cs" />
     <Compile Include="GameDatabase\Model\ImageData.cs" />
     <Compile Include="GameDatabase\Storage\DatabaseStorage.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Storage\Interfaces.cs" />
@@ -280,11 +297,20 @@
     <EmbeddedResource Include="ComponentEditorDialog.resx">
       <DependentUpon>ComponentEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BarrelsCollectionEditor.resx">
+      <DependentUpon>BarrelsCollectionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BarrelsEditor.resx">
+      <DependentUpon>BarrelsEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CollectionEditor.resx">
       <DependentUpon>CollectionEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\LayoutEditor.resx">
       <DependentUpon>LayoutEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LayoutInfo.resx">
+      <DependentUpon>LayoutInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\StructDataView.resx">
       <DependentUpon>StructDataView.cs</DependentUpon>
@@ -316,7 +342,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShipEditorDialog.resx">
       <DependentUpon>ShipEditorDialog.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

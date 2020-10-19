@@ -7,6 +7,7 @@ using EditorDatabase;
 using EditorDatabase.DataModel;
 using EditorDatabase.Enums;
 using EditorDatabase.Model;
+using GameDatabase.Controls;
 using GameDatabase.Properties;
 
 namespace GameDatabase
@@ -22,12 +23,14 @@ namespace GameDatabase
             InitializeComponent();
         }
 
+        public LayoutInfo layoutInfo;
+
         private void ShipEditorDialog_Load(object sender, EventArgs e)
         {
             _ignoreEvents = true;
 
             Text = _dialogName;
-            structDataEditor1.Exclusions = new List<string>() { "Layout", "Barrels" };
+            structDataEditor1.Exclusions = new List<string>() { "Layout", "Barrels"};
             structDataEditor1.Database = _database;
             structDataEditor1.Data = _item as IDataAdapter ?? new DataAdapter(_item);
             layoutEditor1.Colors.Clear();
@@ -37,6 +40,7 @@ namespace GameDatabase
             layoutEditor1.Colors.Add((char)CellType.Inner, Color.FromArgb(192, 0, 255, 0));
             layoutEditor1.Colors.Add((char)CellType.InnerOuter, Color.FromArgb(192, 0, 255, 255));
             layoutEditor1.Colors.Add((char)CellType.Outer, Color.FromArgb(192, 0, 128, 255));
+
 
             barrelCollection.Database = _database;
 
@@ -50,6 +54,8 @@ namespace GameDatabase
             }
             else if (_item is Satellite)
             {
+                button1.Hide();
+                button1.Enabled = false;
                 var satellite = (Satellite)_item;
                 layout = satellite.Layout;
                 barrelCollection.Data = satellite.Barrels;
@@ -64,9 +70,14 @@ namespace GameDatabase
             _ignoreEvents = false;
 
             UpdateBarrels();
+            UpdateEngines();
 
             splitContainer1.SplitterDistance = Settings.Default.ShipEditorHorizontalSplitter;
             splitContainer2.SplitterDistance = Settings.Default.ShipEditorVerticalSplitter;
+        }
+
+        private void ShipEditorDialog_Shown(object sender, EventArgs e)
+        {
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -115,8 +126,13 @@ namespace GameDatabase
         {
             if (_ignoreEvents) return;
 
+            Console.Write("");
+            
             if (_item is Ship)
+            {
                 ((Ship)_item).Layout.Data = layoutEditor1.Layout;
+                layoutInfo?.OnLayoutChanged();
+            }
             else if (_item is Satellite)
                 ((Satellite)_item).Layout.Data = layoutEditor1.Layout;
         }
@@ -213,14 +229,85 @@ namespace GameDatabase
 
         private void UpdateBarrels()
         {
-            layoutEditor1.Barrels = ((Barrel[]) barrelCollection.Data).Select(item => new LayoutEditor.BarrelData
+            layoutEditor1.Barrels = ((Barrel[])barrelCollection.Data).Select(item => new LayoutEditor.BarrelData
             {
                 X = item.Position.x,
                 Y = item.Position.y,
                 Text = item.WeaponClass,
                 Offset = item.Offset.Value,
                 Rotation = item.Rotation.Value,
+                Arc = item.AutoAimingArc.Value > 0 ? item.AutoAimingArc.Value*2 :
+                    item.PlatformType == PlatformType.AutoTarget ? 360 :
+                    item.PlatformType == PlatformType.AutoTargetFrontal ? 160 :
+                    item.PlatformType == PlatformType.TargetingUnit ? 40 : 0
             }).ToArray();
+        }
+
+        private void UpdateEngines()
+        {
+            if (!(_item is Ship)) return;
+
+            var ship = _item as Ship;
+
+            Engine[] engines = ship.Engines ?? new Engine[0];
+            if (ship.EngineSize.Value > 0)
+            {
+                engines = engines.Concat(new Engine[] {
+                    new Engine() {
+                        Position = ship.EnginePosition,
+                        Size = ship.EngineSize
+                    }
+                }).ToArray();
+            }
+            
+
+            layoutEditor1.Engines = (engines).Select(item => new LayoutEditor.EngineData
+            {
+                X = item.Position.y,
+                Y = item.Position.x
+            }).ToArray();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (layoutInfo != null && layoutInfo.Visible)
+            {
+                return;
+            }
+            layoutInfo = new LayoutInfo();
+            layoutInfo._database = _database;
+            layoutInfo._layout = layoutEditor1;
+            layoutInfo._shipData = _item as Ship;
+            layoutInfo.Owner = this;
+            layoutInfo.OnLayoutChanged();
+            layoutInfo.Show();
+        }
+
+        private void ShipEditorDialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            foreach (var key in new List<string>(MainWindow.OppenedWindows.Keys))
+            {
+                if (MainWindow.OppenedWindows[key] == this)
+                {
+                    MainWindow.OppenedWindows.Remove(key);
+                    return;
+                }
+            }
+        }
+
+        private void layoutEditor1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void structDataEditor1_DataChanged(object sender, EventArgs e)
+        {
+            if (_item is Ship)
+            {
+                layoutInfo?.OnLayoutChanged();
+                UpdateEngines();
+            }
         }
     }
 }
