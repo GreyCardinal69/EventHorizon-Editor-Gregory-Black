@@ -370,6 +370,7 @@ namespace GameDatabase
 
             collection.Data = value;
             collection.CollectionChanged += OnCollectionChanged;
+            collection.DataChanged += DataChanged;
 
             tableLayoutPanel.Controls.Add(collection, column, row);
 

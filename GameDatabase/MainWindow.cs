@@ -273,7 +273,13 @@ namespace GameDatabase
                     break;
             }
 
-            OppenedWindows.Add(_selectedItem.FileName, window);
+            var name = _selectedItem.FileName;
+            
+            OppenedWindows.Add(name, window);
+            window.FormClosed += (s, i) =>
+            {
+                OppenedWindows.Remove(name);
+            };
         }
 
         private object GetItem()
@@ -637,6 +643,11 @@ namespace GameDatabase
         private void byIdToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeSorting(2);
+        }
+
+        private void reformatDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
