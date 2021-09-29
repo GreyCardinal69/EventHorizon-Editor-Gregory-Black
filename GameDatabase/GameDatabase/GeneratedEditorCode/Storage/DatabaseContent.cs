@@ -348,7 +348,7 @@ namespace EditorDatabase.Storage
         }
 
         private IEnumerable<KeyValuePair<string, ImageData>> Images => _images;
-        private IEnumerable<KeyValuePair<string, string>> Localizations => _localizations;
+        public IEnumerable<KeyValuePair<string, string>> Localizations => _localizations;
 
         private readonly IJsonSerializer _serializer;
 

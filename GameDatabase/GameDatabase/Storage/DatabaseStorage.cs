@@ -63,7 +63,7 @@ namespace EditorDatabase.Storage
                 throw new FileNotFoundException("No database files found in " + _path);
         }
 
-        public void SaveJson(string name, string data)
+        public virtual void SaveJson(string name, string data)
         {
             var fullName = Path.Combine(_path, name);
             File.WriteAllText(EnsurePathExists(fullName), data);
@@ -80,6 +80,6 @@ namespace EditorDatabase.Storage
             return path;
         }
 
-        private readonly string _path;
+        protected readonly string _path;
     }
 }

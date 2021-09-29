@@ -71,9 +71,6 @@ namespace GameDatabase
 
             UpdateBarrels();
             UpdateEngines();
-
-            splitContainer1.SplitterDistance = Settings.Default.ShipEditorHorizontalSplitter;
-            splitContainer2.SplitterDistance = Settings.Default.ShipEditorVerticalSplitter;
         }
 
         private void ShipEditorDialog_Shown(object sender, EventArgs e)
@@ -198,12 +195,10 @@ namespace GameDatabase
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            Settings.Default.ShipEditorHorizontalSplitter = splitContainer1.SplitterDistance;
         }
 
         private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            Settings.Default.ShipEditorVerticalSplitter = splitContainer2.SplitterDistance;
         }
 
         private void barrelCollection_CollectionChanged(object sender, EventArgs e)

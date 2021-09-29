@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 
 namespace EditorDatabase
 {
@@ -53,6 +54,7 @@ namespace EditorDatabase
             var namePosition = file.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1;
             return file.Substring(namePosition, file.Length - namePosition - 5); // trim ".json"        
         }
+        
 
         private const string _colorWhite = "#ffffff";
     }

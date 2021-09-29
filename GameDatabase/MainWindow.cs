@@ -15,7 +15,7 @@ using GameDatabase.GameDatabase.Helpers;
 using GameDatabase.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using JsonSerializer = EditorDatabase.Storage.JsonSerializer;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace GameDatabase
 {
@@ -24,6 +24,7 @@ namespace GameDatabase
         public MainWindow()
         {
             InitializeComponent();
+            folderBrowserDialog1.IsFolderPicker = true;
 
             OppenedWindows = new Dictionary<string, Form>();
 
@@ -39,6 +40,7 @@ namespace GameDatabase
 
         private void OpenDatabase(string path)
         {
+            folderBrowserDialog1.InitialDirectory = path;
             if (string.IsNullOrEmpty(_lastDatabasePath))
             {
                 _lastDatabasePath = path;
@@ -289,17 +291,17 @@ namespace GameDatabase
 
         private void loadMenuItem_Click(object sender, EventArgs e)
         {
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                OpenDatabase(folderBrowserDialog1.SelectedPath);
+                OpenDatabase(folderBrowserDialog1.FileName);
             }
         }
 
         private void saveAsMenuItem_Click(object sender, EventArgs e)
         {
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                _database.Save(new DatabaseStorage(folderBrowserDialog1.SelectedPath));
+                _database.Save(new DatabaseStorage(folderBrowserDialog1.FileName));
                 ghostFiles.Clear();
             }
         }
@@ -647,7 +649,7 @@ namespace GameDatabase
 
         private void reformatDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            new DatabaseReformat().Run();
         }
     }
 }

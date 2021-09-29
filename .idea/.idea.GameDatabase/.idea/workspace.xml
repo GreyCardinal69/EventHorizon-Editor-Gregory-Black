@@ -1,0 +1,1677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c4fc725b-34a9-4f5e-bf73-7a831296a4f0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GameDatabase.sln.DotSettings.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameDatabase/GameDatabase/Storage/DuplicateSaveStorage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GameDatabase/GameDatabase/Utilites/VanillaLocal.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/ClusterBomb.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/Debug.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/EnergyBeam.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/LaserBeam.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/LightningBolt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/Mine.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/PlasmaBolt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/ProtonTorpedo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/Rocket.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/Rocket2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Bullets/Spark.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/ClusterMissile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/ClusterTorpedo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/ClusterTorpedoShatter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Effects/Explosion1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Effects/Explosion2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Effects/Explosion3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Effects/Flash.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Effects/GasCloud.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/EnergyExplosion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/GasCloud.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/GreenLightning.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/HeavyLightning.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/LightningSpark.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Mine.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/MineExplosion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/MineThrower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/MineThrowerShatter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/AcidCannon_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/AcidCloud_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/AcidMissileLauncher_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/AcidTorpedo_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/AntiMatterBomb_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/AntiMatterBomb_L_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/AsteroidFragments_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/BlackHole_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/BlackHole_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ChargedLaser_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ChargedLaser_L_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ChargedLaser_L_3_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ChargedLaser_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ChargedTorpedo_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/DroneControl_M_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/EmpTorpedo_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/EmpTorpedo_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/EnergyBeam_M_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/EnergySiphon_M_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/EnergySiphon_S_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/Fireworks_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/FragBomb_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/HoolyGun_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/IonCannon_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/IonCannon_L_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/IonCannon_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/IonCannon_M_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LaserBeam_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LaserBeam_L_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LaserBeam_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LaserBeam_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LaserBeam_S_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LaserCannon_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LightningCannon_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LightningCannon_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LightningCannon_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LightningCannon_S_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/LightningCannon_S_3_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MassDriver_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MassDriver_M_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_L_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_L_3_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_L_4_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_M_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_M_3_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/MissileLauncher_T_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/NeutronBlaster_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/NeutronBlaster_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/NeutronBlaster_M_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PlasmaCannon_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PlasmaMultiCannon_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PlasmaThrower_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PlasmaThrower_M_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PlasmaTorpedo_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PlasmaWeb_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PlasmaWeb_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ProjectileCannon_L_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ProtoonTorpedo_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ProtoonTorpedo_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ProtoonTorpedo_M_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/ProtoonTorpedo_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/Pulsar_M1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/Pulsar_M2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PulseCannon_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PulseCannon_L_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PulseCannon_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PulseCannon_M_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PulseCannon_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PulseCannon_S_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PulseMashineGun_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/PulseMultiCannon_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/QuantumTorpedo_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/RailGun_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/RailGun_T_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/RepairBeam_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/RepairBeam_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/RocketLauncher_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/RocketLauncher_M_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/SingularityCannon_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/StasisField_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/StasisField_L_2_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/StasisField_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/StasisField_S_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/TractorBeam_M_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/TutorialGun_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/TutorialMissile_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/VampiricRay_L_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/VampiricRay_L_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/VampiricRay_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/VampiricRay_M_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/Obsolete/XmasBomb_M_1_Ammo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/PlasmaBolt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ammunition/RocketExplosion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AcidCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AcidMissileLauncher_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AcidTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Afterburner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AntiMatterBomb_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AntiMatterBomb_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AntiMatterReactor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AntiMatterReactor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ArmoredFuelCell_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ArmoredFuelCell_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ArmoredFuelCell_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AutoPilot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AutomatedReloader_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/AutomatedReloader_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/BionicArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/BionicArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/BionicArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/BlackHole_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/BrakingSystem.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ChargedLaser_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ChargedLaser_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ChargedLaser_L_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ChargedLaser_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ChargedTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/CloakingSystem.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ClonningCenter_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ClonningCenter_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ClonningCenter_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ClusterMissile_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ClusterTorpedo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Detonator_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneArmor_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_11.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_21.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_22.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_41.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_51.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_54.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_81.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_A1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_S1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_L_Santa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_11.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_21.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_22.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_41.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_51.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_54.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_81.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_A1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_S1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_M_Santa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_11.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_21.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_22.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_41.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_51.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_54.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_81.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_91.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_A1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_S1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneBay_S_Santa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneControlUnit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneControlUnit_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneControlUnit_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneControl_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneDamageAmplifier.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneDamageAmplifier_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneDamageAmplifier_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneDefense_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneDefense_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneDefense_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneEngine_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneEngine_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneFactory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneFactory_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneFactory_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneNavigationComputer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneNavigationComputer_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/DroneNavigationComputer_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EcmJammer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EmpTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EmpTorpedo_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EnergyAbsorber_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EnergyAbsorber_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EnergyAbsorber_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EnergyBeam_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EnergyShield.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EnergySiphon_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/EnergySiphon_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FortificationSystem.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FragBomb_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FrontalShield.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FuelCell_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FuelCell_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FuelCell_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FusionDrive_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FusionDrive_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/FusionDrive_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/GravityGenerator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/GreenLightning.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/HeavyLightningCannon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/HighEnergyFocus_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/HighEnergyFocus_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/HolyCannon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ImpactArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ImpactArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ImpactArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/InertialDamper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/InertialNullifier.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/InertialStabilizer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/InfinityStone_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/IonCannon_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/IonCannon_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/IonCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/IonCannon_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LaserBeam_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LaserBeam_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LaserBeam_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LaserBeam_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LaserBeam_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LaserCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LightningCannon_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LightningCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LightningCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LightningCannon_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/LightningCannon_S_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MassDriver_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MassDriver_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MineThrower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_L_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_L_4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_M_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/MissileLauncher_T_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/AoeRangeMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/BulletVelocity2Mod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/BulletVelocityMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/BulletWeightMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/CooldownMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/Damage2Mod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/DamageMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/DefenseMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/DroneDamageMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/DroneDefenseMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/DroneRangeMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/DroneSpeedMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/EnergyCapacityMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/EnergyCostMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/EnergyRechargeMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/EnginePowerMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/HitPointsMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/RangeMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/RepairRateMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/ShieldPowerMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Modifications/WeightMod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Nanofiber.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NeutronBlaster_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NeutronBlaster_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NeutronBlaster_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NuclearDrive_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NuclearDrive_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NuclearDrive_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NuclearDrive_T.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NuclearReactor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NuclearReactor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/NuclearReactor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PlasmaCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PlasmaMultiCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PlasmaThrower_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PlasmaThrower_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PlasmaTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PlasmaWeb_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PlasmaWeb_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PointDefense.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ProjectileCannon_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ProtoonTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ProtoonTorpedo_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ProtoonTorpedo_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ProtoonTorpedo_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Pulsar_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Pulsar_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PulseCannon_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PulseCannon_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PulseCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PulseCannon_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PulseCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PulseCannon_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PulseMashineGun_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/PulseMultiCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/QuantumTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RailGun_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RailGun_T_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RangemasterUnit_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ReactiveArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ReactiveArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ReactiveArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RepairBeam_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RepairBeam_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RepairBot_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RepairBot_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RocketLauncher_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/RocketLauncher_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ShieldCapacitor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ShieldCapacitor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ShieldCapacitor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ShieldGenerator_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ShieldGenerator_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ShieldGenerator_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/SingularityCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/StasisField_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/StasisField_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/StasisField_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/StasisField_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/AntiMatterReactor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/AntiMatterReactor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ArmoredFuelCell_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ArmoredFuelCell_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ArmoredFuelCell_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/AutoPilot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/AutomatedReloader_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/AutomatedReloader_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/BionicArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/BionicArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/BionicArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DefaultDeviceStats.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DefaultDroneBayStats.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DefaultWeaponStats.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneArmor_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneControlUnit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneControlUnit_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneControlUnit_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneDamageAmplifier.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneDamageAmplifier_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneDamageAmplifier_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneDefense_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneDefense_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneDefense_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneEngine_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneEngine_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneFactory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneFactory_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneFactory_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneNavigationComputer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneNavigationComputer_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/DroneNavigationComputer_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/EnergyAbsorber_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/EnergyAbsorber_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/EnergyAbsorber_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/FuelCell_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/FuelCell_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/FuelCell_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/FusionDrive_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/FusionDrive_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/FusionDrive_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/HighEnergyFocus_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/HighEnergyFocus_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ImpactArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ImpactArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ImpactArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/InertialDamper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/InertialNullifier.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/InertialStabilizer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/Nanofiber.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/NuclearDrive_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/NuclearDrive_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/NuclearDrive_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/NuclearDrive_T.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/NuclearReactor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/NuclearReactor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/NuclearReactor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/RangemasterUnit_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ReactiveArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ReactiveArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ReactiveArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ShieldCapacitor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ShieldCapacitor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ShieldCapacitor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ShieldGenerator_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ShieldGenerator_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ShieldGenerator_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/TargetingUnit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ThermalArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ThermalArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/ThermalArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/TitaniumArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/TitaniumArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Stats/TitaniumArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/StealthField.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/SuperStealthField.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/TargetingUnit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Teleporter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Teleporter_Boss1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Teleporter_X.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/Teleporter_X2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ThermalArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ThermalArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/ThermalArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/TitaniumArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/TitaniumArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/TitaniumArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/TractorBeam_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/TutorialDrive.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/TutorialGun.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/TutorialMissile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/VampiricRay_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/VampiricRay_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/VampiricRay_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/VampiricRay_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Component/XmasBomb_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Accelerator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/BrakeDevice.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Cloaking.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/ClonningCenter_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/ClonningCenter_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/ClonningCenter_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/DecoyDevice.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Detonator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/EnergyShield.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Fortification.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/FrontalShield.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/GravityGenerator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/InfinityStone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/PointDefense.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/RepairBotM.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/RepairBotS.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Stealth.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/SuperStealth.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Teleporter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Teleporter_Boss.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Teleporter_Boss_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/Teleporter_Boss_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/ToxicWasteDevice.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/WormTail.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Device/WormTailBoss.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Dronebay/DroneBay1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Dronebay/DroneBay2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Dronebay/DroneBay3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Dronebay/DroneBay4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Dronebay/DroneBay5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/$Faction14.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Bushrak.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Contagion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Daazen.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Empire.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Jurgans.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Korerans.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Neganari.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Sayjix.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Scavengers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Swarm.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Syndicate.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Taraniak.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Unknowns.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Veniri.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Factions/Zumbalari.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Characters/Civilian1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Characters/JanSalo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Characters/Merchant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Characters/Pirates.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Characters/Scavenger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Characters/ScavengerCaptain.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Characters/Unknown.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Fleets/civilians.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Fleets/covid.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Fleets/merchant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Fleets/pirates.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Fleets/scavengers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Fleets/tutorial.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Fleets/wormship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/AlienArtifacts.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/AncientArtifact.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/GemStones.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/MetalAlloys.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/Minerals.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/Polymers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/PreciousMetals.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/Scraps.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/Snowflakes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Items/ToxicWaste.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/CivilianShipReward.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/CovidLoot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/EasterEgg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/Fuel_10.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/Fuel_10_20.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/Fuel_5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/JanSaloPresent.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/MerchantGoods.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/MerchantLoot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/RandomResources.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/RandomStuff.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/ScavengerFlagship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/ScavengerGoods.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/ScavengerShipRepairCost.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/SomeMoney.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/SomeMoney_x5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/Starmap.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/Loot/WormBossLoot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsBeacon/FreeStuff.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsBeacon/ShipOutOfFuel.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsBeacon/escapepod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsBeacon/merchant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsBeacon/pirates.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsBeacon/wormship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsFaction/Pirates.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsFaction/Resources.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsScavengers/JanSalo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsScavengers/JanSalo2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsScavengers/JanSalo3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsScavengers/Scavengers1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsScavengers/Scavengers2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsScavengers/Scavengers3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsSpecial/HappyEaster.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsSpecial/Pandemic.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/QuestsSpecial/tutorial.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Quests/local_pirates.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/1l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/1m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/1s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/2l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/2m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/2s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/3l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/3m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/3s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/4l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/4m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/4s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/5l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/5m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/5s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/6l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/6m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/6s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/7l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/7m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/7s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/1l_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/1m_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/1s_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/2l_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/2l_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/2l_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/2m_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/2s_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/3l_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/3l_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/3m_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/3s_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/4l_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/4l_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/4m_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/4s_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/5l_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/5l_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/5m_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/5s_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/6l_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/6l_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/6m_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/6m_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/6s_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/7l_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/7m_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Builds/7s_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Satellite/Hovertank.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Settings/Database.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Settings/Exploration.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Settings/Galaxy.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Settings/Ships.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Drone_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Megalodon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Spectrum MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Spectrum.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Stalker.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Trident.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Zephyr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/Zion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Drone_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Megalodon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Megalodon_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Megalodon_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Spectrum MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Spectrum MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Spectrum.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Spectrum_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Stalker.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Stalker_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Stalker_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Trident.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Trident_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Zephyr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Zephyr_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Zion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/Zion_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Bushrak/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/Amoeba.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/Devourer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/Slime.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/Slime_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Amoeba.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Amoeba_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Amoeba_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Devourer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Devourer_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Devourer_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Slime.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Slime_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Slime_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Slime_x_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Slime_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Contagion/builds/Slime_xx_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/Barracuda.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/Leech MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/Leech.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/Nemesis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/Scorpio.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/Tartarus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Barracuda.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Barracuda_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Leech MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Leech MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Leech.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Leech_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Nemesis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Nemesis_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Nemesis_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Scorpio.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Scorpio_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Tartarus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Tartarus_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/Tartarus_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Daazen/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/Dreadnought.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/ISS Caravel.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/ISS Corvette.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/ISS Galleon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/ISS Gunboat.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/ISS Man-of-war.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/Dreadnought.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/Dreadnought_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/Dreadnought_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Caravel.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Caravel_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Corvette.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Corvette_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Corvette_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Galleon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Galleon_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Gunboat.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Gunboat_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Gunboat_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Man-of-war.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Man-of-war_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/ISS Man-of-war_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Empire/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/Beholder.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/Chrysalis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/Embryo MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/Embryo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/Oblivion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/Overlord.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/Zombie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Beholder.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Beholder_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Chrysalis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Chrysalis_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Embryo MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Embryo MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Embryo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Embryo_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Oblivion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Oblivion_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Overlord.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Overlord_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Overlord_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Zombie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/Zombie_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Jurgans/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/Manticore.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/Praetor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/Raven MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/Raven.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/Thor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/Thunder.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Manticore.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Manticore_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Praetor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Praetor_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Raven MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Raven MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Raven MK2_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Raven.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Raven_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Thor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Thor_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Thor_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Thunder.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Thunder_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Thunder_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/Thunder_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Korerans/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/Freighter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/Hatchet.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/Probe.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/Spike MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/Spike.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/Zeus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Freighter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Freighter_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Hatchet.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Hatchet_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Probe.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Probe_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Spike MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Spike MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Spike MK2_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Spike.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Spike_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Zeus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Zeus_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/Zeus_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neganari/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Chariot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Corn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Drone_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Drone__.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Drone___.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Easter Egg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Eden.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Egg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Falcon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Gladius.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Invader.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Invader_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Invader__.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Merchant ship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Meteor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Santa Claus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Scavenger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Smuggler ship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Space Invader.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Tyrant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Velez.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/Viper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Chariot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Chariot_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Chariot_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Corn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Corn_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Corn_x_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Drone_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Drone__.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Drone___.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Easter Egg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Eden.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Eden_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Egg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Egg_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Falcon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Gladius.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Gladius_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Invader.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Invader_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Invader__.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Invader___.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Merchant ship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Merchant ship_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Meteor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Meteor_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Santa Claus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Santa Claus_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Santa Claus_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Scavenger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Scavenger_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Scavenger_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Smuggler ship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Smuggler ship_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Smuggler ship_x_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Space Invader.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Space Invader_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Space Invader__.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Space Invader___.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Tyrant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Tyrant_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Velez.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Viper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/Viper_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Neutral/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/Chronos.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/Drone_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/Kryptoria.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/Messenger MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/Messenger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/Oracle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/Proxima.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Chronos.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Chronos_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Chronos_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Drone_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Drone__.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Kryptoria.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Kryptoria_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Messenger MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Messenger MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Messenger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Messenger_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Oracle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Oracle_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Oracle_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Proxima.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/Proxima_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Sayjix/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Scavengers/Harbour.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Scavengers/Nomad.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Scavengers/Rattletrap.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Scavengers/Rustbucket.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Scavengers/builds/Harbour.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Scavengers/builds/Nomad_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Scavengers/builds/Rattletrap_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Scavengers/builds/Rustbucket_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/Bug.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/Crab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/Jormungandr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/Wormship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Bug.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Bug_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Crab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Crab_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Crab_x_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Jormungandr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Jormungandr_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Jormungandr_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Wormship.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Swarm/builds/Wormship_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/Banshee.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/Goblin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/Odin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/Valkyrie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/Yeti.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Banshee.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Banshee_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Goblin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Goblin_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Odin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Odin_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Valkyrie.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Valkyrie_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Yeti.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Syndicate/builds/Yeti_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/Dragonfly.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/Drone MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/Drone_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/Hornet.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/Kraken.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/Tarantula.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Dragonfly.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Dragonfly_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Drone MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Drone MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Drone_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Drone_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Hornet.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Hornet_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Hornet_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Kraken.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Kraken_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Kraken_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Tarantula.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/Tarantula_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Taraniak/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/Doomstar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/Object 117.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/Object 18.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/Object 34.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/Object 61.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Doomstar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Doomstar_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Doomstar_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 117.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 117_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 117_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 18.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 18_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 18_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 34.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 34_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 61.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 61_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 61_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/Object 61_xx_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Unknowns/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Dart.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Event Horizon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Excalibur.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Javelin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Leviathan.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Paladin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Scout MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/Scout.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Dart.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Dart_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Drone.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Event Horizon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Excalibur.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Excalibur_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Excalibur_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Javelin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Javelin_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Leviathan.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Leviathan_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Leviathan_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Paladin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Paladin_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Paladin_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Scout MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Scout MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Scout.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Scout_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/Scout_x_.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/hive.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/hive.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/outpost1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Veniri/turret1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/Colossus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/Helios.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/Interceptor MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/Interceptor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/Rhino.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/Shadow.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Colossus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Colossus_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Colossus_xx.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Helios.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Helios_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Interceptor MK2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Interceptor MK2_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Interceptor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Interceptor_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Rhino.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Rhino_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Shadow.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/Shadow_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/starbase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Ships/Zumbalari/builds/starbase_x.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/1l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/1m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/1s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/2l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/2m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/2s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/3l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/3m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/3s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/4l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/4m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/4s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/5l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/5m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/5s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/6l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/6m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/6s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/7l.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/7m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/7s.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/AcidCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/AcidMissileLauncher_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Afterburner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/AntiMatterBomb_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/AntiMatterBomb_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/AntiMatterReactor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/AntiMatterReactor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ArmoredFuelCell_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ArmoredFuelCell_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ArmoredFuelCell_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/AutomatedReloader_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/AutomatedReloader_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Autopilot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/BionicArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/BionicArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/BionicArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/BlackHole_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss12.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss13.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Boss9.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Bossa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Bossn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/BrakingSystem.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ChargedLaser_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ChargedLaser_L_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ChargedLaser_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ChargedTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/CloakingSystem.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ClonnigCenter_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ClonnigCenter_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ClonnigCenter_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Detonator_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_11.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_21.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_22.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_41.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_51.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_54.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_81.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_A1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_L_Santa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_11.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_21.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_22.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_41.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_51.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_54.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_81.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_A1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_M_Santa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_11.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_21.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_22.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_41.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_51.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_54.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_81.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_A1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneBay_S_Santa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneControlUnit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneControlUnit_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneControlUnit_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneControl_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneDamageAmplifier.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneDamageAmplifier_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneDamageAmplifier_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneDefense_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneDefense_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneDefense_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneFactory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneFactory_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneFactory_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneNavigationComputer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneNavigationComputer_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/DroneNavigationComputer_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EcmJammer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EmpTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EmpTorpedo_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EnergyAbsorber_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EnergyAbsorber_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EnergyAbsorber_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EnergyBeam_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EnergyShield.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/EnergySiphon_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FortificationSystem.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FragBomb_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FrontalShield.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FuelCell_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FuelCell_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FuelCell_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FusionDrive_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FusionDrive_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/FusionDrive_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/GreenLightning.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/HighEnergyFocus_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/HighEnergyFocus_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/HolyCannon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Hovertank.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ImpactArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ImpactArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ImpactArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/InertialDamper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/InertialStabilizer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/InfinityStone_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/IonCannon_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/IonCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LaserBeam_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LaserBeam_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LaserBeam_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LaserBeam_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LaserCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LightningCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LightningCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LightningCannon_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/LightningCannon_S_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MassDriver_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MassDriver_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MissileLauncher_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MissileLauncher_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MissileLauncher_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MissileLauncher_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MissileLauncher_M_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MissileLauncher_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/MissileLauncher_T_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Nanofiber.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NeutronBlaster_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NeutronBlaster_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NeutronBlaster_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NuclearDrive_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NuclearDrive_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NuclearDrive_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NuclearDrive_T.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NuclearReactor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NuclearReactor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/NuclearReactor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PlasmaCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PlasmaMultiCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PlasmaThrower_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PlasmaThrower_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PlasmaTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PlasmaWeb_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PlasmaWeb_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PointDefense.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ProtoonTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ProtoonTorpedo_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ProtoonTorpedo_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ProtoonTorpedo_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Pulsar_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Pulsar_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PulseCannon_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PulseCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PulseCannon_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PulseCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PulseCannon_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PulseMashineGun_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/PulseMultiCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/QuantumTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/RailGun_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/RailGun_T_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/RangemasterUnit_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/RepairBot_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/RepairBot_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/RocketLauncher_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/RocketLauncher_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Santa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ShieldCapacitor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ShieldCapacitor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ShieldCapacitor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ShieldGenerator_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ShieldGenerator_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ShieldGenerator_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/SingularityCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/StasisField_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/StasisField_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/StealthField.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/TargetingUnit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/Teleporter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ThermalArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ThermalArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/ThermalArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/TitaniumArmor_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/TitaniumArmor_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/TitaniumArmor_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/TractorBeam_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/VampiricRay_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/XmasBomb_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f0s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f0s1_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f0s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f0s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f0s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f12s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f12s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f12s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f13s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f13s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f13s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f13s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f16s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f16s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f16s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f16s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f1s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f1s1_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f1s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f1s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f1s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f1s5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f2s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f2s1_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f2s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f2s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f2s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f2s5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f3s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f3s1_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f3s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f3s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f3s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f4s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f4s1_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f4s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f4s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f4s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f5s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f5s1_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f5s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f5s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f5s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f6s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f6s1_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f6s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f6s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f6s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f6s5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f7s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f7s1_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f7s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f7s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f7s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f8s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f8s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f8s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f8s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f9s1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f9s2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f9s3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f9s4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/f9s5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fas1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fas2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fas3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fas3_mk2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fas4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fns3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fns4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fns5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fns6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fns7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fns8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Technology/fns9.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/GreenLightning.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/HeavyMortar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/HeavyTorpedoLauncher.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/LightningCannon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/MissileLauncher.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/AcidCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/AcidMissileLauncher_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/AcidTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/AntiMatterBomb_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/AntiMatterBomb_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/AsteroidFragments.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/BlackHole_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ChargedLaser_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ChargedLaser_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ChargedLaser_L_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ChargedLaser_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ChargedTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/DroneControl_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/EmpTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/EmpTorpedo_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/EnergyBeam_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/EnergySiphon_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/EnergySiphon_S.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/Fireworks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/FragBomb_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/HolyCannon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/IonCannon_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/IonCannon_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/IonCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/IonCannon_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LaserBeam_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LaserBeam_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LaserBeam_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LaserBeam_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LaserBeam_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LaserCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LightningCannon_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LightningCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LightningCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LightningCannon_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/LightningCannon_S_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MassDriver_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MassDriver_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MissileLauncher_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MissileLauncher_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MissileLauncher_L_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MissileLauncher_L_4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MissileLauncher_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MissileLauncher_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MissileLauncher_M_3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/MissileLauncher_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/NeutronBlaster_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/NeutronBlaster_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/NeutronBlaster_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PlasmaCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PlasmaMultiCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PlasmaThrower_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PlasmaThrower_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PlasmaTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PlasmaWeb_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PlasmaWeb_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ProtoonTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ProtoonTorpedo_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ProtoonTorpedo_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/ProtoonTorpedo_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/Pulsar_M1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/Pulsar_M2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PulseCannon_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PulseCannon_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PulseCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PulseCannon_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PulseCannon_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PulseCannon_S_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PulseMashineGun_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/PulseMultiCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/QuantumTorpedo_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/RailGun_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/RepairBeam_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/RepairBeam_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/RocketLauncher_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/RocketLauncher_M_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/SingularityCannon_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/StasisField_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/StasisField_L_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/StasisField_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/StasisField_S_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/TractorBeam_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/TutorialGun.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/TutorialMissile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/VampiricRay_L.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/VampiricRay_L_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/VampiricRay_M.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/VampiricRay_M_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Weapon/Obsolete/XmasBomb_M_1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameDatabase/.idea/.idea.GameDatabase.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameDatabase/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameDatabase/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameDatabase/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cyotek.Windows.Forms.ColorPicker/Cyotek.Windows.Forms.ColorPicker/bin/Debug/Cyotek.Windows.Forms.ColorPicker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Cyotek.Windows.Forms.ColorPicker/Cyotek.Windows.Forms.ColorPicker/bin/Debug/Cyotek.Windows.Forms.ColorPicker.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cyotek.Windows.Forms.ColorPicker/Cyotek.Windows.Forms.ColorPicker/bin/Release/Cyotek.Windows.Forms.ColorPicker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Cyotek.Windows.Forms.ColorPicker/Cyotek.Windows.Forms.ColorPicker/bin/Release/Cyotek.Windows.Forms.ColorPicker.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/ammo_ammunition.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/ammo_ammunition_obsolete.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/ammo_bullet.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/ammo_effect.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/component.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/device.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/dronebay.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/faction.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/3_sizes_component+stats.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/component+device.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/component+dronebay+ship+build.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/component+dronebay.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/component+stats.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/component+weapon+ammo.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/component+weapon+ammo_obsolete.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/satelite+build.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/ship+3_builds.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/ship+build.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/ship+tech+build.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/tech+component+device.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/tech+component+dronebay+ship+build.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/tech+component+dronebay.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/tech+component+stats.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/tech+component+weapon+ammo.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/tech+component+weapon+ammo_obsolete.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/mixed/tech+satelite+build.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/quest_character.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/quest_fleet.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/quest_item.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/quest_loot.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/quest_quest.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/satelite.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/sateliteBuild.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/ship.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/shipBuild.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/stats.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/tech_component.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/tech_satelite.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/tech_ship.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/Templates/weapon.template" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/App.config" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/App.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/ComponentEditorDialog.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/ComponentEditorDialog.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/EditorDialog.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/EditorDialog.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/GameDatabase.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/GameDatabase.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/GameDatabase.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/GameDatabase.csproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Storage/DatabaseContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Storage/DatabaseContent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/GameDatabase/Helpers/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/GameDatabase/Helpers/Helpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/GameDatabase/Storage/DatabaseStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/GameDatabase/Storage/DatabaseStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/GameDatabase/Utilites/DatabaseReformat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/GameDatabase/Utilites/DatabaseReformat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/MainWindow.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/MainWindow.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/MainWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/MainWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/MainWindow.resx" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/MainWindow.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/Properties/Settings.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/Properties/Settings.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/Properties/Settings.settings" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/Properties/Settings.settings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/ShipEditorDialog.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/ShipEditorDialog.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/ShipEditorDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/ShipEditorDialog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameDatabase/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/GameDatabase/packages.config" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ED704B24-FB4A-4A3F-A1B8-5220BAED64CE/12/a1a661e1/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/BarrelsEditor.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/Faction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/IonicZlib/Deflate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/StructDataEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Enums/CellType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Storage/Interfaces.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/61DE71CB-2BF6-4026-ACE3-ED54052CCDD0/5d/0b05734e/XElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/NodeAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/Storage/JsonSerializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/Storage/DatabaseStorage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB3709D4-3DAE-4F5F-B978-5D5202B86B97/72/9cddade5/Path.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Storage/DatabaseContent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/Helpers/Prompt.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/LootContent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Form1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/Requirement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/Barrel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/Engine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/ComponentStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/Quest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/NodeTransition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/Node.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/BarrelsCollectionEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DatabaseException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/LayoutEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB3709D4-3DAE-4F5F-B978-5D5202B86B97/d7/202a71fe/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/LayoutInfo.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../Install/NodeEditorWinforms-master/MathSample/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/LayoutInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/LayoutInfo.resx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/DataModel/Component.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Serializable/LootContent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/DataModel/Component.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/Helpers/DataAdapter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/ShipEditorDialog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ED704B24-FB4A-4A3F-A1B8-5220BAED64CE/a0/5f3907cf/Path.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/216EEFC5-80B5-4735-B900-1F7A1E8A25B9/d0/0a78ef32/JTokenType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/Helpers/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/216EEFC5-80B5-4735-B900-1F7A1E8A25B9/6e/a53612fc/JObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Properties/Settings.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/ShipEditorDialog.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Serializable/Quest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/MainWindow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/216EEFC5-80B5-4735-B900-1F7A1E8A25B9/e1/bbb7635a/JToken.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Serializable/Node.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/MainWindow.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/Model/NumericValue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../Install/NodeEditorWinforms-master/MathSample/MathContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/Utilites/DatabaseReformat.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/Helpers/Templates.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../Install/NodeEditorWinforms-master/MathSample/FormMathSample.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://Z:/juh9870/EH/update/EventHorizon-Editor/GameDatabase/Controls/StructDataEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/216EEFC5-80B5-4735-B900-1F7A1E8A25B9/f3/362f8d1b/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/BarrelsEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Database.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/Controls/CollectionEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Serializable/SerializableItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Enums/SizeClass.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FF882FAF-BCC2-4B1C-8E21-5BEEDE1ADE62/4e/ffc946b4/UserControl.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/GameDatabase/Controls/StructDataEditor.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Database.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/packages.config" />
+      <option value="$PROJECT_DIR$/GameDatabase/MainWindow.Designer.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/Helpers/Helpers.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/Utilites/zzz.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/GeneratedEditorCode/Storage/DatabaseContent.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/MainWindow.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/Storage/SaveOnlyStorage.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/Storage/DuplicateSaveStorage.cs" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/Storage/DatabaseStorage.cs" />
+      <option value="$PROJECT_DIR$/../../Assets Extractor/out/text/TextAsset/Factions.txt" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/Utilites/VanillaLocal.xml" />
+      <option value="$PROJECT_DIR$/GameDatabase/GameDatabase/Utilites/DatabaseReformat.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="1j3s0D6Qsi92h6MSeLClNnhbBV8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3501355" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="RiderNuGetOptionsPageId" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="GameDatabase" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/GameDatabase/bin/Debug/GameDatabase.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Database" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/GameDatabase/GameDatabase.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="0" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.0" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c4fc725b-34a9-4f5e-bf73-7a831296a4f0" name="Default Changelist" comment="" />
+      <created>1603043890278</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603043890278</updated>
+      <workItem from="1603043922481" duration="12711000" />
+      <workItem from="1603099343083" duration="21440000" />
+      <workItem from="1603184324425" duration="598000" />
+      <workItem from="1605463121466" duration="3270000" />
+      <workItem from="1605466983670" duration="172000" />
+      <workItem from="1605467304419" duration="330000" />
+      <workItem from="1605469398555" duration="8204000" />
+      <workItem from="1617881820175" duration="391000" />
+      <workItem from="1617882215449" duration="198000" />
+      <workItem from="1627644792467" duration="1111000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added most of features back">
+      <created>1603124998790</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603124998790</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added most of features back" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added most of features back" />
+  </component>
+</project>
