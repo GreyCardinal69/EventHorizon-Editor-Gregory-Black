@@ -348,6 +348,10 @@ namespace GameDatabase.Controls
                     }
                     CheckRadioButton();
                 }
+                else
+                {
+                    _selectedRowId = -1;
+                }
             }
             
 
@@ -539,8 +543,8 @@ namespace GameDatabase.Controls
             if (_collection.Length > ((curPage + 1) * rowsPerPage)
                 || curPage != (_collection.Length - 1) / rowsPerPage)
             {
-                SwapPage(_collection.Length / rowsPerPage);
-                _selectedRowId = 0;
+                SwapPage((_collection.Length - 1) / rowsPerPage);
+                _selectedRowId = (_collection.Length - 1) % rowsPerPage;
                 CheckRadioButton();
             }
             else
