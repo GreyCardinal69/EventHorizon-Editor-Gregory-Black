@@ -95,12 +95,17 @@ namespace GameDatabase
             item.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
             item.UseBelow = true;
             item.Name = "Templates";
+
             createToolStripMenuItem.DropDownItems.Add(item);
             _templates = new Templates();
             _templates.Load(_path);
             foreach (SerializableTemplate template in _templates.Data)
             {
-                ToolStripMenuItem lastNode = createToolStripMenuItem;
+                AdvancedToolStripMenuItem lastNode = createToolStripMenuItem;
+
+                lastNode.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+                lastNode.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
+
                 var name = template.Name;
                 if (template.Name.Contains('/'))
                 {
@@ -109,10 +114,12 @@ namespace GameDatabase
                     for (var i = 0; i < path.Length - 1; i++)
                     {
                         var findResult = lastNode.DropDownItems.Find(path[i], false);
-                        ToolStripMenuItem curNode;
-                        if (findResult.Length == 0 || (curNode = findResult[0] as ToolStripMenuItem ) == null)
+                        AdvancedToolStripMenuItem curNode;
+                        if (findResult.Length == 0 || (curNode = findResult[0] as AdvancedToolStripMenuItem ) == null)
                         {
-                            curNode = new ToolStripMenuItem( path[i]);
+                            curNode = new AdvancedToolStripMenuItem( path[i]);
+                            curNode.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+                            curNode.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
                             curNode.Name = path[i];
                             lastNode.DropDownItems.Add(curNode);
                         }
@@ -121,7 +128,9 @@ namespace GameDatabase
                     }
                 }
 
-                item = new AdvancedToolStripMenuItem( name);
+                item = new AdvancedToolStripMenuItem( name );
+                item.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+                item.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
                 lastNode.DropDownItems.Add(item);
                 item.Tag = item.Name = template.Name;
                 item.Click += TemplateMenuItem_Click;
