@@ -16,6 +16,8 @@ using GameDatabase.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using GameDatabase.Controls;
 
 namespace GameDatabase
 {
@@ -24,6 +26,7 @@ namespace GameDatabase
         public MainWindow()
         {
             InitializeComponent();
+            folderBrowserDialog1 = new CommonOpenFileDialog();
             folderBrowserDialog1.IsFolderPicker = true;
 
             OppenedWindows = new Dictionary<string, Form>();
@@ -86,17 +89,18 @@ namespace GameDatabase
         {
             createToolStripMenuItem.DropDownItems.Clear();
             createToolStripMenuItem.DropDownItems.Add(folderToolStripMenuItem);
-            ToolStripMenuItem item = new ToolStripMenuItem("Templates");
+            AdvancedToolStripMenuItem item = new AdvancedToolStripMenuItem( "Templates");
+
+            item.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            item.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
+            item.UseBelow = true;
             item.Name = "Templates";
-            createToolStripMenuItem.DropDownItems.Add(item);
-            item = new ToolStripMenuItem("");
-            item.Enabled = false;
             createToolStripMenuItem.DropDownItems.Add(item);
             _templates = new Templates();
             _templates.Load(_path);
             foreach (SerializableTemplate template in _templates.Data)
             {
-                var lastNode = createToolStripMenuItem;
+                ToolStripMenuItem lastNode = createToolStripMenuItem;
                 var name = template.Name;
                 if (template.Name.Contains('/'))
                 {
@@ -106,9 +110,9 @@ namespace GameDatabase
                     {
                         var findResult = lastNode.DropDownItems.Find(path[i], false);
                         ToolStripMenuItem curNode;
-                        if (findResult.Length == 0 || (curNode = findResult[0] as ToolStripMenuItem) == null)
+                        if (findResult.Length == 0 || (curNode = findResult[0] as ToolStripMenuItem ) == null)
                         {
-                            curNode = new ToolStripMenuItem(path[i]);
+                            curNode = new ToolStripMenuItem( path[i]);
                             curNode.Name = path[i];
                             lastNode.DropDownItems.Add(curNode);
                         }
@@ -117,7 +121,7 @@ namespace GameDatabase
                     }
                 }
 
-                item = new ToolStripMenuItem(name);
+                item = new AdvancedToolStripMenuItem( name);
                 lastNode.DropDownItems.Add(item);
                 item.Tag = item.Name = template.Name;
                 item.Click += TemplateMenuItem_Click;
@@ -131,7 +135,10 @@ namespace GameDatabase
 
         private void DatabaseTreeView_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            this.EditButton.Enabled = true;
+            this.EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+
+            if ( e.Button == MouseButtons.Right)
             {
                 Point p = new Point(e.X, e.Y);
                 TreeNode node = DatabaseTreeView.GetNodeAt(p);
@@ -148,13 +155,13 @@ namespace GameDatabase
 
         private void ShowItemInfo(string path)
         {
-            try
-            {
+           
                 ItemTypeText.Text = @"-";
                 _selectedItem = new SerializableItem();
-                EditButton.Enabled = false;
-
-                if (Directory.Exists(path))
+                EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+                EditButton.Enabled = true;
+              
+                if ( Directory.Exists(path))
                 {
                     ItemTypeText.Text = @"Directory";
                     structDataView1.Data = GetDirectoryInfo(path);
@@ -177,13 +184,7 @@ namespace GameDatabase
 
                 structDataView1.Database = _database;
                 structDataView1.Data = GetItem();
-
-                EditButton.Enabled = true;
-            }
-            catch (Exception e)
-            {
-                //MessageBox.Show(e.Message);
-            }
+                
         }
 
         private struct DirectoryInfoData
@@ -245,13 +246,19 @@ namespace GameDatabase
 
         private void DatabaseTreeView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            EditButton_Click(sender, e);
+            this.EditButton.Enabled = true;
+            this.EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+
+            EditButton_Click( sender, e);
         }
 
         public static Dictionary<string, Form> OppenedWindows;
 
         private void EditButton_Click(object sender, EventArgs e)
         {
+            this.EditButton.Enabled = true;
+            this.EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+
             var item = GetItem();
             if (item == null)
                 return;

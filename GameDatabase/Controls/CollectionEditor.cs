@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using EditorDatabase;
 using EditorDatabase.DataModel;
@@ -150,9 +151,11 @@ namespace GameDatabase.Controls
                 CellBorderStyle = TableLayoutPanelCellBorderStyle.None,
                 AutoSize = true,
                 Database = _database,
-                Data = data as IDataAdapter ?? new DataAdapter(data),
+                Data = data as IDataAdapter ?? new DataAdapter( data ),
                 ContentAutoScroll = false,
                 Visible = !_collapsed[itemId],
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 255, 0, 109 )
             };
 
             _controls.Add(editor);
@@ -461,6 +464,8 @@ namespace GameDatabase.Controls
                 _collapseButtons[i].Text = _collapsed[id] ? "v" : "^";
 
                 _controls[i].Visible = !_collapsed[id];
+                _controls[i].BackColor = Color.FromArgb( 45, 45, 45 );
+                _controls[i].ForeColor = Color.FromArgb( 255, 0, 109 );
             }
 
             tableLayoutPanel.ResumeLayout();

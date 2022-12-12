@@ -73,10 +73,6 @@ namespace GameDatabase
             UpdateEngines();
         }
 
-        private void ShipEditorDialog_Shown(object sender, EventArgs e)
-        {
-        }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (_ignoreEvents) return;

@@ -55,6 +55,9 @@
   <PropertyGroup>
     <ApplicationIcon>fns3.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
@@ -81,11 +84,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarrelsEditor.Designer.cs" />
     <Compile Include="ComponentEditorDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ComponentEditorDialog.Designer.cs">
       <DependentUpon>ComponentEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AdvancedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\AdvancedContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\AdvancedNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\AdvancedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\AdvancedToolStripMenuItem.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\BarrelsCollectionEditor.cs">
       <SubType>UserControl</SubType>
@@ -94,7 +113,9 @@
     <Compile Include="Controls\BarrelsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\BarrelsEditor.Designer.cs" />
+    <Compile Include="Controls\FlatBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\UnscrollablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -305,6 +326,27 @@
     <Compile Include="Controls\StructDataEditor.Designer.cs">
       <DependentUpon>StructDataEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Theme\CustomMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\CustomMenuStrip.Designer.cs" />
+    <Compile Include="Theme\CustomMenuStripColorTable.cs" />
+    <Compile Include="Theme\CustomStatusStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\CustomStatusStrip.Designer.cs" />
+    <Compile Include="Theme\CustomStatusStripColorTable.cs" />
+    <Compile Include="Theme\CustomToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\CustomToolStrip.Designer.cs" />
+    <Compile Include="Theme\CustomToolStripColorTable.cs" />
+    <Compile Include="Theme\Settings.Designer.cs" />
+    <Compile Include="Theme\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ComponentEditorDialog.resx">
       <DependentUpon>ComponentEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,6 +359,9 @@
     <EmbeddedResource Include="Controls\CollectionEditor.resx">
       <DependentUpon>CollectionEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FlatBox.resx">
+      <DependentUpon>FlatBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\LayoutEditor.resx">
       <DependentUpon>LayoutEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\StructDataView.resx">
       <DependentUpon>StructDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UnscrollablePanel.resx">
+      <DependentUpon>UnscrollablePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\VectorEditor.resx">
       <DependentUpon>VectorEditor.cs</DependentUpon>
@@ -364,6 +412,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Theme\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -395,7 +447,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fns3.ico" />
+    <None Include="Resources\Background.png" />
+    <None Include="Resources\Icon.png" />
+    <None Include="Resources\Icon.ico" />
+    <None Include="Resources\Image1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

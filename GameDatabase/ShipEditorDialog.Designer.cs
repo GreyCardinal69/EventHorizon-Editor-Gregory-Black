@@ -66,6 +66,7 @@ namespace GameDatabase
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
@@ -75,6 +76,7 @@ namespace GameDatabase
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
@@ -96,6 +98,7 @@ namespace GameDatabase
             // 
             this.structDataEditor1.AutoScroll = true;
             this.structDataEditor1.AutoSize = true;
+            this.structDataEditor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.structDataEditor1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.None;
             this.structDataEditor1.ContentAutoScroll = true;
             this.structDataEditor1.Data = null;
@@ -103,9 +106,9 @@ namespace GameDatabase
             this.structDataEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.structDataEditor1.Exclusions = ((System.Collections.Generic.List<string>)(resources.GetObject("structDataEditor1.Exclusions")));
             this.structDataEditor1.Location = new System.Drawing.Point(0, 0);
-            this.structDataEditor1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.structDataEditor1.Margin = new System.Windows.Forms.Padding(4);
             this.structDataEditor1.Name = "structDataEditor1";
-            this.structDataEditor1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.structDataEditor1.Padding = new System.Windows.Forms.Padding(4);
             this.structDataEditor1.Size = new System.Drawing.Size(209, 537);
             this.structDataEditor1.TabIndex = 0;
             this.structDataEditor1.DataChanged += new System.EventHandler(this.structDataEditor1_DataChanged);
@@ -137,26 +140,29 @@ namespace GameDatabase
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.layoutEditor1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 19);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(567, 317);
+            this.panel1.Size = new System.Drawing.Size(567, 310);
             this.panel1.TabIndex = 4;
             // 
             // layoutEditor1
             // 
+            this.layoutEditor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.layoutEditor1.Barrels = null;
             this.layoutEditor1.BarrelsCollection = this.barrelCollection;
             this.layoutEditor1.BorderSize = 32;
             this.layoutEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutEditor1.Engines = null;
+            this.layoutEditor1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutEditor1.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
             this.layoutEditor1.Image = null;
             this.layoutEditor1.Layout = "000000000";
             this.layoutEditor1.Location = new System.Drawing.Point(0, 0);
-            this.layoutEditor1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.layoutEditor1.Margin = new System.Windows.Forms.Padding(4);
             this.layoutEditor1.Name = "layoutEditor1";
             this.layoutEditor1.SelectedCategory = '1';
-            this.layoutEditor1.Size = new System.Drawing.Size(567, 317);
+            this.layoutEditor1.Size = new System.Drawing.Size(567, 310);
             this.layoutEditor1.TabIndex = 2;
             this.layoutEditor1.ValueChanged += new System.EventHandler(this.layoutEditor1_ValueChanged);
             this.layoutEditor1.Load += new System.EventHandler(this.layoutEditor1_Load);
@@ -164,13 +170,14 @@ namespace GameDatabase
             // barrelCollection
             // 
             this.barrelCollection.AutoSize = true;
+            this.barrelCollection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.barrelCollection.Collapseable = true;
             this.barrelCollection.ContentAutoScroll = true;
             this.barrelCollection.Data = null;
             this.barrelCollection.Database = null;
             this.barrelCollection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.barrelCollection.Location = new System.Drawing.Point(0, 39);
-            this.barrelCollection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.barrelCollection.Margin = new System.Windows.Forms.Padding(4);
             this.barrelCollection.Name = "barrelCollection";
             this.barrelCollection.ShowItemsNumbers = true;
             this.barrelCollection.Size = new System.Drawing.Size(567, 156);
@@ -180,18 +187,23 @@ namespace GameDatabase
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(567, 19);
+            this.button1.Size = new System.Drawing.Size(567, 26);
             this.button1.TabIndex = 3;
             this.button1.Text = "Show Ship Info";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.tableLayoutPanel1.ColumnCount = 13;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -358,7 +370,9 @@ namespace GameDatabase
             // layoutSize
             // 
             this.layoutSize.AutoSize = true;
+            this.layoutSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.layoutSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.layoutSize.Location = new System.Drawing.Point(498, 3);
             this.layoutSize.Maximum = new decimal(new int[] {
             1024,
@@ -384,7 +398,7 @@ namespace GameDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);

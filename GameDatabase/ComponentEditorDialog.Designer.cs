@@ -1,4 +1,6 @@
-﻿namespace GameDatabase
+﻿using System.Drawing;
+
+namespace GameDatabase
 {
     partial class ComponentEditorDialog
     {
@@ -29,30 +31,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComponentEditorDialog));
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.structDataEditor1 = new StructDataEditor();
             this.SuspendLayout();
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // structDataEditor1
             // 
             this.structDataEditor1.AutoSize = true;
+            this.structDataEditor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.structDataEditor1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.None;
             this.structDataEditor1.ContentAutoScroll = true;
             this.structDataEditor1.Data = null;
             this.structDataEditor1.Database = null;
             this.structDataEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.structDataEditor1.Exclusions = ((System.Collections.Generic.List<string>)(resources.GetObject("structDataEditor1.Exclusions")));
+            this.structDataEditor1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.structDataEditor1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.structDataEditor1.Location = new System.Drawing.Point(0, 0);
             this.structDataEditor1.Name = "structDataEditor1";
-            this.structDataEditor1.Size = new System.Drawing.Size(784, 539);
+            this.structDataEditor1.Size = new System.Drawing.Size(784, 561);
             this.structDataEditor1.TabIndex = 1;
             this.structDataEditor1.Load += new System.EventHandler(this.ComponentEditorDialog_Load);
             // 
@@ -63,7 +59,6 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.structDataEditor1);
-            this.Controls.Add(this.statusStrip1);
             this.Name = "ComponentEditorDialog";
             this.Text = "ComponentEditorDialog";
             this.ResumeLayout(false);
@@ -72,8 +67,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.StatusStrip statusStrip1;
         private StructDataEditor structDataEditor1;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GameDatabase.Controls
+﻿using System.Drawing;
+
+namespace GameDatabase.Controls
 {
     partial class LayoutInfo
     {
@@ -11,13 +13,13 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected override void Dispose( bool disposing )
         {
-            if (disposing && (components != null))
+            if ( disposing && ( components != null ) )
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            base.Dispose( disposing );
         }
 
         #region Windows Form Designer generated code
@@ -33,29 +35,36 @@
             // 
             // tableLayoutPanel
             // 
+            tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            this.ClientSize = new System.Drawing.Size( 284, 261 );
+            tableLayoutPanel.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
+            this.Name = "LayoutInfo";
+            this.ResumeLayout( false );
             this.tableLayoutPanel.AutoScroll = true;
             this.tableLayoutPanel.ColumnCount = 2;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle() );
+            this.tableLayoutPanel.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 100F ) );
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel.Location = new System.Drawing.Point( 0, 0 );
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel.Size = new System.Drawing.Size(300, 265);
+            this.tableLayoutPanel.RowStyles.Add( new System.Windows.Forms.RowStyle() );
+            this.tableLayoutPanel.Size = new System.Drawing.Size( 300, 265 );
             this.tableLayoutPanel.TabIndex = 0;
+            tableLayoutPanel.BackColor = Color.FromArgb( 45, 45, 45 );
+            tableLayoutPanel.ForeColor = Color.FromArgb( 242, 188, 87 );
             // 
             // LayoutInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF( 8F, 16F );
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(300, 265);
-            this.Controls.Add(this.tableLayoutPanel);
+            this.ClientSize = new System.Drawing.Size( 300, 265 );
+            this.Controls.Add( this.tableLayoutPanel );
             this.Name = "LayoutInfo";
             this.Text = "Ship Info";
-            this.ResumeLayout(false);
+            this.ResumeLayout( false );
         }
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;

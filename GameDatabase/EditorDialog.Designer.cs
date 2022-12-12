@@ -1,4 +1,6 @@
-﻿namespace GameDatabase
+﻿using System.Drawing;
+
+namespace GameDatabase
 {
     partial class EditorDialog
     {
@@ -35,6 +37,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(784, 22);
@@ -44,25 +47,28 @@
             // structDataEditor1
             // 
             this.structDataEditor1.AutoSize = true;
+            this.structDataEditor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.structDataEditor1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.None;
             this.structDataEditor1.ContentAutoScroll = true;
             this.structDataEditor1.Data = null;
             this.structDataEditor1.Database = null;
             this.structDataEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.structDataEditor1.Exclusions = ((System.Collections.Generic.List<string>)(resources.GetObject("structDataEditor1.Exclusions")));
+            this.structDataEditor1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.structDataEditor1.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
             this.structDataEditor1.Location = new System.Drawing.Point(0, 0);
             this.structDataEditor1.Name = "structDataEditor1";
-            this.structDataEditor1.Size = new System.Drawing.Size(784, 539);
+            this.structDataEditor1.Size = new System.Drawing.Size(784, 561);
             this.structDataEditor1.TabIndex = 3;
             // 
             // EditorDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.structDataEditor1);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.structDataEditor1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "EditorDialog";
             this.Text = "EditorDialog";

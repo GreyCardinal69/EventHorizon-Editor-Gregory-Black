@@ -39,12 +39,15 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.X, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.Y, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -58,7 +61,10 @@
             this.X.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.X.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.X.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.X.DecimalPlaces = 3;
+            this.X.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.X.Increment = new decimal(new int[] {
             1,
             0,
@@ -76,7 +82,7 @@
             0,
             -2147483648});
             this.X.Name = "X";
-            this.X.Size = new System.Drawing.Size(120, 20);
+            this.X.Size = new System.Drawing.Size(120, 21);
             this.X.TabIndex = 0;
             this.X.ValueChanged += new System.EventHandler(this.X_ValueChanged);
             // 
@@ -85,7 +91,10 @@
             this.Y.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Y.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.Y.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Y.DecimalPlaces = 3;
+            this.Y.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.Y.Increment = new decimal(new int[] {
             1,
             0,
@@ -103,7 +112,7 @@
             0,
             -2147483648});
             this.Y.Name = "Y";
-            this.Y.Size = new System.Drawing.Size(120, 20);
+            this.Y.Size = new System.Drawing.Size(120, 21);
             this.Y.TabIndex = 1;
             this.Y.ValueChanged += new System.EventHandler(this.Y_ValueChanged);
             // 
@@ -112,6 +121,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "VectorEditor";
             this.Size = new System.Drawing.Size(252, 150);

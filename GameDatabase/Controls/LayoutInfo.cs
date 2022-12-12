@@ -9,13 +9,12 @@ namespace GameDatabase.Controls
 {
     public partial class LayoutInfo : Form
     {
-
         public LayoutEditor _layout { get; set; }
         public Ship _shipData { get; set; }
         public Database _database { get; set; }
 
         private Label CellsNum;
-        private Dictionary<CellType,Label> Sizes;
+        private Dictionary<CellType, Label> Sizes;
         private Label BaseArmor;
         private Label BaseWeigth;
         private Label MinWeigth;
@@ -32,57 +31,57 @@ namespace GameDatabase.Controls
             tableLayoutPanel.RowCount = 11;
 
             tableLayoutPanel.SuspendLayout();
-            for (var i = 0; i <= tableLayoutPanel.RowCount; ++i)
-                tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            for ( var i = 0; i <= tableLayoutPanel.RowCount; ++i )
+                tableLayoutPanel.RowStyles.Add( new RowStyle( SizeType.AutoSize ) );
 
             var lastRow = 0;
 
-            CreateLabel("Cells Number", 0, lastRow);
-            CellsNum = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Cells Number", 0, lastRow );
+            CellsNum = CreateLabel( "-", 1, lastRow++ );
 
             Sizes = new Dictionary<CellType, Label>();
-            
-            foreach (var type in (CellType[])Enum.GetValues(typeof(CellType)))
+
+            foreach ( var type in ( CellType[] ) Enum.GetValues( typeof( CellType ) ) )
             {
-                var name = _nameOf(type);
-                if (string.IsNullOrEmpty(name)) continue;
-                CreateLabel($"{name} cells count", 0, lastRow);
-                Sizes[type]=CreateLabel("-", 1, lastRow++);
+                var name = _nameOf( type );
+                if ( string.IsNullOrEmpty( name ) ) continue;
+                CreateLabel( $"{name} cells count", 0, lastRow );
+                Sizes[type] = CreateLabel( "-", 1, lastRow++ );
             }
 
-            CreateLabel("HP", 0, lastRow);
-            BaseArmor = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "HP", 0, lastRow );
+            BaseArmor = CreateLabel( "-", 1, lastRow++ );
 
-            CreateLabel("Default Weight", 0, lastRow);
-            BaseWeigth = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Default Weight", 0, lastRow );
+            BaseWeigth = CreateLabel( "-", 1, lastRow++ );
 
-            CreateLabel("Minimal Weight", 0, lastRow);
-            MinWeigth = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Minimal Weight", 0, lastRow );
+            MinWeigth = CreateLabel( "-", 1, lastRow++ );
 
-            CreateLabel("Energy Resistance", 0, lastRow);
-            BaseEnergyResistance = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Energy Resistance", 0, lastRow );
+            BaseEnergyResistance = CreateLabel( "-", 1, lastRow++ );
 
-            CreateLabel("Kinetic Resistance", 0, lastRow);
-            BaseKineticResistance = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Kinetic Resistance", 0, lastRow );
+            BaseKineticResistance = CreateLabel( "-", 1, lastRow++ );
 
-            CreateLabel("Heat Resistance", 0, lastRow);
-            BaseHeatResistance = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Heat Resistance", 0, lastRow );
+            BaseHeatResistance = CreateLabel( "-", 1, lastRow++ );
 
-            CreateLabel("Crafting Credits Cost", 0, lastRow);
-            CreditsCost = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Crafting Credits Cost", 0, lastRow );
+            CreditsCost = CreateLabel( "-", 1, lastRow++ );
 
-            CreateLabel("Crafting Stars Cost", 0, lastRow);
-            StarCost = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Crafting Stars Cost", 0, lastRow );
+            StarCost = CreateLabel( "-", 1, lastRow++ );
 
-            CreateLabel("Minimal Wandering Ship Distance", 0, lastRow);
-            MinSpawnDistance = CreateLabel("-", 1, lastRow++);
+            CreateLabel( "Minimal Wandering Ship Distance", 0, lastRow );
+            MinSpawnDistance = CreateLabel( "-", 1, lastRow++ );
 
             tableLayoutPanel.ResumeLayout();
         }
 
-        private string _nameOf(CellType type)
+        private string _nameOf( CellType type )
         {
-            switch (type)
+            switch ( type )
             {
                 case CellType.Outer:
                     return "Blue";
@@ -105,39 +104,39 @@ namespace GameDatabase.Controls
 
             string data = _layout.Layout;
 
-            int size = data.Replace("0", "").Length;
+            int size = data.Replace( "0", "" ).Length;
             CellsNum.Text = size.ToString();
 
 
-            string layoutOnly = data.Replace("0", "");
-            foreach (var type in (CellType[]) Enum.GetValues(typeof(CellType)))
+            string layoutOnly = data.Replace( "0", "" );
+            foreach ( var type in ( CellType[] ) Enum.GetValues( typeof( CellType ) ) )
             {
                 Label control;
-                if (Sizes.TryGetValue(type, out control))
+                if ( Sizes.TryGetValue( type, out control ) )
                 {
-                    control.Text = (layoutOnly.Length - layoutOnly.Replace(((char)type).ToString(), "").Length).ToString();
+                    control.Text = ( layoutOnly.Length - layoutOnly.Replace( ( ( char ) type ).ToString(), "" ).Length ).ToString();
                 }
             }
 
             var armor = _database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size;
-            BaseArmor.Text = armor.ToString("0.00");
+            BaseArmor.Text = armor.ToString( "0.00" );
 
-            BaseWeigth.Text = (_database.ShipSettings.DefaultWeightPerCell.Value * size * (1+_shipData.BaseWeightModifier.Value)).ToString("0.0");
+            BaseWeigth.Text = ( _database.ShipSettings.DefaultWeightPerCell.Value * size * ( 1 + _shipData.BaseWeightModifier.Value ) ).ToString( "0.0" );
 
-            MinWeigth.Text = (_database.ShipSettings.MinimumWeightPerCell.Value * size * (1+_shipData.BaseWeightModifier.Value)).ToString("0.0");
+            MinWeigth.Text = ( _database.ShipSettings.MinimumWeightPerCell.Value * size * ( 1 + _shipData.BaseWeightModifier.Value ) ).ToString( "0.0" );
 
-            BaseEnergyResistance.Text = CalculateResistances(_shipData.EnergyResistance.Value).ToString("0.00");
-            BaseKineticResistance.Text = CalculateResistances(_shipData.KineticResistance.Value).ToString("0.00");
-            BaseHeatResistance.Text = CalculateResistances(_shipData.HeatResistance.Value).ToString("0.00");
+            BaseEnergyResistance.Text = CalculateResistances( _shipData.EnergyResistance.Value ).ToString( "0.00" );
+            BaseKineticResistance.Text = CalculateResistances( _shipData.KineticResistance.Value ).ToString( "0.00" );
+            BaseHeatResistance.Text = CalculateResistances( _shipData.HeatResistance.Value ).ToString( "0.00" );
 
             long cost;
-            if (_shipData.ShipCategory == ShipCategory.Flagship) cost = checked(15 * size * size);
+            if ( _shipData.ShipCategory == ShipCategory.Flagship ) cost = checked(15 * size * size);
             else cost = checked(5 * size * size);
 
             CreditsCost.Text = cost.ToString();
 
             long starcost;
-            switch (_shipData.ShipCategory)
+            switch ( _shipData.ShipCategory )
             {
                 case ShipCategory.Common:
                     starcost = cost / 48000;
@@ -146,13 +145,13 @@ namespace GameDatabase.Controls
                     starcost = cost / 6000;
                     break;
                 case ShipCategory.Flagship:
-                    starcost = (int)Math.Floor(armor / 5);
+                    starcost = ( int ) Math.Floor( armor / 5 );
                     break;
                 default:
                     starcost = -1;
                     break;
             }
-            if (starcost >= 0)
+            if ( starcost >= 0 )
             {
                 StarCost.Text = starcost.ToString();
             }
@@ -161,17 +160,17 @@ namespace GameDatabase.Controls
                 StarCost.Text = "-";
             }
 
-            MinSpawnDistance.Text = Math.Max((size - 55) / 2, 0).ToString();
+            MinSpawnDistance.Text = Math.Max( ( size - 55 ) / 2, 0 ).ToString();
 
             tableLayoutPanel.ResumeLayout();
         }
 
-        private float CalculateResistances(float number)
+        private float CalculateResistances( float number )
         {
-            return 100-100/(number+1);
+            return 100 - 100 / ( number + 1 );
         }
 
-        private Label CreateLabel(string text, int column, int row)
+        private Label CreateLabel( string text, int column, int row )
         {
             var label = new Label()
             {
@@ -182,7 +181,7 @@ namespace GameDatabase.Controls
                 AutoSize = true,
             };
 
-            tableLayoutPanel.Controls.Add(label, column, row);
+            tableLayoutPanel.Controls.Add( label, column, row );
             return label;
         }
     }

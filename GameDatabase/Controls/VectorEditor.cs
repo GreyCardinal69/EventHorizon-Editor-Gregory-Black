@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using EditorDatabase.Model;
 
@@ -7,6 +8,33 @@ namespace GameDatabase.Controls
 {
     public partial class VectorEditor : UserControl
     {
+        private Color borderColor = Color.FromArgb( 45, 45, 45 );
+        [DefaultValue( typeof( Color ), "45,45,45" )]
+        public Color BorderColor
+        {
+            get { return borderColor; }
+            set
+            {
+                if ( borderColor != value )
+                {
+                    borderColor = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        protected override void OnPaint( PaintEventArgs e )
+        {
+            base.OnPaint( e );
+            if ( BorderStyle != BorderStyle.None )
+            {
+                using ( var pen = new Pen( BorderColor, 1 ) )
+                    e.Graphics.DrawRectangle( pen,
+                        ClientRectangle.Left, ClientRectangle.Top,
+                        ClientRectangle.Width - 1, ClientRectangle.Height - 1 );
+            }
+        }
+
         [Description("Vector"), Category("Data")]
         public Vector2 Value
         {

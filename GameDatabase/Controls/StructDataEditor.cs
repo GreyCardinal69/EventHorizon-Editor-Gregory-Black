@@ -50,7 +50,7 @@ namespace GameDatabase
         public List<string> Exclusions
         {
             get { return _exclusions.ToList(); }
-            set { _exclusions = new HashSet<string>(value); }
+            set { _exclusions = value is null ? new HashSet<string>() : new HashSet<string>(value); }
         }
 
         [Description("CellBorderStyle"), Category("Layout")]
@@ -247,6 +247,8 @@ namespace GameDatabase
                 BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Fill,
                 AutoSize = true,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 )
             };
 
             tableLayoutPanel.Controls.Add(label, column, row);
@@ -255,12 +257,15 @@ namespace GameDatabase
 
         private TextBox CreateTextBox(string text, int column, int row)
         {
-            var textbox = new TextBox()
+            AdvancedTextBox textbox = new AdvancedTextBox()
             {
                 Text = text,
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 BorderStyle = BorderStyle.FixedSingle,
                 Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                BorderColor = Color.FromArgb( 45, 45, 45 ),
             };
 
             textbox.TextChanged += OnTextBoxValueChanged;
@@ -271,12 +276,21 @@ namespace GameDatabase
 
         private ComboBox CreateComboBox(IEnumerable<object> items, object value, int column, int row)
         {
-            var comboBox = new ComboBox()
+            FlatCombo comboBox = new FlatCombo()
             {
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
                 DropDownStyle = ComboBoxStyle.DropDownList,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                FlatStyle = FlatStyle.Flat,
+                DrawMode = DrawMode.OwnerDrawVariable
             };
+
+            comboBox.BorderColor = Color.FromArgb( 95,95,95 );
+            comboBox.ButtonColor = Color.FromArgb( 242, 188, 87 );
+
+            comboBox.DrawItem += new DrawItemEventHandler( comboBoxDb_DrawItem );
 
             comboBox.Items.AddRange(items.ToArray());
             comboBox.SelectedItem = value;
@@ -287,6 +301,25 @@ namespace GameDatabase
             return comboBox;
         }
 
+        private void comboBoxDb_DrawItem( object sender, DrawItemEventArgs e )
+        {
+            var combo = sender as FlatCombo;
+
+            if ( ( e.State & DrawItemState.Selected ) == DrawItemState.Selected )
+            {
+                e.Graphics.FillRectangle( new SolidBrush( Color.FromArgb( 60,60,60) ), e.Bounds );
+            }
+            else
+            {
+                e.Graphics.FillRectangle( new SolidBrush( Color.FromArgb( 45,45,45 ) ), e.Bounds );
+            }
+
+            e.Graphics.DrawString( combo.Items[e.Index].ToString(),
+                                          e.Font,
+                                          new SolidBrush( Color.FromArgb( 242, 188, 87 ) ),
+                                          new Point( e.Bounds.X, e.Bounds.Y ) );
+        }
+
         private CheckBox CreateCheckBox(bool value, int column, int row)
         {
             var check = new CheckBox()
@@ -294,6 +327,8 @@ namespace GameDatabase
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
                 Checked = value,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 )
             };
 
             check.CheckedChanged += OnCheckedChanged;
@@ -302,15 +337,18 @@ namespace GameDatabase
             return check;
         }
 
-
         private Button CreateColorButton(Color color, int column, int row)
         {
-            var button = new Button()
+            AdvancedButton button = new AdvancedButton()
             {
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
                 BackColor = color,
                 Text = string.Empty,
+                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                FlatStyle = FlatStyle.Flat,
+                BorderStyle = BorderStyle.FixedSingle,
+                BorderColor = Color.FromArgb( 95,95,95 ),
             };
 
             button.Click += OnColorButtonClicked;
@@ -327,6 +365,8 @@ namespace GameDatabase
                 AutoSize = true,
                 ColumnCount = 2,
                 RowCount = 1,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 255, 0, 109 )
             };
 
             panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
@@ -340,6 +380,8 @@ namespace GameDatabase
                 Dock = DockStyle.Fill,
                 Layout = layout.Data,
                 Height = layout.Size*16,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 255, 0, 109 )
             };
 
             layoutEditor.ValueChanged += OnLayoutChanged;
@@ -366,6 +408,8 @@ namespace GameDatabase
                 AutoSize = true,
                 Database = _database,
                 ContentAutoScroll = false,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 )
             };
 
             collection.Data = value;
@@ -379,7 +423,7 @@ namespace GameDatabase
 
         private Control CreateStructEditor(IDataAdapter data, int column, int row)
         {
-            var editor = new StructDataEditor
+            StructDataEditor editor = new StructDataEditor
             {
                 Dock = DockStyle.Fill,
                 CellBorderStyle = TableLayoutPanelCellBorderStyle.None,
@@ -387,6 +431,8 @@ namespace GameDatabase
                 Database = _database,
                 Data = data,
                 ContentAutoScroll = false,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 )
             };
 
             editor.DataChanged += DataChanged;
@@ -396,12 +442,17 @@ namespace GameDatabase
 
         private VectorEditor CreateVectorEditor(Vector2 value, int column, int row)
         {
-            var vector = new VectorEditor()
+            VectorEditor vector = new VectorEditor()
             {
                 Dock = DockStyle.Fill,
                 AutoSize = true,
                 Value = value,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                BorderColor = Color.FromArgb(95,95,95),
+                BorderStyle = BorderStyle.FixedSingle
             };
+
 
 
             tableLayoutPanel.Controls.Add(vector, column, row);
@@ -412,7 +463,7 @@ namespace GameDatabase
 
         private NumericUpDown CreateNumericContol(decimal value, decimal min, decimal max, decimal increment, int decimalPlaces, int column, int row)
         {
-            var numeric = new NumericUpDown()
+            AdvancedNumericUpDown numeric = new AdvancedNumericUpDown()
             {
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
@@ -422,6 +473,10 @@ namespace GameDatabase
                 Increment = increment,
                 Value = value,
                 DecimalPlaces = decimalPlaces,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                BorderStyle = BorderStyle.FixedSingle,
+                BorderColor = Color.FromArgb( 95,95,95 ),
             };
 
             numeric.ValueChanged += OnNumericValueChanged;
@@ -435,10 +490,12 @@ namespace GameDatabase
         {
             if (_ignoreEvents) return;
 
-            var button = (Button)sender;
+            AdvancedButton button = ( AdvancedButton ) sender;
 
             var colorDialog = new ColorPickerDialog();
-            colorDialog.Color = button.BackColor;
+            colorDialog.BackColor = Color.FromArgb( 45, 45, 45 );
+            colorDialog.ForeColor = Color.FromArgb( 242, 188, 87 );
+
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 button.BackColor = colorDialog.Color;
@@ -460,6 +517,8 @@ namespace GameDatabase
             layoutEditor.Layout = layout.Data;
             layoutEditor.Height = layout.Size*24;
             layoutEditor.Invalidate();
+            layoutEditor.BackColor = Color.FromArgb( 45, 45, 45 );
+            layoutEditor.ForeColor = Color.FromArgb( 242, 188, 87 );
 
             OnLayoutChanged(layoutEditor, EventArgs.Empty);
         }
@@ -560,5 +619,17 @@ namespace GameDatabase
         private HashSet<string> _exclusions = new HashSet<string>();
         private readonly Dictionary<object, IProperty>  _binding = new Dictionary<object, IProperty>();
         private readonly Dictionary<object, LayoutEditor> _layouts = new Dictionary<object, LayoutEditor>();
+
+        SolidBrush blackBrush = new SolidBrush( Color.FromArgb( 45,45,45 ) );
+
+        private void tableLayoutPanel_Paint( object sender, PaintEventArgs e )
+        {
+                e.Graphics.FillRectangle( blackBrush, e.Graphics.ClipBounds );
+        }
+
+        private void tableLayoutPanel_CellPaint( object sender, TableLayoutCellPaintEventArgs e )
+        {
+            e.Graphics.FillRectangle( blackBrush, e.Graphics.ClipBounds );
+        }
     }
 }

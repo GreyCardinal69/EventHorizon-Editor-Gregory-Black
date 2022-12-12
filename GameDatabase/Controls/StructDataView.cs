@@ -55,7 +55,14 @@ namespace GameDatabase.Controls
 
             tableLayoutPanel.SuspendLayout();
             for (var i = 0; i <= tableLayoutPanel.RowCount; ++i)
-                tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            {
+                tableLayoutPanel.RowStyles.Add( new RowStyle()
+                {
+                    SizeType = SizeType.AutoSize,
+                    
+                } );
+             }
+
 
             var rowId = 0;
             foreach (var item in fields)
@@ -133,6 +140,9 @@ namespace GameDatabase.Controls
                 BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Fill,
                 AutoSize = true,
+                BackColor = Color.FromArgb( 45, 45, 45 ),
+                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                
             };
 
             tableLayoutPanel.Controls.Add(label, column, row);
