@@ -41,7 +41,6 @@ namespace GameDatabase
             layoutEditor1.Colors.Add((char)CellType.InnerOuter, Color.FromArgb(192, 0, 255, 255));
             layoutEditor1.Colors.Add((char)CellType.Outer, Color.FromArgb(192, 0, 128, 255));
 
-
             barrelCollection.Database = _database;
 
             Layout layout;

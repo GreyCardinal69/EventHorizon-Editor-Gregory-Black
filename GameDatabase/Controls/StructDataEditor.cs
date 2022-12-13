@@ -8,6 +8,7 @@ using Cyotek.Windows.Forms;
 using EditorDatabase;
 using EditorDatabase.Model;
 using GameDatabase.Controls;
+using AdvancedButton = GameDatabase.Controls.AdvancedButton;
 
 namespace GameDatabase
 {
@@ -353,7 +354,6 @@ namespace GameDatabase
                 Dock = DockStyle.Fill,
                 BackColor = color,
                 Text = string.Empty,
-                ForeColor = Color.FromArgb( 242, 188, 87 ),
                 FlatStyle = FlatStyle.Flat,
                 BorderStyle = BorderStyle.FixedSingle,
                 BorderColor = Color.FromArgb( 95,95,95 ),
@@ -501,8 +501,20 @@ namespace GameDatabase
             AdvancedButton button = ( AdvancedButton ) sender;
 
             var colorDialog = new ColorPickerDialog();
+
             colorDialog.BackColor = Color.FromArgb( 45, 45, 45 );
             colorDialog.ForeColor = Color.FromArgb( 242, 188, 87 );
+            colorDialog.Color = button.BackColor;
+
+            var c = ( Button ) colorDialog.CancelButton;
+
+            c.BackColor = Color.FromArgb( 45, 45, 45 );
+            c.ForeColor = Color.FromArgb( 242, 188, 87 );
+
+            var o = ( Button ) colorDialog.AcceptButton;
+
+            o.BackColor = Color.FromArgb( 45, 45, 45 );
+            o.ForeColor = Color.FromArgb( 242, 188, 87 );
 
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
