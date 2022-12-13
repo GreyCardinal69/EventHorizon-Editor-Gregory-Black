@@ -18,6 +18,7 @@ using Newtonsoft.Json.Linq;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using GameDatabase.Controls;
+using System.Xml.Linq;
 
 namespace GameDatabase
 {
@@ -492,7 +493,6 @@ namespace GameDatabase
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine(ex.GetType());
                     MessageBox.Show("Invalid Id");
                     ItemFromTemplate(sender, e, name, "");
                     return;
@@ -647,9 +647,100 @@ namespace GameDatabase
             {
                 save();
                 MessageBox.Show( "The Database has been saved!" );
-                return true;
             }
+            else if ( keyData == Keys.Delete && DatabaseTreeView.SelectedNode.Level != 0 )
+            {
+                DialogResult dialogResult = MessageBox.Show( "Delete file?", "", MessageBoxButtons.YesNo );
+
+                if ( dialogResult == DialogResult.Yes )
+                {
+                    string path = DatabaseTreeView.SelectedNode.Name;
+                    string data;
+                    if ( File.Exists( path ) )
+                        data = File.ReadAllText( path );
+                    else
+                        data = ghostFiles[path];
+
+                    var name = Helpers.FileName( path );
+                    var item = JsonConvert.DeserializeObject<SerializableItem>( data );
+                    item.FileName = name;
+
+                    if ( item.ItemType == ItemType.Undefined ) { }
+
+                    ghostFiles.Remove( path );
+
+                    var name2 = DatabaseTreeView.SelectedNode;
+
+                    List<string> ExpandedNodes = new List<string>();
+                    ExpandedNodes = collectExpandedNodes( DatabaseTreeView.Nodes );
+
+                    DatabaseTreeView.Nodes.Remove( name2 );
+                    File.Delete( path );
+
+                    OpenDatabase( Directory.GetCurrentDirectory() );
+
+                    if ( ExpandedNodes.Count > 0 )
+                    {
+                        TreeNode IamExpandedNode;
+                        for ( int i = 0; i < ExpandedNodes.Count; i++ )
+                        {
+                            IamExpandedNode = FindNodeByName( DatabaseTreeView.Nodes, ExpandedNodes[i] );
+                            if ( IamExpandedNode == null ) continue;
+                            expandNodePath( IamExpandedNode );
+                        }
+                    }
+                }
+            }
+
             return base.ProcessCmdKey( ref msg, keyData );
+        }
+
+        List<string> collectExpandedNodes( TreeNodeCollection Nodes )
+        {
+            List<string> _lst = new List<string>();
+            foreach ( TreeNode checknode in Nodes )
+            {
+                if ( checknode.IsExpanded )
+                    _lst.Add( checknode.Name );
+                if ( checknode.Nodes.Count > 0 )
+                    _lst.AddRange( collectExpandedNodes( checknode.Nodes ) );
+            }
+            return _lst;
+        }
+
+        TreeNode FindNodeByName( TreeNodeCollection NodesCollection, string Name )
+        {
+            TreeNode returnNode = null;
+            foreach ( TreeNode checkNode in NodesCollection )
+            {
+                if ( checkNode.Name == Name )
+                    returnNode = checkNode;
+                else if ( checkNode.Nodes.Count > 0 )
+                {
+                    returnNode = FindNodeByName( checkNode.Nodes, Name );
+                }
+
+                if ( returnNode != null )
+                {
+                    return returnNode;
+                }
+
+            }
+
+            return returnNode;
+        }
+
+        void expandNodePath( TreeNode node )
+        {
+            if ( node.Level != 0 )
+            {
+                node.Expand();
+                expandNodePath( node.Parent );
+            }
+            else
+            {
+                node.Expand();
+            }
         }
 
         private void closeConfrmationToolStripMenuItem_Click(object sender, EventArgs e)

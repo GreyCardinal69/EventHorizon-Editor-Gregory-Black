@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using System.Xml.Linq;
 
 namespace EditorDatabase.Storage
 {
@@ -79,6 +80,135 @@ namespace EditorDatabase.Storage
         }
 
         public const int SchemaVersion = 1;
+
+        public void RemoveJson( string name, string content )
+        {
+            var item = _serializer.FromJson<SerializableItem>( content );
+            var type = item.ItemType;
+
+            if ( type == ItemType.AmmunitionObsolete )
+            { var data = _serializer.FromJson<AmmunitionObsoleteSerializable>( content );
+                data.FileName = name;
+                _ammunitionObsoleteMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Component )
+            {
+                var data = _serializer.FromJson<ComponentSerializable>( content );
+                data.FileName = name;
+                _componentMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.ComponentMod )
+            {var data = _serializer.FromJson<ComponentModSerializable>( content );
+                data.FileName = name;
+                _componentModMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.ComponentStats )
+            { var data = _serializer.FromJson<ComponentStatsSerializable>( content );
+                data.FileName = name;
+                _componentStatsMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Device )
+            { var data = _serializer.FromJson<DeviceSerializable>( content );
+                data.FileName = name;
+                _deviceMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.DroneBay )
+            {var data = _serializer.FromJson<DroneBaySerializable>( content );
+                data.FileName = name;
+                _droneBayMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Faction )
+            {var data = _serializer.FromJson<FactionSerializable>( content );
+                data.FileName = name;
+                _factionMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Satellite )
+            { var data = _serializer.FromJson<SatelliteSerializable>( content );
+                data.FileName = name;
+                _satelliteMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.SatelliteBuild )
+            { var data = _serializer.FromJson<SatelliteBuildSerializable>( content );
+                data.FileName = name;
+                _satelliteBuildMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Ship )
+            { var data = _serializer.FromJson<ShipSerializable>( content );
+                data.FileName = name;
+                _shipMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.ShipBuild )
+            { var data = _serializer.FromJson<ShipBuildSerializable>( content );
+                data.FileName = name;
+                _shipBuildMap.Remove( data.Id ); ;
+            }
+            else if ( type == ItemType.Skill )
+            {
+                var data = _serializer.FromJson<SkillSerializable>( content );
+                data.FileName = name;
+                _skillMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Technology )
+            {
+               var data = _serializer.FromJson<TechnologySerializable>( content );
+                data.FileName = name;
+                _technologyMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Character )
+            {
+                var data = _serializer.FromJson<CharacterSerializable>( content );
+                data.FileName = name;
+                _characterMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Fleet )
+            {
+                var data = _serializer.FromJson<FleetSerializable>( content );
+                data.FileName = name;
+                _fleetMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Loot )
+            {
+                var data = _serializer.FromJson<LootSerializable>( content );
+                data.FileName = name;
+                _lootMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Quest )
+            {
+                var data = _serializer.FromJson<QuestSerializable>( content );
+                data.FileName = name;
+                _questMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.QuestItem )
+            {
+                var data = _serializer.FromJson<QuestItemSerializable>( content );
+                data.FileName = name;
+                _questItemMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Ammunition )
+            {
+                var data = _serializer.FromJson<AmmunitionSerializable>( content );
+                data.FileName = name;
+                _ammunitionMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.BulletPrefab )
+            {
+                var data = _serializer.FromJson<BulletPrefabSerializable>( content );
+                data.FileName = name;
+                _bulletPrefabMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.VisualEffect )
+            {
+                var data = _serializer.FromJson<VisualEffectSerializable>( content );
+                data.FileName = name;
+                _visualEffectMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.Weapon )
+            {
+                var data = _serializer.FromJson<WeaponSerializable>( content );
+                data.FileName = name;
+                _weaponMap.Remove( data.Id );
+            }
+        }
 
         public void LoadJson(string name, string content)
         {

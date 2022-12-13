@@ -396,6 +396,11 @@ namespace EditorDatabase
 			_content.LoadJson(name,content);
         }
 
+        public void RemoveJson( string name, string content )
+        {
+            _content.RemoveJson( name, content );
+        }
+
         private void Clear()
         {
 			_ammunitionObsoleteMap.Clear();
