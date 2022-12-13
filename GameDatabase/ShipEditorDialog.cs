@@ -286,11 +286,16 @@ namespace GameDatabase
             }
         }
 
-        private void layoutEditor1_Load(object sender, EventArgs e)
+        protected override bool ProcessCmdKey( ref Message msg, Keys keyData )
         {
-
+            if ( keyData == ( Keys.Control | Keys.S ) )
+            {
+                MainWindow.SaveDataBase();
+                MessageBox.Show( "The Database has been saved!" );
+                return true;
+            }
+            return base.ProcessCmdKey( ref msg, keyData );
         }
-
 
         private void structDataEditor1_DataChanged(object sender, EventArgs e)
         {

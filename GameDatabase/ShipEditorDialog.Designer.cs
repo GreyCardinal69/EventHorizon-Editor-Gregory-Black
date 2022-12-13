@@ -165,7 +165,6 @@ namespace GameDatabase
             this.layoutEditor1.Size = new System.Drawing.Size(567, 310);
             this.layoutEditor1.TabIndex = 2;
             this.layoutEditor1.ValueChanged += new System.EventHandler(this.layoutEditor1_ValueChanged);
-            this.layoutEditor1.Load += new System.EventHandler(this.layoutEditor1_Load);
             // 
             // barrelCollection
             // 

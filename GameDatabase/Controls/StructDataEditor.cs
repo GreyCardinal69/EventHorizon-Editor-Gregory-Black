@@ -298,6 +298,17 @@ namespace GameDatabase
             return comboBox;
         }
 
+        protected override bool ProcessCmdKey( ref Message msg, Keys keyData )
+        {
+            if ( keyData == ( Keys.Control | Keys.S ) )
+            {
+                MainWindow.SaveDataBase();
+                MessageBox.Show( "The Database has been saved!" );
+                return true;
+            }
+            return base.ProcessCmdKey( ref msg, keyData );
+        }
+
         private void comboBoxDb_DrawItem( object sender, DrawItemEventArgs e )
         {
             var combo = sender as FlatCombo;

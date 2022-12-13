@@ -22,6 +22,17 @@ namespace GameDatabase
             structDataEditor1.Data = new DataAdapter(_component);
         }
 
+        protected override bool ProcessCmdKey( ref Message msg, Keys keyData )
+        {
+            if ( keyData == ( Keys.Control | Keys.S ) )
+            {
+                MainWindow.SaveDataBase();
+                MessageBox.Show( "The Database has been saved!" );
+                return true;
+            }
+            return base.ProcessCmdKey( ref msg, keyData );
+        }
+
         private readonly Component _component;
         private readonly Database _database;
     }

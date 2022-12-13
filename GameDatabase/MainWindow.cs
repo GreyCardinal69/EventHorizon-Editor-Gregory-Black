@@ -28,6 +28,7 @@ namespace GameDatabase
             InitializeComponent();
             folderBrowserDialog1 = new CommonOpenFileDialog();
             folderBrowserDialog1.IsFolderPicker = true;
+            MainInstance = this;
 
             OppenedWindows = new Dictionary<string, Form>();
 
@@ -35,6 +36,8 @@ namespace GameDatabase
 
             ChangeSorting(Settings.Default.SortingType);
         }
+
+        internal static MainWindow MainInstance;
 
         private void MainWindow_Load(object sender, EventArgs eventArgs)
         {
@@ -334,6 +337,15 @@ namespace GameDatabase
             save();
         }
 
+        public static void SaveDataBase()
+        {
+            if ( !string.IsNullOrWhiteSpace( MainInstance._lastDatabasePath ) )
+            {
+                MainInstance._database.Save( new DatabaseStorage( MainInstance._lastDatabasePath ) );
+                MainInstance.ghostFiles.Clear();
+            }
+        }
+
         private void save()
         {
             if (!string.IsNullOrWhiteSpace(_lastDatabasePath))
@@ -631,9 +643,10 @@ namespace GameDatabase
 
         protected override bool ProcessCmdKey( ref Message msg, Keys keyData )
         {
-            if ( keyData == ( Keys.Control | Keys.F ) )
+            if ( keyData == ( Keys.Control | Keys.S ) )
             {
-                MessageBox.Show( "What the Ctrl+F?" );
+                save();
+                MessageBox.Show( "The Database has been saved!" );
                 return true;
             }
             return base.ProcessCmdKey( ref msg, keyData );
