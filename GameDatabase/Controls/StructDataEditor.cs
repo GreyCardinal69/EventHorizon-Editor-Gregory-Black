@@ -83,7 +83,6 @@ namespace GameDatabase
                 return;
 
             tableLayoutPanel.SuspendLayout();
-
             var fields = _data.Properties.ToArray();
 
             tableLayoutPanel.Controls.Clear();
@@ -115,10 +114,8 @@ namespace GameDatabase
             }
 
             _ignoreEvents = false;
-
             tableLayoutPanel.ResumeLayout();
         }
-        
         
         public void UpdateControls()
         {
