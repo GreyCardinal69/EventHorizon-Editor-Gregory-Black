@@ -502,6 +502,7 @@ namespace GameDatabase.Controls
                 typeof(InstalledComponent).IsAssignableFrom(type) ||
                 typeof(Engine).IsAssignableFrom(type) ||
                 typeof(LootContent).IsAssignableFrom(type) ||
+                typeof(VisualEffectElement).IsAssignableFrom(type) ||
                 typeof(Node).IsAssignableFrom(type);
         }
 
@@ -538,6 +539,11 @@ namespace GameDatabase.Controls
             {
                 var serializable = node.Serialize();
                 return new Node(serializable, _database);
+            }
+            if ( value is VisualEffectElement effect )
+            {
+                var serializable = effect.Serialize();
+                return new VisualEffectElement( serializable, _database );
             }
             return null;
         }

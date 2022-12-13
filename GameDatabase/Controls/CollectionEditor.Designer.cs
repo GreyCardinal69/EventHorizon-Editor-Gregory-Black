@@ -160,9 +160,9 @@
             this.moveDownButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.moveDownButton.Location = new System.Drawing.Point(246, 3);
             this.moveDownButton.Name = "moveDownButton";
-            this.moveDownButton.Size = new System.Drawing.Size(75, 23);
+            this.moveDownButton.Size = new System.Drawing.Size(86, 23);
             this.moveDownButton.TabIndex = 1;
-            this.moveDownButton.Text = "MoveDown";
+            this.moveDownButton.Text = "Move Down";
             this.moveDownButton.UseVisualStyleBackColor = true;
             this.moveDownButton.Click += new System.EventHandler(this.moveDownButton_Click);
             // 
@@ -170,9 +170,9 @@
             // 
             this.cloneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cloneButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.cloneButton.Location = new System.Drawing.Point(327, 3);
+            this.cloneButton.Location = new System.Drawing.Point(338, 3);
             this.cloneButton.Name = "cloneButton";
-            this.cloneButton.Size = new System.Drawing.Size(43, 23);
+            this.cloneButton.Size = new System.Drawing.Size(53, 23);
             this.cloneButton.TabIndex = 7;
             this.cloneButton.Text = "Clone";
             this.cloneButton.UseVisualStyleBackColor = true;
@@ -183,7 +183,7 @@
             // 
             this.collapseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.collapseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.collapseButton.Location = new System.Drawing.Point(376, 3);
+            this.collapseButton.Location = new System.Drawing.Point(397, 3);
             this.collapseButton.Name = "collapseButton";
             this.collapseButton.Size = new System.Drawing.Size(75, 23);
             this.collapseButton.TabIndex = 5;
