@@ -1,5 +1,14 @@
 # EventHorizon Editor
 
+This version implements:
+
+- A Dark Theme
+- Option to pick Triple Veteran ship build difficulty.
+- Option to clone effects in an effect file.
+- Jump To Page option.
+- CTRL + S hotkey for saving the database.
+- Option to delete a file in the database.
+
 ## How to use:
 
 1. Download and extract Release.zip.
