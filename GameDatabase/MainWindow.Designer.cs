@@ -102,7 +102,7 @@ namespace GameDatabase
             this.DatabaseTreeView.Location = new System.Drawing.Point(6, 3);
             this.DatabaseTreeView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DatabaseTreeView.Name = "DatabaseTreeView";
-            this.DatabaseTreeView.Size = new System.Drawing.Size(383, 572);
+            this.DatabaseTreeView.Size = new System.Drawing.Size(384, 590);
             this.DatabaseTreeView.TabIndex = 0;
             this.DatabaseTreeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.DatabaseTreeView_drawNode);
             this.DatabaseTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.DatabaseTreeView_AfterSelect);
@@ -132,7 +132,7 @@ namespace GameDatabase
             this.splitContainer.Panel2.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.splitContainer.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.splitContainer.Size = new System.Drawing.Size(800, 605);
-            this.splitContainer.SplitterDistance = 393;
+            this.splitContainer.SplitterDistance = 394;
             this.splitContainer.SplitterWidth = 6;
             this.splitContainer.TabIndex = 1;
             // 
@@ -149,7 +149,7 @@ namespace GameDatabase
             this.structDataView1.Location = new System.Drawing.Point(4, 44);
             this.structDataView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.structDataView1.Name = "structDataView1";
-            this.structDataView1.Size = new System.Drawing.Size(257, 483);
+            this.structDataView1.Size = new System.Drawing.Size(252, 483);
             this.structDataView1.TabIndex = 5;
             // 
             // label1
@@ -159,10 +159,10 @@ namespace GameDatabase
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label1.Font = new System.Drawing.Font("Yu Gothic", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.label1.Location = new System.Drawing.Point(227, 0);
+            this.label1.Location = new System.Drawing.Point(221, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 18);
+            this.label1.Size = new System.Drawing.Size(179, 18);
             this.label1.TabIndex = 6;
             this.label1.Text = "Gregory Black By Cardinal";
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOuterPanel = new System.Windows.Forms.TableLayoutPanel();
             this.buttonsPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,6 +44,8 @@
             this.pageNumberButton = new System.Windows.Forms.Button();
             this.nextPageButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.JumpTo = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutOuterPanel.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -67,7 +70,7 @@
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(508, 207);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(508, 263);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // tableLayoutOuterPanel
@@ -91,7 +94,7 @@
             this.tableLayoutOuterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutOuterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutOuterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOuterPanel.Size = new System.Drawing.Size(512, 326);
+            this.tableLayoutOuterPanel.Size = new System.Drawing.Size(512, 382);
             this.tableLayoutOuterPanel.TabIndex = 1;
             // 
             // buttonsPanel
@@ -109,7 +112,7 @@
             this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonsPanel.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonsPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.buttonsPanel.Location = new System.Drawing.Point(2, 213);
+            this.buttonsPanel.Location = new System.Drawing.Point(2, 269);
             this.buttonsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonsPanel.Name = "buttonsPanel";
             this.buttonsPanel.Size = new System.Drawing.Size(508, 58);
@@ -207,10 +210,11 @@
             this.flowLayoutPanel1.Controls.Add(this.prevPageButton);
             this.flowLayoutPanel1.Controls.Add(this.pageNumberButton);
             this.flowLayoutPanel1.Controls.Add(this.nextPageButton);
+            this.flowLayoutPanel1.Controls.Add(this.JumpTo);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 275);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 331);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(508, 29);
@@ -261,11 +265,29 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 306);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 362);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(512, 20);
             this.flowLayoutPanel2.TabIndex = 2;
+            // 
+            // JumpTo
+            // 
+            this.JumpTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.JumpTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.JumpTo.Location = new System.Drawing.Point(234, 3);
+            this.JumpTo.Name = "JumpTo";
+            this.JumpTo.Size = new System.Drawing.Size(75, 23);
+            this.JumpTo.TabIndex = 5;
+            this.JumpTo.Text = "Jump To:";
+            this.JumpTo.UseVisualStyleBackColor = true;
+            this.JumpTo.Visible = false;
+            this.JumpTo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.JumpTo_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // CollectionEditor
             // 
@@ -274,7 +296,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.tableLayoutOuterPanel);
             this.Name = "CollectionEditor";
-            this.Size = new System.Drawing.Size(512, 326);
+            this.Size = new System.Drawing.Size(512, 382);
             this.tableLayoutOuterPanel.ResumeLayout(false);
             this.tableLayoutOuterPanel.PerformLayout();
             this.buttonsPanel.ResumeLayout(false);
@@ -301,5 +323,8 @@
         protected System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
 
         #endregion
+
+        protected System.Windows.Forms.Button JumpTo;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

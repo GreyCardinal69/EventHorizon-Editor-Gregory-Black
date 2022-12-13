@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using EditorDatabase;
 using EditorDatabase.DataModel;
 using EditorDatabase.Model;
+using GameDatabase.GameDatabase.Helpers;
 
 namespace GameDatabase.Controls
 {
@@ -478,12 +480,14 @@ namespace GameDatabase.Controls
             {
                 prevPageButton.Visible = true;
                 nextPageButton.Visible = true;
+                JumpTo.Visible = true;
                 pageNumberButton.Visible = true;
                 pageNumberButton.Text = (curPage + 1) + "/" + ((_collection.Length - 1) / rowsPerPage + 1);
             } else
             {
                 prevPageButton.Visible = false;
                 nextPageButton.Visible = false;
+                JumpTo.Visible = false;
                 pageNumberButton.Visible = false;
                 curPage = 0;
             }
@@ -603,5 +607,24 @@ namespace GameDatabase.Controls
         private readonly List<Control> _collapseButtons = new List<Control>();
         private readonly List<Control> _controls = new List<Control>();
         protected readonly List<bool> _collapsed = new List<bool>();
+
+        private void JumpTo_MouseClick( object sender, MouseEventArgs e )
+        {
+            var result = Prompt.ShowDialog( "Enter Page Number", "", "" );
+            int id = 0;
+
+            try
+            {
+                id = Convert.ToInt32( result );
+            }
+            catch ( Exception )
+            {
+                MessageBox.Show( "Incorrect page id, perhaps it does not exist, or the number is incorrect." );
+                return;
+            }
+
+            if ( ( id - 1 ) * rowsPerPage > _collection.Length ) return;
+            SwapPage( id - 1 );
+        }
     }
 }
