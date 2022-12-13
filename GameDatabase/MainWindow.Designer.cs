@@ -149,7 +149,7 @@ namespace GameDatabase
             this.structDataView1.Location = new System.Drawing.Point(4, 44);
             this.structDataView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.structDataView1.Name = "structDataView1";
-            this.structDataView1.Size = new System.Drawing.Size(252, 483);
+            this.structDataView1.Size = new System.Drawing.Size(250, 483);
             this.structDataView1.TabIndex = 5;
             // 
             // label1
@@ -159,7 +159,7 @@ namespace GameDatabase
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label1.Font = new System.Drawing.Font("Yu Gothic", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.label1.Location = new System.Drawing.Point(221, 0);
+            this.label1.Location = new System.Drawing.Point(219, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 18);
@@ -440,6 +440,7 @@ namespace GameDatabase
             this.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Location = new System.Drawing.Point(100, 100);
             this.MainMenuStrip = this.customMenuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

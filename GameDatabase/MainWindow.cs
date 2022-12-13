@@ -151,6 +151,7 @@ namespace GameDatabase
             {
                 Point p = new Point(e.X, e.Y);
                 TreeNode node = DatabaseTreeView.GetNodeAt(p);
+
                 if (node != null)
                 {
                     DatabaseTreeView.SelectedNode = node;
@@ -164,36 +165,42 @@ namespace GameDatabase
 
         private void ShowItemInfo(string path)
         {
-           
-                ItemTypeText.Text = @"-";
+            if ( !(ghostFiles.ContainsKey(path)) && !File.Exists( path ) )
+            {
                 _selectedItem = new SerializableItem();
-                EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
-                EditButton.Enabled = true;
-              
-                if ( Directory.Exists(path))
-                {
-                    ItemTypeText.Text = @"Directory";
-                    structDataView1.Data = GetDirectoryInfo(path);
-                    return;
-                }
+                ItemTypeText.Text = $@"- Folder";
+                structDataView1.Data = null;
+                return;
+            }
 
-                string data;
-                if (File.Exists(path))
-                    data = File.ReadAllText(path);
-                else
-                    data = ghostFiles[path];
-                var name = Helpers.FileName(path);
-                var item = JsonConvert.DeserializeObject<SerializableItem>(data);
-                item.FileName = name;
-                if (item.ItemType == ItemType.Undefined)
-                    return;
+            ItemTypeText.Text = @"-";
+            _selectedItem = new SerializableItem();
+            EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            EditButton.Enabled = true;
 
-                ItemTypeText.Text = item.ItemType.ToString();
-                _selectedItem = item;
+            if ( Directory.Exists( path ) )
+            {
+                ItemTypeText.Text = @"Directory";
+                structDataView1.Data = GetDirectoryInfo( path );
+                return;
+            }
 
-                structDataView1.Database = _database;
-                structDataView1.Data = GetItem();
-                
+            string data;
+            if ( File.Exists( path ) )
+                data = File.ReadAllText( path );
+            else
+                data = ghostFiles[path];
+            var name = Helpers.FileName( path );
+            var item = JsonConvert.DeserializeObject<SerializableItem>( data );
+            item.FileName = name;
+            if ( item.ItemType == ItemType.Undefined )
+                return;
+
+            ItemTypeText.Text = item.ItemType.ToString();
+            _selectedItem = item;
+
+            structDataView1.Database = _database;
+            structDataView1.Data = GetItem();
         }
 
         private struct DirectoryInfoData
@@ -620,6 +627,16 @@ namespace GameDatabase
                     return;
                 }
             }
+        }
+
+        protected override bool ProcessCmdKey( ref Message msg, Keys keyData )
+        {
+            if ( keyData == ( Keys.Control | Keys.F ) )
+            {
+                MessageBox.Show( "What the Ctrl+F?" );
+                return true;
+            }
+            return base.ProcessCmdKey( ref msg, keyData );
         }
 
         private void closeConfrmationToolStripMenuItem_Click(object sender, EventArgs e)
