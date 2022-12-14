@@ -375,7 +375,7 @@ namespace GameDatabase
             }
         }
 
-        private void createModMenuItem_Click(object sender, EventArgs e)
+        public void createModMenuItem_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(_lastDatabasePath))
                 return;
@@ -647,6 +647,10 @@ namespace GameDatabase
             {
                 save();
                 MessageBox.Show( "The Database has been saved!" );
+            }
+            else if ( keyData == ( Keys.Control | Keys.F) )
+            {
+                createModMenuItem_Click(null,null);
             }
             else if ( keyData == Keys.Delete && DatabaseTreeView.SelectedNode.Level != 0 )
             {

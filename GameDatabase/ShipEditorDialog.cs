@@ -293,6 +293,10 @@ namespace GameDatabase
                 MessageBox.Show( "The Database has been saved!" );
                 return true;
             }
+            else if ( keyData == ( Keys.Control | Keys.F ) )
+            {
+                MainWindow.MainInstance.createModMenuItem_Click( null, null );
+            }
             return base.ProcessCmdKey( ref msg, keyData );
         }
 
