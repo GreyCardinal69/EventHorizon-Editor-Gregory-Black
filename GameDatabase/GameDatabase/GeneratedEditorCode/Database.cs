@@ -14,6 +14,8 @@ using EditorDatabase.Storage;
 using EditorDatabase.Model;
 using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace EditorDatabase
 {
@@ -24,6 +26,11 @@ namespace EditorDatabase
             _serializer = new JsonSerializer();
             _content = new DatabaseContent(storage, _serializer);
 		}
+
+        public void ClearOutside()
+        {
+            Clear();
+        }
 
 		public void Save(IDataStorage storage)
 		{
@@ -118,13 +125,43 @@ namespace EditorDatabase
             }
         }
 
+        public void SetItem( ItemType type, int id, int old )
+        {
+            switch ( type )
+            {
+                case ItemType.AmmunitionObsolete: SetAmmunitionObsolete( id, old ); break;
+                case ItemType.Component: SetComponent( id, old ); break;
+                case ItemType.ComponentMod:  SetComponentMod( id, old ); break;
+                case ItemType.ComponentStats:  SetComponentStats( id, old ); break;
+                case ItemType.Device:  SetDevice( id, old ); break;
+                case ItemType.DroneBay:  SetDroneBay( id, old ); break;
+                case ItemType.Faction:  SetFaction( id, old ); break;
+                case ItemType.Satellite:  SetSatellite( id, old ); break;
+                case ItemType.SatelliteBuild:  SetSatelliteBuild( id, old ); break;
+                case ItemType.Ship:  SetShip( id, old ); break;
+                case ItemType.ShipBuild:  SetShipBuild( id, old ); break;
+                case ItemType.Skill:  SetSkill( id, old ); break;
+                case ItemType.Technology:  SetTechnology( id, old ); break;
+                case ItemType.Character:  SetCharacter( id, old ); break;
+                case ItemType.Fleet:  SetFleet( id, old ); break;
+                case ItemType.Loot:  SetLoot( id, old ); break;
+                case ItemType.Quest:  SetQuest( id, old ); break;
+                case ItemType.QuestItem:  SetQuestItem( id, old ); break;
+                case ItemType.Ammunition:  SetAmmunition( id, old ); break;
+                case ItemType.BulletPrefab:  SetBulletPrefab( id, old ); break;
+                case ItemType.VisualEffect:  SetVisualEffect( id, old ); break;
+                case ItemType.Weapon: SetWeapon( id, old ); break;
+            }
+            Save( new DatabaseStorage( Directory.GetCurrentDirectory() ) );
+        }
 
-		public DatabaseSettings DatabaseSettings => _databaseSettings ?? (_databaseSettings = new DatabaseSettings(_content.DatabaseSettings, this));
+        public DatabaseSettings DatabaseSettings => _databaseSettings ?? (_databaseSettings = new DatabaseSettings(_content.DatabaseSettings, this));
 		public ExplorationSettings ExplorationSettings => _explorationSettings ?? (_explorationSettings = new ExplorationSettings(_content.ExplorationSettings, this));
 		public GalaxySettings GalaxySettings => _galaxySettings ?? (_galaxySettings = new GalaxySettings(_content.GalaxySettings, this));
 		public ShipSettings ShipSettings => _shipSettings ?? (_shipSettings = new ShipSettings(_content.ShipSettings, this));
 
 		public ItemId<AmmunitionObsolete> GetAmmunitionObsoleteId(int id) { return new ItemId<AmmunitionObsolete>(_content.GetAmmunitionObsolete(id)); }
+
         public AmmunitionObsolete GetAmmunitionObsolete(int id)
         {
             if (!_ammunitionObsoleteMap.TryGetValue(id, out var item))
@@ -388,9 +425,163 @@ namespace EditorDatabase
             return item;
         }
 
+        // Setters
 
-        public ImageData GetImage(string name) { return _content.GetImage(name); }
-        
+        public void SetAmmunitionObsolete( int id, int old )
+        {
+            var serializable = _content.GetAmmunitionObsolete( id );
+            _content.AmmunitionObsoleteList[_content.AmmunitionObsoleteList.IndexOf( _content.GetAmmunitionObsolete( old ) )] = serializable;
+            _ammunitionObsoleteMap[old] = new AmmunitionObsolete( serializable, this);
+        }
+
+        public void SetComponent( int id, int old )
+        {
+            var serializable = _content.GetComponent( id );
+            _content.ComponentList[_content.ComponentList.IndexOf( _content.GetComponent( old ) )] = serializable;
+            _componentMap[old] = new Component( serializable, this );
+        }
+
+        public void SetComponentMod( int id, int old )
+        {
+            var serializable = _content.GetComponentMod( id );
+            _content.ComponentModList[_content.ComponentModList.IndexOf( _content.GetComponentMod( old ) )] = serializable;
+            _componentModMap[old] = new ComponentMod( serializable, this );
+        }
+
+        public void SetComponentStats( int id, int old )
+        {
+            var serializable = _content.GetComponentStats( id );
+            _content.ComponentStatsList[_content.ComponentStatsList.IndexOf( _content.GetComponentStats( old ) )] = serializable;
+            _componentStatsMap[old] = new ComponentStats( serializable, this );
+        }
+
+        public void SetDevice( int id, int old )
+        {
+            var serializable = _content.GetDevice( id );
+            _content.DeviceList[_content.DeviceList.IndexOf( _content.GetDevice( old ) )] = serializable;
+            _deviceMap[old] = new Device( serializable, this );
+        }
+
+        public void SetDroneBay( int id, int old )
+        {
+            var serializable = _content.GetDroneBay( id );
+            _content.DroneBayList[_content.DroneBayList.IndexOf( _content.GetDroneBay( old ) )] = serializable;
+            _droneBayMap[old] = new DroneBay( serializable, this );
+        }
+
+        public void SetFaction( int id, int old )
+        {
+            var serializable = _content.GetFaction( id );
+            _content.FactionList[_content.FactionList.IndexOf( _content.GetFaction( old ) )] = serializable;
+            _factionMap[old] = new Faction( serializable, this );
+        }
+
+        public void SetSatellite( int id, int old )
+        {
+            var serializable = _content.GetSatellite( id );
+            _content.SatelliteList[_content.SatelliteList.IndexOf( _content.GetSatellite( old ) )] = serializable;
+            _satelliteMap[old] = new Satellite( serializable, this );
+        }
+
+        public void SetSatelliteBuild( int id, int old )
+        {
+            var serializable = _content.GetSatelliteBuild( id );
+            _content.SatelliteBuildList[_content.SatelliteBuildList.IndexOf( _content.GetSatelliteBuild( old ) )] = serializable;
+            _satelliteBuildMap[old] = new SatelliteBuild( serializable, this );
+        }
+
+        public void SetShip( int id, int old )
+        {
+            var serializable = _content.GetShip( id );
+            _content.ShipList[_content.ShipList.IndexOf( _content.GetShip( old ) )] = serializable;
+            _shipMap[old] = new Ship( serializable, this );
+        }
+
+        public void SetShipBuild( int id, int old )
+        {
+            var serializable = _content.GetShipBuild( id );
+            _content.ShipBuildList[_content.ShipBuildList.IndexOf( _content.GetShipBuild( old ) )] = serializable;
+            _shipBuildMap[old] = new ShipBuild( serializable, this );
+        }
+
+        public void SetSkill( int id, int old )
+        {
+            var serializable = _content.GetSkill( id );
+            _content.SkillList[_content.SkillList.IndexOf( _content.GetSkill( old ) )] = serializable;
+            _skillMap[old] = new Skill( serializable, this );
+        }
+
+        public void SetTechnology( int id, int old )
+        {
+            var serializable = _content.GetTechnology( id );
+            _content.TechnologyList[_content.TechnologyList.IndexOf( _content.GetTechnology( old ) )] = serializable;
+            _technologyMap[old] = new Technology( serializable, this );
+        }
+
+        public void SetCharacter( int id, int old )
+        {
+            var serializable = _content.GetCharacter( id );
+            _content.CharacterList[_content.CharacterList.IndexOf( _content.GetCharacter( old ) )] = serializable;
+            _characterMap[old] = new Character( serializable, this );
+        }
+
+        public void SetFleet( int id, int old )
+        {
+            var serializable = _content.GetFleet( id );
+            _content.FleetList[_content.FleetList.IndexOf( _content.GetFleet( old ) )] = serializable;
+            _fleetMap[old] = new Fleet( serializable, this );
+        }
+
+        public void SetLoot( int id, int old )
+        {
+            var serializable = _content.GetLoot( id );
+            _content.LootList[_content.LootList.IndexOf( _content.GetLoot( old ) )] = serializable;
+            _lootMap[old] = new LootModel( serializable, this );
+        }
+
+        public void SetQuest( int id, int old )
+        {
+            var serializable = _content.GetQuest( id );
+            _content.QuestList[_content.QuestList.IndexOf( _content.GetQuest( old ) )] = serializable;
+            _questMap[old] = new QuestModel( serializable, this );
+        }
+
+        public void SetQuestItem( int id, int old )
+        {
+            var serializable = _content.GetQuestItem( id );
+            _content.QuestItemList[_content.QuestItemList.IndexOf( _content.GetQuestItem( old ) )] = serializable;
+            _questItemMap[old] = new QuestItem( serializable, this );
+        }
+
+        public void SetAmmunition( int id, int old )
+        {
+            var serializable = _content.GetAmmunition( id );
+            _content.AmmunitionList[_content.AmmunitionList.IndexOf( _content.GetAmmunition( old ) )] = serializable;
+            _ammunitionMap[old] = new Ammunition( serializable, this );
+        }
+
+        public void SetBulletPrefab( int id, int old )
+        {
+            var serializable = _content.GetBulletPrefab( id );
+            _content.BulletPrefabList[_content.BulletPrefabList.IndexOf( _content.GetBulletPrefab( old ) )] = serializable;
+            _bulletPrefabMap[old] = new BulletPrefab( serializable, this );
+        }
+
+        public void SetVisualEffect( int id, int old )
+        {
+            var serializable = _content.GetVisualEffect( id );
+            _content.VisualEffectList[_content.VisualEffectList.IndexOf( _content.GetVisualEffect( old ) )] = serializable;
+            _visualEffectMap[old] = new VisualEffect( serializable, this );
+        }
+
+        public void SetWeapon( int id, int old )
+        {
+            var serializable = _content.GetWeapon( id );
+            _content.WeaponList[_content.WeaponList.IndexOf( _content.GetWeapon( old ) )] = serializable;
+            _weaponMap[old] = new Weapon( serializable, this );
+        }
+
+        public ImageData GetImage(string name) { return _content.GetImage(name); }        
         
         public void LoadJson(string name, string content){
 			_content.LoadJson(name,content);

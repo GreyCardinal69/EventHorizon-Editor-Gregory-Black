@@ -12,6 +12,7 @@ using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
 using EditorDatabase.Model;
 using System.Xml.Linq;
+using System.Linq;
 
 namespace EditorDatabase.Storage
 {
@@ -426,30 +427,30 @@ namespace EditorDatabase.Storage
 		public GalaxySettingsSerializable GalaxySettings { get; private set; }
 		public ShipSettingsSerializable ShipSettings { get; private set; }
 
-		public IEnumerable<AmmunitionObsoleteSerializable> AmmunitionObsoleteList => _ammunitionObsoleteMap.Values;
-		public IEnumerable<ComponentSerializable> ComponentList => _componentMap.Values;
-		public IEnumerable<ComponentModSerializable> ComponentModList => _componentModMap.Values;
-		public IEnumerable<ComponentStatsSerializable> ComponentStatsList => _componentStatsMap.Values;
-		public IEnumerable<DeviceSerializable> DeviceList => _deviceMap.Values;
-		public IEnumerable<DroneBaySerializable> DroneBayList => _droneBayMap.Values;
-		public IEnumerable<FactionSerializable> FactionList => _factionMap.Values;
-		public IEnumerable<SatelliteSerializable> SatelliteList => _satelliteMap.Values;
-		public IEnumerable<SatelliteBuildSerializable> SatelliteBuildList => _satelliteBuildMap.Values;
-		public IEnumerable<ShipSerializable> ShipList => _shipMap.Values;
-		public IEnumerable<ShipBuildSerializable> ShipBuildList => _shipBuildMap.Values;
-		public IEnumerable<SkillSerializable> SkillList => _skillMap.Values;
-		public IEnumerable<TechnologySerializable> TechnologyList => _technologyMap.Values;
-		public IEnumerable<CharacterSerializable> CharacterList => _characterMap.Values;
-		public IEnumerable<FleetSerializable> FleetList => _fleetMap.Values;
-		public IEnumerable<LootSerializable> LootList => _lootMap.Values;
-		public IEnumerable<QuestSerializable> QuestList => _questMap.Values;
-		public IEnumerable<QuestItemSerializable> QuestItemList => _questItemMap.Values;
-		public IEnumerable<AmmunitionSerializable> AmmunitionList => _ammunitionMap.Values;
-		public IEnumerable<BulletPrefabSerializable> BulletPrefabList => _bulletPrefabMap.Values;
-		public IEnumerable<VisualEffectSerializable> VisualEffectList => _visualEffectMap.Values;
-		public IEnumerable<WeaponSerializable> WeaponList => _weaponMap.Values;
+		public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList => _ammunitionObsoleteMap.Values.ToList();
+		public List<ComponentSerializable> ComponentList => _componentMap.Values.ToList();
+        public List<ComponentModSerializable> ComponentModList => _componentModMap.Values.ToList();
+        public List<ComponentStatsSerializable> ComponentStatsList => _componentStatsMap.Values.ToList();
+        public List<DeviceSerializable> DeviceList => _deviceMap.Values.ToList();
+        public List<DroneBaySerializable> DroneBayList => _droneBayMap.Values.ToList();
+        public List<FactionSerializable> FactionList => _factionMap.Values.ToList();
+        public List<SatelliteSerializable> SatelliteList => _satelliteMap.Values.ToList();
+        public List<SatelliteBuildSerializable> SatelliteBuildList => _satelliteBuildMap.Values.ToList();
+        public List<ShipSerializable> ShipList => _shipMap.Values.ToList();
+        public List<ShipBuildSerializable> ShipBuildList => _shipBuildMap.Values.ToList();
+        public List<SkillSerializable> SkillList => _skillMap.Values.ToList();
+        public List<TechnologySerializable> TechnologyList => _technologyMap.Values.ToList();
+        public List<CharacterSerializable> CharacterList => _characterMap.Values.ToList();
+        public List<FleetSerializable> FleetList => _fleetMap.Values.ToList();
+        public List<LootSerializable> LootList => _lootMap.Values.ToList();
+        public List<QuestSerializable> QuestList => _questMap.Values.ToList();
+        public List<QuestItemSerializable> QuestItemList => _questItemMap.Values.ToList();
+        public List<AmmunitionSerializable> AmmunitionList => _ammunitionMap.Values.ToList();
+        public List<BulletPrefabSerializable> BulletPrefabList => _bulletPrefabMap.Values.ToList();
+        public List<VisualEffectSerializable> VisualEffectList => _visualEffectMap.Values.ToList();
+        public List<WeaponSerializable> WeaponList => _weaponMap.Values.ToList();
 
-		public AmmunitionObsoleteSerializable GetAmmunitionObsolete(int id) { return _ammunitionObsoleteMap.TryGetValue(id, out var item) ? item : null; }
+        public AmmunitionObsoleteSerializable GetAmmunitionObsolete(int id) { return _ammunitionObsoleteMap.TryGetValue(id, out var item) ? item : null; }
 		public ComponentSerializable GetComponent(int id) { return _componentMap.TryGetValue(id, out var item) ? item : null; }
 		public ComponentModSerializable GetComponentMod(int id) { return _componentModMap.TryGetValue(id, out var item) ? item : null; }
 		public ComponentStatsSerializable GetComponentStats(int id) { return _componentStatsMap.TryGetValue(id, out var item) ? item : null; }

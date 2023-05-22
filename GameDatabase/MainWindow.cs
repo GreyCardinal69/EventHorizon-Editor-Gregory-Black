@@ -39,6 +39,8 @@ namespace GameDatabase
         }
 
         internal static MainWindow MainInstance;
+        internal SerializableItem _copiedData;
+        internal bool _isTryingToCopy;
 
         private void MainWindow_Load(object sender, EventArgs eventArgs)
         {
@@ -412,6 +414,7 @@ namespace GameDatabase
         private Database _database;
         private Templates _templates;
         private string _lastDatabasePath;
+         
 
         private void reloadDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -791,6 +794,25 @@ namespace GameDatabase
         private void reformatDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new DatabaseReformat().Run();
+        }
+
+        private void copyToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            _isTryingToCopy = true;
+            _copiedData = _selectedItem;
+        }
+
+        private void pasteToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            if ( _isTryingToCopy && _selectedItem.ItemType == _copiedData.ItemType )
+            {
+                string path = Directory.GetCurrentDirectory();
+                int old = _selectedItem.Id;
+                folderBrowserDialog1.InitialDirectory = path;
+                _isTryingToCopy = false;
+                _selectedItem = _copiedData;
+                _database.SetItem( _copiedData.ItemType, _copiedData.Id, old );
+            }
         }
     }
 }
