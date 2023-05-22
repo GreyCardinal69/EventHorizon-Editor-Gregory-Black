@@ -152,7 +152,6 @@ namespace EditorDatabase
                 case ItemType.VisualEffect:  SetVisualEffect( id, old ); break;
                 case ItemType.Weapon: SetWeapon( id, old ); break;
             }
-            Save( new DatabaseStorage( Directory.GetCurrentDirectory() ) );
         }
 
         public DatabaseSettings DatabaseSettings => _databaseSettings ?? (_databaseSettings = new DatabaseSettings(_content.DatabaseSettings, this));
