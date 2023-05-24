@@ -8,6 +8,7 @@ This version implements:
 - Jump To Page option.
 - CTRL + S hotkey for saving the database.
 - Option to delete a file in the database.
+- CTRL + F hotkey for creating mod file.
 - Option to copy and paste data of objects inside the editor, without reloading or creating new files.
 
 ## How to use:
