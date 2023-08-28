@@ -282,7 +282,8 @@ namespace GameDatabase
                 BackColor = Color.FromArgb( 45, 45, 45 ),
                 ForeColor = Color.FromArgb( 242, 188, 87 ),
                 FlatStyle = FlatStyle.Flat,
-                DrawMode = DrawMode.OwnerDrawVariable
+                DrawMode = DrawMode.OwnerDrawVariable,
+                 DropDownHeight = 800
             };
 
             comboBox.BorderColor = Color.FromArgb( 95,95,95 );

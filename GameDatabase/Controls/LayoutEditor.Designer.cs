@@ -33,8 +33,9 @@ namespace GameDatabase
         /// </summary>
         private void InitializeComponent()
         {
+
             this.components = new System.ComponentModel.Container();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip( this.components );
             this.horizontalSymmetryToolStripMenuItem = new Controls.AdvancedToolStripMenuItem();
             this.verticalSymmetryToolStripMenuItem = new Controls.AdvancedToolStripMenuItem();
             this.showGridToolStripMenuItem = new Controls.AdvancedToolStripMenuItem();
