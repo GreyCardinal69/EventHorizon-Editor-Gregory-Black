@@ -92,6 +92,8 @@ namespace EditorDatabase.DataModel
 			_content = new NodeEmptyContent();
 		}
 
+		NodeSerializable _data;
+
 		public Node(NodeSerializable serializable, Database database)
 		{
 			Id = new NumericValue<int>(serializable.Id, 1, 999999);
@@ -101,6 +103,8 @@ namespace EditorDatabase.DataModel
 
 			OnDataDeserialized(serializable, database);
 		}
+
+		public NodeSerializable Content => _data;
 
 		public NodeSerializable Serialize()
 		{

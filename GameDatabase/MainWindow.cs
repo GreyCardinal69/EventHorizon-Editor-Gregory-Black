@@ -814,5 +814,12 @@ namespace GameDatabase
                 _database.SetItem( _copiedData.ItemType, _copiedData.Id, old );
             }
         }
+
+        private void runAnalytToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            Analytics window = new Analytics();
+            window.Show();
+            window.RunAnalytics(this, _database);
+        }
     }
 }

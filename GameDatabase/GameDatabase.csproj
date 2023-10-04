@@ -158,6 +158,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Analytics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analytics.Designer.cs">
+      <DependentUpon>Analytics.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameDatabase\DataModel\Barrel.cs" />
     <Compile Include="GameDatabase\DataModel\Component.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Database.cs" />
@@ -347,6 +353,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Analytics.resx">
+      <DependentUpon>Analytics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComponentEditorDialog.resx">
       <DependentUpon>ComponentEditorDialog.cs</DependentUpon>
     </EmbeddedResource>

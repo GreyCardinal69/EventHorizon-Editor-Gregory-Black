@@ -65,7 +65,8 @@ namespace GameDatabase
             this.createToolStripMenuItem = new Controls.AdvancedToolStripMenuItem();
             this.folderToolStripMenuItem = new Controls.AdvancedToolStripMenuItem();
             this.contextMenuStrip1 = new Controls.AdvancedContextMenuStrip(this.components);
-            this.copyToolStripMenuItem = new AdvancedToolStripMenuItem();
+            this.copyToolStripMenuItem = new Controls.AdvancedToolStripMenuItem();
+            this.pasteToolStripMenuItem = new Controls.AdvancedToolStripMenuItem();
             this.loadAsDatabaseToolStripMenuItem = new Controls.AdvancedToolStripMenuItem();
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.customMenuStrip1 = new System.Windows.Forms.CustomMenuStrip();
@@ -83,7 +84,7 @@ namespace GameDatabase
             this.byIdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reformatDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new AdvancedToolStripMenuItem();
+            this.runAnalytToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -152,7 +153,7 @@ namespace GameDatabase
             this.structDataView1.Location = new System.Drawing.Point(4, 44);
             this.structDataView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.structDataView1.Name = "structDataView1";
-            this.structDataView1.Size = new System.Drawing.Size(246, 483);
+            this.structDataView1.Size = new System.Drawing.Size(244, 483);
             this.structDataView1.TabIndex = 5;
             // 
             // label1
@@ -162,7 +163,7 @@ namespace GameDatabase
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label1.Font = new System.Drawing.Font("Yu Gothic", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.label1.Location = new System.Drawing.Point(215, 0);
+            this.label1.Location = new System.Drawing.Point(213, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 18);
@@ -223,7 +224,7 @@ namespace GameDatabase
             this.folderToolStripMenuItem});
             this.createToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
             this.createToolStripMenuItem.Text = "Create";
             // 
             // folderToolStripMenuItem
@@ -245,17 +246,27 @@ namespace GameDatabase
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 82);
             // 
             // copyToolStripMenuItem
             // 
-            this.copyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            this.copyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.copyToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.copyToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pasteToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
+            this.pasteToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // loadAsDatabaseToolStripMenuItem
             // 
@@ -428,7 +439,8 @@ namespace GameDatabase
             // 
             this.utilitesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.utilitesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reformatDatabaseToolStripMenuItem});
+            this.reformatDatabaseToolStripMenuItem,
+            this.runAnalytToolStripMenuItem});
             this.utilitesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.utilitesToolStripMenuItem.Name = "utilitesToolStripMenuItem";
             this.utilitesToolStripMenuItem.Size = new System.Drawing.Size(55, 19);
@@ -439,19 +451,19 @@ namespace GameDatabase
             this.reformatDatabaseToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.reformatDatabaseToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.reformatDatabaseToolStripMenuItem.Name = "reformatDatabaseToolStripMenuItem";
-            this.reformatDatabaseToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.reformatDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reformatDatabaseToolStripMenuItem.Text = "Reformat Database";
             this.reformatDatabaseToolStripMenuItem.Click += new System.EventHandler(this.reformatDatabaseToolStripMenuItem_Click);
             // 
-            // pasteToolStripMenuItem
+            // runAnalytToolStripMenuItem
             // 
-            this.pasteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
-            this.pasteToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
-            this.pasteToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.pasteToolStripMenuItem.Text = "Paste";
-            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            this.runAnalytToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.runAnalytToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.runAnalytToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.runAnalytToolStripMenuItem.Name = "runAnalytToolStripMenuItem";
+            this.runAnalytToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.runAnalytToolStripMenuItem.Text = "Run Analytics";
+            this.runAnalytToolStripMenuItem.Click += new System.EventHandler(this.runAnalytToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -501,6 +513,7 @@ namespace GameDatabase
         private Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog folderBrowserDialog1;
 
         #endregion
+
         private Controls.AdvancedToolStripMenuItem createToolStripMenuItem;
         private Controls.AdvancedToolStripMenuItem folderToolStripMenuItem;
         private Controls.AdvancedToolStripMenuItem loadAsDatabaseToolStripMenuItem;
@@ -524,5 +537,6 @@ namespace GameDatabase
         private Label label1;
         private AdvancedToolStripMenuItem copyToolStripMenuItem;
         private AdvancedToolStripMenuItem pasteToolStripMenuItem;
+        private ToolStripMenuItem runAnalytToolStripMenuItem;
     }
 }

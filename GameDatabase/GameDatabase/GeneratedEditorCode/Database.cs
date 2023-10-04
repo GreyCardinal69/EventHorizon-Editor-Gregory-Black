@@ -16,11 +16,28 @@ using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
 using System.IO;
 using System.Security.Cryptography;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace EditorDatabase
 {
+    public static class RichTextBoxExtensions
+    {
+        public static void AppendText( this RichTextBox box, string text, Color color, bool addNewLine = false )
+        {
+            box.SuspendLayout();
+            box.SelectionColor = color;
+            box.AppendText( addNewLine
+                ? $"{text}{Environment.NewLine}"
+                : text );
+            box.ScrollToCaret();
+            box.ResumeLayout();
+        }
+    }
     public partial class Database
     {
+        public DatabaseContent Content => _content;
+
 		public Database(IDataStorage storage)
 		{
             _serializer = new JsonSerializer();
