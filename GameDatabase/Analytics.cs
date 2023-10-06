@@ -21,6 +21,7 @@ namespace GameDatabase
         }
 
         private bool _initial;
+        private bool _runningFullScan;
         private Database _database;
 
         private void PrintFaultyName( string str )
@@ -35,7 +36,7 @@ namespace GameDatabase
 
         private void RunTextAnalytics()
         {
-
+            return;
 
             using ( Hunspell hunspell = new Hunspell( "en_us.aff", "en_us.dic" ) )
             {
@@ -58,29 +59,54 @@ namespace GameDatabase
             }
 
         }
-
-        private static int LevenshteinDistance( string s, string t )
+        public static double CalculateSimilarity( string source, string target )
         {
-            int n = s.Length;
-            int m = t.Length;
-            int[,] d = new int[n + 1, m + 1];
-            if ( n == 0 )
+            if ( ( source == null ) || ( target == null ) ) return 0.0;
+            if ( ( source.Length == 0 ) || ( target.Length == 0 ) ) return 0.0;
+            if ( source == target ) return 1.0;
+
+            int stepsToSame = LevenshteinDistance( source, target );
+            return ( 1.0 - ( ( double ) stepsToSame / ( double ) Math.Max( source.Length, target.Length ) ) );
+        }
+
+        private static int LevenshteinDistance( string source, string target )
+        {
+            // degenerate cases
+            if ( source == target ) return 0;
+            if ( source.Length == 0 ) return target.Length;
+            if ( target.Length == 0 ) return source.Length;
+
+            // create two work vectors of integer distances
+            int[] v0 = new int[target.Length + 1];
+            int[] v1 = new int[target.Length + 1];
+
+            // initialize v0 (the previous row of distances)
+            // this row is A[0][i]: edit distance for an empty s
+            // the distance is just the number of characters to delete from t
+            for ( int i = 0; i < v0.Length; i++ )
+                v0[i] = i;
+
+            for ( int i = 0; i < source.Length; i++ )
             {
-                return m;
-            }
-            if ( m == 0 )
-            {
-                return n;
-            }
-            for ( int i = 1; i <= n; i++ )
-            {
-                for ( int j = 1; j <= m; j++ )
+                // calculate v1 (current row distances) from the previous row v0
+
+                // first element of v1 is A[i+1][0]
+                //   edit distance is delete (i+1) chars from s to match empty t
+                v1[0] = i + 1;
+
+                // use formula to fill in the rest of the row
+                for ( int j = 0; j < target.Length; j++ )
                 {
-                    int cost = ( t[j - 1] == s[i - 1] ) ? 0 : 1;
-                    d[i, j] = Math.Min( Math.Min( d[i - 1, j] + 1, d[i, j - 1] + 1 ), d[i - 1, j - 1] + cost );
+                    var cost = ( source[i] == target[j] ) ? 0 : 1;
+                    v1[j + 1] = Math.Min( v1[j] + 1, Math.Min( v0[j + 1] + 1, v0[j] + cost ) );
                 }
+
+                // copy v1 (current row) to v0 (previous row) for next iteration
+                for ( int j = 0; j < v0.Length; j++ )
+                    v0[j] = v1[j];
             }
-            return d[n, m];
+
+            return v1[target.Length];
         }
 
         private bool FormatValid( string format )
@@ -106,7 +132,7 @@ namespace GameDatabase
 
         private void RunComponentAnalytics()
         {
-            Data.Text = "";
+            if ( !_runningFullScan ) Data.Text = "";
             bool errorDetected = false;
 
             List<int> statIds = new List<int>();
@@ -116,37 +142,48 @@ namespace GameDatabase
                 statIds.Add( stat.Id );
             }
 
-            List<string> vanillaImages = @"missile3 torpedo1 afterburner1 doom1 reactor21 reactor22 fueltank23 fueltank22 fueltank21 focus2 focus1 jammer armor63 armor62 armor61 detonator1 engine3 laser1 laser3 zygote3 zygote2 zygote1 rocket1 torpedo4 armor11 dronebay1 dronebay3 dronebay2 drone_power1 drone_power3 drone_power2 engine0 drone_replicator1 drone_replicator3 drone_replicator2 laser4 torpedo3 armor33 armor32 armor31 energybeam2 shield2 energybeam1 pointdefense shield1 fueltank13 fueltank12 fueltank11 engine4 engine2 reactor2 shock1 holy_gun armor23 armor22 armor21 intertial_damper1 inertial2 intertial_damper2 core ion_cannon1 ion_cannon2 laser2 shock2 gun4 gun7 missile1 missile2 missile0 lightweight1 gun6 gun3 engine5 engine1 reactor1 gun1 shotgun1 flamethrower1 torpedo2 gun5 gun2 shotgun2 range1 armor53 armor52 armor51 repairbot2 repairbot1 shield_capacitor3 shield_capacitor2 shield_capacitor1 shield_generator3 shield_generator2 shield_generator1 accelerator1 TargetingUnit teleporter teleporter1 armor43 armor42 armor41 armor13 armor12 reactor3 firework".Split(' ').ToList();
+            List<string> vanillaImages = @"missile3 torpedo1 afterburner1 doom1 reactor21 reactor22 fueltank23 fueltank22 fueltank21 focus2 focus1 jammer armor63 armor62 armor61 detonator1 engine3 laser1 laser3 zygote3 zygote2 zygote1 rocket1 torpedo4 armor11 dronebay1 dronebay3 dronebay2 drone_power1 drone_power3 drone_power2 engine0 drone_replicator1 drone_replicator3 drone_replicator2 laser4 torpedo3 armor33 armor32 armor31 energybeam2 shield2 energybeam1 pointdefense shield1 fueltank13 fueltank12 fueltank11 engine4 engine2 reactor2 shock1 holy_gun armor23 armor22 armor21 intertial_damper1 inertial2 intertial_damper2 core ion_cannon1 ion_cannon2 laser2 shock2 gun4 gun7 missile1 missile2 missile0 lightweight1 gun6 gun3 engine5 engine1 reactor1 gun1 shotgun1 flamethrower1 torpedo2 gun5 gun2 shotgun2 range1 armor53 armor52 armor51 repairbot2 repairbot1 shield_capacitor3 shield_capacitor2 shield_capacitor1 shield_generator3 shield_generator2 shield_generator1 accelerator1 TargetingUnit teleporter teleporter1 armor43 armor42 armor41 armor13 armor12 reactor3 firework".Split( ' ' ).ToList();
 
             foreach ( var component in _database.Content.ComponentList )
             {
-                if ( component.ComponentStatsId == 0 || !statIds.Contains( component.ComponentStatsId) )
+                if ( component.ComponentStatsId == 0 || !statIds.Contains( component.ComponentStatsId ) )
                 {
                     errorDetected = true;
                     PrintFaultyName( $"[Component]: [{component.FileName}]:" );
                     Data.AppendText( $"     Has no Stats file reference ( [EMPTY] or points to non-existant Stats file id ).", Color.Red ); Data.AppendText( "\n" );
                 }
 
-                if ( !_database.Content.ImagesB.ContainsKey(component.Icon) && !vanillaImages.Contains(component.Icon) )
+                if ( component.Icon != null )
+                {
+                    if ( !_database.Content.ImagesB.ContainsKey( component.Icon ) && !vanillaImages.Contains( component.Icon ) )
+                    {
+                        errorDetected = true;
+                        PrintFaultyName( $"[Component]: [{component.FileName}]:" );
+                        Data.AppendText( $"     Has incorrect Icon/Image id ( Typo or image does not exist at all ).", Color.Red );
+
+                        foreach ( var name in _database.Content.ImagesB.Keys )
+                        {
+                            var distance = CalculateSimilarity( name.Replace( ".png", "" ), component.Icon.Replace( ".png", "" ) ) * 100;
+                            if ( distance >= 75 )
+                            {
+                                Data.AppendText( $"\n          Current Icon ID: {component.Icon}, did you mean: {name}?", Color.HotPink );
+                            }
+                        }
+                        foreach ( var name in vanillaImages )
+                        {
+                            var distance = CalculateSimilarity( name.Replace( ".png", "" ), component.Icon.Replace( ".png", "" ) ) * 100;
+                            if ( distance >= 75 )
+                            {
+                                Data.AppendText( $"\n          Current Icon ID: {component.Icon}, did you mean: {name}?", Color.HotPink );
+                            }
+                        }
+                    }
+                }
+                else
                 {
                     errorDetected = true;
                     PrintFaultyName( $"[Component]: [{component.FileName}]:" );
-                    Data.AppendText( $"     Has incorrect Icon/Image id ( Typo or image does not exist at all ).", Color.Red );
-
-                    foreach ( var name in _database.Content.ImagesB.Keys )
-                    {
-                        if ( LevenshteinDistance(component.Icon, name) < 3 )
-                        {
-                            Data.AppendText( $"\n          Current Icon ID: {component.Icon}, did you mean: {name}?", Color.HotPink );
-                        }
-                    }
-                    foreach ( var name in vanillaImages )
-                    {
-                        if ( LevenshteinDistance( component.Icon, name ) < 3 )
-                        {
-                            Data.AppendText( $"\n          Current Icon ID: {component.Icon}, did you mean: {name}?", Color.HotPink );
-                        }
-                    }
+                    Data.AppendText( $"     Has a NULL Icon id ( not defined in the .json file or simple left empty ).", Color.Red );
                 }
 
                 if ( component.CellType != null )
@@ -201,7 +238,7 @@ namespace GameDatabase
         private void RunLootAnalytics()
         {
 
-            Data.Text = "";
+            if ( !_runningFullScan ) Data.Text = "";
             bool errorDetected = false;
 
             List<int> moduleIds = new List<int>();
@@ -221,11 +258,108 @@ namespace GameDatabase
         private void RunTechAnalytics()
         {
 
+            if ( !_runningFullScan ) Data.Text = "";
+            bool errorDetected = false;
+
+            List<int> satelliteIds = new List<int>();
+            List<int> shipIds = new List<int>();
+            List<int> componentIds = new List<int>();
+            List<int> factionIds = new List<int>();
+            List<int> technologyIds = new List<int>();
+
+            foreach ( var item in _database.Content.ComponentList )
+            {
+                componentIds.Add( item.Id );
+            }
+            foreach ( var item in _database.Content.SatelliteList )
+            {
+                satelliteIds.Add( item.Id );
+            }
+            foreach ( var item in _database.Content.ShipList )
+            {
+                shipIds.Add( item.Id );
+            }
+            foreach ( var item in _database.Content.FactionList )
+            {
+                shipIds.Add( item.Id );
+            }
+            foreach ( var item in _database.Content.TechnologyList )
+            {
+                technologyIds.Add( item.Id );
+            }
+
+            foreach ( var tech in _database.Content.TechnologyList )
+            {
+                switch ( tech.Type )
+                {
+                    case TechType.Component:
+                        if ( tech.ItemId == 0 || !componentIds.Contains( tech.ItemId ) )
+                        {
+                            errorDetected = true;
+                            PrintFaultyName( $"[Technology]: [{tech.FileName}]:" );
+                            Data.AppendText( $"     Has incorrect or empty Satellite/Ship/Component ID ( [EMPTY] In the editor ).", Color.Red, true );
+                        }
+                        break;
+                    case TechType.Ship:
+                        if ( tech.ItemId == 0 || !shipIds.Contains( tech.ItemId ) )
+                        {
+                            errorDetected = true;
+                            PrintFaultyName( $"[Technology]: [{tech.FileName}]:" );
+                            Data.AppendText( $"     Has incorrect or empty Satellite/Ship/Component ID ( [EMPTY] In the editor ).", Color.Red, true );
+                        }
+                        break;
+                    case TechType.Satellite:
+                        if ( tech.ItemId == 0 || !satelliteIds.Contains( tech.ItemId ) )
+                        {
+                            errorDetected = true;
+                            PrintFaultyName( $"[Technology]: [{tech.FileName}]:" );
+                            Data.AppendText( $"     Has incorrect or empty Satellite/Ship/Component ID ( [EMPTY] In the editor ).", Color.Red, true );
+                        }
+                        break;
+                }
+
+                if ( tech.Faction == 0 )
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Technology]: [{tech.FileName}]:" );
+                    Data.AppendText( $"     Has Incorrect or Empty Faction ID ( [EMPTY] In the editor ). Is this intended?", Color.Orange, true );
+                }
+
+                if ( tech.Price == 0 )
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Technology]: [{tech.FileName}]:" );
+                    Data.AppendText( $"     Has 0 research cost. Is this intended?", Color.Orange, true );
+                }
+
+                if ( tech.Dependencies != null )
+                {
+                    if ( tech.Dependencies.Length >= 1 )
+                    {
+                        foreach ( var dep in tech.Dependencies )
+                        {
+                            if ( dep == 0 || !technologyIds.Contains( dep ) )
+                            {
+                                errorDetected = true;
+                                PrintFaultyName( $"[Technology]: [{tech.FileName}]:" );
+                                Data.AppendText( $"     Has incorrect or Empty dependancy ID. ( [EMPTY] In the editor ).", Color.Red, true );
+                            }
+                        }
+                    }
+                }
+
+                if ( errorDetected )
+                {
+                    errorDetected = false;
+                    Data.AppendText( "\n" );
+                }
+                _initial = false;
+            }
         }
 
         private void RunFleetAnalytics()
         {
-            Data.Text = "";
+            if ( !_runningFullScan ) Data.Text = "";
             bool errorDetected = false;
 
             List<int> builds = new List<int>();
@@ -273,7 +407,7 @@ namespace GameDatabase
 
         private void RunQuestAnalytics()
         {
-            Data.Text = "";
+            if ( !_runningFullScan ) Data.Text = "";
             bool errorDetected = false;
             foreach ( QuestSerializable quest in _database.Content.QuestList )
             {
@@ -348,7 +482,7 @@ namespace GameDatabase
         private void AdvAmmoAnalitics_Click( object sender, EventArgs e ) => RunAdvAmmoAnalytics(); ///////////////
         private void ShipAnalitics_Click( object sender, EventArgs e ) => RunShipAnalytics();////////////
         private void ShipBuildAnalitics_Click( object sender, EventArgs e ) => RunShipBuildAnalytics(); ///////////////
-        private void TechAnalitics_Click( object sender, EventArgs e ) => RunTechAnalytics(); ///////////////
+        private void TechAnalitics_Click( object sender, EventArgs e ) => RunTechAnalytics();
         private void QuestAnalytics_Click( object sender, EventArgs e ) => RunQuestAnalytics(); ///////////////
         private void FleetAnalitics_Click( object sender, EventArgs e ) => RunFleetAnalytics();
         private void LootAnalitics_Click( object sender, EventArgs e ) => RunLootAnalytics(); ///////////////
@@ -358,6 +492,20 @@ namespace GameDatabase
 
         private void AllAnalytics_Click( object sender, EventArgs e ) ///////////////
         {
+            _runningFullScan = true;
+
+            RunAdvAmmoAnalytics();
+            RunShipAnalytics();
+            RunShipBuildAnalytics();
+            RunTechAnalytics();
+            RunQuestAnalytics();
+            RunFleetAnalytics();
+            RunLootAnalytics();
+            RunComponentAnalytics();
+            RunTextAnalytics();
+            RunOtherAnalytics();
+
+            _runningFullScan = false;
 
         }
     }
