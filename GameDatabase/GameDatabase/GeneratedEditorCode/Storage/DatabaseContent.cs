@@ -478,6 +478,8 @@ namespace EditorDatabase.Storage
             return _images.TryGetValue(name, out var image) ? image : ImageData.Empty;
         }
 
+        public Dictionary<string, ImageData> ImagesB => _images;
+
         private IEnumerable<KeyValuePair<string, ImageData>> Images => _images;
         public IEnumerable<KeyValuePair<string, string>> Localizations => _localizations;
 

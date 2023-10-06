@@ -817,9 +817,8 @@ namespace GameDatabase
 
         private void runAnalytToolStripMenuItem_Click( object sender, EventArgs e )
         {
-            Analytics window = new Analytics();
+            Analytics window = new Analytics( _database );
             window.Show();
-            window.RunAnalytics(this, _database);
         }
     }
 }
