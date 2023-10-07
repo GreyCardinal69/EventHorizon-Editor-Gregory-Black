@@ -208,7 +208,7 @@ namespace GameDatabase
             this.TextAnalitics.Name = "TextAnalitics";
             this.TextAnalitics.Size = new System.Drawing.Size(122, 35);
             this.TextAnalitics.TabIndex = 10;
-            this.TextAnalitics.Text = "Scan For Typos";
+            this.TextAnalitics.Text = "Scan For Typos (Quests)";
             this.TextAnalitics.UseVisualStyleBackColor = false;
             this.TextAnalitics.Click += new System.EventHandler(this.TextAnalitics_Click);
             // 

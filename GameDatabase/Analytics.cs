@@ -40,28 +40,53 @@ namespace GameDatabase
 
         private void RunTextAnalytics()
         {
-            return;
+            if ( !_runningFullScan ) Data.Text = "";
+            bool errorDetected = false;
 
             using ( Hunspell hunspell = new Hunspell( "en_us.aff", "en_us.dic" ) )
             {
-                bool correct = hunspell.Spell( "Recommendatiosdn" );
-                Data.AppendText( $"[Quest]: [YOUR_MAMA.JSON]: Node: [1], has a typo: Recommendatiosdn\n", Color.Red );
-                Data.AppendText( "\n" );
-                Data.AppendText( "" );
-                Data.AppendText( "Make suggestions for the word 'Recommendatio'" );
-                Data.AppendText( "\n" );
-                List<string> suggestions = hunspell.Suggest( "Recommendatio" );
-                Data.AppendText( "\n" );
-                Data.AppendText( "There are " +
-                   suggestions.Count.ToString() + " suggestions" );
-                Data.AppendText( "\n" );
-                foreach ( string suggestion in suggestions )
+                foreach ( var quest in _database.Content.QuestList )
                 {
-                    Data.AppendText( "Suggestion is: " + suggestion );
-                    Data.AppendText( "\n" );
+                    if ( quest.Nodes != null )
+                    {
+                        foreach ( var node in quest.Nodes )
+                        {
+                            if ( node.Type == NodeType.ShowDialog && node.Message[0] != '$' )
+                            {
+                                foreach ( var word in node.Message.Split( ' ' ) )
+                                {
+                                    bool correct = hunspell.Spell( word );
+
+                                    if ( !correct )
+                                    {
+                                        errorDetected = true;
+                                        PrintFaultyName( $"[Quest]: [{quest.FileName}]:" );
+                                        Data.AppendText( $"     [Node]: [{node.Id}] has a typo; [\"{word}\"] in the sentence [\"{node.Message}\"].", Color.Red, true );
+                                        Data.AppendText( $"     Possible fixes for the incorrect word: [\"{word}\"]", Color.HotPink );
+
+                                        List<string> suggestions = hunspell.Suggest( word );
+                                        Data.AppendText( "\n" );
+
+                                        Data.AppendText( $"     There are {suggestions.Count} suggestions", Color.HotPink );
+                                        Data.AppendText( "\n" );
+                                        foreach ( string suggestion in suggestions )
+                                        {
+                                            Data.AppendText( $"     Suggestion is: \"{suggestion}\"", Color.HotPink );
+                                            Data.AppendText( "\n" );
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if ( errorDetected )
+                    {
+                        errorDetected = false;
+                        Data.AppendText( "\n" );
+                    }
+                    _initial = false;
                 }
             }
-
         }
         public static double CalculateSimilarity( string source, string target )
         {
@@ -625,10 +650,10 @@ namespace GameDatabase
         private void FleetAnalitics_Click( object sender, EventArgs e ) => RunFleetAnalytics();
         private void LootAnalitics_Click( object sender, EventArgs e ) => RunLootAnalytics(); ///////////////
         private void ComponentAnalitics_Click( object sender, EventArgs e ) => RunComponentAnalytics();
-        private void TextAnalitics_Click( object sender, EventArgs e ) => RunTextAnalytics();///////////////
+        private void TextAnalitics_Click( object sender, EventArgs e ) => RunTextAnalytics();
         private void OtherAnalitics_Click( object sender, EventArgs e ) => RunOtherAnalytics();///////////////
 
-        private void AllAnalytics_Click( object sender, EventArgs e ) ///////////////
+        private void AllAnalytics_Click( object sender, EventArgs e )
         {
             _runningFullScan = true;
 
