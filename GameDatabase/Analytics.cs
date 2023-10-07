@@ -10,11 +10,24 @@ using System.Collections;
 using EditorDatabase.DataModel;
 using System.Linq;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace GameDatabase
 {
     public partial class Analytics : Form
     {
+        private string StripPunctuation( string s )
+        {
+            var sb = new StringBuilder();
+            foreach ( char c in s )
+            {
+                if ( !char.IsPunctuation( c ) )
+                    sb.Append( c );
+            }
+            return sb.ToString();
+        }
+
         public Analytics( Database db )
         {
             _database = db;
@@ -53,10 +66,13 @@ namespace GameDatabase
                         {
                             if ( node.Type == NodeType.ShowDialog && node.Message[0] != '$' )
                             {
+                                if ( node.Message.ToLower().Contains( "discord" ) )
+                                {
+                                    continue;
+                                }
                                 foreach ( var word in node.Message.Split( ' ' ) )
                                 {
-                                    bool correct = hunspell.Spell( word );
-
+                                    bool correct = hunspell.Spell( StripPunctuation ( Regex.Replace( word, @"[^a-zA-Z\s\p{P}]", "" ) ) );
                                     if ( !correct )
                                     {
                                         errorDetected = true;
@@ -246,7 +262,96 @@ namespace GameDatabase
 
         private void RunOtherAnalytics()
         {
+            if ( !_runningFullScan ) Data.Text = "";
+            bool errorDetected = false;
 
+            foreach ( var ammo in _database.Content.AmmunitionList )
+            {
+                if ( ammo.Body.Range > 0 && ammo.Body.Velocity <= 0 )
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Advanced Ammunition]: [{ammo.FileName}]:" );
+                    Data.AppendText( $"     Has Range but no Velocity, is this intended?", Color.Orange, true );
+                }
+
+                if ( errorDetected )
+                {
+                    errorDetected = false;
+                    Data.AppendText( "\n" );
+                }
+                _initial = false;
+            }
+
+            List<int> shipIds = new List<int>();
+
+            foreach ( var item in _database.Content.ShipList )
+            {
+                shipIds.Add( item.Id );
+            }
+
+            List<int> factionIds = new List<int>();
+
+            foreach ( var item in _database.Content.FactionList )
+            {
+                factionIds.Add( item.Id );
+            }
+
+            List<int> buildIds = new List<int>();
+
+            foreach ( var item in _database.Content.ShipBuildList )
+            {
+                buildIds.Add( item.Id );
+            }
+
+            if ( _database.Content.ExplorationSettings.OutpostShip == 0 || !shipIds.Contains( _database.Content.ExplorationSettings.OutpostShip ) )
+            {
+                errorDetected = true;
+                PrintFaultyName( $"[Exploration Settings]: [{_database.Content.ExplorationSettings.FileName}]:" );
+                Data.AppendText( $"     OutpostShip is empty or points to incorrect Ship ( [EMPTY] in editor ).", Color.Red, true );
+            }
+            errorDetected = false;
+            if ( _database.Content.ExplorationSettings.TurretShip == 0 || !shipIds.Contains( _database.Content.ExplorationSettings.TurretShip ) )
+            {
+                errorDetected = true;
+                PrintFaultyName( $"[Exploration Settings]: [{_database.Content.ExplorationSettings.FileName}]:" );
+                Data.AppendText( $"     TurretShip is empty or points to incorrect Ship ( [EMPTY] in editor ).", Color.Red, true );
+            }
+            errorDetected = false;
+
+            if ( _database.Content.ExplorationSettings.InfectedPlanetFaction == 0 || !factionIds.Contains( _database.Content.ExplorationSettings.InfectedPlanetFaction ) )
+            {
+                errorDetected = true;
+                PrintFaultyName( $"[Exploration Settings]: [{_database.Content.ExplorationSettings.FileName}]:" );
+                Data.AppendText( $"     InfectedPlanetFaction is empty or points to incorrect Faction ( [EMPTY] in editor ).", Color.Red, true );
+            }
+            errorDetected = false;
+
+            if ( _database.Content.ExplorationSettings.HiveShipBuild == 0 || !buildIds.Contains( _database.Content.ExplorationSettings.HiveShipBuild ) )
+            {
+                errorDetected = true;
+                PrintFaultyName( $"[Exploration Settings]: [{_database.Content.ExplorationSettings.FileName}]:" );
+                Data.AppendText( $"     HiveShipBuild is empty or points to incorrect Ship Build ( [EMPTY] in editor ).", Color.Red, true );
+            }
+            errorDetected = false;
+
+            foreach ( var build in _database.Content.GalaxySettings.StartingShipBuilds )
+            {
+                if ( !buildIds.Contains(build) )
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Galaxy Settings]: [{_database.Content.GalaxySettings.FileName}]:" );
+                    Data.AppendText( $"     Contains empty or incorrect starting ShipBuild ID: [{build}] ( [EMPTY] in editor ).", Color.Red, true );
+                }
+            }
+            errorDetected = false;
+
+            if ( !factionIds.Contains(_database.Content.GalaxySettings.AbandonedStarbaseFaction) )
+            {
+                errorDetected = true;
+                PrintFaultyName( $"[Galaxy Settings]: [{_database.Content.GalaxySettings.FileName}]:" );
+                Data.AppendText( $"     Contains empty or incorrect AbandonedStationFaction ID: [{_database.Content.GalaxySettings.AbandonedStarbaseFaction}] ( [EMPTY] in editor ).", Color.Red, true );
+            }
+            errorDetected = false;
         }
 
         private void RunShipAnalytics()
@@ -327,7 +432,7 @@ namespace GameDatabase
                 {
                     foreach ( var item in ship.BuiltinDevices )
                     {
-                        if ( !devices.Contains(item) )
+                        if ( !devices.Contains( item ) )
                         {
                             errorDetected = true;
                             PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
@@ -403,7 +508,6 @@ namespace GameDatabase
 
         private void RunTechAnalytics()
         {
-
             if ( !_runningFullScan ) Data.Text = "";
             bool errorDetected = false;
 
@@ -651,7 +755,7 @@ namespace GameDatabase
         private void LootAnalitics_Click( object sender, EventArgs e ) => RunLootAnalytics(); ///////////////
         private void ComponentAnalitics_Click( object sender, EventArgs e ) => RunComponentAnalytics();
         private void TextAnalitics_Click( object sender, EventArgs e ) => RunTextAnalytics();
-        private void OtherAnalitics_Click( object sender, EventArgs e ) => RunOtherAnalytics();///////////////
+        private void OtherAnalitics_Click( object sender, EventArgs e ) => RunOtherAnalytics();
 
         private void AllAnalytics_Click( object sender, EventArgs e )
         {
@@ -664,7 +768,6 @@ namespace GameDatabase
             RunFleetAnalytics();
             RunLootAnalytics();
             RunComponentAnalytics();
-            RunTextAnalytics();
             RunOtherAnalytics();
 
             _runningFullScan = false;

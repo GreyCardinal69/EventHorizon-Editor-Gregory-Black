@@ -13,6 +13,7 @@ using EditorDatabase.Serializable;
 using EditorDatabase.Model;
 using System.Xml.Linq;
 using System.Linq;
+using System.Text;
 
 namespace EditorDatabase.Storage
 {
