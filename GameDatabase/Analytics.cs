@@ -24,13 +24,16 @@ namespace GameDatabase
         private bool _runningFullScan;
         private Database _database;
 
-        private void PrintFaultyName( string str )
+        private void PrintFaultyName( string str, bool newl = true )
         {
             if ( !_initial )
             {
                 _initial = true;
                 Data.AppendText( str, Color.Cyan );
-                Data.AppendText( "\n" );
+                if ( newl )
+                {
+                    Data.AppendText( "\n" );
+                }
             }
         }
 
@@ -227,7 +230,37 @@ namespace GameDatabase
 
         private void RunShipBuildAnalytics()
         {
+            if ( !_runningFullScan ) Data.Text = "";
+            bool errorDetected = false;
 
+            List<int> componentIds = new List<int>();
+
+            foreach ( var comp in _database.Content.ComponentList )
+            {
+                componentIds.Add( comp.Id );
+            }
+
+            foreach ( var build in _database.Content.ShipBuildList )
+            {
+                if ( build.Components != null )
+                {
+                    foreach ( var item in build.Components )
+                    {
+                        if ( !componentIds.Contains( item.ComponentId ) || item.ComponentId == 0 )
+                        {
+                            errorDetected = true;
+                            PrintFaultyName( $"[ShipBuild]: [{build.FileName}]:" );
+                            Data.AppendText( $"     Ship build with id: {build} Contains an empty or an incorrect component id: [{item.ComponentId}].", Color.Red, true );
+                        }
+                    }
+                }
+                if ( errorDetected )
+                {
+                    errorDetected = false;
+                    Data.AppendText( "\n" );
+                }
+                _initial = false;
+            }
         }
 
         private void RunAdvAmmoAnalytics()
@@ -281,12 +314,30 @@ namespace GameDatabase
             }
             foreach ( var item in _database.Content.FactionList )
             {
-                shipIds.Add( item.Id );
+                factionIds.Add( item.Id );
             }
             foreach ( var item in _database.Content.TechnologyList )
             {
                 technologyIds.Add( item.Id );
             }
+
+            Data.AppendText( "--------------------------------\n" );
+            foreach ( var item in _database.Content.TechnologyList )
+            {
+                foreach ( var item2 in _database.Content.TechnologyList )
+                {
+                    if ( item.Dependencies != null && item2.Dependencies != null )
+                    {
+                        if ( item.Dependencies.Contains( item2.Id ) && item2.Dependencies.Contains( item.Id ) )
+                        {
+                            errorDetected = true;
+                            Data.AppendText( $"[Technology]: [{item.FileName}] And [Technology]: [{item2.FileName}] Are in a cyclic dependancy", Color.Cyan, true );
+                            Data.AppendText( $"     [Technology]: [{item.FileName}] has [Technology]: [{item2.FileName}] as a dependancy and vise versa.", Color.Red, true );
+                        }
+                    }
+                }
+            }
+            Data.AppendText( "--------------------------------" );
 
             foreach ( var tech in _database.Content.TechnologyList )
             {
@@ -481,7 +532,7 @@ namespace GameDatabase
 
         private void AdvAmmoAnalitics_Click( object sender, EventArgs e ) => RunAdvAmmoAnalytics(); ///////////////
         private void ShipAnalitics_Click( object sender, EventArgs e ) => RunShipAnalytics();////////////
-        private void ShipBuildAnalitics_Click( object sender, EventArgs e ) => RunShipBuildAnalytics(); ///////////////
+        private void ShipBuildAnalitics_Click( object sender, EventArgs e ) => RunShipBuildAnalytics();
         private void TechAnalitics_Click( object sender, EventArgs e ) => RunTechAnalytics();
         private void QuestAnalytics_Click( object sender, EventArgs e ) => RunQuestAnalytics(); ///////////////
         private void FleetAnalitics_Click( object sender, EventArgs e ) => RunFleetAnalytics();
@@ -506,7 +557,6 @@ namespace GameDatabase
             RunOtherAnalytics();
 
             _runningFullScan = false;
-
         }
     }
 }
