@@ -9,6 +9,7 @@ using NHunspell;
 using System.Collections;
 using EditorDatabase.DataModel;
 using System.Linq;
+using System.ComponentModel;
 
 namespace GameDatabase
 {
@@ -22,7 +23,7 @@ namespace GameDatabase
 
         private bool _initial;
         private bool _runningFullScan;
-        private Database _database;
+        private readonly Database _database;
 
         private void PrintFaultyName( string str, bool newl = true )
         {
@@ -225,7 +226,99 @@ namespace GameDatabase
 
         private void RunShipAnalytics()
         {
+            if ( !_runningFullScan ) Data.Text = "";
+            bool errorDetected = false;
 
+            List<int> devices = new List<int>();
+
+            foreach ( var item in _database.Content.DeviceList )
+            {
+                devices.Add( item.Id );
+            }
+
+            foreach ( var ship in _database.Content.ShipList )
+            {
+                if ( ship.ModelImage == "" || ship.ModelImage == null )
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
+                    Data.AppendText( $"     Has no ModelImage file reference, the ship will appear as a white box.", Color.Red );
+                    Data.AppendText( "\n" );
+                }
+
+                if ( ship.IconImage == "" || ship.IconImage == null )
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
+                    Data.AppendText( $"     Has no IconImage file reference, the ship's icon will appear as a white box.", Color.Red );
+                    Data.AppendText( "\n" );
+                }
+
+                if ( ship.Name == "" || ship.Name == null )
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
+                    Data.AppendText( $"     Has an empty name.", Color.Red );
+                    Data.AppendText( "\n" );
+                }
+
+                if ( ship.Layout != null )
+                {
+                    if ( ship.Layout.Length == 0 )
+                    {
+                        errorDetected = true;
+                        PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
+                        Data.AppendText( $"     Has an empty layout ( no slots ).", Color.Red );
+                        Data.AppendText( "\n" );
+                    }
+                }
+                else
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
+                    Data.AppendText( $"     Has an empty layout ( no slots ).", Color.Red );
+                    Data.AppendText( "\n" );
+                }
+
+                if ( ship.Barrels != null )
+                {
+                    if ( ship.Barrels.Length < 1 )
+                    {
+                        errorDetected = true;
+                        PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
+                        Data.AppendText( $"     Has an no barrels. Is this intended?", Color.Orange );
+                        Data.AppendText( "\n" );
+                    }
+                }
+                else
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
+                    Data.AppendText( $"     Has no barrels. Is this intended?", Color.Orange );
+                    Data.AppendText( "\n" );
+                }
+
+                if ( ship.BuiltinDevices != null )
+                {
+                    foreach ( var item in ship.BuiltinDevices )
+                    {
+                        if ( !devices.Contains(item) )
+                        {
+                            errorDetected = true;
+                            PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
+                            Data.AppendText( $"     Has an empty or incorrect BuiltIn device ID: [{item}] ( [EMPTY] in editor ).", Color.Red );
+                            Data.AppendText( "\n" );
+                        }
+                    }
+                }
+
+                if ( errorDetected )
+                {
+                    errorDetected = false;
+                    Data.AppendText( "\n" );
+                }
+                _initial = false;
+            }
         }
 
         private void RunShipBuildAnalytics()
@@ -250,7 +343,7 @@ namespace GameDatabase
                         {
                             errorDetected = true;
                             PrintFaultyName( $"[ShipBuild]: [{build.FileName}]:" );
-                            Data.AppendText( $"     Ship build with id: {build} Contains an empty or an incorrect component id: [{item.ComponentId}].", Color.Red, true );
+                            Data.AppendText( $"     Ship build with id: {build.Id} Contains an empty or an incorrect component id: [{item.ComponentId}].", Color.Red, true );
                         }
                     }
                 }
@@ -261,11 +354,6 @@ namespace GameDatabase
                 }
                 _initial = false;
             }
-        }
-
-        private void RunAdvAmmoAnalytics()
-        {
-
         }
 
         private void RunLootAnalytics()
@@ -530,8 +618,7 @@ namespace GameDatabase
             }
         }
 
-        private void AdvAmmoAnalitics_Click( object sender, EventArgs e ) => RunAdvAmmoAnalytics(); ///////////////
-        private void ShipAnalitics_Click( object sender, EventArgs e ) => RunShipAnalytics();////////////
+        private void ShipAnalitics_Click( object sender, EventArgs e ) => RunShipAnalytics();
         private void ShipBuildAnalitics_Click( object sender, EventArgs e ) => RunShipBuildAnalytics();
         private void TechAnalitics_Click( object sender, EventArgs e ) => RunTechAnalytics();
         private void QuestAnalytics_Click( object sender, EventArgs e ) => RunQuestAnalytics(); ///////////////
@@ -545,7 +632,6 @@ namespace GameDatabase
         {
             _runningFullScan = true;
 
-            RunAdvAmmoAnalytics();
             RunShipAnalytics();
             RunShipBuildAnalytics();
             RunTechAnalytics();

@@ -38,7 +38,6 @@ namespace GameDatabase
             this.ComponentAnalitics = new Controls.AdvancedButton();
             this.LootAnalitics = new Controls.AdvancedButton();
             this.FleetAnalitics = new Controls.AdvancedButton();
-            this.AdvAmmoAnalitics = new Controls.AdvancedButton();
             this.TechAnalitics = new Controls.AdvancedButton();
             this.OtherAnalitics = new Controls.AdvancedButton();
             this.TextAnalitics = new Controls.AdvancedButton();
@@ -69,7 +68,7 @@ namespace GameDatabase
             this.QuestAnalytics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.QuestAnalytics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QuestAnalytics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.QuestAnalytics.Location = new System.Drawing.Point(1069, 177);
+            this.QuestAnalytics.Location = new System.Drawing.Point(1070, 135);
             this.QuestAnalytics.Name = "QuestAnalytics";
             this.QuestAnalytics.Size = new System.Drawing.Size(122, 35);
             this.QuestAnalytics.TabIndex = 1;
@@ -86,7 +85,7 @@ namespace GameDatabase
             this.ShipBuildAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ShipBuildAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShipBuildAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.ShipBuildAnalitics.Location = new System.Drawing.Point(1069, 95);
+            this.ShipBuildAnalitics.Location = new System.Drawing.Point(1070, 53);
             this.ShipBuildAnalitics.Name = "ShipBuildAnalitics";
             this.ShipBuildAnalitics.Size = new System.Drawing.Size(122, 35);
             this.ShipBuildAnalitics.TabIndex = 2;
@@ -103,7 +102,7 @@ namespace GameDatabase
             this.ShipAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ShipAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShipAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.ShipAnalitics.Location = new System.Drawing.Point(1069, 54);
+            this.ShipAnalitics.Location = new System.Drawing.Point(1070, 12);
             this.ShipAnalitics.Name = "ShipAnalitics";
             this.ShipAnalitics.Size = new System.Drawing.Size(122, 35);
             this.ShipAnalitics.TabIndex = 3;
@@ -120,7 +119,7 @@ namespace GameDatabase
             this.ComponentAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ComponentAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComponentAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.ComponentAnalitics.Location = new System.Drawing.Point(1069, 300);
+            this.ComponentAnalitics.Location = new System.Drawing.Point(1070, 258);
             this.ComponentAnalitics.Name = "ComponentAnalitics";
             this.ComponentAnalitics.Size = new System.Drawing.Size(122, 35);
             this.ComponentAnalitics.TabIndex = 4;
@@ -137,7 +136,7 @@ namespace GameDatabase
             this.LootAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.LootAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LootAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.LootAnalitics.Location = new System.Drawing.Point(1069, 259);
+            this.LootAnalitics.Location = new System.Drawing.Point(1070, 217);
             this.LootAnalitics.Name = "LootAnalitics";
             this.LootAnalitics.Size = new System.Drawing.Size(122, 35);
             this.LootAnalitics.TabIndex = 5;
@@ -154,29 +153,13 @@ namespace GameDatabase
             this.FleetAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.FleetAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FleetAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.FleetAnalitics.Location = new System.Drawing.Point(1069, 218);
+            this.FleetAnalitics.Location = new System.Drawing.Point(1070, 176);
             this.FleetAnalitics.Name = "FleetAnalitics";
             this.FleetAnalitics.Size = new System.Drawing.Size(122, 35);
             this.FleetAnalitics.TabIndex = 6;
             this.FleetAnalitics.Text = "Analize Fleets";
             this.FleetAnalitics.UseVisualStyleBackColor = false;
             this.FleetAnalitics.Click += new System.EventHandler(this.FleetAnalitics_Click);
-            // 
-            // AdvAmmoAnalitics
-            // 
-            this.AdvAmmoAnalitics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AdvAmmoAnalitics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.AdvAmmoAnalitics.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.AdvAmmoAnalitics.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.AdvAmmoAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AdvAmmoAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdvAmmoAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.AdvAmmoAnalitics.Location = new System.Drawing.Point(1069, 12);
-            this.AdvAmmoAnalitics.Name = "AdvAmmoAnalitics";
-            this.AdvAmmoAnalitics.Size = new System.Drawing.Size(122, 35);
-            this.AdvAmmoAnalitics.TabIndex = 7;
-            this.AdvAmmoAnalitics.Text = "Analize Ammunition (Adv)";
-            this.AdvAmmoAnalitics.UseVisualStyleBackColor = false;
             // 
             // TechAnalitics
             // 
@@ -187,7 +170,7 @@ namespace GameDatabase
             this.TechAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.TechAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TechAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.TechAnalitics.Location = new System.Drawing.Point(1069, 136);
+            this.TechAnalitics.Location = new System.Drawing.Point(1070, 94);
             this.TechAnalitics.Name = "TechAnalitics";
             this.TechAnalitics.Size = new System.Drawing.Size(122, 35);
             this.TechAnalitics.TabIndex = 8;
@@ -204,7 +187,7 @@ namespace GameDatabase
             this.OtherAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.OtherAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OtherAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.OtherAnalitics.Location = new System.Drawing.Point(1069, 382);
+            this.OtherAnalitics.Location = new System.Drawing.Point(1070, 340);
             this.OtherAnalitics.Name = "OtherAnalitics";
             this.OtherAnalitics.Size = new System.Drawing.Size(122, 35);
             this.OtherAnalitics.TabIndex = 9;
@@ -221,7 +204,7 @@ namespace GameDatabase
             this.TextAnalitics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.TextAnalitics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextAnalitics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.TextAnalitics.Location = new System.Drawing.Point(1069, 341);
+            this.TextAnalitics.Location = new System.Drawing.Point(1070, 299);
             this.TextAnalitics.Name = "TextAnalitics";
             this.TextAnalitics.Size = new System.Drawing.Size(122, 35);
             this.TextAnalitics.TabIndex = 10;
@@ -238,7 +221,7 @@ namespace GameDatabase
             this.AllAnalytics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AllAnalytics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AllAnalytics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.AllAnalytics.Location = new System.Drawing.Point(1070, 423);
+            this.AllAnalytics.Location = new System.Drawing.Point(1071, 381);
             this.AllAnalytics.Name = "AllAnalytics";
             this.AllAnalytics.Size = new System.Drawing.Size(122, 35);
             this.AllAnalytics.TabIndex = 12;
@@ -256,7 +239,6 @@ namespace GameDatabase
             this.Controls.Add(this.TextAnalitics);
             this.Controls.Add(this.OtherAnalitics);
             this.Controls.Add(this.TechAnalitics);
-            this.Controls.Add(this.AdvAmmoAnalitics);
             this.Controls.Add(this.FleetAnalitics);
             this.Controls.Add(this.LootAnalitics);
             this.Controls.Add(this.ComponentAnalitics);
@@ -279,7 +261,6 @@ namespace GameDatabase
         private Controls.AdvancedButton ComponentAnalitics;
         private Controls.AdvancedButton LootAnalitics;
         private Controls.AdvancedButton FleetAnalitics;
-        private Controls.AdvancedButton AdvAmmoAnalitics;
         private Controls.AdvancedButton TechAnalitics;
         private Controls.AdvancedButton OtherAnalitics;
         private Controls.AdvancedButton TextAnalitics;
