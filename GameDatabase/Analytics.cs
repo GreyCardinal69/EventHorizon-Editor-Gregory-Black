@@ -244,7 +244,8 @@ namespace GameDatabase
                             .Replace( "2", "" )
                             .Replace( "3", "" )
                             .Replace( "4", "" )
-                            .Replace( "5", "" );
+                            .Replace( "5", "" )
+                            .Replace( "0", "" );
 
                         Data.AppendText( $"     Has an anomalious Slot Type character: {anomaly}.",
                         Color.Red );
@@ -380,7 +381,7 @@ namespace GameDatabase
                 {
                     errorDetected = true;
                     PrintFaultyName( $"[Ship]: [{ship.FileName}]:" );
-                    Data.AppendText( $"     Has no IconImage file reference, the ship's icon will appear as a white box.", Color.Red );
+                    Data.AppendText( $"     Has no IconImage file reference, the ship's icon will appear as the ModelIcon if present, if not then a white box. You should make an icon....NOW!", Color.Orange );
                     Data.AppendText( "\n" );
                 }
 
