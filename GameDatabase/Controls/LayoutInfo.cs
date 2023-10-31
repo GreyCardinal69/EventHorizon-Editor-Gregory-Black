@@ -118,48 +118,53 @@ namespace GameDatabase.Controls
                 }
             }
 
-            var armor = _database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size;
+            var armor = ( _database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size ) * ( _shipData.Features.ArmorBonus.Value == 0 ? 1 : 1 + _shipData.Features.ArmorBonus.Value ) ;
             BaseArmor.Text = armor.ToString( "0.00" );
 
-            BaseWeigth.Text = ( _database.ShipSettings.DefaultWeightPerCell.Value * size * ( 1 + _shipData.BaseWeightModifier.Value ) ).ToString( "0.0" );
+            BaseWeigth.Text = ( _database.ShipSettings.DefaultWeightPerCell.Value * size * ( 1 + _shipData.Features.WeightBonus.Value ) ).ToString( "0.0" );
 
-            MinWeigth.Text = ( _database.ShipSettings.MinimumWeightPerCell.Value * size * ( 1 + _shipData.BaseWeightModifier.Value ) ).ToString( "0.0" );
+            MinWeigth.Text = ( _database.ShipSettings.MinimumWeightPerCell.Value * size * ( 1 + _shipData.Features.WeightBonus.Value ) ).ToString( "0.0" );
 
-            BaseEnergyResistance.Text = CalculateResistances( _shipData.EnergyResistance.Value ).ToString( "0.00" );
-            BaseKineticResistance.Text = CalculateResistances( _shipData.KineticResistance.Value ).ToString( "0.00" );
-            BaseHeatResistance.Text = CalculateResistances( _shipData.HeatResistance.Value ).ToString( "0.00" );
+            BaseEnergyResistance.Text = CalculateResistances( _shipData.Features.EnergyResistance.Value ).ToString( "0.00" );
+            BaseKineticResistance.Text = CalculateResistances( _shipData.Features.KineticResistance.Value ).ToString( "0.00" );
+            BaseHeatResistance.Text = CalculateResistances( _shipData.Features.HeatResistance.Value ).ToString( "0.00" );
 
-            long cost;
-            if ( _shipData.ShipCategory == ShipCategory.Flagship ) cost = checked(15 * size * size);
-            else cost = checked(5 * size * size);
 
-            CreditsCost.Text = cost.ToString();
+            // ShipCategory and ShipCategory.Flagship don't exist anymore. What to put here?
+
+            //  long cost;
+            //  if ( _shipData.ShipType == ShipCategory.Flagship ) cost = checked(15 * size * size);
+            //  else cost = checked(5 * size * size);
+
+            //   CreditsCost.Text = cost.ToString();
+            CreditsCost.Text = "Need new formula since 1.10.0";
 
             long starcost;
-            switch ( _shipData.ShipCategory )
-            {
-                case ShipCategory.Common:
-                    starcost = cost / 48000;
-                    break;
-                case ShipCategory.Rare:
-                    starcost = cost / 6000;
-                    break;
-                case ShipCategory.Flagship:
-                    starcost = ( int ) Math.Floor( armor / 5 );
-                    break;
-                default:
-                    starcost = -1;
-                    break;
-            }
-            if ( starcost >= 0 )
-            {
-                StarCost.Text = starcost.ToString();
-            }
-            else
-            {
-                StarCost.Text = "-";
-            }
-
+            /*    switch ( _shipData.ShipCategory )
+                {
+                    case ShipCategory.Common:
+                        starcost = cost / 48000;
+                        break;
+                    case ShipCategory.Rare:
+                        starcost = cost / 6000;
+                        break;
+                    case ShipCategory.Flagship:
+                        starcost = ( int ) Math.Floor( armor / 5 );
+                        break;
+                    default:
+                        starcost = -1;
+                        break;
+                }
+                if ( starcost >= 0 )
+                {
+                    StarCost.Text = starcost.ToString();
+                }
+                else
+                {
+                    StarCost.Text = "-";
+                }
+            */
+            StarCost.Text = "Need new formula since 1.10.0";
             MinSpawnDistance.Text = Math.Max( ( size - 55 ) / 2, 0 ).ToString();
 
             tableLayoutPanel.ResumeLayout();

@@ -26,6 +26,12 @@
     <Setting Name="MenuItemSelectedGradientEnd" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">242, 188, 87</Value>
     </Setting>
+      <Setting Name="ShipEditorHorizontalSplitter" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">272</Value>
+    </Setting>
+    <Setting Name="ShipEditorVerticalSplitter" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">364</Value>
+    </Setting>
     <Setting Name="MenuItemSelected" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
@@ -76,6 +82,12 @@
     </Setting>
     <Setting Name="StatusStripForeColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">WhiteSmoke</Value>
+    </Setting>
+    <Setting Name="ShipEditorHorizontalSplitter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">272</Value>
+    </Setting>
+    <Setting Name="ShipEditorVerticalSplitter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">364</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -58,7 +58,32 @@ namespace System.Windows.Forms.Properties {
                 this["MenuStripForeColor"] = value;
             }
         }
-        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute( "272" )]
+        public int ShipEditorHorizontalSplitter
+        {
+            get
+            {
+                return ( ( int ) ( this["ShipEditorHorizontalSplitter"] ) );
+            }
+            set
+            {
+                this["ShipEditorHorizontalSplitter"] = value;
+            }
+        }
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute( "364" )]
+        public int ShipEditorVerticalSplitter
+        {
+            get
+            {
+                return ( ( int ) ( this["ShipEditorVerticalSplitter"] ) );
+            }
+            set
+            {
+                this["ShipEditorVerticalSplitter"] = value;
+            }
+        }
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Maroon")]

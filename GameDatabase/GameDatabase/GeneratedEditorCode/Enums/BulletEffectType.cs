@@ -14,5 +14,7 @@ namespace EditorDatabase.Enums
 		PlaySfx,
 		SpawnBullet,
 		Detonate,
+		SpawnStaticSfx,
+		GravityField,
 	}
 }

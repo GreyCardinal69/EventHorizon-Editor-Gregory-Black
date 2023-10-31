@@ -21,16 +21,23 @@ namespace EditorDatabase.DataModel
 
 		public BulletPrefab(BulletPrefabSerializable serializable, Database database)
 		{
-			Id = new ItemId<BulletPrefab>(serializable.Id, serializable.FileName);
-			Shape = serializable.Shape;
-			Image = serializable.Image;
-			Size = new NumericValue<float>(serializable.Size, 0.01f, 100f);
-			Margins = new NumericValue<float>(serializable.Margins, 0f, 1f);
-			MainColor = Helpers.ColorFromString(serializable.MainColor);
-			MainColorMode = serializable.MainColorMode;
-			SecondColor = Helpers.ColorFromString(serializable.SecondColor);
-			SecondColorMode = serializable.SecondColorMode;
-
+			try
+			{
+				Id = new ItemId<BulletPrefab>(serializable.Id, serializable.FileName);
+				Shape = serializable.Shape;
+				Image = serializable.Image;
+				Size = new NumericValue<float>(serializable.Size, 0.01f, 100f);
+				Margins = new NumericValue<float>(serializable.Margins, 0f, 1f);
+				Deformation = new NumericValue<float>(serializable.Deformation, -100f, 100f);
+				MainColor = Helpers.ColorFromString(serializable.MainColor);
+				MainColorMode = serializable.MainColorMode;
+				SecondColor = Helpers.ColorFromString(serializable.SecondColor);
+				SecondColorMode = serializable.SecondColorMode;
+			}
+			catch (DatabaseException e)
+			{
+				throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
+			}
 			OnDataDeserialized(serializable, database);
 		}
 
@@ -40,6 +47,7 @@ namespace EditorDatabase.DataModel
 			serializable.Image = Image;
 			serializable.Size = Size.Value;
 			serializable.Margins = Margins.Value;
+			serializable.Deformation = Deformation.Value;
 			serializable.MainColor = Helpers.ColorToString(MainColor);
 			serializable.MainColorMode = MainColorMode;
 			serializable.SecondColor = Helpers.ColorToString(SecondColor);
@@ -53,6 +61,7 @@ namespace EditorDatabase.DataModel
 		public string Image;
 		public NumericValue<float> Size = new NumericValue<float>(0, 0.01f, 100f);
 		public NumericValue<float> Margins = new NumericValue<float>(0, 0f, 1f);
+		public NumericValue<float> Deformation = new NumericValue<float>(0, -100f, 100f);
 		public System.Drawing.Color MainColor;
 		public ColorMode MainColorMode;
 		public System.Drawing.Color SecondColor;

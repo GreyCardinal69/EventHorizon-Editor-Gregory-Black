@@ -8,81 +8,117 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GameDatabase.Properties {
-    
-    
+namespace GameDatabase.Properties
+{
+
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        
-        public static Settings Default {
-            get {
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute( "Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0" )]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        private static Settings defaultInstance = ( ( Settings ) ( global::System.Configuration.ApplicationSettingsBase.Synchronized( new Settings() ) ) );
+
+        public static Settings Default
+        {
+            get
+            {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("800, 600")]
-        public global::System.Drawing.Size MainSize {
-            get {
-                return ((global::System.Drawing.Size)(this["MainSize"]));
+        [global::System.Configuration.DefaultSettingValueAttribute( "800, 600" )]
+        public global::System.Drawing.Size MainSize
+        {
+            get
+            {
+                return ( ( global::System.Drawing.Size ) ( this["MainSize"] ) );
             }
-            set {
+            set
+            {
                 this["MainSize"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100, 100")]
-        public global::System.Drawing.Point MainPosition {
-            get {
-                return ((global::System.Drawing.Point)(this["MainPosition"]));
+        [global::System.Configuration.DefaultSettingValueAttribute( "100, 100" )]
+        public global::System.Drawing.Point MainPosition
+        {
+            get
+            {
+                return ( ( global::System.Drawing.Point ) ( this["MainPosition"] ) );
             }
-            set {
+            set
+            {
                 this["MainPosition"] = value;
             }
         }
-        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute( "272" )]
+        public int ShipEditorHorizontalSplitter
+        {
+            get
+            {
+                return ( ( int ) 272 );
+            }
+        }
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute( "364" )]
+        public int ShipEditorVerticalSplitter
+        {
+            get
+            {
+                return ( ( int ) 364 );
+            }
+        }
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int SortingType {
-            get {
-                return ((int)(this["SortingType"]));
+        [global::System.Configuration.DefaultSettingValueAttribute( "0" )]
+        public int SortingType
+        {
+            get
+            {
+                return ( ( int ) ( this["SortingType"] ) );
             }
-            set {
+            set
+            {
                 this["SortingType"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ClosingConfirmation {
-            get {
-                return ((bool)(this["ClosingConfirmation"]));
+        [global::System.Configuration.DefaultSettingValueAttribute( "True" )]
+        public bool ClosingConfirmation
+        {
+            get
+            {
+                return ( ( bool ) ( this["ClosingConfirmation"] ) );
             }
-            set {
+            set
+            {
                 this["ClosingConfirmation"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Setting {
-            get {
-                return ((string)(this["Setting"]));
+        [global::System.Configuration.DefaultSettingValueAttribute( "" )]
+        public string Setting
+        {
+            get
+            {
+                return ( ( string ) ( this["Setting"] ) );
             }
-            set {
+            set
+            {
                 this["Setting"] = value;
             }
         }
 
-        
+
     }
 }

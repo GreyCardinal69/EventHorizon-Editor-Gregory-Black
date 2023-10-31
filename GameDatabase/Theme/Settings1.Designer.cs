@@ -12,7 +12,7 @@ namespace GameDatabase.Theme {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -116,6 +116,30 @@ namespace GameDatabase.Theme {
             }
             set {
                 this["MenuItemSelectedGradientEnd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("272")]
+        public int ShipEditorHorizontalSplitter {
+            get {
+                return ((int)(this["ShipEditorHorizontalSplitter"]));
+            }
+            set {
+                this["ShipEditorHorizontalSplitter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("364")]
+        public int ShipEditorVerticalSplitter {
+            get {
+                return ((int)(this["ShipEditorVerticalSplitter"]));
+            }
+            set {
+                this["ShipEditorVerticalSplitter"] = value;
             }
         }
         
@@ -320,6 +344,30 @@ namespace GameDatabase.Theme {
             }
             set {
                 this["StatusStripForeColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("272")]
+        public string ShipEditorHorizontalSplitter1 {
+            get {
+                return ((string)(this["ShipEditorHorizontalSplitter1"]));
+            }
+            set {
+                this["ShipEditorHorizontalSplitter1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("364")]
+        public string ShipEditorVerticalSplitter1 {
+            get {
+                return ((string)(this["ShipEditorVerticalSplitter1"]));
+            }
+            set {
+                this["ShipEditorVerticalSplitter1"] = value;
             }
         }
     }

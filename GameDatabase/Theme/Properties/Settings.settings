@@ -35,6 +35,12 @@
     <Setting Name="ImageMarginGradientMiddle" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">WhiteSmoke</Value>
     </Setting>
+      <Setting Name="ShipEditorHorizontalSplitter" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">272</Value>
+    </Setting>
+    <Setting Name="ShipEditorVerticalSplitter" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">364</Value>
+    </Setting>
     <Setting Name="ImageMarginGradientEnd" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">WhiteSmoke</Value>
     </Setting>

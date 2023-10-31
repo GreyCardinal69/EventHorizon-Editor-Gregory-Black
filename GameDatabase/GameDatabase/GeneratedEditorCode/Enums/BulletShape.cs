@@ -17,5 +17,7 @@ namespace EditorDatabase.Enums
 		EnergyBeam,
 		Spark,
 		Mine,
+		Wave,
+		BlackHole,
 	}
 }

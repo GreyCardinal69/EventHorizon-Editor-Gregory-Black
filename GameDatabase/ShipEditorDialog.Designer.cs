@@ -1,4 +1,6 @@
 ﻿using GameDatabase.Controls;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace GameDatabase
 {
@@ -423,6 +425,18 @@ namespace GameDatabase
             this.PerformLayout();
 
         }
+        private void ShipEditorDialog_FormClosed( object sender, FormClosedEventArgs e )
+        {
+            foreach ( var key in new List<string>( MainWindow.OppenedWindows.Keys ) )
+            {
+                if ( MainWindow.OppenedWindows[key] == this )
+                {
+                    MainWindow.OppenedWindows.Remove( key );
+                    return;
+                }
+            }
+        }
+
 
         private BarrelsCollectionEditor barrelCollection;
         private System.Windows.Forms.Button button1;

@@ -169,6 +169,8 @@
     </Compile>
     <Compile Include="GameDatabase\DataModel\Barrel.cs" />
     <Compile Include="GameDatabase\DataModel\Component.cs" />
+    <Compile Include="GameDatabase\DataModel\ComponentStats.cs" />
+    <Compile Include="GameDatabase\DataModel\Ship.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Database.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DatabaseException.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Ammunition.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Faction.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\FactionFilter.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Fleet.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\FrontierSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\GalaxySettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ImpactEffect.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\InstalledComponent.cs" />
@@ -207,7 +210,10 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\SatelliteBuild.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Ship.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipBuild.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipFeatures.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipModSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipSettings.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipToValue.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Skill.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Technology.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\VisualEffect.cs" />
@@ -242,6 +248,8 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\RequirementType.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\RewardCondition.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\ShipCategory.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Enums\ShipRarity.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Enums\ShipType.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\SizeClass.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\SkillType.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\StartCondition.cs" />
@@ -268,6 +276,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Faction.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\FactionFilter.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Fleet.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\FrontierSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\GalaxySettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ImpactEffect.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\InstalledComponent.cs" />
@@ -286,7 +295,10 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\SerializableItem.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Ship.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipBuild.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipFeatures.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipModSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipSettings.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipToValue.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Skill.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Technology.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\VisualEffect.cs" />
@@ -350,6 +362,11 @@
     </Compile>
     <Compile Include="Theme\CustomToolStrip.Designer.cs" />
     <Compile Include="Theme\CustomToolStripColorTable.cs" />
+    <Compile Include="Theme\Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Theme\Settings.Designer.cs" />
     <Compile Include="Theme\Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -424,6 +441,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Theme\Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Theme\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>

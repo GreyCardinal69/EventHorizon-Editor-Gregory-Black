@@ -14,6 +14,7 @@ using EditorDatabase.Model;
 using System.Xml.Linq;
 using System.Linq;
 using System.Text;
+using EditorDatabase.DataModel;
 
 namespace EditorDatabase.Storage
 {
@@ -74,11 +75,15 @@ namespace EditorDatabase.Storage
             if (DatabaseSettings != null)
                 storage.SaveJson(DatabaseSettings.FileName, jsonSerializer.ToJson(DatabaseSettings));            
             if (ExplorationSettings != null)
-                storage.SaveJson(ExplorationSettings.FileName, jsonSerializer.ToJson(ExplorationSettings));            
-            if (GalaxySettings != null)
-                storage.SaveJson(GalaxySettings.FileName, jsonSerializer.ToJson(GalaxySettings));            
-            if (ShipSettings != null)
-                storage.SaveJson(ShipSettings.FileName, jsonSerializer.ToJson(ShipSettings));            
+                storage.SaveJson(ExplorationSettings.FileName, jsonSerializer.ToJson(ExplorationSettings));
+            if ( FrontierSettings != null )
+                storage.SaveJson( FrontierSettings.FileName, jsonSerializer.ToJson( FrontierSettings ) );
+            if ( GalaxySettings != null )
+                storage.SaveJson( GalaxySettings.FileName, jsonSerializer.ToJson( GalaxySettings ) );
+            if ( ShipModSettings != null )
+                storage.SaveJson( ShipModSettings.FileName, jsonSerializer.ToJson( ShipModSettings ) );
+            if ( ShipSettings != null )
+                storage.SaveJson( ShipSettings.FileName, jsonSerializer.ToJson( ShipSettings ) );
         }
 
         public const int SchemaVersion = 1;
@@ -407,6 +412,24 @@ namespace EditorDatabase.Storage
                     throw new DatabaseException("Duplicate ShipSettings file found - " + name);
                 ShipSettings = data;
             }
+            else if ( type == ItemType.FrontierSettings )
+            {
+                var data = _serializer.FromJson<FrontierSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( FrontierSettings != null )
+                    throw new DatabaseException( "Duplicate FrontierSettings file found - " + name );
+                FrontierSettings = data;
+            }
+            else if ( type == ItemType.ShipModSettings )
+            {
+                var data = _serializer.FromJson<ShipModSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( ShipModSettings != null )
+                    throw new DatabaseException( "Duplicate ShipModSettings file found - " + name );
+                ShipModSettings = data;
+            }
             else
             {
                 throw new DatabaseException("Unknown file type - " + type + "(" + name + ")");
@@ -427,8 +450,9 @@ namespace EditorDatabase.Storage
 		public ExplorationSettingsSerializable ExplorationSettings { get; private set; }
 		public GalaxySettingsSerializable GalaxySettings { get; private set; }
 		public ShipSettingsSerializable ShipSettings { get; private set; }
-
-		public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList => _ammunitionObsoleteMap.Values.ToList();
+        public FrontierSettingsSerializable FrontierSettings { get; private set; }
+        public ShipModSettingsSerializable ShipModSettings { get; private set; }
+        public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList => _ammunitionObsoleteMap.Values.ToList();
 		public List<ComponentSerializable> ComponentList => _componentMap.Values.ToList();
         public List<ComponentModSerializable> ComponentModList => _componentModMap.Values.ToList();
         public List<ComponentStatsSerializable> ComponentStatsList => _componentStatsMap.Values.ToList();
