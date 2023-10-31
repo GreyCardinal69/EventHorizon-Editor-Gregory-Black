@@ -198,9 +198,9 @@ namespace GameDatabase
 
         private void barrelCollection_CollectionChanged(object sender, EventArgs e)
         {
-            if (_item is Ship)
+            if (_item is Ship ship )
             {
-                ((Ship)_item).Barrels = (Barrel[])barrelCollection.Data;
+                ship.Barrels = (Barrel[])barrelCollection.Data;
             }
             else if (_item is Satellite)
             {
