@@ -65,16 +65,77 @@ namespace GameDatabase
             _ignoreEvents = false;
 
             UpdateBarrels();
-
+            UpdateEngines();
             splitContainer1.SplitterDistance = 272;
             splitContainer2.SplitterDistance = 362;
         }
+
+        private void UpdateEngines()
+        {
+            if ( !( _item is Ship ) ) return;
+
+            var ship = _item as Ship;
+
+            Engine[] engines = ship.Engines ?? new Engine[0];
+
+            foreach ( var engine in engines )
+            {
+                engines = engines.Concat( new Engine[] {
+                    new Engine() {
+                        Position = engine.Position,
+                        Size = engine.Size
+                    }
+                } ).ToArray();
+            }
+
+            layoutEditor1.Engines = ( engines ).Select( item => new LayoutEditor.EngineData
+            {
+                X = item.Position.y,
+                Y = item.Position.x
+            } ).ToArray();
+        }
+
 
         private void radioButton1_CheckedChanged( object sender, EventArgs e )
         {
             if ( _ignoreEvents ) return;
 
             layoutEditor1.SelectedCategory = ( char ) CellType.Empty;
+        }
+
+        private void radioButton3_CheckedChanged( object sender, EventArgs e )
+        {
+            if ( _ignoreEvents ) return;
+
+            layoutEditor1.SelectedCategory = ( char ) CellType.Engine;
+        }
+
+        private void radioButton2_CheckedChanged( object sender, EventArgs e )
+        {
+            if ( _ignoreEvents ) return;
+
+            layoutEditor1.SelectedCategory = ( char ) CellType.Weapon;
+        }
+
+        private void radioButton4_CheckedChanged( object sender, EventArgs e )
+        {
+            if ( _ignoreEvents ) return;
+
+            layoutEditor1.SelectedCategory = ( char ) CellType.Inner;
+        }
+
+        private void radioButton5_CheckedChanged( object sender, EventArgs e )
+        {
+            if ( _ignoreEvents ) return;
+
+            layoutEditor1.SelectedCategory = ( char ) CellType.InnerOuter;
+        }
+
+        private void radioButton6_CheckedChanged( object sender, EventArgs e )
+        {
+            if ( _ignoreEvents ) return;
+
+            layoutEditor1.SelectedCategory = ( char ) CellType.Outer;
         }
 
         private void splitContainer2_SplitterMoved( object sender, SplitterEventArgs e )
@@ -117,42 +178,8 @@ namespace GameDatabase
             if ( _item is Ship )
             {
                 layoutInfo?.OnLayoutChanged();
-               // UpdateEngines();
+                UpdateEngines();
             }
-        }
-            private void radioButton3_CheckedChanged( object sender, EventArgs e )
-        {
-            if ( _ignoreEvents ) return;
-
-            layoutEditor1.SelectedCategory = ( char ) CellType.Engine;
-        }
-
-        private void radioButton2_CheckedChanged( object sender, EventArgs e )
-        {
-            if ( _ignoreEvents ) return;
-
-            layoutEditor1.SelectedCategory = ( char ) CellType.Weapon;
-        }
-
-        private void radioButton4_CheckedChanged( object sender, EventArgs e )
-        {
-            if ( _ignoreEvents ) return;
-
-            layoutEditor1.SelectedCategory = ( char ) CellType.Inner;
-        }
-
-        private void radioButton5_CheckedChanged( object sender, EventArgs e )
-        {
-            if ( _ignoreEvents ) return;
-
-            layoutEditor1.SelectedCategory = ( char ) CellType.InnerOuter;
-        }
-
-        private void radioButton6_CheckedChanged( object sender, EventArgs e )
-        {
-            if ( _ignoreEvents ) return;
-
-            layoutEditor1.SelectedCategory = ( char ) CellType.Outer;
         }
 
         private void layoutEditor1_ValueChanged( object sender, EventArgs e )
