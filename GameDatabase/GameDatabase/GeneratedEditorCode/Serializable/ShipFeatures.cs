@@ -19,8 +19,9 @@ namespace EditorDatabase.Serializable
 		public float EnergyResistance;
 		public float KineticResistance;
 		public float HeatResistance;
-		public float WeightBonus;
-		public float VelocityBonus;
+        public float ShipWeightBonus;
+        public float EquipmentWeightBonus;
+        public float VelocityBonus;
 		public float TurnRateBonus;
 		public float ArmorBonus;
 		public float ShieldBonus;

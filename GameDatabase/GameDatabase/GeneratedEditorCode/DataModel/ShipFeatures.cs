@@ -25,8 +25,9 @@ namespace EditorDatabase.DataModel
 			EnergyResistance = new NumericValue<float>(serializable.EnergyResistance, -100f, 100f);
 			KineticResistance = new NumericValue<float>(serializable.KineticResistance, -100f, 100f);
 			HeatResistance = new NumericValue<float>(serializable.HeatResistance, -100f, 100f);
-			WeightBonus = new NumericValue<float>(serializable.WeightBonus, -1f, 10f);
-			VelocityBonus = new NumericValue<float>(serializable.VelocityBonus, -1f, 10f);
+            ShipWeightBonus = new NumericValue<float>( serializable.ShipWeightBonus, -1f, 10f );
+            EquipmentWeightBonus = new NumericValue<float>( serializable.EquipmentWeightBonus, -1f, 10f );
+            VelocityBonus = new NumericValue<float>(serializable.VelocityBonus, -1f, 10f);
 			TurnRateBonus = new NumericValue<float>(serializable.TurnRateBonus, -1f, 10f);
 			ArmorBonus = new NumericValue<float>(serializable.ArmorBonus, -1f, 10f);
 			ShieldBonus = new NumericValue<float>(serializable.ShieldBonus, -1f, 10f);
@@ -42,7 +43,9 @@ namespace EditorDatabase.DataModel
 			serializable.EnergyResistance = EnergyResistance.Value;
 			serializable.KineticResistance = KineticResistance.Value;
 			serializable.HeatResistance = HeatResistance.Value;
-			serializable.WeightBonus = WeightBonus.Value;
+            serializable.ShipWeightBonus = ShipWeightBonus.Value;
+            serializable.EquipmentWeightBonus = EquipmentWeightBonus.Value;
+            serializable.WeightBonus = WeightBonus.Value;
 			serializable.VelocityBonus = VelocityBonus.Value;
 			serializable.TurnRateBonus = TurnRateBonus.Value;
 			serializable.ArmorBonus = ArmorBonus.Value;
@@ -60,8 +63,9 @@ namespace EditorDatabase.DataModel
 		public NumericValue<float> EnergyResistance = new NumericValue<float>(0, -100f, 100f);
 		public NumericValue<float> KineticResistance = new NumericValue<float>(0, -100f, 100f);
 		public NumericValue<float> HeatResistance = new NumericValue<float>(0, -100f, 100f);
-		public NumericValue<float> WeightBonus = new NumericValue<float>(0, -1f, 10f);
-		public NumericValue<float> VelocityBonus = new NumericValue<float>(0, -1f, 10f);
+        public NumericValue<float> ShipWeightBonus = new NumericValue<float>( 0, -1f, 10f );
+        public NumericValue<float> EquipmentWeightBonus = new NumericValue<float>( 0, -1f, 10f );
+        public NumericValue<float> VelocityBonus = new NumericValue<float>(0, -1f, 10f);
 		public NumericValue<float> TurnRateBonus = new NumericValue<float>(0, -1f, 10f);
 		public NumericValue<float> ArmorBonus = new NumericValue<float>(0, -1f, 10f);
 		public NumericValue<float> ShieldBonus = new NumericValue<float>(0, -1f, 10f);

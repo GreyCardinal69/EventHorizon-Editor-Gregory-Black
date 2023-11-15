@@ -30,8 +30,8 @@ namespace EditorDatabase.DataModel
 				Availability = serializable.Availability;
 				Stats = database.GetComponentStatsId(serializable.ComponentStatsId);
 				if (Stats.IsNull)
-				    throw new DatabaseException(this.GetType().Name + ": Stats cannot be null");
-				Faction = database.GetFactionId(serializable.Faction);
+                    throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Stats cannot be null" );
+                Faction = database.GetFactionId(serializable.Faction);
 				Level = new NumericValue<int>(serializable.Level, 0, 2147483647);
 				Icon = serializable.Icon;
 				Color = Helpers.ColorFromString(serializable.Color);

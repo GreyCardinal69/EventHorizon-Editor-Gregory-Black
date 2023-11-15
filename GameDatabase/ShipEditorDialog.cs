@@ -66,8 +66,8 @@ namespace GameDatabase
 
             UpdateBarrels();
 
-            splitContainer1.SplitterDistance = Settings.Default.ShipEditorHorizontalSplitter;
-            splitContainer2.SplitterDistance = Settings.Default.ShipEditorVerticalSplitter;
+            splitContainer1.SplitterDistance = 272;
+            splitContainer2.SplitterDistance = 362;
         }
 
         private void radioButton1_CheckedChanged( object sender, EventArgs e )

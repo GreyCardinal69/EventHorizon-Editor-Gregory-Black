@@ -26,8 +26,8 @@ namespace EditorDatabase.DataModel
 				Id = new ItemId<ShipBuild>(serializable.Id, serializable.FileName);
 				Ship = database.GetShipId(serializable.ShipId);
 				if (Ship.IsNull)
-				    throw new DatabaseException(this.GetType().Name + ": Ship cannot be null");
-				NotAvailableInGame = serializable.NotAvailableInGame;
+                    throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Ship cannot be null" );
+                NotAvailableInGame = serializable.NotAvailableInGame;
 				DifficultyClass = serializable.DifficultyClass;
 				BuildFaction = database.GetFactionId(serializable.BuildFaction);
 				Components = serializable.Components?.Select(item => new InstalledComponent(item, database)).ToArray();

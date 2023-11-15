@@ -18,6 +18,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Drawing;
 using System.Windows.Forms;
+using GameDatabase;
 
 namespace EditorDatabase
 {
@@ -51,28 +52,162 @@ namespace EditorDatabase
 
         public void Save( IDataStorage storage )
         {
-            foreach ( var item in _ammunitionObsoleteMap ) item.Value.Save( _content.GetAmmunitionObsolete( item.Key ) );
-            foreach ( var item in _componentMap ) item.Value.Save( _content.GetComponent( item.Key ) );
-            foreach ( var item in _componentModMap ) item.Value.Save( _content.GetComponentMod( item.Key ) );
-            foreach ( var item in _componentStatsMap ) item.Value.Save( _content.GetComponentStats( item.Key ) );
-            foreach ( var item in _deviceMap ) item.Value.Save( _content.GetDevice( item.Key ) );
-            foreach ( var item in _droneBayMap ) item.Value.Save( _content.GetDroneBay( item.Key ) );
-            foreach ( var item in _factionMap ) item.Value.Save( _content.GetFaction( item.Key ) );
-            foreach ( var item in _satelliteMap ) item.Value.Save( _content.GetSatellite( item.Key ) );
-            foreach ( var item in _satelliteBuildMap ) item.Value.Save( _content.GetSatelliteBuild( item.Key ) );
-            foreach ( var item in _shipMap ) item.Value.Save( _content.GetShip( item.Key ) );
-            foreach ( var item in _shipBuildMap ) item.Value.Save( _content.GetShipBuild( item.Key ) );
-            foreach ( var item in _skillMap ) item.Value.Save( _content.GetSkill( item.Key ) );
-            foreach ( var item in _technologyMap ) item.Value.Save( _content.GetTechnology( item.Key ) );
-            foreach ( var item in _characterMap ) item.Value.Save( _content.GetCharacter( item.Key ) );
-            foreach ( var item in _fleetMap ) item.Value.Save( _content.GetFleet( item.Key ) );
-            foreach ( var item in _lootMap ) item.Value.Save( _content.GetLoot( item.Key ) );
-            foreach ( var item in _questMap ) item.Value.Save( _content.GetQuest( item.Key ) );
-            foreach ( var item in _questItemMap ) item.Value.Save( _content.GetQuestItem( item.Key ) );
-            foreach ( var item in _ammunitionMap ) item.Value.Save( _content.GetAmmunition( item.Key ) );
-            foreach ( var item in _bulletPrefabMap ) item.Value.Save( _content.GetBulletPrefab( item.Key ) );
-            foreach ( var item in _visualEffectMap ) item.Value.Save( _content.GetVisualEffect( item.Key ) );
-            foreach ( var item in _weaponMap ) item.Value.Save( _content.GetWeapon( item.Key ) );
+            var secondaryDb = MainWindow.MainInstance._secondaryDatabse;
+
+            foreach ( var item in _ammunitionObsoleteMap )
+            {
+                var value = _content.GetAmmunitionObsolete( item.Key );
+                if ( value != secondaryDb.Content.GetAmmunitionObsolete( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _componentMap )
+            {
+                var value = _content.GetComponent( item.Key );
+                if ( value != secondaryDb.Content.GetComponent( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _componentModMap )
+            {
+                var value = _content.GetComponentMod( item.Key );
+                if ( value != secondaryDb.Content.GetComponentMod( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _componentStatsMap )
+            {
+                var value = _content.GetComponentStats( item.Key );
+                if ( value != secondaryDb.Content.GetComponentStats( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _deviceMap )
+            {
+                var value = _content.GetDevice( item.Key );
+                if ( value != secondaryDb.Content.GetDevice( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _droneBayMap )
+            {
+                var value = _content.GetDroneBay( item.Key );
+                if ( value != secondaryDb.Content.GetDroneBay( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _factionMap )
+            {
+                var value = _content.GetFaction( item.Key );
+                if ( value != secondaryDb.Content.GetFaction( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _satelliteMap )
+            {
+                var value = _content.GetSatellite( item.Key );
+                if ( value != secondaryDb.Content.GetSatellite( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _satelliteBuildMap )
+            {
+                var value = _content.GetSatelliteBuild( item.Key );
+                if ( value != secondaryDb.Content.GetSatelliteBuild( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _shipMap )
+            {
+                var value = _content.GetShip( item.Key );
+                if ( value != secondaryDb.Content.GetShip( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _shipBuildMap )
+            {
+                var value = _content.GetShipBuild( item.Key );
+                if ( value != secondaryDb.Content.GetShipBuild( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _skillMap )
+            {
+                var value = _content.GetSkill( item.Key );
+                if ( value != secondaryDb.Content.GetSkill( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _technologyMap )
+            {
+                var value = _content.GetTechnology( item.Key );
+                if ( value != secondaryDb.Content.GetTechnology( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _characterMap )
+            {
+                var value = _content.GetCharacter( item.Key );
+                if ( value != secondaryDb.Content.GetCharacter( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _fleetMap )
+            {
+                var value = _content.GetFleet( item.Key );
+                if ( value != secondaryDb.Content.GetFleet( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _lootMap )
+            {
+                var value = _content.GetLoot( item.Key );
+                if ( value != secondaryDb.Content.GetLoot( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _questMap )
+            {
+                var value = _content.GetQuest( item.Key );
+                if ( value != secondaryDb.Content.GetQuest( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _questItemMap )
+            {
+                var value = _content.GetQuestItem( item.Key );
+                if ( value != secondaryDb.Content.GetQuestItem( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _ammunitionMap )
+            {
+                var value = _content.GetAmmunition( item.Key );
+                if ( value != secondaryDb.Content.GetAmmunition( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _bulletPrefabMap )
+            {
+                var value = _content.GetBulletPrefab( item.Key );
+                if ( value != secondaryDb.Content.GetBulletPrefab( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _visualEffectMap )
+            {
+                var value = _content.GetVisualEffect( item.Key );
+                if ( value != secondaryDb.Content.GetVisualEffect( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _weaponMap )
+            {
+                var value = _content.GetWeapon( item.Key );
+                if ( value != secondaryDb.Content.GetWeapon( item.Key ) )
+                    item.Value.Save( value );
+            }
+
             _databaseSettings?.Save( _content.DatabaseSettings );
             _explorationSettings?.Save( _content.ExplorationSettings );
             _frontierSettings?.Save( _content.FrontierSettings );
