@@ -818,6 +818,7 @@ namespace EditorDatabase
         private ShipSettings _shipSettings;
         private FrontierSettings _frontierSettings;
         private ShipModSettings _shipModSettings;
+        private SpecialEventSettings _specialEventSettings;
         private readonly IJsonSerializer _serializer;
         private readonly DatabaseContent _content;
     }
