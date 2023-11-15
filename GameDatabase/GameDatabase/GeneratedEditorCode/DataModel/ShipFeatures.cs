@@ -45,7 +45,6 @@ namespace EditorDatabase.DataModel
 			serializable.HeatResistance = HeatResistance.Value;
             serializable.ShipWeightBonus = ShipWeightBonus.Value;
             serializable.EquipmentWeightBonus = EquipmentWeightBonus.Value;
-            serializable.WeightBonus = WeightBonus.Value;
 			serializable.VelocityBonus = VelocityBonus.Value;
 			serializable.TurnRateBonus = TurnRateBonus.Value;
 			serializable.ArmorBonus = ArmorBonus.Value;

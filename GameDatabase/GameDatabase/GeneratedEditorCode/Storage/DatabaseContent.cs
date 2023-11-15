@@ -72,6 +72,9 @@ namespace EditorDatabase.Storage
                 storage.SaveJson(item.FileName, jsonSerializer.ToJson(item));
             foreach (var item in _weaponMap.Values)
                 storage.SaveJson(item.FileName, jsonSerializer.ToJson(item));
+
+            if ( SkillSettings != null )
+                storage.SaveJson( SkillSettings.FileName, jsonSerializer.ToJson( SkillSettings ) );
             if (DatabaseSettings != null)
                 storage.SaveJson(DatabaseSettings.FileName, jsonSerializer.ToJson(DatabaseSettings));            
             if (ExplorationSettings != null)
@@ -258,6 +261,15 @@ namespace EditorDatabase.Storage
                 var data = _serializer.FromJson<DeviceSerializable>(content);
                 data.FileName = name;
                 _deviceMap.Add(data.Id, data);
+            }
+            else if ( type == ItemType.SkillSettings )
+            {
+                var data = _serializer.FromJson<SkillSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( SkillSettings != null )
+                    throw new DatabaseException( "Duplicate SkillSettings file found - " + name );
+                SkillSettings = data;
             }
             else if ( type == ItemType.SpecialEventSettings )
             {
@@ -457,6 +469,7 @@ namespace EditorDatabase.Storage
             _images.Add(data.Name, data);
         }
 
+        public SkillSettingsSerializable SkillSettings { get; private set; }
         public SpecialEventSettingsSerializable SpecialEventSettings { get; private set; }
         public DatabaseSettingsSerializable DatabaseSettings { get; private set; }
 		public ExplorationSettingsSerializable ExplorationSettings { get; private set; }

@@ -170,6 +170,7 @@
     <Compile Include="GameDatabase\DataModel\Barrel.cs" />
     <Compile Include="GameDatabase\DataModel\Component.cs" />
     <Compile Include="GameDatabase\DataModel\ComponentStats.cs" />
+    <Compile Include="GameDatabase\DataModel\Faction.cs" />
     <Compile Include="GameDatabase\DataModel\Ship.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Database.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DatabaseException.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipToValue.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Skill.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\SkillSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\SpecialEventSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Technology.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\VisualEffect.cs" />
@@ -301,6 +303,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipToValue.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Skill.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\SkillSettingsSerializable.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\SpecialEventSettingsSerializable.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Technology.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\VisualEffect.cs" />

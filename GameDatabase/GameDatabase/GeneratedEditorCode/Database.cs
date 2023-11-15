@@ -207,7 +207,7 @@ namespace EditorDatabase
                 if ( value != secondaryDb.Content.GetWeapon( item.Key ) )
                     item.Value.Save( value );
             }
-
+            _skillSettings?.Save( _content.SkillSettings );
             _databaseSettings?.Save( _content.DatabaseSettings );
             _explorationSettings?.Save( _content.ExplorationSettings );
             _frontierSettings?.Save( _content.FrontierSettings );
@@ -280,6 +280,7 @@ namespace EditorDatabase
                 case ItemType.ExplorationSettings: return ExplorationSettings;
                 case ItemType.GalaxySettings: return GalaxySettings;
                 case ItemType.ShipSettings: return ShipSettings;
+                case ItemType.SkillSettings: return SkillSettings;
                 case ItemType.SpecialEventSettings: return SpecialEventSettings;
                 default: return null;
             }
@@ -320,7 +321,7 @@ namespace EditorDatabase
         public ShipModSettings ShipModSettings => _shipModSettings ?? ( _shipModSettings = new ShipModSettings( _content.ShipModSettings, this ) );
         public ShipSettings ShipSettings => _shipSettings ?? ( _shipSettings = new ShipSettings( _content.ShipSettings, this ) );
         public SpecialEventSettings SpecialEventSettings => _specialEventSettings ?? ( _specialEventSettings = new SpecialEventSettings( _content.SpecialEventSettings, this ) );
-
+        public SkillSettings SkillSettings => _skillSettings ?? ( _skillSettings = new SkillSettings( _content.SkillSettings, this ) );
         public ItemId<AmmunitionObsolete> GetAmmunitionObsoleteId( int id ) { return new ItemId<AmmunitionObsolete>( _content.GetAmmunitionObsolete( id ) ); }
 
         public AmmunitionObsolete GetAmmunitionObsolete( int id )
@@ -780,6 +781,7 @@ namespace EditorDatabase
             _visualEffectMap.Clear();
             _weaponMap.Clear();
 
+            _skillSettings = null;
             _specialEventSettings = null;
             _databaseSettings = null;
             _explorationSettings = null;
@@ -816,6 +818,7 @@ namespace EditorDatabase
         private ExplorationSettings _explorationSettings;
         private GalaxySettings _galaxySettings;
         private ShipSettings _shipSettings;
+        private SkillSettings _skillSettings;
         private FrontierSettings _frontierSettings;
         private ShipModSettings _shipModSettings;
         private SpecialEventSettings _specialEventSettings;

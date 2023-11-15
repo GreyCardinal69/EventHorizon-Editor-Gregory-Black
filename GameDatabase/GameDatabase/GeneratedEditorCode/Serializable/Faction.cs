@@ -22,9 +22,7 @@ namespace EditorDatabase.Serializable
 		public string Color;
         public bool NoTerritories;
         public int HomeStarDistance;
-        public int HomeStarDistance;
         public bool NoWanderingShips;
-        public int WanderingShipsDistance;
         public int WanderingShipsDistance;
         public bool HideFromMerchants;
         public bool HideResearchTree;
