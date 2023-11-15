@@ -121,9 +121,9 @@ namespace GameDatabase.Controls
             var armor = ( _database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size ) * ( _shipData.Features.ArmorBonus.Value == 0 ? 1 : 1 + _shipData.Features.ArmorBonus.Value ) ;
             BaseArmor.Text = armor.ToString( "0.00" );
 
-            BaseWeigth.Text = ( _database.ShipSettings.DefaultWeightPerCell.Value * size * ( 1 + _shipData.Features.WeightBonus.Value ) ).ToString( "0.0" );
+            BaseWeigth.Text = ( _database.ShipSettings.DefaultWeightPerCell.Value * size * ( 1 + _shipData.Features.ShipWeightBonus.Value ) ).ToString( "0.0" );
 
-            MinWeigth.Text = ( _database.ShipSettings.MinimumWeightPerCell.Value * size * ( 1 + _shipData.Features.WeightBonus.Value ) ).ToString( "0.0" );
+            MinWeigth.Text = ( _database.ShipSettings.MinimumWeightPerCell.Value * size * ( 1 + _shipData.Features.ShipWeightBonus.Value ) ).ToString( "0.0" );
 
             BaseEnergyResistance.Text = CalculateResistances( _shipData.Features.EnergyResistance.Value ).ToString( "0.00" );
             BaseKineticResistance.Text = CalculateResistances( _shipData.Features.KineticResistance.Value ).ToString( "0.00" );
