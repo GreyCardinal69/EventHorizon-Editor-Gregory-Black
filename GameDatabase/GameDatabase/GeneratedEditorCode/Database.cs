@@ -214,6 +214,7 @@ namespace EditorDatabase
             _galaxySettings?.Save( _content.GalaxySettings );
             _shipModSettings?.Save( _content.ShipModSettings );
             _shipSettings?.Save( _content.ShipSettings );
+            _specialEventSettings?.Save( _content.SpecialEventSettings );
 
             _content.Save( storage, _serializer );
         }
@@ -243,6 +244,7 @@ namespace EditorDatabase
             if ( type == typeof( BulletPrefab ) ) return _content.BulletPrefabList.Select( item => new ItemId<BulletPrefab>( item ) );
             if ( type == typeof( VisualEffect ) ) return _content.VisualEffectList.Select( item => new ItemId<VisualEffect>( item ) );
             if ( type == typeof( Weapon ) ) return _content.WeaponList.Select( item => new ItemId<Weapon>( item ) );
+
             return Enumerable.Empty<IItemId>();
         }
 
@@ -278,6 +280,7 @@ namespace EditorDatabase
                 case ItemType.ExplorationSettings: return ExplorationSettings;
                 case ItemType.GalaxySettings: return GalaxySettings;
                 case ItemType.ShipSettings: return ShipSettings;
+                case ItemType.SpecialEventSettings: return SpecialEventSettings;
                 default: return null;
             }
         }
@@ -316,6 +319,7 @@ namespace EditorDatabase
         public GalaxySettings GalaxySettings => _galaxySettings ?? ( _galaxySettings = new GalaxySettings( _content.GalaxySettings, this ) );
         public ShipModSettings ShipModSettings => _shipModSettings ?? ( _shipModSettings = new ShipModSettings( _content.ShipModSettings, this ) );
         public ShipSettings ShipSettings => _shipSettings ?? ( _shipSettings = new ShipSettings( _content.ShipSettings, this ) );
+        public SpecialEventSettings SpecialEventSettings => _specialEventSettings ?? ( _specialEventSettings = new SpecialEventSettings( _content.SpecialEventSettings, this ) );
 
         public ItemId<AmmunitionObsolete> GetAmmunitionObsoleteId( int id ) { return new ItemId<AmmunitionObsolete>( _content.GetAmmunitionObsolete( id ) ); }
 
@@ -776,6 +780,7 @@ namespace EditorDatabase
             _visualEffectMap.Clear();
             _weaponMap.Clear();
 
+            _specialEventSettings = null;
             _databaseSettings = null;
             _explorationSettings = null;
             _galaxySettings = null;

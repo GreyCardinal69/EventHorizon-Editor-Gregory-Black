@@ -84,6 +84,8 @@ namespace EditorDatabase.Storage
                 storage.SaveJson( ShipModSettings.FileName, jsonSerializer.ToJson( ShipModSettings ) );
             if ( ShipSettings != null )
                 storage.SaveJson( ShipSettings.FileName, jsonSerializer.ToJson( ShipSettings ) );
+            if ( SpecialEventSettings != null )
+                storage.SaveJson( SpecialEventSettings.FileName, jsonSerializer.ToJson( SpecialEventSettings ) );
         }
 
         public const int SchemaVersion = 1;
@@ -256,6 +258,15 @@ namespace EditorDatabase.Storage
                 var data = _serializer.FromJson<DeviceSerializable>(content);
                 data.FileName = name;
                 _deviceMap.Add(data.Id, data);
+            }
+            else if ( type == ItemType.SpecialEventSettings )
+            {
+                var data = _serializer.FromJson<SpecialEventSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( SpecialEventSettings != null )
+                    throw new DatabaseException( "Duplicate SpecialEventSettings file found - " + name );
+                SpecialEventSettings = data;
             }
             else if (type == ItemType.DroneBay)
             {
@@ -445,8 +456,9 @@ namespace EditorDatabase.Storage
         {
             _images.Add(data.Name, data);
         }
-        
-		public DatabaseSettingsSerializable DatabaseSettings { get; private set; }
+
+        public SpecialEventSettingsSerializable SpecialEventSettings { get; private set; }
+        public DatabaseSettingsSerializable DatabaseSettings { get; private set; }
 		public ExplorationSettingsSerializable ExplorationSettings { get; private set; }
 		public GalaxySettingsSerializable GalaxySettings { get; private set; }
 		public ShipSettingsSerializable ShipSettings { get; private set; }
