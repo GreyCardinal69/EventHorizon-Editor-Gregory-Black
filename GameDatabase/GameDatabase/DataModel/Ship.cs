@@ -68,6 +68,7 @@ namespace EditorDatabase.DataModel
             serializable.EnergyResistance = 0;
             serializable.KineticResistance = 0;
             serializable.HeatResistance = 0;
+            serializable.ShipCategory = 0;
             serializable.Regeneration = false;
             serializable.BuiltinDevices = null;
             serializable.BaseWeightModifier = 0;

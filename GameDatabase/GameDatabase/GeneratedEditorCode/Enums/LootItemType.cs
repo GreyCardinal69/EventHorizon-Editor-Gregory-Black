@@ -24,6 +24,7 @@ namespace EditorDatabase.Enums
 		Ship = 30,
 		EmptyShip = 31,
 		Component = 35,
-		Blueprint = 40,
+        ResearchPoints = 41,
+        Blueprint = 40,
 	}
 }

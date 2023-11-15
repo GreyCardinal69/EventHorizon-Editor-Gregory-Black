@@ -26,11 +26,14 @@ namespace EditorDatabase.DataModel
 				Id = new ItemId<Faction>(serializable.Id, serializable.FileName);
 				Name = serializable.Name;
 				Color = Helpers.ColorFromString(serializable.Color);
-				HomeStarDistance = new NumericValue<int>(serializable.HomeStarDistance, 0, 1000);
-				WanderingShipsDistance = new NumericValue<int>(serializable.WanderingShipsDistance, 0, 1000);
-				Hidden = serializable.Hidden;
-				Hostile = serializable.Hostile;
-			}
+                NoTerritories = serializable.NoTerritories;
+                HomeStarDistance = new NumericValue<int>( serializable.HomeStarDistance, 0, 1000 );
+                NoWanderingShips = serializable.NoWanderingShips;
+                WanderingShipsDistance = new NumericValue<int>( serializable.WanderingShipsDistance, 0, 1000 );
+                HideFromMerchants = serializable.HideFromMerchants;
+                HideResearchTree = serializable.HideResearchTree;
+                NoMissions = serializable.NoMissions;
+            }
 			catch (DatabaseException e)
 			{
 				throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
@@ -40,24 +43,32 @@ namespace EditorDatabase.DataModel
 
 		public void Save(FactionSerializable serializable)
 		{
-			serializable.Name = Name;
-			serializable.Color = Helpers.ColorToString(Color);
-			serializable.HomeStarDistance = HomeStarDistance.Value;
-			serializable.WanderingShipsDistance = WanderingShipsDistance.Value;
-			serializable.Hidden = Hidden;
-			serializable.Hostile = Hostile;
-			OnDataSerialized(ref serializable);
-		}
+            serializable.Name = Name;
+            serializable.Color = Helpers.ColorToString( Color );
+            serializable.NoTerritories = NoTerritories;
+            serializable.HomeStarDistance = HomeStarDistance.Value;
+            serializable.NoWanderingShips = NoWanderingShips;
+            serializable.WanderingShipsDistance = WanderingShipsDistance.Value;
+            serializable.HideFromMerchants = HideFromMerchants;
+            serializable.HideResearchTree = HideResearchTree;
+            serializable.NoMissions = NoMissions;
+            OnDataSerialized( ref serializable );
+        }
 
 		public readonly ItemId<Faction> Id;
 
 		public string Name;
 		public System.Drawing.Color Color;
-		public NumericValue<int> HomeStarDistance = new NumericValue<int>(0, 0, 1000);
-		public NumericValue<int> WanderingShipsDistance = new NumericValue<int>(0, 0, 1000);
-		public bool Hidden;
-		public bool Hostile;
+        public bool NoTerritories;
+        public NumericValue<int> HomeStarDistance = new NumericValue<int>( 0, 0, 1000 );
+        public bool NoWanderingShips;
+        public NumericValue<int> WanderingShipsDistance = new NumericValue<int>( 0, 0, 1000 );
+        public bool Hidden;
+        public bool HideFromMerchants;
+        public bool Hostile;
+        public bool HideResearchTree;
+        public bool NoMissions;
 
-		public static Faction DefaultValue { get; private set; }
+        public static Faction DefaultValue { get; private set; }
 	}
 }

@@ -16,7 +16,8 @@ namespace EditorDatabase.Serializable
 	[Serializable]
 	public class GalaxySettingsSerializable : SerializableItem
 	{
-		public int AbandonedStarbaseFaction;
+        public int DefaultStarbaseBuild;
+        public int AbandonedStarbaseFaction;
 		public int[] StartingShipBuilds;
 	}
 }
