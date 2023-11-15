@@ -5,7 +5,7 @@ namespace GameDatabase.ShipLayout
 {
     public struct PaintData
     {
-        public PaintData(Graphics graphics, int layoutSize, int canvasSize, int borderSize, int cellSize, bool mirrorHorizontal, bool mirrorVertical)
+        public PaintData( Graphics graphics, int layoutSize, int canvasSize, int borderSize, int cellSize, bool mirrorHorizontal, bool mirrorVertical )
         {
             Graphics = graphics;
             LayoutSize = layoutSize;
@@ -31,58 +31,58 @@ namespace GameDatabase.ShipLayout
             BottomRight
         }
 
-        public int PointToCellIndex(int mouseX, int mouseY)
+        public int PointToCellIndex( int mouseX, int mouseY )
         {
-            var x = LayoutSize * (mouseX - BorderSize) / CanvasSize;
-            var y = LayoutSize * (mouseY - BorderSize) / CanvasSize;
+            var x = LayoutSize * ( mouseX - BorderSize ) / CanvasSize;
+            var y = LayoutSize * ( mouseY - BorderSize ) / CanvasSize;
 
-            if (x < 0 || x >= LayoutSize)
+            if ( x < 0 || x >= LayoutSize )
                 return -1;
-            if (y < 0 || y >= LayoutSize)
+            if ( y < 0 || y >= LayoutSize )
                 return -1;
 
             return x + y * LayoutSize;
         }
 
-        public IEnumerable<int> GetMirrorCells(int cell)
+        public IEnumerable<int> GetMirrorCells( int cell )
         {
-            return GetMirrorCells(cell % LayoutSize, cell / LayoutSize);
+            return GetMirrorCells( cell % LayoutSize, cell / LayoutSize );
         }
 
-        public IEnumerable<int> GetMirrorCells(int x, int y)
+        public IEnumerable<int> GetMirrorCells( int x, int y )
         {
             yield return x + y * LayoutSize;
 
-            if (MirrorVertical)
+            if ( MirrorVertical )
                 yield return LayoutSize - x - 1 + y * LayoutSize;
-            if (MirrorHorizontal)
-                yield return x + (LayoutSize - y - 1) * LayoutSize;
-            if (MirrorHorizontal && MirrorVertical)
-                yield return LayoutSize - x - 1 + (LayoutSize - y - 1) * LayoutSize;
+            if ( MirrorHorizontal )
+                yield return x + ( LayoutSize - y - 1 ) * LayoutSize;
+            if ( MirrorHorizontal && MirrorVertical )
+                yield return LayoutSize - x - 1 + ( LayoutSize - y - 1 ) * LayoutSize;
         }
 
-        public Point Align(int mouseX, int mouseY, AlignSide side)
+        public Point Align( int mouseX, int mouseY, AlignSide side )
         {
-            return Align(PointToCellIndex(mouseX, mouseY), side);
+            return Align( PointToCellIndex( mouseX, mouseY ), side );
         }
 
-        public Point Align(int cell, AlignSide side)
+        public Point Align( int cell, AlignSide side )
         {
             int cellY = cell / LayoutSize;
             int cellX = cell % LayoutSize;
             int x = BorderSize + cellX * CanvasSize / LayoutSize;
             int y = BorderSize + cellY * CanvasSize / LayoutSize;
 
-            if (side == AlignSide.Center)
+            if ( side == AlignSide.Center )
             {
-                return new Point(x + CellSize / 2, y + CellSize / 2);
+                return new Point( x + CellSize / 2, y + CellSize / 2 );
             }
-            if (side != AlignSide.BottomRight)
+            if ( side != AlignSide.BottomRight )
             {
-                return new Point(x, y);
+                return new Point( x, y );
             }
 
-            return new Point(x + CellSize, y + CellSize);
+            return new Point( x + CellSize, y + CellSize );
         }
 
         public readonly bool MirrorHorizontal;

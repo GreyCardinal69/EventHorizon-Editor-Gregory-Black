@@ -5,7 +5,7 @@ namespace GameDatabase
 {
     class UnscrollablePanel : Panel
     {
-        protected override Point ScrollToControl(Control activeControl)
+        protected override Point ScrollToControl( Control activeControl )
         {
             return this.AutoScrollPosition;
         }
@@ -16,10 +16,10 @@ namespace GameDatabase
             // 
             // UnscrollablePanel
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            this.Font = new System.Drawing.Font( "Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( ( byte ) ( 0 ) ) );
             this.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
-            this.ResumeLayout(false);
+            this.ResumeLayout( false );
         }
     }
 }

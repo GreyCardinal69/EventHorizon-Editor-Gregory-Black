@@ -5,7 +5,7 @@ namespace GameDatabase.Controls
 {
     internal class AdvancedToolStripMenuItem : ToolStripMenuItem
     {
-        private SolidBrush _blackBrush = new SolidBrush( Color.FromArgb( 65,65,65 ) );
+        private SolidBrush _blackBrush = new SolidBrush( Color.FromArgb( 65, 65, 65 ) );
         private SolidBrush _fontOrange = new SolidBrush( Color.FromArgb( 242, 188, 87 ) );
 
         public AdvancedToolStripMenuItem( string text ) : base( text )

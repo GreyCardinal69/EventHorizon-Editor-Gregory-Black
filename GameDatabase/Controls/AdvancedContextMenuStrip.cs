@@ -34,7 +34,6 @@ namespace GameDatabase.Controls
                 e.Graphics.DrawRectangle( pen,
                     e.ClipRectangle.Left, e.ClipRectangle.Top,
                      e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1 );
-
         }
     }
 }

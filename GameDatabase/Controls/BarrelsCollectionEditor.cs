@@ -14,24 +14,24 @@ namespace GameDatabase.Controls
 
         public Barrel SelectedBarrel()
         {
-            if (_selectedItemId < 0 || _selectedItemId >= _collection.Length)
+            if ( _selectedItemId < 0 || _selectedItemId >= _collection.Length )
             {
                 return null;
             }
-            return _collection.GetValue(_selectedItemId) as Barrel;
+            return _collection.GetValue( _selectedItemId ) as Barrel;
         }
 
-        public void SetSelectedObject(Barrel value)
+        public void SetSelectedObject( Barrel value )
         {
-            if (_selectedItemId < 0 || _selectedItemId >= _collection.Length)
+            if ( _selectedItemId < 0 || _selectedItemId >= _collection.Length )
             {
                 return;
             }
-            _collection.SetValue(value, _selectedItemId);
-            OnDataChanged(this,EventArgs.Empty);
+            _collection.SetValue( value, _selectedItemId );
+            OnDataChanged( this, EventArgs.Empty );
         }
 
-        public void SetSelectedId(int id)
+        public void SetSelectedId( int id )
         {
             _selectedItemId = id;
             CheckRadioButton();
@@ -42,9 +42,9 @@ namespace GameDatabase.Controls
             return _selectedItemId;
         }
 
-        public new void OnDataChanged(object sender, EventArgs e)
+        public new void OnDataChanged( object sender, EventArgs e )
         {
-            base.OnDataChanged(this, EventArgs.Empty);
+            base.OnDataChanged( this, EventArgs.Empty );
         }
 
         public IEnumerable<Barrel> GetBarrels()
@@ -54,17 +54,17 @@ namespace GameDatabase.Controls
 
         public void clickUp()
         {
-            moveUpButton_Click(this, EventArgs.Empty);
+            moveUpButton_Click( this, EventArgs.Empty );
         }
 
         public void clickDown()
         {
-            moveDownButton_Click(this, EventArgs.Empty);
+            moveDownButton_Click( this, EventArgs.Empty );
         }
 
         public void clickClone()
         {
-            cloneButton_Click(this, EventArgs.Empty);
+            cloneButton_Click( this, EventArgs.Empty );
         }
     }
 }

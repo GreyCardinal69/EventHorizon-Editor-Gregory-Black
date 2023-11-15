@@ -35,15 +35,15 @@ namespace GameDatabase.Controls
             }
         }
 
-        [Description("Vector"), Category("Data")]
+        [Description( "Vector" ), Category( "Data" )]
         public Vector2 Value
         {
             get { return _vector; }
             set
             {
                 _ignoreEvents = true;
-                X.Value = (decimal)value.x;
-                Y.Value = (decimal)value.y;
+                X.Value = ( decimal ) value.x;
+                Y.Value = ( decimal ) value.y;
                 _ignoreEvents = false;
                 _vector = value;
             }
@@ -58,17 +58,17 @@ namespace GameDatabase.Controls
 
         private Vector2 _vector;
 
-        private void X_ValueChanged(object sender, System.EventArgs e)
+        private void X_ValueChanged( object sender, System.EventArgs e )
         {
-            if (_ignoreEvents)
+            if ( _ignoreEvents )
                 return;
 
             UpdateData();
         }
 
-        private void Y_ValueChanged(object sender, System.EventArgs e)
+        private void Y_ValueChanged( object sender, System.EventArgs e )
         {
-            if (_ignoreEvents)
+            if ( _ignoreEvents )
                 return;
 
             UpdateData();
@@ -76,24 +76,23 @@ namespace GameDatabase.Controls
 
         private void UpdateData()
         {
-            _vector.x = (float)X.Value;
-            _vector.y = (float)Y.Value;
+            _vector.x = ( float ) X.Value;
+            _vector.y = ( float ) Y.Value;
 
-            if (ValueChanged != null)
-                ValueChanged.Invoke(this, EventArgs.Empty);
+            ValueChanged?.Invoke( this, EventArgs.Empty );
         }
 
-        private void VectorEditor_Load(object sender, EventArgs e)
+        private void VectorEditor_Load( object sender, EventArgs e )
         {
             X.MouseWheel += DisableMouseWheel;
             Y.MouseWheel += DisableMouseWheel;
         }
 
-        private static void DisableMouseWheel(object sender, EventArgs args)
+        private static void DisableMouseWheel( object sender, EventArgs args )
         {
-            ((HandledMouseEventArgs)args).Handled = true;
+            ( ( HandledMouseEventArgs ) args ).Handled = true;
         }
-        
+
         private bool _ignoreEvents = false;
     }
 }

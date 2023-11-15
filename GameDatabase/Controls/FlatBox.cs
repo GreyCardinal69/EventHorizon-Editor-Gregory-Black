@@ -23,7 +23,7 @@ namespace GameDatabase.Controls
             }
         }
 
-        private Color _buttonColor = Color.FromArgb( 45,45,45 );
+        private Color _buttonColor = Color.FromArgb( 45, 45, 45 );
 
         [DefaultValue( typeof( Color ), "45,45,45" )]
         public Color ButtonColor
@@ -182,8 +182,8 @@ namespace GameDatabase.Controls
             // 
             // FlatCombo
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.ResumeLayout(false);
+            this.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            this.ResumeLayout( false );
 
         }
     }

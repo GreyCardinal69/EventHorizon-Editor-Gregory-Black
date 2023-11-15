@@ -2,7 +2,7 @@
 {
     public struct MousePosition
     {
-        public MousePosition(int x, int y, int cellIndex)
+        public MousePosition( int x, int y, int cellIndex )
         {
             X = x;
             Y = y;

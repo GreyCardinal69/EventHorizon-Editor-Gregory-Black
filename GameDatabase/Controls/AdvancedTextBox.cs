@@ -21,7 +21,7 @@ namespace GameDatabase.Controls
         [DllImport( "user32.dll" )]
         static extern bool RedrawWindow( IntPtr hWnd, IntPtr lprc, IntPtr hrgn, uint flags );
 
-        private Color _borderColor = Color.FromArgb(45,45,45 );
+        private Color _borderColor = Color.FromArgb( 45, 45, 45 );
 
         public Color BorderColor
         {
@@ -47,7 +47,7 @@ namespace GameDatabase.Controls
                 ReleaseDC( this.Handle, hdc );
             }
         }
-        
+
         protected override void OnSizeChanged( EventArgs e )
         {
             base.OnSizeChanged( e );

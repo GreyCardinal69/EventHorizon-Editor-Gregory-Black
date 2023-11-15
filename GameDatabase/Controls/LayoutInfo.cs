@@ -118,7 +118,7 @@ namespace GameDatabase.Controls
                 }
             }
 
-            var armor = ( _database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size ) * ( _shipData.Features.ArmorBonus.Value == 0 ? 1 : 1 + _shipData.Features.ArmorBonus.Value ) ;
+            var armor = ( _database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size ) * ( _shipData.Features.ArmorBonus.Value == 0 ? 1 : 1 + _shipData.Features.ArmorBonus.Value );
             BaseArmor.Text = armor.ToString( "0.00" );
 
             BaseWeigth.Text = ( _database.ShipSettings.DefaultWeightPerCell.Value * size * ( 1 + _shipData.Features.ShipWeightBonus.Value ) ).ToString( "0.0" );
@@ -129,18 +129,15 @@ namespace GameDatabase.Controls
             BaseKineticResistance.Text = CalculateResistances( _shipData.Features.KineticResistance.Value ).ToString( "0.00" );
             BaseHeatResistance.Text = CalculateResistances( _shipData.Features.HeatResistance.Value ).ToString( "0.00" );
 
+            long cost;
+            if ( _shipData.ShipType == ShipType.Flagship ) cost = checked(15 * size * size);
+            else cost = checked(5 * size * size);
 
-            // ShipCategory and ShipCategory.Flagship don't exist anymore. What to put here?
-
-            //  long cost;
-            //  if ( _shipData.ShipType == ShipCategory.Flagship ) cost = checked(15 * size * size);
-            //  else cost = checked(5 * size * size);
-
-            //   CreditsCost.Text = cost.ToString();
+            CreditsCost.Text = cost.ToString();
             CreditsCost.Text = "Need new formula since 1.10.0";
-
+            /*
             long starcost;
-            /*    switch ( _shipData.ShipCategory )
+                switch ( _shipData.SizeClass )
                 {
                     case ShipCategory.Common:
                         starcost = cost / 48000;
