@@ -2,14 +2,20 @@
 
 This version implements:
 
-- A Dark Theme
-- Option to pick Triple Veteran ship build difficulty.
-- Option to clone effects in an effect file.
-- Jump To Page option.
-- CTRL + S hotkey for saving the database.
-- Option to delete a file in the database.
-- CTRL + F hotkey for creating mod file.
-- Option to copy and paste data of objects inside the editor, without reloading or creating new files.
+- A Dark Theme.
+   - Option to pick Triple Veteran ship build difficulty.
+   - Option to clone effects in an effect file.
+   - Jump To Page option.
+   - CTRL + S hotkey for saving the database.
+   - CTRL + F hotkey for creating mod file.
+   - Option to Copy & Paste objects inside DBE, without reloading or creating new files.
+   - Quality of life improvements.
+   - A small Analiser for Error detection.
+
+   ( New ) ( 2.4.5 Release )
+   - Event Horizon changes as of 15-Nov-23.
+   - Larger initial ship editor window.
+   - Improved database save speed.
 
 ## How to use:
 
