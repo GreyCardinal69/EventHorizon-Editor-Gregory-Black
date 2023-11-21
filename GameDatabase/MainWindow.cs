@@ -69,6 +69,18 @@ namespace GameDatabase
             {
                 MessageBox.Show( e.Message + " " + e.StackTrace );
             }
+
+            if ( _expandedNodes.Count > 0 )
+            {
+                TreeNode IamExpandedNode;
+                for ( int i = 0; i < _expandedNodes.Count; i++ )
+                {
+                    IamExpandedNode = FindNodeByName( DatabaseTreeView.Nodes, _expandedNodes[i] );
+                    if ( IamExpandedNode == null ) continue;
+                    expandNodePath( IamExpandedNode );
+                }
+            }
+            _expandedNodes.Clear();
         }
 
         internal Database _secondaryDatabse; 
@@ -417,9 +429,16 @@ namespace GameDatabase
         private Database _database;
         private Templates _templates;
         private string _lastDatabasePath;
+        private List<string> _expandedNodes = new List<string>();
 
         private void reloadDatabaseToolStripMenuItem_Click( object sender, EventArgs e )
         {
+            var name2 = DatabaseTreeView.SelectedNode;
+
+            _expandedNodes = collectExpandedNodes( DatabaseTreeView.Nodes );
+
+            DatabaseTreeView.Nodes.Remove( name2 );
+
             OpenDatabase( _lastDatabasePath );
         }
 
