@@ -56,6 +56,7 @@ namespace GameDatabase
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.DatabaseTreeView = new System.Windows.Forms.TreeView();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.FileId = new Controls.AdvancedTextBox();
             this.structDataView1 = new Controls.StructDataView();
             this.label1 = new System.Windows.Forms.Label();
             this.EditButton = new System.Windows.Forms.Button();
@@ -128,6 +129,7 @@ namespace GameDatabase
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.splitContainer.Panel2.Controls.Add(this.FileId);
             this.splitContainer.Panel2.Controls.Add(this.structDataView1);
             this.splitContainer.Panel2.Controls.Add(this.label1);
             this.splitContainer.Panel2.Controls.Add(this.EditButton);
@@ -140,6 +142,21 @@ namespace GameDatabase
             this.splitContainer.SplitterWidth = 6;
             this.splitContainer.TabIndex = 1;
             // 
+            // FileId
+            // 
+            this.FileId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.FileId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.FileId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FileId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.FileId.Location = new System.Drawing.Point(8, 28);
+            this.FileId.Name = "FileId";
+            this.FileId.Size = new System.Drawing.Size(238, 33);
+            this.FileId.TabIndex = 7;
+            this.FileId.Text = "ID 0";
+            // 
             // structDataView1
             // 
             this.structDataView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -150,10 +167,10 @@ namespace GameDatabase
             this.structDataView1.Data = null;
             this.structDataView1.Database = null;
             this.structDataView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.structDataView1.Location = new System.Drawing.Point(4, 44);
+            this.structDataView1.Location = new System.Drawing.Point(8, 69);
             this.structDataView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.structDataView1.Name = "structDataView1";
-            this.structDataView1.Size = new System.Drawing.Size(244, 483);
+            this.structDataView1.Size = new System.Drawing.Size(238, 458);
             this.structDataView1.TabIndex = 5;
             // 
             // label1
@@ -163,7 +180,7 @@ namespace GameDatabase
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label1.Font = new System.Drawing.Font("Yu Gothic", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.label1.Location = new System.Drawing.Point(213, 0);
+            this.label1.Location = new System.Drawing.Point(207, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 18);
@@ -451,7 +468,7 @@ namespace GameDatabase
             this.reformatDatabaseToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.reformatDatabaseToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.reformatDatabaseToolStripMenuItem.Name = "reformatDatabaseToolStripMenuItem";
-            this.reformatDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reformatDatabaseToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.reformatDatabaseToolStripMenuItem.Text = "Reformat Database";
             this.reformatDatabaseToolStripMenuItem.Click += new System.EventHandler(this.reformatDatabaseToolStripMenuItem_Click);
             // 
@@ -461,7 +478,7 @@ namespace GameDatabase
             this.runAnalytToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.runAnalytToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.runAnalytToolStripMenuItem.Name = "runAnalytToolStripMenuItem";
-            this.runAnalytToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.runAnalytToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.runAnalytToolStripMenuItem.Text = "Run Analytics";
             this.runAnalytToolStripMenuItem.Click += new System.EventHandler(this.runAnalytToolStripMenuItem_Click);
             // 
@@ -538,5 +555,6 @@ namespace GameDatabase
         private AdvancedToolStripMenuItem copyToolStripMenuItem;
         private AdvancedToolStripMenuItem pasteToolStripMenuItem;
         private ToolStripMenuItem runAnalytToolStripMenuItem;
+        private Controls.AdvancedTextBox FileId;
     }
 }

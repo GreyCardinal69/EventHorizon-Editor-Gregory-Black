@@ -77,7 +77,7 @@ namespace GameDatabase
                 {
                     IamExpandedNode = FindNodeByName( DatabaseTreeView.Nodes, _expandedNodes[i] );
                     if ( IamExpandedNode == null ) continue;
-                    expandNodePath( IamExpandedNode );
+                    ExpandNodePath( IamExpandedNode );
                 }
             }
             _expandedNodes.Clear();
@@ -216,6 +216,8 @@ namespace GameDatabase
             item.FileName = name;
             if ( item.ItemType == ItemType.Undefined )
                 return;
+
+            FileId.Text = $"ID: {item.Id}";
 
             ItemTypeText.Text = item.ItemType.ToString();
             _selectedItem = item;
@@ -435,7 +437,7 @@ namespace GameDatabase
         {
             var name2 = DatabaseTreeView.SelectedNode;
 
-            _expandedNodes = collectExpandedNodes( DatabaseTreeView.Nodes );
+            _expandedNodes = CollectExpandedNodes( DatabaseTreeView.Nodes );
 
             DatabaseTreeView.Nodes.Remove( name2 );
 
@@ -701,7 +703,7 @@ namespace GameDatabase
                     var name2 = DatabaseTreeView.SelectedNode;
 
                     List<string> ExpandedNodes = new List<string>();
-                    ExpandedNodes = collectExpandedNodes( DatabaseTreeView.Nodes );
+                    ExpandedNodes = CollectExpandedNodes( DatabaseTreeView.Nodes );
 
                     DatabaseTreeView.Nodes.Remove( name2 );
                     File.Delete( path );
@@ -715,7 +717,7 @@ namespace GameDatabase
                         {
                             IamExpandedNode = FindNodeByName( DatabaseTreeView.Nodes, ExpandedNodes[i] );
                             if ( IamExpandedNode == null ) continue;
-                            expandNodePath( IamExpandedNode );
+                            ExpandNodePath( IamExpandedNode );
                         }
                     }
                 }
@@ -724,7 +726,7 @@ namespace GameDatabase
             return base.ProcessCmdKey( ref msg, keyData );
         }
 
-        List<string> collectExpandedNodes( TreeNodeCollection Nodes )
+        List<string> CollectExpandedNodes( TreeNodeCollection Nodes )
         {
             List<string> _lst = new List<string>();
             foreach ( TreeNode checknode in Nodes )
@@ -732,7 +734,7 @@ namespace GameDatabase
                 if ( checknode.IsExpanded )
                     _lst.Add( checknode.Name );
                 if ( checknode.Nodes.Count > 0 )
-                    _lst.AddRange( collectExpandedNodes( checknode.Nodes ) );
+                    _lst.AddRange( CollectExpandedNodes( checknode.Nodes ) );
             }
             return _lst;
         }
@@ -759,12 +761,12 @@ namespace GameDatabase
             return returnNode;
         }
 
-        void expandNodePath( TreeNode node )
+        void ExpandNodePath( TreeNode node )
         {
             if ( node.Level != 0 )
             {
                 node.Expand();
-                expandNodePath( node.Parent );
+                ExpandNodePath( node.Parent );
             }
             else
             {
