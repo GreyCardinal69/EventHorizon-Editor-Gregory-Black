@@ -33,6 +33,8 @@ namespace EditorDatabase.DataModel
                 HideFromMerchants = serializable.HideFromMerchants;
                 HideResearchTree = serializable.HideResearchTree;
                 NoMissions = serializable.NoMissions;
+                WanderingShipsDistanceMax = new NumericValue<int>( serializable.WanderingShipsDistanceMax, 0, 5000 );
+                HomeStarDistanceMax = new NumericValue<int>( serializable.HomeStarDistanceMax, 0, 5000 );
             }
 			catch (DatabaseException e)
 			{
@@ -52,6 +54,8 @@ namespace EditorDatabase.DataModel
             serializable.HideFromMerchants = HideFromMerchants;
             serializable.HideResearchTree = HideResearchTree;
             serializable.NoMissions = NoMissions;
+            serializable.WanderingShipsDistanceMax = WanderingShipsDistanceMax.Value;
+            serializable.HomeStarDistanceMax = HomeStarDistanceMax.Value;
             OnDataSerialized( ref serializable );
         }
 
@@ -60,8 +64,10 @@ namespace EditorDatabase.DataModel
 		public string Name;
 		public System.Drawing.Color Color;
         public bool NoTerritories;
+        public NumericValue<int> HomeStarDistanceMax = new NumericValue<int>( 0, 0, 5000 );
         public NumericValue<int> HomeStarDistance = new NumericValue<int>( 0, 0, 5000 );
         public bool NoWanderingShips;
+        public NumericValue<int> WanderingShipsDistanceMax = new NumericValue<int>( 0, 0, 5000 );
         public NumericValue<int> WanderingShipsDistance = new NumericValue<int>( 0, 0, 5000 );
         public bool Hidden;
         public bool HideFromMerchants;

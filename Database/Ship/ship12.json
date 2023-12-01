@@ -1,6 +1,7 @@
 {
   "ItemType": 6,
   "Id": 140,
+  "ShipType": 4,
   "SizeClass": 4,
   "Name": "$ship_12",
   "Faction": 17,
@@ -31,7 +32,8 @@
     }
   ],
   "Features": {
-    "WeightBonus": -0.3,
+    "ShipWeightBonus": -0.3,
+    "EquipmentWeightBonus": -0.3,
     "VelocityBonus": 0.3,
     "TurnRateBonus": 0.3
   }

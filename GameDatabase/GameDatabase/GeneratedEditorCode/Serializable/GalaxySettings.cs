@@ -19,5 +19,6 @@ namespace EditorDatabase.Serializable
         public int DefaultStarbaseBuild;
         public int AbandonedStarbaseFaction;
 		public int[] StartingShipBuilds;
-	}
+        public int MaxEnemyShipsLevel = 300;
+    }
 }

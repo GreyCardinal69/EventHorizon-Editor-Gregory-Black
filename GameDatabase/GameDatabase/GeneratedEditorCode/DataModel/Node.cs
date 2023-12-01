@@ -29,8 +29,10 @@ namespace EditorDatabase.DataModel
 		private static INodeContent CreateContent(NodeType type)
 		{
 			switch (type)
-			{
-				case NodeType.Undefined:
+            {
+                case NodeType.OpenWorkshop:
+                    return new Node_OpenWorkshop();
+                case NodeType.Undefined:
 					return new NodeEmptyContent();
 				case NodeType.ComingSoon:
 					return new NodeEmptyContent();
@@ -102,7 +104,34 @@ namespace EditorDatabase.DataModel
 			OnDataDeserialized(serializable, database);
 		}
 
-		public NodeSerializable Serialize()
+        public partial class Node_OpenWorkshop : INodeContent
+        {
+            partial void OnDataDeserialized( NodeSerializable serializable, Database database );
+            partial void OnDataSerialized( ref NodeSerializable serializable );
+
+            public void Load( NodeSerializable serializable, Database database )
+            {
+                Transition = new NumericValue<int>( serializable.DefaultTransition, 1, 1000 );
+                Faction = database.GetFactionId( serializable.Faction );
+                Level = new NumericValue<int>( serializable.Value, 0, 10000 );
+
+                OnDataDeserialized( serializable, database );
+            }
+
+            public void Save( ref NodeSerializable serializable )
+            {
+                serializable.DefaultTransition = Transition.Value;
+                serializable.Faction = Faction.Value;
+                serializable.Value = Level.Value;
+                OnDataSerialized( ref serializable );
+            }
+
+            public NumericValue<int> Transition = new NumericValue<int>( 0, 1, 1000 );
+            public ItemId<Faction> Faction = ItemId<Faction>.Empty;
+            public NumericValue<int> Level = new NumericValue<int>( 0, 0, 10000 );
+        }
+
+        public NodeSerializable Serialize()
 		{
 			var serializable = new NodeSerializable();
 			serializable.RequiredView = 0;

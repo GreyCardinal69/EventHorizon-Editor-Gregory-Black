@@ -29,7 +29,8 @@ namespace EditorDatabase.DataModel
 
 		public void Save(GalaxySettingsSerializable serializable)
 		{
-			serializable.AbandonedStarbaseFaction = AbandonedStarbaseFaction.Value;
+            serializable.MaxEnemyShipsLevel = MaxEnemyShipsLevel.Value;
+            serializable.AbandonedStarbaseFaction = AbandonedStarbaseFaction.Value;
 			if (StartingShipBuilds == null || StartingShipBuilds.Length == 0)
 			    serializable.StartingShipBuilds = null;
 			else
@@ -41,7 +42,7 @@ namespace EditorDatabase.DataModel
 		public ItemId<Faction> AbandonedStarbaseFaction = ItemId<Faction>.Empty;
 		public Wrapper<ShipBuild>[] StartingShipBuilds;
         public ItemId<ShipBuild> DefaultStarbaseBuild = ItemId<ShipBuild>.Empty;
-
+        public NumericValue<int> MaxEnemyShipsLevel = new NumericValue<int>( 0, 100, 500 );
         public static GalaxySettings DefaultValue { get; private set; }
 	}
 }
