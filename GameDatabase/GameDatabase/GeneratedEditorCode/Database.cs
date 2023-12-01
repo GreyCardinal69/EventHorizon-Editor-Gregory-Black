@@ -207,6 +207,7 @@ namespace EditorDatabase
                 if ( value != secondaryDb.Content.GetWeapon( item.Key ) )
                     item.Value.Save( value );
             }
+            _debugSettings?.Save( _content.DebugSettings );
             _skillSettings?.Save( _content.SkillSettings );
             _databaseSettings?.Save( _content.DatabaseSettings );
             _explorationSettings?.Save( _content.ExplorationSettings );
@@ -282,6 +283,7 @@ namespace EditorDatabase
                 case ItemType.ShipSettings: return ShipSettings;
                 case ItemType.SkillSettings: return SkillSettings;
                 case ItemType.SpecialEventSettings: return SpecialEventSettings;
+                case ItemType.DebugSettings: return DebugSettings;
                 default: return null;
             }
         }
@@ -315,6 +317,7 @@ namespace EditorDatabase
             }
         }
 
+        public DebugSettings DebugSettings => _debugSettings ?? ( _debugSettings = new DebugSettings( _content.DebugSettings, this ) );
         public DatabaseSettings DatabaseSettings => _databaseSettings ?? ( _databaseSettings = new DatabaseSettings( _content.DatabaseSettings, this ) );
         public ExplorationSettings ExplorationSettings => _explorationSettings ?? ( _explorationSettings = new ExplorationSettings( _content.ExplorationSettings, this ) );
         public GalaxySettings GalaxySettings => _galaxySettings ?? ( _galaxySettings = new GalaxySettings( _content.GalaxySettings, this ) );
@@ -781,6 +784,7 @@ namespace EditorDatabase
             _visualEffectMap.Clear();
             _weaponMap.Clear();
 
+            _debugSettings = null;
             _skillSettings = null;
             _specialEventSettings = null;
             _databaseSettings = null;
@@ -818,6 +822,7 @@ namespace EditorDatabase
         private ExplorationSettings _explorationSettings;
         private GalaxySettings _galaxySettings;
         private ShipSettings _shipSettings;
+        private DebugSettings _debugSettings;
         private SkillSettings _skillSettings;
         private FrontierSettings _frontierSettings;
         private ShipModSettings _shipModSettings;

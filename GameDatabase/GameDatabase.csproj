@@ -170,6 +170,7 @@
     <Compile Include="GameDatabase\DataModel\Barrel.cs" />
     <Compile Include="GameDatabase\DataModel\Component.cs" />
     <Compile Include="GameDatabase\DataModel\ComponentStats.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\DebugCode.cs" />
     <Compile Include="GameDatabase\DataModel\Faction.cs" />
     <Compile Include="GameDatabase\DataModel\Ship.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Database.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ComponentRestrictions.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ComponentStats.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\DatabaseSettings.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\DebugSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Device.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\DroneBay.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Engine.cs" />
@@ -272,6 +274,8 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ComponentRestrictions.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ComponentStats.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\DatabaseSettings.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\DebugCodeSerializable.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\DebugSettingsSerializable.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Device.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\DroneBay.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Engine.cs" />

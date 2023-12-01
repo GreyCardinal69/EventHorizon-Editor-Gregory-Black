@@ -89,6 +89,8 @@ namespace EditorDatabase.Storage
                 storage.SaveJson( ShipSettings.FileName, jsonSerializer.ToJson( ShipSettings ) );
             if ( SpecialEventSettings != null )
                 storage.SaveJson( SpecialEventSettings.FileName, jsonSerializer.ToJson( SpecialEventSettings ) );
+            if ( DebugSettings != null )
+                storage.SaveJson( DebugSettings.FileName, jsonSerializer.ToJson( DebugSettings ) );
         }
 
         public const int SchemaVersion = 1;
@@ -270,6 +272,14 @@ namespace EditorDatabase.Storage
                 if ( SkillSettings != null )
                     throw new DatabaseException( "Duplicate SkillSettings file found - " + name );
                 SkillSettings = data;
+            }  else if (type == ItemType.DebugSettings)
+            {
+                var data = _serializer.FromJson<DebugSettingsSerializable>(content);
+                data.FileName = name;
+
+				if (DebugSettings != null)
+                    throw new DatabaseException("Duplicate DebugSettings file found - " + name);
+                DebugSettings = data;
             }
             else if ( type == ItemType.SpecialEventSettings )
             {
@@ -468,7 +478,7 @@ namespace EditorDatabase.Storage
         {
             _images.Add(data.Name, data);
         }
-
+        public DebugSettingsSerializable DebugSettings { get; private set; }
         public SkillSettingsSerializable SkillSettings { get; private set; }
         public SpecialEventSettingsSerializable SpecialEventSettings { get; private set; }
         public DatabaseSettingsSerializable DatabaseSettings { get; private set; }
