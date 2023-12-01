@@ -18,7 +18,6 @@ namespace EditorDatabase.DataModel
 		partial void OnDataDeserialized(GalaxySettingsSerializable serializable, Database database);
 		partial void OnDataSerialized(ref GalaxySettingsSerializable serializable);
 
-
 		public GalaxySettings(GalaxySettingsSerializable serializable, Database database)
 		{
 			AbandonedStarbaseFaction = database.GetFactionId(serializable.AbandonedStarbaseFaction);

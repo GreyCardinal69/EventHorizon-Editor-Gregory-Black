@@ -37,13 +37,17 @@ namespace EditorDatabase
     }
     public partial class Database
     {
+        public const int VersionMajor = 1;
+        public const int VersionMinor = 2;
         public DatabaseContent Content => _content;
 
         public Database( IDataStorage storage )
         {
             _serializer = new JsonSerializer();
-            _content = new DatabaseContent( storage, _serializer );
+            _content = new DatabaseContent( _serializer, storage );
         }
+
+        public IImageData GetImage( string name ) { return _content.GetImage( name ); }
 
         public void ClearOutside()
         {
@@ -746,8 +750,6 @@ namespace EditorDatabase
             _content.WeaponList[_content.WeaponList.IndexOf( _content.GetWeapon( old ) )] = serializable;
             _weaponMap[old] = new Weapon( serializable, this );
         }
-
-        public ImageData GetImage( string name ) { return _content.GetImage( name ); }
 
         public void LoadJson( string name, string content )
         {

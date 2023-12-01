@@ -20,12 +20,12 @@ namespace EditorDatabase.Storage
 {
     public class DatabaseContent : IContentLoader
     {
-        public DatabaseContent(IDataStorage storage, IJsonSerializer jsonSerializer)
+        public DatabaseContent( IJsonSerializer jsonSerializer, IDataStorage storage )
         {
             _serializer = jsonSerializer;
-            storage.LoadContent(this);
+            storage?.LoadContent( this );
         }
-  
+
         public void Save(IDataStorage storage, IJsonSerializer jsonSerializer)
         {
             foreach (var item in _ammunitionObsoleteMap.Values)
@@ -474,9 +474,20 @@ namespace EditorDatabase.Storage
             _localizations.Add(name, data);
         }
 
+        public IImageData GetImage( string name )
+        {
+            return _images.TryGetValue( name, out var image ) ? image : ImageData.Empty;
+        }
+
+        public IAudioClipData GetAudioClip( string name )
+        {
+            return _audioClips.TryGetValue( name, out var audioClip ) ? audioClip : AudioClipData.Empty;
+        }
+
         public void LoadImage(ImageData data)
         {
             _images.Add(data.Name, data);
+
         }
         public DebugSettingsSerializable DebugSettings { get; private set; }
         public SkillSettingsSerializable SkillSettings { get; private set; }
@@ -496,6 +507,7 @@ namespace EditorDatabase.Storage
         public List<FactionSerializable> FactionList => _factionMap.Values.ToList();
         public List<SatelliteSerializable> SatelliteList => _satelliteMap.Values.ToList();
         public List<SatelliteBuildSerializable> SatelliteBuildList => _satelliteBuildMap.Values.ToList();
+        private IEnumerable<KeyValuePair<string, IImageData>> Images => _images;
         public List<ShipSerializable> ShipList => _shipMap.Values.ToList();
         public List<ShipBuildSerializable> ShipBuildList => _shipBuildMap.Values.ToList();
         public List<SkillSerializable> SkillList => _skillMap.Values.ToList();
@@ -533,14 +545,18 @@ namespace EditorDatabase.Storage
 		public VisualEffectSerializable GetVisualEffect(int id) { return _visualEffectMap.TryGetValue(id, out var item) ? item : null; }
 		public WeaponSerializable GetWeapon(int id) { return _weaponMap.TryGetValue(id, out var item) ? item : null; }
 
-        public ImageData GetImage(string name)
+        public void LoadAudioClip( string name, IAudioClipData audioClip )
         {
-            return _images.TryGetValue(name, out var image) ? image : ImageData.Empty;
+            _audioClips.Add( name, audioClip );
         }
 
-        public Dictionary<string, ImageData> ImagesB => _images;
+        public void LoadImage( string name, IImageData image )
+        {
+            _images.Add( name, image );
+        }
 
-        private IEnumerable<KeyValuePair<string, ImageData>> Images => _images;
+        public Dictionary<string, IImageData> ImagesB => _images;
+
         public IEnumerable<KeyValuePair<string, string>> Localizations => _localizations;
 
         private readonly IJsonSerializer _serializer;
@@ -568,7 +584,8 @@ namespace EditorDatabase.Storage
 		private readonly Dictionary<int, VisualEffectSerializable> _visualEffectMap = new Dictionary<int, VisualEffectSerializable>();
 		private readonly Dictionary<int, WeaponSerializable> _weaponMap = new Dictionary<int, WeaponSerializable>();
 
-        private readonly Dictionary<string, ImageData> _images = new Dictionary<string, ImageData>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, IImageData> _images = new Dictionary<string, IImageData>( StringComparer.OrdinalIgnoreCase );
+        private readonly Dictionary<string, IAudioClipData> _audioClips = new Dictionary<string, IAudioClipData>( StringComparer.OrdinalIgnoreCase );
         private readonly Dictionary<string, string> _localizations = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 	}
 }

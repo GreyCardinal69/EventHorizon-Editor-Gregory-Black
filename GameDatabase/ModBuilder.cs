@@ -17,10 +17,19 @@ namespace GameDatabase
             WaveAudio = 4,
         }
 
-        public static ModBuilder Create(string path)
+        public static ModBuilder Create( string path, int versionMajor, int versionMinor )
         {
             string name, guid;
-            return TryReadSignature(path, out name, out guid) ? new ModBuilder(path, name, guid) : null;
+            return TryReadSignature( path, out name, out guid ) ? new ModBuilder( path, name, guid, versionMajor, versionMinor ) : null;
+        }
+
+        private ModBuilder( string datapath, string name, string id, int versionMajor, int versionMinor )
+        {
+            _datapath = datapath;
+            _name = name;
+            _id = id;
+            _versionMajor = versionMajor;
+            _versionMinor = versionMinor;
         }
 
         public static bool TryReadSignature(string path, out string name, out string guid)
@@ -59,6 +68,7 @@ namespace GameDatabase
         {
             try
             {
+                var header = SerializeHeader().ToArray();
                 var rawdata = SerializeData().ToArray();
                 var data = ZlibStream.CompressBuffer(rawdata.ToArray());
 
@@ -71,7 +81,7 @@ namespace GameDatabase
                     checksumm += data[i];
                     data[i] = (byte)(data[i] ^ (byte)random(ref w, ref z));
                 }
-
+                stream.Write( header, 0, header.Length );
                 stream.Write(data, 0, data.Length);
                 stream.WriteByte((byte)(checksumm ^ (byte)random(ref w, ref z)));
             }
@@ -80,12 +90,22 @@ namespace GameDatabase
                 stream.Close();
             }
         }
+        private IEnumerable<byte> SerializeHeader()
+        {
+            return Serialize( unchecked(( int ) _header) );
+        }
 
         private IEnumerable<byte> SerializeData()
         {
-            foreach (var value in Serialize(_name))
+            foreach ( var value in Serialize( _version ) )
                 yield return value;
-            foreach (var value in Serialize(_id))
+            foreach ( var value in Serialize( _name ) )
+                yield return value;
+            foreach ( var value in Serialize( _id ) )
+                yield return value;
+            foreach ( var value in Serialize( _versionMajor ) )
+                yield return value;
+            foreach ( var value in Serialize( _versionMinor ) )
                 yield return value;
 
             foreach (var file in new DirectoryInfo(_datapath).EnumerateFiles("*", SearchOption.AllDirectories))
@@ -169,6 +189,14 @@ namespace GameDatabase
             return (z << 16) + w;  /* 32-bit result */
         }
 
+        private static IEnumerable<byte> Serialize( int data )
+        {
+            yield return ( byte ) ( data );
+            yield return ( byte ) ( data >> 8 );
+            yield return ( byte ) ( data >> 16 );
+            yield return ( byte ) ( data >> 24 );
+        }
+
         private ModBuilder(string datapath, string name, string id)
         {
             _datapath = datapath;
@@ -176,10 +204,13 @@ namespace GameDatabase
             _id = id;
         }
 
+        private readonly int _versionMinor;
+        private readonly int _versionMajor;
         private readonly string _datapath;
         private readonly string _name;
         private readonly string _id;
-
+        private const uint _header = 0xDA7ABA5E;
+        private const int _version = 1;
         public const string SignatureFileName = "id";
     }
 }

@@ -28,7 +28,7 @@ namespace EditorDatabase
             if (dialog.ShowDialog() != CommonFileDialogResult.Ok) return;
             _path = dialog.FileName;
             _storage = new DatabaseStorage(_path);
-            _content = new DatabaseContent(_storage, new JsonSerializer());
+            _content = new DatabaseContent( new JsonSerializer(),_storage );
 
             foreach (var keyValuePair in _content.Localizations)
                 if (keyValuePair.Key.ToLower().EndsWith("english"))

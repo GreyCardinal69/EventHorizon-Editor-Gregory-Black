@@ -167,6 +167,7 @@
     <Compile Include="Analytics.Designer.cs">
       <DependentUpon>Analytics.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameDatabase\Database.cs" />
     <Compile Include="GameDatabase\DataModel\Barrel.cs" />
     <Compile Include="GameDatabase\DataModel\Component.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\DebugCode.cs" />

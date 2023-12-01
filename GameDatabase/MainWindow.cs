@@ -16,9 +16,10 @@ using GameDatabase.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using GameDatabase.Controls;
-using System.Xml.Linq;
+using System.Net.Http.Headers;
+using System.Windows.Forms;
+using DatabaseMigration;
 
 namespace GameDatabase
 {
@@ -59,8 +60,28 @@ namespace GameDatabase
             {
                 DatabaseTreeView.Nodes.Clear();
                 CloseAllChilds();
+
+                var storage = new DatabaseStorage( path );
+                storage.LoadDatabaseVersion();
+                var result = storage.Version.Compare( Database.VersionMajor, Database.VersionMinor );
+                if ( result > 0 )
+                    throw new InvalidOperationException( $"Database version in not supported - {storage.Version}. Must be {Database.VersionMajor}.{Database.VersionMinor} or less." );
+                if ( result < 0 )
+                {
+                    var dialogResult = MessageBox.Show( $"Database version is outdated - {storage.Version}. Do you want to upgrade it to {Database.VersionMajor}.{Database.VersionMinor}?",
+                        "Warning", MessageBoxButtons.YesNo );
+                    if ( dialogResult == DialogResult.Yes )
+                        _database = UpgradeDatabase( storage, path );
+                }
+                else
+                {
+                    _database = new Database( storage );
+                }
+
                 _secondaryDatabse = new Database( new DatabaseStorage( path ) );
-                _database = new Database( new DatabaseStorage( path ) );
+             
+
+
                 BuildFilesTree( path, DatabaseTreeView.Nodes );
                 _lastDatabasePath = path;
                 BuildTemplates( path );
@@ -81,6 +102,15 @@ namespace GameDatabase
                 }
             }
             _expandedNodes.Clear();
+        }
+
+        private static Database UpgradeDatabase( IDataStorage storage, string path )
+        {
+            Console.WriteLine( "Upgrading Database ..." );
+            var database = Database.MigrateFrom( storage );
+            database.Save( new DatabaseStorage( path ) );
+            Console.WriteLine( $"Database upgraded - {database.DatabaseSettings.DatabaseVersion}.{database.DatabaseSettings.DatabaseVersionMinor}" );
+            return database;
         }
 
         internal Database _secondaryDatabse; 
@@ -418,7 +448,9 @@ namespace GameDatabase
                     return;
 
                 _database.Save( new DatabaseStorage( _lastDatabasePath ) );
-                var builder = ModBuilder.Create( _lastDatabasePath );
+                var builder = ModBuilder.Create( _lastDatabasePath,
+                    _database.DatabaseSettings.DatabaseVersion.Value,
+                    _database.DatabaseSettings.DatabaseVersionMinor.Value );
                 builder.Build( ( FileStream ) saveFileDialog.OpenFile() );
             }
             catch ( Exception exception )
