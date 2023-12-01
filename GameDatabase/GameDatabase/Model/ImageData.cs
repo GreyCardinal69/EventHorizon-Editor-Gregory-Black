@@ -4,7 +4,12 @@ using System.IO;
 
 namespace EditorDatabase.Model
 {
-    public class ImageData
+    public interface IImageData 
+    {
+        Image Image { get; }
+    }
+
+    public class ImageData : IImageData
     {
         public ImageData(string fileName)
         {
@@ -12,7 +17,7 @@ namespace EditorDatabase.Model
             _image = null;
         }
 
-        public string Name => string.IsNullOrEmpty(_fileName) ? string.Empty : Path.GetFileName(_fileName);
+        public string Name => string.IsNullOrEmpty(_fileName) ? string.Empty : Path.GetFileNameWithoutExtension(_fileName);
         public Image Image
         {
             get

@@ -133,8 +133,8 @@ namespace EditorDatabase.DataModel
 		{
 			Component = database.GetComponentId(serializable.ItemId);
 			if (Component.IsNull)
-                throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Component cannot be null" );
-            Faction = database.GetFactionId(serializable.Faction);
+			    throw new DatabaseException(this.GetType().Name + " (" + serializable.Id + "): Component cannot be null");
+			Faction = database.GetFactionId(serializable.Faction);
 
 			OnDataDeserialized(serializable, database);
 		}
@@ -159,9 +159,9 @@ namespace EditorDatabase.DataModel
 		{
 			Ship = database.GetShipId(serializable.ItemId);
 			if (Ship.IsNull)
-                throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Ship cannot be null" );
+			    throw new DatabaseException(this.GetType().Name + " (" + serializable.Id + "): Ship cannot be null");
 
-            OnDataDeserialized(serializable, database);
+			OnDataDeserialized(serializable, database);
 		}
 
 		public void Save(ref TechnologySerializable serializable)
@@ -182,8 +182,8 @@ namespace EditorDatabase.DataModel
 		{
 			Satellite = database.GetSatelliteId(serializable.ItemId);
 			if (Satellite.IsNull)
-                throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Satellite cannot be null" );
-            Faction = database.GetFactionId(serializable.Faction);
+			    throw new DatabaseException(this.GetType().Name + " (" + serializable.Id + "): Satellite cannot be null");
+			Faction = database.GetFactionId(serializable.Faction);
 
 			OnDataDeserialized(serializable, database);
 		}

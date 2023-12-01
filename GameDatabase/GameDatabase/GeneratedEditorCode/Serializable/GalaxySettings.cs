@@ -16,9 +16,14 @@ namespace EditorDatabase.Serializable
 	[Serializable]
 	public class GalaxySettingsSerializable : SerializableItem
 	{
-        public int DefaultStarbaseBuild;
-        public int AbandonedStarbaseFaction;
+		public int AbandonedStarbaseFaction;
 		public int[] StartingShipBuilds;
-        public int MaxEnemyShipsLevel = 300;
-    }
+		public int StartingInvenory;
+		public int SupporterPackShip;
+		public int DefaultStarbaseBuild;
+		[DefaultValue(300)]
+		public int MaxEnemyShipsLevel = 300;
+		[DefaultValue("")]
+		public string EnemyLevel;
+	}
 }
