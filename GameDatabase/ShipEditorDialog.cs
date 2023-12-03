@@ -95,7 +95,6 @@ namespace GameDatabase
             } ).ToArray();
         }
 
-
         private void radioButton1_CheckedChanged( object sender, EventArgs e )
         {
             if ( _ignoreEvents ) return;
@@ -286,6 +285,7 @@ namespace GameDatabase
                 Text = item.WeaponClass,
                 Offset = item.Offset.Value,
                 Rotation = item.Rotation.Value,
+                Arc = item.AutoAimingArc.Value
             } ).ToArray();
         }
     }
