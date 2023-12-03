@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml.Linq;
 using EditorDatabase.Model;
 
 namespace EditorDatabase.Storage
@@ -41,7 +42,7 @@ namespace EditorDatabase.Storage
             {
                 var file = fileInfo.FullName;
                 var path = file.Substring( info.FullName.Length + 1 );
-
+             
                 if ( fileInfo.Extension.Equals( ".png", StringComparison.OrdinalIgnoreCase ) ||
                     fileInfo.Extension.Equals( ".jpg", StringComparison.OrdinalIgnoreCase ) ||
                     fileInfo.Extension.Equals( ".jpeg", StringComparison.OrdinalIgnoreCase ) )

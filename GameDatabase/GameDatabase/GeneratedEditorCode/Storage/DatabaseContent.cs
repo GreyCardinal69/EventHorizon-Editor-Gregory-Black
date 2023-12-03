@@ -15,6 +15,7 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Text;
 using EditorDatabase.DataModel;
+using System.IO;
 
 namespace EditorDatabase.Storage
 {
@@ -487,8 +488,8 @@ namespace EditorDatabase.Storage
         public void LoadImage(ImageData data)
         {
             _images.Add(data.Name, data);
-
         }
+
         public DebugSettingsSerializable DebugSettings { get; private set; }
         public SkillSettingsSerializable SkillSettings { get; private set; }
         public SpecialEventSettingsSerializable SpecialEventSettings { get; private set; }
@@ -552,7 +553,7 @@ namespace EditorDatabase.Storage
 
         public void LoadImage( string name, IImageData image )
         {
-            _images.Add( name, image );
+            _images.Add( Path.GetFileName( name ), image );
         }
 
         public Dictionary<string, IImageData> ImagesB => _images;

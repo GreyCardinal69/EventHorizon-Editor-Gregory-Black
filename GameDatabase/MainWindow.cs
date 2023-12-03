@@ -20,6 +20,7 @@ using GameDatabase.Controls;
 using System.Net.Http.Headers;
 using System.Windows.Forms;
 using DatabaseMigration;
+using System.Xml.Linq;
 
 namespace GameDatabase
 {
@@ -80,8 +81,6 @@ namespace GameDatabase
 
                 _secondaryDatabse = new Database( new DatabaseStorage( path ) );
              
-
-
                 BuildFilesTree( path, DatabaseTreeView.Nodes );
                 _lastDatabasePath = path;
                 BuildTemplates( path );

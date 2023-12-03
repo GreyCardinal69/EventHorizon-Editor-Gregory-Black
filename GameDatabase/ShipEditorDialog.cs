@@ -156,7 +156,7 @@ namespace GameDatabase
             layoutInfo.OnLayoutChanged();
             layoutInfo.Show();
         }
-        public LayoutInfo layoutInfo;
+
         protected override bool ProcessCmdKey( ref Message msg, Keys keyData )
         {
             if ( keyData == ( Keys.Control | Keys.S ) )
@@ -194,9 +194,10 @@ namespace GameDatabase
         private readonly string _dialogName;
         private readonly Object _item;
         private readonly Database _database;
-
+        public LayoutInfo layoutInfo;
         private static bool warned = false;
         private decimal oldLayoutSize;
+
         private void layoutSize_ValueChanged( object sender, EventArgs e )
         {
             if ( _ignoreEvents ) return;

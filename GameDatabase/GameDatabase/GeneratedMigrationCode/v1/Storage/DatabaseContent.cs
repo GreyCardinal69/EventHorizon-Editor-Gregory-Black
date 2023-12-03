@@ -12,6 +12,7 @@ using EditorDatabase.Storage;
 using EditorDatabase.Model;
 using DatabaseMigration.v1.Enums;
 using DatabaseMigration.v1.Serializable;
+using System.IO;
 
 namespace DatabaseMigration.v1.Storage
 {
@@ -311,7 +312,7 @@ namespace DatabaseMigration.v1.Storage
 
         public void LoadImage(string name, IImageData image)
         {
-            _images.Add(name, image);
+            _images.Add( Path.GetFileName( name ), image);
         }
 
         public void LoadAudioClip(string name, IAudioClipData audioClip)
