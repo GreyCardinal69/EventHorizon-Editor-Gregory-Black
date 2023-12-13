@@ -33,7 +33,8 @@ namespace EditorDatabase.DataModel
 			HalloweenDaysBefore = new NumericValue<int>(serializable.HalloweenDaysBefore, 0, 30);
 			HalloweenDaysAfter = new NumericValue<int>(serializable.HalloweenDaysAfter, 0, 30);
 			HalloweenQuest = database.GetQuestId(serializable.HalloweenQuest);
-			OnDataDeserialized(serializable, database);
+            ConvertCreditsToSnowflakes = serializable.ConvertCreditsToSnowflakes;
+            OnDataDeserialized(serializable, database);
 		}
 
 		public void Save(SpecialEventSettingsSerializable serializable)
@@ -50,7 +51,8 @@ namespace EditorDatabase.DataModel
 			serializable.HalloweenDaysBefore = HalloweenDaysBefore.Value;
 			serializable.HalloweenDaysAfter = HalloweenDaysAfter.Value;
 			serializable.HalloweenQuest = HalloweenQuest.Value;
-			OnDataSerialized(ref serializable);
+            serializable.ConvertCreditsToSnowflakes = ConvertCreditsToSnowflakes;
+            OnDataSerialized(ref serializable);
 		}
 
 		public bool EnableXmasEvent;
@@ -62,7 +64,8 @@ namespace EditorDatabase.DataModel
 		public NumericValue<int> EasterDaysAfter = new NumericValue<int>(0, 0, 30);
 		public ItemId<QuestModel> EasterQuest = ItemId<QuestModel>.Empty;
 		public bool EnableHalloweenEvent;
-		public NumericValue<int> HalloweenDaysBefore = new NumericValue<int>(0, 0, 30);
+        public string ConvertCreditsToSnowflakes;
+        public NumericValue<int> HalloweenDaysBefore = new NumericValue<int>(0, 0, 30);
 		public NumericValue<int> HalloweenDaysAfter = new NumericValue<int>(0, 0, 30);
 		public ItemId<QuestModel> HalloweenQuest = ItemId<QuestModel>.Empty;
 

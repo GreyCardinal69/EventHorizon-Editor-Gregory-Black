@@ -28,7 +28,9 @@ namespace EditorDatabase.Serializable
 		public int EasterDaysAfter;
 		public int EasterQuest;
 		public bool EnableHalloweenEvent;
-		public int HalloweenDaysBefore;
+        [DefaultValue( "1 + credits/500" )]
+        public string ConvertCreditsToSnowflakes = "1 + credits/500";
+        public int HalloweenDaysBefore;
 		public int HalloweenDaysAfter;
 		public int HalloweenQuest;
 	}
