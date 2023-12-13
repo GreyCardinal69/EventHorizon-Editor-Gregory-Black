@@ -51,6 +51,8 @@ namespace GameDatabase
             }
             else if ( _item is Satellite )
             {
+                button1.Hide();
+                button1.Enabled = false;
                 var satellite = ( Satellite ) _item;
                 layout = satellite.Layout;
                 barrelCollection.Data = satellite.Barrels;

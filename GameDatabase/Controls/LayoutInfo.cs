@@ -107,7 +107,6 @@ namespace GameDatabase.Controls
             int size = data.Replace( "0", "" ).Length;
             CellsNum.Text = size.ToString();
 
-
             string layoutOnly = data.Replace( "0", "" );
             foreach ( var type in ( CellType[] ) Enum.GetValues( typeof( CellType ) ) )
             {
@@ -125,9 +124,12 @@ namespace GameDatabase.Controls
 
             MinWeigth.Text = ( _database.ShipSettings.MinimumWeightPerCell.Value * size * ( 1 + _shipData.Features.ShipWeightBonus.Value ) ).ToString( "0.0" );
 
-            BaseEnergyResistance.Text = CalculateResistances( _shipData.Features.EnergyResistance.Value ).ToString( "0.00" );
-            BaseKineticResistance.Text = CalculateResistances( _shipData.Features.KineticResistance.Value ).ToString( "0.00" );
-            BaseHeatResistance.Text = CalculateResistances( _shipData.Features.HeatResistance.Value ).ToString( "0.00" );
+            if ( _shipData.Features != null )
+            {
+                BaseEnergyResistance.Text = CalculateResistances( _shipData.Features.EnergyResistance.Value ).ToString( "0.00" );
+                BaseKineticResistance.Text = CalculateResistances( _shipData.Features.KineticResistance.Value ).ToString( "0.00" );
+                BaseHeatResistance.Text = CalculateResistances( _shipData.Features.HeatResistance.Value ).ToString( "0.00" );
+            }
 
             long cost;
             if ( _shipData.ShipType == ShipType.Flagship ) cost = checked(15 * size * size);
