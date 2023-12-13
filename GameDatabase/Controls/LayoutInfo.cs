@@ -83,11 +83,11 @@ namespace GameDatabase.Controls
         {
             switch ( type )
             {
-                case CellType.Outer:
+                case CellType.Blue:
                     return "Blue";
-                case CellType.Inner:
+                case CellType.Green:
                     return "Green";
-                case CellType.InnerOuter:
+                case CellType.Cyan:
                     return "Blue/Green";
                 case CellType.Engine:
                     return "Engine";

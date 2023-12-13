@@ -35,9 +35,9 @@ namespace GameDatabase
             layoutEditor1.Colors.Add( ( char ) CellType.Empty, Color.LightGray );
             layoutEditor1.Colors.Add( ( char ) CellType.Engine, Color.FromArgb( 192, 255, 255, 0 ) );
             layoutEditor1.Colors.Add( ( char ) CellType.Weapon, Color.FromArgb( 192, 255, 0, 0 ) );
-            layoutEditor1.Colors.Add( ( char ) CellType.Inner, Color.FromArgb( 192, 0, 255, 0 ) );
-            layoutEditor1.Colors.Add( ( char ) CellType.InnerOuter, Color.FromArgb( 192, 0, 255, 255 ) );
-            layoutEditor1.Colors.Add( ( char ) CellType.Outer, Color.FromArgb( 192, 0, 128, 255 ) );
+            layoutEditor1.Colors.Add( ( char ) CellType.Green, Color.FromArgb( 192, 0, 255, 0 ) );
+            layoutEditor1.Colors.Add( ( char ) CellType.Cyan, Color.FromArgb( 192, 0, 255, 255 ) );
+            layoutEditor1.Colors.Add( ( char ) CellType.Blue, Color.FromArgb( 192, 0, 128, 255 ) );
 
             barrelCollection.Database = _database;
 
@@ -122,21 +122,21 @@ namespace GameDatabase
         {
             if ( _ignoreEvents ) return;
 
-            layoutEditor1.SelectedCategory = ( char ) CellType.Inner;
+            layoutEditor1.SelectedCategory = ( char ) CellType.Green;
         }
 
         private void radioButton5_CheckedChanged( object sender, EventArgs e )
         {
             if ( _ignoreEvents ) return;
 
-            layoutEditor1.SelectedCategory = ( char ) CellType.InnerOuter;
+            layoutEditor1.SelectedCategory = ( char ) CellType.Cyan;
         }
 
         private void radioButton6_CheckedChanged( object sender, EventArgs e )
         {
             if ( _ignoreEvents ) return;
 
-            layoutEditor1.SelectedCategory = ( char ) CellType.Outer;
+            layoutEditor1.SelectedCategory = ( char ) CellType.Blue;
         }
 
         private void splitContainer2_SplitterMoved( object sender, SplitterEventArgs e )
