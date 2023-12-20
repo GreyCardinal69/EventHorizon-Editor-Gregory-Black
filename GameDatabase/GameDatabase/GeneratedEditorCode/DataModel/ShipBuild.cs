@@ -23,7 +23,9 @@ namespace EditorDatabase.DataModel
 		{
 			try
 			{
-				Id = new ItemId<ShipBuild>(serializable.Id, serializable.FileName);
+                AvailableForPlayer = serializable.AvailableForPlayer;
+                AvailableForEnemy = serializable.AvailableForEnemy;
+                Id = new ItemId<ShipBuild>(serializable.Id, serializable.FileName);
 				Ship = database.GetShipId(serializable.ShipId);
 				if (Ship.IsNull)
 				    throw new DatabaseException(this.GetType().Name + " (" + serializable.Id + "): Ship cannot be null");
@@ -41,7 +43,9 @@ namespace EditorDatabase.DataModel
 
 		public void Save(ShipBuildSerializable serializable)
 		{
-			serializable.ShipId = Ship.Value;
+            serializable.AvailableForPlayer = AvailableForPlayer;
+            serializable.AvailableForEnemy = AvailableForEnemy;
+            serializable.ShipId = Ship.Value;
 			serializable.NotAvailableInGame = NotAvailableInGame;
 			serializable.DifficultyClass = DifficultyClass;
 			serializable.BuildFaction = BuildFaction.Value;
@@ -54,7 +58,9 @@ namespace EditorDatabase.DataModel
 
 		public readonly ItemId<ShipBuild> Id;
 
-		public ItemId<Ship> Ship = ItemId<Ship>.Empty;
+        public bool AvailableForPlayer;
+        public bool AvailableForEnemy;
+        public ItemId<Ship> Ship = ItemId<Ship>.Empty;
 		public bool NotAvailableInGame;
 		public DifficultyClass DifficultyClass;
 		public ItemId<Faction> BuildFaction = ItemId<Faction>.Empty;

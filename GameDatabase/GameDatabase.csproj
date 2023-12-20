@@ -404,6 +404,7 @@
     <Compile Include="GameDatabase\Helpers\Templates.cs" />
     <Compile Include="GameDatabase\Migration\v1\DatabaseUpgrader_0_1.cs" />
     <Compile Include="GameDatabase\Migration\v1\DatabaseUpgrader_1_2.cs" />
+    <Compile Include="GameDatabase\Migration\v1\DatabaseUpgrader_2_3.cs" />
     <Compile Include="GameDatabase\Model\AudioClipData.cs" />
     <Compile Include="GameDatabase\Model\ImageData.cs" />
     <Compile Include="GameDatabase\Storage\DatabaseStorage.cs" />

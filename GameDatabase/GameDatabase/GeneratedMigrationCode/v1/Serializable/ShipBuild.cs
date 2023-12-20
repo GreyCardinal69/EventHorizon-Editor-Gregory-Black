@@ -21,10 +21,13 @@ namespace DatabaseMigration.v1.Serializable
 			ItemType = ItemType.ShipBuild;
 			FileName = "ShipBuild.json";
 		}
-
-		public int ShipId;
-		public bool NotAvailableInGame;
-		public DifficultyClass DifficultyClass;
+        public bool NotAvailableInGame;
+        public int ShipId;
+        [DefaultValue( true )]
+        public bool AvailableForPlayer = true;
+        [DefaultValue( true )]
+        public bool AvailableForEnemy = true;
+        public DifficultyClass DifficultyClass;
 		public int BuildFaction;
 		public InstalledComponentSerializable[] Components;
 	}

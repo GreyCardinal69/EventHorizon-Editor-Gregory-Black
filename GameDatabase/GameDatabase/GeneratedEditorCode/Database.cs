@@ -38,7 +38,7 @@ namespace EditorDatabase
     public partial class Database
     {
         public const int VersionMajor = 1;
-        public const int VersionMinor = 2;
+        public const int VersionMinor = 3;
         public DatabaseContent Content => _content;
 
         public Database( IDataStorage storage )
