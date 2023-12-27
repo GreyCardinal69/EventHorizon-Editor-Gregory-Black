@@ -291,5 +291,11 @@ namespace GameDatabase
                 Arc = item.AutoAimingArc.Value
             } ).ToArray();
         }
+
+        private void BarrelCreation_Click( object sender, EventArgs e )
+        {
+            barrelCollection.Data = BarrelExtensions.CreateBarrels(layoutEditor1.Layout);
+            UpdateBarrels();
+        }
     }
 }

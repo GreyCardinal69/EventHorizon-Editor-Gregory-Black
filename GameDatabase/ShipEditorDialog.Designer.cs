@@ -38,6 +38,7 @@ namespace GameDatabase
             this.structDataEditor1 = new StructDataEditor();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BarrelCreation = new System.Windows.Forms.Button();
             this.layoutEditor1 = new LayoutEditor();
             this.barrelCollection = new Controls.BarrelsCollectionEditor();
             this.button1 = new System.Windows.Forms.Button();
@@ -140,6 +141,7 @@ namespace GameDatabase
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.BarrelCreation);
             this.panel1.Controls.Add(this.layoutEditor1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 26);
@@ -147,6 +149,21 @@ namespace GameDatabase
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(567, 310);
             this.panel1.TabIndex = 4;
+            // 
+            // BarrelCreation
+            // 
+            this.BarrelCreation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BarrelCreation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.BarrelCreation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BarrelCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.BarrelCreation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.BarrelCreation.Location = new System.Drawing.Point(372, 5);
+            this.BarrelCreation.Name = "BarrelCreation";
+            this.BarrelCreation.Size = new System.Drawing.Size(195, 38);
+            this.BarrelCreation.TabIndex = 6;
+            this.BarrelCreation.Text = "Fill Barrels ( Replaces All )";
+            this.BarrelCreation.UseVisualStyleBackColor = false;
+            this.BarrelCreation.Click += new System.EventHandler(this.BarrelCreation_Click);
             // 
             // layoutEditor1
             // 
@@ -157,7 +174,7 @@ namespace GameDatabase
             this.layoutEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutEditor1.Engines = null;
             this.layoutEditor1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutEditor1.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            this.layoutEditor1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
             this.layoutEditor1.Image = null;
             this.layoutEditor1.Layout = "000000000";
             this.layoutEditor1.Location = new System.Drawing.Point(0, 0);
@@ -460,5 +477,7 @@ namespace GameDatabase
         private System.Windows.Forms.Button upButton;
 
         #endregion
+
+        private Button BarrelCreation;
     }
 }

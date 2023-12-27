@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarrelExtensions.cs" />
     <Compile Include="BarrelsEditor.Designer.cs" />
     <Compile Include="ComponentEditorDialog.cs">
       <SubType>Form</SubType>
