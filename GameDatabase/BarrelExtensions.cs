@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using EditorDatabase.DataModel;
 using EditorDatabase.Model;
@@ -71,7 +72,6 @@ namespace GameDatabase
 
         private static void AddCoordinate( int row, int col, int n, int[,] grid, List<(double, double)> coordinates )
         {
-
             double x = ( ( double ) col ) / n;
             double y = 1 - ( ( double ) row ) / n;
 
@@ -106,7 +106,7 @@ namespace GameDatabase
                         int nr = r + dr;
                         int nc = c + dc;
 
-                        if ( nr >= 0 && nr < n && nc >= 0 && nc < n && grid[nr, nc] == 4 )
+                        if ( nr >= 0 && nr < n && nc >= 0 && nc < n && grid[nr, nc] == 4 && ( dr == 0 || dc == 0 ) )
                         {
                             grid[nr, nc] = -1;
                             queue.Enqueue( (nr, nc) );
@@ -120,7 +120,7 @@ namespace GameDatabase
             List<(double, double)> coords = new List<(double, double)>();
             foreach ( var (ox, oy) in overlappingCoords )
             {
-                coords.Add( (( ( double ) oy ), ( ( double ) ox )) );
+                coords.Add( (( double ) oy, ( double ) ox) );
             }
 
             var v = GetCenter( coords.ToArray(), n );
