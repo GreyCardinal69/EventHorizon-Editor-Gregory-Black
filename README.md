@@ -15,6 +15,7 @@ This version implements:
 - Faster database save speed
 - An ID field when selecting a file
 - Reloading the database restores the last opened file tree
+- Option to generate ship barrels.
 
 ## How to use:
 
