@@ -63,7 +63,7 @@ namespace EditorDatabase.DataModel
 				case RequirementType.HaveItemById:
 					return new Requirement_HaveItemById();
 				case RequirementType.ComeToOrigin:
-					return new RequirementEmptyContent();
+					return new Requirement_ComeToOrigin();
 				case RequirementType.TimeSinceQuestStart:
 					return new Requirement_TimeSinceQuestStart();
 				case RequirementType.TimeSinceLastCompletion:
@@ -102,6 +102,7 @@ namespace EditorDatabase.DataModel
 			serializable.MaxValue = 0;
 			serializable.Character = 0;
 			serializable.Faction = 0;
+			serializable.BoolValue = false;
 			serializable.Loot = new LootContentSerializable();
 			serializable.Requirements = null;
 			_content.Save(ref serializable);
@@ -343,17 +344,18 @@ namespace EditorDatabase.DataModel
 		{
 			MinValue = new NumericValue<int>(serializable.MinValue, -100, 100);
 			MaxValue = new NumericValue<int>(serializable.MaxValue, -100, 100);
-
+			AllowUnsafeStars = serializable.BoolValue;
 			OnDataDeserialized(serializable, database);
 		}
 
 		public void Save(ref RequirementSerializable serializable)
 		{
+			serializable.BoolValue = AllowUnsafeStars;
 			serializable.MinValue = MinValue.Value;
 			serializable.MaxValue = MaxValue.Value;
 			OnDataSerialized(ref serializable);
 		}
-
+		public bool AllowUnsafeStars;
 		public NumericValue<int> MinValue = new NumericValue<int>(0, -100, 100);
 		public NumericValue<int> MaxValue = new NumericValue<int>(0, -100, 100);
 	}

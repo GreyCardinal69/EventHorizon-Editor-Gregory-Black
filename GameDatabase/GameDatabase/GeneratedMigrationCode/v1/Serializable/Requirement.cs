@@ -16,6 +16,7 @@ namespace DatabaseMigration.v1.Serializable
 	[Serializable]
 	public struct RequirementSerializable
 	{
+		public bool BoolValue;
 		public RequirementType Type;
 		public int ItemId;
 		public int MinValue;
