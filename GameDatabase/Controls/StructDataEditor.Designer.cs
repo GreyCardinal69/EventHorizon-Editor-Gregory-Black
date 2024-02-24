@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace GameDatabase
 {
@@ -64,6 +65,10 @@ namespace GameDatabase
             this.toolTip.AutoPopDelay = 5000;
             this.toolTip.InitialDelay = 100;
             this.toolTip.ReshowDelay = 100;
+            toolTip.OwnerDraw = true;
+            toolTip.Draw += ToolTip_Draw;
+            toolTip.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
+            toolTip.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
             // StructDataEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -76,6 +81,16 @@ namespace GameDatabase
             this.PerformLayout();
 
         }
+
+        private void ToolTip_Draw( object sender, DrawToolTipEventArgs e )
+        {
+            Font f = new Font( "Yu Gothic", 10.0f );
+            toolTip.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            e.DrawBackground();
+            e.DrawBorder();
+            e.DrawText();
+        }
+
         private ToolTip toolTip;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
 

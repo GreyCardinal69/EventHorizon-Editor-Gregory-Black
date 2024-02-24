@@ -319,6 +319,7 @@ namespace GameDatabase
             comboBox.SelectedItem = value;
             comboBox.SelectedValueChanged += OnComboBoxValueChanged;
             comboBox.MouseWheel += DisableMouseWheel;
+
             var memberInfo = value.GetType().GetMember( value.ToString() ).FirstOrDefault();
             if ( memberInfo != null )
             {

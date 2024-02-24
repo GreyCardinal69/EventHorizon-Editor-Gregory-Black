@@ -283,6 +283,45 @@ namespace EditorDatabase.Storage
                 data.FileName = name;
                 _componentMap.Add(data.Id, data);
             }
+            else if ( type == ItemType.BehaviorTree )
+            {
+                if ( _behaviorTreeMap.ContainsKey( item.Id ) ) throw new DatabaseException( "Duplicate Component ID - " + item.Id + " (" + name + ")" );
+                var data = _serializer.FromJson<BehaviorTreeSerializable>( content );
+                data.FileName = name;
+                _behaviorTreeMap.Add( data.Id, data );
+            }
+            else if ( type == ItemType.CombatRules )
+            {
+                if ( _combatRulesMap.ContainsKey( item.Id ) ) throw new DatabaseException( "Duplicate Component ID - " + item.Id + " (" + name + ")" );
+                var data = _serializer.FromJson<CombatRulesSerializable>( content );
+                data.FileName = name;
+                _combatRulesMap.Add( data.Id, data );
+            }
+            else if ( type == ItemType.GameObjectPrefab )
+            {
+                if ( _gameObjectPrefabMap.ContainsKey( item.Id ) ) throw new DatabaseException( "Duplicate Component ID - " + item.Id + " (" + name + ")" );
+                var data = _serializer.FromJson<GameObjectPrefabSerializable>( content );
+                data.FileName = name;
+                _gameObjectPrefabMap.Add( data.Id, data );
+            }
+            else if ( type == ItemType.CombatSettings )
+            {
+                var data = _serializer.FromJson<CombatSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( CombatSettings != null )
+                    throw new DatabaseException( "Duplicate CombatSettings file found - " + name );
+                CombatSettings = data;
+            }
+            else if ( type == ItemType.UiSettings )
+            {
+                var data = _serializer.FromJson<UiSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( UiSettings != null )
+                    throw new DatabaseException( "Duplicate UiSettings file found - " + name );
+                UiSettings = data;
+            }
             else if (type == ItemType.ComponentMod)
             {
 			    if (_componentModMap.ContainsKey(item.Id)) throw new DatabaseException("Duplicate ComponentMod ID - " + item.Id + " (" + name + ")");

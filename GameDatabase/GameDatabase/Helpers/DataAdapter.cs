@@ -48,8 +48,7 @@ namespace EditorDatabase
     {
         public Property(object data, FieldInfo fieldInfo, Action dataChangedAction)
         {
-            if (fieldInfo == null) throw new ArgumentException();
-            _tooltip = _fieldInfo.GetCustomAttribute<TooltipText>();
+        
             _data = data;
             _fieldInfo = fieldInfo;
             _dataChangedAction = dataChangedAction;
