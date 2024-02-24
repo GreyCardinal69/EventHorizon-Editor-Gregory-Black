@@ -19,4 +19,34 @@
             return Value.ToString();
         }
     }
+
+    public interface IObjectWrapper
+    {
+        object CurrentValue { get; }
+        object DefaultValue { get; }
+        void CreateNew();
+        void Clear();
+    }
+
+    public class ObjectWrapper<T> : IObjectWrapper where T : class, new()
+    {
+        public T Value;
+        private T _defaultValue;
+
+        public object CurrentValue => Value;
+        public object DefaultValue => _defaultValue;
+        public void CreateNew() => Value = new T();
+        public void Clear() => Value = _defaultValue;
+
+        public ObjectWrapper( T defaultValue )
+        {
+            _defaultValue = defaultValue;
+            Value = defaultValue;
+        }
+
+        public override string ToString()
+        {
+            return Value?.ToString();
+        }
+    }
 }

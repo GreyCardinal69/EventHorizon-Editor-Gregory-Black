@@ -169,6 +169,21 @@ namespace GameDatabase
             }
         }
 
+        private Control CreateContainerControl( IObjectWrapper wrapper, int column, int row )
+        {
+            ContainerEditor container = new ContainerEditor()
+            {
+                Dock = DockStyle.Fill,
+                AutoSize = true,
+                Database = _database,
+                ContentAutoScroll = false,
+            };
+
+            container.Data = wrapper;
+            tableLayoutPanel.Controls.Add( container, column, row );
+            return container;
+        }
+
         private Control CreateControl( object value, Type type, int rowId )
         {
             if ( type.IsEnum )
@@ -188,6 +203,9 @@ namespace GameDatabase
                 var numeric = ( NumericValue<float> ) value;
                 return CreateNumericContol( ( decimal ) numeric.Value, FloatToDecimal( numeric.Min ), FloatToDecimal( numeric.Max ), ( decimal ) 0.1f, 5, 1, rowId );
             }
+
+            if ( typeof( IObjectWrapper ).IsAssignableFrom( type ) )
+                return CreateContainerControl( ( IObjectWrapper ) value, 1, rowId );
 
             if ( type == typeof( string ) )
                 return CreateTextBox( ( string ) value, 1, rowId );
