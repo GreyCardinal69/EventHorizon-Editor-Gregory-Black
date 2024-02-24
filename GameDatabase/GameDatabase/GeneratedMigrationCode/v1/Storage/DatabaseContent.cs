@@ -13,6 +13,7 @@ using EditorDatabase.Model;
 using DatabaseMigration.v1.Enums;
 using DatabaseMigration.v1.Serializable;
 using System.IO;
+using EditorDatabase.DataModel;
 
 namespace DatabaseMigration.v1.Storage
 {
@@ -70,6 +71,18 @@ namespace DatabaseMigration.v1.Storage
                 var data = _serializer.FromJson<DeviceSerializable>(content);
                 data.FileName = name;
                 DeviceList.Add(data);
+            }
+            else if ( type == ItemType.BehaviorTree )
+            {
+                var data = _serializer.FromJson<BehaviorTreeSerializable>( content );
+                data.FileName = name;
+                BehaviorTreeList.Add( data );
+            }
+            else if ( type == ItemType.CombatSettings )
+            {
+                var data = _serializer.FromJson<CombatSettingsSerializable>( content );
+                data.FileName = name;
+                CombatSettings = data;
             }
             else if (type == ItemType.DroneBay)
             {
@@ -259,6 +272,8 @@ namespace DatabaseMigration.v1.Storage
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
             foreach (var item in SkillList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
+            foreach ( var item in BehaviorTreeList )
+                contentLoader.LoadJson( item.FileName, _serializer.ToJson( item ) );
             foreach (var item in TechnologyList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
             foreach (var item in CharacterList)
@@ -297,6 +312,8 @@ namespace DatabaseMigration.v1.Storage
                 contentLoader.LoadJson(SkillSettings.FileName, _serializer.ToJson(SkillSettings));
             if (SpecialEventSettings != null)
                 contentLoader.LoadJson(SpecialEventSettings.FileName, _serializer.ToJson(SpecialEventSettings));
+            if ( CombatSettings != null )
+                contentLoader.LoadJson( CombatSettings.FileName, _serializer.ToJson( CombatSettings ) );
             foreach (var item in _images)
                 contentLoader.LoadImage(item.Key, item.Value);
             foreach (var item in _audioClips)
@@ -319,8 +336,8 @@ namespace DatabaseMigration.v1.Storage
         {
             _audioClips.Add(name, audioClip);
         }
-
-		public DatabaseSettingsSerializable DatabaseSettings { get; private set; }
+        public CombatSettingsSerializable CombatSettings { get; private set; }
+        public DatabaseSettingsSerializable DatabaseSettings { get; private set; }
 		public DebugSettingsSerializable DebugSettings { get; private set; }
 		public ExplorationSettingsSerializable ExplorationSettings { get; private set; }
 		public FrontierSettingsSerializable FrontierSettings { get; private set; }
@@ -329,8 +346,8 @@ namespace DatabaseMigration.v1.Storage
 		public ShipSettingsSerializable ShipSettings { get; private set; }
 		public SkillSettingsSerializable SkillSettings { get; private set; }
 		public SpecialEventSettingsSerializable SpecialEventSettings { get; private set; }
-
-		public DatabaseSettingsSerializable CreateDatabaseSettings() => DatabaseSettings ?? (DatabaseSettings = new DatabaseSettingsSerializable());
+        public CombatSettingsSerializable CreateCombatSettings() => CombatSettings ?? ( CombatSettings = new CombatSettingsSerializable() );
+        public DatabaseSettingsSerializable CreateDatabaseSettings() => DatabaseSettings ?? (DatabaseSettings = new DatabaseSettingsSerializable());
 		public DebugSettingsSerializable CreateDebugSettings() => DebugSettings ?? (DebugSettings = new DebugSettingsSerializable());
 		public ExplorationSettingsSerializable CreateExplorationSettings() => ExplorationSettings ?? (ExplorationSettings = new ExplorationSettingsSerializable());
 		public FrontierSettingsSerializable CreateFrontierSettings() => FrontierSettings ?? (FrontierSettings = new FrontierSettingsSerializable());
@@ -339,8 +356,8 @@ namespace DatabaseMigration.v1.Storage
 		public ShipSettingsSerializable CreateShipSettings() => ShipSettings ?? (ShipSettings = new ShipSettingsSerializable());
 		public SkillSettingsSerializable CreateSkillSettings() => SkillSettings ?? (SkillSettings = new SkillSettingsSerializable());
 		public SpecialEventSettingsSerializable CreateSpecialEventSettings() => SpecialEventSettings ?? (SpecialEventSettings = new SpecialEventSettingsSerializable());
-
-		public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList { get; } = new List<AmmunitionObsoleteSerializable>();
+        public List<BehaviorTreeSerializable> BehaviorTreeList { get; } = new List<BehaviorTreeSerializable>();
+        public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList { get; } = new List<AmmunitionObsoleteSerializable>();
 		public List<ComponentSerializable> ComponentList { get; } = new List<ComponentSerializable>();
 		public List<ComponentModSerializable> ComponentModList { get; } = new List<ComponentModSerializable>();
 		public List<ComponentStatsSerializable> ComponentStatsList { get; } = new List<ComponentStatsSerializable>();

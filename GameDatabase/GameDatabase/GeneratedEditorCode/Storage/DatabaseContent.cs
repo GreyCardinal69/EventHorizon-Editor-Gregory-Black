@@ -489,7 +489,7 @@ namespace EditorDatabase.Storage
         {
             _images.Add(data.Name, data);
         }
-
+        public CombatSettingsSerializable CombatSettings { get; private set; }
         public DebugSettingsSerializable DebugSettings { get; private set; }
         public SkillSettingsSerializable SkillSettings { get; private set; }
         public SpecialEventSettingsSerializable SpecialEventSettings { get; private set; }
@@ -500,6 +500,7 @@ namespace EditorDatabase.Storage
         public FrontierSettingsSerializable FrontierSettings { get; private set; }
         public ShipModSettingsSerializable ShipModSettings { get; private set; }
         public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList => _ammunitionObsoleteMap.Values.ToList();
+        public List<BehaviorTreeSerializable> BehaviorTreeList => _behaviorTreeMap.Values.ToList();
 		public List<ComponentSerializable> ComponentList => _componentMap.Values.ToList();
         public List<ComponentModSerializable> ComponentModList => _componentModMap.Values.ToList();
         public List<ComponentStatsSerializable> ComponentStatsList => _componentStatsMap.Values.ToList();
@@ -545,7 +546,7 @@ namespace EditorDatabase.Storage
 		public BulletPrefabSerializable GetBulletPrefab(int id) { return _bulletPrefabMap.TryGetValue(id, out var item) ? item : null; }
 		public VisualEffectSerializable GetVisualEffect(int id) { return _visualEffectMap.TryGetValue(id, out var item) ? item : null; }
 		public WeaponSerializable GetWeapon(int id) { return _weaponMap.TryGetValue(id, out var item) ? item : null; }
-
+        public BehaviorTreeSerializable GetBehaviorTree( int id ) { return _behaviorTreeMap.TryGetValue( id, out var item ) ? item : null; }
         public void LoadAudioClip( string name, IAudioClipData audioClip )
         {
             _audioClips.Add( name, audioClip );
@@ -561,8 +562,8 @@ namespace EditorDatabase.Storage
         public IEnumerable<KeyValuePair<string, string>> Localizations => _localizations;
 
         private readonly IJsonSerializer _serializer;
-
-		private readonly Dictionary<int, AmmunitionObsoleteSerializable> _ammunitionObsoleteMap = new Dictionary<int, AmmunitionObsoleteSerializable>();
+        private readonly Dictionary<int, BehaviorTreeSerializable> _behaviorTreeMap = new Dictionary<int, BehaviorTreeSerializable>();
+        private readonly Dictionary<int, AmmunitionObsoleteSerializable> _ammunitionObsoleteMap = new Dictionary<int, AmmunitionObsoleteSerializable>();
 		private readonly Dictionary<int, ComponentSerializable> _componentMap = new Dictionary<int, ComponentSerializable>();
 		private readonly Dictionary<int, ComponentModSerializable> _componentModMap = new Dictionary<int, ComponentModSerializable>();
 		private readonly Dictionary<int, ComponentStatsSerializable> _componentStatsMap = new Dictionary<int, ComponentStatsSerializable>();

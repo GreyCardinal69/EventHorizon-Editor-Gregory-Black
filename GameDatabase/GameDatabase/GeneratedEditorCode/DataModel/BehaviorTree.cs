@@ -24,7 +24,7 @@ namespace EditorDatabase.DataModel
 			return new BehaviorTreeModel(serializable, database);
 		}
 
-		private BehaviorTreeModel(BehaviorTreeSerializable serializable, Database database)
+		public BehaviorTreeModel(BehaviorTreeSerializable serializable, Database database)
 		{
 			try
 			{
@@ -46,7 +46,7 @@ namespace EditorDatabase.DataModel
 
 		public readonly ItemId<BehaviorTreeModel> Id;
 
-		public ObjectWrapper<BehaviorTreeNode> RootNode = new(DataModel.BehaviorTreeNode.DefaultValue);
+		public ObjectWrapper<BehaviorTreeNode> RootNode = new ObjectWrapper<BehaviorTreeNode>(DataModel.BehaviorTreeNode.DefaultValue);
 
 		public static BehaviorTreeModel DefaultValue { get; private set; }
 	}

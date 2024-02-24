@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 
 namespace EditorDatabase.Model
@@ -21,10 +22,13 @@ namespace EditorDatabase.Model
                 {
                     _data.Append(_defaultValue);
                     _size = 1;
+                    _cellcount = 0;
                     return;
                 }
 
                 _data.Append(value);
+                _cellcount = value.Count( cell => cell != _defaultValue );
+
 
                 var length = value.Length;
                 _size = (int)Math.Sqrt(length);
@@ -96,7 +100,8 @@ namespace EditorDatabase.Model
 
             _data = data;
         }
-
+        public int CellCount => _cellcount;
+        private int _cellcount;
         private int _size = 1;
         private StringBuilder _data = new StringBuilder(_defaultValue);
         private const char _defaultValue = '0';

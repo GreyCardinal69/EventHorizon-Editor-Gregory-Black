@@ -477,14 +477,6 @@
     <Compile Include="Controls\LayoutEditor.Designer.cs">
       <DependentUpon>LayoutEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameDatabase\Model\ItemId.cs" />
-    <Compile Include="GameDatabase\Model\Layout.cs" />
-    <Compile Include="GameDatabase\Model\NumericValue.cs" />
-    <Compile Include="GameDatabase\Model\Vector2.cs" />
-    <Compile Include="GameDatabase\Model\Wrapper.cs" />
-    <Compile Include="GameDatabase\Storage\DuplicateSaveStorage.cs" />
-    <Compile Include="GameDatabase\Storage\JsonSerializer.cs" />
-    <Compile Include="GameDatabase\Utilites\DatabaseReformat.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

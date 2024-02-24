@@ -6,6 +6,8 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
+using static EditorDatabase.Property;
+
 namespace EditorDatabase.Enums
 {
 	public enum BehaviorRequirementType
@@ -14,11 +16,11 @@ namespace EditorDatabase.Enums
 		Any = 1,
 		All = 2,
 		None = 3,
-		[TooltipText("Condition met if AI level equals to this value")]
-		AiLevel = 5,
-		[TooltipText("Condition met if AI level is equals or higher than this value")]
-		MinAiLevel = 6,
-		SizeClass = 7,
+        [TooltipText( "Satisfied if enemy AI level equals to this value" )]
+        AiLevel = 5,
+        [TooltipText( "Satisfied if enemy AI level is equals or higher than this value" )]
+        MinAiLevel = 6,
+        SizeClass = 7,
 		HasDevice = 10,
 		HasDrones = 12,
 		HasAnyWeapon = 11,

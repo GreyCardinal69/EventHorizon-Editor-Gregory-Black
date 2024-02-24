@@ -65,6 +65,13 @@ namespace EditorDatabase
                     item.Value.Save( value );
             }
 
+            foreach ( var item in _behaviorTreeMap )
+            {
+                var value = _content.GetBehaviorTree( item.Key );
+                if ( value != secondaryDb.Content.GetBehaviorTree( item.Key ) )
+                    item.Value.Save( value );
+            }
+
             foreach ( var item in _componentMap )
             {
                 var value = _content.GetComponent( item.Key );
@@ -220,7 +227,7 @@ namespace EditorDatabase
             _shipModSettings?.Save( _content.ShipModSettings );
             _shipSettings?.Save( _content.ShipSettings );
             _specialEventSettings?.Save( _content.SpecialEventSettings );
-
+            _combatSettings?.Save( _content.CombatSettings );
             _content.Save( storage, _serializer );
         }
 
@@ -249,7 +256,7 @@ namespace EditorDatabase
             if ( type == typeof( BulletPrefab ) ) return _content.BulletPrefabList.Select( item => new ItemId<BulletPrefab>( item ) );
             if ( type == typeof( VisualEffect ) ) return _content.VisualEffectList.Select( item => new ItemId<VisualEffect>( item ) );
             if ( type == typeof( Weapon ) ) return _content.WeaponList.Select( item => new ItemId<Weapon>( item ) );
-
+            if ( type == typeof( BehaviorTreeModel ) ) return _content.BehaviorTreeList.Select( item => new ItemId<BehaviorTreeModel>( item ) );
             return Enumerable.Empty<IItemId>();
         }
 
@@ -288,6 +295,8 @@ namespace EditorDatabase
                 case ItemType.SkillSettings: return SkillSettings;
                 case ItemType.SpecialEventSettings: return SpecialEventSettings;
                 case ItemType.DebugSettings: return DebugSettings;
+                case ItemType.CombatSettings: return CombatSettings;
+                case ItemType.BehaviorTree: return GetBehaviorTree( id );
                 default: return null;
             }
         }
@@ -318,9 +327,10 @@ namespace EditorDatabase
                 case ItemType.BulletPrefab: SetBulletPrefab( id, old ); break;
                 case ItemType.VisualEffect: SetVisualEffect( id, old ); break;
                 case ItemType.Weapon: SetWeapon( id, old ); break;
+                case ItemType.BehaviorTree: SetBehaviorTree( id, old ); break;
             }
         }
-
+        public CombatSettings CombatSettings => _combatSettings ?? ( _combatSettings = CombatSettings.Create( _content.CombatSettings, this ) );
         public DebugSettings DebugSettings => _debugSettings ?? ( _debugSettings = new DebugSettings( _content.DebugSettings, this ) );
         public DatabaseSettings DatabaseSettings => _databaseSettings ?? ( _databaseSettings = new DatabaseSettings( _content.DatabaseSettings, this ) );
         public ExplorationSettings ExplorationSettings => _explorationSettings ?? ( _explorationSettings = new ExplorationSettings( _content.ExplorationSettings, this ) );
@@ -338,6 +348,18 @@ namespace EditorDatabase
                 var serializable = _content.GetAmmunitionObsolete( id );
                 item = new AmmunitionObsolete( serializable, this );
                 _ammunitionObsoleteMap.Add( id, item );
+            }
+            return item;
+        }
+
+        public ItemId<BehaviorTreeModel> GetBehaviorTreeId( int id ) { return new ItemId<BehaviorTreeModel>( _content.GetBehaviorTree( id ) ); }
+        public BehaviorTreeModel GetBehaviorTree( int id )
+        {
+            if ( !_behaviorTreeMap.TryGetValue( id, out var item ) )
+            {
+                var serializable = _content.GetBehaviorTree( id );
+                item = BehaviorTreeModel.Create( serializable, this );
+                _behaviorTreeMap.Add( id, item );
             }
             return item;
         }
@@ -598,7 +620,7 @@ namespace EditorDatabase
 
         public void SetAmmunitionObsolete( int id, int old )
         {
-            var serializable = _content.GetAmmunitionObsolete( id );
+            AmmunitionObsoleteSerializable serializable = _content.GetAmmunitionObsolete( id );
             _content.AmmunitionObsoleteList[_content.AmmunitionObsoleteList.IndexOf( _content.GetAmmunitionObsolete( old ) )] = serializable;
             _ammunitionObsoleteMap[old] = new AmmunitionObsolete( serializable, this );
         }
@@ -657,6 +679,13 @@ namespace EditorDatabase
             var serializable = _content.GetSatelliteBuild( id );
             _content.SatelliteBuildList[_content.SatelliteBuildList.IndexOf( _content.GetSatelliteBuild( old ) )] = serializable;
             _satelliteBuildMap[old] = new SatelliteBuild( serializable, this );
+        }
+
+        public void SetBehaviorTree( int id, int old )
+        {
+            BehaviorTreeSerializable serializable = _content.GetBehaviorTree( id );
+            _content.BehaviorTreeList[_content.BehaviorTreeList.IndexOf( _content.GetBehaviorTree( old ) )] = serializable;
+            _behaviorTreeMap[old] = new BehaviorTreeModel( serializable, this );
         }
 
         public void SetShip( int id, int old )
@@ -796,7 +825,7 @@ namespace EditorDatabase
             _frontierSettings = null;
             _shipModSettings = null;
         }
-
+        private readonly Dictionary<int, BehaviorTreeModel> _behaviorTreeMap = new Dictionary<int, BehaviorTreeModel>();
         private readonly Dictionary<int, AmmunitionObsolete> _ammunitionObsoleteMap = new Dictionary<int, AmmunitionObsolete>();
         private readonly Dictionary<int, Component> _componentMap = new Dictionary<int, Component>();
         private readonly Dictionary<int, ComponentMod> _componentModMap = new Dictionary<int, ComponentMod>();
@@ -828,6 +857,7 @@ namespace EditorDatabase
         private SkillSettings _skillSettings;
         private FrontierSettings _frontierSettings;
         private ShipModSettings _shipModSettings;
+        private CombatSettings _combatSettings;
         private SpecialEventSettings _specialEventSettings;
         private readonly IJsonSerializer _serializer;
         private readonly DatabaseContent _content;

@@ -10,6 +10,7 @@ using System;
 using System.ComponentModel;
 using EditorDatabase.Model;
 using DatabaseMigration.v1.Enums;
+using EditorDatabase.Serializable;
 
 namespace DatabaseMigration.v1.Serializable
 {
@@ -24,18 +25,18 @@ namespace DatabaseMigration.v1.Serializable
 		public AiWeaponCategory WeaponType;
 		public NodeExecutionMode ExecutionMode;
 		public bool Result;
-		[DefaultValue(0.1f)]
-		public float MinValue = 0.1f;
-		[DefaultValue(0.9f)]
-		public float MaxValue = 0.9f;
-		public float Cooldown;
+        [DefaultValue( 0.1f )]
+        public float MinValue = 0.1f;
+        [DefaultValue( 0.9f )]
+        public float MaxValue = 0.9f;
+        public float Cooldown;
 		public bool InRange;
 		public bool NoDrones;
 		public bool UseSystems;
 		public DeviceClass DeviceClass;
 		[DefaultValue("")]
 		public string Text;
-		[DefaultValue("")]
-		public string Color;
-	}
+        [DefaultValue( "" )]
+        public string Color;
+    }
 }

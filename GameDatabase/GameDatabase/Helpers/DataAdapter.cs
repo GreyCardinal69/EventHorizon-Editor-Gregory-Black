@@ -7,6 +7,7 @@ namespace EditorDatabase
 {
     public interface IProperty
     {
+        string Tooltip { get; }
         string Name { get; }
         Type Type { get; }
         bool IsReadOnly { get; }
@@ -27,8 +28,8 @@ namespace EditorDatabase
             _data = data;
         }
 
-        public event Action LayoutChangedEvent;
         public event Action DataChangedEvent;
+        event Action IDataAdapter.LayoutChangedEvent { add { } remove { } }
 
         public IEnumerable<IProperty> Properties
         {
@@ -48,12 +49,12 @@ namespace EditorDatabase
         public Property(object data, FieldInfo fieldInfo, Action dataChangedAction)
         {
             if (fieldInfo == null) throw new ArgumentException();
-
+            _tooltip = _fieldInfo.GetCustomAttribute<TooltipText>();
             _data = data;
             _fieldInfo = fieldInfo;
             _dataChangedAction = dataChangedAction;
         }
-
+        public string Tooltip => _tooltip?.Text;
         public string Name => _fieldInfo.Name;
         public Type Type => _fieldInfo.FieldType;
         public bool IsReadOnly => _fieldInfo.IsInitOnly;
@@ -67,9 +68,20 @@ namespace EditorDatabase
                 _dataChangedAction?.Invoke();
             }
         }
-
+        private readonly TooltipText _tooltip;
         private readonly object _data;
         private readonly FieldInfo _fieldInfo;
         private readonly Action _dataChangedAction;
+
+        [AttributeUsage( AttributeTargets.Field, AllowMultiple = false )]
+        public class TooltipText : Attribute
+        {
+            public string Text { get; private set; }
+
+            public TooltipText( string text )
+            {
+                Text = text;
+            }
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GameDatabase
+﻿using System.Windows.Forms;
+
+namespace GameDatabase
 {
     partial class StructDataEditor
     {
@@ -28,7 +30,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.toolTip = new System.Windows.Forms.ToolTip( this.components );
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -56,6 +60,10 @@
             this.tableLayoutPanel.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tableLayoutPanel_CellPaint);
             this.tableLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel_Paint);
             // 
+
+            this.toolTip.AutoPopDelay = 5000;
+            this.toolTip.InitialDelay = 100;
+            this.toolTip.ReshowDelay = 100;
             // StructDataEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -68,7 +76,7 @@
             this.PerformLayout();
 
         }
-
+        private ToolTip toolTip;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
 
         #endregion

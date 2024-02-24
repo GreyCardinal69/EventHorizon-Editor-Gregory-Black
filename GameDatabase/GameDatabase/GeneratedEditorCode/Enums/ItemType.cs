@@ -33,7 +33,8 @@ namespace EditorDatabase.Enums
 		Ammunition = 25,
 		VisualEffect = 26,
 		BulletPrefab = 27,
-		ShipSettings = 100,
+        BehaviorTree = 28,
+        ShipSettings = 100,
 		GalaxySettings = 101,
 		DatabaseSettings = 102,
 		ExplorationSettings = 103,
@@ -42,5 +43,6 @@ namespace EditorDatabase.Enums
 		SpecialEventSettings = 106,
 		SkillSettings = 107,
 		DebugSettings = 108,
-	}
+        CombatSettings = 109,
+    }
 }

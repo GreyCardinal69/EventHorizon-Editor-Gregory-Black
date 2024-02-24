@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using Cyotek.Windows.Forms;
 using EditorDatabase;
 using EditorDatabase.Model;
 using GameDatabase.Controls;
+using static EditorDatabase.Property;
 using AdvancedButton = GameDatabase.Controls.AdvancedButton;
 
 namespace GameDatabase
@@ -74,6 +76,7 @@ namespace GameDatabase
             tableLayoutPanel.RowStyles.Clear();
             _layouts.Clear();
             _binding.Clear();
+            toolTip.RemoveAll();
         }
 
         private void BuildLayout()
@@ -109,7 +112,10 @@ namespace GameDatabase
                 if ( control != null )
                     _binding.Add( control, item );
                 else
-                    CreateLabel( value?.ToString() ?? "[empty]", 1, rowId );
+                    control = CreateLabel( value?.ToString() ?? "[empty]", 1, rowId );
+
+                if ( !string.IsNullOrEmpty( item.Tooltip ) )
+                    toolTip.SetToolTip( control, item.Tooltip );
 
                 rowId++;
             }
@@ -313,6 +319,13 @@ namespace GameDatabase
             comboBox.SelectedItem = value;
             comboBox.SelectedValueChanged += OnComboBoxValueChanged;
             comboBox.MouseWheel += DisableMouseWheel;
+            var memberInfo = value.GetType().GetMember( value.ToString() ).FirstOrDefault();
+            if ( memberInfo != null )
+            {
+                var attribute = memberInfo.GetCustomAttribute<TooltipText>();
+                if ( attribute != null )
+                    toolTip.SetToolTip( comboBox, attribute.Text );
+            }
 
             tableLayoutPanel.Controls.Add( comboBox, column, row );
             return comboBox;

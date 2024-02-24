@@ -31,7 +31,8 @@ namespace DatabaseMigration.v1.Enums
 		Character = 19,
 		QuestItem = 20,
 		Ammunition = 25,
-		VisualEffect = 26,
+        BehaviorTree = 28,
+        VisualEffect = 26,
 		BulletPrefab = 27,
 		ShipSettings = 100,
 		GalaxySettings = 101,
@@ -42,5 +43,6 @@ namespace DatabaseMigration.v1.Enums
 		SpecialEventSettings = 106,
 		SkillSettings = 107,
 		DebugSettings = 108,
-	}
+        CombatSettings = 109,
+    }
 }
