@@ -18,7 +18,7 @@ namespace EditorDatabase.DataModel
         {
             serializable.AmmunitionId = Ammunition.IsNull ? AmmunitionObsolete.Value : Ammunition.Value;
             serializable.WeaponSlotType = WeaponSlotType;
-            serializable.CellType = ((char)CellType).ToString();
+            serializable.CellType = CellType != CellType.Empty ? ( ( char ) CellType ).ToString() : null;
         }
 
         public string WeaponSlotType;

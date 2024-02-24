@@ -17,8 +17,8 @@ namespace EditorDatabase.Serializable
 	public struct InstalledComponentSerializable
 	{
 		public int ComponentId;
-		public ComponentModType Modification;
-		public ModificationQuality Quality;
+        public int Modification;
+        public ModificationQuality Quality;
 		public int X;
 		public int Y;
 		public int BarrelId;
