@@ -14,7 +14,7 @@ using EditorDatabase.Model;
 namespace EditorDatabase.Serializable
 {
 	[Serializable]
-	public struct NodeTransitionSerializable
+	public class NodeTransitionSerializable
 	{
 		public int TargetNode;
 		public RequirementSerializable Requirement;

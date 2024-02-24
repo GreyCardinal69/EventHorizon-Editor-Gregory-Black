@@ -13,35 +13,41 @@ using EditorDatabase.Model;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class NodeAction
-	{
-		partial void OnDataDeserialized(NodeActionSerializable serializable, Database database);
-		partial void OnDataSerialized(ref NodeActionSerializable serializable);
+    public partial class NodeAction
+    {
+        partial void OnDataDeserialized( NodeActionSerializable serializable, Database database );
+        partial void OnDataSerialized( ref NodeActionSerializable serializable );
 
-		public NodeAction() {}
+        public static NodeAction Create( NodeActionSerializable serializable, Database database )
+        {
+            if ( serializable == null ) return DefaultValue;
+            return new NodeAction( serializable, database );
+        }
 
-		public NodeAction(NodeActionSerializable serializable, Database database)
-		{
-			TargetNode = new NumericValue<int>(serializable.TargetNode, 1, 1000);
-			Requirement = new Requirement(serializable.Requirement, database);
-			ButtonText = serializable.ButtonText;
-			OnDataDeserialized(serializable, database);
-		}
+        public NodeAction() { }
 
-		public NodeActionSerializable Serialize()
-		{
-			var serializable = new NodeActionSerializable();
-			serializable.TargetNode = TargetNode.Value;
-			serializable.Requirement = Requirement.Serialize();
-			serializable.ButtonText = ButtonText;
-			OnDataSerialized(ref serializable);
-			return serializable;
-		}
+        private NodeAction( NodeActionSerializable serializable, Database database )
+        {
+            TargetNode = new NumericValue<int>( serializable.TargetNode, 1, 1000 );
+            Requirement.Value = DataModel.Requirement.Create( serializable.Requirement, database );
+            ButtonText = serializable.ButtonText;
+            OnDataDeserialized( serializable, database );
+        }
 
-		public NumericValue<int> TargetNode = new NumericValue<int>(0, 1, 1000);
-		public Requirement Requirement = new Requirement();
-		public string ButtonText;
+        public NodeActionSerializable Serialize()
+        {
+            var serializable = new NodeActionSerializable();
+            serializable.TargetNode = TargetNode.Value;
+            serializable.Requirement = Requirement.Value?.Serialize();
+            serializable.ButtonText = ButtonText;
+            OnDataSerialized( ref serializable );
+            return serializable;
+        }
 
-		public static NodeAction DefaultValue { get; private set; }
-	}
+        public NumericValue<int> TargetNode = new NumericValue<int>( 0, 1, 1000 );
+        public ObjectWrapper<Requirement> Requirement = new ObjectWrapper<Requirement>( DataModel.Requirement.DefaultValue );
+        public string ButtonText;
+
+        public static NodeAction DefaultValue { get; private set; }
+    }
 }

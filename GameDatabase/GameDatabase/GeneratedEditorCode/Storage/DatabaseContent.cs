@@ -97,6 +97,8 @@ namespace EditorDatabase.Storage
                 storage.SaveJson( SpecialEventSettings.FileName, jsonSerializer.ToJson( SpecialEventSettings ) );
             if ( DebugSettings != null )
                 storage.SaveJson( DebugSettings.FileName, jsonSerializer.ToJson( DebugSettings ) );
+            if ( FactionsSettings != null )
+                storage.SaveJson( FactionsSettings.FileName, jsonSerializer.ToJson( FactionsSettings ) );
         }
 
         public const int SchemaVersion = 1;
@@ -128,6 +130,15 @@ namespace EditorDatabase.Storage
                 var data = _serializer.FromJson<GameObjectPrefabSerializable>( content );
                 data.FileName = name;
                 _gameObjectPrefabMap.Add( data.Id, data );
+            }
+            else if ( type == ItemType.FactionsSettings )
+            {
+                var data = _serializer.FromJson<FactionsSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( FactionsSettings != null )
+                    throw new DatabaseException( "Duplicate FactionsSettings file found - " + name );
+                FactionsSettings = data;
             }
             else if ( type == ItemType.CombatRules )
             {
@@ -518,7 +529,7 @@ namespace EditorDatabase.Storage
             _images.Add(data.Name, data);
         }
 
-
+        public FactionsSettingsSerializable FactionsSettings { get; private set; }
         public UiSettingsSerializable UiSettings { get; private set; }
         public CombatSettingsSerializable CombatSettings { get; private set; }
         public DebugSettingsSerializable DebugSettings { get; private set; }

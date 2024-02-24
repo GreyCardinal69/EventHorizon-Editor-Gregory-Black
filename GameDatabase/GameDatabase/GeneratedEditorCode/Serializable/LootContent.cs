@@ -14,7 +14,7 @@ using EditorDatabase.Model;
 namespace EditorDatabase.Serializable
 {
 	[Serializable]
-	public struct LootContentSerializable
+	public class LootContentSerializable
 	{
 		public LootItemType Type;
 		public int ItemId;

@@ -14,7 +14,7 @@ using EditorDatabase.Model;
 namespace EditorDatabase.Serializable
 {
 	[Serializable]
-	public struct FactionFilterSerializable
+	public class FactionFilterSerializable
 	{
 		public FactionFilterType Type;
 		public int[] List;

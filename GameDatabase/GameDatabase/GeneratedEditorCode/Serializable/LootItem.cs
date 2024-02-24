@@ -14,7 +14,7 @@ using EditorDatabase.Model;
 namespace EditorDatabase.Serializable
 {
 	[Serializable]
-	public struct LootItemSerializable
+	public class LootItemSerializable
 	{
 		public float Weight;
 		public LootContentSerializable Loot;

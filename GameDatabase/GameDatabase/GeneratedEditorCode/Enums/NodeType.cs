@@ -10,7 +10,10 @@ namespace EditorDatabase.Enums
 {
 	public enum NodeType
 	{
-		Undefined = 0,
+        AttackStarbase = 22,
+        SetFactionStarbasePower = 52,
+        ChangeFactionStarbasePower = 57,
+        Undefined = 0,
 		ComingSoon = 1,
 		ShowDialog = 10,
 		OpenShipyard = 11,

@@ -21,8 +21,8 @@ namespace DatabaseMigration.v1.Serializable
 			ItemType = ItemType.Quest;
 			FileName = "Quest.json";
 		}
-
-		[DefaultValue("")]
+        public bool UseRandomSeed;
+        [DefaultValue("")]
 		public string Name;
 		public QuestType QuestType;
 		public StartCondition StartCondition;

@@ -10,6 +10,7 @@ namespace DatabaseMigration.v1.Enums
 {
 	public enum ItemType
 	{
+        FactionsSettings = 111,
         UiSettings = 110,
         GameObjectPrefab = 29,
         CombatRules = 30,

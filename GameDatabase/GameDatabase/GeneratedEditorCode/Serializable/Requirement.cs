@@ -14,7 +14,7 @@ using EditorDatabase.Model;
 namespace EditorDatabase.Serializable
 {
 	[Serializable]
-	public struct RequirementSerializable
+	public class RequirementSerializable
 	{
 		public bool BoolValue;
 		public RequirementType Type;

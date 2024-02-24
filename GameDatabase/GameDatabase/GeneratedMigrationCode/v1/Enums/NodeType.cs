@@ -10,7 +10,9 @@ namespace DatabaseMigration.v1.Enums
 {
 	public enum NodeType
 	{
-		Undefined = 0,
+        ChangeFactionStarbasePower = 57,
+        SetFactionStarbasePower = 52,
+        Undefined = 0,
 		ComingSoon = 1,
 		ShowDialog = 10,
 		OpenShipyard = 11,

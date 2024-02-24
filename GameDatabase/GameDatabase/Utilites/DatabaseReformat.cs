@@ -370,7 +370,7 @@ namespace EditorDatabase
                 case QuestItemSerializable questItem:
                     return LocalizationOrName(questItem.Name);
                 case ComponentModSerializable componentMod:
-                    return componentMod.Type.ToString();
+                    return componentMod.Description.ToString();
                 case ShipBuildSerializable shipBuild:
                     var name = NameFor(_content.GetShip(shipBuild.ShipId),false);
                     if (shipBuild.DifficultyClass > 0) name += "_" + new string('x', (int)shipBuild.DifficultyClass);

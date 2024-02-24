@@ -13,35 +13,41 @@ using EditorDatabase.Model;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class RequiredFactions
-	{
-		partial void OnDataDeserialized(FactionFilterSerializable serializable, Database database);
-		partial void OnDataSerialized(ref FactionFilterSerializable serializable);
+    public partial class RequiredFactions
+    {
+        partial void OnDataDeserialized( FactionFilterSerializable serializable, Database database );
+        partial void OnDataSerialized( ref FactionFilterSerializable serializable );
 
-		public RequiredFactions() {}
+        public static RequiredFactions Create( FactionFilterSerializable serializable, Database database )
+        {
+            if ( serializable == null ) return DefaultValue;
+            return new RequiredFactions( serializable, database );
+        }
 
-		public RequiredFactions(FactionFilterSerializable serializable, Database database)
-		{
-			Type = serializable.Type;
-			List = serializable.List?.Select(id => new Wrapper<Faction> { Item = database.GetFactionId(id) }).ToArray();
-			OnDataDeserialized(serializable, database);
-		}
+        public RequiredFactions() { }
 
-		public FactionFilterSerializable Serialize()
-		{
-			var serializable = new FactionFilterSerializable();
-			serializable.Type = Type;
-			if (List == null || List.Length == 0)
-			    serializable.List = null;
-			else
-			    serializable.List = List.Select(wrapper => wrapper.Item.Value).ToArray();
-			OnDataSerialized(ref serializable);
-			return serializable;
-		}
+        public RequiredFactions( FactionFilterSerializable serializable, Database database )
+        {
+            Type = serializable.Type;
+            List = serializable.List?.Select( id => new Wrapper<Faction> { Item = database.GetFactionId( id ) } ).ToArray();
+            OnDataDeserialized( serializable, database );
+        }
 
-		public FactionFilterType Type;
-		public Wrapper<Faction>[] List;
+        public FactionFilterSerializable Serialize()
+        {
+            var serializable = new FactionFilterSerializable();
+            serializable.Type = Type;
+            if ( List == null || List.Length == 0 )
+                serializable.List = null;
+            else
+                serializable.List = List.Select( wrapper => wrapper.Item.Value ).ToArray();
+            OnDataSerialized( ref serializable );
+            return serializable;
+        }
 
-		public static RequiredFactions DefaultValue { get; private set; }
-	}
+        public FactionFilterType Type;
+        public Wrapper<Faction>[] List;
+
+        public static RequiredFactions DefaultValue { get; private set; }
+    }
 }

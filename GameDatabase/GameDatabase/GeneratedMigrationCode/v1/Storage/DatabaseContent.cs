@@ -192,6 +192,12 @@ namespace DatabaseMigration.v1.Storage
                 data.FileName = name;
                 BulletPrefabList.Add(data);
             }
+            else if ( type == ItemType.FactionsSettings )
+            {
+                var data = _serializer.FromJson<FactionsSettingsSerializable>( content );
+                data.FileName = name;
+                FactionsSettings = data;
+            }
             else if (type == ItemType.VisualEffect)
             {
                 var data = _serializer.FromJson<VisualEffectSerializable>(content);
@@ -338,6 +344,8 @@ namespace DatabaseMigration.v1.Storage
                 contentLoader.LoadJson( CombatSettings.FileName, _serializer.ToJson( CombatSettings ) );
             if ( UiSettings != null )
                 contentLoader.LoadJson( UiSettings.FileName, _serializer.ToJson( UiSettings ) );
+            if ( FactionsSettings != null )
+                contentLoader.LoadJson( FactionsSettings.FileName, _serializer.ToJson( FactionsSettings ) );
             foreach (var item in _images)
                 contentLoader.LoadImage(item.Key, item.Value);
             foreach (var item in _audioClips)
@@ -360,6 +368,8 @@ namespace DatabaseMigration.v1.Storage
         {
             _audioClips.Add(name, audioClip);
         }
+
+        public FactionsSettingsSerializable FactionsSettings { get; private set; }
         public UiSettingsSerializable UiSettings { get; private set; }
         public CombatSettingsSerializable CombatSettings { get; private set; }
         public DatabaseSettingsSerializable DatabaseSettings { get; private set; }
@@ -371,6 +381,8 @@ namespace DatabaseMigration.v1.Storage
 		public ShipSettingsSerializable ShipSettings { get; private set; }
 		public SkillSettingsSerializable SkillSettings { get; private set; }
 		public SpecialEventSettingsSerializable SpecialEventSettings { get; private set; }
+
+        public FactionsSettingsSerializable CreateFactionsSettings() => FactionsSettings ?? ( FactionsSettings = new FactionsSettingsSerializable() );
         public UiSettingsSerializable CreateUiSettings() => UiSettings ?? ( UiSettings = new UiSettingsSerializable() );
         public CombatSettingsSerializable CreateCombatSettings() => CombatSettings ?? ( CombatSettings = new CombatSettingsSerializable() );
         public DatabaseSettingsSerializable CreateDatabaseSettings() => DatabaseSettings ?? (DatabaseSettings = new DatabaseSettingsSerializable());

@@ -233,6 +233,7 @@ namespace EditorDatabase
                     item.Value.Save( value );
             }
 
+            _factionsSettings?.Save( _content.FactionsSettings );
             _uiSettings?.Save( _content.UiSettings );
             _debugSettings?.Save( _content.DebugSettings );
             _skillSettings?.Save( _content.SkillSettings );
@@ -316,6 +317,7 @@ namespace EditorDatabase
                 case ItemType.SpecialEventSettings: return SpecialEventSettings;
                 case ItemType.DebugSettings: return DebugSettings;
                 case ItemType.CombatSettings: return CombatSettings;
+                case ItemType.FactionsSettings: return FactionsSettings;
                 case ItemType.BehaviorTree: return GetBehaviorTree( id );
                 default: return null;
             }
@@ -352,7 +354,7 @@ namespace EditorDatabase
                 case ItemType.BehaviorTree: SetBehaviorTree( id, old ); break;
             }
         }
-
+        public FactionsSettings FactionsSettings => _factionsSettings ?? ( _factionsSettings = FactionsSettings.Create( _content.FactionsSettings, this ) );
         public UiSettings UiSettings => _uiSettings ?? ( _uiSettings = UiSettings.Create( _content.UiSettings, this ) );
         public CombatSettings CombatSettings => _combatSettings ?? ( _combatSettings = CombatSettings.Create( _content.CombatSettings, this ) );
         public DebugSettings DebugSettings => _debugSettings ?? ( _debugSettings = new DebugSettings( _content.DebugSettings, this ) );
@@ -889,6 +891,7 @@ namespace EditorDatabase
             _shipSettings = null;
             _frontierSettings = null;
             _shipModSettings = null;
+            _factionsSettings = null;
         }
 
         private readonly Dictionary<int, CombatRules> _combatRulesMap = new Dictionary<int, CombatRules>();
@@ -928,6 +931,7 @@ namespace EditorDatabase
         private ShipModSettings _shipModSettings;
         private CombatSettings _combatSettings;
         private SpecialEventSettings _specialEventSettings;
+        private FactionsSettings _factionsSettings;
         private readonly IJsonSerializer _serializer;
         private readonly DatabaseContent _content;
     }

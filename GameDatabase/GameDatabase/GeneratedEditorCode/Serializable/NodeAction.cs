@@ -14,7 +14,7 @@ using EditorDatabase.Model;
 namespace EditorDatabase.Serializable
 {
 	[Serializable]
-	public struct NodeActionSerializable
+	public class NodeActionSerializable
 	{
 		public int TargetNode;
 		public RequirementSerializable Requirement;
