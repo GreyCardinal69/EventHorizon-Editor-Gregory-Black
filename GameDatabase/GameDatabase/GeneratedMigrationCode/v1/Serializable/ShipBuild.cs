@@ -21,6 +21,7 @@ namespace DatabaseMigration.v1.Serializable
 			ItemType = ItemType.ShipBuild;
 			FileName = "ShipBuild.json";
 		}
+        public int CustomAI;
         public bool NotAvailableInGame;
         public int ShipId;
         [DefaultValue( true )]

@@ -16,16 +16,18 @@ namespace EditorDatabase.Serializable
 	[Serializable]
 	public class GalaxySettingsSerializable : SerializableItem
 	{
-		public int AbandonedStarbaseFaction;
-		public int[] StartingShipBuilds;
-		public int SupporterPackShip;
-		public int DefaultStarbaseBuild;
-		[DefaultValue(300)]
-		public int MaxEnemyShipsLevel = 300;
+        public int AbandonedStarbaseFaction;
+        public int[] StartingShipBuilds;
+        public int StartingInventory;
+        public int SupporterPackShip;
+        public int DefaultStarbaseBuild;
+        [DefaultValue( 300 )]
+        public int MaxEnemyShipsLevel = 300;
         [DefaultValue( "MIN(3*distance/5 - 5, MaxEnemyShipsLevel)" )]
         public string EnemyLevel = "MIN(3*distance/5 - 5, MaxEnemyShipsLevel)";
-        [DefaultValue( "IF(size == Destroyer, 5, size == Cruiser, 15, size == Battleship, 50, 0)" )]
-        public string ShipMinSpawnDistance = "IF(size == Destroyer, 5, size == Cruiser, 15, size == Battleship, 50, 0)";
-        public int StartingInventory;
+        [DefaultValue( "IF(size == Destroyer, 5, size == Cruiser, 15, size == Battleship, 50, size == Titan, 100, 0)" )]
+        public string ShipMinSpawnDistance = "IF(size == Destroyer, 5, size == Cruiser, 15, size == Battleship, 50, size == Titan, 100, 0)";
+        public int CaptureStarbaseQuest;
+        public int StartingInvenory;
     }
 }

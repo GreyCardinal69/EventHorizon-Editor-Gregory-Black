@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using static EditorDatabase.Property;
 
 namespace EditorDatabase.DataModel
 {
@@ -21,6 +22,14 @@ namespace EditorDatabase.DataModel
         {
             switch ( type )
             {
+                case BehaviorRequirementType.HasKineticResistance:
+                    return new BehaviorNodeRequirement_HasKineticResistance();
+                case BehaviorRequirementType.HasHighManeuverability:
+                    return new BehaviorNodeRequirement_HasHighManeuverability();
+                case BehaviorRequirementType.HasAnyWeapon:
+                    return new BehaviorNodeRequirementEmptyContent();
+                case BehaviorRequirementType.SizeClass:
+                    return new BehaviorNodeRequirement_SizeClass();
                 case BehaviorRequirementType.Empty:
                     return new BehaviorNodeRequirementEmptyContent();
                 case BehaviorRequirementType.Any:
@@ -35,8 +44,6 @@ namespace EditorDatabase.DataModel
                     return new BehaviorNodeRequirement_MinAiLevel();
                 case BehaviorRequirementType.HasDevice:
                     return new BehaviorNodeRequirement_HasDevice();
-                case BehaviorRequirementType.HasAnyWeapon:
-                    return new BehaviorNodeRequirementEmptyContent();
                 case BehaviorRequirementType.HasDrones:
                     return new BehaviorNodeRequirementEmptyContent();
                 case BehaviorRequirementType.CanRepairAllies:
@@ -78,6 +85,8 @@ namespace EditorDatabase.DataModel
         {
             var serializable = new BehaviorNodeRequirementSerializable();
             serializable.DeviceClass = 0;
+            serializable.SizeClass = 0;
+            serializable.Value = 1f;
             serializable.DifficultyLevel = 0;
             serializable.Requirements = null;
             _content.Save( ref serializable );
@@ -120,7 +129,47 @@ namespace EditorDatabase.DataModel
         public void Load( BehaviorNodeRequirementSerializable serializable, Database database ) { }
         public void Save( ref BehaviorNodeRequirementSerializable serializable ) { }
     }
+    public partial class BehaviorNodeRequirement_HasKineticResistance : IBehaviorNodeRequirementContent
+    {
+        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
+        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
 
+        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        {
+            Value = new NumericValue<float>( serializable.Value, 0f, 3.402823E+38f );
+
+            OnDataDeserialized( serializable, database );
+        }
+
+        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        {
+            serializable.Value = Value.Value;
+            OnDataSerialized( ref serializable );
+        }
+
+        public NumericValue<float> Value = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+    }
+
+    public partial class BehaviorNodeRequirement_HasHighManeuverability : IBehaviorNodeRequirementContent
+    {
+        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
+        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+
+        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        {
+            Value = new NumericValue<float>( serializable.Value, 0f, 3.402823E+38f );
+
+            OnDataDeserialized( serializable, database );
+        }
+
+        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        {
+            serializable.Value = Value.Value;
+            OnDataSerialized( ref serializable );
+        }
+
+        public NumericValue<float> Value = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+    }
     public partial class BehaviorNodeRequirement_Any : IBehaviorNodeRequirementContent
     {
         partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
@@ -210,7 +259,7 @@ namespace EditorDatabase.DataModel
             serializable.DifficultyLevel = DifficultyLevel;
             OnDataSerialized( ref serializable );
         }
-
+        [TooltipText( "AiLevel rises with the level of enemies. Always High for drones and autopilot" )]
         public AiDifficultyLevel DifficultyLevel;
     }
 
@@ -231,10 +280,29 @@ namespace EditorDatabase.DataModel
             serializable.DifficultyLevel = DifficultyLevel;
             OnDataSerialized( ref serializable );
         }
-
+        [TooltipText( "AiLevel rises with the level of enemies. Always High for drones and autopilot" )]
         public AiDifficultyLevel DifficultyLevel;
     }
+    public partial class BehaviorNodeRequirement_SizeClass : IBehaviorNodeRequirementContent
+    {
+        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
+        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
 
+        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        {
+            SizeClass = serializable.SizeClass;
+
+            OnDataDeserialized( serializable, database );
+        }
+
+        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        {
+            serializable.SizeClass = SizeClass;
+            OnDataSerialized( ref serializable );
+        }
+
+        public SizeClass SizeClass;
+    }
     public partial class BehaviorNodeRequirement_HasDevice : IBehaviorNodeRequirementContent
     {
         partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );

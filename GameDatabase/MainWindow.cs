@@ -259,6 +259,7 @@ namespace GameDatabase
         {
             public NumericValue<int> FilesCount;
             public ItemType ItemTypes;
+            public NumericValue<int> FirstItemId;
             public NumericValue<int> LastItemId;
             public NumericValue<int> FirstUnusedId;
         }
@@ -269,6 +270,7 @@ namespace GameDatabase
             {
                 FilesCount = new NumericValue<int>( 0, 0, int.MaxValue ),
                 ItemTypes = ItemType.Undefined,
+                FirstItemId = new NumericValue<int>( 0, 0, int.MaxValue ),
                 LastItemId = new NumericValue<int>( 0, 0, int.MaxValue ),
                 FirstUnusedId = new NumericValue<int>( 0, 0, int.MaxValue ),
             };

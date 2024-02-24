@@ -15,8 +15,9 @@ namespace EditorDatabase.Serializable
 {
 	[Serializable]
 	public class ShipBuildSerializable : SerializableItem
-	{
-		public int ShipId;
+    {
+        public int CustomAI;
+        public int ShipId;
         [DefaultValue( true )]
         public bool AvailableForPlayer = true;
         [DefaultValue( true )]

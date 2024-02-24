@@ -32,5 +32,5 @@ namespace EditorDatabase.Enums
 		HasKineticResistance = 100,
 		[TooltipText("Condition met when EnginePower/sqrt(Mass) > Value")]
 		HasHighManeuverability = 101,
-	}
+    }
 }

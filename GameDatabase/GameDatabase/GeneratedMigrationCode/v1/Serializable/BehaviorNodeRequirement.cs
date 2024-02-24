@@ -6,11 +6,14 @@ using DatabaseMigration.v1.Enums;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-    public struct BehaviorNodeRequirement
+    public class BehaviorNodeRequirementSerializable
     {
         public BehaviorRequirementType Type;
         public DeviceClass DeviceClass;
         public AiDifficultyLevel DifficultyLevel;
-        public BehaviorNodeRequirement[] Requirements;
+        public SizeClass SizeClass;
+        [DefaultValue( 1f )]
+        public float Value = 1f;
+        public BehaviorNodeRequirementSerializable[] Requirements;
     }
 }

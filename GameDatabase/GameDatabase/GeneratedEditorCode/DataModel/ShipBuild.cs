@@ -10,6 +10,7 @@ using System.Linq;
 using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using System.Security.AccessControl;
 
 namespace EditorDatabase.DataModel
 {
@@ -20,9 +21,10 @@ namespace EditorDatabase.DataModel
 
 
 		public ShipBuild(ShipBuildSerializable serializable, Database database)
-		{
-			try
+        {
+            try
 			{
+                CustomAI = database.GetBehaviorTreeId( serializable.CustomAI );
                 AvailableForPlayer = serializable.AvailableForPlayer;
                 AvailableForEnemy = serializable.AvailableForEnemy;
                 Id = new ItemId<ShipBuild>(serializable.Id, serializable.FileName);
@@ -43,6 +45,7 @@ namespace EditorDatabase.DataModel
 
 		public void Save(ShipBuildSerializable serializable)
 		{
+            serializable.CustomAI = CustomAI.Value;
             serializable.AvailableForPlayer = AvailableForPlayer;
             serializable.AvailableForEnemy = AvailableForEnemy;
             serializable.ShipId = Ship.Value;
@@ -57,7 +60,7 @@ namespace EditorDatabase.DataModel
 		}
 
 		public readonly ItemId<ShipBuild> Id;
-
+        public ItemId<BehaviorTreeModel> CustomAI = ItemId<BehaviorTreeModel>.Empty;
         public bool AvailableForPlayer;
         public bool AvailableForEnemy;
         public ItemId<Ship> Ship = ItemId<Ship>.Empty;
