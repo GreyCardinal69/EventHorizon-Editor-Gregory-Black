@@ -21,7 +21,8 @@ namespace EditorDatabase.DataModel
 
 		public SpecialEventSettings(SpecialEventSettingsSerializable serializable, Database database)
 		{
-			EnableXmasEvent = serializable.EnableXmasEvent;
+            XmasCombatRules = database.GetCombatRulesId( serializable.XmasCombatRules );
+            EnableXmasEvent = serializable.EnableXmasEvent;
 			XmasDaysBefore = new NumericValue<int>(serializable.XmasDaysBefore, 0, 30);
 			XmasDaysAfter = new NumericValue<int>(serializable.XmasDaysAfter, 0, 30);
 			XmasQuest = database.GetQuestId(serializable.XmasQuest);
@@ -39,7 +40,8 @@ namespace EditorDatabase.DataModel
 
 		public void Save(SpecialEventSettingsSerializable serializable)
 		{
-			serializable.EnableXmasEvent = EnableXmasEvent;
+            serializable.XmasCombatRules = XmasCombatRules.Value;
+            serializable.EnableXmasEvent = EnableXmasEvent;
 			serializable.XmasDaysBefore = XmasDaysBefore.Value;
 			serializable.XmasDaysAfter = XmasDaysAfter.Value;
 			serializable.XmasQuest = XmasQuest.Value;
@@ -54,8 +56,8 @@ namespace EditorDatabase.DataModel
             serializable.ConvertCreditsToSnowflakes = ConvertCreditsToSnowflakes;
             OnDataSerialized(ref serializable);
 		}
-
-		public bool EnableXmasEvent;
+        public ItemId<CombatRules> XmasCombatRules = ItemId<CombatRules>.Empty;
+        public bool EnableXmasEvent;
 		public NumericValue<int> XmasDaysBefore = new NumericValue<int>(0, 0, 30);
 		public NumericValue<int> XmasDaysAfter = new NumericValue<int>(0, 0, 30);
 		public ItemId<QuestModel> XmasQuest = ItemId<QuestModel>.Empty;

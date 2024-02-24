@@ -21,5 +21,7 @@ namespace EditorDatabase.Enums
 		RestoreLifetime,
 		Devour,
 		Teleport,
-	}
+        DrainShield,
+        DriveDronesCrazy,
+    }
 }

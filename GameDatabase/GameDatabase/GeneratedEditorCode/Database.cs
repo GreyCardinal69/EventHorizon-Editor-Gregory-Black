@@ -38,7 +38,7 @@ namespace EditorDatabase
     public partial class Database
     {
         public const int VersionMajor = 1;
-        public const int VersionMinor = 3;
+        public const int VersionMinor = 5;
         public DatabaseContent Content => _content;
 
         public Database( IDataStorage storage )
@@ -69,6 +69,20 @@ namespace EditorDatabase
             {
                 var value = _content.GetBehaviorTree( item.Key );
                 if ( value != secondaryDb.Content.GetBehaviorTree( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _gameObjectPrefabMap )
+            {
+                var value = _content.GetGameObjectPrefab( item.Key );
+                if ( value != secondaryDb.Content.GetGameObjectPrefab( item.Key ) )
+                    item.Value.Save( value );
+            }
+
+            foreach ( var item in _combatRulesMap )
+            {
+                var value = _content.GetCombatRules( item.Key );
+                if ( value != secondaryDb.Content.GetCombatRules( item.Key ) )
                     item.Value.Save( value );
             }
 
@@ -218,6 +232,8 @@ namespace EditorDatabase
                 if ( value != secondaryDb.Content.GetWeapon( item.Key ) )
                     item.Value.Save( value );
             }
+
+            _uiSettings?.Save( _content.UiSettings );
             _debugSettings?.Save( _content.DebugSettings );
             _skillSettings?.Save( _content.SkillSettings );
             _databaseSettings?.Save( _content.DatabaseSettings );
@@ -233,7 +249,8 @@ namespace EditorDatabase
 
         public IEnumerable<IItemId> GetItemList( Type type )
         {
-
+            if ( type == typeof( CombatRules ) ) return _content.CombatRulesList.Select( item => new ItemId<CombatRules>( item ) );
+            if ( type == typeof( GameObjectPrefab ) ) return _content.GameObjectPrefabList.Select( item => new ItemId<GameObjectPrefab>( item ) );
             if ( type == typeof( AmmunitionObsolete ) ) return _content.AmmunitionObsoleteList.Select( item => new ItemId<AmmunitionObsolete>( item ) );
             if ( type == typeof( Component ) ) return _content.ComponentList.Select( item => new ItemId<Component>( item ) );
             if ( type == typeof( ComponentMod ) ) return _content.ComponentModList.Select( item => new ItemId<ComponentMod>( item ) );
@@ -288,6 +305,9 @@ namespace EditorDatabase
                 case ItemType.BulletPrefab: return GetBulletPrefab( id );
                 case ItemType.VisualEffect: return GetVisualEffect( id );
                 case ItemType.Weapon: return GetWeapon( id );
+                case ItemType.GameObjectPrefab: return GetGameObjectPrefab( id );
+                case ItemType.CombatRules: return GetCombatRules( id );
+                case ItemType.UiSettings: return UiSettings;
                 case ItemType.DatabaseSettings: return DatabaseSettings;
                 case ItemType.ExplorationSettings: return ExplorationSettings;
                 case ItemType.GalaxySettings: return GalaxySettings;
@@ -322,6 +342,8 @@ namespace EditorDatabase
                 case ItemType.Fleet: SetFleet( id, old ); break;
                 case ItemType.Loot: SetLoot( id, old ); break;
                 case ItemType.Quest: SetQuest( id, old ); break;
+                case ItemType.GameObjectPrefab: SetGameObjectPrefab( id, old ); break;
+                case ItemType.CombatRules: SetCombatRules( id, old ); break;
                 case ItemType.QuestItem: SetQuestItem( id, old ); break;
                 case ItemType.Ammunition: SetAmmunition( id, old ); break;
                 case ItemType.BulletPrefab: SetBulletPrefab( id, old ); break;
@@ -330,6 +352,8 @@ namespace EditorDatabase
                 case ItemType.BehaviorTree: SetBehaviorTree( id, old ); break;
             }
         }
+
+        public UiSettings UiSettings => _uiSettings ?? ( _uiSettings = UiSettings.Create( _content.UiSettings, this ) );
         public CombatSettings CombatSettings => _combatSettings ?? ( _combatSettings = CombatSettings.Create( _content.CombatSettings, this ) );
         public DebugSettings DebugSettings => _debugSettings ?? ( _debugSettings = new DebugSettings( _content.DebugSettings, this ) );
         public DatabaseSettings DatabaseSettings => _databaseSettings ?? ( _databaseSettings = new DatabaseSettings( _content.DatabaseSettings, this ) );
@@ -360,6 +384,30 @@ namespace EditorDatabase
                 var serializable = _content.GetBehaviorTree( id );
                 item = BehaviorTreeModel.Create( serializable, this );
                 _behaviorTreeMap.Add( id, item );
+            }
+            return item;
+        }
+
+        public ItemId<CombatRules> GetCombatRulesId( int id ) { return new ItemId<CombatRules>( _content.GetCombatRules( id ) ); }
+        public CombatRules GetCombatRules( int id )
+        {
+            if ( !_combatRulesMap.TryGetValue( id, out var item ) )
+            {
+                CombatRulesSerializable serializable = _content.GetCombatRules( id );
+                item = CombatRules.Create( serializable, this );
+                _combatRulesMap.Add( id, item );
+            }
+            return item;
+        }
+
+        public ItemId<GameObjectPrefab> GetGameObjectPrefabId( int id ) { return new ItemId<GameObjectPrefab>( _content.GetGameObjectPrefab( id ) ); }
+        public GameObjectPrefab GetGameObjectPrefab( int id )
+        {
+            if ( !_gameObjectPrefabMap.TryGetValue( id, out var item ) )
+            {
+                var serializable = _content.GetGameObjectPrefab( id );
+                item = GameObjectPrefab.Create( serializable, this );
+                _gameObjectPrefabMap.Add( id, item );
             }
             return item;
         }
@@ -723,6 +771,19 @@ namespace EditorDatabase
             _characterMap[old] = new Character( serializable, this );
         }
 
+        public void SetCombatRules( int id, int old )
+        {
+            var serializable = _content.GetCombatRules( id );
+            _content.CombatRulesList[_content.CombatRulesList.IndexOf( _content.GetCombatRules( old ) )] = serializable;
+            _combatRulesMap[old] = new CombatRules( serializable, this );
+        }
+
+        public void SetGameObjectPrefab( int id, int old )
+        {
+            var serializable = _content.GetGameObjectPrefab( id );
+            _content.GameObjectPrefabList[_content.GameObjectPrefabList.IndexOf( _content.GetGameObjectPrefab( old ) )] = serializable;
+            _gameObjectPrefabMap[old] = new GameObjectPrefab( serializable, this );
+        }
 
         public void SetFleet( int id, int old )
         {
@@ -814,7 +875,11 @@ namespace EditorDatabase
             _bulletPrefabMap.Clear();
             _visualEffectMap.Clear();
             _weaponMap.Clear();
+            _combatRulesMap.Clear();
+            _gameObjectPrefabMap.Clear();
+            _behaviorTreeMap.Clear();
 
+            _uiSettings = null;
             _debugSettings = null;
             _skillSettings = null;
             _specialEventSettings = null;
@@ -825,6 +890,9 @@ namespace EditorDatabase
             _frontierSettings = null;
             _shipModSettings = null;
         }
+
+        private readonly Dictionary<int, CombatRules> _combatRulesMap = new Dictionary<int, CombatRules>();
+        private readonly Dictionary<int, GameObjectPrefab> _gameObjectPrefabMap = new Dictionary<int, GameObjectPrefab>();
         private readonly Dictionary<int, BehaviorTreeModel> _behaviorTreeMap = new Dictionary<int, BehaviorTreeModel>();
         private readonly Dictionary<int, AmmunitionObsolete> _ammunitionObsoleteMap = new Dictionary<int, AmmunitionObsolete>();
         private readonly Dictionary<int, Component> _componentMap = new Dictionary<int, Component>();
@@ -854,6 +922,7 @@ namespace EditorDatabase
         private GalaxySettings _galaxySettings;
         private ShipSettings _shipSettings;
         private DebugSettings _debugSettings;
+        private UiSettings _uiSettings;
         private SkillSettings _skillSettings;
         private FrontierSettings _frontierSettings;
         private ShipModSettings _shipModSettings;

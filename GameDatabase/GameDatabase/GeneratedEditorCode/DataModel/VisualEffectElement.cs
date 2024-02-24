@@ -22,7 +22,10 @@ namespace EditorDatabase.DataModel
 
 		public VisualEffectElement(VisualEffectElementSerializable serializable, Database database)
 		{
-			Type = serializable.Type;
+            ParticleSize = new NumericValue<float>( serializable.ParticleSize, 0.001f, 100f );
+            Loop = serializable.Loop;
+            Quantity = new NumericValue<int>( serializable.Quantity, 1, 100 );
+            Type = serializable.Type;
 			Image = serializable.Image;
 			ColorMode = serializable.ColorMode;
 			Color = Helpers.ColorFromString(serializable.Color);
@@ -36,7 +39,7 @@ namespace EditorDatabase.DataModel
 
 		public VisualEffectElementSerializable Serialize()
 		{
-			var serializable = new VisualEffectElementSerializable();
+            var serializable = new VisualEffectElementSerializable();
 			serializable.Type = Type;
 			serializable.Image = Image;
 			serializable.ColorMode = ColorMode;
@@ -46,11 +49,14 @@ namespace EditorDatabase.DataModel
 			serializable.TurnRate = TurnRate.Value;
 			serializable.StartTime = StartTime.Value;
 			serializable.Lifetime = Lifetime.Value;
-			OnDataSerialized(ref serializable);
+            serializable.Quantity = Quantity.Value;
+            serializable.ParticleSize = ParticleSize.Value;
+            serializable.Loop = Loop;
+            OnDataSerialized(ref serializable);
 			return serializable;
 		}
-
-		public VisualEffectType Type;
+        public NumericValue<float> ParticleSize = new NumericValue<float>( 0, 0.001f, 100f );
+        public VisualEffectType Type;
 		public string Image;
 		public ColorMode ColorMode;
 		public System.Drawing.Color Color;
@@ -59,7 +65,8 @@ namespace EditorDatabase.DataModel
 		public NumericValue<float> TurnRate = new NumericValue<float>(0, -1000f, 1000f);
 		public NumericValue<float> StartTime = new NumericValue<float>(0, 0f, 1000f);
 		public NumericValue<float> Lifetime = new NumericValue<float>(0, 0f, 1000f);
-
-		public static VisualEffectElement DefaultValue { get; private set; }
+        public bool Loop;
+        public NumericValue<int> Quantity = new NumericValue<int>( 0, 1, 100 );
+        public static VisualEffectElement DefaultValue { get; private set; }
 	}
 }

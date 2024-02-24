@@ -21,8 +21,8 @@ namespace DatabaseMigration.v1.Serializable
 			ItemType = ItemType.Fleet;
 			FileName = "Fleet.json";
 		}
-
-		public FactionFilterSerializable Factions;
+        public int CombatRules;
+        public FactionFilterSerializable Factions;
 		public int LevelBonus;
 		public bool NoRandomShips;
 		public int CombatTimeLimit;

@@ -33,5 +33,6 @@ namespace EditorDatabase.Serializable
         public int HalloweenDaysBefore;
 		public int HalloweenDaysAfter;
 		public int HalloweenQuest;
-	}
+        public int XmasCombatRules;
+    }
 }

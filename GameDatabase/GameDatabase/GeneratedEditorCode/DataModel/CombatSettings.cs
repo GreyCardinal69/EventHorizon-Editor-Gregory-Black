@@ -18,6 +18,7 @@ namespace EditorDatabase.DataModel
 
         private CombatSettings( CombatSettingsSerializable serializable, Database database )
         {
+            DefaultCombatRules = database.GetCombatRulesId( serializable.DefaultCombatRules );
             EnemyAI = database.GetBehaviorTreeId( serializable.EnemyAI );
             AutopilotAI = database.GetBehaviorTreeId( serializable.AutopilotAI );
             CloneAI = database.GetBehaviorTreeId( serializable.CloneAI );
@@ -29,6 +30,7 @@ namespace EditorDatabase.DataModel
 
         public void Save( CombatSettingsSerializable serializable )
         {
+            serializable.DefaultCombatRules = DefaultCombatRules.Value;
             serializable.EnemyAI = EnemyAI.Value;
             serializable.AutopilotAI = AutopilotAI.Value;
             serializable.CloneAI = CloneAI.Value;
@@ -37,7 +39,7 @@ namespace EditorDatabase.DataModel
             serializable.StarbaseAI = StarbaseAI.Value;
             OnDataSerialized( ref serializable );
         }
-
+        public ItemId<CombatRules> DefaultCombatRules = ItemId<CombatRules>.Empty;
         public ItemId<BehaviorTreeModel> EnemyAI = ItemId<BehaviorTreeModel>.Empty;
         public ItemId<BehaviorTreeModel> AutopilotAI = ItemId<BehaviorTreeModel>.Empty;
         public ItemId<BehaviorTreeModel> CloneAI = ItemId<BehaviorTreeModel>.Empty;

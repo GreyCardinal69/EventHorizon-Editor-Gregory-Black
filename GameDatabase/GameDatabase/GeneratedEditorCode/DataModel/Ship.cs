@@ -23,7 +23,8 @@ namespace EditorDatabase.DataModel
 		{
 			try
 			{
-				Id = new ItemId<Ship>(serializable.Id, serializable.FileName);
+                Description = serializable.Description;
+                Id = new ItemId<Ship>(serializable.Id, serializable.FileName);
 				ShipType = serializable.ShipType;
 				ShipRarity = serializable.ShipRarity;
 				SizeClass = serializable.SizeClass;
@@ -49,7 +50,8 @@ namespace EditorDatabase.DataModel
 
 		public void Save(ShipSerializable serializable)
 		{
-			serializable.ShipType = ShipType;
+            serializable.Description = Description;
+            serializable.ShipType = ShipType;
 			serializable.ShipRarity = ShipRarity;
 			serializable.SizeClass = SizeClass;
 			serializable.Name = Name;
@@ -74,8 +76,8 @@ namespace EditorDatabase.DataModel
 		}
 
 		public readonly ItemId<Ship> Id;
-
-		public ShipType ShipType;
+        public string Description;
+        public ShipType ShipType;
 		public ShipRarity ShipRarity;
 		public SizeClass SizeClass;
 		public string Name;

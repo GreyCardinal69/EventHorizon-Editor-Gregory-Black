@@ -14,7 +14,7 @@ using EditorDatabase.Model;
 namespace EditorDatabase.Serializable
 {
 	[Serializable]
-	public struct BulletTriggerSerializable
+	public class BulletTriggerSerializable
 	{
 		public BulletTriggerCondition Condition;
 		public BulletEffectType EffectType;
@@ -32,5 +32,11 @@ namespace EditorDatabase.Serializable
 		public float RandomFactor;
 		public float PowerMultiplier;
 		public int MaxNestingLevel;
-	}
+        [DefaultValue( "IF(Quantity == 1, 0, RANDOM(0, 360))" )]
+        public string Rotation = "IF(Quantity == 1, 0, RANDOM(0, 360))";
+        [DefaultValue( "IF(Quantity == 1, 0, Size / 2)" )]
+        public string OffsetX = "IF(Quantity == 1, 0, Size / 2)";
+        [DefaultValue( "0" )]
+        public string OffsetY = "0";
+    }
 }

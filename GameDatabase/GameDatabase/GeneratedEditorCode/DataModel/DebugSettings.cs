@@ -21,7 +21,8 @@ namespace EditorDatabase.DataModel
 
 		public DebugSettings(DebugSettingsSerializable serializable, Database database)
 		{
-			Codes = serializable.Codes?.Select(item => new DebugCode(item, database)).ToArray();
+            EnableDebugConsole = serializable.EnableDebugConsole;
+            Codes = serializable.Codes?.Select(item => new DebugCode(item, database)).ToArray();
 			OnDataDeserialized(serializable, database);
 		}
 
@@ -31,11 +32,12 @@ namespace EditorDatabase.DataModel
 			    serializable.Codes = null;
 			else
 			    serializable.Codes = Codes.Select(item => item.Serialize()).ToArray();
-			OnDataSerialized(ref serializable);
+            serializable.EnableDebugConsole = EnableDebugConsole;
+            OnDataSerialized(ref serializable);
 		}
 
 		public DebugCode[] Codes;
-
-		public static DebugSettings DefaultValue { get; private set; }
+        public bool EnableDebugConsole;
+        public static DebugSettings DefaultValue { get; private set; }
 	}
 }

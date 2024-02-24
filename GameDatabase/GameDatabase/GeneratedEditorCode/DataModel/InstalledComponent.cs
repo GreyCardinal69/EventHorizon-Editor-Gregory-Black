@@ -51,7 +51,6 @@ namespace EditorDatabase.DataModel
 		}
         public ItemId<ComponentMod> Modification = ItemId<ComponentMod>.Empty;
         public ItemId<Component> Component = ItemId<Component>.Empty;
-		public ComponentModType Modification;
 		public ModificationQuality Quality;
 		public NumericValue<int> X = new NumericValue<int>(0, -32768, 32767);
 		public NumericValue<int> Y = new NumericValue<int>(0, -32768, 32767);

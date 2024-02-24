@@ -21,6 +21,7 @@ namespace DatabaseMigration.v1.Serializable
 			ItemType = ItemType.SpecialEventSettings;
 			FileName = "SpecialEventSettings.json";
 		}
+        public int XmasCombatRules;
         [DefaultValue( "1 + credits/500" )]
         public string ConvertCreditsToSnowflakes = "1 + credits/500";
         [DefaultValue(true)]

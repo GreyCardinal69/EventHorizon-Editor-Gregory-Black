@@ -72,6 +72,24 @@ namespace DatabaseMigration.v1.Storage
                 data.FileName = name;
                 DeviceList.Add(data);
             }
+            else if ( type == ItemType.GameObjectPrefab )
+            {
+                var data = _serializer.FromJson<GameObjectPrefabSerializable>( content );
+                data.FileName = name;
+                GameObjectPrefabList.Add( data );
+            }
+            else if ( type == ItemType.CombatRules )
+            {
+                var data = _serializer.FromJson<CombatRulesSerializable>( content );
+                data.FileName = name;
+                CombatRulesList.Add( data );
+            }
+            else if ( type == ItemType.UiSettings )
+            {
+                var data = _serializer.FromJson<UiSettingsSerializable>( content );
+                data.FileName = name;
+                UiSettings = data;
+            }
             else if ( type == ItemType.BehaviorTree )
             {
                 var data = _serializer.FromJson<BehaviorTreeSerializable>( content );
@@ -248,6 +266,10 @@ namespace DatabaseMigration.v1.Storage
 
         public void Export(IContentLoader contentLoader)
         {
+            foreach ( var item in CombatRulesList )
+                contentLoader.LoadJson( item.FileName, _serializer.ToJson( item ) );
+            foreach ( var item in GameObjectPrefabList )
+                contentLoader.LoadJson( item.FileName, _serializer.ToJson( item ) );
             foreach (var item in AmmunitionObsoleteList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
             foreach (var item in ComponentList)
@@ -314,6 +336,8 @@ namespace DatabaseMigration.v1.Storage
                 contentLoader.LoadJson(SpecialEventSettings.FileName, _serializer.ToJson(SpecialEventSettings));
             if ( CombatSettings != null )
                 contentLoader.LoadJson( CombatSettings.FileName, _serializer.ToJson( CombatSettings ) );
+            if ( UiSettings != null )
+                contentLoader.LoadJson( UiSettings.FileName, _serializer.ToJson( UiSettings ) );
             foreach (var item in _images)
                 contentLoader.LoadImage(item.Key, item.Value);
             foreach (var item in _audioClips)
@@ -336,6 +360,7 @@ namespace DatabaseMigration.v1.Storage
         {
             _audioClips.Add(name, audioClip);
         }
+        public UiSettingsSerializable UiSettings { get; private set; }
         public CombatSettingsSerializable CombatSettings { get; private set; }
         public DatabaseSettingsSerializable DatabaseSettings { get; private set; }
 		public DebugSettingsSerializable DebugSettings { get; private set; }
@@ -346,6 +371,7 @@ namespace DatabaseMigration.v1.Storage
 		public ShipSettingsSerializable ShipSettings { get; private set; }
 		public SkillSettingsSerializable SkillSettings { get; private set; }
 		public SpecialEventSettingsSerializable SpecialEventSettings { get; private set; }
+        public UiSettingsSerializable CreateUiSettings() => UiSettings ?? ( UiSettings = new UiSettingsSerializable() );
         public CombatSettingsSerializable CreateCombatSettings() => CombatSettings ?? ( CombatSettings = new CombatSettingsSerializable() );
         public DatabaseSettingsSerializable CreateDatabaseSettings() => DatabaseSettings ?? (DatabaseSettings = new DatabaseSettingsSerializable());
 		public DebugSettingsSerializable CreateDebugSettings() => DebugSettings ?? (DebugSettings = new DebugSettingsSerializable());
@@ -359,7 +385,9 @@ namespace DatabaseMigration.v1.Storage
         public List<BehaviorTreeSerializable> BehaviorTreeList { get; } = new List<BehaviorTreeSerializable>();
         public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList { get; } = new List<AmmunitionObsoleteSerializable>();
 		public List<ComponentSerializable> ComponentList { get; } = new List<ComponentSerializable>();
-		public List<ComponentModSerializable> ComponentModList { get; } = new List<ComponentModSerializable>();
+        public List<GameObjectPrefabSerializable> GameObjectPrefabList { get; } = new List<GameObjectPrefabSerializable>();
+        public List<CombatRulesSerializable> CombatRulesList { get; } = new List<CombatRulesSerializable>();
+        public List<ComponentModSerializable> ComponentModList { get; } = new List<ComponentModSerializable>();
 		public List<ComponentStatsSerializable> ComponentStatsList { get; } = new List<ComponentStatsSerializable>();
 		public List<DeviceSerializable> DeviceList { get; } = new List<DeviceSerializable>();
 		public List<DroneBaySerializable> DroneBayList { get; } = new List<DroneBaySerializable>();

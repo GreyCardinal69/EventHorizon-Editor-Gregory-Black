@@ -10,7 +10,10 @@ namespace DatabaseMigration.v1.Enums
 {
 	public enum ItemType
 	{
-		Undefined = 0,
+        UiSettings = 110,
+        GameObjectPrefab = 29,
+        CombatRules = 30,
+        Undefined = 0,
 		Component = 1,
 		Device = 2,
 		Weapon = 3,

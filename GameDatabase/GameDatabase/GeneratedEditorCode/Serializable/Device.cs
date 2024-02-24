@@ -25,7 +25,8 @@ namespace EditorDatabase.Serializable
 		public float Cooldown;
 		public float Lifetime;
 		public Vector2 Offset;
-		public ActivationType ActivationType;
+        public int Prefab;
+        public ActivationType ActivationType;
 		[DefaultValue("")]
 		public string Color;
 		[DefaultValue("")]

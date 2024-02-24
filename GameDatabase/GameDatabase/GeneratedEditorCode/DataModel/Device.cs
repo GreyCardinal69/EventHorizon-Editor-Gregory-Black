@@ -23,7 +23,8 @@ namespace EditorDatabase.DataModel
 		{
 			try
 			{
-				Id = new ItemId<Device>(serializable.Id, serializable.FileName);
+                Prefab = database.GetGameObjectPrefabId( serializable.Prefab );
+                Id = new ItemId<Device>(serializable.Id, serializable.FileName);
 				DeviceClass = serializable.DeviceClass;
 				EnergyConsumption = new NumericValue<float>(serializable.EnergyConsumption, 0f, 1E+09f);
 				PassiveEnergyConsumption = new NumericValue<float>(serializable.PassiveEnergyConsumption, 0f, 1E+09f);
@@ -49,7 +50,8 @@ namespace EditorDatabase.DataModel
 
 		public void Save(DeviceSerializable serializable)
 		{
-			serializable.DeviceClass = DeviceClass;
+            serializable.Prefab = Prefab.Value;
+            serializable.DeviceClass = DeviceClass;
 			serializable.EnergyConsumption = EnergyConsumption.Value;
 			serializable.PassiveEnergyConsumption = PassiveEnergyConsumption.Value;
 			serializable.Power = Power.Value;
@@ -68,8 +70,8 @@ namespace EditorDatabase.DataModel
 		}
 
 		public readonly ItemId<Device> Id;
-
-		public DeviceClass DeviceClass;
+        public ItemId<GameObjectPrefab> Prefab = ItemId<GameObjectPrefab>.Empty;
+        public DeviceClass DeviceClass;
 		public NumericValue<float> EnergyConsumption = new NumericValue<float>(0, 0f, 1E+09f);
 		public NumericValue<float> PassiveEnergyConsumption = new NumericValue<float>(0, 0f, 1E+09f);
 		public NumericValue<float> Power = new NumericValue<float>(0, 0f, 1000f);

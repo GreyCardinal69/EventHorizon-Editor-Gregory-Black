@@ -25,7 +25,7 @@ namespace EditorDatabase.DataModel
 			return new CombatRules(serializable, database);
 		}
 
-		private CombatRules(CombatRulesSerializable serializable, Database database)
+        public CombatRules(CombatRulesSerializable serializable, Database database)
 		{
 			try
 			{

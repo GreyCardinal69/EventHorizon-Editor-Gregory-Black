@@ -23,7 +23,8 @@ namespace EditorDatabase.DataModel
 		{
 			try
 			{
-				Id = new ItemId<Fleet>(serializable.Id, serializable.FileName);
+                CombatRules = database.GetCombatRulesId( serializable.CombatRules );
+                Id = new ItemId<Fleet>(serializable.Id, serializable.FileName);
 				Factions = new RequiredFactions(serializable.Factions, database);
 				LevelBonus = new NumericValue<int>(serializable.LevelBonus, -10000, 10000);
 				NoRandomShips = serializable.NoRandomShips;
@@ -42,8 +43,9 @@ namespace EditorDatabase.DataModel
 		}
 
 		public void Save(FleetSerializable serializable)
-		{
-			serializable.Factions = Factions.Serialize();
+        {
+            serializable.CombatRules = CombatRules.Value;
+            serializable.Factions = Factions.Serialize();
 			serializable.LevelBonus = LevelBonus.Value;
 			serializable.NoRandomShips = NoRandomShips;
 			serializable.CombatTimeLimit = CombatTimeLimit.Value;
@@ -59,8 +61,8 @@ namespace EditorDatabase.DataModel
 		}
 
 		public readonly ItemId<Fleet> Id;
-
-		public RequiredFactions Factions = new RequiredFactions();
+        public ItemId<CombatRules> CombatRules = ItemId<CombatRules>.Empty;
+        public RequiredFactions Factions = new RequiredFactions();
 		public NumericValue<int> LevelBonus = new NumericValue<int>(0, -10000, 10000);
 		public bool NoRandomShips;
 		public NumericValue<int> CombatTimeLimit = new NumericValue<int>(0, 0, 999);

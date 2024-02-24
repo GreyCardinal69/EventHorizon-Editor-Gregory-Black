@@ -21,8 +21,9 @@ namespace DatabaseMigration.v1.Serializable
 			ItemType = ItemType.Ship;
 			FileName = "Ship.json";
 		}
-
-		public ShipType ShipType;
+        [DefaultValue( "" )]
+        public string Description;
+        public ShipType ShipType;
 		public ShipRarity ShipRarity;
 		public SizeClass SizeClass;
 		[DefaultValue("")]

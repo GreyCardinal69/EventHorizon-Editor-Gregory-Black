@@ -21,9 +21,9 @@ namespace DatabaseMigration.v1.Serializable
 			ItemType = ItemType.ExplorationSettings;
 			FileName = "ExplorationSettings.json";
 		}
-		[DefaultValue("level*2")]
-		public string GasCloudDPS = "level*2";
-		public int OutpostShip;
+        [DefaultValue( "MIN(level*2,500)" )]
+        public string GasCloudDPS = "MIN(level*2,500)";
+        public int OutpostShip;
 		public int TurretShip;
 		public int InfectedPlanetFaction;
 		public int HiveShipBuild;

@@ -58,8 +58,8 @@ namespace EditorDatabase.DataModel
 			EffectType = serializable.EffectType;
 			_content = CreateContent(serializable.EffectType);
 			_content.Load(serializable, database);
-
-			OnDataDeserialized(serializable, database);
+            Cooldown = new NumericValue<float>( serializable.Cooldown, 0f, 1000f );
+            OnDataDeserialized(serializable, database);
 		}
 
 		public BulletTriggerSerializable Serialize()
@@ -77,7 +77,11 @@ namespace EditorDatabase.DataModel
 			serializable.RandomFactor = 0f;
 			serializable.PowerMultiplier = 0f;
 			serializable.MaxNestingLevel = 0;
-			_content.Save(ref serializable);
+            serializable.Rotation = "IF(Quantity == 1, 0, RANDOM(0, 360))";
+            serializable.OffsetX = "IF(Quantity == 1, 0, Size / 2)";
+            serializable.OffsetY = "0";
+            serializable.Cooldown = Cooldown.Value;
+            _content.Save(ref serializable);
 			serializable.Condition = Condition;
 			serializable.EffectType = EffectType;
 			OnDataSerialized(ref serializable);
@@ -92,8 +96,8 @@ namespace EditorDatabase.DataModel
 			get
 			{
 				var type = GetType();
-
-				yield return new Property(this, type.GetField("Condition"), DataChangedEvent);
+                yield return new Property( this, type.GetField( "Cooldown" ), DataChangedEvent );
+                yield return new Property(this, type.GetField("Condition"), DataChangedEvent);
 				yield return new Property(this, type.GetField("EffectType"), OnTypeChanged);
 
 				foreach (var item in _content.GetType().GetFields().Where(f => f.IsPublic && !f.IsStatic))
@@ -111,8 +115,8 @@ namespace EditorDatabase.DataModel
 		private IBulletTriggerContent _content;
 		public BulletTriggerCondition Condition;
 		public BulletEffectType EffectType;
-
-		public static BulletTrigger DefaultValue { get; private set; }
+        public NumericValue<float> Cooldown = new NumericValue<float>( 0, 0f, 1000f );
+        public static BulletTrigger DefaultValue { get; private set; }
 	}
 
 	public class BulletTriggerEmptyContent : IBulletTriggerContent
@@ -172,8 +176,12 @@ namespace EditorDatabase.DataModel
 			Size = new NumericValue<float>(serializable.Size, 0f, 100f);
 			Cooldown = new NumericValue<float>(serializable.Cooldown, 0f, 1000f);
 			RandomFactor = new NumericValue<float>(serializable.RandomFactor, 0f, 1f);
-			PowerMultiplier = new NumericValue<float>(serializable.PowerMultiplier, 0f, 1000f);
-			MaxNestingLevel = new NumericValue<int>(serializable.MaxNestingLevel, 0, 100);
+            PowerMultiplier = new NumericValue<float>( serializable.PowerMultiplier, 0f, 3.402823E+38f );
+            MaxNestingLevel = new NumericValue<int>( serializable.MaxNestingLevel, 0, 100 );
+            Rotation = serializable.Rotation;
+            OffsetX = serializable.OffsetX;
+            OffsetY = serializable.OffsetY;
+            MaxNestingLevel = new NumericValue<int>(serializable.MaxNestingLevel, 0, 100);
 
 			OnDataDeserialized(serializable, database);
 		}
@@ -190,10 +198,16 @@ namespace EditorDatabase.DataModel
 			serializable.RandomFactor = RandomFactor.Value;
 			serializable.PowerMultiplier = PowerMultiplier.Value;
 			serializable.MaxNestingLevel = MaxNestingLevel.Value;
-			OnDataSerialized(ref serializable);
+            serializable.Rotation = Rotation;
+            serializable.OffsetX = OffsetX;
+            serializable.OffsetY = OffsetY;
+            OnDataSerialized(ref serializable);
 		}
 
-		public string AudioClip;
+        public string Rotation;
+        public string OffsetX;
+        public string OffsetY;
+        public string AudioClip;
 		public ItemId<Ammunition> Ammunition = ItemId<Ammunition>.Empty;
 		public System.Drawing.Color Color;
 		public ColorMode ColorMode;
@@ -201,8 +215,8 @@ namespace EditorDatabase.DataModel
 		public NumericValue<float> Size = new NumericValue<float>(0, 0f, 100f);
 		public NumericValue<float> Cooldown = new NumericValue<float>(0, 0f, 1000f);
 		public NumericValue<float> RandomFactor = new NumericValue<float>(0, 0f, 1f);
-		public NumericValue<float> PowerMultiplier = new NumericValue<float>(0, 0f, 1000f);
-		public NumericValue<int> MaxNestingLevel = new NumericValue<int>(0, 0, 100);
+        public NumericValue<float> PowerMultiplier = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+        public NumericValue<int> MaxNestingLevel = new NumericValue<int>(0, 0, 100);
 	}
 
 	public partial class BulletTrigger_SpawnStaticSfx : IBulletTriggerContent
@@ -218,8 +232,8 @@ namespace EditorDatabase.DataModel
 			ColorMode = serializable.ColorMode;
 			Size = new NumericValue<float>(serializable.Size, 0f, 100f);
 			Lifetime = new NumericValue<float>(serializable.Lifetime, 0f, 1000f);
-
-			OnDataDeserialized(serializable, database);
+            PowerMultiplier = new NumericValue<float>( serializable.PowerMultiplier, 0f, 3.402823E+38f );
+            OnDataDeserialized(serializable, database);
 		}
 
 		public void Save(ref BulletTriggerSerializable serializable)
@@ -237,7 +251,8 @@ namespace EditorDatabase.DataModel
 		public string AudioClip;
 		public System.Drawing.Color Color;
 		public ColorMode ColorMode;
-		public NumericValue<float> Size = new NumericValue<float>(0, 0f, 100f);
+        public NumericValue<float> PowerMultiplier = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+        public NumericValue<float> Size = new NumericValue<float>(0, 0f, 100f);
 		public NumericValue<float> Lifetime = new NumericValue<float>(0, 0f, 1000f);
 	}
 
@@ -262,8 +277,8 @@ namespace EditorDatabase.DataModel
 		}
 
 		public NumericValue<float> Size = new NumericValue<float>(0, 0f, 100f);
-		public NumericValue<float> PowerMultiplier = new NumericValue<float>(0, 0f, 1000f);
-	}
+        public NumericValue<float> PowerMultiplier = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+    }
 
 }
 

@@ -29,6 +29,10 @@ namespace EditorDatabase.Storage
 
         public void Save(IDataStorage storage, IJsonSerializer jsonSerializer)
         {
+            foreach ( var item in _combatRulesMap.Values )
+                storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
+            foreach ( var item in _gameObjectPrefabMap.Values )
+                storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
             foreach (var item in _ammunitionObsoleteMap.Values)
                 storage.SaveJson(item.FileName, jsonSerializer.ToJson(item));
             foreach (var item in _componentMap.Values)
@@ -73,7 +77,8 @@ namespace EditorDatabase.Storage
                 storage.SaveJson(item.FileName, jsonSerializer.ToJson(item));
             foreach (var item in _weaponMap.Values)
                 storage.SaveJson(item.FileName, jsonSerializer.ToJson(item));
-
+            if ( UiSettings != null )
+                storage.SaveJson( UiSettings.FileName, jsonSerializer.ToJson( UiSettings ) );
             if ( SkillSettings != null )
                 storage.SaveJson( SkillSettings.FileName, jsonSerializer.ToJson( SkillSettings ) );
             if (DatabaseSettings != null)
@@ -116,6 +121,29 @@ namespace EditorDatabase.Storage
             {var data = _serializer.FromJson<ComponentModSerializable>( content );
                 data.FileName = name;
                 _componentModMap.Remove( data.Id );
+            }
+            else if ( type == ItemType.GameObjectPrefab )
+            {
+                if ( _gameObjectPrefabMap.ContainsKey( item.Id ) ) throw new DatabaseException( "Duplicate GameObjectPrefab ID - " + item.Id + " (" + name + ")" );
+                var data = _serializer.FromJson<GameObjectPrefabSerializable>( content );
+                data.FileName = name;
+                _gameObjectPrefabMap.Add( data.Id, data );
+            }
+            else if ( type == ItemType.CombatRules )
+            {
+                if ( _combatRulesMap.ContainsKey( item.Id ) ) throw new DatabaseException( "Duplicate CombatRules ID - " + item.Id + " (" + name + ")" );
+                var data = _serializer.FromJson<CombatRulesSerializable>( content );
+                data.FileName = name;
+                _combatRulesMap.Add( data.Id, data );
+            }
+            else if ( type == ItemType.UiSettings )
+            {
+                var data = _serializer.FromJson<UiSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( UiSettings != null )
+                    throw new DatabaseException( "Duplicate UiSettings file found - " + name );
+                UiSettings = data;
             }
             else if ( type == ItemType.ComponentStats )
             { var data = _serializer.FromJson<ComponentStatsSerializable>( content );
@@ -489,6 +517,9 @@ namespace EditorDatabase.Storage
         {
             _images.Add(data.Name, data);
         }
+
+
+        public UiSettingsSerializable UiSettings { get; private set; }
         public CombatSettingsSerializable CombatSettings { get; private set; }
         public DebugSettingsSerializable DebugSettings { get; private set; }
         public SkillSettingsSerializable SkillSettings { get; private set; }
@@ -523,6 +554,8 @@ namespace EditorDatabase.Storage
         public List<BulletPrefabSerializable> BulletPrefabList => _bulletPrefabMap.Values.ToList();
         public List<VisualEffectSerializable> VisualEffectList => _visualEffectMap.Values.ToList();
         public List<WeaponSerializable> WeaponList => _weaponMap.Values.ToList();
+        public List<GameObjectPrefabSerializable> GameObjectPrefabList => _gameObjectPrefabMap.Values.ToList();
+        public List<CombatRulesSerializable> CombatRulesList => _combatRulesMap.Values.ToList();
 
         public AmmunitionObsoleteSerializable GetAmmunitionObsolete(int id) { return _ammunitionObsoleteMap.TryGetValue(id, out var item) ? item : null; }
 		public ComponentSerializable GetComponent(int id) { return _componentMap.TryGetValue(id, out var item) ? item : null; }
@@ -531,7 +564,9 @@ namespace EditorDatabase.Storage
 		public DeviceSerializable GetDevice(int id) { return _deviceMap.TryGetValue(id, out var item) ? item : null; }
 		public DroneBaySerializable GetDroneBay(int id) { return _droneBayMap.TryGetValue(id, out var item) ? item : null; }
 		public FactionSerializable GetFaction(int id) { return _factionMap.TryGetValue(id, out var item) ? item : null; }
-		public SatelliteSerializable GetSatellite(int id) { return _satelliteMap.TryGetValue(id, out var item) ? item : null; }
+        public GameObjectPrefabSerializable GetGameObjectPrefab( int id ) { return _gameObjectPrefabMap.TryGetValue( id, out var item ) ? item : null; }
+        public CombatRulesSerializable GetCombatRules( int id ) { return _combatRulesMap.TryGetValue( id, out var item ) ? item : null; }
+        public SatelliteSerializable GetSatellite(int id) { return _satelliteMap.TryGetValue(id, out var item) ? item : null; }
 		public SatelliteBuildSerializable GetSatelliteBuild(int id) { return _satelliteBuildMap.TryGetValue(id, out var item) ? item : null; }
 		public ShipSerializable GetShip(int id) { return _shipMap.TryGetValue(id, out var item) ? item : null; }
 		public ShipBuildSerializable GetShipBuild(int id) { return _shipBuildMap.TryGetValue(id, out var item) ? item : null; }
@@ -562,6 +597,8 @@ namespace EditorDatabase.Storage
         public IEnumerable<KeyValuePair<string, string>> Localizations => _localizations;
 
         private readonly IJsonSerializer _serializer;
+        private readonly Dictionary<int, GameObjectPrefabSerializable> _gameObjectPrefabMap = new Dictionary<int, GameObjectPrefabSerializable>();
+        private readonly Dictionary<int, CombatRulesSerializable> _combatRulesMap = new Dictionary<int, CombatRulesSerializable>();
         private readonly Dictionary<int, BehaviorTreeSerializable> _behaviorTreeMap = new Dictionary<int, BehaviorTreeSerializable>();
         private readonly Dictionary<int, AmmunitionObsoleteSerializable> _ammunitionObsoleteMap = new Dictionary<int, AmmunitionObsoleteSerializable>();
 		private readonly Dictionary<int, ComponentSerializable> _componentMap = new Dictionary<int, ComponentSerializable>();
