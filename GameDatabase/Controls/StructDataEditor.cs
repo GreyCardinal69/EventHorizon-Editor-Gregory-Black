@@ -319,7 +319,9 @@ namespace GameDatabase
             comboBox.Items.AddRange( items.ToArray() );
 
             comboBox.SelectedItem = value;
+
             comboBox.SelectedValueChanged += OnComboBoxValueChanged;
+            comboBox.ValueMemberChanged += OnComboBoxValueChanged;
             comboBox.MouseWheel += DisableMouseWheel;
 
             var memberInfo = value.GetType().GetMember( value.ToString() ).FirstOrDefault();
@@ -595,11 +597,13 @@ namespace GameDatabase
             if ( _ignoreEvents ) return;
 
             _binding[sender].Value = ( ( ComboBox ) sender ).SelectedItem;
-            var enumValueString = _binding[sender].Value.ToString();
-            var tooltipText = EnumExtensions.GetTooltipTextFromString( enumValueString );
-            toolTip.SetToolTip( ( ( FlatCombo ) sender ), tooltipText );
+
+            string enumValueString = _binding[sender].Value.ToString();
+            object type = EnumExtensions.ParseToEnumNonGeneric( enumValueString, _binding[sender].Value.GetType() );
+
+            toolTip.SetToolTip( ( ( FlatCombo ) sender ), EnumExtensions.GetTooltipText( ( Enum ) type ) );
         }
-         
+
         private void OnTextBoxValueChanged( object sender, EventArgs args )
         {
             if ( _ignoreEvents ) return;
