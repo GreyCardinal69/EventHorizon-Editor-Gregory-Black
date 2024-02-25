@@ -181,6 +181,7 @@
     <Compile Include="GameDatabase\GeneratedMigrationCode\DatabaseException.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\DatabaseUpgrader.cs" />
     <Compile Include="GameDatabase\Helpers\DataAdapter.cs" />
+    <Compile Include="GameDatabase\Helpers\EnumExtensions.cs" />
     <Compile Include="GameDatabase\Helpers\Helpers.cs" />
     <Compile Include="GameDatabase\Helpers\Prompt.cs" />
     <Compile Include="GameDatabase\Helpers\Templates.cs" />

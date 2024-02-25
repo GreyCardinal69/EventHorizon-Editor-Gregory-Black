@@ -28,8 +28,12 @@ namespace EditorDatabase.DataModel
 
         public RequiredFactions( FactionFilterSerializable serializable, Database database )
         {
-            Type = serializable.Type;
+            if ( serializable == null )
+            {
+                serializable = new FactionFilterSerializable();
+            }
             List = serializable.List?.Select( id => new Wrapper<Faction> { Item = database.GetFactionId( id ) } ).ToArray();
+            Type = serializable.Type;
             OnDataDeserialized( serializable, database );
         }
 

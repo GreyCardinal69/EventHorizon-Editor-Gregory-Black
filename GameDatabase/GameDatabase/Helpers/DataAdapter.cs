@@ -48,9 +48,9 @@ namespace EditorDatabase
     {
         public Property(object data, FieldInfo fieldInfo, Action dataChangedAction)
         {
-        
             _data = data;
             _fieldInfo = fieldInfo;
+            _tooltip = _fieldInfo.GetCustomAttribute<TooltipText>();
             _dataChangedAction = dataChangedAction;
         }
         public string Tooltip => _tooltip?.Text;

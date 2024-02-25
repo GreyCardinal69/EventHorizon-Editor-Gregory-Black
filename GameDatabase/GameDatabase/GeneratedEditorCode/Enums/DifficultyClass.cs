@@ -1,4 +1,4 @@
-//-------------------------------------------------------------------------------
+﻿//-------------------------------------------------------------------------------
 //                                                                               
 //    This code was automatically generated.                                     
 //    Changes to this file may cause incorrect behavior and will be lost if      
@@ -6,13 +6,19 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
+using static EditorDatabase.Property;
+
 namespace EditorDatabase.Enums
 {
 	public enum DifficultyClass
-	{
-		Default = 0,
-		Class1 = 1,
-		Class2 = 2,
-		Class3 = 3,
+    {
+        [TooltipText( "No Skulls" )]
+        Default = 0,
+        [TooltipText( "💀" )]
+        Class1 = 1,
+        [TooltipText( "💀💀" )]
+        Class2 = 2,
+        [TooltipText( "💀💀💀" )]
+        Class3 = 3,
 	}
 }

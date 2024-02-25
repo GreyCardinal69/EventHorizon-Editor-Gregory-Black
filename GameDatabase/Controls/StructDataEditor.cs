@@ -9,6 +9,7 @@ using Cyotek.Windows.Forms;
 using EditorDatabase;
 using EditorDatabase.Model;
 using GameDatabase.Controls;
+using GameDatabase.GameDatabase.Helpers;
 using static EditorDatabase.Property;
 using AdvancedButton = GameDatabase.Controls.AdvancedButton;
 
@@ -316,6 +317,7 @@ namespace GameDatabase
             comboBox.DrawItem += new DrawItemEventHandler( comboBoxDb_DrawItem );
 
             comboBox.Items.AddRange( items.ToArray() );
+
             comboBox.SelectedItem = value;
             comboBox.SelectedValueChanged += OnComboBoxValueChanged;
             comboBox.MouseWheel += DisableMouseWheel;
@@ -349,7 +351,8 @@ namespace GameDatabase
 
         private void comboBoxDb_DrawItem( object sender, DrawItemEventArgs e )
         {
-            var combo = sender as FlatCombo;
+            if ( e.Index == -1 ) return;
+            FlatCombo combo = sender as FlatCombo;
 
             if ( ( e.State & DrawItemState.Selected ) == DrawItemState.Selected )
             {
@@ -592,8 +595,11 @@ namespace GameDatabase
             if ( _ignoreEvents ) return;
 
             _binding[sender].Value = ( ( ComboBox ) sender ).SelectedItem;
+            var enumValueString = _binding[sender].Value.ToString();
+            var tooltipText = EnumExtensions.GetTooltipTextFromString( enumValueString );
+            toolTip.SetToolTip( ( ( FlatCombo ) sender ), tooltipText );
         }
-
+         
         private void OnTextBoxValueChanged( object sender, EventArgs args )
         {
             if ( _ignoreEvents ) return;
