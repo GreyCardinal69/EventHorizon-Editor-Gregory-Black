@@ -6,16 +6,18 @@ This version implements:
 - Option to pick Triple Veteran ship build difficulty.
 - Option to clone effects in an effect file.
 - Jump To Page option.
-- CTRL + S hotkey for saving the database
-- Fixed 2 color picker related bugs from v2.0
+- CTRL + S hotkey for saving the database.
+- Fixed 2 color picker related bugs from v2.0.
 - Option to Copy & Paste objects inside DBE, without reloading or creating new files.
-- Larger selection window
+- Larger selection window.
 - Larger initial ship editor window.
-- Small Analiser for Error detection
-- Faster database save speed
-- An ID field when selecting a file
-- Reloading the database restores the last opened file tree
+- Small Analiser for Error detection.
+- Faster database save speed.
+- An ID field when selecting a file.
+- Reloading the database restores the last opened file tree.
 - Option to generate ship barrels.
+- Tooltips.
+- A settings file for DBE tuning.
 
 ## How to use:
 
