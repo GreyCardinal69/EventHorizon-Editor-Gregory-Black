@@ -37,9 +37,11 @@ namespace GameDatabase
 
             closeConfrmationToolStripMenuItem.Checked = Settings.Default.ClosingConfirmation;
 
+            DBESettings = JsonConvert.DeserializeObject<DBESettings>( File.ReadAllText(Directory.GetCurrentDirectory()+"\\Settings.gregory") );
             ChangeSorting( Settings.Default.SortingType );
         }
 
+        internal DBESettings DBESettings;
         internal static MainWindow MainInstance;
         internal SerializableItem _copiedData;
         internal bool _isTryingToCopy;

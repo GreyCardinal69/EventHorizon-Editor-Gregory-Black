@@ -73,6 +73,7 @@ namespace GameDatabase.Controls
         public CollectionEditor()
         {
             InitializeComponent();
+            rowsPerPage = MainWindow.MainInstance.DBESettings.ElementsPerPage;
         }
 
         protected void Cleanup()
@@ -602,7 +603,7 @@ namespace GameDatabase.Controls
             }
         }
 
-        protected const int rowsPerPage = 9;
+        protected int rowsPerPage = 9;
 
         private bool _collapseable = true;
         private bool _showNumbers = false;

@@ -154,6 +154,7 @@
     <Compile Include="Controls\VectorEditor.Designer.cs">
       <DependentUpon>VectorEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBESettings.cs" />
     <Compile Include="EditorDialog.cs">
       <SubType>Form</SubType>
     </Compile>

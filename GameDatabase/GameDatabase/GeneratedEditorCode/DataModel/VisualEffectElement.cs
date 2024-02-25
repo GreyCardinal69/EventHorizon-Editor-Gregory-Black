@@ -55,6 +55,7 @@ namespace EditorDatabase.DataModel
             OnDataSerialized(ref serializable);
 			return serializable;
 		}
+
         public NumericValue<float> ParticleSize = new NumericValue<float>( 0, 0.001f, 100f );
         public VisualEffectType Type;
 		public string Image;
