@@ -598,10 +598,16 @@ namespace GameDatabase
 
             _binding[sender].Value = ( ( ComboBox ) sender ).SelectedItem;
 
-            string enumValueString = _binding[sender].Value.ToString();
-            object type = EnumExtensions.ParseToEnumNonGeneric( enumValueString, _binding[sender].Value.GetType() );
+            object value = _binding[sender].Value;
+            Type type = value.GetType();
 
-            toolTip.SetToolTip( ( ( FlatCombo ) sender ), EnumExtensions.GetTooltipText( ( Enum ) type ) );
+            if ( type.IsEnum )
+            {
+                string enumValueString = value.ToString();
+                object tip = EnumExtensions.ParseToEnumNonGeneric( enumValueString, type );
+
+                toolTip.SetToolTip( ( ( FlatCombo ) sender ), EnumExtensions.GetTooltipText( ( Enum ) tip ) );
+            }
         }
 
         private void OnTextBoxValueChanged( object sender, EventArgs args )
