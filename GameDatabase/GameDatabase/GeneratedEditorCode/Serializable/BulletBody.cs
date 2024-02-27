@@ -14,20 +14,25 @@ using EditorDatabase.Model;
 namespace EditorDatabase.Serializable
 {
 	[Serializable]
-	public struct BulletBodySerializable
+	public class BulletBodySerializable
 	{
-		public BulletType Type;
-		public float Size;
-		public float Velocity;
-		public float Range;
-		public float Lifetime;
-		public float Weight;
-		public int HitPoints;
-		[DefaultValue("")]
-		public string Color;
-		public int BulletPrefab;
-		public float EnergyCost;
-		public bool CanBeDisarmed;
-		public bool FriendlyFire;
-	}
+        public float Size;
+        public float Length;
+        public float Velocity;
+        [DefaultValue( 1f )]
+        public float ParentVelocityEffect = 1f;
+        public bool AttachedToParent;
+        public float Range;
+        public float Lifetime;
+        public float Weight;
+        public int HitPoints;
+        [DefaultValue( "" )]
+        public string Color;
+        public int BulletPrefab;
+        public float EnergyCost;
+        public bool CanBeDisarmed;
+        public bool FriendlyFire;
+        public AiBulletBehavior AiBulletBehavior;
+        public BulletTypeObsolete Type;
+    }
 }

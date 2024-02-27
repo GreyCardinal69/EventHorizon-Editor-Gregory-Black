@@ -22,7 +22,8 @@ namespace EditorDatabase.DataModel
 
 		public ComponentRestrictions(ComponentRestrictionsSerializable serializable, Database database)
 		{
-			ShipSizes = serializable.ShipSizes?.Select(item => new ValueWrapper<SizeClass> { Value = item }).ToArray();
+            MaxComponentAmount = new NumericValue<int>( serializable.MaxComponentAmount, 0, 2147483647 );
+            ShipSizes = serializable.ShipSizes?.Select(item => new ValueWrapper<SizeClass> { Value = item }).ToArray();
 			NotForOrganicShips = serializable.NotForOrganicShips;
 			NotForMechanicShips = serializable.NotForMechanicShips;
 			UniqueComponentTag = serializable.UniqueComponentTag;
@@ -32,7 +33,8 @@ namespace EditorDatabase.DataModel
 		public ComponentRestrictionsSerializable Serialize()
 		{
 			var serializable = new ComponentRestrictionsSerializable();
-			if (ShipSizes == null || ShipSizes.Length == 0)
+            serializable.MaxComponentAmount = MaxComponentAmount.Value;
+            if (ShipSizes == null || ShipSizes.Length == 0)
 			    serializable.ShipSizes = null;
 			else
 			    serializable.ShipSizes = ShipSizes.Select(item => item.Value).ToArray();
@@ -47,7 +49,7 @@ namespace EditorDatabase.DataModel
 		public bool NotForOrganicShips;
 		public bool NotForMechanicShips;
 		public string UniqueComponentTag;
-
-		public static ComponentRestrictions DefaultValue { get; private set; }
+        public NumericValue<int> MaxComponentAmount = new NumericValue<int>( 0, 0, 2147483647 );
+        public static ComponentRestrictions DefaultValue { get; private set; }
 	}
 }

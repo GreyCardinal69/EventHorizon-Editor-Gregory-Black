@@ -9,8 +9,7 @@ namespace DatabaseMigration.v1
         {
             Console.WriteLine( "Database migration: v1.2 -> v1.3" );
 
-            Content.GalaxySettings.StartingInventory = Content.GalaxySettings.StartingInvenory;
-            Content.GalaxySettings.StartingInvenory = 0;
+            Content.GalaxySettings.StartingInventory = Content.GalaxySettings.StartingInventory;
 
             var ships = new Dictionary<int, Serializable.ShipSerializable>();
             foreach ( var item in Content.ShipList )

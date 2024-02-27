@@ -33,7 +33,6 @@ namespace DatabaseMigration.v1.Serializable
         public string EnemyLevel = "MIN(3*distance/5 - 5, MaxEnemyShipsLevel)";
         [DefaultValue( "IF(size == Destroyer, 5, size == Cruiser, 15, size == Battleship, 50, size == Titan, 100, 0)" )]
         public string ShipMinSpawnDistance = "IF(size == Destroyer, 5, size == Cruiser, 15, size == Battleship, 50, size == Titan, 100, 0)";
-        public int StartingInvenory;
         public int SurvivalCombatRules;
         public int StarbaseCombatRules;
         public int FlagshipCombatRules;

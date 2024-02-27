@@ -179,6 +179,8 @@
     <Compile Include="GameDatabase\DataModel\Component.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Database.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DatabaseException.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\BulletController.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Enums\AiBulletBehaviour.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\DatabaseException.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\DatabaseUpgrader.cs" />
     <Compile Include="GameDatabase\Helpers\DataAdapter.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="GameDatabase\Helpers\Helpers.cs" />
     <Compile Include="GameDatabase\Helpers\Prompt.cs" />
     <Compile Include="GameDatabase\Helpers\Templates.cs" />
+    <Compile Include="GameDatabase\Migration\v1\DatabaseUpgrader_5_6.cs" />
     <Compile Include="GameDatabase\Model\AudioClipData.cs" />
     <Compile Include="GameDatabase\Model\ImageData.cs" />
     <Compile Include="GameDatabase\Model\ItemId.cs" />

@@ -30,7 +30,7 @@ namespace DatabaseMigration.v1
             };
 
             Content.LootList.Add( loot );
-            Content.GalaxySettings.StartingInvenory = lootId;
+            Content.GalaxySettings.StartingInventory = lootId;
         }
 
         private static void CreateLootItems<T>(

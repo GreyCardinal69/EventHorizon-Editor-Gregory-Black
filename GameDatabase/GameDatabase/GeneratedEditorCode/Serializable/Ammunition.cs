@@ -17,7 +17,8 @@ namespace EditorDatabase.Serializable
 	public class AmmunitionSerializable : SerializableItem
 	{
 		public BulletBodySerializable Body;
-		public BulletTriggerSerializable[] Triggers;
+        public BulletControllerSerializable Controller;
+        public BulletTriggerSerializable[] Triggers;
 		public BulletImpactType ImpactType;
 		public ImpactEffectSerializable[] Effects;
 	}

@@ -30,6 +30,8 @@ namespace EditorDatabase.DataModel
         {
             switch ( type )
             {
+                case RequirementType.IsHostileFaction:
+                    return new RequirementEmptyContent();
                 case RequirementType.Empty:
                     return new RequirementEmptyContent();
                 case RequirementType.Any:

@@ -31,8 +31,8 @@ namespace EditorDatabase.DataModel
             StartingInventory = database.GetLootId( serializable.StartingInventory );
             SupporterPackShip = database.GetShipBuildId(serializable.SupporterPackShip);
 			DefaultStarbaseBuild = database.GetShipBuildId(serializable.DefaultStarbaseBuild);
-			MaxEnemyShipsLevel = new NumericValue<int>(serializable.MaxEnemyShipsLevel, 100, 500);
-			EnemyLevel = serializable.EnemyLevel;
+            MaxEnemyShipsLevel = new NumericValue<int>( serializable.MaxEnemyShipsLevel, 0, 500 );
+            EnemyLevel = serializable.EnemyLevel;
             ShipMinSpawnDistance = serializable.ShipMinSpawnDistance;
             OnDataDeserialized(serializable, database);
 		}
@@ -67,11 +67,10 @@ namespace EditorDatabase.DataModel
         public ItemId<Faction> AbandonedStarbaseFaction = ItemId<Faction>.Empty;
 		public Wrapper<ShipBuild>[] StartingShipBuilds;
         public ItemId<LootModel> StartingInventory = ItemId<LootModel>.Empty;
-        public ItemId<LootModel> StartingInvenory = ItemId<LootModel>.Empty;
 		public ItemId<ShipBuild> SupporterPackShip = ItemId<ShipBuild>.Empty;
 		public ItemId<ShipBuild> DefaultStarbaseBuild = ItemId<ShipBuild>.Empty;
-		public NumericValue<int> MaxEnemyShipsLevel = new NumericValue<int>(0, 100, 500);
-		public string EnemyLevel;
+        public NumericValue<int> MaxEnemyShipsLevel = new NumericValue<int>( 0, 0, 500 );
+        public string EnemyLevel;
         public string ShipMinSpawnDistance;
 
         public static GalaxySettings DefaultValue { get; private set; }

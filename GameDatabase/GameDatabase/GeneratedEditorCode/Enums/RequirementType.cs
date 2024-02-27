@@ -30,5 +30,6 @@ namespace EditorDatabase.Enums
 		ComeToOrigin = 30,
 		TimeSinceQuestStart = 40,
 		TimeSinceLastCompletion = 41,
-	}
+        IsHostileFaction = 19,
+    }
 }

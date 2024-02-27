@@ -12,5 +12,6 @@ namespace EditorDatabase.Enums
 	{
 		Undefined = 0,
 		WormTailSegment = 1,
-	}
+        CircularSpriteObject = 2,
+    }
 }

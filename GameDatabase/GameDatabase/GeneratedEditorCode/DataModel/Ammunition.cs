@@ -27,7 +27,8 @@ namespace EditorDatabase.DataModel
 				Body = new BulletBody(serializable.Body, database);
 				Triggers = serializable.Triggers?.Select(item => new BulletTrigger(item, database)).ToArray();
 				ImpactType = serializable.ImpactType;
-				Effects = serializable.Effects?.Select(item => new ImpactEffect(item, database)).ToArray();
+                Controller.Value = DataModel.BulletController.Create( serializable.Controller, database );
+                Effects = serializable.Effects?.Select(item => new ImpactEffect(item, database)).ToArray();
 			}
 			catch (DatabaseException e)
 			{
@@ -38,7 +39,8 @@ namespace EditorDatabase.DataModel
 
 		public void Save(AmmunitionSerializable serializable)
 		{
-			serializable.Body = Body.Serialize();
+            serializable.Controller = Controller.Value?.Serialize();
+            serializable.Body = Body.Serialize();
 			if (Triggers == null || Triggers.Length == 0)
 			    serializable.Triggers = null;
 			else
@@ -57,7 +59,7 @@ namespace EditorDatabase.DataModel
 		public BulletTrigger[] Triggers;
 		public BulletImpactType ImpactType;
 		public ImpactEffect[] Effects;
-
-		public static Ammunition DefaultValue { get; private set; }
+        public ObjectWrapper<BulletController> Controller = new ObjectWrapper<BulletController>( EditorDatabase.DataModel.BulletController.DefaultValue );
+        public static Ammunition DefaultValue { get; private set; }
 	}
 }

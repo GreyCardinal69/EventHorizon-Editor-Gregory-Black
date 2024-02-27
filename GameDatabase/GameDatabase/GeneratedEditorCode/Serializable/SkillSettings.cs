@@ -15,8 +15,10 @@ namespace EditorDatabase.Serializable
 {
 	[Serializable]
 	public class SkillSettingsSerializable : SerializableItem
-	{
-		public int[] BeatAllEnemiesFactionList;
+    {
+        [DefaultValue( 100 )]
+        public int MaxPlayerShipsLevel = 100;
+        public int[] BeatAllEnemiesFactionList;
 		public bool DisableExceedTheLimits;
         [DefaultValue( "BaseFuelCapacity + 50*level" )]
         public string FuelTankCapacity = "BaseFuelCapacity + 50*level";
