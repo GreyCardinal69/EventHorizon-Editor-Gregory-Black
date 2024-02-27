@@ -596,6 +596,8 @@ namespace GameDatabase
 
             _binding[sender].Value = ( ( ComboBox ) sender ).SelectedItem;
 
+            if ( !_binding.ContainsKey( sender ) ) return;
+
             object value = _binding[sender].Value;
             Type type = value.GetType();
 
