@@ -6,14 +6,12 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System.Linq;
-using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using EditorDatabase.Serializable;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class NodeTransition
+    public partial class NodeTransition
 	{
         partial void OnDataDeserialized( NodeTransitionSerializable serializable, Database database );
         partial void OnDataSerialized( ref NodeTransitionSerializable serializable );

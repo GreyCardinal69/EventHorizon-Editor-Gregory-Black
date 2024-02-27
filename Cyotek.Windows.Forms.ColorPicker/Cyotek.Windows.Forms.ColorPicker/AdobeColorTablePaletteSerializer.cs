@@ -4,24 +4,24 @@ using System.IO;
 
 namespace Cyotek.Windows.Forms
 {
-  // Cyotek Color Picker controls library
-  // Copyright © 2013-2015 Cyotek Ltd.
-  // http://cyotek.com/blog/tag/colorpicker
+    // Cyotek Color Picker controls library
+    // Copyright © 2013-2015 Cyotek Ltd.
+    // http://cyotek.com/blog/tag/colorpicker
 
-  // Licensed under the MIT License. See license.txt for the full text.
+    // Licensed under the MIT License. See license.txt for the full text.
 
-  // If you use this code in your applications, donations or attribution are welcome
+    // If you use this code in your applications, donations or attribution are welcome
 
-  // http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/#50577411_pgfId-1070626
-  // There is no version number written in the file. The file is exactly 768 bytes long, and contains 256 RGB colors:
-  // The first color in the table is index zero.
-  // There are three bytes per color in the order Red, Green, Blue.
-  // (not true - some files have an extra four bytes for lengths of 772 and that specified the number of used colors)
+    // http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/#50577411_pgfId-1070626
+    // There is no version number written in the file. The file is exactly 768 bytes long, and contains 256 RGB colors:
+    // The first color in the table is index zero.
+    // There are three bytes per color in the order Red, Green, Blue.
+    // (not true - some files have an extra four bytes for lengths of 772 and that specified the number of used colors)
 
-  /// <summary>
-  /// Serializes and deserializes 8bit color palettes from raw byte data.
-  /// </summary>
-  public class AdobeColorTablePaletteSerializer : PaletteSerializer
+    /// <summary>
+    /// Serializes and deserializes 8bit color palettes from raw byte data.
+    /// </summary>
+    public class AdobeColorTablePaletteSerializer : PaletteSerializer
   {
     #region Properties
 

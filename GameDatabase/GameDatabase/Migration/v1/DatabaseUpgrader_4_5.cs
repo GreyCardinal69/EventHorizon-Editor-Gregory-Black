@@ -3,7 +3,7 @@ using System;
 
 namespace DatabaseMigration.v1
 {
-	public partial class DatabaseUpgrader
+    public partial class DatabaseUpgrader
 	{
 		partial void Migrate_4_5()
 		{

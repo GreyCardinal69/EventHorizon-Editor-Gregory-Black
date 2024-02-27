@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum BulletTriggerCondition
+    public enum BulletTriggerCondition
 	{
 		Undefined,
 		Created,

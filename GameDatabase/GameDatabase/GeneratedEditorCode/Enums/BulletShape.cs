@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum BulletShape
+    public enum BulletShape
 	{
 		Projectile,
 		Rocket,

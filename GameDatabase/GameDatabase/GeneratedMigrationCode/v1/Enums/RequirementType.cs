@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum RequirementType
+    public enum RequirementType
 	{
         FactionStarbasePower = 18,
         Empty = 0,

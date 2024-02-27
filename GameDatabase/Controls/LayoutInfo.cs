@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using EditorDatabase;
+﻿using EditorDatabase;
 using EditorDatabase.DataModel;
 using EditorDatabase.Enums;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace GameDatabase.Controls
 {

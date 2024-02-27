@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ComponentModType
+    public enum ComponentModType
 	{
 		Empty,
 		Lightweight,

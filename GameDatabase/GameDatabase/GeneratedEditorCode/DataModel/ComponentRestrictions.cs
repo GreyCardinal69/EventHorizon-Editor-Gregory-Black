@@ -6,14 +6,14 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System.Linq;
 using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using EditorDatabase.Serializable;
+using System.Linq;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class ComponentRestrictions
+    public partial class ComponentRestrictions
 	{
 		partial void OnDataDeserialized(ComponentRestrictionsSerializable serializable, Database database);
 		partial void OnDataSerialized(ref ComponentRestrictionsSerializable serializable);

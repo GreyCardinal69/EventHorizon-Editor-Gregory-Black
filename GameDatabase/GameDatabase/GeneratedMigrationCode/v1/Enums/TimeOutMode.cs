@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum TimeOutMode
+    public enum TimeOutMode
 	{
 		CallNextEnemy = 0,
 		DrainPlayerHp = 1,

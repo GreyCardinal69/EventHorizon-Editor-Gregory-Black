@@ -8,18 +8,18 @@ using System.Windows.Forms;
 
 namespace Cyotek.Windows.Forms
 {
-  // Cyotek Color Picker controls library
-  // Copyright © 2013-2017 Cyotek Ltd.
-  // http://cyotek.com/blog/tag/colorpicker
+    // Cyotek Color Picker controls library
+    // Copyright © 2013-2017 Cyotek Ltd.
+    // http://cyotek.com/blog/tag/colorpicker
 
-  // Licensed under the MIT License. See license.txt for the full text.
+    // Licensed under the MIT License. See license.txt for the full text.
 
-  // If you use this code in your applications, donations or attribution are welcome
+    // If you use this code in your applications, donations or attribution are welcome
 
-  /// <summary>
-  /// Represents a control that allows the editing of a color in a variety of ways.
-  /// </summary>
-  [DefaultProperty("Color")]
+    /// <summary>
+    /// Represents a control that allows the editing of a color in a variety of ways.
+    /// </summary>
+    [DefaultProperty("Color")]
   [DefaultEvent("ColorChanged")]
   public partial class ColorEditor : UserControl, IColorEditor
   {

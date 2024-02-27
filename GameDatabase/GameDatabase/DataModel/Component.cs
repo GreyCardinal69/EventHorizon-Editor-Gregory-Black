@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using EditorDatabase.Enums;
+﻿using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
+using System.Linq;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class Component
+    public partial class Component
 	{
         partial void OnDataDeserialized(ComponentSerializable serializable, Database database)
         {

@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum VisualEffectType
+    public enum VisualEffectType
 	{
 		Flash,
 		FlashAdditive,

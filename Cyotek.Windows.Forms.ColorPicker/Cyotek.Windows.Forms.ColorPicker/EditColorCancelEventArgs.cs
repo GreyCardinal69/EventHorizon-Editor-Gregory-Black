@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Cyotek.Windows.Forms
 {
-  public class EditColorCancelEventArgs : CancelEventArgs
+    public class EditColorCancelEventArgs : CancelEventArgs
   {
     #region Constructors
 

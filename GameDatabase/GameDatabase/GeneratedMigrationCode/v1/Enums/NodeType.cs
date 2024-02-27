@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum NodeType
+    public enum NodeType
 	{
         ChangeFactionStarbasePower = 57,
         SetFactionStarbasePower = 52,

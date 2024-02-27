@@ -6,19 +6,17 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Collections.Generic;
 using EditorDatabase.DataModel;
-using EditorDatabase.Storage;
-using EditorDatabase.Model;
 using EditorDatabase.Enums;
+using EditorDatabase.Model;
 using EditorDatabase.Serializable;
-using System.IO;
-using System.Security.Cryptography;
-using System.Drawing;
-using System.Windows.Forms;
+using EditorDatabase.Storage;
 using GameDatabase;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace EditorDatabase
 {

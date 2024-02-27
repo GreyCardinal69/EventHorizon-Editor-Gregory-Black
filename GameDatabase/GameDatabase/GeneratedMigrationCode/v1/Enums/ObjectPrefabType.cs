@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum ObjectPrefabType
+    public enum ObjectPrefabType
 	{
 		Undefined = 0,
 		WormTailSegment = 1,

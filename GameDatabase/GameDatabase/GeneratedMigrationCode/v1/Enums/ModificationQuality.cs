@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum ModificationQuality
+    public enum ModificationQuality
 	{
 		N3 = 0,
 		N2 = 1,

@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ObjectPrefabType
+    public enum ObjectPrefabType
 	{
 		Undefined = 0,
 		WormTailSegment = 1,

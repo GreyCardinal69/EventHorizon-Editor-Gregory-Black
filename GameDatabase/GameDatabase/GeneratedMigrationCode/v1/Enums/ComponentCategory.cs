@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum ComponentCategory
+    public enum ComponentCategory
 	{
 		Undefined,
 		Weapon,

@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum DamageType
+    public enum DamageType
 	{
 		Impact,
 		Energy,

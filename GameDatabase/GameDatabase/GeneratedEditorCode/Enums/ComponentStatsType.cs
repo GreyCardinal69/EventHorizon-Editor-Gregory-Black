@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ComponentStatsType
+    public enum ComponentStatsType
 	{
 		PerComponent = 0,
 		PerOneCell = 1,

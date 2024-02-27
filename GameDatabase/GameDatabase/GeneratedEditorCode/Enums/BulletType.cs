@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum BulletTypeObsolete
+    public enum BulletTypeObsolete
 	{
 		Projectile,
 		Homing,

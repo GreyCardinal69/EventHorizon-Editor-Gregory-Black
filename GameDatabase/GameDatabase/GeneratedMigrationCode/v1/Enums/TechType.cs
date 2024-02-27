@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum TechType
+    public enum TechType
 	{
 		Component,
 		Ship,

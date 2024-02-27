@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ColorMode
+    public enum ColorMode
 	{
 		TakeFromOwner,
 		UseMyOwn,

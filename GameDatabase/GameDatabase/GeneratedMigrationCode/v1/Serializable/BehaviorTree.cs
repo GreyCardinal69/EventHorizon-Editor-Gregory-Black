@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-using EditorDatabase.Model;
-using DatabaseMigration.v1.Enums;
+﻿using DatabaseMigration.v1.Enums;
+using System;
 
 namespace DatabaseMigration.v1.Serializable
 {

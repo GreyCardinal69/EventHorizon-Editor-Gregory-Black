@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum SizeClass
+    public enum SizeClass
 	{
 		Undefined = -1,
 		Frigate = 0,

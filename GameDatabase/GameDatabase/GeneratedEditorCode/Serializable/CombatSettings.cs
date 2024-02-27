@@ -7,13 +7,10 @@
 //-------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using EditorDatabase.Enums;
-using EditorDatabase.Model;
 
 namespace EditorDatabase.Serializable
 {
-	[Serializable]
+    [Serializable]
 	public class CombatSettingsSerializable : SerializableItem
 	{
 		public int EnemyAI;

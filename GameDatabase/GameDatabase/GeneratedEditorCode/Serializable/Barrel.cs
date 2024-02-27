@@ -6,14 +6,13 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
+using EditorDatabase.Model;
 using System;
 using System.ComponentModel;
-using EditorDatabase.Enums;
-using EditorDatabase.Model;
 
 namespace EditorDatabase.Serializable
 {
-	[Serializable]
+    [Serializable]
 	public struct BarrelSerializable
 	{
 		public Vector2 Position;

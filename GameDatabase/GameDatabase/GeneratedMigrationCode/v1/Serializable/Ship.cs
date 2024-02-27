@@ -6,14 +6,14 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
+using DatabaseMigration.v1.Enums;
+using EditorDatabase.Model;
 using System;
 using System.ComponentModel;
-using EditorDatabase.Model;
-using DatabaseMigration.v1.Enums;
 
 namespace DatabaseMigration.v1.Serializable
 {
-	[Serializable]
+    [Serializable]
 	public class ShipSerializable : SerializableItem
 	{
 		public ShipSerializable()

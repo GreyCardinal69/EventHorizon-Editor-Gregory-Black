@@ -6,14 +6,13 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System.Linq;
-using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using EditorDatabase.Serializable;
+using System.Linq;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class GalaxySettings
+    public partial class GalaxySettings
 	{
 		partial void OnDataDeserialized(GalaxySettingsSerializable serializable, Database database);
 		partial void OnDataSerialized(ref GalaxySettingsSerializable serializable);

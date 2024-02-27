@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum AiWeaponCategory
+    public enum AiWeaponCategory
 	{
 		All = 0,
 		Repair = 1,

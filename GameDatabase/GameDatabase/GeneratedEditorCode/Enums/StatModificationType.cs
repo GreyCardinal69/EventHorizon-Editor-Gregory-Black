@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum StatModificationType
+    public enum StatModificationType
 	{
 		None = 0,
 		WeaponDamage = 1,

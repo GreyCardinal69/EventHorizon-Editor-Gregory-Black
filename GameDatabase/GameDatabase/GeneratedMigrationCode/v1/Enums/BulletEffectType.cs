@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum BulletEffectType
+    public enum BulletEffectType
 	{
 		None,
 		PlaySfx,

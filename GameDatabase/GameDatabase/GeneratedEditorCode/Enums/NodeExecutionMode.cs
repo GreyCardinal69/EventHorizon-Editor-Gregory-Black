@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum NodeExecutionMode
+    public enum NodeExecutionMode
 	{
 		UntilSucceeds = 0,
 		UntilFails = 1,

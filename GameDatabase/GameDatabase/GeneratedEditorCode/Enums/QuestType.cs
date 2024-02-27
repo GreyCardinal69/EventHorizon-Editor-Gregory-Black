@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum QuestType
+    public enum QuestType
 	{
 		Common = 0,
 		Singleton = 1,

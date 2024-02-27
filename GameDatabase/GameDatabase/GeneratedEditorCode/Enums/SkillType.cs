@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum SkillType
+    public enum SkillType
 	{
 		Undefined = 0,
 		ShipAttack = 1,

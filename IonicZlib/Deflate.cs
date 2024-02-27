@@ -440,7 +440,7 @@ namespace Ionic.Zlib
             int n; // iterates over all tree elements
             int prevlen = -1; // last emitted length
             int curlen; // length of current code
-            int nextlen = (int)tree[0 * 2 + 1]; // length of next code
+            int nextlen = tree[0 * 2 + 1]; // length of next code
             int count = 0; // repeat count of the current code
             int max_count = 7; // max repeat count
             int min_count = 4; // min repeat count
@@ -449,11 +449,11 @@ namespace Ionic.Zlib
             {
                 max_count = 138; min_count = 3;
             }
-            tree[(max_code + 1) * 2 + 1] = (short)0x7fff; // guard //??
+            tree[(max_code + 1) * 2 + 1] = 0x7fff; // guard //??
 
             for (n = 0; n <= max_code; n++)
             {
-                curlen = nextlen; nextlen = (int)tree[(n + 1) * 2 + 1];
+                curlen = nextlen; nextlen = tree[( n + 1 ) * 2 + 1];
                 if (++count < max_count && curlen == nextlen)
                 {
                     continue;
@@ -649,7 +649,7 @@ namespace Ionic.Zlib
             int len = length;
             unchecked
             {
-                if (bi_valid > (int)Buf_size - len)
+                if (bi_valid > Buf_size - len)
                 {
                     //int val = value;
                     //      bi_buf |= (val << bi_valid);
@@ -733,7 +733,7 @@ namespace Ionic.Zlib
                 int dcode;
                 for (dcode = 0; dcode < InternalConstants.D_CODES; dcode++)
                 {
-                    out_length = (int)(out_length + (int)dyn_dtree[dcode * 2] * (5L + Tree.ExtraDistanceBits[dcode]));
+                    out_length = (int)(out_length + dyn_dtree[dcode * 2] * (5L + Tree.ExtraDistanceBits[dcode]));
                 }
                 out_length >>= 3;
                 if ((matches < (last_lit / 2)) && out_length < in_length / 2)
@@ -944,8 +944,8 @@ namespace Ionic.Zlib
                 if (strstart == 0 || strstart >= max_start)
                 {
                     // strstart == 0 is possible when wraparound on 16-bit machine
-                    lookahead = (int)(strstart - max_start);
-                    strstart = (int)max_start;
+                    lookahead = strstart - max_start;
+                    strstart = max_start;
 
                     flush_block_only(false);
                     if (_codec.AvailableBytesOut == 0)
@@ -1487,7 +1487,7 @@ namespace Ionic.Zlib
                        window[++scan] == window[++match] &&
                        window[++scan] == window[++match] && scan < strend);
 
-                len = MAX_MATCH - (int)(strend - scan);
+                len = MAX_MATCH - ( strend - scan );
                 scan = strend - MAX_MATCH;
 
                 if (len > best_len)

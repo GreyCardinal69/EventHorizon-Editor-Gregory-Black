@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ShipType
+    public enum ShipType
 	{
 		Common = 0,
 		Drone = 1,

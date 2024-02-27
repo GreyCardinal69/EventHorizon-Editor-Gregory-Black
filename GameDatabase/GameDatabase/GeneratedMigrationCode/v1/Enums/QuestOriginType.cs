@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum QuestOriginType
+    public enum QuestOriginType
 	{
 		CurrentStar,
 		CurrentFactionBase,

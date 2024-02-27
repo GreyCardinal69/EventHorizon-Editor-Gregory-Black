@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ShipRarity
+    public enum ShipRarity
 	{
 		Normal,
 		Rare,

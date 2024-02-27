@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum BulletType
+    public enum BulletType
 	{
 		Projectile,
 		Homing,

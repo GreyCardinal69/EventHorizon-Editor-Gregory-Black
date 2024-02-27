@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using EditorDatabase;
+﻿using EditorDatabase;
 using EditorDatabase.DataModel;
+using System;
+using System.Windows.Forms;
 
 namespace GameDatabase
 {

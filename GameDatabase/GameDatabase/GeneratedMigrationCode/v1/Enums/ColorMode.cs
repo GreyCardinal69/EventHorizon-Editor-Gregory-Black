@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum ColorMode
+    public enum ColorMode
 	{
 		TakeFromOwner,
 		UseMyOwn,

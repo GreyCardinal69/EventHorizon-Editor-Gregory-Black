@@ -10,7 +10,7 @@ using static EditorDatabase.Property;
 
 namespace EditorDatabase.Enums
 {
-	public enum BehaviorRequirementType
+    public enum BehaviorRequirementType
 	{
 		Empty = 0,
 		Any = 1,

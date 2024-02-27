@@ -6,16 +6,16 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Collections.Generic;
 using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using EditorDatabase.Serializable;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EditorDatabase.DataModel
 {
 
-	public interface ITechnologyContent
+    public interface ITechnologyContent
 	{
 		void Load(TechnologySerializable serializable, Database database);
 		void Save(ref TechnologySerializable serializable);

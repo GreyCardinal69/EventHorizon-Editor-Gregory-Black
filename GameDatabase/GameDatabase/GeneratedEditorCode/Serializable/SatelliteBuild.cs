@@ -6,14 +6,12 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
 using EditorDatabase.Enums;
-using EditorDatabase.Model;
+using System;
 
 namespace EditorDatabase.Serializable
 {
-	[Serializable]
+    [Serializable]
 	public class SatelliteBuildSerializable : SerializableItem
 	{
 		public int SatelliteId;

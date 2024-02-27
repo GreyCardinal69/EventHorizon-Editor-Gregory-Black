@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum WeaponClass
+    public enum WeaponClass
 	{
 		Common,
 		Manageable,

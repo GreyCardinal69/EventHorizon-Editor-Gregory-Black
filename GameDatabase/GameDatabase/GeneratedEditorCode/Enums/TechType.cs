@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum TechType
+    public enum TechType
 	{
 		Component,
 		Ship,

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Ionic.Zlib;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
-using Ionic.Zlib;
 
 namespace GameDatabase
 {
@@ -58,7 +58,7 @@ namespace GameDatabase
 
                 return true;
             }
-            catch (Exception e)
+            catch ( Exception )
             {
                 return false;
             }

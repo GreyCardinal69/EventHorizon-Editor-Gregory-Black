@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Cyotek.Windows.Forms;
+using EditorDatabase;
+using EditorDatabase.Model;
+using GameDatabase.Controls;
+using GameDatabase.GameDatabase.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using Cyotek.Windows.Forms;
-using EditorDatabase;
-using EditorDatabase.Model;
-using GameDatabase.Controls;
-using GameDatabase.GameDatabase.Helpers;
 using static EditorDatabase.Property;
 using AdvancedButton = GameDatabase.Controls.AdvancedButton;
 
@@ -231,8 +231,6 @@ namespace GameDatabase
 
             if ( type == typeof( Vector2 ) )
                 return CreateVectorEditor( ( Vector2 ) value, 1, rowId );
-
-            Control result;
             if ( typeof( IItemId ).IsAssignableFrom( type ) )
                 return CreateObjectList( value, 1, rowId );
 

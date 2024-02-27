@@ -10,7 +10,7 @@ using static EditorDatabase.Property;
 
 namespace EditorDatabase.Enums
 {
-	public enum CellType
+    public enum CellType
     {
         [TooltipText( "Nothing." )]
         Empty = '0',

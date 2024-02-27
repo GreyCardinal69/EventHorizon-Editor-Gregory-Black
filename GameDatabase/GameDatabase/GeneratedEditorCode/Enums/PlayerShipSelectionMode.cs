@@ -10,7 +10,7 @@ using static EditorDatabase.Property;
 
 namespace EditorDatabase.Enums
 {
-	public enum PlayerShipSelectionMode
+    public enum PlayerShipSelectionMode
 	{
 		Default = 0,
 		[TooltipText("Player can select only one ship. When it dies, battle ends")]

@@ -6,14 +6,13 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System.Linq;
 using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using EditorDatabase.Serializable;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class DroneBay
+    public partial class DroneBay
 	{
 		partial void OnDataDeserialized(DroneBaySerializable serializable, Database database);
 		partial void OnDataSerialized(ref DroneBaySerializable serializable);

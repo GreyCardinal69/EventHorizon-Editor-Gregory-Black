@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using EditorDatabase.DataModel;
+﻿using EditorDatabase.DataModel;
 using EditorDatabase.Model;
-using static GameDatabase.LayoutEditor;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GameDatabase
 {
@@ -120,7 +118,7 @@ namespace GameDatabase
             List<(double, double)> coords = new List<(double, double)>();
             foreach ( var (ox, oy) in overlappingCoords )
             {
-                coords.Add( (( double ) oy, ( double ) ox) );
+                coords.Add( (oy, ox) );
             }
 
             var v = GetCenter( coords.ToArray(), n );

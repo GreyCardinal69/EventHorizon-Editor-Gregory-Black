@@ -159,7 +159,7 @@ namespace Ionic.Zlib
             k = bitk;
 
             q = writeAt;
-            m = (int)(q < readAt ? readAt - q - 1 : end - q);
+            m = q < readAt ? readAt - q - 1 : end - q;
 
 
             // process input based on current state
@@ -189,7 +189,7 @@ namespace Ionic.Zlib
                             b |= (_codec.InputBuffer[p++] & 0xff) << k;
                             k += 8;
                         }
-                        t = (int)(b & 7);
+                        t = b & 7;
                         last = t & 1;
 
                         switch ((uint)t >> 1)
@@ -287,16 +287,16 @@ namespace Ionic.Zlib
                         {
                             if (q == end && readAt != 0)
                             {
-                                q = 0; m = (int)(q < readAt ? readAt - q - 1 : end - q);
+                                q = 0; m = q < readAt ? readAt - q - 1 : end - q;
                             }
                             if (m == 0)
                             {
                                 writeAt = q;
                                 r = Flush(r);
-                                q = writeAt; m = (int)(q < readAt ? readAt - q - 1 : end - q);
+                                q = writeAt; m = q < readAt ? readAt - q - 1 : end - q;
                                 if (q == end && readAt != 0)
                                 {
-                                    q = 0; m = (int)(q < readAt ? readAt - q - 1 : end - q);
+                                    q = 0; m = q < readAt ? readAt - q - 1 : end - q;
                                 }
                                 if (m == 0)
                                 {
@@ -592,7 +592,7 @@ namespace Ionic.Zlib
                         b = bitb;
                         k = bitk;
                         q = writeAt;
-                        m = (int)(q < readAt ? readAt - q - 1 : end - q);
+                        m = q < readAt ? readAt - q - 1 : end - q;
 
                         if (last == 0)
                         {
@@ -605,7 +605,7 @@ namespace Ionic.Zlib
                     case InflateBlockMode.DRY:
                         writeAt = q;
                         r = Flush(r);
-                        q = writeAt; m = (int)(q < readAt ? readAt - q - 1 : end - q);
+                        q = writeAt; m = q < readAt ? readAt - q - 1 : end - q;
                         if (readAt != writeAt)
                         {
                             bitb = b; bitk = k;
@@ -683,7 +683,7 @@ namespace Ionic.Zlib
                 if (pass==0)
                 {
                     // compute number of bytes to copy as far as end of window
-                    nBytes = (int)((readAt <= writeAt ? writeAt : end) - readAt);
+                    nBytes = ( readAt <= writeAt ? writeAt : end ) - readAt;
                 }
                 else
                 {
@@ -1222,7 +1222,7 @@ namespace Ionic.Zlib
                     if ((e & 16) != 0)
                     {
                         e &= 15;
-                        c = tp[tp_index_t_3 + 2] + ((int)b & InternalInflateConstants.InflateMask[e]);
+                        c = tp[tp_index_t_3 + 2] + ( b & InternalInflateConstants.InflateMask[e]);
 
                         b >>= e; k -= e;
 

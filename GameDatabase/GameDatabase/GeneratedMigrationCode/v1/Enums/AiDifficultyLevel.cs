@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum AiDifficultyLevel
+    public enum AiDifficultyLevel
 	{
 		Easy = 0,
 		Medium = 1,

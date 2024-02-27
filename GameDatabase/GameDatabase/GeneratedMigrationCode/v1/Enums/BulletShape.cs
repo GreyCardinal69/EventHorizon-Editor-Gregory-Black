@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum BulletShape
+    public enum BulletShape
 	{
 		Projectile,
 		Rocket,

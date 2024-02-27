@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ItemType
+    public enum ItemType
 	{
         GameObjectPrefab = 29,
         CombatRules = 30,

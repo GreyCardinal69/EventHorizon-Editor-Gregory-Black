@@ -6,14 +6,13 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using EditorDatabase.Storage;
-using EditorDatabase.Model;
 using DatabaseMigration.v1.Enums;
 using DatabaseMigration.v1.Serializable;
+using EditorDatabase.Model;
+using EditorDatabase.Storage;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using EditorDatabase.DataModel;
 
 namespace DatabaseMigration.v1.Storage
 {

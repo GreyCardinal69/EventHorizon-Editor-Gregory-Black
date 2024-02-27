@@ -9,23 +9,23 @@ using Cyotek.Drawing;
 
 namespace Cyotek.Windows.Forms
 {
-  // Cyotek Color Picker controls library
-  // Copyright © 2013-2015 Cyotek Ltd.
-  // http://cyotek.com/blog/tag/colorpicker
+    // Cyotek Color Picker controls library
+    // Copyright © 2013-2015 Cyotek Ltd.
+    // http://cyotek.com/blog/tag/colorpicker
 
-  // Licensed under the MIT License. See license.txt for the full text.
+    // Licensed under the MIT License. See license.txt for the full text.
 
-  // If you use this code in your applications, donations or attribution are welcome
+    // If you use this code in your applications, donations or attribution are welcome
 
-  // http://cyotek.com/blog/loading-the-color-palette-from-a-bbm-lbm-image-file-using-csharp
+    // http://cyotek.com/blog/loading-the-color-palette-from-a-bbm-lbm-image-file-using-csharp
 
-  // http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/#50577411_pgfId-1055819
-  // http://www.nomodes.com/aco.html
+    // http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/#50577411_pgfId-1055819
+    // http://www.nomodes.com/aco.html
 
-  /// <summary>
-  /// Deserializes color palettes into and from the images and palettes using the  ILBM (IFF Interleaved Bitmap) format.
-  /// </summary>
-  public class AdobePhotoshopColorSwatchSerializer : PaletteSerializer
+    /// <summary>
+    /// Deserializes color palettes into and from the images and palettes using the  ILBM (IFF Interleaved Bitmap) format.
+    /// </summary>
+    public class AdobePhotoshopColorSwatchSerializer : PaletteSerializer
   {
     #region Properties
 

@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum RequiredViewMode
+    public enum RequiredViewMode
 	{
 		Any = 0,
 		StarSystem = 1,

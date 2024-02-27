@@ -1,14 +1,14 @@
 ﻿using EditorDatabase;
 using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
+using NHunspell;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
-using NHunspell;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace GameDatabase
 {
@@ -108,7 +108,7 @@ namespace GameDatabase
             if ( source == target ) return 1.0;
 
             int stepsToSame = LevenshteinDistance( source, target );
-            return ( 1.0 - ( ( double ) stepsToSame / ( double ) Math.Max( source.Length, target.Length ) ) );
+            return ( 1.0 - ( stepsToSame / ( double ) Math.Max( source.Length, target.Length ) ) );
         }
 
         private static int LevenshteinDistance( string source, string target )
@@ -479,7 +479,6 @@ namespace GameDatabase
         {
 
             if ( !_runningFullScan ) Data.Text = "";
-            bool errorDetected = false;
 
             List<int> moduleIds = new List<int>();
             List<int> questItemIds = new List<int>();

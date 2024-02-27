@@ -6,16 +6,13 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
+using EditorDatabase.Enums;
+using EditorDatabase.Model;
+using EditorDatabase.Serializable;
 using System;
 using System.Collections.Generic;
-using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
-using EditorDatabase.Model;
-using System.Xml.Linq;
-using System.Linq;
-using System.Text;
-using EditorDatabase.DataModel;
 using System.IO;
+using System.Linq;
 
 namespace EditorDatabase.Storage
 {

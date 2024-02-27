@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum NodeType
+    public enum NodeType
 	{
         AttackStarbase = 22,
         SetFactionStarbasePower = 52,

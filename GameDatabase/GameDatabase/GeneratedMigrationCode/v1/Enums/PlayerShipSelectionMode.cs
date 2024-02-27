@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum PlayerShipSelectionMode
+    public enum PlayerShipSelectionMode
 	{
 		Default = 0,
 		OnlyOneShip = 1,

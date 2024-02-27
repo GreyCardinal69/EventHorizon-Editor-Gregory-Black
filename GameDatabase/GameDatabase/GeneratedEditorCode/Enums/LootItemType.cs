@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum LootItemType
+    public enum LootItemType
 	{
 		None = 0,
 		SomeMoney = 1,

@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum StartCondition
+    public enum StartCondition
 	{
 		Manual = 0,
 		Beacon = 1,

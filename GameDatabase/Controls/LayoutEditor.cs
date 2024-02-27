@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using Controls;
+﻿using Controls;
 using EditorDatabase.DataModel;
 using EditorDatabase.Enums;
 using EditorDatabase.Model;
 using GameDatabase.Controls;
 using GameDatabase.ShipLayout;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace GameDatabase
 {

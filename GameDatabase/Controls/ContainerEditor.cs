@@ -1,8 +1,8 @@
-﻿using System;
+﻿using EditorDatabase;
+using EditorDatabase.Model;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using EditorDatabase;
-using EditorDatabase.Model;
 
 namespace GameDatabase.Controls
 {

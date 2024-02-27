@@ -8,12 +8,10 @@
 
 using System;
 using System.ComponentModel;
-using EditorDatabase.Enums;
-using EditorDatabase.Model;
 
 namespace EditorDatabase.Serializable
 {
-	[Serializable]
+    [Serializable]
 	public class FactionsSettingsSerializable : SerializableItem
 	{
 		[DefaultValue("MIN(1000, 300 + 5*distance)")]

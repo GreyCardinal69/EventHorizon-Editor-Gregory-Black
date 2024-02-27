@@ -182,7 +182,7 @@ namespace GameDatabase.Controls
             // 
             // FlatCombo
             // 
-            this.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            this.BackColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
             this.ResumeLayout( false );
 
         }

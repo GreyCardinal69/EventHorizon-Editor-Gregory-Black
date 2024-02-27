@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum AmmunitionClassObsolete
+    public enum AmmunitionClassObsolete
 	{
 		Common,
 		Acid,

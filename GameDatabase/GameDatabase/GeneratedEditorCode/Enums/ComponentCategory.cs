@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ComponentCategory
+    public enum ComponentCategory
 	{
 		Undefined,
 		Weapon,

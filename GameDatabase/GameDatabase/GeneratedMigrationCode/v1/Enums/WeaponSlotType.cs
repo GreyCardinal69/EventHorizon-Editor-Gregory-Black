@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum WeaponSlotType
+    public enum WeaponSlotType
 	{
 		Default,
 		Cannon = 'C',

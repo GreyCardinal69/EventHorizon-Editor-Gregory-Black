@@ -1,5 +1,5 @@
-﻿using System;
-using EditorDatabase.Model;
+﻿using EditorDatabase.Model;
+using System;
 
 namespace GameDatabase.ShipLayout
 {

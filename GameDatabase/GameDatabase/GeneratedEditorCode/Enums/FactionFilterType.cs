@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum FactionFilterType
+    public enum FactionFilterType
 	{
 		AllButList = 0,
 		ListOnly = 1,

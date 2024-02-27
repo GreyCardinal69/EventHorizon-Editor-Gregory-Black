@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum AiWeaponCategory
+    public enum AiWeaponCategory
 	{
 		All = 0,
 		Repair = 1,

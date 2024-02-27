@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum RewardCondition
+    public enum RewardCondition
 	{
 		Default = 0,
 		Always = 1,

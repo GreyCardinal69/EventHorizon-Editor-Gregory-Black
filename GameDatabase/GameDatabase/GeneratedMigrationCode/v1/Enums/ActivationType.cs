@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum ActivationType
+    public enum ActivationType
 	{
 		None,
 		Manual,

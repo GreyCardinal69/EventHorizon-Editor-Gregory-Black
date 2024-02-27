@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using EditorDatabase.Enums;
+﻿using EditorDatabase.Model;
 using EditorDatabase.Serializable;
-using EditorDatabase.Model;
 
 namespace EditorDatabase.DataModel
 {

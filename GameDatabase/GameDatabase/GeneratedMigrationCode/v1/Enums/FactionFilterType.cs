@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum FactionFilterType
+    public enum FactionFilterType
 	{
 		AllButList = 0,
 		ListOnly = 1,

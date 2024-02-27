@@ -6,14 +6,12 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System.Linq;
-using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using EditorDatabase.Serializable;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class ExplorationSettings
+    public partial class ExplorationSettings
 	{
 		partial void OnDataDeserialized(ExplorationSettingsSerializable serializable, Database database);
 		partial void OnDataSerialized(ref ExplorationSettingsSerializable serializable);

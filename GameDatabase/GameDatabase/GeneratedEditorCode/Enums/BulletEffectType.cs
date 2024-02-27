@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum BulletEffectType
+    public enum BulletEffectType
 	{
 		None,
 		PlaySfx,

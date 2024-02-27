@@ -6,9 +6,9 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System;
-using Newtonsoft.Json;
 using EditorDatabase.Enums;
+using Newtonsoft.Json;
+using System;
 
 namespace EditorDatabase.Serializable
 {

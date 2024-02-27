@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum WeaponSlotType
+    public enum WeaponSlotType
 	{
 		Default,
 		Cannon = 'C',

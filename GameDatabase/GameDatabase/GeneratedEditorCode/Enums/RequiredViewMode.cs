@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum RequiredViewMode
+    public enum RequiredViewMode
 	{
 		Any = 0,
 		StarSystem = 1,

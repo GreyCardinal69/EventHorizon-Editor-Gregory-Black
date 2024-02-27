@@ -1,6 +1,6 @@
-﻿using System;
+﻿using EditorDatabase;
+using System;
 using System.Windows.Forms;
-using EditorDatabase;
 
 namespace GameDatabase.Controls
 {

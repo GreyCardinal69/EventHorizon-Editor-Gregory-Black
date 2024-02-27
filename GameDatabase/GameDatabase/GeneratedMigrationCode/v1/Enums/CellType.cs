@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum CellType
+    public enum CellType
 	{
 		Empty = '0',
 		Weapon = '4',

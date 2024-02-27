@@ -6,11 +6,9 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using static EditorDatabase.Property;
-
 namespace EditorDatabase.Enums
 {
-	public enum Availability
+    public enum Availability
     {
         None = 0,
         Common = 1,

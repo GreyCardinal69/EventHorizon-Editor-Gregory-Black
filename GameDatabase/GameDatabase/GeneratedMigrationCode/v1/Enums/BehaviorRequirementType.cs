@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum BehaviorRequirementType
+    public enum BehaviorRequirementType
 	{
         Empty = 0,
         Any = 1,

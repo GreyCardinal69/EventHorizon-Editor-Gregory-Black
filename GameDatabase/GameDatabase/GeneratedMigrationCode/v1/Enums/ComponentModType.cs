@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum ComponentModType
+    public enum ComponentModType
 	{
 		Empty,
 		Lightweight,

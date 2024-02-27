@@ -1,7 +1,7 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
 
 namespace EditorDatabase
 {
@@ -33,7 +33,7 @@ namespace EditorDatabase
                         item.FileName = fileInfo.FullName.Replace(_path,"");
                         _templates.Add(item.Name,item);
                     }
-                    catch (Exception e)
+                    catch ( Exception )
                     {
                         
                     }

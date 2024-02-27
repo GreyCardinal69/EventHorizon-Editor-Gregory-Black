@@ -6,14 +6,13 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
+using EditorDatabase.Enums;
 using System;
 using System.ComponentModel;
-using EditorDatabase.Enums;
-using EditorDatabase.Model;
 
 namespace EditorDatabase.Serializable
 {
-	[Serializable]
+    [Serializable]
 	public struct ComponentRestrictionsSerializable
 	{
 		public SizeClass[] ShipSizes;

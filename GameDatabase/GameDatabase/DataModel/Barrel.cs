@@ -1,9 +1,9 @@
-﻿using EditorDatabase.Serializable;
-using EditorDatabase.Model;
+﻿using EditorDatabase.Model;
+using EditorDatabase.Serializable;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class Barrel
+    public partial class Barrel
 	{
         partial void OnDataDeserialized(BarrelSerializable serializable, Database database)
         {

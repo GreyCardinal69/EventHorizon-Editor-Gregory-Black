@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum SizeClass
+    public enum SizeClass
 	{
 		Undefined = -1,
 		Frigate = 0,

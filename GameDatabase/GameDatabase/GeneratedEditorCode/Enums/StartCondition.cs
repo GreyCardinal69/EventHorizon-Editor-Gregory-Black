@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum StartCondition
+    public enum StartCondition
 	{
 		Manual = 0,
 		Beacon = 1,

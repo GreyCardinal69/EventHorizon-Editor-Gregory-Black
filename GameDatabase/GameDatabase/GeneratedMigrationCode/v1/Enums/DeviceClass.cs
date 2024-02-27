@@ -8,7 +8,7 @@
 
 namespace DatabaseMigration.v1.Enums
 {
-	public enum DeviceClass
+    public enum DeviceClass
 	{
 		Accelerator,
 		Decoy,

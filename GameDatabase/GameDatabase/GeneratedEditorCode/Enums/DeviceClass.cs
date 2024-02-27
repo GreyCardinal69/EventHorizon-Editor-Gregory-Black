@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum DeviceClass
+    public enum DeviceClass
 	{
 		Accelerator,
 		Decoy,

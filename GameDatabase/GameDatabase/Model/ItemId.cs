@@ -1,5 +1,5 @@
-﻿using System;
-using EditorDatabase.Serializable;
+﻿using EditorDatabase.Serializable;
+using System;
 
 namespace EditorDatabase.Model
 {

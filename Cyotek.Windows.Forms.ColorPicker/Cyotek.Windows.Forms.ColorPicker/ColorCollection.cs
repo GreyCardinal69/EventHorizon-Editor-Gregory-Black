@@ -7,22 +7,22 @@ using System.Linq;
 
 namespace Cyotek.Windows.Forms
 {
-  // Cyotek Color Picker controls library
-  // Copyright © 2013-2015 Cyotek Ltd.
-  // http://cyotek.com/blog/tag/colorpicker
+    // Cyotek Color Picker controls library
+    // Copyright © 2013-2015 Cyotek Ltd.
+    // http://cyotek.com/blog/tag/colorpicker
 
-  // Licensed under the MIT License. See license.txt for the full text.
+    // Licensed under the MIT License. See license.txt for the full text.
 
-  // If you use this code in your applications, donations or attribution are welcome
+    // If you use this code in your applications, donations or attribution are welcome
 
-  /// <summary>
-  /// Represents a collection of colors
-  /// </summary>
-  /// <remarks>
-  /// 	<para>ColorCollection allows duplicate elements.</para>
-  /// 	<para>Elements in this collection can be accessed using an integer index. Indexes in this collection are zero-based.</para>
-  /// </remarks>
-  public class ColorCollection : Collection<Color>, ICloneable, IEquatable<ColorCollection>
+    /// <summary>
+    /// Represents a collection of colors
+    /// </summary>
+    /// <remarks>
+    /// 	<para>ColorCollection allows duplicate elements.</para>
+    /// 	<para>Elements in this collection can be accessed using an integer index. Indexes in this collection are zero-based.</para>
+    /// </remarks>
+    public class ColorCollection : Collection<Color>, ICloneable, IEquatable<ColorCollection>
   {
     #region Instance Fields
 
@@ -680,7 +680,7 @@ namespace Cyotek.Windows.Forms
     /// <returns><c>true</c> if the values of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, <c>false</c>.</returns>
     public static bool operator ==(ColorCollection left, ColorCollection right)
     {
-      return ReferenceEquals(left, right) || !((object)left == null || (object)right == null) && left.Equals(right);
+      return ReferenceEquals(left, right) || !(left is null || right is null) && left.Equals(right);
     }
 
     /// <summary>

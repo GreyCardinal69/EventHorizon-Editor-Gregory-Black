@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum QuestOriginType
+    public enum QuestOriginType
 	{
 		CurrentStar,
 		CurrentFactionBase,

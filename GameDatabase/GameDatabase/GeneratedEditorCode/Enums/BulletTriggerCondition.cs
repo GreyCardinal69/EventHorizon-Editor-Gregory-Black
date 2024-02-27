@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum BulletTriggerCondition
+    public enum BulletTriggerCondition
 	{
 		Undefined,
 		Created,

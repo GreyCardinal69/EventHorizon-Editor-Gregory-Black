@@ -10,7 +10,7 @@ using static EditorDatabase.Property;
 
 namespace EditorDatabase.Enums
 {
-	public enum AiDifficultyLevel
+    public enum AiDifficultyLevel
 	{
         [TooltipText( "Early-game enemy." )]
         Easy = 0,

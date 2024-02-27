@@ -1,13 +1,12 @@
-﻿using System;
+﻿using EditorDatabase;
+using EditorDatabase.DataModel;
+using EditorDatabase.Model;
+using GameDatabase.GameDatabase.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using EditorDatabase;
-using EditorDatabase.DataModel;
-using EditorDatabase.Model;
-using GameDatabase.GameDatabase.Helpers;
 
 namespace GameDatabase.Controls
 {

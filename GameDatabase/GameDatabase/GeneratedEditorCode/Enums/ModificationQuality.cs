@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ModificationQuality
+    public enum ModificationQuality
 	{
 		N3 = 0,
 		N2 = 1,

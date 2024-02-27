@@ -6,14 +6,12 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System.Linq;
-using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using EditorDatabase.Serializable;
 
 namespace EditorDatabase.DataModel
 {
-	public partial class Engine
+    public partial class Engine
 	{
 		partial void OnDataDeserialized(EngineSerializable serializable, Database database);
 		partial void OnDataSerialized(ref EngineSerializable serializable);

@@ -8,7 +8,7 @@
 
 namespace EditorDatabase.Enums
 {
-	public enum ImpactEffectType
+    public enum ImpactEffectType
 	{
 		Damage,
 		Push,

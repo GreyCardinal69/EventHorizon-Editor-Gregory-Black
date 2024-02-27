@@ -6,14 +6,14 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
 using EditorDatabase.Enums;
 using EditorDatabase.Model;
+using System;
+using System.ComponentModel;
 
 namespace EditorDatabase.Serializable
 {
-	[Serializable]
+    [Serializable]
 	public class ShipSerializable : SerializableItem
 	{
         [DefaultValue( "" )]

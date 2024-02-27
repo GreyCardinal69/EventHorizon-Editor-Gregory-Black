@@ -1,9 +1,9 @@
 
-using System.Linq;
-using System.Collections.Generic;
 using EditorDatabase.Enums;
-using EditorDatabase.Serializable;
 using EditorDatabase.Model;
+using EditorDatabase.Serializable;
+using System.Collections.Generic;
+using System.Linq;
 using static EditorDatabase.Property;
 
 namespace EditorDatabase.DataModel

@@ -88,8 +88,7 @@
 
 
 
-using System;
-using Interop=System.Runtime.InteropServices;
+using Interop = System.Runtime.InteropServices;
 
 namespace Ionic.Zlib
 {
@@ -473,8 +472,6 @@ namespace Ionic.Zlib
         private static readonly int NMAX = 5552;
 
 
-#pragma warning disable 3001
-#pragma warning disable 3002
 
         /// <summary>
         ///   Calculates the Adler32 checksum.
@@ -496,8 +493,8 @@ namespace Ionic.Zlib
             if (buf == null)
                 return 1;
 
-            uint s1 = (uint) (adler & 0xffff);
-            uint s2 = (uint) ((adler >> 16) & 0xffff);
+            uint s1 = adler & 0xffff;
+            uint s2 = ( adler >> 16 ) & 0xffff;
 
             while (len > 0)
             {
@@ -536,11 +533,8 @@ namespace Ionic.Zlib
                 s1 %= BASE;
                 s2 %= BASE;
             }
-            return (uint)((s2 << 16) | s1);
+            return ( s2 << 16 ) | s1;
         }
-#pragma warning restore 3001
-#pragma warning restore 3002
-
     }
 
 }

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using DatabaseMigration.v1.Serializable;
+﻿using DatabaseMigration.v1.Serializable;
 using EditorDatabase.Model;
+using System;
+using System.Linq;
 
 namespace DatabaseMigration.v1
 {
