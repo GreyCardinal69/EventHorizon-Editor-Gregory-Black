@@ -61,5 +61,7 @@ namespace DatabaseMigration.v1.Serializable
 		public float BaseFlightRange = 1.5f;
 		[DefaultValue(1f)]
 		public float BaseFlightSpeed = 1f;
-	}
+        [DefaultValue( 100 )]
+        public int MaxPlayerShipsLevel = 100;
+    }
 }

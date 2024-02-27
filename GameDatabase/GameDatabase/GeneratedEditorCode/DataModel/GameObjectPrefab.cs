@@ -48,7 +48,7 @@ namespace EditorDatabase.DataModel
             _content = new GameObjectPrefabEmptyContent();
         }
 
-        private GameObjectPrefab( GameObjectPrefabSerializable serializable, Database database )
+        public GameObjectPrefab( GameObjectPrefabSerializable serializable, Database database )
         {
             Id = new ItemId<GameObjectPrefab>( serializable );
 

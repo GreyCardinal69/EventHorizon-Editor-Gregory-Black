@@ -66,7 +66,7 @@ namespace EditorDatabase.DataModel
         public NumericValue<float> ParentVelocityEffect = new NumericValue<float>( 0, -1000f, 1000f );
         [TooltipText( "Specifies whenever ammunition is attached to the parent ship or ammo. Moving ammo will move in parent's coordinate space" )]
         public bool AttachedToParent;
-        public BulletType Type;
+        public BulletTypeObsolete Type;
 		public NumericValue<float> Size = new NumericValue<float>(0, 0f, 1000f);
 		public NumericValue<float> Velocity = new NumericValue<float>(0, 0f, 1000f);
 		public NumericValue<float> Range = new NumericValue<float>(0, 0f, 1E+09f);

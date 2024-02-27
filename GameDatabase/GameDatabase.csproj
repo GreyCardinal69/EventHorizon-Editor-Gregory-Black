@@ -181,8 +181,13 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\DatabaseException.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\BulletController.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\AiBulletBehaviour.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Enums\BulletControllerType.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\BulletController.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\DatabaseException.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\DatabaseUpgrader.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\AiBulletBehaviour.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\BulletControllerType.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\BulletController.cs" />
     <Compile Include="GameDatabase\Helpers\DataAdapter.cs" />
     <Compile Include="GameDatabase\Helpers\EnumExtensions.cs" />
     <Compile Include="GameDatabase\Helpers\Helpers.cs" />
@@ -381,7 +386,7 @@
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\BulletImpactType.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\BulletShape.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\BulletTriggerCondition.cs" />
-    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\BulletType.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\BulletTypeObsolete.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\CellType.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\ColorMode.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\ComponentCategory.cs" />

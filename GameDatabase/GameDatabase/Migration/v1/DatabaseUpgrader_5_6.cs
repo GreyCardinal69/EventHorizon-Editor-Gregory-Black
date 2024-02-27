@@ -1,4 +1,5 @@
-﻿using DatabaseMigration.v1.Serializable;
+﻿using DatabaseMigration.v1.Enums;
+using DatabaseMigration.v1.Serializable;
 using System;
 
 namespace DatabaseMigration.v1
@@ -48,7 +49,7 @@ namespace DatabaseMigration.v1
                 return;
 
             UpgradeBulletBody( ammunition.Body );
-            ammunition.Controller = new();
+            ammunition.Controller = new BulletControllerSerializable();
 
             switch ( ammunition.Body.Type )
             {

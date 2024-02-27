@@ -42,7 +42,7 @@ namespace DatabaseMigration
         private bool IsValidVersion( int major, int minor )
         {
             if ( major == 1 )
-                return minor >= 0 && minor <= 5;
+                return minor >= 0 && minor <= 6;
 
             return false;
         }
@@ -61,7 +61,7 @@ namespace DatabaseMigration
                 var major = content.VersionMajor;
                 var minor = content.VersionMinor;
 
-                if ( major != 1 || minor < 0 || minor > 5 )
+                if ( major != 1 || minor < 0 || minor > 6 )
                     throw new DatabaseException( $"invalid database version: {major}.{minor}" );
             }
 
@@ -92,6 +92,11 @@ namespace DatabaseMigration
                     Migrate_4_5();
                     Content.VersionMinor = 5;
                 }
+                if ( Content.VersionMinor == 5 )
+                {
+                    Migrate_5_6();
+                    Content.VersionMinor = 6;
+                }
             }
 
             partial void Migrate_0_1();
@@ -99,6 +104,7 @@ namespace DatabaseMigration
             partial void Migrate_2_3();
             partial void Migrate_3_4();
             partial void Migrate_4_5();
+            partial void Migrate_5_6();
 
             protected Storage.DatabaseContent Content { get; }
         }

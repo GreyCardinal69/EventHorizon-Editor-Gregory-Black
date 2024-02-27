@@ -7,6 +7,7 @@
 //-------------------------------------------------------------------------------
 
 using DatabaseMigration.v1.Enums;
+using EditorDatabase.Serializable;
 using System;
 
 namespace DatabaseMigration.v1.Serializable
@@ -20,7 +21,8 @@ namespace DatabaseMigration.v1.Serializable
 			FileName = "Ammunition.json";
 		}
 
-		public BulletBodySerializable Body;
+        public BulletControllerSerializable Controller;
+        public BulletBodySerializable Body;
 		public BulletTriggerSerializable[] Triggers;
 		public BulletImpactType ImpactType;
 		public ImpactEffectSerializable[] Effects;
