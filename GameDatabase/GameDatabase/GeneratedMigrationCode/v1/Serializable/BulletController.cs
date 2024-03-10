@@ -1,7 +1,6 @@
-﻿using System;
+﻿using DatabaseMigration.v1.Enums;
+using System;
 using System.ComponentModel;
-using EditorDatabase.Model;
-using DatabaseMigration.v1.Enums;
 
 namespace DatabaseMigration.v1.Serializable
 {
@@ -9,8 +8,8 @@ namespace DatabaseMigration.v1.Serializable
     public class BulletControllerSerializable
     {
         public BulletControllerType Type;
-        [DefaultValue( 0.1f )]
-        public float StartingVelocityModifier = 0.1f;
+        [DefaultValue( 1 )]
+        public float StartingVelocityModifier = 1;
         public bool IgnoreRotation;
         public bool SmartAim;
     }

@@ -86,5 +86,8 @@ namespace EditorDatabase.Serializable
 		public string FuelColor = "#00FFFF";
 		[DefaultValue("#8080FF")]
 		public string TokensColor = "#8080FF";
-	}
+        [DefaultValue( "" )]
+        public string MainMenuBackgroundImage;
+        public bool NoCreditsText;
+    }
 }

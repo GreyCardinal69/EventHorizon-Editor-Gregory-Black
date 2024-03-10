@@ -7,7 +7,6 @@
 //-------------------------------------------------------------------------------
 
 using DatabaseMigration.v1.Enums;
-using EditorDatabase.Serializable;
 using System;
 
 namespace DatabaseMigration.v1.Serializable

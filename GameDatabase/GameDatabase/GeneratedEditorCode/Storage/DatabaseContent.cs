@@ -96,6 +96,8 @@ namespace EditorDatabase.Storage
                 storage.SaveJson( DebugSettings.FileName, jsonSerializer.ToJson( DebugSettings ) );
             if ( FactionsSettings != null )
                 storage.SaveJson( FactionsSettings.FileName, jsonSerializer.ToJson( FactionsSettings ) );
+            if ( MusicSettings != null )
+                storage.SaveJson( MusicSettings.FileName, jsonSerializer.ToJson( MusicSettings ) );
         }
 
         public const int SchemaVersion = 1;
@@ -152,6 +154,15 @@ namespace EditorDatabase.Storage
                 if ( UiSettings != null )
                     throw new DatabaseException( "Duplicate UiSettings file found - " + name );
                 UiSettings = data;
+            }
+            else if ( type == ItemType.MusicPlaylist )
+            {
+                var data = _serializer.FromJson<MusicPlaylistSerializable>( content );
+                data.FileName = name;
+
+                if ( MusicSettings != null )
+                    throw new DatabaseException( "Duplicate MusicPlaylist file found - " + name );
+                MusicSettings = data;
             }
             else if ( type == ItemType.ComponentStats )
             { var data = _serializer.FromJson<ComponentStatsSerializable>( content );
@@ -530,6 +541,15 @@ namespace EditorDatabase.Storage
                     throw new DatabaseException( "Duplicate FrontierSettings file found - " + name );
                 FrontierSettings = data;
             }
+            else if ( type == ItemType.MusicPlaylist )
+            {
+                var data = _serializer.FromJson<MusicPlaylistSerializable>( content );
+                data.FileName = name;
+
+                if ( FrontierSettings != null )
+                    throw new DatabaseException( "Duplicate MusicPlaylist file found - " + name );
+                MusicSettings = data;
+            }
             else if ( type == ItemType.ShipModSettings )
             {
                 var data = _serializer.FromJson<ShipModSettingsSerializable>( content );
@@ -577,6 +597,7 @@ namespace EditorDatabase.Storage
 		public ShipSettingsSerializable ShipSettings { get; private set; }
         public FrontierSettingsSerializable FrontierSettings { get; private set; }
         public ShipModSettingsSerializable ShipModSettings { get; private set; }
+        public MusicPlaylistSerializable MusicSettings { get; private set; }
         public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList => _ammunitionObsoleteMap.Values.ToList();
         public List<BehaviorTreeSerializable> BehaviorTreeList => _behaviorTreeMap.Values.ToList();
 		public List<ComponentSerializable> ComponentList => _componentMap.Values.ToList();

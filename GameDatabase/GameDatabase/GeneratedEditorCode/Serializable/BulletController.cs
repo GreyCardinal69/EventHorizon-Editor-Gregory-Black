@@ -8,8 +8,8 @@ namespace EditorDatabase.Serializable
     public class BulletControllerSerializable
     {
         public BulletControllerType Type;
-        [DefaultValue( 0.1f )]
-        public float StartingVelocityModifier = 0.1f;
+        [DefaultValue( 1 )]
+        public float StartingVelocityModifier = 1;
         public bool IgnoreRotation;
         public bool SmartAim;
     }
