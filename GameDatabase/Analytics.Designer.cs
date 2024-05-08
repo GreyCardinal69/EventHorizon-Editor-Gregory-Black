@@ -42,6 +42,7 @@ namespace GameDatabase
             this.OtherAnalitics = new Controls.AdvancedButton();
             this.TextAnalitics = new Controls.AdvancedButton();
             this.AllAnalytics = new Controls.AdvancedButton();
+            this.Statistics = new Controls.AdvancedButton();
             this.SuspendLayout();
             // 
             // Data
@@ -221,7 +222,7 @@ namespace GameDatabase
             this.AllAnalytics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AllAnalytics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AllAnalytics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.AllAnalytics.Location = new System.Drawing.Point(1071, 381);
+            this.AllAnalytics.Location = new System.Drawing.Point(1070, 423);
             this.AllAnalytics.Name = "AllAnalytics";
             this.AllAnalytics.Size = new System.Drawing.Size(122, 35);
             this.AllAnalytics.TabIndex = 12;
@@ -229,12 +230,30 @@ namespace GameDatabase
             this.AllAnalytics.UseVisualStyleBackColor = false;
             this.AllAnalytics.Click += new System.EventHandler(this.AllAnalytics_Click);
             // 
+            // Statistics
+            // 
+            this.Statistics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Statistics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Statistics.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Statistics.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Statistics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Statistics.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Statistics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.Statistics.Location = new System.Drawing.Point(1070, 382);
+            this.Statistics.Name = "Statistics";
+            this.Statistics.Size = new System.Drawing.Size(122, 35);
+            this.Statistics.TabIndex = 13;
+            this.Statistics.Text = "Statistics";
+            this.Statistics.UseVisualStyleBackColor = false;
+            this.Statistics.Click += new System.EventHandler(this.Statistics_Click);
+            // 
             // Analytics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(1204, 761);
+            this.Controls.Add(this.Statistics);
             this.Controls.Add(this.AllAnalytics);
             this.Controls.Add(this.TextAnalitics);
             this.Controls.Add(this.OtherAnalitics);
@@ -265,5 +284,6 @@ namespace GameDatabase
         private Controls.AdvancedButton OtherAnalitics;
         private Controls.AdvancedButton TextAnalitics;
         private Controls.AdvancedButton AllAnalytics;
+        private Controls.AdvancedButton Statistics;
     }
 }

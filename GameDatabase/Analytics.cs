@@ -1,4 +1,5 @@
 ﻿using EditorDatabase;
+using EditorDatabase.DataModel;
 using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
 using NHunspell;
@@ -544,7 +545,7 @@ namespace GameDatabase
             }
             if ( !errorDetected )
             {
-                Data.AppendText( "No cyclic dependencies found.\n");
+                Data.AppendText( "No cyclic dependencies found.\n" );
             }
             Data.AppendText( "--------------------------------\n" );
 
@@ -763,6 +764,58 @@ namespace GameDatabase
             RunOtherAnalytics();
 
             _runningFullScan = false;
+        }
+
+        private void Statistics_Click( object sender, EventArgs e )
+        {
+            if ( !_runningFullScan ) Data.Text = "";
+
+            Data.AppendText( $"[Fleets]: ", Color.Cyan );
+            Data.AppendText( $"[{_database.Content.FleetList.Count}].\n", Color.Orange );
+
+            Data.AppendText( $"[Components]: ", Color.Cyan );
+            Data.AppendText( $"[{_database.Content.ComponentList.Count}].\n", Color.Orange );
+
+            Data.AppendText( $"[Ships]: ", Color.Cyan );
+            Data.AppendText( $"[{_database.Content.ShipList.Count}].\n", Color.Orange );
+
+            Data.AppendText( $"[Builds]: ", Color.Cyan );
+            Data.AppendText( $"[{_database.Content.ShipBuildList.Count}].\n", Color.Orange );
+
+            Data.AppendText( $"[Quests]: ", Color.Cyan );
+            Data.AppendText( $"[{_database.Content.QuestList.Count}].\n", Color.Orange );
+
+            Data.AppendText( $"[Technologies]: ", Color.Cyan );
+            Data.AppendText( $"[{_database.Content.TechnologyList.Count}].\n", Color.Orange );
+
+            Data.AppendText( $"[Loots]: ", Color.Cyan );
+            Data.AppendText( $"[{_database.Content.LootList.Count}].\n", Color.Orange );
+
+            Data.AppendText( $"[Characters]: ", Color.Cyan );
+            Data.AppendText( $"[{_database.Content.CharacterList.Count}].\n", Color.Orange );
+
+            Data.AppendText( $"[Total Quest Nodes]: ", Color.Cyan );
+            int nodes = 0;
+            foreach ( var node in _database.Content.QuestList )
+                if ( node.Nodes != null ) nodes += node.Nodes.Length;
+            Data.AppendText( $"[{nodes}].\n", Color.Orange );
+
+            Data.AppendText( $"[Total Quest Dialogue Words]: ", Color.Cyan );
+            int words = 0;
+            foreach ( QuestSerializable node in _database.Content.QuestList )
+            {
+                if ( node.Nodes != null )
+                {
+                    foreach ( var item in node.Nodes )
+                    {
+                        if ( item.Message != null )
+                        {
+                            words += item.Message.Split( ' ' ).Length;
+                        }
+                    }
+                }
+            }
+            Data.AppendText( $"[{words}].\n", Color.Orange );
         }
     }
 }
