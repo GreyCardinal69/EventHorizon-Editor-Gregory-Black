@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase
 {
@@ -123,7 +124,7 @@ namespace GameDatabase
 
                     Color color;
                     if ( !_categories.TryGetValue( cell, out color ) )
-                        color = Color.FromArgb( 45, 45, 45 );
+                        color = DarkPrimary45;
 
                     data.Graphics.FillRectangle( GetBrush( color ), x, y, data.CellSize, data.CellSize );
                 }
@@ -134,7 +135,7 @@ namespace GameDatabase
         {
             if ( !showGridToolStripMenuItem.Checked ) return;
 
-            var pen = new Pen( Color.FromArgb( 45, 45, 45 ) );
+            var pen = new Pen( DarkPrimary45 );
             for ( var i = 0; i <= data.LayoutSize; ++i )
             {
                 var x = BorderSize + i * data.CanvasSize / data.LayoutSize;
@@ -164,8 +165,8 @@ namespace GameDatabase
 
             for ( int i = 0; i < _barrels.Count; i++ )
             {
-                var pen = new Pen( Color.FromArgb( 45, 45, 45 ), 2 );
-                var widePen = new Pen( Color.FromArgb( 45, 45, 45 ), 3 );
+                var pen = new Pen( DarkPrimary45, 2 );
+                var widePen = new Pen( DarkPrimary45, 3 );
 
                 if ( barrelsEditingModeToolStripMenuItem.Checked && BarrelsCollection.GetSelectedItemId() == i )
                 {
@@ -219,7 +220,7 @@ namespace GameDatabase
                     format.LineAlignment = StringAlignment.Center;
                     format.Alignment = StringAlignment.Center;
                     Font drawFont = new Font( "Arial", fontSize, GraphicsUnit.Pixel );
-                    SolidBrush textBrush = new SolidBrush( Color.FromArgb( 45, 45, 45 ) );
+                    SolidBrush textBrush = new SolidBrush( DarkPrimary45 );
                     data.Graphics.DrawString( ( i + 1 ).ToString(), drawFont, textBrush, x, y, format );
                 }
             }

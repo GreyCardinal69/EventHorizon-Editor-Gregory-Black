@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using static EditorDatabase.Property;
 using AdvancedButton = GameDatabase.Controls.AdvancedButton;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase
 {
@@ -268,8 +269,8 @@ namespace GameDatabase
                 BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Fill,
                 AutoSize = true,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 )
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary
             };
 
             tableLayoutPanel.Controls.Add( label, column, row );
@@ -284,9 +285,9 @@ namespace GameDatabase
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 BorderStyle = BorderStyle.FixedSingle,
                 Dock = DockStyle.Fill,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 ),
-                BorderColor = Color.FromArgb( 45, 45, 45 ),
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary,
+                BorderColor = DarkPrimary45,
             };
 
             textbox.TextChanged += OnTextBoxValueChanged;
@@ -302,15 +303,15 @@ namespace GameDatabase
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
                 DropDownStyle = ComboBoxStyle.DropDownList,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary,
                 FlatStyle = FlatStyle.Flat,
                 DrawMode = DrawMode.OwnerDrawVariable,
                 DropDownHeight = 600
             };
 
-            comboBox.BorderColor = Color.FromArgb( 95, 95, 95 );
-            comboBox.ButtonColor = Color.FromArgb( 242, 188, 87 );
+            comboBox.BorderColor = Color959595;
+            comboBox.ButtonColor = OrangePrimary;
 
             comboBox.DrawItem += new DrawItemEventHandler( comboBoxDb_DrawItem );
 
@@ -360,12 +361,12 @@ namespace GameDatabase
             }
             else
             {
-                e.Graphics.FillRectangle( new SolidBrush( Color.FromArgb( 45, 45, 45 ) ), e.Bounds );
+                e.Graphics.FillRectangle( new SolidBrush( DarkPrimary45 ), e.Bounds );
             }
 
             e.Graphics.DrawString( combo.Items[e.Index].ToString(),
                                           e.Font,
-                                          new SolidBrush( Color.FromArgb( 242, 188, 87 ) ),
+                                          new SolidBrush( OrangePrimary ),
                                           new Point( e.Bounds.X, e.Bounds.Y ) );
         }
 
@@ -376,8 +377,8 @@ namespace GameDatabase
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
                 Checked = value,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 )
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary
             };
 
             check.CheckedChanged += OnCheckedChanged;
@@ -396,7 +397,7 @@ namespace GameDatabase
                 Text = string.Empty,
                 FlatStyle = FlatStyle.Flat,
                 BorderStyle = BorderStyle.FixedSingle,
-                BorderColor = Color.FromArgb( 95, 95, 95 ),
+                BorderColor = Color959595,
             };
 
             button.Click += OnColorButtonClicked;
@@ -413,8 +414,8 @@ namespace GameDatabase
                 AutoSize = true,
                 ColumnCount = 2,
                 RowCount = 1,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 255, 0, 109 )
+                BackColor = DarkPrimary45,
+                ForeColor = Color2550109
             };
 
             panel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 100 ) );
@@ -428,8 +429,8 @@ namespace GameDatabase
                 Dock = DockStyle.Fill,
                 Layout = layout.Data,
                 Height = layout.Size * 16,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 255, 0, 109 )
+                BackColor = DarkPrimary45,
+                ForeColor = Color2550109
             };
 
             layoutEditor.ValueChanged += OnLayoutChanged;
@@ -456,8 +457,8 @@ namespace GameDatabase
                 AutoSize = true,
                 Database = _database,
                 ContentAutoScroll = false,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 )
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary
             };
 
             collection.Data = value;
@@ -479,8 +480,8 @@ namespace GameDatabase
                 Database = _database,
                 Data = data,
                 ContentAutoScroll = false,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 )
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary
             };
 
             editor.DataChanged += DataChanged;
@@ -495,9 +496,9 @@ namespace GameDatabase
                 Dock = DockStyle.Fill,
                 AutoSize = true,
                 Value = value,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 ),
-                BorderColor = Color.FromArgb( 95, 95, 95 ),
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary,
+                BorderColor = Color959595,
                 BorderStyle = BorderStyle.FixedSingle
             };
 
@@ -521,10 +522,10 @@ namespace GameDatabase
                 Increment = increment,
                 Value = value,
                 DecimalPlaces = decimalPlaces,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary,
                 BorderStyle = BorderStyle.FixedSingle,
-                BorderColor = Color.FromArgb( 95, 95, 95 ),
+                BorderColor = Color959595,
             };
 
             numeric.ValueChanged += OnNumericValueChanged;
@@ -542,19 +543,19 @@ namespace GameDatabase
 
             var colorDialog = new ColorPickerDialog();
 
-            colorDialog.BackColor = Color.FromArgb( 45, 45, 45 );
-            colorDialog.ForeColor = Color.FromArgb( 242, 188, 87 );
+            colorDialog.BackColor = DarkPrimary45;
+            colorDialog.ForeColor = OrangePrimary;
             colorDialog.Color = button.BackColor;
 
             var c = ( Button ) colorDialog.CancelButton;
 
-            c.BackColor = Color.FromArgb( 45, 45, 45 );
-            c.ForeColor = Color.FromArgb( 242, 188, 87 );
+            c.BackColor = DarkPrimary45;
+            c.ForeColor = OrangePrimary;
 
             var o = ( Button ) colorDialog.AcceptButton;
 
-            o.BackColor = Color.FromArgb( 45, 45, 45 );
-            o.ForeColor = Color.FromArgb( 242, 188, 87 );
+            o.BackColor = DarkPrimary45;
+            o.ForeColor = OrangePrimary;
 
             if ( colorDialog.ShowDialog() == DialogResult.OK )
             {
@@ -577,8 +578,8 @@ namespace GameDatabase
             layoutEditor.Layout = layout.Data;
             layoutEditor.Height = layout.Size * 24;
             layoutEditor.Invalidate();
-            layoutEditor.BackColor = Color.FromArgb( 45, 45, 45 );
-            layoutEditor.ForeColor = Color.FromArgb( 242, 188, 87 );
+            layoutEditor.BackColor = DarkPrimary45;
+            layoutEditor.ForeColor = OrangePrimary;
 
             OnLayoutChanged( layoutEditor, EventArgs.Empty );
         }
@@ -693,7 +694,7 @@ namespace GameDatabase
         private readonly Dictionary<object, IProperty> _binding = new Dictionary<object, IProperty>();
         private readonly Dictionary<object, LayoutEditor> _layouts = new Dictionary<object, LayoutEditor>();
 
-        SolidBrush blackBrush = new SolidBrush( Color.FromArgb( 45, 45, 45 ) );
+        SolidBrush blackBrush = new SolidBrush( DarkPrimary45 );
 
         private void tableLayoutPanel_Paint( object sender, PaintEventArgs e )
         {

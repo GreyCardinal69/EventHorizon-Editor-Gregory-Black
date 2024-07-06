@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase.Controls
 {
@@ -156,8 +157,8 @@ namespace GameDatabase.Controls
                 Data = data as IDataAdapter ?? new DataAdapter( data ),
                 ContentAutoScroll = false,
                 Visible = !_collapsed[itemId],
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 255, 0, 109 )
+                BackColor = DarkPrimary45,
+                ForeColor = Color2550109
             };
 
             _controls.Add( editor );
@@ -467,8 +468,8 @@ namespace GameDatabase.Controls
                 _collapseButtons[i].Text = _collapsed[id] ? "v" : "^";
 
                 _controls[i].Visible = !_collapsed[id];
-                _controls[i].BackColor = Color.FromArgb( 45, 45, 45 );
-                _controls[i].ForeColor = Color.FromArgb( 255, 0, 109 );
+                _controls[i].BackColor = DarkPrimary45;
+                _controls[i].ForeColor = Color2550109;
             }
 
             tableLayoutPanel.ResumeLayout();

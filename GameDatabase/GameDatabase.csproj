@@ -124,6 +124,7 @@
     <Compile Include="Controls\FlatBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Reusables.cs" />
     <Compile Include="Controls\UnscrollablePanel.cs">
       <SubType>Component</SubType>
     </Compile>

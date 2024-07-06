@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase.Controls
 {
@@ -140,8 +141,8 @@ namespace GameDatabase.Controls
                 BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Fill,
                 AutoSize = true,
-                BackColor = Color.FromArgb( 45, 45, 45 ),
-                ForeColor = Color.FromArgb( 242, 188, 87 ),
+                BackColor = DarkPrimary45,
+                ForeColor = OrangePrimary,
 
             };
 

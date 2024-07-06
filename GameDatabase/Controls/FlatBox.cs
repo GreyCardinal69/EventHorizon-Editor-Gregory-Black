@@ -3,12 +3,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase.Controls
 {
     public class FlatCombo : ComboBox
     {
-        private Color _fontColor = Color.FromArgb( 242, 188, 87 );
+        private Color _fontColor = OrangePrimary;
 
         public Color BorderColor
         {
@@ -23,7 +24,7 @@ namespace GameDatabase.Controls
             }
         }
 
-        private Color _buttonColor = Color.FromArgb( 45, 45, 45 );
+        private Color _buttonColor = DarkPrimary45;
 
         [DefaultValue( typeof( Color ), "45,45,45" )]
         public Color ButtonColor
@@ -182,7 +183,7 @@ namespace GameDatabase.Controls
             // 
             // FlatCombo
             // 
-            this.BackColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
+            this.BackColor = DarkPrimary45;
             this.ResumeLayout( false );
 
         }

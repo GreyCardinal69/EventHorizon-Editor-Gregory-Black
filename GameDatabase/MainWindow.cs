@@ -17,6 +17,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase
 {
@@ -139,8 +140,8 @@ namespace GameDatabase
             createToolStripMenuItem.DropDownItems.Add( folderToolStripMenuItem );
             AdvancedToolStripMenuItem item = new AdvancedToolStripMenuItem( "Templates" );
 
-            item.BackColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
-            item.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            item.BackColor = DarkPrimary45;
+            item.ForeColor = OrangePrimary;
             item.UseBelow = true;
             item.Name = "Templates";
 
@@ -151,8 +152,8 @@ namespace GameDatabase
             {
                 AdvancedToolStripMenuItem lastNode = createToolStripMenuItem;
 
-                lastNode.BackColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
-                lastNode.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+                lastNode.BackColor = DarkPrimary45;
+                lastNode.ForeColor = OrangePrimary;
 
                 var name = template.Name;
                 if ( template.Name.Contains( '/' ) )
@@ -166,8 +167,8 @@ namespace GameDatabase
                         if ( findResult.Length == 0 || ( curNode = findResult[0] as AdvancedToolStripMenuItem ) == null )
                         {
                             curNode = new AdvancedToolStripMenuItem( path[i] );
-                            curNode.BackColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
-                            curNode.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+                            curNode.BackColor = DarkPrimary45;
+                            curNode.ForeColor = OrangePrimary;
                             curNode.Name = path[i];
                             lastNode.DropDownItems.Add( curNode );
                         }
@@ -177,8 +178,8 @@ namespace GameDatabase
                 }
 
                 item = new AdvancedToolStripMenuItem( name );
-                item.BackColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
-                item.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+                item.BackColor = DarkPrimary45;
+                item.ForeColor = OrangePrimary;
                 lastNode.DropDownItems.Add( item );
                 item.Tag = item.Name = template.Name;
                 item.Click += TemplateMenuItem_Click;
@@ -193,7 +194,7 @@ namespace GameDatabase
         private void DatabaseTreeView_MouseUp( object sender, MouseEventArgs e )
         {
             this.EditButton.Enabled = true;
-            this.EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            this.EditButton.ForeColor = OrangePrimary;
 
             if ( e.Button == MouseButtons.Right )
             {
@@ -223,7 +224,7 @@ namespace GameDatabase
 
             ItemTypeText.Text = @"-";
             _selectedItem = new SerializableItem();
-            EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            EditButton.ForeColor = OrangePrimary;
             EditButton.Enabled = true;
 
             if ( Directory.Exists( path ) )
@@ -315,7 +316,7 @@ namespace GameDatabase
         private void DatabaseTreeView_MouseDoubleClick( object sender, MouseEventArgs e )
         {
             this.EditButton.Enabled = true;
-            this.EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            this.EditButton.ForeColor = OrangePrimary;
 
             EditButton_Click( sender, e );
         }
@@ -325,7 +326,7 @@ namespace GameDatabase
         private void EditButton_Click( object sender, EventArgs e )
         {
             this.EditButton.Enabled = true;
-            this.EditButton.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            this.EditButton.ForeColor = OrangePrimary;
 
             var item = GetItem();
             if ( item == null )

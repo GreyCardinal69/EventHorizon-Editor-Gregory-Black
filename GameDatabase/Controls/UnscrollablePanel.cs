@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase
 {
@@ -16,9 +17,9 @@ namespace GameDatabase
             // 
             // UnscrollablePanel
             // 
-            this.BackColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
+            this.BackColor = DarkPrimary45;
             this.Font = new System.Drawing.Font( "Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0 );
-            this.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            this.ForeColor = OrangePrimary;
             this.ResumeLayout( false );
         }
     }

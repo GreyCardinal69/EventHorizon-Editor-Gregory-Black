@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase.Controls
 {
     internal class AdvancedButton : Button
     {
-        private Color _backgroundColor = Color.FromArgb( 45, 45, 45 );
+        private Color _backgroundColor = DarkPrimary45;
 
         [DefaultValue( typeof( Color ), "45,45,45" )]
         public BorderStyle BorderStyle;

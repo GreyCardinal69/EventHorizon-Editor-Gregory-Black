@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase
 {
@@ -55,7 +56,7 @@ namespace GameDatabase
             this.structDataEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.structDataEditor1.Exclusions = ((System.Collections.Generic.List<string>)(resources.GetObject("structDataEditor1.Exclusions")));
             this.structDataEditor1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.structDataEditor1.ForeColor = System.Drawing.Color.FromArgb( 242, 188, 87 );
+            this.structDataEditor1.ForeColor = OrangePrimary;
             this.structDataEditor1.Location = new System.Drawing.Point(0, 0);
             this.structDataEditor1.Name = "structDataEditor1";
             this.structDataEditor1.Size = new System.Drawing.Size(784, 561);

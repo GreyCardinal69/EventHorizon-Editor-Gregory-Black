@@ -3,6 +3,7 @@ using GameDatabase.Controls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase
 {
@@ -43,7 +44,7 @@ namespace GameDatabase
             else
                 e.Graphics.FillRectangle( _borderBrush, e.Bounds );
 
-            TextRenderer.DrawText( e.Graphics, e.Node.Text, e.Node.TreeView.Font, e.Node.Bounds, Color.FromArgb( 242, 188, 87 ) );
+            TextRenderer.DrawText( e.Graphics, e.Node.Text, e.Node.TreeView.Font, e.Node.Bounds, OrangePrimary );
         }
 
         /// <summary>

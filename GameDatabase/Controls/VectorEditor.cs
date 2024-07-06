@@ -3,12 +3,13 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase.Controls
 {
     public partial class VectorEditor : UserControl
     {
-        private Color borderColor = Color.FromArgb( 45, 45, 45 );
+        private Color borderColor = DarkPrimary45;
         [DefaultValue( typeof( Color ), "45,45,45" )]
         public Color BorderColor
         {

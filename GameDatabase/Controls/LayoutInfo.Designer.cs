@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase.Controls
 {
@@ -51,8 +52,8 @@ namespace GameDatabase.Controls
             this.tableLayoutPanel.RowStyles.Add( new System.Windows.Forms.RowStyle() );
             this.tableLayoutPanel.Size = new System.Drawing.Size( 300, 265 );
             this.tableLayoutPanel.TabIndex = 0;
-            tableLayoutPanel.BackColor = Color.FromArgb( 45, 45, 45 );
-            tableLayoutPanel.ForeColor = Color.FromArgb( 242, 188, 87 );
+            tableLayoutPanel.BackColor = DarkPrimary45;
+            tableLayoutPanel.ForeColor = OrangePrimary;
             // 
             // LayoutInfo
             // 

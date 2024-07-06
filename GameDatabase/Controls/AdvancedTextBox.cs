@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static GameDatabase.Reusables;
 
 namespace GameDatabase.Controls
 {
@@ -21,7 +22,7 @@ namespace GameDatabase.Controls
         [DllImport( "user32.dll" )]
         static extern bool RedrawWindow( IntPtr hWnd, IntPtr lprc, IntPtr hrgn, uint flags );
 
-        private Color _borderColor = Color.FromArgb( 45, 45, 45 );
+        private Color _borderColor = DarkPrimary45;
 
         public Color BorderColor
         {
