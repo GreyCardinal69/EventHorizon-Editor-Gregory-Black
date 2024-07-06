@@ -13,6 +13,8 @@ namespace EditorDatabase.DataModel
 {
     public partial class MusicPlaylist
     {
+        public MusicPlaylist() { }
+
         partial void OnDataDeserialized( MusicPlaylistSerializable serializable, Database database );
         partial void OnDataSerialized( ref MusicPlaylistSerializable serializable );
 
@@ -57,6 +59,6 @@ namespace EditorDatabase.DataModel
         public SoundTrack[] CombatMusic;
         public SoundTrack[] ExplorationMusic;
 
-        public static MusicPlaylist DefaultValue { get; set; }
+        public static MusicPlaylist DefaultValue = new MusicPlaylist();
     }
 }

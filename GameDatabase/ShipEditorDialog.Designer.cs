@@ -39,6 +39,7 @@ namespace GameDatabase
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BarrelCreation = new System.Windows.Forms.Button();
+            this.BarrelInfo = new System.Windows.Forms.Button();
             this.layoutEditor1 = new LayoutEditor();
             this.barrelCollection = new Controls.BarrelsCollectionEditor();
             this.button1 = new System.Windows.Forms.Button();
@@ -141,6 +142,7 @@ namespace GameDatabase
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add( this.BarrelInfo );
             this.panel1.Controls.Add(this.BarrelCreation);
             this.panel1.Controls.Add(this.layoutEditor1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -164,6 +166,21 @@ namespace GameDatabase
             this.BarrelCreation.Text = "Fill Barrels ( Replaces All )";
             this.BarrelCreation.UseVisualStyleBackColor = false;
             this.BarrelCreation.Click += new System.EventHandler(this.BarrelCreation_Click);
+
+
+            this.BarrelInfo.Anchor = ( ( System.Windows.Forms.AnchorStyles ) ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right ) ) );
+            this.BarrelInfo.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            this.BarrelInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BarrelInfo.Font = new System.Drawing.Font( "Microsoft Sans Serif", 8F );
+            this.BarrelInfo.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
+            this.BarrelInfo.Location = new System.Drawing.Point( 372, 50 );
+            this.BarrelInfo.Name = "BarrelInfo";
+            this.BarrelInfo.Size = new System.Drawing.Size( 195, 38 );
+            this.BarrelInfo.TabIndex = 6;
+            this.BarrelInfo.Text = "INFO\nBarrels' drawn AutoAimArc is (arc / 2)";
+            this.BarrelInfo.UseVisualStyleBackColor = false;
+
+
             // 
             // layoutEditor1
             // 
@@ -479,5 +496,6 @@ namespace GameDatabase
         #endregion
 
         private Button BarrelCreation;
+        private Button BarrelInfo;
     }
 }
