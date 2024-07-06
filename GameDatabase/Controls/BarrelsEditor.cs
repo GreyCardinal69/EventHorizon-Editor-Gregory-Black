@@ -22,6 +22,7 @@ namespace GameDatabase.Controls
         {
             structDataEditor1.UpdateControls();
         }
+
         private BarrelsCollectionEditor _editor;
 
         private void moveUpButton_Click( object sender, EventArgs e )

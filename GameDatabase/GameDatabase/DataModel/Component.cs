@@ -9,7 +9,7 @@ namespace EditorDatabase.DataModel
         partial void OnDataDeserialized( ComponentSerializable serializable, Database database )
         {
             if ( !string.IsNullOrEmpty( serializable.WeaponSlotType ) )
-                WeaponSlotType = ( WeaponSlotType ) serializable.WeaponSlotType.First();
+                WeaponSlotType = serializable.WeaponSlotType;
             if ( !string.IsNullOrEmpty( serializable.CellType ) )
                 CellType = ( CellType ) serializable.CellType.First();
         }
@@ -17,11 +17,11 @@ namespace EditorDatabase.DataModel
         partial void OnDataSerialized( ref ComponentSerializable serializable )
         {
             serializable.AmmunitionId = Ammunition.IsNull ? AmmunitionObsolete.Value : Ammunition.Value;
-            serializable.WeaponSlotType = ( ( char ) WeaponSlotType ).ToString();
+            serializable.WeaponSlotType = WeaponSlotType;
             serializable.CellType = CellType != CellType.Empty ? ( ( char ) CellType ).ToString() : null;
         }
 
-        public WeaponSlotType WeaponSlotType;
+        public string WeaponSlotType;
         public CellType CellType;
     }
 }

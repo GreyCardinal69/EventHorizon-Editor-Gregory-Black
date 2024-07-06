@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EditorDatabase.Enums
+﻿namespace EditorDatabase.Enums
 {
     public enum ToggleState
     {
