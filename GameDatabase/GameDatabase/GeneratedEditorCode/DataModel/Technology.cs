@@ -63,7 +63,7 @@ namespace EditorDatabase.DataModel
             Dependencies = serializable.Dependencies?.Select( id => new Wrapper<Technology> { Item = database.GetTechnologyId( id ) } ).ToArray();
             _content = CreateContent( serializable.Type );
             _content.Load( serializable, database );
-
+            this.CustomCraftingLevel = new NumericValue<int>( serializable.CustomCraftingLevel, 0, int.MaxValue );
             OnDataDeserialized( serializable, database );
         }
 
@@ -76,6 +76,7 @@ namespace EditorDatabase.DataModel
             serializable.Price = Price.Value;
             serializable.Hidden = Hidden;
             serializable.Special = Special;
+            serializable.CustomCraftingLevel = this.CustomCraftingLevel.Value;
             if ( Dependencies == null || Dependencies.Length == 0 )
                 serializable.Dependencies = null;
             else
@@ -97,7 +98,7 @@ namespace EditorDatabase.DataModel
                 yield return new Property( this, type.GetField( "Hidden" ), DataChangedEvent );
                 yield return new Property( this, type.GetField( "Special" ), DataChangedEvent );
                 yield return new Property( this, type.GetField( "Dependencies" ), DataChangedEvent );
-
+                yield return new Property( this, type.GetField( "CustomCraftingLevel" ), this.DataChangedEvent );
                 foreach ( var item in _content.GetType().GetFields().Where( f => f.IsPublic && !f.IsStatic ) )
                     yield return new Property( _content, item, DataChangedEvent );
             }
@@ -118,6 +119,7 @@ namespace EditorDatabase.DataModel
         public bool Hidden;
         public bool Special;
         public Wrapper<Technology>[] Dependencies;
+        public NumericValue<int> CustomCraftingLevel = new NumericValue<int>( 0, 0, int.MaxValue );
 
         public static Technology DefaultValue { get; set; }
     }
@@ -201,6 +203,7 @@ namespace EditorDatabase.DataModel
 
         public ItemId<Satellite> Satellite = ItemId<Satellite>.Empty;
         public ItemId<Faction> Faction = ItemId<Faction>.Empty;
+
     }
 
 }
