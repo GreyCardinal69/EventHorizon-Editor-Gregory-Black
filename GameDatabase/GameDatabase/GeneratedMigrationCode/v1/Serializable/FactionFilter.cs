@@ -12,9 +12,9 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public struct FactionFilterSerializable
-	{
-		public FactionFilterType Type;
-		public int[] List;
-	}
+    public class FactionFilterSerializable
+    {
+        public FactionFilterType Type;
+        public int[] List;
+    }
 }

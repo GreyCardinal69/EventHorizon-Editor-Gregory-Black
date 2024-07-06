@@ -12,8 +12,8 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class GalaxySettingsSerializable : SerializableItem
-	{
+    public class GalaxySettingsSerializable : SerializableItem
+    {
         public int AbandonedStarbaseFaction;
         public int[] StartingShipBuilds;
         public int StartingInventory;
@@ -26,6 +26,7 @@ namespace EditorDatabase.Serializable
         [DefaultValue( "IF(size == Destroyer, 5, size == Cruiser, 15, size == Battleship, 50, size == Titan, 100, 0)" )]
         public string ShipMinSpawnDistance = "IF(size == Destroyer, 5, size == Cruiser, 15, size == Battleship, 50, size == Titan, 100, 0)";
         public int CaptureStarbaseQuest;
+        public int StartingInvenory;
         public int SurvivalCombatRules;
         public int StarbaseCombatRules;
         public int FlagshipCombatRules;

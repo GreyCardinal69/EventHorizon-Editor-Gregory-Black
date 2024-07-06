@@ -12,16 +12,16 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class RequirementSerializable
-	{
-		public bool BoolValue;
-		public RequirementType Type;
-		public int ItemId;
-		public int MinValue;
-		public int MaxValue;
-		public int Character;
-		public int Faction;
-		public LootContentSerializable Loot;
-		public RequirementSerializable[] Requirements;
-	}
+    public class RequirementSerializable
+    {
+        public RequirementType Type;
+        public int ItemId;
+        public int MinValue;
+        public int MaxValue;
+        public bool BoolValue;
+        public int Character;
+        public int Faction;
+        public LootContentSerializable Loot;
+        public RequirementSerializable[] Requirements;
+    }
 }

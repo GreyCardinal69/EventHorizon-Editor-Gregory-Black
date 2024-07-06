@@ -13,22 +13,22 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class QuestItemSerializable : SerializableItem
-	{
-		public QuestItemSerializable()
-		{
-			ItemType = ItemType.QuestItem;
-			FileName = "QuestItem.json";
-		}
+    public class QuestItemSerializable : SerializableItem
+    {
+        public QuestItemSerializable()
+        {
+            ItemType = ItemType.QuestItem;
+            FileName = "QuestItem.json";
+        }
 
-		[DefaultValue("")]
-		public string Name;
-		[DefaultValue("")]
-		public string Description;
-		[DefaultValue("")]
-		public string Icon;
-		[DefaultValue("")]
-		public string Color;
-		public int Price;
-	}
+        [DefaultValue( "" )]
+        public string Name;
+        [DefaultValue( "" )]
+        public string Description;
+        [DefaultValue( "" )]
+        public string Icon;
+        [DefaultValue( "" )]
+        public string Color;
+        public int Price;
+    }
 }

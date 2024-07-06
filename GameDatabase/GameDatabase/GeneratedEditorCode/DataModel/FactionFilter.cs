@@ -28,12 +28,8 @@ namespace EditorDatabase.DataModel
 
         public RequiredFactions( FactionFilterSerializable serializable, Database database )
         {
-            if ( serializable == null )
-            {
-                serializable = new FactionFilterSerializable();
-            }
-            List = serializable.List?.Select( id => new Wrapper<Faction> { Item = database.GetFactionId( id ) } ).ToArray();
             Type = serializable.Type;
+            List = serializable.List?.Select( id => new Wrapper<Faction> { Item = database.GetFactionId( id ) } ).ToArray();
             OnDataDeserialized( serializable, database );
         }
 
@@ -52,6 +48,6 @@ namespace EditorDatabase.DataModel
         public FactionFilterType Type;
         public Wrapper<Faction>[] List;
 
-        public static RequiredFactions DefaultValue { get; private set; }
+        public static RequiredFactions DefaultValue { get; set; }
     }
 }

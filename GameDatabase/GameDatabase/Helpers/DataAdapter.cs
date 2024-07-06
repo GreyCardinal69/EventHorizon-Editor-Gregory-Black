@@ -23,7 +23,7 @@ namespace EditorDatabase
 
     public sealed class DataAdapter : IDataAdapter
     {
-        public DataAdapter(object data)
+        public DataAdapter( object data )
         {
             _data = data;
         }
@@ -36,8 +36,8 @@ namespace EditorDatabase
             get
             {
                 return _data.GetType().GetFields().
-                    Where(f => f.IsPublic && !f.IsStatic).
-                    Select(item => new Property(_data, item, DataChangedEvent));
+                    Where( f => f.IsPublic && !f.IsStatic ).
+                    Select( item => new Property( _data, item, DataChangedEvent ) );
             }
         }
 
@@ -46,7 +46,7 @@ namespace EditorDatabase
 
     public class Property : IProperty
     {
-        public Property(object data, FieldInfo fieldInfo, Action dataChangedAction)
+        public Property( object data, FieldInfo fieldInfo, Action dataChangedAction )
         {
             _data = data;
             _fieldInfo = fieldInfo;
@@ -60,10 +60,10 @@ namespace EditorDatabase
 
         public object Value
         {
-            get { return _fieldInfo.GetValue(_data); }
+            get { return _fieldInfo.GetValue( _data ); }
             set
             {
-                _fieldInfo.SetValue(_data, value); 
+                _fieldInfo.SetValue( _data, value );
                 _dataChangedAction?.Invoke();
             }
         }

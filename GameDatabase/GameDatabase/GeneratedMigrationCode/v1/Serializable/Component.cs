@@ -13,39 +13,39 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class ComponentSerializable : SerializableItem
-	{
-		public ComponentSerializable()
-		{
-			ItemType = ItemType.Component;
-			FileName = "Component.json";
-		}
+    public class ComponentSerializable : SerializableItem
+    {
+        public ComponentSerializable()
+        {
+            ItemType = ItemType.Component;
+            FileName = "Component.json";
+        }
 
-		[DefaultValue("")]
-		public string Name;
-		[DefaultValue("")]
-		public string Description;
-		public ComponentCategory DisplayCategory;
-		public Availability Availability;
-		public int ComponentStatsId;
-		public int Faction;
-		public int Level;
-		[DefaultValue("")]
-		public string Icon;
-		[DefaultValue("")]
-		public string Color;
-		[DefaultValue("")]
-		public string Layout;
-		[DefaultValue("")]
-		public string CellType;
-		public int DeviceId;
-		public int WeaponId;
-		public int AmmunitionId;
-		[DefaultValue("")]
-		public string WeaponSlotType;
-		public int DroneBayId;
-		public int DroneId;
-		public ComponentRestrictionsSerializable Restrictions;
-		public int[] PossibleModifications;
-	}
+        [DefaultValue( "" )]
+        public string Name;
+        [DefaultValue( "" )]
+        public string Description;
+        public ComponentCategory DisplayCategory;
+        public Availability Availability;
+        public int ComponentStatsId;
+        public int Faction;
+        public int Level;
+        [DefaultValue( "" )]
+        public string Icon;
+        [DefaultValue( "" )]
+        public string Color;
+        [DefaultValue( "" )]
+        public string Layout;
+        [DefaultValue( "" )]
+        public string CellType;
+        public int DeviceId;
+        public int WeaponId;
+        public int AmmunitionId;
+        [DefaultValue( "" )]
+        public string WeaponSlotType;
+        public int DroneBayId;
+        public int DroneId;
+        public ComponentRestrictionsSerializable Restrictions;
+        public int[] PossibleModifications;
+    }
 }

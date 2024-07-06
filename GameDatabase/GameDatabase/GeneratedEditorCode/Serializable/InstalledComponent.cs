@@ -12,15 +12,15 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public struct InstalledComponentSerializable
-	{
-		public int ComponentId;
+    public class InstalledComponentSerializable
+    {
+        public int ComponentId;
         public int Modification;
         public ModificationQuality Quality;
-		public int X;
-		public int Y;
-		public int BarrelId;
-		public int Behaviour;
-		public int KeyBinding;
-	}
+        public int X;
+        public int Y;
+        public int BarrelId;
+        public int Behaviour;
+        public int KeyBinding;
+    }
 }

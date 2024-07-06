@@ -9,10 +9,10 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum ColorMode
-	{
-		TakeFromOwner,
-		UseMyOwn,
-		Blend,
-		Multiply,
-	}
+    {
+        TakeFromOwner,
+        UseMyOwn,
+        Blend,
+        Multiply,
+    }
 }

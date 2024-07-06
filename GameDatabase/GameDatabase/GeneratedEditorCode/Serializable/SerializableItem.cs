@@ -16,7 +16,7 @@ namespace EditorDatabase.Serializable
     public class SerializableItem
     {
         [JsonIgnore]
-	    public string FileName { get; set; }
+        public string FileName { get; set; }
 
         public ItemType ItemType;
         public int Id;

@@ -13,22 +13,22 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class WeaponSerializable : SerializableItem
-	{
-		public WeaponClass WeaponClass;
-		public float FireRate;
-		public float Spread;
-		public int Magazine;
-		public ActivationType ActivationType;
-		[DefaultValue("")]
-		public string ShotSound;
-		[DefaultValue("")]
-		public string ChargeSound;
-		[DefaultValue("")]
-		public string ShotEffectPrefab;
-		public int VisualEffect;
-		public float EffectSize;
-		[DefaultValue("")]
-		public string ControlButtonIcon;
-	}
+    public class WeaponSerializable : SerializableItem
+    {
+        public WeaponClass WeaponClass;
+        public float FireRate;
+        public float Spread;
+        public int Magazine;
+        public ActivationType ActivationType;
+        [DefaultValue( "" )]
+        public string ShotSound;
+        [DefaultValue( "" )]
+        public string ChargeSound;
+        [DefaultValue( "" )]
+        public string ShotEffectPrefab;
+        public int VisualEffect;
+        public float EffectSize;
+        [DefaultValue( "" )]
+        public string ControlButtonIcon;
+    }
 }

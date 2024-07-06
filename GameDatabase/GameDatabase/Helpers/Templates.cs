@@ -8,40 +8,40 @@ namespace EditorDatabase
     public class Templates
     {
         private readonly Dictionary<string, SerializableTemplate> _templates = new Dictionary<string, SerializableTemplate>();
-        
+
         public IEnumerable<SerializableTemplate> Data { get { return _templates.Values; } }
 
-        public SerializableTemplate Get(string path)
+        public SerializableTemplate Get( string path )
         {
             return _templates[path];
         }
 
-        public void Load(string _path)
+        public void Load( string _path )
         {
             var _serializer = new EditorDatabase.Storage.JsonSerializer();
-            var info = new DirectoryInfo(_path);
-            foreach (var fileInfo in info.GetFiles("*", SearchOption.AllDirectories))
+            var info = new DirectoryInfo( _path );
+            foreach ( var fileInfo in info.GetFiles( "*", SearchOption.AllDirectories ) )
             {
                 var file = fileInfo.FullName;
-                var path = file.Substring(info.FullName.Length + 1);
-                if (fileInfo.Extension.Equals(".template", StringComparison.OrdinalIgnoreCase))
+                var path = file.Substring( info.FullName.Length + 1 );
+                if ( fileInfo.Extension.Equals( ".template", StringComparison.OrdinalIgnoreCase ) )
                 {
-                    var data = File.ReadAllText(file);
+                    var data = File.ReadAllText( file );
                     try
                     {
-                        var item = _serializer.FromJson<SerializableTemplate>(data);
-                        item.FileName = fileInfo.FullName.Replace(_path,"");
-                        _templates.Add(item.Name,item);
+                        var item = _serializer.FromJson<SerializableTemplate>( data );
+                        item.FileName = fileInfo.FullName.Replace( _path, "" );
+                        _templates.Add( item.Name, item );
                     }
                     catch ( Exception )
                     {
-                        
+
                     }
                 }
             }
         }
     }
-    
+
     [Serializable]
     public class SerializableTemplate
     {
@@ -57,7 +57,7 @@ namespace EditorDatabase
         [JsonIgnore]
         public string FilePath;
     }
-    
+
     [Serializable]
     public class SerializableTemplateItem
     {

@@ -9,12 +9,12 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum BulletEffectType
-	{
-		None,
-		PlaySfx,
-		SpawnBullet,
-		Detonate,
-		SpawnStaticSfx,
-		GravityField,
-	}
+    {
+        None,
+        PlaySfx,
+        SpawnBullet,
+        Detonate,
+        SpawnStaticSfx,
+        GravityField,
+    }
 }

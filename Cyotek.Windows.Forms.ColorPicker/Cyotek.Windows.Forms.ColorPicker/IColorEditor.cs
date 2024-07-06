@@ -15,24 +15,24 @@ namespace Cyotek.Windows.Forms
     /// Provides functionality required by color editors that are bindable
     /// </summary>
     public interface IColorEditor
-  {
-    #region Events
+    {
+        #region Events
 
-    /// <summary>
-    /// Occurs when the <see cref="Color"/> property is changed.
-    /// </summary>
-    event EventHandler ColorChanged;
+        /// <summary>
+        /// Occurs when the <see cref="Color"/> property is changed.
+        /// </summary>
+        event EventHandler ColorChanged;
 
-    #endregion
+        #endregion
 
-    #region Properties
+        #region Properties
 
-    /// <summary>
-    /// Gets or sets the component color.
-    /// </summary>
-    /// <value>The component color.</value>
-    Color Color { get; set; }
+        /// <summary>
+        /// Gets or sets the component color.
+        /// </summary>
+        /// <value>The component color.</value>
+        Color Color { get; set; }
 
-    #endregion
-  }
+        #endregion
+    }
 }

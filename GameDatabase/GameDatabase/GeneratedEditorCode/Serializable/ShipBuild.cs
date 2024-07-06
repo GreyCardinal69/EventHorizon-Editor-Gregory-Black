@@ -13,17 +13,22 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class ShipBuildSerializable : SerializableItem
+    public class ShipBuildSerializable : SerializableItem
     {
-        public int CustomAI;
         public int ShipId;
         [DefaultValue( true )]
         public bool AvailableForPlayer = true;
         [DefaultValue( true )]
         public bool AvailableForEnemy = true;
         public DifficultyClass DifficultyClass;
-		public int BuildFaction;
-		public InstalledComponentSerializable[] Components;
+        public int BuildFaction;
+        public int CustomAI;
+        public InstalledComponentSerializable[] Components;
         public bool NotAvailableInGame;
+        public ShipBuildPerksSerializable Perks;
+        public bool ExtendedLayout;
+        public bool RandomColor;
+        public int LeftSatelliteBuild;
+        public int RightSatelliteBuild;
     }
 }

@@ -9,8 +9,8 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum ComponentStatsType
-	{
-		PerComponent = 0,
-		PerOneCell = 1,
-	}
+    {
+        PerComponent = 0,
+        PerOneCell = 1,
+    }
 }

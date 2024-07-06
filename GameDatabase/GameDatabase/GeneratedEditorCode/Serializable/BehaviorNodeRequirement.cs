@@ -13,14 +13,14 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class BehaviorNodeRequirementSerializable
-	{
-		public BehaviorRequirementType Type;
-		public DeviceClass DeviceClass;
-		public AiDifficultyLevel DifficultyLevel;
+    public class BehaviorNodeRequirementSerializable
+    {
+        public BehaviorRequirementType Type;
+        public DeviceClass DeviceClass;
+        public AiDifficultyLevel DifficultyLevel;
         public SizeClass SizeClass;
         [DefaultValue( 1f )]
         public float Value = 1f;
         public BehaviorNodeRequirementSerializable[] Requirements;
-	}
+    }
 }

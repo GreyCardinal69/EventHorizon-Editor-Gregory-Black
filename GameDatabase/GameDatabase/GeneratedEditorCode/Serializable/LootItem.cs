@@ -11,9 +11,9 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class LootItemSerializable
-	{
-		public float Weight;
-		public LootContentSerializable Loot;
-	}
+    public class LootItemSerializable
+    {
+        public float Weight;
+        public LootContentSerializable Loot;
+    }
 }

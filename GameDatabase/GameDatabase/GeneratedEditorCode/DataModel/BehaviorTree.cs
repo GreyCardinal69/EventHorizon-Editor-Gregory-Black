@@ -12,40 +12,40 @@ using EditorDatabase.Serializable;
 namespace EditorDatabase.DataModel
 {
     public partial class BehaviorTreeModel
-	{
-		partial void OnDataDeserialized(BehaviorTreeSerializable serializable, Database database);
-		partial void OnDataSerialized(ref BehaviorTreeSerializable serializable);
+    {
+        partial void OnDataDeserialized( BehaviorTreeSerializable serializable, Database database );
+        partial void OnDataSerialized( ref BehaviorTreeSerializable serializable );
 
-		public static BehaviorTreeModel Create(BehaviorTreeSerializable serializable, Database database)
-		{
-			if (serializable == null) return DefaultValue;
-			return new BehaviorTreeModel(serializable, database);
-		}
+        public static BehaviorTreeModel Create( BehaviorTreeSerializable serializable, Database database )
+        {
+            if ( serializable == null ) return DefaultValue;
+            return new BehaviorTreeModel( serializable, database );
+        }
 
-		public BehaviorTreeModel(BehaviorTreeSerializable serializable, Database database)
-		{
-			try
-			{
-				Id = new ItemId<BehaviorTreeModel>(serializable.Id, serializable.FileName);
-				RootNode.Value = DataModel.BehaviorTreeNode.Create(serializable.RootNode, database);
-			}
-			catch (DatabaseException e)
-			{
-				throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
-			}
-			OnDataDeserialized(serializable, database);
-		}
+        public BehaviorTreeModel( BehaviorTreeSerializable serializable, Database database )
+        {
+            try
+            {
+                Id = new ItemId<BehaviorTreeModel>( serializable.Id, serializable.FileName );
+                RootNode.Value = DataModel.BehaviorTreeNode.Create( serializable.RootNode, database );
+            }
+            catch ( DatabaseException e )
+            {
+                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+            }
+            OnDataDeserialized( serializable, database );
+        }
 
-		public void Save(BehaviorTreeSerializable serializable)
-		{
-			serializable.RootNode = RootNode.Value?.Serialize();
-			OnDataSerialized(ref serializable);
-		}
+        public void Save( BehaviorTreeSerializable serializable )
+        {
+            serializable.RootNode = RootNode.Value?.Serialize();
+            OnDataSerialized( ref serializable );
+        }
 
-		public readonly ItemId<BehaviorTreeModel> Id;
+        public readonly ItemId<BehaviorTreeModel> Id;
 
-		public ObjectWrapper<BehaviorTreeNode> RootNode = new ObjectWrapper<BehaviorTreeNode>(DataModel.BehaviorTreeNode.DefaultValue);
+        public ObjectWrapper<BehaviorTreeNode> RootNode = new ObjectWrapper<BehaviorTreeNode>( DataModel.BehaviorTreeNode.DefaultValue );
 
-		public static BehaviorTreeModel DefaultValue { get; private set; }
-	}
+        public static BehaviorTreeModel DefaultValue { get; set; }
+    }
 }

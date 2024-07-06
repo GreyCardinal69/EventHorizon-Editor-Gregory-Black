@@ -11,19 +11,22 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public struct ShipFeaturesSerializable
-	{
-		public float EnergyResistance;
-		public float KineticResistance;
-		public float HeatResistance;
-		public float ShipWeightBonus;
-		public float EquipmentWeightBonus;
-		public float VelocityBonus;
-		public float TurnRateBonus;
-		public float ArmorBonus;
-		public float ShieldBonus;
-		public float EnergyBonus;
-		public bool Regeneration;
-		public int[] BuiltinDevices;
-	}
+    public class ShipFeaturesSerializable
+    {
+        public float EnergyResistance;
+        public float KineticResistance;
+        public float HeatResistance;
+        public float ShipWeightBonus;
+        public float EquipmentWeightBonus;
+        public float VelocityBonus;
+        public float TurnRateBonus;
+        public float ArmorBonus;
+        public float ShieldBonus;
+        public float EnergyBonus;
+        public float DroneBuildSpeedBonus;
+        public float DroneAttackBonus;
+        public float DroneDefenseBonus;
+        public bool Regeneration;
+        public int[] BuiltinDevices;
+    }
 }

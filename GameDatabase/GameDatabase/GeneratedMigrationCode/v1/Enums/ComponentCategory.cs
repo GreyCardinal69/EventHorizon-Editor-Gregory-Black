@@ -9,13 +9,13 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum ComponentCategory
-	{
-		Undefined,
-		Weapon,
-		Defense,
-		Energy,
-		Engine,
-		Drones,
-		Special,
-	}
+    {
+        Undefined,
+        Weapon,
+        Defense,
+        Energy,
+        Engine,
+        Drones,
+        Special,
+    }
 }

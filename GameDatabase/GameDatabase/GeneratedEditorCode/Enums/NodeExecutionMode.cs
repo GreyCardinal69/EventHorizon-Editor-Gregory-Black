@@ -9,11 +9,11 @@
 namespace EditorDatabase.Enums
 {
     public enum NodeExecutionMode
-	{
-		UntilSucceeds = 0,
-		UntilFails = 1,
-		UntilFinishes = 2,
-		Infinitely = 3,
-		OneTime = 4,
-	}
+    {
+        UntilSucceeds = 0,
+        UntilFails = 1,
+        UntilFinishes = 2,
+        Infinitely = 3,
+        OneTime = 4,
+    }
 }

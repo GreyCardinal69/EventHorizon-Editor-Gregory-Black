@@ -12,30 +12,30 @@
     /// Specifies the color space of an Adobe Photoshop color swatch file
     /// </summary>
     public enum AdobePhotoshopColorSwatchColorSpace
-  {
-    /// <summary>
-    /// RGB
-    /// </summary>
-    Rgb = 0,
+    {
+        /// <summary>
+        /// RGB
+        /// </summary>
+        Rgb = 0,
 
-    /// <summary>
-    /// HSB
-    /// </summary>
-    Hsb = 1,
+        /// <summary>
+        /// HSB
+        /// </summary>
+        Hsb = 1,
 
-    /// <summary>
-    /// CMYK
-    /// </summary>
-    Cmyk = 2,
+        /// <summary>
+        /// CMYK
+        /// </summary>
+        Cmyk = 2,
 
-    /// <summary>
-    /// Lab
-    /// </summary>
-    Lab = 7,
+        /// <summary>
+        /// Lab
+        /// </summary>
+        Lab = 7,
 
-    /// <summary>
-    /// Grayscale
-    /// </summary>
-    Grayscale = 8
-  }
+        /// <summary>
+        /// Grayscale
+        /// </summary>
+        Grayscale = 8
+    }
 }

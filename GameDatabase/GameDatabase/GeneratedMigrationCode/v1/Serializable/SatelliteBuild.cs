@@ -12,17 +12,17 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class SatelliteBuildSerializable : SerializableItem
-	{
-		public SatelliteBuildSerializable()
-		{
-			ItemType = ItemType.SatelliteBuild;
-			FileName = "SatelliteBuild.json";
-		}
+    public class SatelliteBuildSerializable : SerializableItem
+    {
+        public SatelliteBuildSerializable()
+        {
+            ItemType = ItemType.SatelliteBuild;
+            FileName = "SatelliteBuild.json";
+        }
 
-		public int SatelliteId;
-		public bool NotAvailableInGame;
-		public DifficultyClass DifficultyClass;
-		public InstalledComponentSerializable[] Components;
-	}
+        public int SatelliteId;
+        public bool NotAvailableInGame;
+        public DifficultyClass DifficultyClass;
+        public InstalledComponentSerializable[] Components;
+    }
 }

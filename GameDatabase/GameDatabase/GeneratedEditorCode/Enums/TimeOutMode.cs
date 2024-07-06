@@ -11,10 +11,10 @@ using static EditorDatabase.Property;
 namespace EditorDatabase.Enums
 {
     public enum TimeOutMode
-	{
-		CallNextEnemy = 0,
-		DrainPlayerHp = 1,
-		[TooltipText("Calls next enemy if any and resets the timer, draws the battle otherwise")]
-		CallNextEnemyOrDraw = 2,
-	}
+    {
+        CallNextEnemy = 0,
+        DrainPlayerHp = 1,
+        [TooltipText( "Calls next enemy if any and resets the timer, draws the battle otherwise" )]
+        CallNextEnemyOrDraw = 2,
+    }
 }

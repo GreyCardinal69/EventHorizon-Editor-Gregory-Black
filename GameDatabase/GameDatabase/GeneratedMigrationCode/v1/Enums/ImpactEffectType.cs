@@ -9,19 +9,23 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum ImpactEffectType
-	{
-		Damage,
-		Push,
-		Pull,
-		DrainEnergy,
-		SiphonHitPoints,
-		SlowDown,
-		CaptureDrones,
-		Repair,
-		RestoreLifetime,
-		Devour,
-		Teleport,
+    {
+        Damage,
+        Push,
+        Pull,
+        DrainEnergy,
+        SiphonHitPoints,
+        SlowDown,
+        CaptureDrones,
+        Repair,
+        RestoreLifetime,
+        Devour,
+        Teleport,
         DrainShield,
         DriveDronesCrazy,
+        IgnoreShield,
+        RechargeShield,
+        RechargeEnergy,
+        ProgressiveDamage,
     }
 }

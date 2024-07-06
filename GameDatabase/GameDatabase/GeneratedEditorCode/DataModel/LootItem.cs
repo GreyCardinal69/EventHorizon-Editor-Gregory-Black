@@ -24,7 +24,7 @@ namespace EditorDatabase.DataModel
 
         public LootItem() { }
 
-        private LootItem( LootItemSerializable serializable, Database database )
+        public LootItem( LootItemSerializable serializable, Database database )
         {
             Weight = new NumericValue<float>( serializable.Weight, -3.402823E+38f, 3.402823E+38f );
             Loot.Value = DataModel.LootContent.Create( serializable.Loot, database );
@@ -43,6 +43,6 @@ namespace EditorDatabase.DataModel
         public NumericValue<float> Weight = new NumericValue<float>( 0, -3.402823E+38f, 3.402823E+38f );
         public ObjectWrapper<LootContent> Loot = new ObjectWrapper<LootContent>( DataModel.LootContent.DefaultValue );
 
-        public static LootItem DefaultValue { get; private set; }
+        public static LootItem DefaultValue { get; set; }
     }
 }

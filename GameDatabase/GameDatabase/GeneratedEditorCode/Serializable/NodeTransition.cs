@@ -11,10 +11,10 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class NodeTransitionSerializable
-	{
-		public int TargetNode;
-		public RequirementSerializable Requirement;
-		public float Weight;
-	}
+    public class NodeTransitionSerializable
+    {
+        public int TargetNode;
+        public RequirementSerializable Requirement;
+        public float Weight;
+    }
 }

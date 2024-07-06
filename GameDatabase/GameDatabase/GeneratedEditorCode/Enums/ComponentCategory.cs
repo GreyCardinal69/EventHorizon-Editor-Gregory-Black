@@ -9,13 +9,13 @@
 namespace EditorDatabase.Enums
 {
     public enum ComponentCategory
-	{
-		Undefined,
-		Weapon,
-		Defense,
-		Energy,
-		Engine,
-		Drones,
-		Special,
-	}
+    {
+        Undefined,
+        Weapon,
+        Defense,
+        Energy,
+        Engine,
+        Drones,
+        Special,
+    }
 }

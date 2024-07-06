@@ -12,11 +12,11 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public struct NodeActionSerializable
-	{
-		public int TargetNode;
-		public RequirementSerializable Requirement;
-		[DefaultValue("")]
-		public string ButtonText;
-	}
+    public class NodeActionSerializable
+    {
+        public int TargetNode;
+        public RequirementSerializable Requirement;
+        [DefaultValue( "" )]
+        public string ButtonText;
+    }
 }

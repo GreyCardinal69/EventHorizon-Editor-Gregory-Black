@@ -13,21 +13,21 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class DatabaseSettingsSerializable : SerializableItem
-	{
-		public DatabaseSettingsSerializable()
-		{
-			ItemType = ItemType.DatabaseSettings;
-			FileName = "DatabaseSettings.json";
-		}
+    public class DatabaseSettingsSerializable : SerializableItem
+    {
+        public DatabaseSettingsSerializable()
+        {
+            ItemType = ItemType.DatabaseSettings;
+            FileName = "DatabaseSettings.json";
+        }
 
-		public int DatabaseVersion;
-		public int DatabaseVersionMinor;
-		[DefaultValue("")]
-		public string ModName;
-		[DefaultValue("")]
-		public string ModId;
-		public int ModVersion;
-		public bool UnloadOriginalDatabase;
-	}
+        public int DatabaseVersion;
+        public int DatabaseVersionMinor;
+        [DefaultValue( "" )]
+        public string ModName;
+        [DefaultValue( "" )]
+        public string ModId;
+        public int ModVersion;
+        public bool UnloadOriginalDatabase;
+    }
 }

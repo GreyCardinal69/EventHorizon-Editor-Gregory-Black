@@ -9,10 +9,10 @@
 namespace EditorDatabase.Enums
 {
     public enum FactionFilterType
-	{
-		AllButList = 0,
-		ListOnly = 1,
-		StarOwnersAndList = 2,
-		AllAvailable = 3,
-	}
+    {
+        AllButList = 0,
+        ListOnly = 1,
+        StarOwnersAndList = 2,
+        AllAvailable = 3,
+    }
 }

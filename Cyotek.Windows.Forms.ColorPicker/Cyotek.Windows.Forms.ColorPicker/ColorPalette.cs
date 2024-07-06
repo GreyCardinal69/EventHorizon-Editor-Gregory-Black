@@ -9,19 +9,19 @@
     // If you use this code in your applications, donations or attribution are welcome
 
     public enum ColorPalette
-  {
-    None,
+    {
+        None,
 
-    Named,
+        Named,
 
-    Office2010,
+        Office2010,
 
-    Paint,
+        Paint,
 
-    Standard,
+        Standard,
 
-    WebSafe,
+        WebSafe,
 
-    Standard256
-  }
+        Standard256
+    }
 }

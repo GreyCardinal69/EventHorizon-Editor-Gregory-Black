@@ -12,22 +12,23 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class FleetSerializable : SerializableItem
-	{
-		public FleetSerializable()
-		{
-			ItemType = ItemType.Fleet;
-			FileName = "Fleet.json";
-		}
-        public int CombatRules;
+    public class FleetSerializable : SerializableItem
+    {
+        public FleetSerializable()
+        {
+            ItemType = ItemType.Fleet;
+            FileName = "Fleet.json";
+        }
+
         public FactionFilterSerializable Factions;
-		public int LevelBonus;
-		public bool NoRandomShips;
-		public int CombatTimeLimit;
-		public RewardCondition LootCondition;
-		public RewardCondition ExpCondition;
-		public int[] SpecificShips;
-		public bool NoShipChanging;
-		public bool PlayerHasOneShip;
-	}
+        public int LevelBonus;
+        public bool NoRandomShips;
+        public int CombatTimeLimit;
+        public RewardCondition LootCondition;
+        public RewardCondition ExpCondition;
+        public int[] SpecificShips;
+        public bool NoShipChanging;
+        public bool PlayerHasOneShip;
+        public int CombatRules;
+    }
 }

@@ -15,15 +15,15 @@ namespace Cyotek.Windows.Forms
     // If you use this code in your applications, donations or attribution are welcome
 
     public static class ColorPalettes
-  {
-    #region Static Properties
-
-    public static ColorCollection HexagonPalette
     {
-      get
-      {
-        return new ColorCollection(new[]
-                                   {
+        #region Static Properties
+
+        public static ColorCollection HexagonPalette
+        {
+            get
+            {
+                return new ColorCollection( new[]
+                                           {
                                      Color.FromArgb(0, 48, 96),
                                      Color.FromArgb(47, 96, 144),
                                      Color.FromArgb(47, 96, 192),
@@ -159,41 +159,41 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(192, 192, 192),
                                      Color.FromArgb(127, 127, 127),
                                      Color.FromArgb(48, 48, 48)
-                                   });
-      }
-    }
-
-    public static ColorCollection NamedColors
-    {
-      get
-      {
-        List<Color> results;
-
-        results = new List<Color>();
-
-        foreach (PropertyInfo property in typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static).Where(property => property.PropertyType == typeof(Color)))
-        {
-          Color color;
-
-          color = (Color)property.GetValue(typeof(Color), null);
-          if (!color.IsEmpty)
-          {
-            results.Add(color);
-          }
+                                   } );
+            }
         }
 
-        results.Sort(ColorComparer.Brightness);
+        public static ColorCollection NamedColors
+        {
+            get
+            {
+                List<Color> results;
 
-        return new ColorCollection(results);
-      }
-    }
+                results = new List<Color>();
 
-    public static ColorCollection Office2010Standard
-    {
-      get
-      {
-        return ScaledPalette(new[]
-                             {
+                foreach ( PropertyInfo property in typeof( Color ).GetProperties( BindingFlags.Public | BindingFlags.Static ).Where( property => property.PropertyType == typeof( Color ) ) )
+                {
+                    Color color;
+
+                    color = ( Color ) property.GetValue( typeof( Color ), null );
+                    if ( !color.IsEmpty )
+                    {
+                        results.Add( color );
+                    }
+                }
+
+                results.Sort( ColorComparer.Brightness );
+
+                return new ColorCollection( results );
+            }
+        }
+
+        public static ColorCollection Office2010Standard
+        {
+            get
+            {
+                return ScaledPalette( new[]
+                                     {
                                Color.FromArgb(255, 255, 255),
                                Color.FromArgb(0, 0, 0),
                                Color.FromArgb(238, 236, 255),
@@ -204,16 +204,16 @@ namespace Cyotek.Windows.Forms
                                Color.FromArgb(128, 100, 162),
                                Color.FromArgb(75, 172, 198),
                                Color.FromArgb(247, 150, 70)
-                             });
-      }
-    }
+                             } );
+            }
+        }
 
-    public static ColorCollection PaintPalette
-    {
-      get
-      {
-        return new ColorCollection(new[]
-                                   {
+        public static ColorCollection PaintPalette
+        {
+            get
+            {
+                return new ColorCollection( new[]
+                                           {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(64, 64, 64),
                                      Color.FromArgb(255, 0, 0),
@@ -310,16 +310,16 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(128, 87, 0, 127),
                                      Color.FromArgb(128, 127, 0, 110),
                                      Color.FromArgb(128, 127, 0, 55)
-                                   });
-      }
-    }
+                                   } );
+            }
+        }
 
-    public static ColorCollection QbColors
-    {
-      get
-      {
-        return new ColorCollection(new[]
-                                   {
+        public static ColorCollection QbColors
+        {
+            get
+            {
+                return new ColorCollection( new[]
+                                           {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(128, 0, 0),
                                      Color.FromArgb(0, 128, 0),
@@ -336,16 +336,16 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(255, 0, 255),
                                      Color.FromArgb(0, 255, 255),
                                      Color.FromArgb(255, 255, 255)
-                                   });
-      }
-    }
+                                   } );
+            }
+        }
 
-    public static ColorCollection StandardPalette
-    {
-      get
-      {
-        return new ColorCollection(new[]
-                                   {
+        public static ColorCollection StandardPalette
+        {
+            get
+            {
+                return new ColorCollection( new[]
+                                           {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(128, 0, 0),
                                      Color.FromArgb(0, 128, 0),
@@ -602,16 +602,16 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(245, 177, 255),
                                      Color.FromArgb(248, 205, 254),
                                      Color.FromArgb(252, 233, 255)
-                                   });
-      }
-    }
+                                   } );
+            }
+        }
 
-    public static ColorCollection WebSafe
-    {
-      get
-      {
-        return new ColorCollection(new[]
-                                   {
+        public static ColorCollection WebSafe
+        {
+            get
+            {
+                return new ColorCollection( new[]
+                                           {
                                      Color.FromArgb(255, 0, 255),
                                      Color.FromArgb(255, 51, 255),
                                      Color.FromArgb(204, 0, 204),
@@ -828,73 +828,73 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(102, 102, 102),
                                      Color.FromArgb(51, 51, 51),
                                      Color.FromArgb(0, 0, 0)
-                                   });
-      }
-    }
-
-    #endregion
-
-    #region Static Methods
-
-    public static ColorCollection GetPalette(ColorPalette palette)
-    {
-      ColorCollection result;
-
-      switch (palette)
-      {
-        case ColorPalette.Named:
-          result = NamedColors;
-          break;
-        case ColorPalette.Office2010:
-          result = Office2010Standard;
-          break;
-        case ColorPalette.Paint:
-          result = PaintPalette;
-          break;
-        case ColorPalette.Standard:
-          result = QbColors;
-          break;
-        case ColorPalette.None:
-          result = new ColorCollection();
-          break;
-        case ColorPalette.WebSafe:
-          result = WebSafe;
-          break;
-        case ColorPalette.Standard256:
-          result = StandardPalette;
-          break;
-        default:
-          throw new ArgumentException("Invalid palette", nameof(palette));
-      }
-
-      return result;
-    }
-
-    public static ColorCollection ScaledPalette(IEnumerable<Color> topRow)
-    {
-      ColorCollection results;
-
-      results = new ColorCollection();
-
-      topRow = topRow.ToArray();
-      results.AddRange(topRow);
-
-      for (int i = 5; i >= 0; i--)
-      {
-        foreach (Color color in topRow)
-        {
-          HslColor hsl;
-
-          hsl = new HslColor(color);
-          hsl.L = (5 + i + 16 * i) / 100D;
-
-          results.Add(hsl.ToRgbColor());
+                                   } );
+            }
         }
-      }
 
-      return results;
+        #endregion
+
+        #region Static Methods
+
+        public static ColorCollection GetPalette( ColorPalette palette )
+        {
+            ColorCollection result;
+
+            switch ( palette )
+            {
+                case ColorPalette.Named:
+                    result = NamedColors;
+                    break;
+                case ColorPalette.Office2010:
+                    result = Office2010Standard;
+                    break;
+                case ColorPalette.Paint:
+                    result = PaintPalette;
+                    break;
+                case ColorPalette.Standard:
+                    result = QbColors;
+                    break;
+                case ColorPalette.None:
+                    result = new ColorCollection();
+                    break;
+                case ColorPalette.WebSafe:
+                    result = WebSafe;
+                    break;
+                case ColorPalette.Standard256:
+                    result = StandardPalette;
+                    break;
+                default:
+                    throw new ArgumentException( "Invalid palette", nameof( palette ) );
+            }
+
+            return result;
+        }
+
+        public static ColorCollection ScaledPalette( IEnumerable<Color> topRow )
+        {
+            ColorCollection results;
+
+            results = new ColorCollection();
+
+            topRow = topRow.ToArray();
+            results.AddRange( topRow );
+
+            for ( int i = 5; i >= 0; i-- )
+            {
+                foreach ( Color color in topRow )
+                {
+                    HslColor hsl;
+
+                    hsl = new HslColor( color );
+                    hsl.L = ( 5 + i + 16 * i ) / 100D;
+
+                    results.Add( hsl.ToRgbColor() );
+                }
+            }
+
+            return results;
+        }
+
+        #endregion
     }
-
-    #endregion
-  }
 }

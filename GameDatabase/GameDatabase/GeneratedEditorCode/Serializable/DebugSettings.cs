@@ -11,9 +11,9 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class DebugSettingsSerializable : SerializableItem
-	{
-		public DebugCodeSerializable[] Codes;
+    public class DebugSettingsSerializable : SerializableItem
+    {
+        public DebugCodeSerializable[] Codes;
         public bool EnableDebugConsole;
     }
 }

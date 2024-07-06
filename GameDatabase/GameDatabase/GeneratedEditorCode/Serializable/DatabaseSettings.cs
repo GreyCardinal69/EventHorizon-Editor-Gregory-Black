@@ -12,15 +12,15 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class DatabaseSettingsSerializable : SerializableItem
-	{
-		public int DatabaseVersion;
-		public int DatabaseVersionMinor;
-		[DefaultValue("")]
-		public string ModName;
-		[DefaultValue("")]
-		public string ModId;
-		public int ModVersion;
-		public bool UnloadOriginalDatabase;
-	}
+    public class DatabaseSettingsSerializable : SerializableItem
+    {
+        public int DatabaseVersion;
+        public int DatabaseVersionMinor;
+        [DefaultValue( "" )]
+        public string ModName;
+        [DefaultValue( "" )]
+        public string ModId;
+        public int ModVersion;
+        public bool UnloadOriginalDatabase;
+    }
 }

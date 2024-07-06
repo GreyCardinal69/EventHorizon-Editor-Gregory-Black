@@ -13,19 +13,19 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class BulletPrefabSerializable : SerializableItem
-	{
-		public BulletShape Shape;
-		[DefaultValue("")]
-		public string Image;
-		public float Size;
-		public float Margins;
-		public float Deformation;
-		[DefaultValue("")]
-		public string MainColor;
-		public ColorMode MainColorMode;
-		[DefaultValue("")]
-		public string SecondColor;
-		public ColorMode SecondColorMode;
-	}
+    public class BulletPrefabSerializable : SerializableItem
+    {
+        public BulletShape Shape;
+        [DefaultValue( "" )]
+        public string Image;
+        public float Size;
+        public float Margins;
+        public float Deformation;
+        [DefaultValue( "" )]
+        public string MainColor;
+        public ColorMode MainColorMode;
+        [DefaultValue( "" )]
+        public string SecondColor;
+        public ColorMode SecondColorMode;
+    }
 }

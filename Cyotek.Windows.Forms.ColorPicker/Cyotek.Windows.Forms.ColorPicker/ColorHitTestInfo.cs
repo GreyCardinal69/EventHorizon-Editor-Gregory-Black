@@ -11,15 +11,15 @@ namespace Cyotek.Windows.Forms
     // If you use this code in your applications, donations or attribution are welcome
 
     public class ColorHitTestInfo
-  {
-    #region Properties
+    {
+        #region Properties
 
-    public Color Color { get; set; }
+        public Color Color { get; set; }
 
-    public int Index { get; set; }
+        public int Index { get; set; }
 
-    public ColorSource Source { get; set; }
+        public ColorSource Source { get; set; }
 
-    #endregion
-  }
+        #endregion
+    }
 }

@@ -13,19 +13,19 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class FactionsSettingsSerializable : SerializableItem
-	{
-		public FactionsSettingsSerializable()
-		{
-			ItemType = ItemType.FactionsSettings;
-			FileName = "FactionsSettings.json";
-		}
+    public class FactionsSettingsSerializable : SerializableItem
+    {
+        public FactionsSettingsSerializable()
+        {
+            ItemType = ItemType.FactionsSettings;
+            FileName = "FactionsSettings.json";
+        }
 
-		[DefaultValue("MIN(1000, 300 + 5*distance)")]
-		public string StarbaseInitialDefense = "MIN(1000, 300 + 5*distance)";
-		[DefaultValue(50)]
-		public int StarbaseMinDefense = 50;
-		[DefaultValue(10)]
-		public int DefenseLossPerEnemyDefeated = 10;
-	}
+        [DefaultValue( "MIN(1000, 300 + 5*distance)" )]
+        public string StarbaseInitialDefense = "MIN(1000, 300 + 5*distance)";
+        [DefaultValue( 50 )]
+        public int StarbaseMinDefense = 50;
+        [DefaultValue( 10 )]
+        public int DefenseLossPerEnemyDefeated = 10;
+    }
 }

@@ -13,18 +13,18 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public struct BarrelSerializable
-	{
-		public Vector2 Position;
-		public float Rotation;
-		public float Offset;
-		public int PlatformType;
-		public float AutoAimingArc;
-		public float RotationSpeed;
-		[DefaultValue("")]
-		public string WeaponClass;
-		[DefaultValue("")]
-		public string Image;
-		public float Size;
-	}
+    public class BarrelSerializable
+    {
+        public Vector2 Position;
+        public float Rotation;
+        public float Offset;
+        public int PlatformType;
+        public float AutoAimingArc;
+        public float RotationSpeed;
+        [DefaultValue( "" )]
+        public string WeaponClass;
+        [DefaultValue( "" )]
+        public string Image;
+        public float Size;
+    }
 }

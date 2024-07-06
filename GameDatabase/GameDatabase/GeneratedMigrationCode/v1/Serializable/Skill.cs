@@ -13,13 +13,13 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class SkillSerializable : SerializableItem
-	{
-		public SkillSerializable()
-		{
-			ItemType = ItemType.Skill;
-			FileName = "Skill.json";
-		}
+    public class SkillSerializable : SerializableItem
+    {
+        public SkillSerializable()
+        {
+            ItemType = ItemType.Skill;
+            FileName = "Skill.json";
+        }
 
         public int[] BeatAllEnemiesFactionList;
         public bool DisableExceedTheLimits;

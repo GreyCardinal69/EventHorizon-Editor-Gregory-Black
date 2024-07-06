@@ -7,16 +7,15 @@
 //-------------------------------------------------------------------------------
 
 using static EditorDatabase.Property;
-
 namespace EditorDatabase.Enums
 {
     public enum AiDifficultyLevel
-	{
-        [TooltipText( "Early-game enemy." )]
+    {
+        [TooltipText( "Early-game enemy" )]
         Easy = 0,
-        [TooltipText( "Mid-game enemy." )]
+        [TooltipText( "Mid-game enemy" )]
         Medium = 1,
-        [TooltipText( "Late-game enemy." )]
+        [TooltipText( "Late-game enemy" )]
         Hard = 2,
     }
 }

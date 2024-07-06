@@ -14,52 +14,58 @@ using System.Linq;
 namespace EditorDatabase.DataModel
 {
     public partial class Ammunition
-	{
-		partial void OnDataDeserialized(AmmunitionSerializable serializable, Database database);
-		partial void OnDataSerialized(ref AmmunitionSerializable serializable);
+    {
+        partial void OnDataDeserialized( AmmunitionSerializable serializable, Database database );
+        partial void OnDataSerialized( ref AmmunitionSerializable serializable );
 
+        public static Ammunition Create( AmmunitionSerializable serializable, Database database )
+        {
+            if ( serializable == null ) return DefaultValue;
+            return new Ammunition( serializable, database );
+        }
 
-		public Ammunition(AmmunitionSerializable serializable, Database database)
-		{
-			try
-			{
-				Id = new ItemId<Ammunition>(serializable.Id, serializable.FileName);
-				Body = new BulletBody(serializable.Body, database);
-				Triggers = serializable.Triggers?.Select(item => new BulletTrigger(item, database)).ToArray();
-				ImpactType = serializable.ImpactType;
+        public Ammunition( AmmunitionSerializable serializable, Database database )
+        {
+            try
+            {
+                Id = new ItemId<Ammunition>( serializable.Id, serializable.FileName );
+                Body.Value = DataModel.BulletBody.Create( serializable.Body, database );
                 Controller.Value = DataModel.BulletController.Create( serializable.Controller, database );
-                Effects = serializable.Effects?.Select(item => new ImpactEffect(item, database)).ToArray();
-			}
-			catch (DatabaseException e)
-			{
-				throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
-			}
-			OnDataDeserialized(serializable, database);
-		}
+                Triggers = serializable.Triggers?.Select( item => BulletTrigger.Create( item, database ) ).ToArray();
+                ImpactType = serializable.ImpactType;
+                Effects = serializable.Effects?.Select( item => ImpactEffect.Create( item, database ) ).ToArray();
+            }
+            catch ( DatabaseException e )
+            {
+                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+            }
+            OnDataDeserialized( serializable, database );
+        }
 
-		public void Save(AmmunitionSerializable serializable)
-		{
+        public void Save( AmmunitionSerializable serializable )
+        {
+            serializable.Body = Body.Value?.Serialize();
             serializable.Controller = Controller.Value?.Serialize();
-            serializable.Body = Body.Serialize();
-			if (Triggers == null || Triggers.Length == 0)
-			    serializable.Triggers = null;
-			else
-			    serializable.Triggers = Triggers.Select(item => item.Serialize()).ToArray();
-			serializable.ImpactType = ImpactType;
-			if (Effects == null || Effects.Length == 0)
-			    serializable.Effects = null;
-			else
-			    serializable.Effects = Effects.Select(item => item.Serialize()).ToArray();
-			OnDataSerialized(ref serializable);
-		}
+            if ( Triggers == null || Triggers.Length == 0 )
+                serializable.Triggers = null;
+            else
+                serializable.Triggers = Triggers.Select( item => item.Serialize() ).ToArray();
+            serializable.ImpactType = ImpactType;
+            if ( Effects == null || Effects.Length == 0 )
+                serializable.Effects = null;
+            else
+                serializable.Effects = Effects.Select( item => item.Serialize() ).ToArray();
+            OnDataSerialized( ref serializable );
+        }
 
-		public readonly ItemId<Ammunition> Id;
+        public readonly ItemId<Ammunition> Id;
 
-		public BulletBody Body = new BulletBody();
-		public BulletTrigger[] Triggers;
-		public BulletImpactType ImpactType;
-		public ImpactEffect[] Effects;
-        public ObjectWrapper<BulletController> Controller = new ObjectWrapper<BulletController>( EditorDatabase.DataModel.BulletController.DefaultValue );
-        public static Ammunition DefaultValue { get; private set; }
-	}
+        public ObjectWrapper<BulletBody> Body = new ObjectWrapper<BulletBody>( DataModel.BulletBody.DefaultValue );
+        public ObjectWrapper<BulletController> Controller = new ObjectWrapper<BulletController>( DataModel.BulletController.DefaultValue );
+        public BulletTrigger[] Triggers;
+        public BulletImpactType ImpactType;
+        public ImpactEffect[] Effects;
+
+        public static Ammunition DefaultValue { get; set; }
+    }
 }

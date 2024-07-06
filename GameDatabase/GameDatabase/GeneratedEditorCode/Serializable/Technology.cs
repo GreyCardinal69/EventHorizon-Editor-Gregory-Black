@@ -12,14 +12,14 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class TechnologySerializable : SerializableItem
-	{
-		public TechType Type;
-		public int ItemId;
-		public int Faction;
-		public int Price;
-		public bool Hidden;
-		public bool Special;
-		public int[] Dependencies;
-	}
+    public class TechnologySerializable : SerializableItem
+    {
+        public TechType Type;
+        public int ItemId;
+        public int Faction;
+        public int Price;
+        public bool Hidden;
+        public bool Special;
+        public int[] Dependencies;
+    }
 }

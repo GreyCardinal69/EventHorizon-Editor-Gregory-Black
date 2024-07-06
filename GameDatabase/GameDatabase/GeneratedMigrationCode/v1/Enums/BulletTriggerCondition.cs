@@ -9,15 +9,15 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum BulletTriggerCondition
-	{
-		Undefined,
-		Created,
-		Destroyed,
-		Hit,
-		Disarmed,
-		Expired,
-		Detonated,
-		OutOfAmmo,
+    {
+        Undefined,
+        Created,
+        Destroyed,
+        Hit,
+        Disarmed,
+        Expired,
+        Detonated,
+        OutOfAmmo,
         Cooldown,
     }
 }

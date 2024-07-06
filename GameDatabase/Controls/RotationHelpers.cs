@@ -5,9 +5,9 @@ namespace Controls
 {
     public static class RotationHelpers
     {
-        public static Vector2 Direction(float angle)
+        public static Vector2 Direction( float angle )
         {
-            return new Vector2((float)Math.Sin(angle*Math.PI/180f), -(float)Math.Cos(angle * Math.PI/180f));
+            return new Vector2( ( float ) Math.Sin( angle * Math.PI / 180f ), -( float ) Math.Cos( angle * Math.PI / 180f ) );
         }
 
         //public static float Angle(Vector2 direction)

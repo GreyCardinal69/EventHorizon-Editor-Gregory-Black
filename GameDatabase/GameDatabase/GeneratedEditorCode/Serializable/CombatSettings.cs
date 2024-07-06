@@ -11,14 +11,14 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class CombatSettingsSerializable : SerializableItem
-	{
-		public int EnemyAI;
-		public int AutopilotAI;
-		public int CloneAI;
-		public int DefensiveDroneAI;
-		public int OffensiveDroneAI;
+    public class CombatSettingsSerializable : SerializableItem
+    {
+        public int EnemyAI;
+        public int AutopilotAI;
+        public int CloneAI;
+        public int DefensiveDroneAI;
+        public int OffensiveDroneAI;
         public int StarbaseAI;
         public int DefaultCombatRules;
-	}
+    }
 }

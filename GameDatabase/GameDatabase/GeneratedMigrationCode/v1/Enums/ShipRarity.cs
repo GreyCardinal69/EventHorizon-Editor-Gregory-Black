@@ -9,10 +9,10 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum ShipRarity
-	{
-		Normal,
-		Rare,
-		Hidden,
-		Unique,
-	}
+    {
+        Normal,
+        Rare,
+        Hidden,
+        Unique,
+    }
 }

@@ -9,9 +9,9 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum BulletImpactType
-	{
-		HitFirstTarget,
-		HitAllTargets,
-		DamageOverTime,
-	}
+    {
+        HitFirstTarget,
+        HitAllTargets,
+        DamageOverTime,
+    }
 }

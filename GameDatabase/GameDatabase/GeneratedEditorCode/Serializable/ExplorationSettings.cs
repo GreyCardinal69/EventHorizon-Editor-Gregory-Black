@@ -12,12 +12,12 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class ExplorationSettingsSerializable : SerializableItem
-	{
-		public int OutpostShip;
-		public int TurretShip;
-		public int InfectedPlanetFaction;
-		public int HiveShipBuild;
+    public class ExplorationSettingsSerializable : SerializableItem
+    {
+        public int OutpostShip;
+        public int TurretShip;
+        public int InfectedPlanetFaction;
+        public int HiveShipBuild;
         [DefaultValue( "MIN(level*2,500)" )]
         public string GasCloudDPS = "MIN(level*2,500)";
     }

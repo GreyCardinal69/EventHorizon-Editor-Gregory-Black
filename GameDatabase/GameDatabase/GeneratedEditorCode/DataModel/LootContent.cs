@@ -26,7 +26,7 @@ namespace EditorDatabase.DataModel
         partial void OnDataDeserialized( LootContentSerializable serializable, Database database );
         partial void OnDataSerialized( ref LootContentSerializable serializable );
 
-        private static ILootContentContent CreateContent( LootItemType type )
+        public static ILootContentContent CreateContent( LootItemType type )
         {
             switch ( type )
             {
@@ -120,17 +120,17 @@ namespace EditorDatabase.DataModel
             }
         }
 
-        private void OnTypeChanged()
+        public void OnTypeChanged()
         {
             _content = CreateContent( Type );
             DataChangedEvent?.Invoke();
             LayoutChangedEvent?.Invoke();
         }
 
-        private ILootContentContent _content;
+        public ILootContentContent _content;
         public LootItemType Type;
 
-        public static LootContent DefaultValue { get; private set; }
+        public static LootContent DefaultValue { get; set; }
     }
 
     public class LootContentEmptyContent : ILootContentContent

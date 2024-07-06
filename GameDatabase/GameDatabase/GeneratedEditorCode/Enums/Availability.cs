@@ -16,5 +16,5 @@ namespace EditorDatabase.Enums
         Special = 3,
         Hidden = 4,
         LootOnly = 5,
-	}
+    }
 }

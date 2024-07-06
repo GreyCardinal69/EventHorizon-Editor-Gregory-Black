@@ -12,9 +12,9 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public struct EngineSerializable
-	{
-		public Vector2 Position;
-		public float Size;
-	}
+    public class EngineSerializable
+    {
+        public Vector2 Position;
+        public float Size;
+    }
 }

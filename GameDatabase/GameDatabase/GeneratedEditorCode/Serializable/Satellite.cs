@@ -13,16 +13,16 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class SatelliteSerializable : SerializableItem
-	{
-		[DefaultValue("")]
-		public string Name;
-		[DefaultValue("")]
-		public string ModelImage;
-		public float ModelScale;
-		public SizeClass SizeClass;
-		[DefaultValue("")]
-		public string Layout;
-		public BarrelSerializable[] Barrels;
-	}
+    public class SatelliteSerializable : SerializableItem
+    {
+        [DefaultValue( "" )]
+        public string Name;
+        [DefaultValue( "" )]
+        public string ModelImage;
+        public float ModelScale;
+        public SizeClass SizeClass;
+        [DefaultValue( "" )]
+        public string Layout;
+        public BarrelSerializable[] Barrels;
+    }
 }

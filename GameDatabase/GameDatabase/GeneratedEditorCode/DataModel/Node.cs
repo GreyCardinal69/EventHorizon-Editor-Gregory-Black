@@ -1,3 +1,10 @@
+//-------------------------------------------------------------------------------
+//                                                                               
+//    This code was automatically generated.                                     
+//    Changes to this file may cause incorrect behavior and will be lost if      
+//    the code is regenerated.                                                   
+//                                                                               
+//-------------------------------------------------------------------------------
 
 using EditorDatabase.Enums;
 using EditorDatabase.Model;
@@ -20,7 +27,7 @@ namespace EditorDatabase.DataModel
         partial void OnDataDeserialized( NodeSerializable serializable, Database database );
         partial void OnDataSerialized( ref NodeSerializable serializable );
 
-        private static INodeContent CreateContent( NodeType type )
+        public static INodeContent CreateContent( NodeType type )
         {
             switch ( type )
             {
@@ -149,18 +156,18 @@ namespace EditorDatabase.DataModel
             }
         }
 
-        private void OnTypeChanged()
+        public void OnTypeChanged()
         {
             _content = CreateContent( Type );
             DataChangedEvent?.Invoke();
             LayoutChangedEvent?.Invoke();
         }
 
-        private INodeContent _content;
+        public INodeContent _content;
         public NumericValue<int> Id = new NumericValue<int>( 0, 1, 999999 );
         public NodeType Type;
 
-        public static Node DefaultValue { get; private set; }
+        public static Node DefaultValue { get; set; }
     }
 
     public class NodeEmptyContent : INodeContent
@@ -805,3 +812,4 @@ namespace EditorDatabase.DataModel
     }
 
 }
+

@@ -13,19 +13,19 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class GameObjectPrefabSerializable : SerializableItem
-	{
-		public GameObjectPrefabSerializable()
-		{
-			ItemType = ItemType.GameObjectPrefab;
-			FileName = "GameObjectPrefab.json";
-		}
+    public class GameObjectPrefabSerializable : SerializableItem
+    {
+        public GameObjectPrefabSerializable()
+        {
+            ItemType = ItemType.GameObjectPrefab;
+            FileName = "GameObjectPrefab.json";
+        }
 
-		public ObjectPrefabType Type;
-		[DefaultValue("")]
-		public string Image1;
-		[DefaultValue("")]
-		public string Image2;
+        public ObjectPrefabType Type;
+        [DefaultValue( "" )]
+        public string Image1;
+        [DefaultValue( "" )]
+        public string Image2;
         [DefaultValue( 1f )]
         public float ImageScale = 1f;
         [DefaultValue( 0.1f )]

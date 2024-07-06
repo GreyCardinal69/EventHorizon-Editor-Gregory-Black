@@ -1,4 +1,10 @@
 //-------------------------------------------------------------------------------
+//                                                                               
+//    This code was automatically generated.                                     
+//    Changes to this file may cause incorrect behavior and will be lost if      
+//    the code is regenerated.                                                   
+//                                                                               
+//-------------------------------------------------------------------------------
 
 using EditorDatabase.Enums;
 using EditorDatabase.Model;
@@ -20,7 +26,7 @@ namespace EditorDatabase.DataModel
         partial void OnDataDeserialized( GameObjectPrefabSerializable serializable, Database database );
         partial void OnDataSerialized( ref GameObjectPrefabSerializable serializable );
 
-        private static IGameObjectPrefabContent CreateContent( ObjectPrefabType type )
+        public static IGameObjectPrefabContent CreateContent( ObjectPrefabType type )
         {
             switch ( type )
             {
@@ -93,7 +99,7 @@ namespace EditorDatabase.DataModel
             }
         }
 
-        private void OnTypeChanged()
+        public void OnTypeChanged()
         {
             _content = CreateContent( Type );
             DataChangedEvent?.Invoke();
@@ -102,10 +108,10 @@ namespace EditorDatabase.DataModel
 
         public readonly ItemId<GameObjectPrefab> Id;
 
-        private IGameObjectPrefabContent _content;
+        public IGameObjectPrefabContent _content;
         public ObjectPrefabType Type;
 
-        public static GameObjectPrefab DefaultValue { get; private set; }
+        public static GameObjectPrefab DefaultValue { get; set; }
     }
 
     public class GameObjectPrefabEmptyContent : IGameObjectPrefabContent
@@ -214,3 +220,4 @@ namespace EditorDatabase.DataModel
     }
 
 }
+

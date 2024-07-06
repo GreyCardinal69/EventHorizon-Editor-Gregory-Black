@@ -13,13 +13,13 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public struct ComponentRestrictionsSerializable
-	{
-		public SizeClass[] ShipSizes;
-		public bool NotForOrganicShips;
-		public bool NotForMechanicShips;
-		[DefaultValue("")]
-		public string UniqueComponentTag;
+    public class ComponentRestrictionsSerializable
+    {
+        public SizeClass[] ShipSizes;
+        public bool NotForOrganicShips;
+        public bool NotForMechanicShips;
+        [DefaultValue( "" )]
+        public string UniqueComponentTag;
         public int MaxComponentAmount;
     }
 }

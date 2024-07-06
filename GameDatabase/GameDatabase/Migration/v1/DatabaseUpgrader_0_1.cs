@@ -9,7 +9,7 @@ namespace DatabaseMigration.v1
     {
         partial void Migrate_0_1()
         {
-            Console.WriteLine("Database migration: v1.0 -> v1.1");
+            Console.WriteLine( "Database migration: v1.0 -> v1.1" );
 
             UpdateComponentStats();
             UpdateBarrels();
@@ -20,28 +20,28 @@ namespace DatabaseMigration.v1
 
         private void UpdateBuilds()
         {
-            foreach (var build in Content.ShipBuildList)
-                if (build.BuildFaction < 0) build.BuildFaction = 0;
+            foreach ( var build in Content.ShipBuildList )
+                if ( build.BuildFaction < 0 ) build.BuildFaction = 0;
         }
 
         private void UpdateShips()
         {
-            foreach (var ship in Content.ShipList)
+            foreach ( var ship in Content.ShipList )
             {
-                if (ship.EngineSize > 0)
+                if ( ship.EngineSize > 0 )
                 {
                     var engine = new EngineSerializable { Position = ship.EnginePosition, Size = ship.EngineSize };
-                    if (ship.Engines == null)
+                    if ( ship.Engines == null )
                         ship.Engines = new EngineSerializable[] { engine };
                     else
                     {
                         var length = ship.Engines.Length;
-                        System.Array.Resize(ref ship.Engines, length + 1);
+                        System.Array.Resize( ref ship.Engines, length + 1 );
                         ship.Engines[length] = engine;
                     }
                 }
 
-                switch (ship.ShipCategory)
+                switch ( ship.ShipCategory )
                 {
                     case 1: // Rare
                         ship.ShipRarity = Enums.ShipRarity.Rare;
@@ -64,12 +64,12 @@ namespace DatabaseMigration.v1
                         break;
                 }
 
-                if (ship.EnergyResistance != 0 ||
+                if ( ship.EnergyResistance != 0 ||
                     ship.HeatResistance != 0 ||
                     ship.KineticResistance != 0 ||
                     ship.BaseWeightModifier != 0 ||
                     ship.Regeneration ||
-                    (ship.BuiltinDevices != null && ship.BuiltinDevices.Length > 0))
+                    ( ship.BuiltinDevices != null && ship.BuiltinDevices.Length > 0 ) )
                 {
                     ship.Features = new ShipFeaturesSerializable
                     {
@@ -97,9 +97,9 @@ namespace DatabaseMigration.v1
 
         private void UpdateFactions()
         {
-            foreach (var faction in Content.FactionList)
+            foreach ( var faction in Content.FactionList )
             {
-                if (faction.Hidden)
+                if ( faction.Hidden )
                 {
                     faction.NoTerritories = true;
                     faction.NoWanderingShips = true;
@@ -107,7 +107,7 @@ namespace DatabaseMigration.v1
                     faction.HideResearchTree = true;
                 }
 
-                if (faction.Hostile)
+                if ( faction.Hostile )
                 {
                     faction.NoMissions = true;
                 }
@@ -119,10 +119,10 @@ namespace DatabaseMigration.v1
 
         private void UpdateComponentStats()
         {
-            foreach (var stats in Content.ComponentStatsList)
+            foreach ( var stats in Content.ComponentStatsList )
             {
-                if (stats.AlterWeaponPlatform > 0)
-                    stats.AutoAimingArc = PlatformTypeToAngle(stats.AlterWeaponPlatform);
+                if ( stats.AlterWeaponPlatform > 0 )
+                    stats.AutoAimingArc = PlatformTypeToAngle( stats.AlterWeaponPlatform );
 
                 stats.AlterWeaponPlatform = 0;
             }
@@ -130,24 +130,24 @@ namespace DatabaseMigration.v1
 
         private void UpdateBarrels()
         {
-            foreach (var ship in Content.ShipList)
-                ship.Barrels = ship.Barrels?.Select(ProcessBarrel).ToArray();
-            foreach (var satellite in Content.SatelliteList)
-                satellite.Barrels = satellite.Barrels?.Select(ProcessBarrel).ToArray();
+            foreach ( var ship in Content.ShipList )
+                ship.Barrels = ship.Barrels?.Select( ProcessBarrel ).ToArray();
+            foreach ( var satellite in Content.SatelliteList )
+                satellite.Barrels = satellite.Barrels?.Select( ProcessBarrel ).ToArray();
         }
 
-        private static BarrelSerializable ProcessBarrel(BarrelSerializable barrel)
+        private static BarrelSerializable ProcessBarrel( BarrelSerializable barrel )
         {
-            if (barrel.PlatformType > 0)
-                barrel.AutoAimingArc = PlatformTypeToAngle(barrel.PlatformType);
+            if ( barrel.PlatformType > 0 )
+                barrel.AutoAimingArc = PlatformTypeToAngle( barrel.PlatformType );
 
             barrel.PlatformType = 0;
             return barrel;
         }
 
-        private static float PlatformTypeToAngle(int platformType)
+        private static float PlatformTypeToAngle( int platformType )
         {
-            switch (platformType)
+            switch ( platformType )
             {
                 case 1: //AutoTarget
                     return 360;

@@ -11,8 +11,8 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using static EditorDatabase.Property;
-using AdvancedButton = GameDatabase.Controls.AdvancedButton;
 using static GameDatabase.Reusables;
+using AdvancedButton = GameDatabase.Controls.AdvancedButton;
 
 namespace GameDatabase
 {

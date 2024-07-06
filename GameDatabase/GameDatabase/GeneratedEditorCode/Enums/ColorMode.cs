@@ -9,10 +9,10 @@
 namespace EditorDatabase.Enums
 {
     public enum ColorMode
-	{
-		TakeFromOwner,
-		UseMyOwn,
-		Blend,
-		Multiply,
-	}
+    {
+        TakeFromOwner,
+        UseMyOwn,
+        Blend,
+        Multiply,
+    }
 }

@@ -9,17 +9,17 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum SkillType
-	{
-		Undefined = 0,
-		ShipAttack = 1,
-		ShipDefense = 2,
-		StarbaseAttack = 3,
-		StarbaseDefense = 4,
-		QuickLearning = 5,
-		BetterPrices = 6,
-		BetterLoot = 7,
-		CommandPoints = 8,
-		SalvageDrones = 9,
-		Engineer = 10,
-	}
+    {
+        Undefined = 0,
+        ShipAttack = 1,
+        ShipDefense = 2,
+        StarbaseAttack = 3,
+        StarbaseDefense = 4,
+        QuickLearning = 5,
+        BetterPrices = 6,
+        BetterLoot = 7,
+        CommandPoints = 8,
+        SalvageDrones = 9,
+        Engineer = 10,
+    }
 }

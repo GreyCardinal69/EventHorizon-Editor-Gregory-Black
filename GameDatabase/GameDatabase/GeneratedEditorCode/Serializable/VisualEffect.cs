@@ -11,8 +11,8 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class VisualEffectSerializable : SerializableItem
-	{
-		public VisualEffectElementSerializable[] Elements;
-	}
+    public class VisualEffectSerializable : SerializableItem
+    {
+        public VisualEffectElementSerializable[] Elements;
+    }
 }

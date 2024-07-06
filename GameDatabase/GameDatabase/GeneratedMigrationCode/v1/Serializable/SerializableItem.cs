@@ -14,7 +14,7 @@ namespace DatabaseMigration.v1.Serializable
     [Serializable]
     public class SerializableItem
     {
-	    public string FileName { get; set; }
+        public string FileName { get; set; }
         public ItemType ItemType;
         public int Id;
         public bool Disabled;

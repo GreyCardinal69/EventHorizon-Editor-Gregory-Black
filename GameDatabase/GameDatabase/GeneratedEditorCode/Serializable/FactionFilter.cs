@@ -12,9 +12,9 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class FactionFilterSerializable
-	{
-		public FactionFilterType Type;
-		public int[] List;
-	}
+    public class FactionFilterSerializable
+    {
+        public FactionFilterType Type;
+        public int[] List;
+    }
 }

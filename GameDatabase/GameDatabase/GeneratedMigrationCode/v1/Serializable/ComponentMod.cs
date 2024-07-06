@@ -13,13 +13,14 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class ComponentModSerializable : SerializableItem
-	{
-		public ComponentModSerializable()
-		{
-			ItemType = ItemType.ComponentMod;
-			FileName = "ComponentMod.json";
-		}
+    public class ComponentModSerializable : SerializableItem
+    {
+        public ComponentModSerializable()
+        {
+            ItemType = ItemType.ComponentMod;
+            FileName = "ComponentMod.json";
+        }
+
         [DefaultValue( "" )]
         public string Description;
         public StatModificationSerializable[] Modifications;

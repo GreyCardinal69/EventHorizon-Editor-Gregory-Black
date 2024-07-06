@@ -12,11 +12,11 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class NodeActionSerializable
-	{
-		public int TargetNode;
-		public RequirementSerializable Requirement;
-		[DefaultValue("")]
-		public string ButtonText;
-	}
+    public class NodeActionSerializable
+    {
+        public int TargetNode;
+        public RequirementSerializable Requirement;
+        [DefaultValue( "" )]
+        public string ButtonText;
+    }
 }

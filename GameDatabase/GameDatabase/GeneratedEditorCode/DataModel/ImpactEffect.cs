@@ -13,37 +13,43 @@ using EditorDatabase.Serializable;
 namespace EditorDatabase.DataModel
 {
     public partial class ImpactEffect
-	{
-		partial void OnDataDeserialized(ImpactEffectSerializable serializable, Database database);
-		partial void OnDataSerialized(ref ImpactEffectSerializable serializable);
+    {
+        partial void OnDataDeserialized( ImpactEffectSerializable serializable, Database database );
+        partial void OnDataSerialized( ref ImpactEffectSerializable serializable );
 
-		public ImpactEffect() {}
+        public static ImpactEffect Create( ImpactEffectSerializable serializable, Database database )
+        {
+            if ( serializable == null ) return DefaultValue;
+            return new ImpactEffect( serializable, database );
+        }
 
-		public ImpactEffect(ImpactEffectSerializable serializable, Database database)
-		{
-			Type = serializable.Type;
-			DamageType = serializable.DamageType;
-			Power = new NumericValue<float>(serializable.Power, 0f, 1E+09f);
-			Factor = new NumericValue<float>(serializable.Factor, 0f, 1f);
-			OnDataDeserialized(serializable, database);
-		}
+        public ImpactEffect() { }
 
-		public ImpactEffectSerializable Serialize()
-		{
-			var serializable = new ImpactEffectSerializable();
-			serializable.Type = Type;
-			serializable.DamageType = DamageType;
-			serializable.Power = Power.Value;
-			serializable.Factor = Factor.Value;
-			OnDataSerialized(ref serializable);
-			return serializable;
-		}
+        public ImpactEffect( ImpactEffectSerializable serializable, Database database )
+        {
+            Type = serializable.Type;
+            DamageType = serializable.DamageType;
+            Power = new NumericValue<float>( serializable.Power, 0f, 1E+09f );
+            Factor = new NumericValue<float>( serializable.Factor, 0f, 1E+09f );
+            OnDataDeserialized( serializable, database );
+        }
 
-		public ImpactEffectType Type;
-		public DamageType DamageType;
-		public NumericValue<float> Power = new NumericValue<float>(0, 0f, 1E+09f);
-		public NumericValue<float> Factor = new NumericValue<float>(0, 0f, 1f);
+        public ImpactEffectSerializable Serialize()
+        {
+            var serializable = new ImpactEffectSerializable();
+            serializable.Type = Type;
+            serializable.DamageType = DamageType;
+            serializable.Power = Power.Value;
+            serializable.Factor = Factor.Value;
+            OnDataSerialized( ref serializable );
+            return serializable;
+        }
 
-		public static ImpactEffect DefaultValue { get; private set; }
-	}
+        public ImpactEffectType Type;
+        public DamageType DamageType;
+        public NumericValue<float> Power = new NumericValue<float>( 0, 0f, 1E+09f );
+        public NumericValue<float> Factor = new NumericValue<float>( 0, 0f, 1E+09f );
+
+        public static ImpactEffect DefaultValue { get; set; }
+    }
 }

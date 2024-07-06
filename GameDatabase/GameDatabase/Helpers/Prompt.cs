@@ -4,7 +4,7 @@ namespace GameDatabase.GameDatabase.Helpers
 {
     public static class Prompt
     {
-        public static string ShowDialog(string text, string caption, string content="")
+        public static string ShowDialog( string text, string caption, string content = "" )
         {
             Form prompt = new Form()
             {
@@ -18,10 +18,10 @@ namespace GameDatabase.GameDatabase.Helpers
             TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
             textBox.Text = content;
             Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
-            confirmation.Click += (sender, e) => { prompt.Close(); };
-            prompt.Controls.Add(textBox);
-            prompt.Controls.Add(confirmation);
-            prompt.Controls.Add(textLabel);
+            confirmation.Click += ( sender, e ) => { prompt.Close(); };
+            prompt.Controls.Add( textBox );
+            prompt.Controls.Add( confirmation );
+            prompt.Controls.Add( textLabel );
             prompt.AcceptButton = confirmation;
 
             return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";

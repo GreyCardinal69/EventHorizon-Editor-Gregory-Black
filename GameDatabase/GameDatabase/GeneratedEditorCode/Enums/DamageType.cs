@@ -9,10 +9,10 @@
 namespace EditorDatabase.Enums
 {
     public enum DamageType
-	{
-		Impact,
-		Energy,
-		Heat,
-		Direct,
-	}
+    {
+        Impact,
+        Energy,
+        Heat,
+        Corrosive,
+    }
 }

@@ -15,6 +15,7 @@ using static EditorDatabase.Property;
 
 namespace EditorDatabase.DataModel
 {
+
     public interface IRequirementContent
     {
         void Load( RequirementSerializable serializable, Database database );
@@ -26,12 +27,10 @@ namespace EditorDatabase.DataModel
         partial void OnDataDeserialized( RequirementSerializable serializable, Database database );
         partial void OnDataSerialized( ref RequirementSerializable serializable );
 
-        private static IRequirementContent CreateContent( RequirementType type )
+        public static IRequirementContent CreateContent( RequirementType type )
         {
             switch ( type )
             {
-                case RequirementType.IsHostileFaction:
-                    return new RequirementEmptyContent();
                 case RequirementType.Empty:
                     return new RequirementEmptyContent();
                 case RequirementType.Any:
@@ -58,6 +57,8 @@ namespace EditorDatabase.DataModel
                     return new RequirementEmptyContent();
                 case RequirementType.FactionStarbasePower:
                     return new Requirement_FactionStarbasePower();
+                case RequirementType.IsHostileFaction:
+                    return new RequirementEmptyContent();
                 case RequirementType.Faction:
                     return new Requirement_Faction();
                 case RequirementType.HaveQuestItem:
@@ -88,7 +89,7 @@ namespace EditorDatabase.DataModel
             _content = new RequirementEmptyContent();
         }
 
-        private Requirement( RequirementSerializable serializable, Database database )
+        public Requirement( RequirementSerializable serializable, Database database )
         {
             Type = serializable.Type;
             _content = CreateContent( serializable.Type );
@@ -130,17 +131,17 @@ namespace EditorDatabase.DataModel
             }
         }
 
-        private void OnTypeChanged()
+        public void OnTypeChanged()
         {
             _content = CreateContent( Type );
             DataChangedEvent?.Invoke();
             LayoutChangedEvent?.Invoke();
         }
 
-        private IRequirementContent _content;
+        public IRequirementContent _content;
         public RequirementType Type;
 
-        public static Requirement DefaultValue { get; private set; }
+        public static Requirement DefaultValue { get; set; }
     }
 
     public class RequirementEmptyContent : IRequirementContent
@@ -549,5 +550,6 @@ namespace EditorDatabase.DataModel
         public NumericValue<int> Minutes = new NumericValue<int>( 0, 0, 999999 );
         public NumericValue<int> Hours = new NumericValue<int>( 0, 0, 999999 );
     }
+
 }
 

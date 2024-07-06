@@ -9,15 +9,18 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum BulletShape
-	{
-		Projectile,
-		Rocket,
-		LaserBeam,
-		LightningBolt,
-		EnergyBeam,
-		Spark,
-		Mine,
-		Wave,
-		BlackHole,
-	}
+    {
+        Projectile,
+        Rocket,
+        LaserBeam,
+        LightningBolt,
+        EnergyBeam,
+        Spark,
+        Mine,
+        Wave,
+        BlackHole,
+        Harpoon,
+        CircularSaw,
+        PiercingLaser,
+    }
 }

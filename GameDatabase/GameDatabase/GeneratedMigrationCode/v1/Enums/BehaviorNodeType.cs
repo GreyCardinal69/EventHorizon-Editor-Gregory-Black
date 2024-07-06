@@ -1,8 +1,17 @@
-﻿namespace DatabaseMigration.v1.Enums
+//-------------------------------------------------------------------------------
+//                                                                               
+//    This code was automatically generated.                                     
+//    Changes to this file may cause incorrect behavior and will be lost if      
+//    the code is regenerated.                                                   
+//                                                                               
+//-------------------------------------------------------------------------------
+
+namespace DatabaseMigration.v1.Enums
 {
     public enum BehaviorNodeType
     {
-        Undefined = 0,
+        Success = 0,
+        Failure = 9,
         SubTree = 1,
         Selector = 2,
         Sequence = 3,
@@ -13,9 +22,10 @@
         Execute = 8,
         ParallelSequence = 10,
         PreserveTarget = 11,
+        IfThenElse = 12,
         HasEnoughEnergy = 50,
         IsLowOnHp = 51,
-        IsControledByPlayer = 52,
+        IsNotControledByPlayer = 52,
         HasIncomingThreat = 53,
         HasAdditionalTargets = 54,
         IsFasterThanTarget = 55,
@@ -58,6 +68,9 @@
         TargetAllyStarbase = 128,
         TargetEnemyStarbase = 129,
         BypassObstacles = 130,
+        AttackTurretTargets = 131,
+        HoldHarpoon = 132,
+        FindDamagedAlly = 133,
         EnginePropulsionForce = 150,
         MotherShipRetreated = 200,
         MotherShipDestroyed = 201,
@@ -67,6 +80,8 @@
         MothershipLowHp = 205,
         MothershipDistanceExceeded = 206,
         MakeTargetMothership = 207,
+        MothershipLowEnergy = 208,
+        MothershipLowShield = 209,
         ShowMessage = 300,
         DebugLog = 301,
         SetValue = 302,

@@ -9,9 +9,9 @@
 namespace EditorDatabase.Enums
 {
     public enum BulletImpactType
-	{
-		HitFirstTarget,
-		HitAllTargets,
-		DamageOverTime,
-	}
+    {
+        HitFirstTarget,
+        HitAllTargets,
+        DamageOverTime,
+    }
 }

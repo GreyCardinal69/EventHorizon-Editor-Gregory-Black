@@ -154,10 +154,10 @@ namespace EditorDatabase
                     item.Value.Save( value );
             }
 
-            foreach ( var item in _skillMap )
+            foreach ( var item in _statUpgradeTemplateMap )
             {
-                var value = _content.GetSkill( item.Key );
-                if ( value != secondaryDb.Content.GetSkill( item.Key ) )
+                var value = _content.GetStatUpgradeTemplate( item.Key );
+                if ( value != secondaryDb.Content.GetStatUpgradeTemplate( item.Key ) )
                     item.Value.Save( value );
             }
 
@@ -196,6 +196,13 @@ namespace EditorDatabase
                     item.Value.Save( value );
             }
 
+            foreach ( var item in _componentStatUpgradeMap )
+            {
+                var value = _content.GetComponentStatUpgrade( item.Key );
+                if ( value != secondaryDb.Content.GetComponentStatUpgrade( item.Key ) )
+                    item.Value.Save( value );
+            }
+
             foreach ( var item in _questItemMap )
             {
                 var value = _content.GetQuestItem( item.Key );
@@ -231,6 +238,8 @@ namespace EditorDatabase
                     item.Value.Save( value );
             }
 
+            _localizationSettings?.Save( _content.LocalizationSettings );
+            _musicPlaylist?.Save( _content.MusicPlaylist );
             _factionsSettings?.Save( _content.FactionsSettings );
             _uiSettings?.Save( _content.UiSettings );
             _debugSettings?.Save( _content.DebugSettings );
@@ -252,6 +261,7 @@ namespace EditorDatabase
             if ( type == typeof( CombatRules ) ) return _content.CombatRulesList.Select( item => new ItemId<CombatRules>( item ) );
             if ( type == typeof( GameObjectPrefab ) ) return _content.GameObjectPrefabList.Select( item => new ItemId<GameObjectPrefab>( item ) );
             if ( type == typeof( AmmunitionObsolete ) ) return _content.AmmunitionObsoleteList.Select( item => new ItemId<AmmunitionObsolete>( item ) );
+            if ( type == typeof( ComponentStatUpgrade ) ) return _content.ComponentStatUpgradeList.Select( item => new ItemId<ComponentStatUpgrade>( item ) );
             if ( type == typeof( Component ) ) return _content.ComponentList.Select( item => new ItemId<Component>( item ) );
             if ( type == typeof( ComponentMod ) ) return _content.ComponentModList.Select( item => new ItemId<ComponentMod>( item ) );
             if ( type == typeof( ComponentStats ) ) return _content.ComponentStatsList.Select( item => new ItemId<ComponentStats>( item ) );
@@ -262,7 +272,7 @@ namespace EditorDatabase
             if ( type == typeof( SatelliteBuild ) ) return _content.SatelliteBuildList.Select( item => new ItemId<SatelliteBuild>( item ) );
             if ( type == typeof( Ship ) ) return _content.ShipList.Select( item => new ItemId<Ship>( item ) );
             if ( type == typeof( ShipBuild ) ) return _content.ShipBuildList.Select( item => new ItemId<ShipBuild>( item ) );
-            if ( type == typeof( Skill ) ) return _content.SkillList.Select( item => new ItemId<Skill>( item ) );
+            if ( type == typeof( StatUpgradeTemplate ) ) return _content.StatUpgradeTemplateList.Select( item => new ItemId<StatUpgradeTemplate>( item ) );
             if ( type == typeof( Technology ) ) return _content.TechnologyList.Select( item => new ItemId<Technology>( item ) );
             if ( type == typeof( Character ) ) return _content.CharacterList.Select( item => new ItemId<Character>( item ) );
             if ( type == typeof( Fleet ) ) return _content.FleetList.Select( item => new ItemId<Fleet>( item ) );
@@ -281,6 +291,7 @@ namespace EditorDatabase
         {
             switch ( type )
             {
+                case ItemType.ComponentStatUpgrade: return GetComponentStatUpgrade( id );
                 case ItemType.ShipModSettings: return ShipModSettings;
                 case ItemType.FrontierSettings: return FrontierSettings;
                 case ItemType.AmmunitionObsolete: return GetAmmunitionObsolete( id );
@@ -294,7 +305,7 @@ namespace EditorDatabase
                 case ItemType.SatelliteBuild: return GetSatelliteBuild( id );
                 case ItemType.Ship: return GetShip( id );
                 case ItemType.ShipBuild: return GetShipBuild( id );
-                case ItemType.Skill: return GetSkill( id );
+                case ItemType.StatUpgradeTemplate: return GetStatUpgradeTemplate( id );
                 case ItemType.Technology: return GetTechnology( id );
                 case ItemType.Character: return GetCharacter( id );
                 case ItemType.Fleet: return GetFleet( id );
@@ -317,7 +328,8 @@ namespace EditorDatabase
                 case ItemType.DebugSettings: return DebugSettings;
                 case ItemType.CombatSettings: return CombatSettings;
                 case ItemType.FactionsSettings: return FactionsSettings;
-                case ItemType.MusicPlaylist: return MusicSettings;
+                case ItemType.LocalizationSettings: return LocalizationSettings;
+                case ItemType.MusicPlaylist: return MusicPlaylist;
                 case ItemType.BehaviorTree: return GetBehaviorTree( id );
                 default: return null;
             }
@@ -327,6 +339,7 @@ namespace EditorDatabase
         {
             switch ( type )
             {
+                case ItemType.ComponentStatUpgrade: SetComponentStatUpgrade( id, old ); break;
                 case ItemType.AmmunitionObsolete: SetAmmunitionObsolete( id, old ); break;
                 case ItemType.Component: SetComponent( id, old ); break;
                 case ItemType.ComponentMod: SetComponentMod( id, old ); break;
@@ -338,7 +351,7 @@ namespace EditorDatabase
                 case ItemType.SatelliteBuild: SetSatelliteBuild( id, old ); break;
                 case ItemType.Ship: SetShip( id, old ); break;
                 case ItemType.ShipBuild: SetShipBuild( id, old ); break;
-                case ItemType.Skill: SetSkill( id, old ); break;
+                case ItemType.StatUpgradeTemplate: SetStatUpgradeTemplate( id, old ); break;
                 case ItemType.Technology: SetTechnology( id, old ); break;
                 case ItemType.Character: SetCharacter( id, old ); break;
                 case ItemType.Fleet: SetFleet( id, old ); break;
@@ -354,6 +367,8 @@ namespace EditorDatabase
                 case ItemType.BehaviorTree: SetBehaviorTree( id, old ); break;
             }
         }
+        public LocalizationSettings LocalizationSettings => _localizationSettings ?? ( _localizationSettings = LocalizationSettings.Create( _content.LocalizationSettings, this ) );
+        public MusicPlaylist MusicPlaylist => _musicPlaylist ?? ( _musicPlaylist = MusicPlaylist.Create( _content.MusicPlaylist, this ) );
         public FactionsSettings FactionsSettings => _factionsSettings ?? ( _factionsSettings = FactionsSettings.Create( _content.FactionsSettings, this ) );
         public UiSettings UiSettings => _uiSettings ?? ( _uiSettings = UiSettings.Create( _content.UiSettings, this ) );
         public CombatSettings CombatSettings => _combatSettings ?? ( _combatSettings = CombatSettings.Create( _content.CombatSettings, this ) );
@@ -368,6 +383,18 @@ namespace EditorDatabase
         public MusicPlaylist MusicSettings => _musicSettings ?? ( _musicSettings = new MusicPlaylist( _content.MusicSettings, this ) );
         public ItemId<AmmunitionObsolete> GetAmmunitionObsoleteId( int id ) { return new ItemId<AmmunitionObsolete>( _content.GetAmmunitionObsolete( id ) ); }
 
+        public ItemId<ComponentStatUpgrade> GetComponentStatUpgradeId( int id ) { return new ItemId<ComponentStatUpgrade>( _content.GetComponentStatUpgrade( id ) ); }
+
+        public ComponentStatUpgrade GetComponentStatUpgrade( int id )
+        {
+            if ( !_componentStatUpgradeMap.TryGetValue( id, out var item ) )
+            {
+                var serializable = _content.GetComponentStatUpgrade( id );
+                item = ComponentStatUpgrade.Create( serializable, this );
+                _componentStatUpgradeMap.Add( id, item );
+            }
+            return item;
+        }
         public AmmunitionObsolete GetAmmunitionObsolete( int id )
         {
             if ( !_ammunitionObsoleteMap.TryGetValue( id, out var item ) )
@@ -535,14 +562,14 @@ namespace EditorDatabase
             return item;
         }
 
-        public ItemId<Skill> GetSkillId( int id ) { return new ItemId<Skill>( _content.GetSkill( id ) ); }
-        public Skill GetSkill( int id )
+        public ItemId<StatUpgradeTemplate> GetStatUpgradeTemplateId( int id ) { return new ItemId<StatUpgradeTemplate>( _content.GetStatUpgradeTemplate( id ) ); }
+        public StatUpgradeTemplate GetStatUpgradeTemplate( int id )
         {
-            if ( !_skillMap.TryGetValue( id, out var item ) )
+            if ( !_statUpgradeTemplateMap.TryGetValue( id, out var item ) )
             {
-                var serializable = _content.GetSkill( id );
-                item = new Skill( serializable, this );
-                _skillMap.Add( id, item );
+                var serializable = _content.GetStatUpgradeTemplate( id );
+                item = StatUpgradeTemplate.Create( serializable, this );
+                _statUpgradeTemplateMap.Add( id, item );
             }
             return item;
         }
@@ -668,6 +695,13 @@ namespace EditorDatabase
         }
 
         // Setters
+        public void SetComponentStatUpgrade( int id, int old )
+        {
+            ComponentStatUpgradeSerializable serializable = _content.GetComponentStatUpgrade( id );
+            _content.ComponentStatUpgradeList[_content.ComponentStatUpgradeList.IndexOf( _content.GetComponentStatUpgrade( old ) )] = serializable;
+            _componentStatUpgradeMap[old] = new ComponentStatUpgrade( serializable, this );
+
+        }
 
         public void SetAmmunitionObsolete( int id, int old )
         {
@@ -753,11 +787,11 @@ namespace EditorDatabase
             _shipBuildMap[old] = new ShipBuild( serializable, this );
         }
 
-        public void SetSkill( int id, int old )
+        public void SetStatUpgradeTemplate( int id, int old )
         {
-            var serializable = _content.GetSkill( id );
-            _content.SkillList[_content.SkillList.IndexOf( _content.GetSkill( old ) )] = serializable;
-            _skillMap[old] = new Skill( serializable, this );
+            var serializable = _content.GetStatUpgradeTemplate( id );
+            _content.StatUpgradeTemplateList[_content.StatUpgradeTemplateList.IndexOf( _content.GetStatUpgradeTemplate( old ) )] = serializable;
+            _statUpgradeTemplateMap[old] = new StatUpgradeTemplate( serializable, this );
         }
 
         public void SetTechnology( int id, int old )
@@ -856,6 +890,7 @@ namespace EditorDatabase
 
         private void Clear()
         {
+            _componentStatUpgradeMap.Clear();
             _ammunitionObsoleteMap.Clear();
             _componentMap.Clear();
             _componentModMap.Clear();
@@ -867,7 +902,7 @@ namespace EditorDatabase
             _satelliteBuildMap.Clear();
             _shipMap.Clear();
             _shipBuildMap.Clear();
-            _skillMap.Clear();
+            _statUpgradeTemplateMap.Clear();
             _technologyMap.Clear();
             _characterMap.Clear();
             _fleetMap.Clear();
@@ -882,6 +917,8 @@ namespace EditorDatabase
             _gameObjectPrefabMap.Clear();
             _behaviorTreeMap.Clear();
 
+            _localizationSettings = null;
+            _musicPlaylist = null;
             _uiSettings = null;
             _debugSettings = null;
             _skillSettings = null;
@@ -896,6 +933,7 @@ namespace EditorDatabase
             _factionsSettings = null;
         }
 
+        private readonly Dictionary<int, ComponentStatUpgrade> _componentStatUpgradeMap = new Dictionary<int, ComponentStatUpgrade>();
         private readonly Dictionary<int, CombatRules> _combatRulesMap = new Dictionary<int, CombatRules>();
         private readonly Dictionary<int, GameObjectPrefab> _gameObjectPrefabMap = new Dictionary<int, GameObjectPrefab>();
         private readonly Dictionary<int, BehaviorTreeModel> _behaviorTreeMap = new Dictionary<int, BehaviorTreeModel>();
@@ -910,7 +948,7 @@ namespace EditorDatabase
         private readonly Dictionary<int, SatelliteBuild> _satelliteBuildMap = new Dictionary<int, SatelliteBuild>();
         private readonly Dictionary<int, Ship> _shipMap = new Dictionary<int, Ship>();
         private readonly Dictionary<int, ShipBuild> _shipBuildMap = new Dictionary<int, ShipBuild>();
-        private readonly Dictionary<int, Skill> _skillMap = new Dictionary<int, Skill>();
+        private readonly Dictionary<int, StatUpgradeTemplate> _statUpgradeTemplateMap = new Dictionary<int, StatUpgradeTemplate>();
         private readonly Dictionary<int, Technology> _technologyMap = new Dictionary<int, Technology>();
         private readonly Dictionary<int, Character> _characterMap = new Dictionary<int, Character>();
         private readonly Dictionary<int, Fleet> _fleetMap = new Dictionary<int, Fleet>();
@@ -922,6 +960,9 @@ namespace EditorDatabase
         private readonly Dictionary<int, VisualEffect> _visualEffectMap = new Dictionary<int, VisualEffect>();
         private readonly Dictionary<int, Weapon> _weaponMap = new Dictionary<int, Weapon>();
         public FrontierSettings FrontierSettings => _frontierSettings ?? ( _frontierSettings = new FrontierSettings( _content.FrontierSettings, this ) );
+
+        private LocalizationSettings _localizationSettings;
+        private MusicPlaylist _musicPlaylist;
         private DatabaseSettings _databaseSettings;
         private ExplorationSettings _explorationSettings;
         private GalaxySettings _galaxySettings;

@@ -9,7 +9,7 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum BehaviorRequirementType
-	{
+    {
         Empty = 0,
         Any = 1,
         All = 2,
@@ -24,8 +24,13 @@ namespace DatabaseMigration.v1.Enums
         HasHighRecoilWeapon = 14,
         HasChargeableWeapon = 15,
         HasRemotelyControlledWeapon = 16,
+        HasLongRangeWeapon = 17,
+        HasEngine = 18,
+        HasHarpoon = 19,
+        CanRechargeAllies = 20,
         IsDrone = 50,
         HasKineticResistance = 100,
         HasHighManeuverability = 101,
+        HasHighRammingDamage = 102,
     }
 }

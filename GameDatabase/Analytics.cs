@@ -1,5 +1,4 @@
 ﻿using EditorDatabase;
-using EditorDatabase.DataModel;
 using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
 using NHunspell;

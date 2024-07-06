@@ -13,8 +13,8 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class BulletBodySerializable
-	{
+    public class BulletBodySerializable
+    {
         public float Size;
         public float Length;
         public float Velocity;

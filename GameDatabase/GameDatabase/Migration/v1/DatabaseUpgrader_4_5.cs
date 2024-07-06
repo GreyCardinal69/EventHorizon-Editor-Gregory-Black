@@ -4,15 +4,15 @@ using System;
 namespace DatabaseMigration.v1
 {
     public partial class DatabaseUpgrader
-	{
-		partial void Migrate_4_5()
-		{
-			Console.WriteLine("Database migration: v1.4 -> v1.5");
+    {
+        partial void Migrate_4_5()
+        {
+            Console.WriteLine( "Database migration: v1.4 -> v1.5" );
 
             var combatRules = new CombatRulesSerializable { Id = 1, FileName = "DefaultCombatRules.json" };
-            Content.CombatRulesList.Add(combatRules);
+            Content.CombatRulesList.Add( combatRules );
 
-            Content.CombatSettings.DefaultCombatRules = 1;
-		}
-	}
+            Content.CreateCombatSettings().DefaultCombatRules = 1;
+        }
+    }
 }

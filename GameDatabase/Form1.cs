@@ -13,7 +13,7 @@ namespace GameDatabase
 
         public string Name { get; set; }
 
-        private void confirmButton_Click(object sender, EventArgs e)
+        private void confirmButton_Click( object sender, EventArgs e )
         {
             Name = nameBox.Text;
             DialogResult = DialogResult.OK;

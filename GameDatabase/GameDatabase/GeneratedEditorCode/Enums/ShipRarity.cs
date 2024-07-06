@@ -9,10 +9,10 @@
 namespace EditorDatabase.Enums
 {
     public enum ShipRarity
-	{
-		Normal,
-		Rare,
-		Hidden,
-		Unique,
-	}
+    {
+        Normal,
+        Rare,
+        Hidden,
+        Unique,
+    }
 }

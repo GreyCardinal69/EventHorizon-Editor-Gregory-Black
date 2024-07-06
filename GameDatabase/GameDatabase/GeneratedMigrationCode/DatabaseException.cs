@@ -16,13 +16,13 @@ namespace DatabaseMigration
         {
         }
 
-        public DatabaseException(string message)
-            : base(message)
+        public DatabaseException( string message )
+            : base( message )
         {
         }
 
-        public DatabaseException(string message, Exception inner)
-            : base(message, inner)
+        public DatabaseException( string message, Exception inner )
+            : base( message, inner )
         {
         }
     }

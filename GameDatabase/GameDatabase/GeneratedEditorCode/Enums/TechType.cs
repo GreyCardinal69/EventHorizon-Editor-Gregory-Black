@@ -9,9 +9,9 @@
 namespace EditorDatabase.Enums
 {
     public enum TechType
-	{
-		Component,
-		Ship,
-		Satellite,
-	}
+    {
+        Component,
+        Ship,
+        Satellite,
+    }
 }

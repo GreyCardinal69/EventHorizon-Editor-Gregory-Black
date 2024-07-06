@@ -34,7 +34,7 @@ namespace GameDatabase
 
             closeConfrmationToolStripMenuItem.Checked = Settings.Default.ClosingConfirmation;
 
-            DBESettings = JsonConvert.DeserializeObject<DBESettings>( File.ReadAllText(Directory.GetCurrentDirectory()+"\\Settings.gregory") );
+            DBESettings = JsonConvert.DeserializeObject<DBESettings>( File.ReadAllText( Directory.GetCurrentDirectory() + "\\Settings.gregory" ) );
             ChangeSorting( Settings.Default.SortingType );
         }
 
@@ -79,7 +79,7 @@ namespace GameDatabase
                 }
 
                 _secondaryDatabse = new Database( new DatabaseStorage( path ) );
-             
+
                 BuildFilesTree( path, DatabaseTreeView.Nodes );
                 _lastDatabasePath = path;
                 BuildTemplates( path );
@@ -111,7 +111,7 @@ namespace GameDatabase
             return database;
         }
 
-        internal Database _secondaryDatabse; 
+        internal Database _secondaryDatabse;
 
         private void BuildFilesTree( string path, TreeNodeCollection nodeCollection )
         {

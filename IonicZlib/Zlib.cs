@@ -146,7 +146,7 @@ namespace Ionic.Zlib
         /// If you are producing ZIPs for use on Mac OSX, be aware that archives produced with CompressionLevel.None
         /// cannot be opened with the default zip reader. Use a different CompressionLevel.
         /// </summary>
-        None= 0,
+        None = 0,
         /// <summary>
         /// Same as None.
         /// </summary>
@@ -250,7 +250,7 @@ namespace Ionic.Zlib
         /// <summary>
         /// Used to specify that the stream should compress the data.
         /// </summary>
-        Compress= 0,
+        Compress = 0,
         /// <summary>
         /// Used to specify that the stream should decompress the data.
         /// </summary>
@@ -261,7 +261,7 @@ namespace Ionic.Zlib
     /// <summary>
     /// A general purpose exception class for exceptions in the Zlib library.
     /// </summary>
-    [Interop.GuidAttribute("ebc25cf6-9120-4283-b972-0e5520d0000E")]
+    [Interop.GuidAttribute( "ebc25cf6-9120-4283-b972-0e5520d0000E" )]
     public class ZlibException : System.Exception
     {
         /// <summary>
@@ -277,8 +277,8 @@ namespace Ionic.Zlib
         /// This ctor collects a message attached to the exception.
         /// </summary>
         /// <param name="s">the message for the exception.</param>
-        public ZlibException(System.String s)
-            : base(s)
+        public ZlibException( System.String s )
+            : base( s )
         {
         }
     }
@@ -292,9 +292,9 @@ namespace Ionic.Zlib
         /// <param name="number">Number to operate on</param>
         /// <param name="bits">Ammount of bits to shift</param>
         /// <returns>The resulting number from the shift operation</returns>
-        public static int URShift(int number, int bits)
+        public static int URShift( int number, int bits )
         {
-            return (int)((uint)number >> bits);
+            return ( int ) ( ( uint ) number >> bits );
         }
 
 #if NOT
@@ -325,56 +325,56 @@ namespace Ionic.Zlib
         ///   count depending on the data available in the source TextReader. Returns -1
         ///   if the end of the stream is reached.
         /// </returns>
-        public static System.Int32 ReadInput(System.IO.TextReader sourceTextReader, byte[] target, int start, int count)
+        public static System.Int32 ReadInput( System.IO.TextReader sourceTextReader, byte[] target, int start, int count )
         {
             // Returns 0 bytes if not enough space in target
-            if (target.Length == 0) return 0;
+            if ( target.Length == 0 ) return 0;
 
             char[] charArray = new char[target.Length];
-            int bytesRead = sourceTextReader.Read(charArray, start, count);
+            int bytesRead = sourceTextReader.Read( charArray, start, count );
 
             // Returns -1 if EOF
-            if (bytesRead == 0) return -1;
+            if ( bytesRead == 0 ) return -1;
 
-            for (int index = start; index < start + bytesRead; index++)
-                target[index] = (byte)charArray[index];
+            for ( int index = start; index < start + bytesRead; index++ )
+                target[index] = ( byte ) charArray[index];
 
             return bytesRead;
         }
 
 
-        internal static byte[] ToByteArray(System.String sourceString)
+        internal static byte[] ToByteArray( System.String sourceString )
         {
-            return System.Text.UTF8Encoding.UTF8.GetBytes(sourceString);
+            return System.Text.UTF8Encoding.UTF8.GetBytes( sourceString );
         }
 
 
-        internal static char[] ToCharArray(byte[] byteArray)
+        internal static char[] ToCharArray( byte[] byteArray )
         {
-            return System.Text.UTF8Encoding.UTF8.GetChars(byteArray);
+            return System.Text.UTF8Encoding.UTF8.GetChars( byteArray );
         }
     }
 
     internal static class InternalConstants
     {
-        internal static readonly int MAX_BITS     = 15;
-        internal static readonly int BL_CODES     = 19;
-        internal static readonly int D_CODES      = 30;
-        internal static readonly int LITERALS     = 256;
+        internal static readonly int MAX_BITS = 15;
+        internal static readonly int BL_CODES = 19;
+        internal static readonly int D_CODES = 30;
+        internal static readonly int LITERALS = 256;
         internal static readonly int LENGTH_CODES = 29;
-        internal static readonly int L_CODES      = (LITERALS + 1 + LENGTH_CODES);
+        internal static readonly int L_CODES = ( LITERALS + 1 + LENGTH_CODES );
 
         // Bit length codes must not exceed MAX_BL_BITS bits
-        internal static readonly int MAX_BL_BITS  = 7;
+        internal static readonly int MAX_BL_BITS = 7;
 
         // repeat previous bit length 3-6 times (2 bits of repeat count)
-        internal static readonly int REP_3_6      = 16;
+        internal static readonly int REP_3_6 = 16;
 
         // repeat a zero length 3-10 times  (3 bits of repeat count)
-        internal static readonly int REPZ_3_10    = 17;
+        internal static readonly int REPZ_3_10 = 17;
 
         // repeat a zero length 11-138 times  (7 bits of repeat count)
-        internal static readonly int REPZ_11_138  = 18;
+        internal static readonly int REPZ_11_138 = 18;
 
     }
 
@@ -435,7 +435,7 @@ namespace Ionic.Zlib
         internal int elems;         // max number of elements in the tree
         internal int maxLength;     // max bit length for the codes
 
-        private StaticTree(short[] treeCodes, int[] extraBits, int extraBase, int elems, int maxLength)
+        private StaticTree( short[] treeCodes, int[] extraBits, int extraBase, int elems, int maxLength )
         {
             this.treeCodes = treeCodes;
             this.extraBits = extraBits;
@@ -445,9 +445,9 @@ namespace Ionic.Zlib
         }
         static StaticTree()
         {
-            Literals = new StaticTree(lengthAndLiteralsTreeCodes, Tree.ExtraLengthBits, InternalConstants.LITERALS + 1, InternalConstants.L_CODES, InternalConstants.MAX_BITS);
-            Distances = new StaticTree(distTreeCodes, Tree.ExtraDistanceBits, 0, InternalConstants.D_CODES, InternalConstants.MAX_BITS);
-            BitLengths = new StaticTree(null, Tree.extra_blbits, 0, InternalConstants.BL_CODES, InternalConstants.MAX_BL_BITS);
+            Literals = new StaticTree( lengthAndLiteralsTreeCodes, Tree.ExtraLengthBits, InternalConstants.LITERALS + 1, InternalConstants.L_CODES, InternalConstants.MAX_BITS );
+            Distances = new StaticTree( distTreeCodes, Tree.ExtraDistanceBits, 0, InternalConstants.D_CODES, InternalConstants.MAX_BITS );
+            BitLengths = new StaticTree( null, Tree.extra_blbits, 0, InternalConstants.BL_CODES, InternalConstants.MAX_BL_BITS );
         }
     }
 
@@ -488,19 +488,19 @@ namespace Ionic.Zlib
         ///    adler = Adler.Adler32(adler, buffer, index, length);
         ///  </code>
         /// </example>
-        public static uint Adler32(uint adler, byte[] buf, int index, int len)
+        public static uint Adler32( uint adler, byte[] buf, int index, int len )
         {
-            if (buf == null)
+            if ( buf == null )
                 return 1;
 
             uint s1 = adler & 0xffff;
             uint s2 = ( adler >> 16 ) & 0xffff;
 
-            while (len > 0)
+            while ( len > 0 )
             {
                 int k = len < NMAX ? len : NMAX;
                 len -= k;
-                while (k >= 16)
+                while ( k >= 16 )
                 {
                     //s1 += (buf[index++] & 0xff); s2 += s1;
                     s1 += buf[index++]; s2 += s1;
@@ -521,14 +521,14 @@ namespace Ionic.Zlib
                     s1 += buf[index++]; s2 += s1;
                     k -= 16;
                 }
-                if (k != 0)
+                if ( k != 0 )
                 {
                     do
                     {
                         s1 += buf[index++];
                         s2 += s1;
                     }
-                    while (--k != 0);
+                    while ( --k != 0 );
                 }
                 s1 %= BASE;
                 s2 %= BASE;

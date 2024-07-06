@@ -11,9 +11,9 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public struct ShipToValueSerializable
-	{
-		public int Ship;
-		public int Value;
-	}
+    public class ShipToValueSerializable
+    {
+        public int Ship;
+        public int Value;
+    }
 }

@@ -12,12 +12,10 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class SkillSettingsSerializable : SerializableItem
+    public class SkillSettingsSerializable : SerializableItem
     {
-        [DefaultValue( 100 )]
-        public int MaxPlayerShipsLevel = 100;
         public int[] BeatAllEnemiesFactionList;
-		public bool DisableExceedTheLimits;
+        public bool DisableExceedTheLimits;
         [DefaultValue( "BaseFuelCapacity + 50*level" )]
         public string FuelTankCapacity = "BaseFuelCapacity + 50*level";
         [DefaultValue( "0.1*level" )]
@@ -48,13 +46,15 @@ namespace EditorDatabase.Serializable
         public string CraftingPriceFactor = "1 - 0.05*level";
         [DefaultValue( "5*level" )]
         public string CraftingLevelReduction = "5*level";
-        [DefaultValue(200)]
-		public int IncreasedLevelLimit = 200;
-		[DefaultValue(100)]
-		public int BaseFuelCapacity = 100;
-		[DefaultValue(1.5f)]
-		public float BaseFlightRange = 1.5f;
-		[DefaultValue(1f)]
-		public float BaseFlightSpeed = 1f;
-	}
+        [DefaultValue( 100 )]
+        public int MaxPlayerShipsLevel = 100;
+        [DefaultValue( 200 )]
+        public int IncreasedLevelLimit = 200;
+        [DefaultValue( 100 )]
+        public int BaseFuelCapacity = 100;
+        [DefaultValue( 1.5f )]
+        public float BaseFlightRange = 1.5f;
+        [DefaultValue( 1f )]
+        public float BaseFlightSpeed = 1f;
+    }
 }

@@ -8,7 +8,7 @@ namespace GameDatabase
 {
     internal class BarrelExtensions
     {
-        internal static Barrel[] CreateBarrels(string input)
+        internal static Barrel[] CreateBarrels( string input )
         {
             int n = ( int ) Math.Sqrt( input.Length );
             int[,] grid = new int[n, n];
@@ -21,7 +21,7 @@ namespace GameDatabase
             }
 
             List<(double, double)> coordinates = new List<(double, double)>();
-            
+
             for ( int row = 0; row < n; row++ )
             {
                 for ( int col = 0; col < n; col++ )

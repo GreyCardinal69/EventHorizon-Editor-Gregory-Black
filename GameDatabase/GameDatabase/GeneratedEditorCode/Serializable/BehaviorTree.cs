@@ -11,8 +11,8 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class BehaviorTreeSerializable : SerializableItem
-	{
-		public BehaviorTreeNodeSerializable RootNode;
-	}
+    public class BehaviorTreeSerializable : SerializableItem
+    {
+        public BehaviorTreeNodeSerializable RootNode;
+    }
 }

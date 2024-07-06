@@ -9,10 +9,10 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum DamageType
-	{
-		Impact,
-		Energy,
-		Heat,
-		Direct,
-	}
+    {
+        Impact,
+        Energy,
+        Heat,
+        Corrosive,
+    }
 }

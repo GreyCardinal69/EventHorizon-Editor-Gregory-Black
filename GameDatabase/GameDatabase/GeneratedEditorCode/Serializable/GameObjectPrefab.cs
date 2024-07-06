@@ -13,13 +13,13 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class GameObjectPrefabSerializable : SerializableItem
-	{
-		public ObjectPrefabType Type;
-		[DefaultValue("")]
-		public string Image1;
-		[DefaultValue("")]
-		public string Image2;
+    public class GameObjectPrefabSerializable : SerializableItem
+    {
+        public ObjectPrefabType Type;
+        [DefaultValue( "" )]
+        public string Image1;
+        [DefaultValue( "" )]
+        public string Image2;
         [DefaultValue( 1f )]
         public float ImageScale = 1f;
         [DefaultValue( 0.1f )]

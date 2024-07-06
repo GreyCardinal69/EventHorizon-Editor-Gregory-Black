@@ -12,14 +12,14 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class VisualEffectSerializable : SerializableItem
-	{
-		public VisualEffectSerializable()
-		{
-			ItemType = ItemType.VisualEffect;
-			FileName = "VisualEffect.json";
-		}
+    public class VisualEffectSerializable : SerializableItem
+    {
+        public VisualEffectSerializable()
+        {
+            ItemType = ItemType.VisualEffect;
+            FileName = "VisualEffect.json";
+        }
 
-		public VisualEffectElementSerializable[] Elements;
-	}
+        public VisualEffectElementSerializable[] Elements;
+    }
 }

@@ -12,14 +12,14 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class LootSerializable : SerializableItem
-	{
-		public LootSerializable()
-		{
-			ItemType = ItemType.Loot;
-			FileName = "Loot.json";
-		}
+    public class LootSerializable : SerializableItem
+    {
+        public LootSerializable()
+        {
+            ItemType = ItemType.Loot;
+            FileName = "Loot.json";
+        }
 
-		public LootContentSerializable Loot;
-	}
+        public LootContentSerializable Loot;
+    }
 }

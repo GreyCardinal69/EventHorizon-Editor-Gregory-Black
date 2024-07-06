@@ -13,28 +13,28 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class WeaponSerializable : SerializableItem
-	{
-		public WeaponSerializable()
-		{
-			ItemType = ItemType.Weapon;
-			FileName = "Weapon.json";
-		}
+    public class WeaponSerializable : SerializableItem
+    {
+        public WeaponSerializable()
+        {
+            ItemType = ItemType.Weapon;
+            FileName = "Weapon.json";
+        }
 
-		public WeaponClass WeaponClass;
-		public float FireRate;
-		public float Spread;
-		public int Magazine;
-		public ActivationType ActivationType;
-		[DefaultValue("")]
-		public string ShotSound;
-		[DefaultValue("")]
-		public string ChargeSound;
-		[DefaultValue("")]
-		public string ShotEffectPrefab;
-		public int VisualEffect;
-		public float EffectSize;
-		[DefaultValue("")]
-		public string ControlButtonIcon;
-	}
+        public WeaponClass WeaponClass;
+        public float FireRate;
+        public float Spread;
+        public int Magazine;
+        public ActivationType ActivationType;
+        [DefaultValue( "" )]
+        public string ShotSound;
+        [DefaultValue( "" )]
+        public string ChargeSound;
+        [DefaultValue( "" )]
+        public string ShotEffectPrefab;
+        public int VisualEffect;
+        public float EffectSize;
+        [DefaultValue( "" )]
+        public string ControlButtonIcon;
+    }
 }

@@ -12,13 +12,13 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class FactionsSettingsSerializable : SerializableItem
-	{
-		[DefaultValue("MIN(1000, 300 + 5*distance)")]
-		public string StarbaseInitialDefense = "MIN(1000, 300 + 5*distance)";
-		[DefaultValue(50)]
-		public int StarbaseMinDefense = 50;
-		[DefaultValue(10)]
-		public int DefenseLossPerEnemyDefeated = 10;
-	}
+    public class FactionsSettingsSerializable : SerializableItem
+    {
+        [DefaultValue( "MIN(1000, 300 + 5*distance)" )]
+        public string StarbaseInitialDefense = "MIN(1000, 300 + 5*distance)";
+        [DefaultValue( 50 )]
+        public int StarbaseMinDefense = 50;
+        [DefaultValue( 10 )]
+        public int DefenseLossPerEnemyDefeated = 10;
+    }
 }

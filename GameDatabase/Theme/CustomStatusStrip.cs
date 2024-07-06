@@ -11,7 +11,7 @@ namespace System.Windows.Forms
             InitializeComponent();
 
             this.RenderMode = ToolStripRenderMode.Professional;
-            this.Renderer = new ToolStripProfessionalRenderer(new CustomStatusStripColorTable());
+            this.Renderer = new ToolStripProfessionalRenderer( new CustomStatusStripColorTable() );
         }
         #endregion
 
@@ -19,8 +19,8 @@ namespace System.Windows.Forms
         /// <summary>
         /// Gets or sets the ForeColor of the System.Windows.Forms.StatusStrip control.
         /// </summary>
-        [Category("Style")]
-        [DisplayName("StatusStripForeColor")]
+        [Category( "Style" )]
+        [DisplayName( "StatusStripForeColor" )]
         public Color StatusStripForeColor
         {
             get { return Properties.Settings.Default.StatusStripForeColor; }
@@ -34,8 +34,8 @@ namespace System.Windows.Forms
         /// <summary>
         /// Gets or sets the starting color of the gradient used on the System.Windows.Forms.StatusStrip control.
         /// </summary>
-        [Category("Style")]
-        [DisplayName("StatusStripGradientBegin")]
+        [Category( "Style" )]
+        [DisplayName( "StatusStripGradientBegin" )]
         public Color StatusStripGradientBegin
         {
             get { return Properties.Settings.Default.StatusStripGradientBegin; }
@@ -45,8 +45,8 @@ namespace System.Windows.Forms
         /// <summary>
         /// Gets or sets the ending color of the gradient used on the System.Windows.Forms.StatusStrip control.
         /// </summary>
-        [Category("Style")]
-        [DisplayName("StatusStripGradientEnd")]
+        [Category( "Style" )]
+        [DisplayName( "StatusStripGradientEnd" )]
         public Color StatusStripGradientEnd
         {
             get { return Properties.Settings.Default.StatusStripGradientEnd; }

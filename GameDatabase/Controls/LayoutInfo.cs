@@ -117,18 +117,18 @@ namespace GameDatabase.Controls
                 }
             }
 
-            var armor = ( _database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size ) * ( _shipData.Features.ArmorBonus.Value == 0 ? 1 : 1 + _shipData.Features.ArmorBonus.Value );
+            var armor = ( _database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size ) * ( _shipData.Features.Value.ArmorBonus.Value == 0 ? 1 : 1 + _shipData.Features.Value.ArmorBonus.Value );
             BaseArmor.Text = armor.ToString( "0.00" );
 
-            BaseWeigth.Text = ( _database.ShipSettings.DefaultWeightPerCell.Value * size * ( 1 + _shipData.Features.ShipWeightBonus.Value ) ).ToString( "0.0" );
+            BaseWeigth.Text = ( _database.ShipSettings.DefaultWeightPerCell.Value * size * ( 1 + _shipData.Features.Value.ShipWeightBonus.Value ) ).ToString( "0.0" );
 
-            MinWeigth.Text = ( _database.ShipSettings.MinimumWeightPerCell.Value * size * ( 1 + _shipData.Features.ShipWeightBonus.Value ) ).ToString( "0.0" );
+            MinWeigth.Text = ( _database.ShipSettings.MinimumWeightPerCell.Value * size * ( 1 + _shipData.Features.Value.ShipWeightBonus.Value ) ).ToString( "0.0" );
 
             if ( _shipData.Features != null )
             {
-                BaseEnergyResistance.Text = CalculateResistances( _shipData.Features.EnergyResistance.Value ).ToString( "0.00" );
-                BaseKineticResistance.Text = CalculateResistances( _shipData.Features.KineticResistance.Value ).ToString( "0.00" );
-                BaseHeatResistance.Text = CalculateResistances( _shipData.Features.HeatResistance.Value ).ToString( "0.00" );
+                BaseEnergyResistance.Text = CalculateResistances( _shipData.Features.Value.EnergyResistance.Value ).ToString( "0.00" );
+                BaseKineticResistance.Text = CalculateResistances( _shipData.Features.Value.KineticResistance.Value ).ToString( "0.00" );
+                BaseHeatResistance.Text = CalculateResistances( _shipData.Features.Value.HeatResistance.Value ).ToString( "0.00" );
             }
 
             long cost;

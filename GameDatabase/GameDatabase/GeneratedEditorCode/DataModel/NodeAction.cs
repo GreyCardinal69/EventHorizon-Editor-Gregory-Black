@@ -24,7 +24,7 @@ namespace EditorDatabase.DataModel
 
         public NodeAction() { }
 
-        private NodeAction( NodeActionSerializable serializable, Database database )
+        public NodeAction( NodeActionSerializable serializable, Database database )
         {
             TargetNode = new NumericValue<int>( serializable.TargetNode, 1, 1000 );
             Requirement.Value = DataModel.Requirement.Create( serializable.Requirement, database );
@@ -46,6 +46,6 @@ namespace EditorDatabase.DataModel
         public ObjectWrapper<Requirement> Requirement = new ObjectWrapper<Requirement>( DataModel.Requirement.DefaultValue );
         public string ButtonText;
 
-        public static NodeAction DefaultValue { get; private set; }
+        public static NodeAction DefaultValue { get; set; }
     }
 }

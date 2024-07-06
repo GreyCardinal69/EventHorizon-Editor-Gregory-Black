@@ -4,13 +4,13 @@ namespace EditorDatabase.Model
 {
     public struct NumericValue<T> where T : struct, IComparable
     {
-        public NumericValue(T value, T min, T max)
+        public NumericValue( T value, T min, T max )
         {
-            _value = value.CompareTo(max) > 0 ? max : value.CompareTo(min) < 0 ? min : value;
+            _value = value.CompareTo( max ) > 0 ? max : value.CompareTo( min ) < 0 ? min : value;
             Max = max;
             Min = min;
 
-            if (Max.CompareTo(Min) < 0)
+            if ( Max.CompareTo( Min ) < 0 )
                 throw new ArgumentException();
         }
 
@@ -22,9 +22,9 @@ namespace EditorDatabase.Model
             }
             set
             {
-                if (value.CompareTo(Min) < 0)
+                if ( value.CompareTo( Min ) < 0 )
                     _value = Min;
-                else if (value.CompareTo(Max) > 0)
+                else if ( value.CompareTo( Max ) > 0 )
                     _value = Max;
                 else
                     _value = value;

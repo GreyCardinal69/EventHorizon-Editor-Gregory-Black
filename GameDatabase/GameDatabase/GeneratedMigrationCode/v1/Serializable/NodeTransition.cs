@@ -11,10 +11,10 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public struct NodeTransitionSerializable
-	{
-		public int TargetNode;
-		public RequirementSerializable Requirement;
-		public float Weight;
-	}
+    public class NodeTransitionSerializable
+    {
+        public int TargetNode;
+        public RequirementSerializable Requirement;
+        public float Weight;
+    }
 }

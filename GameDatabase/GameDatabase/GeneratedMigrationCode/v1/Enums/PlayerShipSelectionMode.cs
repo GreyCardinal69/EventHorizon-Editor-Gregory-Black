@@ -9,10 +9,10 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum PlayerShipSelectionMode
-	{
-		Default = 0,
-		OnlyOneShip = 1,
-		ByOrder = 2,
-		NoRetreats = 3,
-	}
+    {
+        Default = 0,
+        OnlyOneShip = 1,
+        ByOrder = 2,
+        NoRetreats = 3,
+    }
 }

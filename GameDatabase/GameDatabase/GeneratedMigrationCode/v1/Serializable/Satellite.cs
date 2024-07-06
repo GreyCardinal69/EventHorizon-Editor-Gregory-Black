@@ -13,22 +13,22 @@ using System.ComponentModel;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class SatelliteSerializable : SerializableItem
-	{
-		public SatelliteSerializable()
-		{
-			ItemType = ItemType.Satellite;
-			FileName = "Satellite.json";
-		}
+    public class SatelliteSerializable : SerializableItem
+    {
+        public SatelliteSerializable()
+        {
+            ItemType = ItemType.Satellite;
+            FileName = "Satellite.json";
+        }
 
-		[DefaultValue("")]
-		public string Name;
-		[DefaultValue("")]
-		public string ModelImage;
-		public float ModelScale;
-		public SizeClass SizeClass;
-		[DefaultValue("")]
-		public string Layout;
-		public BarrelSerializable[] Barrels;
-	}
+        [DefaultValue( "" )]
+        public string Name;
+        [DefaultValue( "" )]
+        public string ModelImage;
+        public float ModelScale;
+        public SizeClass SizeClass;
+        [DefaultValue( "" )]
+        public string Layout;
+        public BarrelSerializable[] Barrels;
+    }
 }

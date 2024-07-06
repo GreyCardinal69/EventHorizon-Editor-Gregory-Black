@@ -9,12 +9,12 @@
 namespace EditorDatabase.Enums
 {
     public enum BulletEffectType
-	{
-		None,
-		PlaySfx,
-		SpawnBullet,
-		Detonate,
-		SpawnStaticSfx,
-		GravityField,
-	}
+    {
+        None,
+        PlaySfx,
+        SpawnBullet,
+        Detonate,
+        SpawnStaticSfx,
+        GravityField,
+    }
 }

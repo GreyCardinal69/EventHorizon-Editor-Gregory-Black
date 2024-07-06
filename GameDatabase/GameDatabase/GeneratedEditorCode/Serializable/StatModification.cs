@@ -12,14 +12,14 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class StatModificationSerializable
-	{
-		public StatModificationType Type;
-		public float Gray3;
-		public float Gray2;
-		public float Gray1;
-		public float Green;
-		public float Purple;
-		public float Gold;
-	}
+    public class StatModificationSerializable
+    {
+        public StatModificationType Type;
+        public float Gray3;
+        public float Gray2;
+        public float Gray1;
+        public float Green;
+        public float Purple;
+        public float Gold;
+    }
 }

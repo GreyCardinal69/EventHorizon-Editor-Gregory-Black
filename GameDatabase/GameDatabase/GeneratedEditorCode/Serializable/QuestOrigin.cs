@@ -12,13 +12,13 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class QuestOriginSerializable
-	{
-		public QuestOriginType Type;
-		public FactionFilterSerializable Factions;
-		public int MinDistance;
-		public int MaxDistance;
-		public int MinRelations;
-		public int MaxRelations;
-	}
+    public class QuestOriginSerializable
+    {
+        public QuestOriginType Type;
+        public FactionFilterSerializable Factions;
+        public int MinDistance;
+        public int MaxDistance;
+        public int MinRelations;
+        public int MaxRelations;
+    }
 }

@@ -12,14 +12,14 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class LootContentSerializable
-	{
-		public LootItemType Type;
-		public int ItemId;
-		public int MinAmount;
-		public int MaxAmount;
-		public float ValueRatio;
-		public FactionFilterSerializable Factions;
-		public LootItemSerializable[] Items;
-	}
+    public class LootContentSerializable
+    {
+        public LootItemType Type;
+        public int ItemId;
+        public int MinAmount;
+        public int MaxAmount;
+        public float ValueRatio;
+        public FactionFilterSerializable Factions;
+        public LootItemSerializable[] Items;
+    }
 }

@@ -12,11 +12,11 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class SatelliteBuildSerializable : SerializableItem
-	{
-		public int SatelliteId;
-		public bool NotAvailableInGame;
-		public DifficultyClass DifficultyClass;
-		public InstalledComponentSerializable[] Components;
-	}
+    public class SatelliteBuildSerializable : SerializableItem
+    {
+        public int SatelliteId;
+        public bool NotAvailableInGame;
+        public DifficultyClass DifficultyClass;
+        public InstalledComponentSerializable[] Components;
+    }
 }

@@ -12,8 +12,8 @@ using System.ComponentModel;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class ComponentModSerializable : SerializableItem
-	{
+    public class ComponentModSerializable : SerializableItem
+    {
         [DefaultValue( "" )]
         public string Description;
         public StatModificationSerializable[] Modifications;

@@ -9,13 +9,13 @@
 namespace EditorDatabase.Enums
 {
     public enum VisualEffectType
-	{
-		Flash,
-		FlashAdditive,
-		Shockwave,
-		Smoke,
-		SmokeAdditive,
-		Shake,
+    {
+        Flash,
+        FlashAdditive,
+        Shockwave,
+        Smoke,
+        SmokeAdditive,
+        Shake,
         Spark,
         Lightning,
         LightningStrike,

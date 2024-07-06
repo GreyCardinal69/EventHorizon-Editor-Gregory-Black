@@ -15,15 +15,15 @@ namespace EditorDatabase.Model
     {
         public ItemId() { }
 
-        public ItemId(int id, string name)
+        public ItemId( int id, string name )
         {
             Value = id;
             Name = name;
         }
 
-        public ItemId(SerializableItem item)
+        public ItemId( SerializableItem item )
         {
-            if (item == null)
+            if ( item == null )
             {
                 Value = 0;
                 Name = string.Empty;
@@ -36,14 +36,14 @@ namespace EditorDatabase.Model
 
         public int Value { get; }
         public string Name { get; }
-        public Type ItemType => typeof(T);
+        public Type ItemType => typeof( T );
         public bool IsNull => Value <= 0;
 
         public override int GetHashCode() { return Value; }
 
-        public override bool Equals(object obj)
+        public override bool Equals( object obj )
         {
-            switch (obj)
+            switch ( obj )
             {
                 case ItemId<T> id:
                     return Value == id.Value;
@@ -54,8 +54,8 @@ namespace EditorDatabase.Model
             }
         }
 
-        public override string ToString() { return string.IsNullOrEmpty(Name) ? "[EMPTY]" : Name; }
+        public override string ToString() { return string.IsNullOrEmpty( Name ) ? "[EMPTY]" : Name; }
 
-        public static readonly ItemId<T> Empty = new ItemId<T>(0, string.Empty);
+        public static readonly ItemId<T> Empty = new ItemId<T>( 0, string.Empty );
     }
 }

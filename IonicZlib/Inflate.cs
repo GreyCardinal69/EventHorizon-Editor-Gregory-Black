@@ -75,16 +75,16 @@ namespace Ionic.Zlib
 
         private enum InflateBlockMode
         {
-            TYPE   = 0,                     // get type bits (3, including end bit)
-            LENS   = 1,                     // get lengths for stored
+            TYPE = 0,                     // get type bits (3, including end bit)
+            LENS = 1,                     // get lengths for stored
             STORED = 2,                     // processing stored block
-            TABLE  = 3,                     // get table lengths
-            BTREE  = 4,                     // get bit lengths tree for a dynamic block
-            DTREE  = 5,                     // get length, distance trees for a dynamic block
-            CODES  = 6,                     // processing fixed or dynamic block
-            DRY    = 7,                     // output remaining window bytes
-            DONE   = 8,                     // finished last block, done
-            BAD    = 9,                     // ot a data error--stuck here
+            TABLE = 3,                     // get table lengths
+            BTREE = 4,                     // get bit lengths tree for a dynamic block
+            DTREE = 5,                     // get length, distance trees for a dynamic block
+            CODES = 6,                     // processing fixed or dynamic block
+            DRY = 7,                     // output remaining window bytes
+            DONE = 8,                     // finished last block, done
+            BAD = 9,                     // ot a data error--stuck here
         }
 
         private InflateBlockMode mode;                    // current inflate_block mode
@@ -103,7 +103,7 @@ namespace Ionic.Zlib
 
         internal ZlibCodec _codec;                        // pointer back to this zlib stream
 
-                                                          // mode independent information
+        // mode independent information
         internal int bitk;                                // bits in bit buffer
         internal int bitb;                                // bit buffer
         internal int[] hufts;                             // single malloc for tree space
@@ -116,7 +116,7 @@ namespace Ionic.Zlib
 
         internal InfTree inftree = new InfTree();
 
-        internal InflateBlocks(ZlibCodec codec, System.Object checkfn, int w)
+        internal InflateBlocks( ZlibCodec codec, System.Object checkfn, int w )
         {
             _codec = codec;
             hufts = new int[MANY * 3];
@@ -135,13 +135,13 @@ namespace Ionic.Zlib
             bitb = 0;
             readAt = writeAt = 0;
 
-            if (checkfn != null)
-                _codec._Adler32 = check = Adler.Adler32(0, null, 0, 0);
+            if ( checkfn != null )
+                _codec._Adler32 = check = Adler.Adler32( 0, null, 0, 0 );
             return oldCheck;
         }
 
 
-        internal int Process(int r)
+        internal int Process( int r )
         {
             int t; // temporary storage
             int b; // bit buffer
@@ -163,15 +163,15 @@ namespace Ionic.Zlib
 
 
             // process input based on current state
-            while (true)
+            while ( true )
             {
-                switch (mode)
+                switch ( mode )
                 {
                     case InflateBlockMode.TYPE:
 
-                        while (k < (3))
+                        while ( k < ( 3 ) )
                         {
-                            if (n != 0)
+                            if ( n != 0 )
                             {
                                 r = ZlibConstants.Z_OK;
                             }
@@ -182,20 +182,20 @@ namespace Ionic.Zlib
                                 _codec.TotalBytesIn += p - _codec.NextIn;
                                 _codec.NextIn = p;
                                 writeAt = q;
-                                return Flush(r);
+                                return Flush( r );
                             }
 
                             n--;
-                            b |= (_codec.InputBuffer[p++] & 0xff) << k;
+                            b |= ( _codec.InputBuffer[p++] & 0xff ) << k;
                             k += 8;
                         }
                         t = b & 7;
                         last = t & 1;
 
-                        switch ((uint)t >> 1)
+                        switch ( ( uint ) t >> 1 )
                         {
                             case 0:  // stored
-                                b >>= 3; k -= (3);
+                                b >>= 3; k -= ( 3 );
                                 t = k & 7; // go to byte boundary
                                 b >>= t; k -= t;
                                 mode = InflateBlockMode.LENS; // get length of stored block
@@ -206,8 +206,8 @@ namespace Ionic.Zlib
                                 int[] bd = new int[1];
                                 int[][] tl = new int[1][];
                                 int[][] td = new int[1][];
-                                InfTree.inflate_trees_fixed(bl, bd, tl, td, _codec);
-                                codes.Init(bl[0], bd[0], tl[0], 0, td[0], 0);
+                                InfTree.inflate_trees_fixed( bl, bd, tl, td, _codec );
+                                codes.Init( bl[0], bd[0], tl[0], 0, td[0], 0 );
                                 b >>= 3; k -= 3;
                                 mode = InflateBlockMode.CODES;
                                 break;
@@ -227,15 +227,15 @@ namespace Ionic.Zlib
                                 _codec.TotalBytesIn += p - _codec.NextIn;
                                 _codec.NextIn = p;
                                 writeAt = q;
-                                return Flush(r);
+                                return Flush( r );
                         }
                         break;
 
                     case InflateBlockMode.LENS:
 
-                        while (k < (32))
+                        while ( k < ( 32 ) )
                         {
-                            if (n != 0)
+                            if ( n != 0 )
                             {
                                 r = ZlibConstants.Z_OK;
                             }
@@ -246,15 +246,15 @@ namespace Ionic.Zlib
                                 _codec.TotalBytesIn += p - _codec.NextIn;
                                 _codec.NextIn = p;
                                 writeAt = q;
-                                return Flush(r);
+                                return Flush( r );
                             }
                             ;
                             n--;
-                            b |= (_codec.InputBuffer[p++] & 0xff) << k;
+                            b |= ( _codec.InputBuffer[p++] & 0xff ) << k;
                             k += 8;
                         }
 
-                        if ( ( ((~b)>>16) & 0xffff) != (b & 0xffff))
+                        if ( ( ( ( ~b ) >> 16 ) & 0xffff ) != ( b & 0xffff ) )
                         {
                             mode = InflateBlockMode.BAD;
                             _codec.Message = "invalid stored block lengths";
@@ -265,70 +265,70 @@ namespace Ionic.Zlib
                             _codec.TotalBytesIn += p - _codec.NextIn;
                             _codec.NextIn = p;
                             writeAt = q;
-                            return Flush(r);
+                            return Flush( r );
                         }
-                        left = (b & 0xffff);
+                        left = ( b & 0xffff );
                         b = k = 0; // dump bits
-                        mode = left != 0 ? InflateBlockMode.STORED : (last != 0 ? InflateBlockMode.DRY : InflateBlockMode.TYPE);
+                        mode = left != 0 ? InflateBlockMode.STORED : ( last != 0 ? InflateBlockMode.DRY : InflateBlockMode.TYPE );
                         break;
 
                     case InflateBlockMode.STORED:
-                        if (n == 0)
+                        if ( n == 0 )
                         {
                             bitb = b; bitk = k;
                             _codec.AvailableBytesIn = n;
                             _codec.TotalBytesIn += p - _codec.NextIn;
                             _codec.NextIn = p;
                             writeAt = q;
-                            return Flush(r);
+                            return Flush( r );
                         }
 
-                        if (m == 0)
+                        if ( m == 0 )
                         {
-                            if (q == end && readAt != 0)
+                            if ( q == end && readAt != 0 )
                             {
                                 q = 0; m = q < readAt ? readAt - q - 1 : end - q;
                             }
-                            if (m == 0)
+                            if ( m == 0 )
                             {
                                 writeAt = q;
-                                r = Flush(r);
+                                r = Flush( r );
                                 q = writeAt; m = q < readAt ? readAt - q - 1 : end - q;
-                                if (q == end && readAt != 0)
+                                if ( q == end && readAt != 0 )
                                 {
                                     q = 0; m = q < readAt ? readAt - q - 1 : end - q;
                                 }
-                                if (m == 0)
+                                if ( m == 0 )
                                 {
                                     bitb = b; bitk = k;
                                     _codec.AvailableBytesIn = n;
                                     _codec.TotalBytesIn += p - _codec.NextIn;
                                     _codec.NextIn = p;
                                     writeAt = q;
-                                    return Flush(r);
+                                    return Flush( r );
                                 }
                             }
                         }
                         r = ZlibConstants.Z_OK;
 
                         t = left;
-                        if (t > n)
+                        if ( t > n )
                             t = n;
-                        if (t > m)
+                        if ( t > m )
                             t = m;
-                        Array.Copy(_codec.InputBuffer, p, window, q, t);
+                        Array.Copy( _codec.InputBuffer, p, window, q, t );
                         p += t; n -= t;
                         q += t; m -= t;
-                        if ((left -= t) != 0)
+                        if ( ( left -= t ) != 0 )
                             break;
                         mode = last != 0 ? InflateBlockMode.DRY : InflateBlockMode.TYPE;
                         break;
 
                     case InflateBlockMode.TABLE:
 
-                        while (k < (14))
+                        while ( k < ( 14 ) )
                         {
-                            if (n != 0)
+                            if ( n != 0 )
                             {
                                 r = ZlibConstants.Z_OK;
                             }
@@ -339,16 +339,16 @@ namespace Ionic.Zlib
                                 _codec.TotalBytesIn += p - _codec.NextIn;
                                 _codec.NextIn = p;
                                 writeAt = q;
-                                return Flush(r);
+                                return Flush( r );
                             }
 
                             n--;
-                            b |= (_codec.InputBuffer[p++] & 0xff) << k;
+                            b |= ( _codec.InputBuffer[p++] & 0xff ) << k;
                             k += 8;
                         }
 
-                        table = t = (b & 0x3fff);
-                        if ((t & 0x1f) > 29 || ((t >> 5) & 0x1f) > 29)
+                        table = t = ( b & 0x3fff );
+                        if ( ( t & 0x1f ) > 29 || ( ( t >> 5 ) & 0x1f ) > 29 )
                         {
                             mode = InflateBlockMode.BAD;
                             _codec.Message = "too many length or distance symbols";
@@ -359,16 +359,16 @@ namespace Ionic.Zlib
                             _codec.TotalBytesIn += p - _codec.NextIn;
                             _codec.NextIn = p;
                             writeAt = q;
-                            return Flush(r);
+                            return Flush( r );
                         }
-                        t = 258 + (t & 0x1f) + ((t >> 5) & 0x1f);
-                        if (blens == null || blens.Length < t)
+                        t = 258 + ( t & 0x1f ) + ( ( t >> 5 ) & 0x1f );
+                        if ( blens == null || blens.Length < t )
                         {
                             blens = new int[t];
                         }
                         else
                         {
-                            Array.Clear(blens, 0, t);
+                            Array.Clear( blens, 0, t );
                             // for (int i = 0; i < t; i++)
                             // {
                             //     blens[i] = 0;
@@ -384,11 +384,11 @@ namespace Ionic.Zlib
                         goto case InflateBlockMode.BTREE;
 
                     case InflateBlockMode.BTREE:
-                        while (index < 4 + (table >> 10))
+                        while ( index < 4 + ( table >> 10 ) )
                         {
-                            while (k < (3))
+                            while ( k < ( 3 ) )
                             {
-                                if (n != 0)
+                                if ( n != 0 )
                                 {
                                     r = ZlibConstants.Z_OK;
                                 }
@@ -399,11 +399,11 @@ namespace Ionic.Zlib
                                     _codec.TotalBytesIn += p - _codec.NextIn;
                                     _codec.NextIn = p;
                                     writeAt = q;
-                                    return Flush(r);
+                                    return Flush( r );
                                 }
 
                                 n--;
-                                b |= (_codec.InputBuffer[p++] & 0xff) << k;
+                                b |= ( _codec.InputBuffer[p++] & 0xff ) << k;
                                 k += 8;
                             }
 
@@ -412,17 +412,17 @@ namespace Ionic.Zlib
                             b >>= 3; k -= 3;
                         }
 
-                        while (index < 19)
+                        while ( index < 19 )
                         {
                             blens[border[index++]] = 0;
                         }
 
                         bb[0] = 7;
-                        t = inftree.inflate_trees_bits(blens, bb, tb, hufts, _codec);
-                        if (t != ZlibConstants.Z_OK)
+                        t = inftree.inflate_trees_bits( blens, bb, tb, hufts, _codec );
+                        if ( t != ZlibConstants.Z_OK )
                         {
                             r = t;
-                            if (r == ZlibConstants.Z_DATA_ERROR)
+                            if ( r == ZlibConstants.Z_DATA_ERROR )
                             {
                                 blens = null;
                                 mode = InflateBlockMode.BAD;
@@ -433,7 +433,7 @@ namespace Ionic.Zlib
                             _codec.TotalBytesIn += p - _codec.NextIn;
                             _codec.NextIn = p;
                             writeAt = q;
-                            return Flush(r);
+                            return Flush( r );
                         }
 
                         index = 0;
@@ -441,10 +441,10 @@ namespace Ionic.Zlib
                         goto case InflateBlockMode.DTREE;
 
                     case InflateBlockMode.DTREE:
-                        while (true)
+                        while ( true )
                         {
                             t = table;
-                            if (!(index < 258 + (t & 0x1f) + ((t >> 5) & 0x1f)))
+                            if ( !( index < 258 + ( t & 0x1f ) + ( ( t >> 5 ) & 0x1f ) ) )
                             {
                                 break;
                             }
@@ -453,9 +453,9 @@ namespace Ionic.Zlib
 
                             t = bb[0];
 
-                            while (k < t)
+                            while ( k < t )
                             {
-                                if (n != 0)
+                                if ( n != 0 )
                                 {
                                     r = ZlibConstants.Z_OK;
                                 }
@@ -466,18 +466,18 @@ namespace Ionic.Zlib
                                     _codec.TotalBytesIn += p - _codec.NextIn;
                                     _codec.NextIn = p;
                                     writeAt = q;
-                                    return Flush(r);
+                                    return Flush( r );
                                 }
 
                                 n--;
-                                b |= (_codec.InputBuffer[p++] & 0xff) << k;
+                                b |= ( _codec.InputBuffer[p++] & 0xff ) << k;
                                 k += 8;
                             }
 
-                            t = hufts[(tb[0] + (b & InternalInflateConstants.InflateMask[t])) * 3 + 1];
-                            c = hufts[(tb[0] + (b & InternalInflateConstants.InflateMask[t])) * 3 + 2];
+                            t = hufts[( tb[0] + ( b & InternalInflateConstants.InflateMask[t] ) ) * 3 + 1];
+                            c = hufts[( tb[0] + ( b & InternalInflateConstants.InflateMask[t] ) ) * 3 + 2];
 
-                            if (c < 16)
+                            if ( c < 16 )
                             {
                                 b >>= t; k -= t;
                                 blens[index++] = c;
@@ -488,9 +488,9 @@ namespace Ionic.Zlib
                                 i = c == 18 ? 7 : c - 14;
                                 j = c == 18 ? 11 : 3;
 
-                                while (k < (t + i))
+                                while ( k < ( t + i ) )
                                 {
-                                    if (n != 0)
+                                    if ( n != 0 )
                                     {
                                         r = ZlibConstants.Z_OK;
                                     }
@@ -501,23 +501,23 @@ namespace Ionic.Zlib
                                         _codec.TotalBytesIn += p - _codec.NextIn;
                                         _codec.NextIn = p;
                                         writeAt = q;
-                                        return Flush(r);
+                                        return Flush( r );
                                     }
 
                                     n--;
-                                    b |= (_codec.InputBuffer[p++] & 0xff) << k;
+                                    b |= ( _codec.InputBuffer[p++] & 0xff ) << k;
                                     k += 8;
                                 }
 
                                 b >>= t; k -= t;
 
-                                j += (b & InternalInflateConstants.InflateMask[i]);
+                                j += ( b & InternalInflateConstants.InflateMask[i] );
 
                                 b >>= i; k -= i;
 
                                 i = index;
                                 t = table;
-                                if (i + j > 258 + (t & 0x1f) + ((t >> 5) & 0x1f) || (c == 16 && i < 1))
+                                if ( i + j > 258 + ( t & 0x1f ) + ( ( t >> 5 ) & 0x1f ) || ( c == 16 && i < 1 ) )
                                 {
                                     blens = null;
                                     mode = InflateBlockMode.BAD;
@@ -529,15 +529,15 @@ namespace Ionic.Zlib
                                     _codec.TotalBytesIn += p - _codec.NextIn;
                                     _codec.NextIn = p;
                                     writeAt = q;
-                                    return Flush(r);
+                                    return Flush( r );
                                 }
 
-                                c = (c == 16) ? blens[i-1] : 0;
+                                c = ( c == 16 ) ? blens[i - 1] : 0;
                                 do
                                 {
                                     blens[i++] = c;
                                 }
-                                while (--j != 0);
+                                while ( --j != 0 );
                                 index = i;
                             }
                         }
@@ -550,11 +550,11 @@ namespace Ionic.Zlib
                             int[] td = new int[1];
 
                             t = table;
-                            t = inftree.inflate_trees_dynamic(257 + (t & 0x1f), 1 + ((t >> 5) & 0x1f), blens, bl, bd, tl, td, hufts, _codec);
+                            t = inftree.inflate_trees_dynamic( 257 + ( t & 0x1f ), 1 + ( ( t >> 5 ) & 0x1f ), blens, bl, bd, tl, td, hufts, _codec );
 
-                            if (t != ZlibConstants.Z_OK)
+                            if ( t != ZlibConstants.Z_OK )
                             {
-                                if (t == ZlibConstants.Z_DATA_ERROR)
+                                if ( t == ZlibConstants.Z_DATA_ERROR )
                                 {
                                     blens = null;
                                     mode = InflateBlockMode.BAD;
@@ -566,9 +566,9 @@ namespace Ionic.Zlib
                                 _codec.TotalBytesIn += p - _codec.NextIn;
                                 _codec.NextIn = p;
                                 writeAt = q;
-                                return Flush(r);
+                                return Flush( r );
                             }
-                            codes.Init(bl[0], bd[0], hufts, tl[0], hufts, td[0]);
+                            codes.Init( bl[0], bd[0], hufts, tl[0], hufts, td[0] );
                         }
                         mode = InflateBlockMode.CODES;
                         goto case InflateBlockMode.CODES;
@@ -580,10 +580,10 @@ namespace Ionic.Zlib
                         _codec.NextIn = p;
                         writeAt = q;
 
-                        r = codes.Process(this, r);
-                        if (r != ZlibConstants.Z_STREAM_END)
+                        r = codes.Process( this, r );
+                        if ( r != ZlibConstants.Z_STREAM_END )
                         {
-                            return Flush(r);
+                            return Flush( r );
                         }
 
                         r = ZlibConstants.Z_OK;
@@ -594,7 +594,7 @@ namespace Ionic.Zlib
                         q = writeAt;
                         m = q < readAt ? readAt - q - 1 : end - q;
 
-                        if (last == 0)
+                        if ( last == 0 )
                         {
                             mode = InflateBlockMode.TYPE;
                             break;
@@ -604,16 +604,16 @@ namespace Ionic.Zlib
 
                     case InflateBlockMode.DRY:
                         writeAt = q;
-                        r = Flush(r);
+                        r = Flush( r );
                         q = writeAt; m = q < readAt ? readAt - q - 1 : end - q;
-                        if (readAt != writeAt)
+                        if ( readAt != writeAt )
                         {
                             bitb = b; bitk = k;
                             _codec.AvailableBytesIn = n;
                             _codec.TotalBytesIn += p - _codec.NextIn;
                             _codec.NextIn = p;
                             writeAt = q;
-                            return Flush(r);
+                            return Flush( r );
                         }
                         mode = InflateBlockMode.DONE;
                         goto case InflateBlockMode.DONE;
@@ -626,7 +626,7 @@ namespace Ionic.Zlib
                         _codec.TotalBytesIn += p - _codec.NextIn;
                         _codec.NextIn = p;
                         writeAt = q;
-                        return Flush(r);
+                        return Flush( r );
 
                     case InflateBlockMode.BAD:
                         r = ZlibConstants.Z_DATA_ERROR;
@@ -636,7 +636,7 @@ namespace Ionic.Zlib
                         _codec.TotalBytesIn += p - _codec.NextIn;
                         _codec.NextIn = p;
                         writeAt = q;
-                        return Flush(r);
+                        return Flush( r );
 
 
                     default:
@@ -647,7 +647,7 @@ namespace Ionic.Zlib
                         _codec.TotalBytesIn += p - _codec.NextIn;
                         _codec.NextIn = p;
                         writeAt = q;
-                        return Flush(r);
+                        return Flush( r );
                 }
             }
         }
@@ -660,9 +660,9 @@ namespace Ionic.Zlib
             hufts = null;
         }
 
-        internal void SetDictionary(byte[] d, int start, int n)
+        internal void SetDictionary( byte[] d, int start, int n )
         {
-            Array.Copy(d, start, window, 0, n);
+            Array.Copy( d, start, window, 0, n );
             readAt = writeAt = n;
         }
 
@@ -674,13 +674,13 @@ namespace Ionic.Zlib
         }
 
         // copy as much as possible from the sliding window to the output area
-        internal int Flush(int r)
+        internal int Flush( int r )
         {
             int nBytes;
 
-            for (int pass=0; pass < 2; pass++)
+            for ( int pass = 0; pass < 2; pass++ )
             {
-                if (pass==0)
+                if ( pass == 0 )
                 {
                     // compute number of bytes to copy as far as end of window
                     nBytes = ( readAt <= writeAt ? writeAt : end ) - readAt;
@@ -692,17 +692,17 @@ namespace Ionic.Zlib
                 }
 
                 // workitem 8870
-                if (nBytes == 0)
+                if ( nBytes == 0 )
                 {
-                    if (r == ZlibConstants.Z_BUF_ERROR)
+                    if ( r == ZlibConstants.Z_BUF_ERROR )
                         r = ZlibConstants.Z_OK;
                     return r;
                 }
 
-                if (nBytes > _codec.AvailableBytesOut)
+                if ( nBytes > _codec.AvailableBytesOut )
                     nBytes = _codec.AvailableBytesOut;
 
-                if (nBytes != 0 && r == ZlibConstants.Z_BUF_ERROR)
+                if ( nBytes != 0 && r == ZlibConstants.Z_BUF_ERROR )
                     r = ZlibConstants.Z_OK;
 
                 // update counters
@@ -710,20 +710,20 @@ namespace Ionic.Zlib
                 _codec.TotalBytesOut += nBytes;
 
                 // update check information
-                if (checkfn != null)
-                    _codec._Adler32 = check = Adler.Adler32(check, window, readAt, nBytes);
+                if ( checkfn != null )
+                    _codec._Adler32 = check = Adler.Adler32( check, window, readAt, nBytes );
 
                 // copy as far as end of window
-                Array.Copy(window, readAt, _codec.OutputBuffer, _codec.NextOut, nBytes);
+                Array.Copy( window, readAt, _codec.OutputBuffer, _codec.NextOut, nBytes );
                 _codec.NextOut += nBytes;
                 readAt += nBytes;
 
                 // see if more to copy at beginning of window
-                if (readAt == end && pass == 0)
+                if ( readAt == end && pass == 0 )
                 {
                     // wrap pointers
                     readAt = 0;
-                    if (writeAt == end)
+                    if ( writeAt == end )
                         writeAt = 0;
                 }
                 else pass++;
@@ -751,15 +751,15 @@ namespace Ionic.Zlib
         // waiting for "i:"=input,
         //             "o:"=output,
         //             "x:"=nothing
-        private const int START   = 0; // x: set up for LEN
-        private const int LEN     = 1; // i: get length/literal/eob next
-        private const int LENEXT  = 2; // i: getting length extra (have base)
-        private const int DIST    = 3; // i: get distance next
+        private const int START = 0; // x: set up for LEN
+        private const int LEN = 1; // i: get length/literal/eob next
+        private const int LENEXT = 2; // i: getting length extra (have base)
+        private const int DIST = 3; // i: get distance next
         private const int DISTEXT = 4; // i: getting distance extra
-        private const int COPY    = 5; // o: copying bytes in window, waiting for space
-        private const int LIT     = 6; // o: got literal, waiting for output space
-        private const int WASH    = 7; // o: got eob, possibly still output waiting
-        private const int END     = 8; // x: got eob and all data flushed
+        private const int COPY = 5; // o: copying bytes in window, waiting for space
+        private const int LIT = 6; // o: got literal, waiting for output space
+        private const int WASH = 7; // o: got eob, possibly still output waiting
+        private const int END = 8; // x: got eob and all data flushed
         private const int BADCODE = 9; // x: got error
 
         internal int mode;        // current inflate_codes mode
@@ -788,11 +788,11 @@ namespace Ionic.Zlib
         {
         }
 
-        internal void Init(int bl, int bd, int[] tl, int tl_index, int[] td, int td_index)
+        internal void Init( int bl, int bd, int[] tl, int tl_index, int[] td, int td_index )
         {
             mode = START;
-            lbits = (byte)bl;
-            dbits = (byte)bd;
+            lbits = ( byte ) bl;
+            dbits = ( byte ) bd;
             ltree = tl;
             ltree_index = tl_index;
             dtree = td;
@@ -800,7 +800,7 @@ namespace Ionic.Zlib
             tree = null;
         }
 
-        internal int Process(InflateBlocks blocks, int r)
+        internal int Process( InflateBlocks blocks, int r )
         {
             int j;      // temporary storage
             int tindex; // temporary pointer
@@ -823,20 +823,20 @@ namespace Ionic.Zlib
             q = blocks.writeAt; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
 
             // process input and output based on current state
-            while (true)
+            while ( true )
             {
-                switch (mode)
+                switch ( mode )
                 {
                     // waiting for "i:"=input, "o:"=output, "x:"=nothing
                     case START:  // x: set up for LEN
-                        if (m >= 258 && n >= 10)
+                        if ( m >= 258 && n >= 10 )
                         {
                             blocks.bitb = b; blocks.bitk = k;
                             z.AvailableBytesIn = n;
                             z.TotalBytesIn += p - z.NextIn;
                             z.NextIn = p;
                             blocks.writeAt = q;
-                            r = InflateFast(lbits, dbits, ltree, ltree_index, dtree, dtree_index, blocks, z);
+                            r = InflateFast( lbits, dbits, ltree, ltree_index, dtree, dtree_index, blocks, z );
 
                             p = z.NextIn;
                             n = z.AvailableBytesIn;
@@ -844,9 +844,9 @@ namespace Ionic.Zlib
                             k = blocks.bitk;
                             q = blocks.writeAt; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
 
-                            if (r != ZlibConstants.Z_OK)
+                            if ( r != ZlibConstants.Z_OK )
                             {
-                                mode = (r == ZlibConstants.Z_STREAM_END) ? WASH : BADCODE;
+                                mode = ( r == ZlibConstants.Z_STREAM_END ) ? WASH : BADCODE;
                                 break;
                             }
                         }
@@ -860,9 +860,9 @@ namespace Ionic.Zlib
                     case LEN:  // i: get length/literal/eob next
                         j = need;
 
-                        while (k < j)
+                        while ( k < j )
                         {
-                            if (n != 0)
+                            if ( n != 0 )
                                 r = ZlibConstants.Z_OK;
                             else
                             {
@@ -871,28 +871,28 @@ namespace Ionic.Zlib
                                 z.TotalBytesIn += p - z.NextIn;
                                 z.NextIn = p;
                                 blocks.writeAt = q;
-                                return blocks.Flush(r);
+                                return blocks.Flush( r );
                             }
                             n--;
-                            b |= (z.InputBuffer[p++] & 0xff) << k;
+                            b |= ( z.InputBuffer[p++] & 0xff ) << k;
                             k += 8;
                         }
 
-                        tindex = (tree_index + (b & InternalInflateConstants.InflateMask[j])) * 3;
+                        tindex = ( tree_index + ( b & InternalInflateConstants.InflateMask[j] ) ) * 3;
 
-                        b >>= (tree[tindex + 1]);
-                        k -= (tree[tindex + 1]);
+                        b >>= ( tree[tindex + 1] );
+                        k -= ( tree[tindex + 1] );
 
                         e = tree[tindex];
 
-                        if (e == 0)
+                        if ( e == 0 )
                         {
                             // literal
                             lit = tree[tindex + 2];
                             mode = LIT;
                             break;
                         }
-                        if ((e & 16) != 0)
+                        if ( ( e & 16 ) != 0 )
                         {
                             // length
                             bitsToGet = e & 15;
@@ -900,14 +900,14 @@ namespace Ionic.Zlib
                             mode = LENEXT;
                             break;
                         }
-                        if ((e & 64) == 0)
+                        if ( ( e & 64 ) == 0 )
                         {
                             // next table
                             need = e;
                             tree_index = tindex / 3 + tree[tindex + 2];
                             break;
                         }
-                        if ((e & 32) != 0)
+                        if ( ( e & 32 ) != 0 )
                         {
                             // end of block
                             mode = WASH;
@@ -922,28 +922,28 @@ namespace Ionic.Zlib
                         z.TotalBytesIn += p - z.NextIn;
                         z.NextIn = p;
                         blocks.writeAt = q;
-                        return blocks.Flush(r);
+                        return blocks.Flush( r );
 
 
                     case LENEXT:  // i: getting length extra (have base)
                         j = bitsToGet;
 
-                        while (k < j)
+                        while ( k < j )
                         {
-                            if (n != 0)
+                            if ( n != 0 )
                                 r = ZlibConstants.Z_OK;
                             else
                             {
                                 blocks.bitb = b; blocks.bitk = k;
                                 z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                                 blocks.writeAt = q;
-                                return blocks.Flush(r);
+                                return blocks.Flush( r );
                             }
-                            n--; b |= (z.InputBuffer[p++] & 0xff) << k;
+                            n--; b |= ( z.InputBuffer[p++] & 0xff ) << k;
                             k += 8;
                         }
 
-                        len += (b & InternalInflateConstants.InflateMask[j]);
+                        len += ( b & InternalInflateConstants.InflateMask[j] );
 
                         b >>= j;
                         k -= j;
@@ -957,28 +957,28 @@ namespace Ionic.Zlib
                     case DIST:  // i: get distance next
                         j = need;
 
-                        while (k < j)
+                        while ( k < j )
                         {
-                            if (n != 0)
+                            if ( n != 0 )
                                 r = ZlibConstants.Z_OK;
                             else
                             {
                                 blocks.bitb = b; blocks.bitk = k;
                                 z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                                 blocks.writeAt = q;
-                                return blocks.Flush(r);
+                                return blocks.Flush( r );
                             }
-                            n--; b |= (z.InputBuffer[p++] & 0xff) << k;
+                            n--; b |= ( z.InputBuffer[p++] & 0xff ) << k;
                             k += 8;
                         }
 
-                        tindex = (tree_index + (b & InternalInflateConstants.InflateMask[j])) * 3;
+                        tindex = ( tree_index + ( b & InternalInflateConstants.InflateMask[j] ) ) * 3;
 
                         b >>= tree[tindex + 1];
                         k -= tree[tindex + 1];
 
-                        e = (tree[tindex]);
-                        if ((e & 0x10) != 0)
+                        e = ( tree[tindex] );
+                        if ( ( e & 0x10 ) != 0 )
                         {
                             // distance
                             bitsToGet = e & 15;
@@ -986,7 +986,7 @@ namespace Ionic.Zlib
                             mode = DISTEXT;
                             break;
                         }
-                        if ((e & 64) == 0)
+                        if ( ( e & 64 ) == 0 )
                         {
                             // next table
                             need = e;
@@ -1000,28 +1000,28 @@ namespace Ionic.Zlib
                         blocks.bitb = b; blocks.bitk = k;
                         z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                         blocks.writeAt = q;
-                        return blocks.Flush(r);
+                        return blocks.Flush( r );
 
 
                     case DISTEXT:  // i: getting distance extra
                         j = bitsToGet;
 
-                        while (k < j)
+                        while ( k < j )
                         {
-                            if (n != 0)
+                            if ( n != 0 )
                                 r = ZlibConstants.Z_OK;
                             else
                             {
                                 blocks.bitb = b; blocks.bitk = k;
                                 z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                                 blocks.writeAt = q;
-                                return blocks.Flush(r);
+                                return blocks.Flush( r );
                             }
-                            n--; b |= (z.InputBuffer[p++] & 0xff) << k;
+                            n--; b |= ( z.InputBuffer[p++] & 0xff ) << k;
                             k += 8;
                         }
 
-                        dist += (b & InternalInflateConstants.InflateMask[j]);
+                        dist += ( b & InternalInflateConstants.InflateMask[j] );
 
                         b >>= j;
                         k -= j;
@@ -1031,44 +1031,44 @@ namespace Ionic.Zlib
 
                     case COPY:  // o: copying bytes in window, waiting for space
                         f = q - dist;
-                        while (f < 0)
+                        while ( f < 0 )
                         {
                             // modulo window size-"while" instead
                             f += blocks.end; // of "if" handles invalid distances
                         }
-                        while (len != 0)
+                        while ( len != 0 )
                         {
-                            if (m == 0)
+                            if ( m == 0 )
                             {
-                                if (q == blocks.end && blocks.readAt != 0)
+                                if ( q == blocks.end && blocks.readAt != 0 )
                                 {
                                     q = 0; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
                                 }
-                                if (m == 0)
+                                if ( m == 0 )
                                 {
-                                    blocks.writeAt = q; r = blocks.Flush(r);
+                                    blocks.writeAt = q; r = blocks.Flush( r );
                                     q = blocks.writeAt; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
 
-                                    if (q == blocks.end && blocks.readAt != 0)
+                                    if ( q == blocks.end && blocks.readAt != 0 )
                                     {
                                         q = 0; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
                                     }
 
-                                    if (m == 0)
+                                    if ( m == 0 )
                                     {
                                         blocks.bitb = b; blocks.bitk = k;
                                         z.AvailableBytesIn = n;
                                         z.TotalBytesIn += p - z.NextIn;
                                         z.NextIn = p;
                                         blocks.writeAt = q;
-                                        return blocks.Flush(r);
+                                        return blocks.Flush( r );
                                     }
                                 }
                             }
 
                             blocks.window[q++] = blocks.window[f++]; m--;
 
-                            if (f == blocks.end)
+                            if ( f == blocks.end )
                                 f = 0;
                             len--;
                         }
@@ -1076,39 +1076,39 @@ namespace Ionic.Zlib
                         break;
 
                     case LIT:  // o: got literal, waiting for output space
-                        if (m == 0)
+                        if ( m == 0 )
                         {
-                            if (q == blocks.end && blocks.readAt != 0)
+                            if ( q == blocks.end && blocks.readAt != 0 )
                             {
                                 q = 0; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
                             }
-                            if (m == 0)
+                            if ( m == 0 )
                             {
-                                blocks.writeAt = q; r = blocks.Flush(r);
+                                blocks.writeAt = q; r = blocks.Flush( r );
                                 q = blocks.writeAt; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
 
-                                if (q == blocks.end && blocks.readAt != 0)
+                                if ( q == blocks.end && blocks.readAt != 0 )
                                 {
                                     q = 0; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
                                 }
-                                if (m == 0)
+                                if ( m == 0 )
                                 {
                                     blocks.bitb = b; blocks.bitk = k;
                                     z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                                     blocks.writeAt = q;
-                                    return blocks.Flush(r);
+                                    return blocks.Flush( r );
                                 }
                             }
                         }
                         r = ZlibConstants.Z_OK;
 
-                        blocks.window[q++] = (byte)lit; m--;
+                        blocks.window[q++] = ( byte ) lit; m--;
 
                         mode = START;
                         break;
 
                     case WASH:  // o: got eob, possibly more output
-                        if (k > 7)
+                        if ( k > 7 )
                         {
                             // return unused byte, if any
                             k -= 8;
@@ -1116,15 +1116,15 @@ namespace Ionic.Zlib
                             p--; // can always return one
                         }
 
-                        blocks.writeAt = q; r = blocks.Flush(r);
+                        blocks.writeAt = q; r = blocks.Flush( r );
                         q = blocks.writeAt; m = q < blocks.readAt ? blocks.readAt - q - 1 : blocks.end - q;
 
-                        if (blocks.readAt != blocks.writeAt)
+                        if ( blocks.readAt != blocks.writeAt )
                         {
                             blocks.bitb = b; blocks.bitk = k;
                             z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                             blocks.writeAt = q;
-                            return blocks.Flush(r);
+                            return blocks.Flush( r );
                         }
                         mode = END;
                         goto case END;
@@ -1134,7 +1134,7 @@ namespace Ionic.Zlib
                         blocks.bitb = b; blocks.bitk = k;
                         z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                         blocks.writeAt = q;
-                        return blocks.Flush(r);
+                        return blocks.Flush( r );
 
                     case BADCODE:  // x: got error
 
@@ -1143,7 +1143,7 @@ namespace Ionic.Zlib
                         blocks.bitb = b; blocks.bitk = k;
                         z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                         blocks.writeAt = q;
-                        return blocks.Flush(r);
+                        return blocks.Flush( r );
 
                     default:
                         r = ZlibConstants.Z_STREAM_ERROR;
@@ -1151,7 +1151,7 @@ namespace Ionic.Zlib
                         blocks.bitb = b; blocks.bitk = k;
                         z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
                         blocks.writeAt = q;
-                        return blocks.Flush(r);
+                        return blocks.Flush( r );
                 }
             }
         }
@@ -1162,7 +1162,7 @@ namespace Ionic.Zlib
         // at least ten.  The ten bytes are six bytes for the longest length/
         // distance pair plus four bytes for overloading the bit buffer.
 
-        internal int InflateFast(int bl, int bd, int[] tl, int tl_index, int[] td, int td_index, InflateBlocks s, ZlibCodec z)
+        internal int InflateFast( int bl, int bd, int[] tl, int tl_index, int[] td, int td_index, InflateBlocks s, ZlibCodec z )
         {
             int t;        // temporary pointer
             int[] tp;     // temporary pointer
@@ -1195,79 +1195,79 @@ namespace Ionic.Zlib
             {
                 // assume called with m >= 258 && n >= 10
                 // get literal/length code
-                while (k < (20))
+                while ( k < ( 20 ) )
                 {
                     // max bits for literal/length code
                     n--;
-                    b |= (z.InputBuffer[p++] & 0xff) << k; k += 8;
+                    b |= ( z.InputBuffer[p++] & 0xff ) << k; k += 8;
                 }
 
                 t = b & ml;
                 tp = tl;
                 tp_index = tl_index;
-                tp_index_t_3 = (tp_index + t) * 3;
-                if ((e = tp[tp_index_t_3]) == 0)
+                tp_index_t_3 = ( tp_index + t ) * 3;
+                if ( ( e = tp[tp_index_t_3] ) == 0 )
                 {
-                    b >>= (tp[tp_index_t_3 + 1]); k -= (tp[tp_index_t_3 + 1]);
+                    b >>= ( tp[tp_index_t_3 + 1] ); k -= ( tp[tp_index_t_3 + 1] );
 
-                    s.window[q++] = (byte)tp[tp_index_t_3 + 2];
+                    s.window[q++] = ( byte ) tp[tp_index_t_3 + 2];
                     m--;
                     continue;
                 }
                 do
                 {
 
-                    b >>= (tp[tp_index_t_3 + 1]); k -= (tp[tp_index_t_3 + 1]);
+                    b >>= ( tp[tp_index_t_3 + 1] ); k -= ( tp[tp_index_t_3 + 1] );
 
-                    if ((e & 16) != 0)
+                    if ( ( e & 16 ) != 0 )
                     {
                         e &= 15;
-                        c = tp[tp_index_t_3 + 2] + ( b & InternalInflateConstants.InflateMask[e]);
+                        c = tp[tp_index_t_3 + 2] + ( b & InternalInflateConstants.InflateMask[e] );
 
                         b >>= e; k -= e;
 
                         // decode distance base of block to copy
-                        while (k < 15)
+                        while ( k < 15 )
                         {
                             // max bits for distance code
                             n--;
-                            b |= (z.InputBuffer[p++] & 0xff) << k; k += 8;
+                            b |= ( z.InputBuffer[p++] & 0xff ) << k; k += 8;
                         }
 
                         t = b & md;
                         tp = td;
                         tp_index = td_index;
-                        tp_index_t_3 = (tp_index + t) * 3;
+                        tp_index_t_3 = ( tp_index + t ) * 3;
                         e = tp[tp_index_t_3];
 
                         do
                         {
 
-                            b >>= (tp[tp_index_t_3 + 1]); k -= (tp[tp_index_t_3 + 1]);
+                            b >>= ( tp[tp_index_t_3 + 1] ); k -= ( tp[tp_index_t_3 + 1] );
 
-                            if ((e & 16) != 0)
+                            if ( ( e & 16 ) != 0 )
                             {
                                 // get extra bits to add to distance base
                                 e &= 15;
-                                while (k < e)
+                                while ( k < e )
                                 {
                                     // get extra bits (up to 13)
                                     n--;
-                                    b |= (z.InputBuffer[p++] & 0xff) << k; k += 8;
+                                    b |= ( z.InputBuffer[p++] & 0xff ) << k; k += 8;
                                 }
 
-                                d = tp[tp_index_t_3 + 2] + (b & InternalInflateConstants.InflateMask[e]);
+                                d = tp[tp_index_t_3 + 2] + ( b & InternalInflateConstants.InflateMask[e] );
 
                                 b >>= e; k -= e;
 
                                 // do the copy
                                 m -= c;
-                                if (q >= d)
+                                if ( q >= d )
                                 {
                                     // offset before dest
                                     //  just copy
                                     r = q - d;
-                                    if (q - r > 0 && 2 > (q - r))
+                                    if ( q - r > 0 && 2 > ( q - r ) )
                                     {
                                         s.window[q++] = s.window[r++]; // minimum count is three,
                                         s.window[q++] = s.window[r++]; // so unroll loop a little
@@ -1275,7 +1275,7 @@ namespace Ionic.Zlib
                                     }
                                     else
                                     {
-                                        Array.Copy(s.window, r, s.window, q, 2);
+                                        Array.Copy( s.window, r, s.window, q, 2 );
                                         q += 2; r += 2; c -= 2;
                                     }
                                 }
@@ -1287,23 +1287,23 @@ namespace Ionic.Zlib
                                     {
                                         r += s.end; // force pointer in window
                                     }
-                                    while (r < 0); // covers invalid distances
+                                    while ( r < 0 ); // covers invalid distances
                                     e = s.end - r;
-                                    if (c > e)
+                                    if ( c > e )
                                     {
                                         // if source crosses,
                                         c -= e; // wrapped copy
-                                        if (q - r > 0 && e > (q - r))
+                                        if ( q - r > 0 && e > ( q - r ) )
                                         {
                                             do
                                             {
                                                 s.window[q++] = s.window[r++];
                                             }
-                                            while (--e != 0);
+                                            while ( --e != 0 );
                                         }
                                         else
                                         {
-                                            Array.Copy(s.window, r, s.window, q, e);
+                                            Array.Copy( s.window, r, s.window, q, e );
                                             q += e; r += e; e = 0;
                                         }
                                         r = 0; // copy rest from start of window
@@ -1311,33 +1311,33 @@ namespace Ionic.Zlib
                                 }
 
                                 // copy all or what's left
-                                if (q - r > 0 && c > (q - r))
+                                if ( q - r > 0 && c > ( q - r ) )
                                 {
                                     do
                                     {
                                         s.window[q++] = s.window[r++];
                                     }
-                                    while (--c != 0);
+                                    while ( --c != 0 );
                                 }
                                 else
                                 {
-                                    Array.Copy(s.window, r, s.window, q, c);
+                                    Array.Copy( s.window, r, s.window, q, c );
                                     q += c; r += c; c = 0;
                                 }
                                 break;
                             }
-                            else if ((e & 64) == 0)
+                            else if ( ( e & 64 ) == 0 )
                             {
                                 t += tp[tp_index_t_3 + 2];
-                                t += (b & InternalInflateConstants.InflateMask[e]);
-                                tp_index_t_3 = (tp_index + t) * 3;
+                                t += ( b & InternalInflateConstants.InflateMask[e] );
+                                tp_index_t_3 = ( tp_index + t ) * 3;
                                 e = tp[tp_index_t_3];
                             }
                             else
                             {
                                 z.Message = "invalid distance code";
 
-                                c = z.AvailableBytesIn - n; c = (k >> 3) < c ? k >> 3 : c; n += c; p -= c; k -= (c << 3);
+                                c = z.AvailableBytesIn - n; c = ( k >> 3 ) < c ? k >> 3 : c; n += c; p -= c; k -= ( c << 3 );
 
                                 s.bitb = b; s.bitk = k;
                                 z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
@@ -1346,26 +1346,26 @@ namespace Ionic.Zlib
                                 return ZlibConstants.Z_DATA_ERROR;
                             }
                         }
-                        while (true);
+                        while ( true );
                         break;
                     }
 
-                    if ((e & 64) == 0)
+                    if ( ( e & 64 ) == 0 )
                     {
                         t += tp[tp_index_t_3 + 2];
-                        t += (b & InternalInflateConstants.InflateMask[e]);
-                        tp_index_t_3 = (tp_index + t) * 3;
-                        if ((e = tp[tp_index_t_3]) == 0)
+                        t += ( b & InternalInflateConstants.InflateMask[e] );
+                        tp_index_t_3 = ( tp_index + t ) * 3;
+                        if ( ( e = tp[tp_index_t_3] ) == 0 )
                         {
-                            b >>= (tp[tp_index_t_3 + 1]); k -= (tp[tp_index_t_3 + 1]);
-                            s.window[q++] = (byte)tp[tp_index_t_3 + 2];
+                            b >>= ( tp[tp_index_t_3 + 1] ); k -= ( tp[tp_index_t_3 + 1] );
+                            s.window[q++] = ( byte ) tp[tp_index_t_3 + 2];
                             m--;
                             break;
                         }
                     }
-                    else if ((e & 32) != 0)
+                    else if ( ( e & 32 ) != 0 )
                     {
-                        c = z.AvailableBytesIn - n; c = (k >> 3) < c ? k >> 3 : c; n += c; p -= c; k -= (c << 3);
+                        c = z.AvailableBytesIn - n; c = ( k >> 3 ) < c ? k >> 3 : c; n += c; p -= c; k -= ( c << 3 );
 
                         s.bitb = b; s.bitk = k;
                         z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
@@ -1377,7 +1377,7 @@ namespace Ionic.Zlib
                     {
                         z.Message = "invalid literal/length code";
 
-                        c = z.AvailableBytesIn - n; c = (k >> 3) < c ? k >> 3 : c; n += c; p -= c; k -= (c << 3);
+                        c = z.AvailableBytesIn - n; c = ( k >> 3 ) < c ? k >> 3 : c; n += c; p -= c; k -= ( c << 3 );
 
                         s.bitb = b; s.bitk = k;
                         z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
@@ -1386,12 +1386,12 @@ namespace Ionic.Zlib
                         return ZlibConstants.Z_DATA_ERROR;
                     }
                 }
-                while (true);
+                while ( true );
             }
-            while (m >= 258 && n >= 10);
+            while ( m >= 258 && n >= 10 );
 
             // not enough input or output--restore pointers and return
-            c = z.AvailableBytesIn - n; c = (k >> 3) < c ? k >> 3 : c; n += c; p -= c; k -= (c << 3);
+            c = z.AvailableBytesIn - n; c = ( k >> 3 ) < c ? k >> 3 : c; n += c; p -= c; k -= ( c << 3 );
 
             s.bitb = b; s.bitk = k;
             z.AvailableBytesIn = n; z.TotalBytesIn += p - z.NextIn; z.NextIn = p;
@@ -1412,19 +1412,19 @@ namespace Ionic.Zlib
         private enum InflateManagerMode
         {
             METHOD = 0,  // waiting for method byte
-            FLAG   = 1,  // waiting for flag byte
-            DICT4  = 2,  // four dictionary check bytes to go
-            DICT3  = 3,  // three dictionary check bytes to go
-            DICT2  = 4,  // two dictionary check bytes to go
-            DICT1  = 5,  // one dictionary check byte to go
-            DICT0  = 6,  // waiting for inflateSetDictionary
+            FLAG = 1,  // waiting for flag byte
+            DICT4 = 2,  // four dictionary check bytes to go
+            DICT3 = 3,  // three dictionary check bytes to go
+            DICT2 = 4,  // two dictionary check bytes to go
+            DICT1 = 5,  // one dictionary check byte to go
+            DICT0 = 6,  // waiting for inflateSetDictionary
             BLOCKS = 7,  // decompressing blocks
             CHECK4 = 8,  // four check bytes to go
             CHECK3 = 9,  // three check bytes to go
             CHECK2 = 10, // two check bytes to go
             CHECK1 = 11, // one check byte to go
-            DONE   = 12, // finished check, done
-            BAD    = 13, // got an error--stay here
+            DONE = 12, // finished check, done
+            BAD = 13, // got an error--stay here
         }
 
         private InflateManagerMode mode; // current inflate mode
@@ -1454,7 +1454,7 @@ namespace Ionic.Zlib
 
         public InflateManager() { }
 
-        public InflateManager(bool expectRfc1950HeaderBytes)
+        public InflateManager( bool expectRfc1950HeaderBytes )
         {
             _handleRfc1950HeaderBytes = expectRfc1950HeaderBytes;
         }
@@ -1470,13 +1470,13 @@ namespace Ionic.Zlib
 
         internal int End()
         {
-            if (blocks != null)
+            if ( blocks != null )
                 blocks.Free();
             blocks = null;
             return ZlibConstants.Z_OK;
         }
 
-        internal int Initialize(ZlibCodec codec, int w)
+        internal int Initialize( ZlibCodec codec, int w )
         {
             _codec = codec;
             _codec.Message = null;
@@ -1491,18 +1491,18 @@ namespace Ionic.Zlib
             //}
 
             // set window size
-            if (w < 8 || w > 15)
+            if ( w < 8 || w > 15 )
             {
                 End();
-                throw new ZlibException("Bad window size.");
+                throw new ZlibException( "Bad window size." );
 
                 //return ZlibConstants.Z_STREAM_ERROR;
             }
             wbits = w;
 
-            blocks = new InflateBlocks(codec,
+            blocks = new InflateBlocks( codec,
                 HandleRfc1950HeaderBytes ? this : null,
-                1 << w);
+                1 << w );
 
             // reset state
             Reset();
@@ -1510,41 +1510,41 @@ namespace Ionic.Zlib
         }
 
 
-        internal int Inflate(FlushType flush)
+        internal int Inflate( FlushType flush )
         {
             int b;
 
-            if (_codec.InputBuffer == null)
-                throw new ZlibException("InputBuffer is null. ");
+            if ( _codec.InputBuffer == null )
+                throw new ZlibException( "InputBuffer is null. " );
 
-//             int f = (flush == FlushType.Finish)
-//                 ? ZlibConstants.Z_BUF_ERROR
-//                 : ZlibConstants.Z_OK;
+            //             int f = (flush == FlushType.Finish)
+            //                 ? ZlibConstants.Z_BUF_ERROR
+            //                 : ZlibConstants.Z_OK;
 
             // workitem 8870
             int f = ZlibConstants.Z_OK;
             int r = ZlibConstants.Z_BUF_ERROR;
 
-            while (true)
+            while ( true )
             {
-                switch (mode)
+                switch ( mode )
                 {
                     case InflateManagerMode.METHOD:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--;
                         _codec.TotalBytesIn++;
-                        if (((method = _codec.InputBuffer[_codec.NextIn++]) & 0xf) != Z_DEFLATED)
+                        if ( ( ( method = _codec.InputBuffer[_codec.NextIn++] ) & 0xf ) != Z_DEFLATED )
                         {
                             mode = InflateManagerMode.BAD;
-                            _codec.Message = String.Format("unknown compression method (0x{0:X2})", method);
+                            _codec.Message = String.Format( "unknown compression method (0x{0:X2})", method );
                             marker = 5; // can't try inflateSync
                             break;
                         }
-                        if ((method >> 4) + 8 > wbits)
+                        if ( ( method >> 4 ) + 8 > wbits )
                         {
                             mode = InflateManagerMode.BAD;
-                            _codec.Message = String.Format("invalid window size ({0})", (method >> 4) + 8);
+                            _codec.Message = String.Format( "invalid window size ({0})", ( method >> 4 ) + 8 );
                             marker = 5; // can't try inflateSync
                             break;
                         }
@@ -1553,13 +1553,13 @@ namespace Ionic.Zlib
 
 
                     case InflateManagerMode.FLAG:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--;
                         _codec.TotalBytesIn++;
-                        b = (_codec.InputBuffer[_codec.NextIn++]) & 0xff;
+                        b = ( _codec.InputBuffer[_codec.NextIn++] ) & 0xff;
 
-                        if ((((method << 8) + b) % 31) != 0)
+                        if ( ( ( ( method << 8 ) + b ) % 31 ) != 0 )
                         {
                             mode = InflateManagerMode.BAD;
                             _codec.Message = "incorrect header check";
@@ -1567,45 +1567,45 @@ namespace Ionic.Zlib
                             break;
                         }
 
-                        mode = ((b & PRESET_DICT) == 0)
+                        mode = ( ( b & PRESET_DICT ) == 0 )
                             ? InflateManagerMode.BLOCKS
                             : InflateManagerMode.DICT4;
                         break;
 
                     case InflateManagerMode.DICT4:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--;
                         _codec.TotalBytesIn++;
-                        expectedCheck = (uint)((_codec.InputBuffer[_codec.NextIn++] << 24) & 0xff000000);
+                        expectedCheck = ( uint ) ( ( _codec.InputBuffer[_codec.NextIn++] << 24 ) & 0xff000000 );
                         mode = InflateManagerMode.DICT3;
                         break;
 
                     case InflateManagerMode.DICT3:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--;
                         _codec.TotalBytesIn++;
-                        expectedCheck += (uint)((_codec.InputBuffer[_codec.NextIn++] << 16) & 0x00ff0000);
+                        expectedCheck += ( uint ) ( ( _codec.InputBuffer[_codec.NextIn++] << 16 ) & 0x00ff0000 );
                         mode = InflateManagerMode.DICT2;
                         break;
 
                     case InflateManagerMode.DICT2:
 
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--;
                         _codec.TotalBytesIn++;
-                        expectedCheck += (uint)((_codec.InputBuffer[_codec.NextIn++] << 8) & 0x0000ff00);
+                        expectedCheck += ( uint ) ( ( _codec.InputBuffer[_codec.NextIn++] << 8 ) & 0x0000ff00 );
                         mode = InflateManagerMode.DICT1;
                         break;
 
 
                     case InflateManagerMode.DICT1:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--; _codec.TotalBytesIn++;
-                        expectedCheck += (uint)(_codec.InputBuffer[_codec.NextIn++] & 0x000000ff);
+                        expectedCheck += ( uint ) ( _codec.InputBuffer[_codec.NextIn++] & 0x000000ff );
                         _codec._Adler32 = expectedCheck;
                         mode = InflateManagerMode.DICT0;
                         return ZlibConstants.Z_NEED_DICT;
@@ -1619,22 +1619,22 @@ namespace Ionic.Zlib
 
 
                     case InflateManagerMode.BLOCKS:
-                        r = blocks.Process(r);
-                        if (r == ZlibConstants.Z_DATA_ERROR)
+                        r = blocks.Process( r );
+                        if ( r == ZlibConstants.Z_DATA_ERROR )
                         {
                             mode = InflateManagerMode.BAD;
                             marker = 0; // can try inflateSync
                             break;
                         }
 
-                        if (r == ZlibConstants.Z_OK) r = f;
+                        if ( r == ZlibConstants.Z_OK ) r = f;
 
-                        if (r != ZlibConstants.Z_STREAM_END)
+                        if ( r != ZlibConstants.Z_STREAM_END )
                             return r;
 
                         r = f;
                         computedCheck = blocks.Reset();
-                        if (!HandleRfc1950HeaderBytes)
+                        if ( !HandleRfc1950HeaderBytes )
                         {
                             mode = InflateManagerMode.DONE;
                             return ZlibConstants.Z_STREAM_END;
@@ -1643,37 +1643,37 @@ namespace Ionic.Zlib
                         break;
 
                     case InflateManagerMode.CHECK4:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--;
                         _codec.TotalBytesIn++;
-                        expectedCheck = (uint)((_codec.InputBuffer[_codec.NextIn++] << 24) & 0xff000000);
+                        expectedCheck = ( uint ) ( ( _codec.InputBuffer[_codec.NextIn++] << 24 ) & 0xff000000 );
                         mode = InflateManagerMode.CHECK3;
                         break;
 
                     case InflateManagerMode.CHECK3:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--; _codec.TotalBytesIn++;
-                        expectedCheck += (uint)((_codec.InputBuffer[_codec.NextIn++] << 16) & 0x00ff0000);
+                        expectedCheck += ( uint ) ( ( _codec.InputBuffer[_codec.NextIn++] << 16 ) & 0x00ff0000 );
                         mode = InflateManagerMode.CHECK2;
                         break;
 
                     case InflateManagerMode.CHECK2:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--;
                         _codec.TotalBytesIn++;
-                        expectedCheck += (uint)((_codec.InputBuffer[_codec.NextIn++] << 8) & 0x0000ff00);
+                        expectedCheck += ( uint ) ( ( _codec.InputBuffer[_codec.NextIn++] << 8 ) & 0x0000ff00 );
                         mode = InflateManagerMode.CHECK1;
                         break;
 
                     case InflateManagerMode.CHECK1:
-                        if (_codec.AvailableBytesIn == 0) return r;
+                        if ( _codec.AvailableBytesIn == 0 ) return r;
                         r = f;
                         _codec.AvailableBytesIn--; _codec.TotalBytesIn++;
-                        expectedCheck += (uint)(_codec.InputBuffer[_codec.NextIn++] & 0x000000ff);
-                        if (computedCheck != expectedCheck)
+                        expectedCheck += ( uint ) ( _codec.InputBuffer[_codec.NextIn++] & 0x000000ff );
+                        if ( computedCheck != expectedCheck )
                         {
                             mode = InflateManagerMode.BAD;
                             _codec.Message = "incorrect data check";
@@ -1687,10 +1687,10 @@ namespace Ionic.Zlib
                         return ZlibConstants.Z_STREAM_END;
 
                     case InflateManagerMode.BAD:
-                        throw new ZlibException(String.Format("Bad state ({0})", _codec.Message));
+                        throw new ZlibException( String.Format( "Bad state ({0})", _codec.Message ) );
 
                     default:
-                        throw new ZlibException("Stream error.");
+                        throw new ZlibException( "Stream error." );
 
                 }
             }
@@ -1698,26 +1698,26 @@ namespace Ionic.Zlib
 
 
 
-        internal int SetDictionary(byte[] dictionary)
+        internal int SetDictionary( byte[] dictionary )
         {
             int index = 0;
             int length = dictionary.Length;
-            if (mode != InflateManagerMode.DICT0)
-                throw new ZlibException("Stream error.");
+            if ( mode != InflateManagerMode.DICT0 )
+                throw new ZlibException( "Stream error." );
 
-            if (Adler.Adler32(1, dictionary, 0, dictionary.Length) != _codec._Adler32)
+            if ( Adler.Adler32( 1, dictionary, 0, dictionary.Length ) != _codec._Adler32 )
             {
                 return ZlibConstants.Z_DATA_ERROR;
             }
 
-            _codec._Adler32 = Adler.Adler32(0, null, 0, 0);
+            _codec._Adler32 = Adler.Adler32( 0, null, 0, 0 );
 
-            if (length >= (1 << wbits))
+            if ( length >= ( 1 << wbits ) )
             {
-                length = (1 << wbits) - 1;
+                length = ( 1 << wbits ) - 1;
                 index = dictionary.Length - length;
             }
-            blocks.SetDictionary(dictionary, index, length);
+            blocks.SetDictionary( dictionary, index, length );
             mode = InflateManagerMode.BLOCKS;
             return ZlibConstants.Z_OK;
         }
@@ -1733,24 +1733,24 @@ namespace Ionic.Zlib
             long r, w; // temporaries to save total_in and total_out
 
             // set up
-            if (mode != InflateManagerMode.BAD)
+            if ( mode != InflateManagerMode.BAD )
             {
                 mode = InflateManagerMode.BAD;
                 marker = 0;
             }
-            if ((n = _codec.AvailableBytesIn) == 0)
+            if ( ( n = _codec.AvailableBytesIn ) == 0 )
                 return ZlibConstants.Z_BUF_ERROR;
             p = _codec.NextIn;
             m = marker;
 
             // search
-            while (n != 0 && m < 4)
+            while ( n != 0 && m < 4 )
             {
-                if (_codec.InputBuffer[p] == mark[m])
+                if ( _codec.InputBuffer[p] == mark[m] )
                 {
                     m++;
                 }
-                else if (_codec.InputBuffer[p] != 0)
+                else if ( _codec.InputBuffer[p] != 0 )
                 {
                     m = 0;
                 }
@@ -1768,7 +1768,7 @@ namespace Ionic.Zlib
             marker = m;
 
             // return no joy or set up to restart on a new block
-            if (m != 4)
+            if ( m != 4 )
             {
                 return ZlibConstants.Z_DATA_ERROR;
             }
@@ -1788,7 +1788,7 @@ namespace Ionic.Zlib
         // but removes the length bytes of the resulting empty stored block. When
         // decompressing, PPP checks that at the end of input packet, inflate is
         // waiting for these length bytes.
-        internal int SyncPoint(ZlibCodec z)
+        internal int SyncPoint( ZlibCodec z )
         {
             return blocks.SyncPoint();
         }

@@ -1,3 +1,5 @@
+//-------------------------------------------------------------------------------
+//                                                                               
 //    This code was automatically generated.                                     
 //    Changes to this file may cause incorrect behavior and will be lost if      
 //    the code is regenerated.                                                   
@@ -73,6 +75,6 @@ namespace EditorDatabase.DataModel
         public bool UseRandomSeed;
         public Node[] Nodes;
 
-        public static QuestModel DefaultValue { get; private set; }
+        public static QuestModel DefaultValue { get; set; }
     }
 }

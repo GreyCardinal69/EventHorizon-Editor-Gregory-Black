@@ -12,14 +12,15 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public class DebugSettingsSerializable : SerializableItem
-	{
-		public DebugSettingsSerializable()
-		{
-			ItemType = ItemType.DebugSettings;
-			FileName = "DebugSettings.json";
-		}
-        public bool EnableDebugConsole;
+    public class DebugSettingsSerializable : SerializableItem
+    {
+        public DebugSettingsSerializable()
+        {
+            ItemType = ItemType.DebugSettings;
+            FileName = "DebugSettings.json";
+        }
+
         public DebugCodeSerializable[] Codes;
-	}
+        public bool EnableDebugConsole;
+    }
 }

@@ -12,12 +12,12 @@ using System;
 namespace EditorDatabase.Serializable
 {
     [Serializable]
-	public class AmmunitionSerializable : SerializableItem
-	{
-		public BulletBodySerializable Body;
+    public class AmmunitionSerializable : SerializableItem
+    {
+        public BulletBodySerializable Body;
         public BulletControllerSerializable Controller;
         public BulletTriggerSerializable[] Triggers;
-		public BulletImpactType ImpactType;
-		public ImpactEffectSerializable[] Effects;
-	}
+        public BulletImpactType ImpactType;
+        public ImpactEffectSerializable[] Effects;
+    }
 }

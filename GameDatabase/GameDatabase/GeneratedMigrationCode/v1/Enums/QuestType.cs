@@ -9,11 +9,11 @@
 namespace DatabaseMigration.v1.Enums
 {
     public enum QuestType
-	{
-		Common = 0,
-		Singleton = 1,
-		Storyline = 2,
-		Temporary = 3,
-		Urgent = 4,
-	}
+    {
+        Common = 0,
+        Singleton = 1,
+        Storyline = 2,
+        Temporary = 3,
+        Urgent = 4,
+    }
 }

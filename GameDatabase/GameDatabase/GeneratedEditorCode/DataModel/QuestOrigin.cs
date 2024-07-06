@@ -25,7 +25,7 @@ namespace EditorDatabase.DataModel
 
         public QuestOrigin() { }
 
-        private QuestOrigin( QuestOriginSerializable serializable, Database database )
+        public QuestOrigin( QuestOriginSerializable serializable, Database database )
         {
             Type = serializable.Type;
             Factions.Value = DataModel.RequiredFactions.Create( serializable.Factions, database );
@@ -56,6 +56,6 @@ namespace EditorDatabase.DataModel
         public NumericValue<int> MinRelations = new NumericValue<int>( 0, -100, 100 );
         public NumericValue<int> MaxRelations = new NumericValue<int>( 0, -100, 100 );
 
-        public static QuestOrigin DefaultValue { get; private set; }
+        public static QuestOrigin DefaultValue { get; set; }
     }
 }

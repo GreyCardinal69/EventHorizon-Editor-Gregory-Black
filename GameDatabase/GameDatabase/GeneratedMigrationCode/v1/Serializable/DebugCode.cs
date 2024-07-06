@@ -11,9 +11,9 @@ using System;
 namespace DatabaseMigration.v1.Serializable
 {
     [Serializable]
-	public struct DebugCodeSerializable
-	{
-		public int Code;
-		public LootContentSerializable Loot;
-	}
+    public class DebugCodeSerializable
+    {
+        public int Code;
+        public LootContentSerializable Loot;
+    }
 }

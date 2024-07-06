@@ -293,10 +293,10 @@ namespace GameDatabase
 
         private void BarrelCreation_Click( object sender, EventArgs e )
         {
-            barrelCollection.Data = BarrelExtensions.CreateBarrels(layoutEditor1.Layout);
+            barrelCollection.Data = BarrelExtensions.CreateBarrels( layoutEditor1.Layout );
             ( ( Ship ) _item ).Barrels = ( Barrel[] ) barrelCollection.Data;
             UpdateBarrels();
-            
+
         }
     }
 }
