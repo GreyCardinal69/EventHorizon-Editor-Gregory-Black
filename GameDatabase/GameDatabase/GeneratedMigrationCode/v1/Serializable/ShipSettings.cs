@@ -20,7 +20,7 @@ namespace DatabaseMigration.v1.Serializable
             ItemType = ItemType.ShipSettings;
             FileName = "ShipSettings.json";
         }
-
+        public ToggleState CellsExpansions;
         public float DefaultWeightPerCell;
         public float MinimumWeightPerCell;
         public float BaseArmorPoints;

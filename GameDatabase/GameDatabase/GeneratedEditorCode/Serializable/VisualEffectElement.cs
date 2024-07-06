@@ -7,6 +7,7 @@
 //-------------------------------------------------------------------------------
 
 using EditorDatabase.Enums;
+using EditorDatabase.Model;
 using System;
 using System.ComponentModel;
 
@@ -15,6 +16,8 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class VisualEffectElementSerializable
     {
+        public Vector2 Offset;
+        public float Rotation;
         public VisualEffectType Type;
         [DefaultValue( "" )]
         public string Image;

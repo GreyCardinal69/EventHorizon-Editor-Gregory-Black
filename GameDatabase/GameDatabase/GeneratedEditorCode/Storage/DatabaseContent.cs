@@ -579,6 +579,15 @@ namespace EditorDatabase.Storage
                     throw new DatabaseException( "Duplicate FrontierSettings file found - " + name );
                 FrontierSettings = data;
             }
+            else if ( type == ItemType.LocalizationSettings )
+            {
+                var data = _serializer.FromJson<LocalizationSettingsSerializable>( content );
+                data.FileName = name;
+
+                if ( LocalizationSettings != null )
+                    throw new DatabaseException( "Duplicate LocalizationSettings file found - " + name );
+                LocalizationSettings = data;
+            }
             else if ( type == ItemType.MusicPlaylist )
             {
                 var data = _serializer.FromJson<MusicPlaylistSerializable>( content );

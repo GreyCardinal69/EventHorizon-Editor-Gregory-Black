@@ -28,6 +28,7 @@ namespace EditorDatabase.DataModel
         {
             try
             {
+                CellsExpansions = serializable.CellsExpansions;
                 Id = new ItemId<Ship>( serializable.Id, serializable.FileName );
                 ShipType = serializable.ShipType;
                 ShipRarity = serializable.ShipRarity;
@@ -55,6 +56,7 @@ namespace EditorDatabase.DataModel
 
         public void Save( ShipSerializable serializable )
         {
+            serializable.CellsExpansions = this.CellsExpansions;
             serializable.ShipType = ShipType;
             serializable.ShipRarity = ShipRarity;
             serializable.SizeClass = SizeClass;
@@ -82,6 +84,7 @@ namespace EditorDatabase.DataModel
 
         public readonly ItemId<Ship> Id;
 
+        public ToggleState CellsExpansions;
         public ShipType ShipType;
         public ShipRarity ShipRarity;
         public SizeClass SizeClass;

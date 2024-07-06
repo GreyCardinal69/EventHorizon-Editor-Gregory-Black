@@ -27,5 +27,7 @@ namespace EditorDatabase.Enums
         RechargeShield,
         RechargeEnergy,
         ProgressiveDamage,
+        PushFromCenter,
+        PullToCenter
     }
 }

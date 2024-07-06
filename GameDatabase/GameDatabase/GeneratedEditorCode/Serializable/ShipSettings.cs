@@ -14,6 +14,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class ShipSettingsSerializable : SerializableItem
     {
+        public bool DisableCellsExpansions;
         public float DefaultWeightPerCell;
         public float MinimumWeightPerCell;
         public float BaseArmorPoints;

@@ -27,6 +27,8 @@ namespace EditorDatabase.DataModel
 
         public VisualEffectElement( VisualEffectElementSerializable serializable, Database database )
         {
+            this.Offset = serializable.Offset;
+            this.Rotation = new NumericValue<float>( serializable.Rotation, 0f, 360f );
             Type = serializable.Type;
             Image = serializable.Image;
             ColorMode = serializable.ColorMode;
@@ -61,10 +63,14 @@ namespace EditorDatabase.DataModel
             serializable.Loop = Loop;
             serializable.Inverse = Inverse;
             serializable.UseRealTime = UseRealTime;
+            serializable.Offset = this.Offset;
+            serializable.Rotation = this.Rotation.Value;
             OnDataSerialized( ref serializable );
             return serializable;
         }
 
+        public Vector2 Offset;
+        public NumericValue<float> Rotation = new NumericValue<float>( 0f, 0f, 360f );
         public VisualEffectType Type;
         public string Image;
         public ColorMode ColorMode;

@@ -24,6 +24,7 @@ namespace EditorDatabase.DataModel
 
         public ShipSettings( ShipSettingsSerializable serializable, Database database )
         {
+            DisableCellsExpansions = serializable.DisableCellsExpansions;
             DefaultWeightPerCell = new NumericValue<float>( serializable.DefaultWeightPerCell, 1f, 1000000f );
             MinimumWeightPerCell = new NumericValue<float>( serializable.MinimumWeightPerCell, 1f, 1000000f );
             BaseArmorPoints = new NumericValue<float>( serializable.BaseArmorPoints, 0f, 1000000f );
@@ -45,6 +46,7 @@ namespace EditorDatabase.DataModel
 
         public void Save( ShipSettingsSerializable serializable )
         {
+            serializable.DisableCellsExpansions = this.DisableCellsExpansions;
             serializable.DefaultWeightPerCell = DefaultWeightPerCell.Value;
             serializable.MinimumWeightPerCell = MinimumWeightPerCell.Value;
             serializable.BaseArmorPoints = BaseArmorPoints.Value;
@@ -64,6 +66,7 @@ namespace EditorDatabase.DataModel
             OnDataSerialized( ref serializable );
         }
 
+        public bool DisableCellsExpansions;
         public NumericValue<float> DefaultWeightPerCell = new NumericValue<float>( 0, 1f, 1000000f );
         public NumericValue<float> MinimumWeightPerCell = new NumericValue<float>( 0, 1f, 1000000f );
         public NumericValue<float> BaseArmorPoints = new NumericValue<float>( 0, 0f, 1000000f );

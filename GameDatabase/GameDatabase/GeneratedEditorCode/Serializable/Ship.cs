@@ -16,6 +16,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class ShipSerializable : SerializableItem
     {
+        public ToggleState CellsExpansions;
         public ShipType ShipType;
         public ShipRarity ShipRarity;
         public SizeClass SizeClass;

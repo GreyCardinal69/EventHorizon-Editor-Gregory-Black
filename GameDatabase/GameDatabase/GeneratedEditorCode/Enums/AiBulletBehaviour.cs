@@ -6,5 +6,7 @@
         Homing,
         Beam,
         AreaOfEffect,
+        Trap,
+        Harpoon,
     }
 }

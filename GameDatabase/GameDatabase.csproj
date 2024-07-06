@@ -291,6 +291,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\StatModificationType.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\TechType.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\TimeOutMode.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Enums\ToggleState.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\VisualEffectType.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\WeaponClass.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\WeaponSlotType.cs" />
@@ -409,6 +410,7 @@
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\StatModificationType.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\TechType.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\TimeOutMode.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\ToggleState.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\VisualEffectType.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\WeaponClass.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\WeaponSlotType.cs" />
