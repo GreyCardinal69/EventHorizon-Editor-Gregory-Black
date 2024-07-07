@@ -59,6 +59,6 @@ namespace EditorDatabase.DataModel
         public SoundTrack[] CombatMusic;
         public SoundTrack[] ExplorationMusic;
 
-        public static MusicPlaylist DefaultValue = new MusicPlaylist();
+        public static MusicPlaylist DefaultValue { get; private set; }
     }
 }

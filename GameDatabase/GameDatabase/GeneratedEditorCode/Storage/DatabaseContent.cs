@@ -98,8 +98,6 @@ namespace EditorDatabase.Storage
                 storage.SaveJson( DebugSettings.FileName, jsonSerializer.ToJson( DebugSettings ) );
             if ( FactionsSettings != null )
                 storage.SaveJson( FactionsSettings.FileName, jsonSerializer.ToJson( FactionsSettings ) );
-            if ( MusicSettings != null )
-                storage.SaveJson( MusicSettings.FileName, jsonSerializer.ToJson( MusicSettings ) );
             if ( LocalizationSettings != null )
                 storage.SaveJson( LocalizationSettings.FileName, jsonSerializer.ToJson( LocalizationSettings ) );
             if ( MusicPlaylist != null )
@@ -175,9 +173,9 @@ namespace EditorDatabase.Storage
                 var data = _serializer.FromJson<MusicPlaylistSerializable>( content );
                 data.FileName = name;
 
-                if ( MusicSettings != null )
+                if ( MusicPlaylist != null )
                     throw new DatabaseException( "Duplicate MusicPlaylist file found - " + name );
-                MusicSettings = data;
+                MusicPlaylist = data;
             }
             else if ( type == ItemType.ComponentStats )
             {
@@ -244,15 +242,6 @@ namespace EditorDatabase.Storage
                 if ( LocalizationSettings != null )
                     throw new DatabaseException( "Duplicate LocalizationSettings file found - " + name );
                 LocalizationSettings = data;
-            }
-            else if ( type == ItemType.MusicPlaylist )
-            {
-                var data = _serializer.FromJson<MusicPlaylistSerializable>( content );
-                data.FileName = name;
-
-                if ( MusicPlaylist != null )
-                    throw new DatabaseException( "Duplicate MusicPlaylist file found - " + name );
-                MusicPlaylist = data;
             }
             else if ( type == ItemType.Technology )
             {
@@ -593,9 +582,9 @@ namespace EditorDatabase.Storage
                 var data = _serializer.FromJson<MusicPlaylistSerializable>( content );
                 data.FileName = name;
 
-                if ( FrontierSettings != null )
+                if ( MusicPlaylist != null )
                     throw new DatabaseException( "Duplicate MusicPlaylist file found - " + name );
-                MusicSettings = data;
+                MusicPlaylist = data;
             }
             else if ( type == ItemType.ShipModSettings )
             {
@@ -646,7 +635,6 @@ namespace EditorDatabase.Storage
         public ShipSettingsSerializable ShipSettings { get; private set; }
         public FrontierSettingsSerializable FrontierSettings { get; private set; }
         public ShipModSettingsSerializable ShipModSettings { get; private set; }
-        public MusicPlaylistSerializable MusicSettings { get; private set; }
         public List<ComponentStatUpgradeSerializable> ComponentStatUpgradeList => _componentStatUpgradeMap.Values.ToList();
         public List<AmmunitionObsoleteSerializable> AmmunitionObsoleteList => _ammunitionObsoleteMap.Values.ToList();
         public List<BehaviorTreeSerializable> BehaviorTreeList => _behaviorTreeMap.Values.ToList();

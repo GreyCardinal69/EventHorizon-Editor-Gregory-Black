@@ -252,7 +252,7 @@ namespace EditorDatabase
             _shipSettings?.Save( _content.ShipSettings );
             _specialEventSettings?.Save( _content.SpecialEventSettings );
             _combatSettings?.Save( _content.CombatSettings );
-            _musicSettings?.Save( _content.MusicSettings );
+            _musicPlaylist?.Save( _content.MusicPlaylist );
             _content.Save( storage, _serializer );
         }
 
@@ -380,7 +380,7 @@ namespace EditorDatabase
         public ShipSettings ShipSettings => _shipSettings ?? ( _shipSettings = new ShipSettings( _content.ShipSettings, this ) );
         public SpecialEventSettings SpecialEventSettings => _specialEventSettings ?? ( _specialEventSettings = new SpecialEventSettings( _content.SpecialEventSettings, this ) );
         public SkillSettings SkillSettings => _skillSettings ?? ( _skillSettings = new SkillSettings( _content.SkillSettings, this ) );
-        public MusicPlaylist MusicSettings => _musicSettings ?? ( _musicSettings = new MusicPlaylist( _content.MusicSettings, this ) );
+        public MusicPlaylist MusicSettings => _musicPlaylist ?? ( _musicPlaylist = new MusicPlaylist( _content.MusicPlaylist, this ) );
         public ItemId<AmmunitionObsolete> GetAmmunitionObsoleteId( int id ) { return new ItemId<AmmunitionObsolete>( _content.GetAmmunitionObsolete( id ) ); }
 
         public ItemId<ComponentStatUpgrade> GetComponentStatUpgradeId( int id ) { return new ItemId<ComponentStatUpgrade>( _content.GetComponentStatUpgrade( id ) ); }
@@ -918,7 +918,6 @@ namespace EditorDatabase
             _behaviorTreeMap.Clear();
 
             _localizationSettings = null;
-            _musicPlaylist = null;
             _uiSettings = null;
             _debugSettings = null;
             _skillSettings = null;
@@ -929,7 +928,7 @@ namespace EditorDatabase
             _shipSettings = null;
             _frontierSettings = null;
             _shipModSettings = null;
-            _musicSettings = null;
+            _musicPlaylist = null;
             _factionsSettings = null;
         }
 
@@ -975,7 +974,6 @@ namespace EditorDatabase
         private CombatSettings _combatSettings;
         private SpecialEventSettings _specialEventSettings;
         private FactionsSettings _factionsSettings;
-        private MusicPlaylist _musicSettings;
         private readonly IJsonSerializer _serializer;
         private readonly DatabaseContent _content;
     }
