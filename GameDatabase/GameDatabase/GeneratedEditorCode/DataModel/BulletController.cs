@@ -70,7 +70,7 @@ namespace EditorDatabase.DataModel
         public BulletControllerSerializable Serialize()
         {
             var serializable = new BulletControllerSerializable();
-            serializable.StartingVelocityModifier = 1f;
+            serializable.StartingVelocityModifier = 0.1f;
             serializable.IgnoreRotation = false;
             serializable.SmartAim = false;
             serializable.X = "0";
