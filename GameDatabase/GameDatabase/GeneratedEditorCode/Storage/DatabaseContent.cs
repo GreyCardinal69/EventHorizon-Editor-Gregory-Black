@@ -6,6 +6,7 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
+
 using EditorDatabase.Enums;
 using EditorDatabase.Model;
 using EditorDatabase.Serializable;
@@ -26,6 +27,10 @@ namespace EditorDatabase.Storage
 
         public void Save( IDataStorage storage, IJsonSerializer jsonSerializer )
         {
+            foreach ( ComponentGroupTagSerializable item in this._componentGroupTagMap.Values )
+                storage.SaveJson( item.FileName, jsonSerializer.ToJson<ComponentGroupTagSerializable>( item ) );
+            foreach ( var item in _behaviorTreeMap.Values )
+                storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
             foreach ( var item in _componentStatUpgradeMap.Values )
                 storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
             foreach ( var item in _combatRulesMap.Values )
@@ -338,6 +343,24 @@ namespace EditorDatabase.Storage
                 data.FileName = name;
                 _combatRulesMap.Add( data.Id, data );
             }
+            else if ( type == ItemType.ComponentGroupTag )
+            {
+                if ( this._componentGroupTagMap.ContainsKey( item.Id ) )
+                {
+                    throw new DatabaseException( string.Concat( new string[]
+                    {
+                        "Duplicate ComponentGroupTag ID - ",
+                        item.Id.ToString(),
+                        " (",
+                        name,
+                        ")"
+                    } ) );
+                }
+                ComponentGroupTagSerializable componentGroupTagSerializable = this._serializer.FromJson<ComponentGroupTagSerializable>( content );
+                componentGroupTagSerializable.FileName = name;
+                this._componentGroupTagMap.Add( componentGroupTagSerializable.Id, componentGroupTagSerializable );
+                return;
+            }
             else if ( type == ItemType.GameObjectPrefab )
             {
                 if ( _gameObjectPrefabMap.ContainsKey( item.Id ) ) throw new DatabaseException( "Duplicate Component ID - " + item.Id + " (" + name + ")" );
@@ -611,6 +634,18 @@ namespace EditorDatabase.Storage
             return _images.TryGetValue( name, out var image ) ? image : ImageData.Empty;
         }
 
+        public List<ComponentGroupTagSerializable> ComponentGroupTagList => _componentGroupTagMap.Values.ToList();
+
+        public ComponentGroupTagSerializable GetComponentGroupTag( int id )
+        {
+            ComponentGroupTagSerializable result;
+            if ( !this._componentGroupTagMap.TryGetValue( id, out result ) )
+            {
+                return null;
+            }
+            return result;
+        }
+
         public IAudioClipData GetAudioClip( string name )
         {
             return _audioClips.TryGetValue( name, out var audioClip ) ? audioClip : AudioClipData.Empty;
@@ -702,6 +737,7 @@ namespace EditorDatabase.Storage
 
         public IEnumerable<KeyValuePair<string, string>> Localizations => _localizations;
 
+        private readonly Dictionary<int, ComponentGroupTagSerializable> _componentGroupTagMap = new Dictionary<int, ComponentGroupTagSerializable>();
         private readonly IJsonSerializer _serializer;
         private readonly Dictionary<int, ComponentStatUpgradeSerializable> _componentStatUpgradeMap = new Dictionary<int, ComponentStatUpgradeSerializable>();
         private readonly Dictionary<int, GameObjectPrefabSerializable> _gameObjectPrefabMap = new Dictionary<int, GameObjectPrefabSerializable>();

@@ -18,6 +18,7 @@ namespace EditorDatabase.Enums
         DroneBay = 5,
         Ship = 6,
         Satellite = 7,
+        ComponentGroupTag = 35,
         ShipBuild = 8,
         SatelliteBuild = 9,
         Technology = 10,

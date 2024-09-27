@@ -54,6 +54,7 @@ namespace DatabaseMigration.v1.Enums
         FactionsSettings = 111,
         MusicPlaylist = 112,
         ResearchSetting = 113,
+        ComponentGroupTag,
         PvpSettings = 114,
         FrontierNpcSettings = 115,
         FrontierLevelSettings = 116,

@@ -194,6 +194,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\CombatRules.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\CombatSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Component.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ComponentGroupTag.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ComponentMod.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ComponentRestrictions.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ComponentStats.cs" />
@@ -309,6 +310,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\CombatRules.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\CombatSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Component.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ComponentGroupTagSerializable.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ComponentMod.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ComponentRestrictions.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ComponentStats.cs" />
@@ -428,6 +430,7 @@
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\CombatRules.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\CombatSettings.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\Component.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\ComponentGroupTagSerializable.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\ComponentMod.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\ComponentRestrictions.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\ComponentStats.cs" />
@@ -488,6 +491,7 @@
     <Compile Include="GameDatabase\Helpers\Prompt.cs" />
     <Compile Include="GameDatabase\Helpers\Templates.cs" />
     <Compile Include="GameDatabase\Migration\v1\DatabaseUpgrader_5_6.cs" />
+    <Compile Include="GameDatabase\Migration\v1\DatabaseUpgrader_6_7.cs" />
     <Compile Include="GameDatabase\Model\AudioClipData.cs" />
     <Compile Include="GameDatabase\Model\ImageData.cs" />
     <Compile Include="GameDatabase\Model\ItemId.cs" />

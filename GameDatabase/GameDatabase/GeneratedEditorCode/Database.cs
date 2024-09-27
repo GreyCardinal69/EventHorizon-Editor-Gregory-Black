@@ -36,7 +36,7 @@ namespace EditorDatabase
     public partial class Database
     {
         public const int VersionMajor = 1;
-        public const int VersionMinor = 6;
+        public const int VersionMinor = 7;
         public DatabaseContent Content => _content;
 
         public Database( IDataStorage storage )
@@ -238,6 +238,13 @@ namespace EditorDatabase
                     item.Value.Save( value );
             }
 
+            foreach ( var item in _componentGroupTagMap )
+            {
+                var value = _content.GetComponentGroupTag( item.Key );
+                if ( value != secondaryDb.Content.GetComponentGroupTag( item.Key ) )
+                    item.Value.Save( value );
+            }
+
             _localizationSettings?.Save( _content.LocalizationSettings );
             _musicPlaylist?.Save( _content.MusicPlaylist );
             _factionsSettings?.Save( _content.FactionsSettings );
@@ -258,6 +265,8 @@ namespace EditorDatabase
 
         public IEnumerable<IItemId> GetItemList( Type type )
         {
+            if ( type == typeof( ComponentGroupTag ) )
+                return _content.ComponentGroupTagList.Select( item => new ItemId<ComponentGroupTag>( item ) );
             if ( type == typeof( CombatRules ) ) return _content.CombatRulesList.Select( item => new ItemId<CombatRules>( item ) );
             if ( type == typeof( GameObjectPrefab ) ) return _content.GameObjectPrefabList.Select( item => new ItemId<GameObjectPrefab>( item ) );
             if ( type == typeof( AmmunitionObsolete ) ) return _content.AmmunitionObsoleteList.Select( item => new ItemId<AmmunitionObsolete>( item ) );
@@ -331,6 +340,8 @@ namespace EditorDatabase
                 case ItemType.LocalizationSettings: return LocalizationSettings;
                 case ItemType.MusicPlaylist: return MusicPlaylist;
                 case ItemType.BehaviorTree: return GetBehaviorTree( id );
+                case ItemType.ComponentGroupTag: return GetComponentGroupTag( id );
+
                 default: return null;
             }
         }
@@ -365,6 +376,7 @@ namespace EditorDatabase
                 case ItemType.VisualEffect: SetVisualEffect( id, old ); break;
                 case ItemType.Weapon: SetWeapon( id, old ); break;
                 case ItemType.BehaviorTree: SetBehaviorTree( id, old ); break;
+                case ItemType.ComponentGroupTag: SetComponentGroupTag( id, old ); break;
             }
         }
         public LocalizationSettings LocalizationSettings => _localizationSettings ?? ( _localizationSettings = LocalizationSettings.Create( _content.LocalizationSettings, this ) );
@@ -416,6 +428,22 @@ namespace EditorDatabase
                 _behaviorTreeMap.Add( id, item );
             }
             return item;
+        }
+
+        public ItemId<ComponentGroupTag> GetComponentGroupTagId( int id )
+        {
+            return new ItemId<ComponentGroupTag>( this._content.GetComponentGroupTag( id ) );
+        }
+
+        public ComponentGroupTag GetComponentGroupTag( int id )
+        {
+            ComponentGroupTag componentGroupTag;
+            if ( !this._componentGroupTagMap.TryGetValue( id, out componentGroupTag ) )
+            {
+                componentGroupTag = ComponentGroupTag.Create( this._content.GetComponentGroupTag( id ), this );
+                this._componentGroupTagMap.Add( id, componentGroupTag );
+            }
+            return componentGroupTag;
         }
 
         public ItemId<CombatRules> GetCombatRulesId( int id ) { return new ItemId<CombatRules>( _content.GetCombatRules( id ) ); }
@@ -877,6 +905,12 @@ namespace EditorDatabase
             _content.WeaponList[_content.WeaponList.IndexOf( _content.GetWeapon( old ) )] = serializable;
             _weaponMap[old] = new Weapon( serializable, this );
         }
+        public void SetComponentGroupTag( int id, int old )
+        {
+            var serializable = _content.GetComponentGroupTag( id );
+            _content.ComponentGroupTagList[_content.ComponentGroupTagList.IndexOf( _content.GetComponentGroupTag( old ) )] = serializable;
+            _componentGroupTagMap[old] = new ComponentGroupTag( serializable, this );
+        }
 
         public void LoadJson( string name, string content )
         {
@@ -916,6 +950,7 @@ namespace EditorDatabase
             _combatRulesMap.Clear();
             _gameObjectPrefabMap.Clear();
             _behaviorTreeMap.Clear();
+            this._componentGroupTagMap.Clear();
 
             _localizationSettings = null;
             _uiSettings = null;
@@ -932,6 +967,7 @@ namespace EditorDatabase
             _factionsSettings = null;
         }
 
+        private readonly Dictionary<int, ComponentGroupTag> _componentGroupTagMap = new Dictionary<int, ComponentGroupTag>();
         private readonly Dictionary<int, ComponentStatUpgrade> _componentStatUpgradeMap = new Dictionary<int, ComponentStatUpgrade>();
         private readonly Dictionary<int, CombatRules> _combatRulesMap = new Dictionary<int, CombatRules>();
         private readonly Dictionary<int, GameObjectPrefab> _gameObjectPrefabMap = new Dictionary<int, GameObjectPrefab>();

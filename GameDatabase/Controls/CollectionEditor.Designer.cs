@@ -43,9 +43,11 @@
             this.prevPageButton = new System.Windows.Forms.Button();
             this.pageNumberButton = new System.Windows.Forms.Button();
             this.nextPageButton = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.JumpTo = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutOuterPanel.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -70,7 +72,7 @@
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(508, 263);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(508, 290);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // tableLayoutOuterPanel
@@ -94,7 +96,7 @@
             this.tableLayoutOuterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutOuterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutOuterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOuterPanel.Size = new System.Drawing.Size(512, 382);
+            this.tableLayoutOuterPanel.Size = new System.Drawing.Size(512, 409);
             this.tableLayoutOuterPanel.TabIndex = 1;
             // 
             // buttonsPanel
@@ -104,15 +106,17 @@
             this.buttonsPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonsPanel.Controls.Add(this.addButton);
             this.buttonsPanel.Controls.Add(this.deleteButton);
+            this.buttonsPanel.Controls.Add(this.button1);
             this.buttonsPanel.Controls.Add(this.moveUpButton);
             this.buttonsPanel.Controls.Add(this.moveDownButton);
+            this.buttonsPanel.Controls.Add(this.button2);
             this.buttonsPanel.Controls.Add(this.cloneButton);
             this.buttonsPanel.Controls.Add(this.collapseButton);
             this.buttonsPanel.Controls.Add(this.expandBtton);
             this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonsPanel.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonsPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.buttonsPanel.Location = new System.Drawing.Point(2, 269);
+            this.buttonsPanel.Location = new System.Drawing.Point(2, 296);
             this.buttonsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonsPanel.Name = "buttonsPanel";
             this.buttonsPanel.Size = new System.Drawing.Size(508, 58);
@@ -146,7 +150,7 @@
             // 
             this.moveUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.moveUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.moveUpButton.Location = new System.Drawing.Point(165, 3);
+            this.moveUpButton.Location = new System.Drawing.Point(246, 3);
             this.moveUpButton.Name = "moveUpButton";
             this.moveUpButton.Size = new System.Drawing.Size(75, 23);
             this.moveUpButton.TabIndex = 1;
@@ -158,7 +162,7 @@
             // 
             this.moveDownButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.moveDownButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.moveDownButton.Location = new System.Drawing.Point(246, 3);
+            this.moveDownButton.Location = new System.Drawing.Point(327, 3);
             this.moveDownButton.Name = "moveDownButton";
             this.moveDownButton.Size = new System.Drawing.Size(86, 23);
             this.moveDownButton.TabIndex = 1;
@@ -170,7 +174,7 @@
             // 
             this.cloneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cloneButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.cloneButton.Location = new System.Drawing.Point(338, 3);
+            this.cloneButton.Location = new System.Drawing.Point(3, 32);
             this.cloneButton.Name = "cloneButton";
             this.cloneButton.Size = new System.Drawing.Size(53, 23);
             this.cloneButton.TabIndex = 7;
@@ -183,7 +187,7 @@
             // 
             this.collapseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.collapseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.collapseButton.Location = new System.Drawing.Point(397, 3);
+            this.collapseButton.Location = new System.Drawing.Point(62, 32);
             this.collapseButton.Name = "collapseButton";
             this.collapseButton.Size = new System.Drawing.Size(75, 23);
             this.collapseButton.TabIndex = 5;
@@ -195,7 +199,7 @@
             // 
             this.expandBtton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.expandBtton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.expandBtton.Location = new System.Drawing.Point(3, 32);
+            this.expandBtton.Location = new System.Drawing.Point(143, 32);
             this.expandBtton.Name = "expandBtton";
             this.expandBtton.Size = new System.Drawing.Size(75, 23);
             this.expandBtton.TabIndex = 6;
@@ -214,7 +218,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 331);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 358);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(508, 29);
@@ -258,19 +262,6 @@
             this.nextPageButton.Visible = false;
             this.nextPageButton.Click += new System.EventHandler(this.nextPageButton_Click);
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 362);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(512, 20);
-            this.flowLayoutPanel2.TabIndex = 2;
-            // 
             // JumpTo
             // 
             this.JumpTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -284,10 +275,47 @@
             this.JumpTo.Visible = false;
             this.JumpTo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.JumpTo_MouseClick);
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 389);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(512, 20);
+            this.flowLayoutPanel2.TabIndex = 2;
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.button1.Location = new System.Drawing.Point(165, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Move First";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.button2.Location = new System.Drawing.Point(419, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Move Last";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // CollectionEditor
             // 
@@ -296,7 +324,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.tableLayoutOuterPanel);
             this.Name = "CollectionEditor";
-            this.Size = new System.Drawing.Size(512, 382);
+            this.Size = new System.Drawing.Size(512, 409);
             this.tableLayoutOuterPanel.ResumeLayout(false);
             this.tableLayoutOuterPanel.PerformLayout();
             this.buttonsPanel.ResumeLayout(false);
@@ -326,5 +354,7 @@
 
         protected System.Windows.Forms.Button JumpTo;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        protected System.Windows.Forms.Button button1;
+        protected System.Windows.Forms.Button button2;
     }
 }

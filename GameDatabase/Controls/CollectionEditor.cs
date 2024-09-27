@@ -5,6 +5,7 @@ using GameDatabase.GameDatabase.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows.Forms;
 using static GameDatabase.Reusables;
 
@@ -633,6 +634,46 @@ namespace GameDatabase.Controls
 
             if ( ( id - 1 ) * rowsPerPage > _collection.Length ) return;
             SwapPage( id - 1 );
+        }
+
+        private void button1_Click( object sender, EventArgs e )
+        {
+            if ( _collection == null || _collection.Length < 2 )
+                return;
+
+            if ( _selectedItemId < 0 || ( _selectedItemId == 0 && curPage == 0 ) || _selectedItemId >= _collection.Length )
+                return;
+            
+            var selectedItem = _collection.GetValue( _selectedItemId );
+            
+            for ( int i = _selectedItemId; i > 0; i-- )
+            {
+                _collection.SetValue( _collection.GetValue( i - 1 ), i );
+            }
+            
+            _collection.SetValue( selectedItem, 0 );
+
+            OnDataChanged( this, EventArgs.Empty );
+            SwapPage( 0 );
+            _selectedRowId = 0;
+            CheckRadioButton();
+        }
+
+        private void button2_Click( object sender, EventArgs e )
+        {
+            var selectedItem = _collection.GetValue( _selectedItemId );
+            
+            for ( int i = _selectedItemId; i < _collection.Length - 1; i++ )
+            {
+                _collection.SetValue( _collection.GetValue( i + 1 ), i );
+            }
+
+            _collection.SetValue( selectedItem, _collection.Length - 1 );
+
+            OnDataChanged( this, EventArgs.Empty );
+            SwapPage( ( _collection.Length - 1 ) / rowsPerPage );
+            _selectedRowId = ( _collection.Length - 1 ) % rowsPerPage;
+            CheckRadioButton();
         }
     }
 }

@@ -101,6 +101,7 @@ namespace GameDatabase
                 }
             }
         }
+
         public static double CalculateSimilarity( string source, string target )
         {
             if ( ( source == null ) || ( target == null ) ) return 0.0;
@@ -473,7 +474,6 @@ namespace GameDatabase
             }
         }
 
-
         // TO DO
         private void RunLootAnalytics()
         {
@@ -638,11 +638,33 @@ namespace GameDatabase
 
             foreach ( FleetSerializable fleet in _database.Content.FleetList )
             {
+                bool unknownId = false;
+                string unknownIds = "";
+
+                if ( fleet.SpecificShips != null )
+                {
+                    foreach ( var item in fleet.SpecificShips )
+                    {
+                        if ( _database.Content.GetShipBuild( item ) == null )
+                        {
+                            unknownId = true;
+                            unknownIds += item + " ";
+                        }
+                    }
+                }
+
                 if ( fleet.SpecificShips == null )
                 {
                     errorDetected = true;
                     PrintFaultyName( $"[Fleet]: [{fleet.FileName}]:" );
                     Data.AppendText( $"     Has no specific ship ids, is this intended?", Color.Orange );
+                }
+                else if ( unknownId )
+                {
+                    errorDetected = true;
+                    PrintFaultyName( $"[Fleet]: [{fleet.FileName}]:" );
+                    Data.AppendText( $"     Has ship id(s) that don't exist in the database: [{unknownIds}]", Color.Red );
+                    unknownIds = "";
                 }
                 else
                 {

@@ -30,14 +30,13 @@ namespace EditorDatabase.DataModel
             {
                 Id = new ItemId<ShipBuild>( serializable.Id, serializable.FileName );
                 Ship = database.GetShipId( serializable.ShipId );
-                if ( Ship.IsNull )
-                    throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Ship cannot be null" );
+
                 AvailableForPlayer = serializable.AvailableForPlayer;
                 AvailableForEnemy = serializable.AvailableForEnemy;
                 DifficultyClass = serializable.DifficultyClass;
                 BuildFaction = database.GetFactionId( serializable.BuildFaction );
                 CustomAI = database.GetBehaviorTreeId( serializable.CustomAI );
-                Components = serializable.Components?.Select( item => InstalledComponent.Create( item, database ) ).ToArray();
+                Components = serializable.Components?.Where(item => item != null ).Select( item => InstalledComponent.Create( item, database ) ).ToArray();
                 Perks.Value = DataModel.ShipBuildPerks.Create( serializable.Perks, database );
                 ExtendedLayout = serializable.ExtendedLayout;
                 RandomColor = serializable.RandomColor;

@@ -104,6 +104,13 @@ namespace DatabaseMigration.v1.Storage
                 data.FileName = name;
                 GameObjectPrefabList.Add( data );
             }
+            if ( type == ItemType.ComponentGroupTag )
+            {
+                ComponentGroupTagSerializable componentGroupTagSerializable = this._serializer.FromJson<ComponentGroupTagSerializable>( content );
+                componentGroupTagSerializable.FileName = name;
+                this.ComponentGroupTagList.Add( componentGroupTagSerializable );
+                return;
+            }
             else if ( type == ItemType.CombatRules )
             {
                 var data = _serializer.FromJson<CombatRulesSerializable>( content );
@@ -292,6 +299,8 @@ namespace DatabaseMigration.v1.Storage
 
         public void Export( IContentLoader contentLoader )
         {
+            foreach ( ComponentGroupTagSerializable item in this.ComponentGroupTagList )
+                contentLoader.LoadJson( item.FileName, _serializer.ToJson( item ) );
             foreach ( var item in ComponentStatUpgradeList )
                 contentLoader.LoadJson( item.FileName, _serializer.ToJson( item ) );
             foreach ( var item in CombatRulesList )
@@ -450,7 +459,7 @@ namespace DatabaseMigration.v1.Storage
         public List<BulletPrefabSerializable> BulletPrefabList { get; } = new List<BulletPrefabSerializable>();
         public List<VisualEffectSerializable> VisualEffectList { get; } = new List<VisualEffectSerializable>();
         public List<WeaponSerializable> WeaponList { get; } = new List<WeaponSerializable>();
-
+        public List<ComponentGroupTagSerializable> ComponentGroupTagList { get; } = new List<ComponentGroupTagSerializable>();
         public IEnumerable<KeyValuePair<string, IImageData>> Images => _images;
         public IEnumerable<KeyValuePair<string, IAudioClipData>> AudioClips => _audioClips;
         public IEnumerable<KeyValuePair<string, string>> Localizations => _localizations;

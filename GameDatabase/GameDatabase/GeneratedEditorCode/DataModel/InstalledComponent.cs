@@ -29,7 +29,7 @@ namespace EditorDatabase.DataModel
         {
             Component = database.GetComponentId( serializable.ComponentId );
             if ( Component.IsNull )
-                throw new DatabaseException( this.GetType().Name + ": Component cannot be null" );
+                return;
             Modification = database.GetComponentModId( serializable.Modification );
             Quality = serializable.Quality;
             X = new NumericValue<int>( serializable.X, -32768, 32767 );
