@@ -26,6 +26,7 @@ namespace EditorDatabase.DataModel
 
         public Component( ComponentSerializable serializable, Database database )
         {
+            if ( serializable == null ) serializable = new ComponentSerializable();
             try
             {
                 Id = new ItemId<Component>( serializable.Id, serializable.FileName );
@@ -34,8 +35,8 @@ namespace EditorDatabase.DataModel
                 DisplayCategory = serializable.DisplayCategory;
                 Availability = serializable.Availability;
                 Stats = database.GetComponentStatsId( serializable.ComponentStatsId );
-                if ( Stats.IsNull )
-                    throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Stats cannot be null" );
+            //    if ( Stats.IsNull )
+                   // return;
                 Faction = database.GetFactionId( serializable.Faction );
                 Level = new NumericValue<int>( serializable.Level, 0, 2147483647 );
                 Icon = serializable.Icon;

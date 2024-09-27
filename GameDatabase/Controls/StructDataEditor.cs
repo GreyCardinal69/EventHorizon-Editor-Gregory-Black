@@ -435,7 +435,7 @@ namespace GameDatabase
 
             layoutEditor.ValueChanged += OnLayoutChanged;
 
-            var sizeControl = CreateNumericContol( layout.Size, 1, 32, 1, 0, 1, row );
+            var sizeControl = CreateNumericContol( layout.Size, 1, 1000, 1, 0, 1, row );
             sizeControl.ValueChanged += OnLayoutSizeChanged;
 
             panel.Controls.Add( layoutEditor, 0, 0 );

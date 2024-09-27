@@ -109,7 +109,6 @@ namespace DatabaseMigration.v1.Storage
                 ComponentGroupTagSerializable componentGroupTagSerializable = this._serializer.FromJson<ComponentGroupTagSerializable>( content );
                 componentGroupTagSerializable.FileName = name;
                 this.ComponentGroupTagList.Add( componentGroupTagSerializable );
-                return;
             }
             else if ( type == ItemType.CombatRules )
             {

@@ -69,6 +69,8 @@ namespace GameDatabase
             UpdateEngines();
             splitContainer1.SplitterDistance = 272;
             splitContainer2.SplitterDistance = 362;
+            if ( layoutInfo != null )
+                layoutInfo.OnLayoutChanged();
         }
 
         private void UpdateEngines()
@@ -94,6 +96,8 @@ namespace GameDatabase
                 X = item.Position.y,
                 Y = item.Position.x
             } ).ToArray();
+            if ( layoutInfo != null )
+                layoutInfo.OnLayoutChanged();
         }
 
         private void radioButton1_CheckedChanged( object sender, EventArgs e )
@@ -180,6 +184,8 @@ namespace GameDatabase
                 layoutInfo?.OnLayoutChanged();
                 UpdateEngines();
             }
+            if ( layoutInfo != null )
+                layoutInfo.OnLayoutChanged();
         }
 
         private void layoutEditor1_ValueChanged( object sender, EventArgs e )
@@ -190,6 +196,8 @@ namespace GameDatabase
                 ( ( Ship ) _item ).Layout.Data = layoutEditor1.Layout;
             else if ( _item is Satellite )
                 ( ( Satellite ) _item ).Layout.Data = layoutEditor1.Layout;
+            if ( layoutInfo != null )
+                layoutInfo.OnLayoutChanged();
         }
 
         private readonly string _dialogName;
@@ -214,6 +222,8 @@ namespace GameDatabase
             }
 
             modifyLayout( ( int ) layoutSize.Value, 0, 0 );
+            if ( layoutInfo != null )
+                layoutInfo.OnLayoutChanged();
         }
 
         private void leftButton_Click( object sender, EventArgs e )
@@ -248,6 +258,8 @@ namespace GameDatabase
                 ( ( Ship ) _item ).Layout = layout;
             else if ( _item is Satellite )
                 ( ( Satellite ) _item ).Layout = layout;
+            if (layoutInfo != null )
+                layoutInfo.OnLayoutChanged();
         }
 
         private bool _ignoreEvents;
@@ -289,6 +301,8 @@ namespace GameDatabase
                 Rotation = item.Rotation.Value,
                 Arc = item.AutoAimingArc.Value
             } ).ToArray();
+            if ( layoutInfo != null )
+                layoutInfo.OnLayoutChanged();
         }
 
         private void BarrelCreation_Click( object sender, EventArgs e )

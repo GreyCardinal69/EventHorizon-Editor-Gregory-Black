@@ -658,7 +658,7 @@ namespace GameDatabase
                             }
 
                             var type = ( ItemType ) ( int ) content.GetValue( "ItemType" );
-                            try
+                    /*        try
                             {
                                 _database.GetItem( type, id );
                                 MessageBox.Show( $"{type} with Id  {_id} already exists" );
@@ -666,7 +666,7 @@ namespace GameDatabase
                             }
                             catch ( NullReferenceException )
                             {
-                            }
+                            }*/
                         }
                     }
 

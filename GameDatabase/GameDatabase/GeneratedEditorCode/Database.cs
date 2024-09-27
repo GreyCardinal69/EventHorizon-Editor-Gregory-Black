@@ -265,8 +265,7 @@ namespace EditorDatabase
 
         public IEnumerable<IItemId> GetItemList( Type type )
         {
-            if ( type == typeof( ComponentGroupTag ) )
-                return _content.ComponentGroupTagList.Select( item => new ItemId<ComponentGroupTag>( item ) );
+            if ( type == typeof( ComponentGroupTag ) ) return _content.ComponentGroupTagList.Select( item => new ItemId<ComponentGroupTag>( item ) );
             if ( type == typeof( CombatRules ) ) return _content.CombatRulesList.Select( item => new ItemId<CombatRules>( item ) );
             if ( type == typeof( GameObjectPrefab ) ) return _content.GameObjectPrefabList.Select( item => new ItemId<GameObjectPrefab>( item ) );
             if ( type == typeof( AmmunitionObsolete ) ) return _content.AmmunitionObsoleteList.Select( item => new ItemId<AmmunitionObsolete>( item ) );

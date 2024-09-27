@@ -636,15 +636,7 @@ namespace EditorDatabase.Storage
 
         public List<ComponentGroupTagSerializable> ComponentGroupTagList => _componentGroupTagMap.Values.ToList();
 
-        public ComponentGroupTagSerializable GetComponentGroupTag( int id )
-        {
-            ComponentGroupTagSerializable result;
-            if ( !this._componentGroupTagMap.TryGetValue( id, out result ) )
-            {
-                return null;
-            }
-            return result;
-        }
+        public ComponentGroupTagSerializable GetComponentGroupTag( int id ) { return _componentGroupTagMap.TryGetValue( id, out var item ) ? item : null; }
 
         public IAudioClipData GetAudioClip( string name )
         {
