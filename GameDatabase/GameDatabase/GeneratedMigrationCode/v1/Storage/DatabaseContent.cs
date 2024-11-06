@@ -43,6 +43,10 @@ namespace DatabaseMigration.v1.Storage
 
             if ( type == ItemType.AmmunitionObsolete )
             {
+                Console.WriteLine( type );
+                Console.WriteLine( ItemType.AmmunitionObsolete );
+                Console.WriteLine( type == ItemType.AmmunitionObsolete );
+                Console.WriteLine( name );
                 var data = _serializer.FromJson<AmmunitionObsoleteSerializable>( content );
                 data.FileName = name;
                 AmmunitionObsoleteList.Add( data );
@@ -74,7 +78,7 @@ namespace DatabaseMigration.v1.Storage
                 data.FileName = name;
                 MusicPlaylist = data;
             }
-            else if ( type == ItemType.Component )
+            else if ( item.ItemType ==  ItemType.Component )
             {
                 var data = _serializer.FromJson<ComponentSerializable>( content );
                 data.FileName = name;
@@ -106,9 +110,9 @@ namespace DatabaseMigration.v1.Storage
             }
             if ( type == ItemType.ComponentGroupTag )
             {
-                ComponentGroupTagSerializable componentGroupTagSerializable = this._serializer.FromJson<ComponentGroupTagSerializable>( content );
-                componentGroupTagSerializable.FileName = name;
-                this.ComponentGroupTagList.Add( componentGroupTagSerializable );
+                var data = _serializer.FromJson<ComponentGroupTagSerializable>( content );
+                data.FileName = name;
+                ComponentGroupTagList.Add( data );
             }
             else if ( type == ItemType.CombatRules )
             {
@@ -289,10 +293,6 @@ namespace DatabaseMigration.v1.Storage
                 var data = _serializer.FromJson<SpecialEventSettingsSerializable>( content );
                 data.FileName = name;
                 SpecialEventSettings = data;
-            }
-            else
-            {
-                throw new DatabaseException( "Unknown file type - " + type + "(" + name + ")" );
             }
         }
 

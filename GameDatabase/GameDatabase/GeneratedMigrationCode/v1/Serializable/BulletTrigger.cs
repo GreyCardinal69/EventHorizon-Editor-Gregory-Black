@@ -30,6 +30,7 @@ namespace DatabaseMigration.v1.Serializable
         public float Cooldown;
         public float RandomFactor;
         public float PowerMultiplier;
+        public bool SyncLifetimeWithBullet;
         public int MaxNestingLevel;
         public bool OncePerCollision;
         public bool UseBulletPosition;

@@ -32,16 +32,20 @@ namespace DatabaseMigration.v1
                 else if ( componentSerializable.DeviceId != 0 )
                 {
                     int index = 0;
-                 /*   if ( !dictionary.TryGetValue( componentSerializable.DeviceId, out index ) )
+                    if ( !dictionary.TryGetValue( componentSerializable.DeviceId, out index ) )
                     {
-                        DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new DefaultInterpolatedStringHandler( 22, 2 );
-                        defaultInterpolatedStringHandler.AppendLiteral( "Unknown device ID " );
-                        defaultInterpolatedStringHandler.AppendFormatted<int>( componentSerializable.DeviceId );
-                        defaultInterpolatedStringHandler.AppendLiteral( " in " );
-                        defaultInterpolatedStringHandler.AppendFormatted( componentSerializable.FileName );
-                        throw new DatabaseException( defaultInterpolatedStringHandler.ToStringAndClear() );
-                    }*/
-                    DeviceSerializable deviceSerializable = this.Content.DeviceList[index];
+
+                    }
+                        //  if ( !dictionary.TryGetValue( componentSerializable.DeviceId, out index ) )
+                        //  {
+                        /*          DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new DefaultInterpolatedStringHandler( 22, 2 );
+                                  defaultInterpolatedStringHandler.AppendLiteral( "Unknown device ID " );
+                                  defaultInterpolatedStringHandler.AppendFormatted<int>( componentSerializable.DeviceId );
+                                  defaultInterpolatedStringHandler.AppendLiteral( " in " );
+                                  defaultInterpolatedStringHandler.AppendFormatted( componentSerializable.FileName );
+                                  throw new DatabaseException( defaultInterpolatedStringHandler.ToStringAndClear() );*/
+                        //   }
+                        DeviceSerializable deviceSerializable = this.Content.DeviceList[index];
                     ComponentRestrictionsSerializable restrictions2 = componentSerializable.Restrictions;
                     int maxComponents2 = ( restrictions2 != null ) ? restrictions2.MaxComponentAmount : 0;
                     int num = 0;

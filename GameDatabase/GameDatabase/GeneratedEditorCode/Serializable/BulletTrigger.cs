@@ -15,6 +15,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class BulletTriggerSerializable
     {
+        public bool SyncLifetimeWithBullet;
         public BulletTriggerCondition Condition;
         public BulletEffectType EffectType;
         public int VisualEffect;

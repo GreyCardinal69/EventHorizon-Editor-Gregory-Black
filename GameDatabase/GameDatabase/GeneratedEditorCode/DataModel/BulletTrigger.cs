@@ -88,6 +88,7 @@ namespace EditorDatabase.DataModel
             serializable.Rotation = "IF(Quantity <= 1, 0, RANDOM(0, 360))";
             serializable.OffsetX = "IF(Quantity <= 1, 0, Size / 2)";
             serializable.OffsetY = "0";
+            serializable.SyncLifetimeWithBullet = false;
             _content.Save( ref serializable );
             serializable.Condition = Condition;
             serializable.EffectType = EffectType;
@@ -142,6 +143,7 @@ namespace EditorDatabase.DataModel
 
         public void Load( BulletTriggerSerializable serializable, Database database )
         {
+			SyncLifetimeWithBullet = serializable.SyncLifetimeWithBullet;
             VisualEffect = database.GetVisualEffectId( serializable.VisualEffect );
             AudioClip = serializable.AudioClip;
             Color = Helpers.ColorFromString( serializable.Color );
@@ -156,6 +158,7 @@ namespace EditorDatabase.DataModel
 
         public void Save( ref BulletTriggerSerializable serializable )
         {
+            serializable.SyncLifetimeWithBullet = false;
             serializable.VisualEffect = VisualEffect.Value;
             serializable.AudioClip = AudioClip;
             serializable.Color = Helpers.ColorToString( Color );
@@ -175,6 +178,7 @@ namespace EditorDatabase.DataModel
         public NumericValue<float> Lifetime = new NumericValue<float>( 0, 0f, 1000f );
         public bool OncePerCollision;
         public bool UseBulletPosition;
+        public bool SyncLifetimeWithBullet;
     }
 
     public partial class BulletTrigger_SpawnBullet : IBulletTriggerContent
