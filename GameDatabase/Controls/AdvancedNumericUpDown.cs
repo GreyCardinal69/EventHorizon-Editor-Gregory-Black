@@ -6,9 +6,8 @@ namespace GameDatabase.Controls
 {
     internal class AdvancedNumericUpDown : NumericUpDown
     {
-        private Color _backgroundColor = Color.FromArgb( 45, 45, 45 );
+        private Color _backgroundColor = MainWindow.BackgroundColor;
 
-        [DefaultValue( typeof( Color ), "45,45,45" )]
         public Color BorderColor
         {
             get { return _backgroundColor; }

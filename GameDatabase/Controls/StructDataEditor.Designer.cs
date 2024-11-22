@@ -39,14 +39,14 @@ namespace GameDatabase
             // tableLayoutPanel
             // 
             this.tableLayoutPanel.AutoSize = true;
-            this.tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tableLayoutPanel.BackColor = MainWindow.BackgroundColor;
             this.tableLayoutPanel.ColumnCount = 3;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.tableLayoutPanel.ForeColor = MainWindow.FontColor;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 7);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -65,8 +65,8 @@ namespace GameDatabase
             // toolTip
             // 
             this.toolTip.AutoPopDelay = 5000;
-            this.toolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.toolTip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.toolTip.BackColor = MainWindow.BackgroundColor;
+            this.toolTip.ForeColor = MainWindow.FontColor;
             this.toolTip.InitialDelay = 100;
             this.toolTip.OwnerDraw = true;
             this.toolTip.ReshowDelay = 100;
@@ -87,7 +87,7 @@ namespace GameDatabase
         private void ToolTip_Draw( object sender, DrawToolTipEventArgs e )
         {
             Font f = new Font( "Yu Gothic", 10.0f );
-            toolTip.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            toolTip.BackColor = MainWindow.BackgroundColor;
             e.DrawBackground();
             e.DrawBorder();
             e.DrawText();

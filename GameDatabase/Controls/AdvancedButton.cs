@@ -7,9 +7,8 @@ namespace GameDatabase.Controls
 {
     internal class AdvancedButton : Button
     {
-        private Color _backgroundColor = DarkPrimary45;
+        private Color _backgroundColor = MainWindow.BackgroundColor;
 
-        [DefaultValue( typeof( Color ), "45,45,45" )]
         public BorderStyle BorderStyle;
 
         public Color BorderColor

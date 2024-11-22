@@ -36,9 +36,9 @@ namespace GameDatabase.Controls
             // 
             // tableLayoutPanel
             // 
-            tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            tableLayoutPanel.BackColor = MainWindow.BackgroundColor;
             this.ClientSize = new System.Drawing.Size( 284, 261 );
-            tableLayoutPanel.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
+            tableLayoutPanel.ForeColor = MainWindow.FontColor;
             this.Name = "LayoutInfo";
             this.ResumeLayout( false );
             this.tableLayoutPanel.AutoScroll = true;
@@ -52,8 +52,8 @@ namespace GameDatabase.Controls
             this.tableLayoutPanel.RowStyles.Add( new System.Windows.Forms.RowStyle() );
             this.tableLayoutPanel.Size = new System.Drawing.Size( 300, 265 );
             this.tableLayoutPanel.TabIndex = 0;
-            tableLayoutPanel.BackColor = DarkPrimary45;
-            tableLayoutPanel.ForeColor = OrangePrimary;
+            tableLayoutPanel.BackColor = MainWindow.BackgroundColor;
+            tableLayoutPanel.ForeColor = MainWindow.FontColor;
             // 
             // LayoutInfo
             // 

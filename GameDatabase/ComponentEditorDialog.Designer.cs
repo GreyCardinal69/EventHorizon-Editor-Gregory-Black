@@ -37,7 +37,7 @@ namespace GameDatabase
             // structDataEditor1
             // 
             this.structDataEditor1.AutoSize = true;
-            this.structDataEditor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.structDataEditor1.BackColor = MainWindow.BackgroundColor;
             this.structDataEditor1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.None;
             this.structDataEditor1.ContentAutoScroll = true;
             this.structDataEditor1.Data = null;
@@ -45,7 +45,7 @@ namespace GameDatabase
             this.structDataEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.structDataEditor1.Exclusions = ((System.Collections.Generic.List<string>)(resources.GetObject("structDataEditor1.Exclusions")));
             this.structDataEditor1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.structDataEditor1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.structDataEditor1.ForeColor = MainWindow.FontColor;
             this.structDataEditor1.Location = new System.Drawing.Point(0, 0);
             this.structDataEditor1.Name = "structDataEditor1";
             this.structDataEditor1.Size = new System.Drawing.Size(784, 561);

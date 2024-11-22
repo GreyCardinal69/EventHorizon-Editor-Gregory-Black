@@ -17,9 +17,9 @@ namespace GameDatabase
             // 
             // UnscrollablePanel
             // 
-            this.BackColor = DarkPrimary45;
+            this.BackColor = MainWindow.BackgroundColor;
             this.Font = new System.Drawing.Font( "Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0 );
-            this.ForeColor = OrangePrimary;
+            this.ForeColor = MainWindow.FontColor;
             this.ResumeLayout( false );
         }
     }

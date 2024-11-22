@@ -157,8 +157,8 @@ namespace GameDatabase.Controls
                 Data = data as IDataAdapter ?? new DataAdapter( data ),
                 ContentAutoScroll = false,
                 Visible = !_collapsed[itemId],
-                BackColor = DarkPrimary45,
-                ForeColor = Color2550109
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.Accent3
             };
 
             _controls.Add( editor );
@@ -468,8 +468,8 @@ namespace GameDatabase.Controls
                 _collapseButtons[i].Text = _collapsed[id] ? "v" : "^";
 
                 _controls[i].Visible = !_collapsed[id];
-                _controls[i].BackColor = DarkPrimary45;
-                _controls[i].ForeColor = Color2550109;
+                _controls[i].BackColor = MainWindow.BackgroundColor;
+                _controls[i].ForeColor = MainWindow.Accent3;
             }
 
             tableLayoutPanel.ResumeLayout();

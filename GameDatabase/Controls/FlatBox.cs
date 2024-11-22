@@ -9,7 +9,7 @@ namespace GameDatabase.Controls
 {
     public class FlatCombo : ComboBox
     {
-        private Color _fontColor = OrangePrimary;
+        private Color _fontColor = MainWindow.FontColor;
 
         public Color BorderColor
         {
@@ -24,7 +24,7 @@ namespace GameDatabase.Controls
             }
         }
 
-        private Color _buttonColor = DarkPrimary45;
+        private Color _buttonColor = MainWindow.BackgroundColor;
 
         [DefaultValue( typeof( Color ), "45,45,45" )]
         public Color ButtonColor
@@ -183,7 +183,7 @@ namespace GameDatabase.Controls
             // 
             // FlatCombo
             // 
-            this.BackColor = DarkPrimary45;
+            this.BackColor = MainWindow.BackgroundColor;
             this.ResumeLayout( false );
 
         }

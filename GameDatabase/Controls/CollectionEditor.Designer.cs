@@ -58,7 +58,7 @@
             this.tableLayoutPanel.AutoScroll = true;
             this.tableLayoutPanel.AutoSize = true;
             this.tableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tableLayoutPanel.BackColor = MainWindow.BackgroundColor;
             this.tableLayoutPanel.ColumnCount = 3;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -66,7 +66,7 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.tableLayoutPanel.ForeColor = MainWindow.FontColor;
             this.tableLayoutPanel.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -80,7 +80,7 @@
             this.tableLayoutOuterPanel.AutoScroll = true;
             this.tableLayoutOuterPanel.AutoSize = true;
             this.tableLayoutOuterPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutOuterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.tableLayoutOuterPanel.BackColor = MainWindow.BorderColor;
             this.tableLayoutOuterPanel.ColumnCount = 1;
             this.tableLayoutOuterPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutOuterPanel.Controls.Add(this.buttonsPanel, 0, 1);
@@ -102,7 +102,7 @@
             // buttonsPanel
             // 
             this.buttonsPanel.AutoSize = true;
-            this.buttonsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.buttonsPanel.BackColor = MainWindow.BackgroundColor;
             this.buttonsPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonsPanel.Controls.Add(this.addButton);
             this.buttonsPanel.Controls.Add(this.deleteButton);
@@ -115,7 +115,7 @@
             this.buttonsPanel.Controls.Add(this.expandBtton);
             this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonsPanel.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonsPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.buttonsPanel.ForeColor = MainWindow.FontColor;
             this.buttonsPanel.Location = new System.Drawing.Point(2, 296);
             this.buttonsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonsPanel.Name = "buttonsPanel";
@@ -125,7 +125,7 @@
             // addButton
             // 
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.addButton.ForeColor = MainWindow.FontColor;
             this.addButton.Location = new System.Drawing.Point(3, 3);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
@@ -137,7 +137,7 @@
             // deleteButton
             // 
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.deleteButton.ForeColor = MainWindow.FontColor;
             this.deleteButton.Location = new System.Drawing.Point(84, 3);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
@@ -149,7 +149,7 @@
             // moveUpButton
             // 
             this.moveUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.moveUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.moveUpButton.ForeColor = MainWindow.FontColor;
             this.moveUpButton.Location = new System.Drawing.Point(246, 3);
             this.moveUpButton.Name = "moveUpButton";
             this.moveUpButton.Size = new System.Drawing.Size(75, 23);
@@ -161,7 +161,7 @@
             // moveDownButton
             // 
             this.moveDownButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.moveDownButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.moveDownButton.ForeColor = MainWindow.FontColor;
             this.moveDownButton.Location = new System.Drawing.Point(327, 3);
             this.moveDownButton.Name = "moveDownButton";
             this.moveDownButton.Size = new System.Drawing.Size(86, 23);
@@ -173,7 +173,7 @@
             // cloneButton
             // 
             this.cloneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cloneButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.cloneButton.ForeColor = MainWindow.FontColor;
             this.cloneButton.Location = new System.Drawing.Point(3, 32);
             this.cloneButton.Name = "cloneButton";
             this.cloneButton.Size = new System.Drawing.Size(53, 23);
@@ -186,7 +186,7 @@
             // collapseButton
             // 
             this.collapseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.collapseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.collapseButton.ForeColor = MainWindow.FontColor;
             this.collapseButton.Location = new System.Drawing.Point(62, 32);
             this.collapseButton.Name = "collapseButton";
             this.collapseButton.Size = new System.Drawing.Size(75, 23);
@@ -198,7 +198,7 @@
             // expandBtton
             // 
             this.expandBtton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.expandBtton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.expandBtton.ForeColor = MainWindow.FontColor;
             this.expandBtton.Location = new System.Drawing.Point(143, 32);
             this.expandBtton.Name = "expandBtton";
             this.expandBtton.Size = new System.Drawing.Size(75, 23);
@@ -210,14 +210,14 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.flowLayoutPanel1.BackColor = MainWindow.BackgroundColor;
             this.flowLayoutPanel1.Controls.Add(this.prevPageButton);
             this.flowLayoutPanel1.Controls.Add(this.pageNumberButton);
             this.flowLayoutPanel1.Controls.Add(this.nextPageButton);
             this.flowLayoutPanel1.Controls.Add(this.JumpTo);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.flowLayoutPanel1.ForeColor = MainWindow.FontColor;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 358);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -227,7 +227,7 @@
             // prevPageButton
             // 
             this.prevPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prevPageButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.prevPageButton.ForeColor = MainWindow.FontColor;
             this.prevPageButton.Location = new System.Drawing.Point(3, 3);
             this.prevPageButton.Name = "prevPageButton";
             this.prevPageButton.Size = new System.Drawing.Size(75, 23);
@@ -240,7 +240,7 @@
             // pageNumberButton
             // 
             this.pageNumberButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pageNumberButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.pageNumberButton.ForeColor = MainWindow.FontColor;
             this.pageNumberButton.Location = new System.Drawing.Point(84, 3);
             this.pageNumberButton.Name = "pageNumberButton";
             this.pageNumberButton.Size = new System.Drawing.Size(63, 23);
@@ -252,7 +252,7 @@
             // nextPageButton
             // 
             this.nextPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextPageButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.nextPageButton.ForeColor = MainWindow.FontColor;
             this.nextPageButton.Location = new System.Drawing.Point(153, 3);
             this.nextPageButton.Name = "nextPageButton";
             this.nextPageButton.Size = new System.Drawing.Size(75, 23);
@@ -265,7 +265,7 @@
             // JumpTo
             // 
             this.JumpTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.JumpTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.JumpTo.ForeColor = MainWindow.FontColor;
             this.JumpTo.Location = new System.Drawing.Point(234, 3);
             this.JumpTo.Name = "JumpTo";
             this.JumpTo.Size = new System.Drawing.Size(75, 23);
@@ -278,10 +278,10 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.flowLayoutPanel2.BackColor = MainWindow.BackgroundColor;
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.flowLayoutPanel2.ForeColor = MainWindow.FontColor;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 389);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -296,7 +296,7 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.button1.ForeColor = MainWindow.FontColor;
             this.button1.Location = new System.Drawing.Point(165, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -308,7 +308,7 @@
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.button2.ForeColor = MainWindow.FontColor;
             this.button2.Location = new System.Drawing.Point(419, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);

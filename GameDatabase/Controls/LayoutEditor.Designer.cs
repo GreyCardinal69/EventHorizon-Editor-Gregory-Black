@@ -57,8 +57,8 @@ namespace GameDatabase
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.contextMenuStrip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.contextMenuStrip1.BackColor = MainWindow.BackgroundColor;
+            this.contextMenuStrip1.ForeColor = MainWindow.FontColor;
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.horizontalSymmetryToolStripMenuItem,
@@ -76,10 +76,10 @@ namespace GameDatabase
             // 
             // horizontalSymmetryToolStripMenuItem
             // 
-            this.horizontalSymmetryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.horizontalSymmetryToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.horizontalSymmetryToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.horizontalSymmetryToolStripMenuItem.CheckOnClick = true;
-            this.horizontalSymmetryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.horizontalSymmetryToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.horizontalSymmetryToolStripMenuItem.Name = "horizontalSymmetryToolStripMenuItem";
             this.horizontalSymmetryToolStripMenuItem.ShowShortcutKeys = false;
             this.horizontalSymmetryToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
@@ -88,10 +88,10 @@ namespace GameDatabase
             // 
             // verticalSymmetryToolStripMenuItem
             // 
-            this.verticalSymmetryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.verticalSymmetryToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.verticalSymmetryToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.verticalSymmetryToolStripMenuItem.CheckOnClick = true;
-            this.verticalSymmetryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.verticalSymmetryToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.verticalSymmetryToolStripMenuItem.Name = "verticalSymmetryToolStripMenuItem";
             this.verticalSymmetryToolStripMenuItem.ShowShortcutKeys = false;
             this.verticalSymmetryToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
@@ -100,12 +100,12 @@ namespace GameDatabase
             // 
             // showGridToolStripMenuItem
             // 
-            this.showGridToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.showGridToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.showGridToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.showGridToolStripMenuItem.Checked = true;
             this.showGridToolStripMenuItem.CheckOnClick = true;
             this.showGridToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showGridToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.showGridToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.showGridToolStripMenuItem.Name = "showGridToolStripMenuItem";
             this.showGridToolStripMenuItem.ShowShortcutKeys = false;
             this.showGridToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
@@ -114,12 +114,12 @@ namespace GameDatabase
             // 
             // showLayoutToolStripMenuItem
             // 
-            this.showLayoutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.showLayoutToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.showLayoutToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.showLayoutToolStripMenuItem.Checked = true;
             this.showLayoutToolStripMenuItem.CheckOnClick = true;
             this.showLayoutToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showLayoutToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.showLayoutToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.showLayoutToolStripMenuItem.Name = "showLayoutToolStripMenuItem";
             this.showLayoutToolStripMenuItem.ShowShortcutKeys = false;
             this.showLayoutToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
@@ -128,12 +128,12 @@ namespace GameDatabase
             // 
             // showBarrelsToolStripMenuItem
             // 
-            this.showBarrelsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.showBarrelsToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.showBarrelsToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.showBarrelsToolStripMenuItem.Checked = true;
             this.showBarrelsToolStripMenuItem.CheckOnClick = true;
             this.showBarrelsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showBarrelsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.showBarrelsToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.showBarrelsToolStripMenuItem.Name = "showBarrelsToolStripMenuItem";
             this.showBarrelsToolStripMenuItem.ShowShortcutKeys = false;
             this.showBarrelsToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
@@ -142,10 +142,10 @@ namespace GameDatabase
             // 
             // showBarrelsNumbersToolStripMenuItem
             // 
-            this.showBarrelsNumbersToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.showBarrelsNumbersToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.showBarrelsNumbersToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.showBarrelsNumbersToolStripMenuItem.CheckOnClick = true;
-            this.showBarrelsNumbersToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.showBarrelsNumbersToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.showBarrelsNumbersToolStripMenuItem.Name = "showBarrelsNumbersToolStripMenuItem";
             this.showBarrelsNumbersToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
             this.showBarrelsNumbersToolStripMenuItem.Text = "Show barrels numbers";
@@ -153,12 +153,12 @@ namespace GameDatabase
             // 
             // showEnginesToolStripMenuItem
             // 
-            this.showEnginesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.showEnginesToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.showEnginesToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.showEnginesToolStripMenuItem.Checked = true;
             this.showEnginesToolStripMenuItem.CheckOnClick = true;
             this.showEnginesToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showEnginesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.showEnginesToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.showEnginesToolStripMenuItem.Name = "showEnginesToolStripMenuItem";
             this.showEnginesToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
             this.showEnginesToolStripMenuItem.Text = "Show Engines";
@@ -177,7 +177,7 @@ namespace GameDatabase
             // 
             // zoomToolStripMenuItem
             // 
-            this.zoomToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.zoomToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.zoomToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.zoomToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.defaultToolStripMenuItem,
@@ -186,7 +186,7 @@ namespace GameDatabase
             this.xToolStripMenuItem2,
             this.xToolStripMenuItem3,
             this.xToolStripMenuItem4});
-            this.zoomToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.zoomToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.zoomToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Background;
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
             this.zoomToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
@@ -194,11 +194,11 @@ namespace GameDatabase
             // 
             // defaultToolStripMenuItem
             // 
-            this.defaultToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.defaultToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.defaultToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.defaultToolStripMenuItem.Checked = true;
             this.defaultToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.defaultToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.defaultToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.defaultToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
             this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
             this.defaultToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
@@ -207,9 +207,9 @@ namespace GameDatabase
             // 
             // xToolStripMenuItem
             // 
-            this.xToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.xToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.xToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
-            this.xToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.xToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.xToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
             this.xToolStripMenuItem.Name = "xToolStripMenuItem";
             this.xToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
@@ -218,9 +218,9 @@ namespace GameDatabase
             // 
             // xToolStripMenuItem1
             // 
-            this.xToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.xToolStripMenuItem1.BackColor = MainWindow.BackgroundColor;
             this.xToolStripMenuItem1.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
-            this.xToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.xToolStripMenuItem1.ForeColor = MainWindow.FontColor;
             this.xToolStripMenuItem1.Image = global::GameDatabase.Properties.Resources.Icon;
             this.xToolStripMenuItem1.Name = "xToolStripMenuItem1";
             this.xToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
@@ -229,9 +229,9 @@ namespace GameDatabase
             // 
             // xToolStripMenuItem2
             // 
-            this.xToolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.xToolStripMenuItem2.BackColor = MainWindow.BackgroundColor;
             this.xToolStripMenuItem2.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
-            this.xToolStripMenuItem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.xToolStripMenuItem2.ForeColor = MainWindow.FontColor;
             this.xToolStripMenuItem2.Image = global::GameDatabase.Properties.Resources.Icon;
             this.xToolStripMenuItem2.Name = "xToolStripMenuItem2";
             this.xToolStripMenuItem2.Size = new System.Drawing.Size(105, 22);
@@ -240,9 +240,9 @@ namespace GameDatabase
             // 
             // xToolStripMenuItem3
             // 
-            this.xToolStripMenuItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.xToolStripMenuItem3.BackColor = MainWindow.BackgroundColor;
             this.xToolStripMenuItem3.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
-            this.xToolStripMenuItem3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.xToolStripMenuItem3.ForeColor = MainWindow.FontColor;
             this.xToolStripMenuItem3.Image = global::GameDatabase.Properties.Resources.Icon;
             this.xToolStripMenuItem3.Name = "xToolStripMenuItem3";
             this.xToolStripMenuItem3.Size = new System.Drawing.Size(105, 22);
@@ -251,9 +251,9 @@ namespace GameDatabase
             // 
             // xToolStripMenuItem4
             // 
-            this.xToolStripMenuItem4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.xToolStripMenuItem4.BackColor = MainWindow.BackgroundColor;
             this.xToolStripMenuItem4.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
-            this.xToolStripMenuItem4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.xToolStripMenuItem4.ForeColor = MainWindow.FontColor;
             this.xToolStripMenuItem4.Image = global::GameDatabase.Properties.Resources.Icon;
             this.xToolStripMenuItem4.Name = "xToolStripMenuItem4";
             this.xToolStripMenuItem4.Size = new System.Drawing.Size(105, 22);
@@ -262,10 +262,10 @@ namespace GameDatabase
             // 
             // barrelsEditingModeToolStripMenuItem
             // 
-            this.barrelsEditingModeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.barrelsEditingModeToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.barrelsEditingModeToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.barrelsEditingModeToolStripMenuItem.CheckOnClick = true;
-            this.barrelsEditingModeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.barrelsEditingModeToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.barrelsEditingModeToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
             this.barrelsEditingModeToolStripMenuItem.Name = "barrelsEditingModeToolStripMenuItem";
             this.barrelsEditingModeToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
@@ -276,10 +276,10 @@ namespace GameDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.BackColor = MainWindow.BackgroundColor;
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.ForeColor = MainWindow.FontColor;
             this.Name = "LayoutEditor";
             this.Size = new System.Drawing.Size(600, 603);
             this.SizeChanged += new System.EventHandler(this.LayoutEditor_SizeChanged);

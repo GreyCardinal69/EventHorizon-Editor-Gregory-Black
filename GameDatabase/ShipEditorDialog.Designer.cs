@@ -70,7 +70,7 @@ namespace GameDatabase
             // 
             // statusStrip1
             // 
-            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.statusStrip1.BackColor = MainWindow.BackgroundColor;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
@@ -80,7 +80,7 @@ namespace GameDatabase
             // 
             // splitContainer1
             // 
-            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.splitContainer1.BackColor = MainWindow.BorderColor;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
@@ -155,10 +155,10 @@ namespace GameDatabase
             // BarrelCreation
             // 
             this.BarrelCreation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BarrelCreation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.BarrelCreation.BackColor = MainWindow.BackgroundColor;
             this.BarrelCreation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BarrelCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.BarrelCreation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.BarrelCreation.ForeColor = MainWindow.FontColor;
             this.BarrelCreation.Location = new System.Drawing.Point(372, 5);
             this.BarrelCreation.Name = "BarrelCreation";
             this.BarrelCreation.Size = new System.Drawing.Size(195, 38);
@@ -169,10 +169,10 @@ namespace GameDatabase
 
 
             this.BarrelInfo.Anchor = ( ( System.Windows.Forms.AnchorStyles ) ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right ) ) );
-            this.BarrelInfo.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            this.BarrelInfo.BackColor = MainWindow.BackgroundColor;
             this.BarrelInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BarrelInfo.Font = new System.Drawing.Font( "Microsoft Sans Serif", 8F );
-            this.BarrelInfo.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
+            this.BarrelInfo.ForeColor = MainWindow.FontColor;
             this.BarrelInfo.Location = new System.Drawing.Point( 372, 50 );
             this.BarrelInfo.Name = "BarrelInfo";
             this.BarrelInfo.Size = new System.Drawing.Size( 195, 38 );
@@ -184,14 +184,14 @@ namespace GameDatabase
             // 
             // layoutEditor1
             // 
-            this.layoutEditor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.layoutEditor1.BackColor = MainWindow.BackgroundColor;
             this.layoutEditor1.Barrels = null;
             this.layoutEditor1.BarrelsCollection = this.barrelCollection;
             this.layoutEditor1.BorderSize = 32;
             this.layoutEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutEditor1.Engines = null;
             this.layoutEditor1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutEditor1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.layoutEditor1.ForeColor = MainWindow.FontColor;
             this.layoutEditor1.Image = null;
             this.layoutEditor1.Layout = "000000000";
             this.layoutEditor1.Location = new System.Drawing.Point(0, 0);
@@ -205,7 +205,7 @@ namespace GameDatabase
             // barrelCollection
             // 
             this.barrelCollection.AutoSize = true;
-            this.barrelCollection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.barrelCollection.BackColor = MainWindow.BackgroundColor;
             this.barrelCollection.Collapseable = true;
             this.barrelCollection.ContentAutoScroll = true;
             this.barrelCollection.Data = null;
@@ -222,11 +222,11 @@ namespace GameDatabase
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button1.BackColor = MainWindow.BackgroundColor;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.button1.ForeColor = MainWindow.FontColor;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
@@ -238,7 +238,7 @@ namespace GameDatabase
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tableLayoutPanel1.BackColor = MainWindow.BackgroundColor;
             this.tableLayoutPanel1.ColumnCount = 13;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -405,9 +405,9 @@ namespace GameDatabase
             // layoutSize
             // 
             this.layoutSize.AutoSize = true;
-            this.layoutSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.layoutSize.BackColor = MainWindow.BackgroundColor;
             this.layoutSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.layoutSize.ForeColor = MainWindow.FontColor;
             this.layoutSize.Location = new System.Drawing.Point(498, 3);
             this.layoutSize.Maximum = new decimal(new int[] {
             1024,
@@ -433,7 +433,7 @@ namespace GameDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.BackColor = MainWindow.BackgroundColor;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);

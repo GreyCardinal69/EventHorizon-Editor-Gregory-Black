@@ -124,7 +124,7 @@ namespace GameDatabase
 
                     Color color;
                     if ( !_categories.TryGetValue( cell, out color ) )
-                        color = DarkPrimary45;
+                        color = MainWindow.BackgroundColor;
 
                     data.Graphics.FillRectangle( GetBrush( color ), x, y, data.CellSize, data.CellSize );
                 }
@@ -135,7 +135,7 @@ namespace GameDatabase
         {
             if ( !showGridToolStripMenuItem.Checked ) return;
 
-            var pen = new Pen( DarkPrimary45 );
+            var pen = new Pen( MainWindow.BackgroundColor );
             for ( var i = 0; i <= data.LayoutSize; ++i )
             {
                 var x = BorderSize + i * data.CanvasSize / data.LayoutSize;
@@ -165,8 +165,8 @@ namespace GameDatabase
 
             for ( int i = 0; i < _barrels.Count; i++ )
             {
-                var pen = new Pen( DarkPrimary45, 2 );
-                var widePen = new Pen( DarkPrimary45, 3 );
+                var pen = new Pen( MainWindow.BackgroundColor, 2 );
+                var widePen = new Pen( MainWindow.BackgroundColor, 3 );
 
                 if ( barrelsEditingModeToolStripMenuItem.Checked && BarrelsCollection.GetSelectedItemId() == i )
                 {
@@ -220,7 +220,7 @@ namespace GameDatabase
                     format.LineAlignment = StringAlignment.Center;
                     format.Alignment = StringAlignment.Center;
                     Font drawFont = new Font( "Arial", fontSize, GraphicsUnit.Pixel );
-                    SolidBrush textBrush = new SolidBrush( DarkPrimary45 );
+                    SolidBrush textBrush = new SolidBrush( MainWindow.BackgroundColor );
                     data.Graphics.DrawString( ( i + 1 ).ToString(), drawFont, textBrush, x, y, format );
                 }
             }

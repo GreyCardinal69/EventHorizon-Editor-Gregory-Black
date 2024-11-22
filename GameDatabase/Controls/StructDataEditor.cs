@@ -269,8 +269,8 @@ namespace GameDatabase
                 BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Fill,
                 AutoSize = true,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor
             };
 
             tableLayoutPanel.Controls.Add( label, column, row );
@@ -285,9 +285,9 @@ namespace GameDatabase
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 BorderStyle = BorderStyle.FixedSingle,
                 Dock = DockStyle.Fill,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary,
-                BorderColor = DarkPrimary45,
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor,
+                BorderColor = MainWindow.BackgroundColor,
             };
 
             textbox.TextChanged += OnTextBoxValueChanged;
@@ -303,15 +303,15 @@ namespace GameDatabase
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
                 DropDownStyle = ComboBoxStyle.DropDownList,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary,
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor,
                 FlatStyle = FlatStyle.Flat,
                 DrawMode = DrawMode.OwnerDrawVariable,
                 DropDownHeight = 600
             };
 
-            comboBox.BorderColor = Color959595;
-            comboBox.ButtonColor = OrangePrimary;
+            comboBox.BorderColor = MainWindow.Accent2;
+            comboBox.ButtonColor = MainWindow.FontColor;
 
             comboBox.DrawItem += new DrawItemEventHandler( comboBoxDb_DrawItem );
 
@@ -361,12 +361,12 @@ namespace GameDatabase
             }
             else
             {
-                e.Graphics.FillRectangle( new SolidBrush( DarkPrimary45 ), e.Bounds );
+                e.Graphics.FillRectangle( new SolidBrush( MainWindow.BackgroundColor ), e.Bounds );
             }
 
             e.Graphics.DrawString( combo.Items[e.Index].ToString(),
                                           e.Font,
-                                          new SolidBrush( OrangePrimary ),
+                                          new SolidBrush( MainWindow.FontColor ),
                                           new Point( e.Bounds.X, e.Bounds.Y ) );
         }
 
@@ -377,8 +377,8 @@ namespace GameDatabase
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
                 Checked = value,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor
             };
 
             check.CheckedChanged += OnCheckedChanged;
@@ -397,7 +397,7 @@ namespace GameDatabase
                 Text = string.Empty,
                 FlatStyle = FlatStyle.Flat,
                 BorderStyle = BorderStyle.FixedSingle,
-                BorderColor = Color959595,
+                BorderColor = MainWindow.Accent2,
             };
 
             button.Click += OnColorButtonClicked;
@@ -414,8 +414,8 @@ namespace GameDatabase
                 AutoSize = true,
                 ColumnCount = 2,
                 RowCount = 1,
-                BackColor = DarkPrimary45,
-                ForeColor = Color2550109
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.Accent3
             };
 
             panel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 100 ) );
@@ -429,8 +429,8 @@ namespace GameDatabase
                 Dock = DockStyle.Fill,
                 Layout = layout.Data,
                 Height = layout.Size * 16,
-                BackColor = DarkPrimary45,
-                ForeColor = Color2550109
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.Accent3
             };
 
             layoutEditor.ValueChanged += OnLayoutChanged;
@@ -457,8 +457,8 @@ namespace GameDatabase
                 AutoSize = true,
                 Database = _database,
                 ContentAutoScroll = false,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor
             };
 
             collection.Data = value;
@@ -480,8 +480,8 @@ namespace GameDatabase
                 Database = _database,
                 Data = data,
                 ContentAutoScroll = false,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor
             };
 
             editor.DataChanged += DataChanged;
@@ -496,9 +496,9 @@ namespace GameDatabase
                 Dock = DockStyle.Fill,
                 AutoSize = true,
                 Value = value,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary,
-                BorderColor = Color959595,
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor,
+                BorderColor = MainWindow.Accent2,
                 BorderStyle = BorderStyle.FixedSingle
             };
 
@@ -522,10 +522,10 @@ namespace GameDatabase
                 Increment = increment,
                 Value = value,
                 DecimalPlaces = decimalPlaces,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary,
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor,
                 BorderStyle = BorderStyle.FixedSingle,
-                BorderColor = Color959595,
+                BorderColor = MainWindow.Accent2,
             };
 
             numeric.ValueChanged += OnNumericValueChanged;
@@ -543,19 +543,19 @@ namespace GameDatabase
 
             var colorDialog = new ColorPickerDialog();
 
-            colorDialog.BackColor = DarkPrimary45;
-            colorDialog.ForeColor = OrangePrimary;
+            colorDialog.BackColor = MainWindow.BackgroundColor;
+            colorDialog.ForeColor = MainWindow.FontColor;
             colorDialog.Color = button.BackColor;
 
             var c = ( Button ) colorDialog.CancelButton;
 
-            c.BackColor = DarkPrimary45;
-            c.ForeColor = OrangePrimary;
+            c.BackColor = MainWindow.BackgroundColor;
+            c.ForeColor = MainWindow.FontColor;
 
             var o = ( Button ) colorDialog.AcceptButton;
 
-            o.BackColor = DarkPrimary45;
-            o.ForeColor = OrangePrimary;
+            o.BackColor = MainWindow.BackgroundColor;
+            o.ForeColor = MainWindow.FontColor;
 
             if ( colorDialog.ShowDialog() == DialogResult.OK )
             {
@@ -578,8 +578,8 @@ namespace GameDatabase
             layoutEditor.Layout = layout.Data;
             layoutEditor.Height = layout.Size * 24;
             layoutEditor.Invalidate();
-            layoutEditor.BackColor = DarkPrimary45;
-            layoutEditor.ForeColor = OrangePrimary;
+            layoutEditor.BackColor = MainWindow.BackgroundColor;
+            layoutEditor.ForeColor = MainWindow.FontColor;
 
             OnLayoutChanged( layoutEditor, EventArgs.Empty );
         }
@@ -694,7 +694,7 @@ namespace GameDatabase
         private readonly Dictionary<object, IProperty> _binding = new Dictionary<object, IProperty>();
         private readonly Dictionary<object, LayoutEditor> _layouts = new Dictionary<object, LayoutEditor>();
 
-        SolidBrush blackBrush = new SolidBrush( DarkPrimary45 );
+        SolidBrush blackBrush = new SolidBrush( MainWindow.BackgroundColor );
 
         private void tableLayoutPanel_Paint( object sender, PaintEventArgs e )
         {

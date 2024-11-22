@@ -29,8 +29,8 @@ namespace GameDatabase
 
         #region Windows Form Designer generated code
 
-        SolidBrush _backgroundBrush = new SolidBrush( Color.FromArgb( 55, 55, 55 ) );
-        SolidBrush _borderBrush = new SolidBrush( Color.FromArgb( 25, 25, 25 ) );
+        SolidBrush _backgroundBrush = new SolidBrush( MainWindow.BackgroundColor );
+        SolidBrush _borderBrush = new SolidBrush( MainWindow.BorderColor );
 
         private void DatabaseTreeView_drawNode( object sender, DrawTreeNodeEventArgs e )
         {
@@ -44,7 +44,7 @@ namespace GameDatabase
             else
                 e.Graphics.FillRectangle( _borderBrush, e.Bounds );
 
-            TextRenderer.DrawText( e.Graphics, e.Node.Text, e.Node.TreeView.Font, e.Node.Bounds, OrangePrimary );
+            TextRenderer.DrawText( e.Graphics, e.Node.Text, e.Node.TreeView.Font, e.Node.Bounds, MainWindow.FontColor );
         }
 
         /// <summary>
@@ -100,11 +100,11 @@ namespace GameDatabase
             this.DatabaseTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DatabaseTreeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.DatabaseTreeView.BackColor = MainWindow.BorderColor;
             this.DatabaseTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DatabaseTreeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
             this.DatabaseTreeView.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DatabaseTreeView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.DatabaseTreeView.ForeColor = MainWindow.FontColor;
             this.DatabaseTreeView.Location = new System.Drawing.Point(6, 3);
             this.DatabaseTreeView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DatabaseTreeView.Name = "DatabaseTreeView";
@@ -118,7 +118,7 @@ namespace GameDatabase
             // splitContainer
             // 
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.splitContainer.ForeColor = MainWindow.FontColor;
             this.splitContainer.Location = new System.Drawing.Point(0, 25);
             this.splitContainer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer.Name = "splitContainer";
@@ -129,7 +129,7 @@ namespace GameDatabase
             // 
             // splitContainer.Panel2
             // 
-            this.splitContainer.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.splitContainer.Panel2.BackColor = MainWindow.BorderColor;
             this.splitContainer.Panel2.Controls.Add(this.FileId);
             this.splitContainer.Panel2.Controls.Add(this.structDataView1);
             this.splitContainer.Panel2.Controls.Add(this.label1);
@@ -137,7 +137,7 @@ namespace GameDatabase
             this.splitContainer.Panel2.Controls.Add(this.ItemTypeText);
             this.splitContainer.Panel2.Controls.Add(this.ItemTypeLabel);
             this.splitContainer.Panel2.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitContainer.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.splitContainer.Panel2.ForeColor = MainWindow.FontColor;
             this.splitContainer.Size = new System.Drawing.Size(800, 605);
             this.splitContainer.SplitterDistance = 394;
             this.splitContainer.SplitterWidth = 6;
@@ -148,10 +148,10 @@ namespace GameDatabase
             this.FileId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.FileId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.FileId.BackColor = MainWindow.BackgroundColor;
+            this.FileId.BorderColor = MainWindow.BackgroundColor;
             this.FileId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FileId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.FileId.ForeColor = MainWindow.FontColor;
             this.FileId.Location = new System.Drawing.Point(8, 28);
             this.FileId.Name = "FileId";
             this.FileId.Size = new System.Drawing.Size(238, 33);
@@ -163,11 +163,11 @@ namespace GameDatabase
             this.structDataView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.structDataView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.structDataView1.BackColor = MainWindow.BackgroundColor;
             this.structDataView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.structDataView1.Data = null;
             this.structDataView1.Database = null;
-            this.structDataView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.structDataView1.ForeColor = MainWindow.FontColor;
             this.structDataView1.Location = new System.Drawing.Point(8, 69);
             this.structDataView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.structDataView1.Name = "structDataView1";
@@ -178,9 +178,9 @@ namespace GameDatabase
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label1.BackColor = MainWindow.BackgroundColor;
             this.label1.Font = new System.Drawing.Font("Yu Gothic", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.label1.ForeColor = MainWindow.FontColor;
             this.label1.Location = new System.Drawing.Point(207, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -191,10 +191,10 @@ namespace GameDatabase
             // EditButton
             // 
             this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.EditButton.FlatAppearance.BorderColor = MainWindow.FontColor;
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.EditButton.ForeColor = MainWindow.FontColor;
             this.EditButton.Location = new System.Drawing.Point(8, 537);
             this.EditButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.EditButton.Name = "EditButton";
@@ -209,7 +209,7 @@ namespace GameDatabase
             // 
             this.ItemTypeText.AutoSize = true;
             this.ItemTypeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemTypeText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.ItemTypeText.ForeColor = MainWindow.FontColor;
             this.ItemTypeText.Location = new System.Drawing.Point(90, 3);
             this.ItemTypeText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ItemTypeText.Name = "ItemTypeText";
@@ -221,7 +221,7 @@ namespace GameDatabase
             // 
             this.ItemTypeLabel.AutoSize = true;
             this.ItemTypeLabel.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.ItemTypeLabel.ForeColor = MainWindow.FontColor;
             this.ItemTypeLabel.Location = new System.Drawing.Point(3, 3);
             this.ItemTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ItemTypeLabel.Name = "ItemTypeLabel";
@@ -236,7 +236,7 @@ namespace GameDatabase
             // 
             // createToolStripMenuItem
             // 
-            this.createToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.createToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.createToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.createToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.folderToolStripMenuItem});
@@ -247,8 +247,8 @@ namespace GameDatabase
             // 
             // folderToolStripMenuItem
             // 
-            this.folderToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.folderToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.folderToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.folderToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
             this.folderToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.folderToolStripMenuItem.Text = "Folder";
@@ -256,8 +256,8 @@ namespace GameDatabase
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.contextMenuStrip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.contextMenuStrip1.BackColor = MainWindow.BackgroundColor;
+            this.contextMenuStrip1.ForeColor = MainWindow.FontColor;
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createToolStripMenuItem,
@@ -268,7 +268,7 @@ namespace GameDatabase
             // 
             // copyToolStripMenuItem
             // 
-            this.copyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.copyToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.copyToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.copyToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
@@ -278,7 +278,7 @@ namespace GameDatabase
             // 
             // pasteToolStripMenuItem
             // 
-            this.pasteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pasteToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.pasteToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.pasteToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
@@ -288,9 +288,9 @@ namespace GameDatabase
             // 
             // loadAsDatabaseToolStripMenuItem
             // 
-            this.loadAsDatabaseToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.loadAsDatabaseToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.loadAsDatabaseToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
-            this.loadAsDatabaseToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.loadAsDatabaseToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.loadAsDatabaseToolStripMenuItem.Image = global::GameDatabase.Properties.Resources.Icon;
             this.loadAsDatabaseToolStripMenuItem.Name = "loadAsDatabaseToolStripMenuItem";
             this.loadAsDatabaseToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
@@ -305,26 +305,29 @@ namespace GameDatabase
             // 
             // customMenuStrip1
             // 
-            this.customMenuStrip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.customMenuStrip1.ImageMarginGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.customMenuStrip1.ImageMarginGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(121)))), ((int)(((byte)(46)))));
-            this.customMenuStrip1.ImageMarginGradientMiddle = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.customMenuStrip1.ForeColor = MainWindow.BackgroundColor;
+            this.customMenuStrip1.ImageMarginGradientBegin = MainWindow.BorderColor;
+            this.customMenuStrip1.ImageMarginGradientEnd = MainWindow.FontColor;
             this.customMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.optionsToolStripMenuItem,
             this.utilitesToolStripMenuItem});
             this.customMenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.customMenuStrip1.MenuBorder = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.customMenuStrip1.MenuItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.customMenuStrip1.MenuItemPressedGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(121)))), ((int)(((byte)(46)))));
-            this.customMenuStrip1.MenuItemPressedGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(121)))), ((int)(((byte)(46)))));
-            this.customMenuStrip1.MenuItemPressedGradientMiddle = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(121)))), ((int)(((byte)(46)))));
-            this.customMenuStrip1.MenuItemSelected = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.customMenuStrip1.MenuItemSelectedGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(121)))), ((int)(((byte)(46)))));
-            this.customMenuStrip1.MenuItemSelectedGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(121)))), ((int)(((byte)(46)))));
-            this.customMenuStrip1.MenuStripForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.customMenuStrip1.MenuStripGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
-            this.customMenuStrip1.MenuStripGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(121)))), ((int)(((byte)(46)))));
+
+            this.customMenuStrip1.MenuBorder = MainWindow.BorderColor;
+            this.customMenuStrip1.MenuItemBorder = MainWindow.BorderColor;
+
+            this.customMenuStrip1.MenuItemPressedGradientBegin = MainWindow.BorderColor;
+            this.customMenuStrip1.MenuItemPressedGradientEnd = MainWindow.BorderColor;
+
+            this.customMenuStrip1.MenuItemSelected = MainWindow.BorderColor;
+            this.customMenuStrip1.MenuItemSelectedGradientBegin = MainWindow.BorderColor;
+            this.customMenuStrip1.MenuItemSelectedGradientEnd = MainWindow.BorderColor;
+
+            this.customMenuStrip1.MenuStripForeColor = MainWindow.FontColor;
+            this.customMenuStrip1.MenuStripGradientBegin = MainWindow.BorderColor;
+            this.customMenuStrip1.MenuStripGradientEnd = MainWindow.FontColor;
+
             this.customMenuStrip1.Name = "customMenuStrip1";
             this.customMenuStrip1.Padding = new System.Windows.Forms.Padding(2, 4, 2, 2);
             this.customMenuStrip1.Size = new System.Drawing.Size(800, 25);
@@ -333,22 +336,22 @@ namespace GameDatabase
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.fileToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsMenuItem,
             this.reloadDatabaseToolStripMenuItem,
             this.createModMenuItem});
-            this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.fileToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // loadMenuItem
             // 
-            this.loadMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.loadMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.loadMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.loadMenuItem.ForeColor = MainWindow.FontColor;
             this.loadMenuItem.Name = "loadMenuItem";
             this.loadMenuItem.Size = new System.Drawing.Size(161, 22);
             this.loadMenuItem.Text = "Load";
@@ -356,8 +359,8 @@ namespace GameDatabase
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.saveToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.saveToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.saveToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.saveToolStripMenuItem.Text = "Save";
@@ -365,8 +368,8 @@ namespace GameDatabase
             // 
             // saveAsMenuItem
             // 
-            this.saveAsMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.saveAsMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.saveAsMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.saveAsMenuItem.ForeColor = MainWindow.FontColor;
             this.saveAsMenuItem.Name = "saveAsMenuItem";
             this.saveAsMenuItem.Size = new System.Drawing.Size(161, 22);
             this.saveAsMenuItem.Text = "Save As...";
@@ -374,8 +377,8 @@ namespace GameDatabase
             // 
             // reloadDatabaseToolStripMenuItem
             // 
-            this.reloadDatabaseToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.reloadDatabaseToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.reloadDatabaseToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.reloadDatabaseToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.reloadDatabaseToolStripMenuItem.Name = "reloadDatabaseToolStripMenuItem";
             this.reloadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.reloadDatabaseToolStripMenuItem.Text = "Reload Database";
@@ -383,8 +386,8 @@ namespace GameDatabase
             // 
             // createModMenuItem
             // 
-            this.createModMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.createModMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.createModMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.createModMenuItem.ForeColor = MainWindow.FontColor;
             this.createModMenuItem.Name = "createModMenuItem";
             this.createModMenuItem.Size = new System.Drawing.Size(161, 22);
             this.createModMenuItem.Text = "Create Mod...";
@@ -392,23 +395,23 @@ namespace GameDatabase
             // 
             // optionsToolStripMenuItem
             // 
-            this.optionsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.optionsToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
+            this.optionsToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
+   //         this.optionsToolStripMenuItem.BackgroundImage = global::GameDatabase.Properties.Resources.Background;
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.closeConfrmationToolStripMenuItem,
             this.listsSortingTypeToolStripMenuItem});
-            this.optionsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.optionsToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 19);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // closeConfrmationToolStripMenuItem
             // 
-            this.closeConfrmationToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.closeConfrmationToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.closeConfrmationToolStripMenuItem.Checked = true;
             this.closeConfrmationToolStripMenuItem.CheckOnClick = true;
             this.closeConfrmationToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.closeConfrmationToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.closeConfrmationToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.closeConfrmationToolStripMenuItem.Name = "closeConfrmationToolStripMenuItem";
             this.closeConfrmationToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.closeConfrmationToolStripMenuItem.Text = "Exit Confirmation";
@@ -416,20 +419,20 @@ namespace GameDatabase
             // 
             // listsSortingTypeToolStripMenuItem
             // 
-            this.listsSortingTypeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.listsSortingTypeToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.listsSortingTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.byFolderToolStripMenuItem,
             this.byNameToolStripMenuItem,
             this.byIdToolStripMenuItem});
-            this.listsSortingTypeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.listsSortingTypeToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.listsSortingTypeToolStripMenuItem.Name = "listsSortingTypeToolStripMenuItem";
             this.listsSortingTypeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.listsSortingTypeToolStripMenuItem.Text = "Lists Sorting Type";
             // 
             // byFolderToolStripMenuItem
             // 
-            this.byFolderToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.byFolderToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.byFolderToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.byFolderToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.byFolderToolStripMenuItem.Name = "byFolderToolStripMenuItem";
             this.byFolderToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.byFolderToolStripMenuItem.Text = "By Folder";
@@ -437,8 +440,8 @@ namespace GameDatabase
             // 
             // byNameToolStripMenuItem
             // 
-            this.byNameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.byNameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.byNameToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.byNameToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.byNameToolStripMenuItem.Name = "byNameToolStripMenuItem";
             this.byNameToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.byNameToolStripMenuItem.Text = "By Name";
@@ -446,8 +449,8 @@ namespace GameDatabase
             // 
             // byIdToolStripMenuItem
             // 
-            this.byIdToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.byIdToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.byIdToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.byIdToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.byIdToolStripMenuItem.Name = "byIdToolStripMenuItem";
             this.byIdToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.byIdToolStripMenuItem.Text = "By Id";
@@ -455,19 +458,19 @@ namespace GameDatabase
             // 
             // utilitesToolStripMenuItem
             // 
-            this.utilitesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.utilitesToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.utilitesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.reformatDatabaseToolStripMenuItem,
             this.runAnalytToolStripMenuItem});
-            this.utilitesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.utilitesToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.utilitesToolStripMenuItem.Name = "utilitesToolStripMenuItem";
             this.utilitesToolStripMenuItem.Size = new System.Drawing.Size(55, 19);
             this.utilitesToolStripMenuItem.Text = "Utilites";
             // 
             // reformatDatabaseToolStripMenuItem
             // 
-            this.reformatDatabaseToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.reformatDatabaseToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.reformatDatabaseToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
+            this.reformatDatabaseToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.reformatDatabaseToolStripMenuItem.Name = "reformatDatabaseToolStripMenuItem";
             this.reformatDatabaseToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.reformatDatabaseToolStripMenuItem.Text = "Reformat Database";
@@ -475,9 +478,9 @@ namespace GameDatabase
             // 
             // runAnalytToolStripMenuItem
             // 
-            this.runAnalytToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.runAnalytToolStripMenuItem.BackColor = MainWindow.BackgroundColor;
             this.runAnalytToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.runAnalytToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.runAnalytToolStripMenuItem.ForeColor = MainWindow.FontColor;
             this.runAnalytToolStripMenuItem.Name = "runAnalytToolStripMenuItem";
             this.runAnalytToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.runAnalytToolStripMenuItem.Text = "Run Analytics";
@@ -487,13 +490,13 @@ namespace GameDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.BackColor = MainWindow.BorderColor;
             this.ClientSize = new System.Drawing.Size(800, 630);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.customMenuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(188)))), ((int)(((byte)(87)))));
+            this.ForeColor = MainWindow.FontColor;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(100, 100);

@@ -25,6 +25,10 @@ namespace GameDatabase
     {
         public MainWindow()
         {
+            DBESettings = JsonConvert.DeserializeObject<DBESettings>(File.ReadAllText(Directory.GetCurrentDirectory() + "\\Settings.gregory"));
+
+            ApplyTheme(DBESettings.Themes[DBESettings.ActiveTheme]);
+
             InitializeComponent();
             folderBrowserDialog1 = new CommonOpenFileDialog();
             folderBrowserDialog1.IsFolderPicker = true;
@@ -34,7 +38,7 @@ namespace GameDatabase
 
             closeConfrmationToolStripMenuItem.Checked = Settings.Default.ClosingConfirmation;
 
-            DBESettings = JsonConvert.DeserializeObject<DBESettings>( File.ReadAllText( Directory.GetCurrentDirectory() + "\\Settings.gregory" ) );
+
             ChangeSorting( Settings.Default.SortingType );
         }
 
@@ -42,6 +46,23 @@ namespace GameDatabase
         internal static MainWindow MainInstance;
         internal SerializableItem _copiedData;
         internal bool _isTryingToCopy;
+
+        private void ApplyTheme(DBESettings.Theme theme)
+        {
+            BackgroundColor = ColorTranslator.FromHtml(theme.BackgroundColor);
+            BorderColor = ColorTranslator.FromHtml(theme.BorderColor);
+            FontColor = ColorTranslator.FromHtml(theme.FontColor);
+            Accent = ColorTranslator.FromHtml(theme.Accent);
+            Accent2 = ColorTranslator.FromHtml(theme.Accent2);
+            Accent3 = ColorTranslator.FromHtml(theme.Accent2);
+        }
+
+        internal static Color BackgroundColor;
+        internal static Color BorderColor;
+        internal static Color FontColor;
+        internal static Color Accent;
+        internal static Color Accent2;
+        internal static Color Accent3;
 
         private void MainWindow_Load( object sender, EventArgs eventArgs )
         {
@@ -140,8 +161,8 @@ namespace GameDatabase
             createToolStripMenuItem.DropDownItems.Add( folderToolStripMenuItem );
             AdvancedToolStripMenuItem item = new AdvancedToolStripMenuItem( "Templates" );
 
-            item.BackColor = DarkPrimary45;
-            item.ForeColor = OrangePrimary;
+            item.BackColor = MainWindow.BackgroundColor;
+            item.ForeColor = MainWindow.FontColor;
             item.UseBelow = true;
             item.Name = "Templates";
 
@@ -152,8 +173,8 @@ namespace GameDatabase
             {
                 AdvancedToolStripMenuItem lastNode = createToolStripMenuItem;
 
-                lastNode.BackColor = DarkPrimary45;
-                lastNode.ForeColor = OrangePrimary;
+                lastNode.BackColor = MainWindow.BackgroundColor;
+                lastNode.ForeColor = MainWindow.FontColor;
 
                 var name = template.Name;
                 if ( template.Name.Contains( '/' ) )
@@ -167,8 +188,8 @@ namespace GameDatabase
                         if ( findResult.Length == 0 || ( curNode = findResult[0] as AdvancedToolStripMenuItem ) == null )
                         {
                             curNode = new AdvancedToolStripMenuItem( path[i] );
-                            curNode.BackColor = DarkPrimary45;
-                            curNode.ForeColor = OrangePrimary;
+                            curNode.BackColor = MainWindow.BackgroundColor;
+                            curNode.ForeColor = MainWindow.FontColor;
                             curNode.Name = path[i];
                             lastNode.DropDownItems.Add( curNode );
                         }
@@ -178,8 +199,8 @@ namespace GameDatabase
                 }
 
                 item = new AdvancedToolStripMenuItem( name );
-                item.BackColor = DarkPrimary45;
-                item.ForeColor = OrangePrimary;
+                item.BackColor = MainWindow.BackgroundColor;
+                item.ForeColor = MainWindow.FontColor;
                 lastNode.DropDownItems.Add( item );
                 item.Tag = item.Name = template.Name;
                 item.Click += TemplateMenuItem_Click;
@@ -194,7 +215,7 @@ namespace GameDatabase
         private void DatabaseTreeView_MouseUp( object sender, MouseEventArgs e )
         {
             this.EditButton.Enabled = true;
-            this.EditButton.ForeColor = OrangePrimary;
+            this.EditButton.ForeColor = MainWindow.FontColor;
 
             if ( e.Button == MouseButtons.Right )
             {
@@ -224,7 +245,7 @@ namespace GameDatabase
 
             ItemTypeText.Text = @"-";
             _selectedItem = new SerializableItem();
-            EditButton.ForeColor = OrangePrimary;
+            EditButton.ForeColor = MainWindow.FontColor;
             EditButton.Enabled = true;
 
             if ( Directory.Exists( path ) )
@@ -316,7 +337,7 @@ namespace GameDatabase
         private void DatabaseTreeView_MouseDoubleClick( object sender, MouseEventArgs e )
         {
             this.EditButton.Enabled = true;
-            this.EditButton.ForeColor = OrangePrimary;
+            this.EditButton.ForeColor = MainWindow.FontColor;
 
             EditButton_Click( sender, e );
         }
@@ -326,7 +347,7 @@ namespace GameDatabase
         private void EditButton_Click( object sender, EventArgs e )
         {
             this.EditButton.Enabled = true;
-            this.EditButton.ForeColor = OrangePrimary;
+            this.EditButton.ForeColor = MainWindow.FontColor;
 
             var item = GetItem();
             if ( item == null )

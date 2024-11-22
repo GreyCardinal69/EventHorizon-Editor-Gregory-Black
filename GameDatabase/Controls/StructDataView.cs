@@ -141,8 +141,8 @@ namespace GameDatabase.Controls
                 BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Fill,
                 AutoSize = true,
-                BackColor = DarkPrimary45,
-                ForeColor = OrangePrimary,
+                BackColor = MainWindow.BackgroundColor,
+                ForeColor = MainWindow.FontColor,
 
             };
 

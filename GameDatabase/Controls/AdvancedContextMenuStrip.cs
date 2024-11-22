@@ -7,13 +7,12 @@ namespace GameDatabase.Controls
 {
     internal class AdvancedContextMenuStrip : ContextMenuStrip
     {
-        private Color _backgroundColor = DarkPrimary45;
+        private Color _backgroundColor = MainWindow.BackgroundColor;
 
         public AdvancedContextMenuStrip( IContainer container ) : base( container )
         {
         }
 
-        [DefaultValue( typeof( Color ), "45,45,45" )]
         public Color BorderColor
         {
             get { return _backgroundColor; }

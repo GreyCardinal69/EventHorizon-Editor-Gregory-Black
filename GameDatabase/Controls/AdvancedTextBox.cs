@@ -22,7 +22,7 @@ namespace GameDatabase.Controls
         [DllImport( "user32.dll" )]
         static extern bool RedrawWindow( IntPtr hWnd, IntPtr lprc, IntPtr hrgn, uint flags );
 
-        private Color _borderColor = DarkPrimary45;
+        private Color _borderColor = MainWindow.BackgroundColor;
 
         public Color BorderColor
         {

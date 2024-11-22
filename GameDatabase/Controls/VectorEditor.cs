@@ -9,7 +9,7 @@ namespace GameDatabase.Controls
 {
     public partial class VectorEditor : UserControl
     {
-        private Color borderColor = DarkPrimary45;
+        private Color borderColor = MainWindow.BackgroundColor;
         [DefaultValue( typeof( Color ), "45,45,45" )]
         public Color BorderColor
         {

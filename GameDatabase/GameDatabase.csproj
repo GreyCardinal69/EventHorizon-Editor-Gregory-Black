@@ -569,6 +569,9 @@
     <EmbeddedResource Include="ComponentEditorDialog.resx">
       <DependentUpon>ComponentEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AdvancedButton.resx">
+      <DependentUpon>AdvancedButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\BarrelsCollectionEditor.resx">
       <DependentUpon>BarrelsCollectionEditor.cs</DependentUpon>
     </EmbeddedResource>

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BackColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ), ( ( int ) ( ( ( byte ) ( 45 ) ) ) ) );
+            this.BackColor = MainWindow.BackgroundColor;
             this.ClientSize = new System.Drawing.Size( 284, 261 );
             this.Font = new System.Drawing.Font( "Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( ( byte ) ( 0 ) ) );
-            this.ForeColor = System.Drawing.Color.FromArgb( ( ( int ) ( ( ( byte ) ( 242 ) ) ) ), ( ( int ) ( ( ( byte ) ( 188 ) ) ) ), ( ( int ) ( ( ( byte ) ( 87 ) ) ) ) );
+            this.ForeColor = MainWindow.FontColor;
             this.Name = "BarrelsEditor";
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarrelsEditor));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
