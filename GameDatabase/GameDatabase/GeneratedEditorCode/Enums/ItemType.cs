@@ -18,7 +18,6 @@ namespace EditorDatabase.Enums
         DroneBay = 5,
         Ship = 6,
         Satellite = 7,
-        ComponentGroupTag = 35,
         ShipBuild = 8,
         SatelliteBuild = 9,
         Technology = 10,
@@ -41,6 +40,7 @@ namespace EditorDatabase.Enums
         StatUpgradeTemplate = 32,
         FrontierLevel = 33,
         FrontierCommonLevel = 34,
+        ComponentGroupTag = 35,
         ShipSettings = 100,
         GalaxySettings = 101,
         DatabaseSettings = 102,
@@ -59,5 +59,6 @@ namespace EditorDatabase.Enums
         FrontierNpcSettings = 115,
         FrontierLevelSettings = 116,
         LocalizationSettings = 117,
+        WeaponSlots = 118,
     }
 }

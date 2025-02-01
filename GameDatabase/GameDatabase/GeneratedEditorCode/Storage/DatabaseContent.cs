@@ -33,6 +33,8 @@ namespace EditorDatabase.Storage
                 storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
             foreach ( var item in _componentStatUpgradeMap.Values )
                 storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
+            foreach (var item in _weaponSlotsMap.Values)
+                storage.SaveJson(item.FileName, jsonSerializer.ToJson(item));
             foreach ( var item in _combatRulesMap.Values )
                 storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
             foreach ( var item in _gameObjectPrefabMap.Values )
@@ -121,6 +123,12 @@ namespace EditorDatabase.Storage
                 var data = _serializer.FromJson<AmmunitionObsoleteSerializable>( content );
                 data.FileName = name;
                 _ammunitionObsoleteMap.Remove( data.Id );
+            }
+            if (type == ItemType.WeaponSlots)
+            {
+                var data = _serializer.FromJson<WeaponSlotsSerializable>(content);
+                data.FileName = name;
+                _weaponSlotsMap.Remove(data.Id);
             }
             else if ( type == ItemType.Component )
             {
@@ -314,13 +322,19 @@ namespace EditorDatabase.Storage
         {
             var item = _serializer.FromJson<SerializableItem>( content );
             var type = item.ItemType;
-
+           
             if ( type == ItemType.AmmunitionObsolete )
             {
                 if ( _ammunitionObsoleteMap.ContainsKey( item.Id ) ) throw new DatabaseException( "Duplicate AmmunitionObsolete ID - " + item.Id + " (" + name + ")" );
                 var data = _serializer.FromJson<AmmunitionObsoleteSerializable>( content );
                 data.FileName = name;
                 _ammunitionObsoleteMap.Add( data.Id, data );
+            } else if (type == ItemType.WeaponSlots)
+            {
+                if (_weaponSlotsMap.ContainsKey(item.Id)) throw new DatabaseException("Duplicate WeaponSlots ID - " + item.Id + " (" + name + ")");
+                var data = _serializer.FromJson<WeaponSlotsSerializable>(content);
+                data.FileName = name;
+                _weaponSlotsMap.Add(data.Id, data);
             }
             else if ( type == ItemType.Component )
             {
@@ -620,7 +634,7 @@ namespace EditorDatabase.Storage
             }
             else
             {
-                throw new DatabaseException( "Unknown file type - " + type + "(" + name + ")" );
+                throw new DatabaseException( $" {type == ItemType.AmmunitionObsolete}     | Unknown file type - " + type + "(" + name + ")" );
             }
         }
 
@@ -670,6 +684,7 @@ namespace EditorDatabase.Storage
         public List<ComponentStatsSerializable> ComponentStatsList => _componentStatsMap.Values.ToList();
         public List<DeviceSerializable> DeviceList => _deviceMap.Values.ToList();
         public List<DroneBaySerializable> DroneBayList => _droneBayMap.Values.ToList();
+        public List<WeaponSlotsSerializable> WeaponSlotsList => _weaponSlotsMap.Values.ToList();
         public List<FactionSerializable> FactionList => _factionMap.Values.ToList();
         public List<SatelliteSerializable> SatelliteList => _satelliteMap.Values.ToList();
         public List<SatelliteBuildSerializable> SatelliteBuildList => _satelliteBuildMap.Values.ToList();
@@ -701,6 +716,7 @@ namespace EditorDatabase.Storage
         public CombatRulesSerializable GetCombatRules( int id ) { return _combatRulesMap.TryGetValue( id, out var item ) ? item : null; }
         public SatelliteSerializable GetSatellite( int id ) { return _satelliteMap.TryGetValue( id, out var item ) ? item : null; }
         public SatelliteBuildSerializable GetSatelliteBuild( int id ) { return _satelliteBuildMap.TryGetValue( id, out var item ) ? item : null; }
+        public WeaponSlotsSerializable GetWeaponSlots(int id) { return _weaponSlotsMap.TryGetValue(id, out var item) ? item : null; }
         public ShipSerializable GetShip( int id ) { return _shipMap.TryGetValue( id, out var item ) ? item : null; }
         public ShipBuildSerializable GetShipBuild( int id ) { return _shipBuildMap.TryGetValue( id, out var item ) ? item : null; }
         public StatUpgradeTemplateSerializable GetStatUpgradeTemplate( int id ) { return _statUpgradeTemplateMap.TryGetValue( id, out var item ) ? item : null; }
@@ -757,6 +773,7 @@ namespace EditorDatabase.Storage
         private readonly Dictionary<int, BulletPrefabSerializable> _bulletPrefabMap = new Dictionary<int, BulletPrefabSerializable>();
         private readonly Dictionary<int, VisualEffectSerializable> _visualEffectMap = new Dictionary<int, VisualEffectSerializable>();
         private readonly Dictionary<int, WeaponSerializable> _weaponMap = new Dictionary<int, WeaponSerializable>();
+        private readonly Dictionary<int, WeaponSlotsSerializable> _weaponSlotsMap = new Dictionary<int, WeaponSlotsSerializable>();
 
         private readonly Dictionary<string, IImageData> _images = new Dictionary<string, IImageData>( StringComparer.OrdinalIgnoreCase );
         private readonly Dictionary<string, IAudioClipData> _audioClips = new Dictionary<string, IAudioClipData>( StringComparer.OrdinalIgnoreCase );

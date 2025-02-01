@@ -15,7 +15,7 @@ namespace EditorDatabase.Storage
                 ContractResolver = new BaseFirstContractResolver(),
                 Formatting = Formatting.Indented,
                 NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Include,
             };
         }
 

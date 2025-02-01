@@ -15,6 +15,8 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class BulletBodySerializable
     {
+        [DefaultValue(true)]
+        public bool DetonateWhenDestroyed = true;
         public float Size;
         public float Length;
         public float Velocity;

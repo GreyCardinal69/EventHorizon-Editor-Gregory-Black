@@ -245,6 +245,13 @@ namespace EditorDatabase
                     item.Value.Save( value );
             }
 
+            foreach (var item in _weaponSlotsMap)
+            {
+                var value = _content.GetWeaponSlots(item.Key);
+                if (value != secondaryDb.Content.GetWeaponSlots(item.Key))
+                    item.Value.Save(value);
+            }
+
             _localizationSettings?.Save( _content.LocalizationSettings );
             _musicPlaylist?.Save( _content.MusicPlaylist );
             _factionsSettings?.Save( _content.FactionsSettings );
@@ -270,6 +277,7 @@ namespace EditorDatabase
                 return from item in this._content.ComponentGroupTagList
                        select new ItemId<ComponentGroupTag>( item );
             }
+            if (type == typeof(WeaponSlots)) return _content.WeaponSlotsList.Select(item => new ItemId<WeaponSlots>(item));
             if ( type == typeof( CombatRules ) ) return _content.CombatRulesList.Select( item => new ItemId<CombatRules>( item ) );
             if ( type == typeof( GameObjectPrefab ) ) return _content.GameObjectPrefabList.Select( item => new ItemId<GameObjectPrefab>( item ) );
             if ( type == typeof( AmmunitionObsolete ) ) return _content.AmmunitionObsoleteList.Select( item => new ItemId<AmmunitionObsolete>( item ) );
@@ -303,6 +311,7 @@ namespace EditorDatabase
         {
             switch ( type )
             {
+                case ItemType.WeaponSlots: return GetWeaponSlots(id);
                 case ItemType.ComponentStatUpgrade: return GetComponentStatUpgrade( id );
                 case ItemType.ShipModSettings: return ShipModSettings;
                 case ItemType.FrontierSettings: return FrontierSettings;
@@ -353,6 +362,7 @@ namespace EditorDatabase
         {
             switch ( type )
             {
+                case ItemType.WeaponSlots: SetWeaponSlots(id, old); break;
                 case ItemType.ComponentStatUpgrade: SetComponentStatUpgrade( id, old ); break;
                 case ItemType.AmmunitionObsolete: SetAmmunitionObsolete( id, old ); break;
                 case ItemType.Component: SetComponent( id, old ); break;
@@ -400,6 +410,17 @@ namespace EditorDatabase
 
         public ItemId<ComponentStatUpgrade> GetComponentStatUpgradeId( int id ) { return new ItemId<ComponentStatUpgrade>( _content.GetComponentStatUpgrade( id ) ); }
 
+        public WeaponSlots GetWeaponSlots(int id)
+        {
+            if (!_weaponSlotsMap.TryGetValue(id, out var item))
+            {
+                var serializable = _content.GetWeaponSlots(id);
+                item = WeaponSlots.Create(serializable, this);
+                _weaponSlotsMap.Add(id, item);
+            }
+            return item;
+        }
+
         public ComponentStatUpgrade GetComponentStatUpgrade( int id )
         {
             if ( !_componentStatUpgradeMap.TryGetValue( id, out var item ) )
@@ -410,6 +431,7 @@ namespace EditorDatabase
             }
             return item;
         }
+
         public AmmunitionObsolete GetAmmunitionObsolete( int id )
         {
             if ( !_ammunitionObsoleteMap.TryGetValue( id, out var item ) )
@@ -726,6 +748,14 @@ namespace EditorDatabase
         }
 
         // Setters
+        public void SetWeaponSlots(int id, int old)
+        {
+            WeaponSlotsSerializable serializable = _content.GetWeaponSlots(id);
+            _content.WeaponSlotsList[_content.WeaponSlotsList.IndexOf(_content.GetWeaponSlots(old))] = serializable;
+            _weaponSlotsMap[old] = new WeaponSlots(serializable, this);
+
+        }
+
         public void SetComponentStatUpgrade( int id, int old )
         {
             ComponentStatUpgradeSerializable serializable = _content.GetComponentStatUpgrade( id );
@@ -953,6 +983,7 @@ namespace EditorDatabase
             _combatRulesMap.Clear();
             _gameObjectPrefabMap.Clear();
             _behaviorTreeMap.Clear();
+            _weaponSlotsMap.Clear();
             this._componentGroupTagMap.Clear();
 
             _localizationSettings = null;
@@ -997,6 +1028,7 @@ namespace EditorDatabase
         private readonly Dictionary<int, BulletPrefab> _bulletPrefabMap = new Dictionary<int, BulletPrefab>();
         private readonly Dictionary<int, VisualEffect> _visualEffectMap = new Dictionary<int, VisualEffect>();
         private readonly Dictionary<int, Weapon> _weaponMap = new Dictionary<int, Weapon>();
+        private readonly Dictionary<int, WeaponSlots> _weaponSlotsMap = new Dictionary<int, WeaponSlots>();
         public FrontierSettings FrontierSettings => _frontierSettings ?? ( _frontierSettings = new FrontierSettings( _content.FrontierSettings, this ) );
 
         private LocalizationSettings _localizationSettings;

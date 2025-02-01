@@ -28,6 +28,7 @@ namespace EditorDatabase.DataModel
         {
             try
             {
+                this.VisualEffects.Value = ShipVisualEffects.Create(serializable.VisualEffects, database);
                 CellsExpansions = serializable.CellsExpansions;
                 Id = new ItemId<Ship>( serializable.Id, serializable.FileName );
                 ShipType = serializable.ShipType;
@@ -56,6 +57,8 @@ namespace EditorDatabase.DataModel
 
         public void Save( ShipSerializable serializable )
         {
+            ShipVisualEffects value2 = this.VisualEffects.Value;
+            serializable.VisualEffects = ((value2 != null) ? value2.Serialize() : null);
             serializable.CellsExpansions = this.CellsExpansions;
             serializable.ShipType = ShipType;
             serializable.ShipRarity = ShipRarity;
@@ -101,7 +104,7 @@ namespace EditorDatabase.DataModel
         public Barrel[] Barrels;
         public ObjectWrapper<ShipFeatures> Features = new ObjectWrapper<ShipFeatures>( DataModel.ShipFeatures.DefaultValue );
         public NumericValue<float> ColliderTolerance = new NumericValue<float>( 0, 0f, 1f );
-
+        public ObjectWrapper<ShipVisualEffects> VisualEffects = new ObjectWrapper<ShipVisualEffects>(ShipVisualEffects.DefaultValue);
         public static Ship DefaultValue { get; set; }
     }
 }

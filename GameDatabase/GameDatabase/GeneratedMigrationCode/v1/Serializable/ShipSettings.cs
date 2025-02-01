@@ -20,6 +20,18 @@ namespace DatabaseMigration.v1.Serializable
             ItemType = ItemType.ShipSettings;
             FileName = "ShipSettings.json";
         }
+        public int ShipExplosionEffect;
+
+
+        [DefaultValue("")]
+        public string ShipExplosionSound;
+
+
+        public int DroneExplosionEffect;
+
+
+        [DefaultValue("")]
+        public string DroneExplosionSound;
         public ToggleState CellsExpansions;
         public float DefaultWeightPerCell;
         public float MinimumWeightPerCell;

@@ -11,6 +11,7 @@ using EditorDatabase.Model;
 using EditorDatabase.Serializable;
 using System.Collections.Generic;
 using System.Linq;
+using static EditorDatabase.Property;
 
 namespace EditorDatabase.DataModel
 {
@@ -69,6 +70,7 @@ namespace EditorDatabase.DataModel
 
         public void Save( TechnologySerializable serializable )
         {
+            serializable.DoesnPreventUnlocking = false;
             serializable.ItemId = 0;
             serializable.Faction = 0;
             _content.Save( ref serializable );
@@ -120,7 +122,8 @@ namespace EditorDatabase.DataModel
         public bool Special;
         public Wrapper<Technology>[] Dependencies;
         public NumericValue<int> CustomCraftingLevel = new NumericValue<int>( 0, 0, int.MaxValue );
-
+        [TooltipText("If this flag is set, locked components on ships can be unlocked even if the technology has not yet been researched.")]
+        public bool DoesnPreventUnlocking;
         public static Technology DefaultValue { get; set; }
     }
 
@@ -141,17 +144,19 @@ namespace EditorDatabase.DataModel
             if ( Component.IsNull )
                 throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Component cannot be null" );
             Faction = database.GetFactionId( serializable.Faction );
-
+            this.DoesnPreventUnlocking = serializable.DoesnPreventUnlocking;
             OnDataDeserialized( serializable, database );
         }
 
         public void Save( ref TechnologySerializable serializable )
         {
+            serializable.DoesnPreventUnlocking = this.DoesnPreventUnlocking;
             serializable.ItemId = Component.Value;
             serializable.Faction = Faction.Value;
             OnDataSerialized( ref serializable );
         }
-
+        [TooltipText("If this flag is set, locked components on ships can be unlocked even if the technology has not yet been researched.")]
+        public bool DoesnPreventUnlocking;
         public ItemId<Component> Component = ItemId<Component>.Empty;
         public ItemId<Faction> Faction = ItemId<Faction>.Empty;
     }
@@ -200,7 +205,8 @@ namespace EditorDatabase.DataModel
             serializable.Faction = Faction.Value;
             OnDataSerialized( ref serializable );
         }
-
+        [TooltipText("If this flag is set, locked components on ships can be unlocked even if the technology has not yet been researched.")]
+        public bool DoesnPreventUnlocking;
         public ItemId<Satellite> Satellite = ItemId<Satellite>.Empty;
         public ItemId<Faction> Faction = ItemId<Faction>.Empty;
 

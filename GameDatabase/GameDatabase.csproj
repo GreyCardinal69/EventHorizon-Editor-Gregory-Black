@@ -236,6 +236,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipModSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipToValue.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\ShipVisualEffects.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Skill.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\SkillSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\SoundTrack.cs" />
@@ -247,6 +248,8 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\VisualEffect.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\VisualEffectElement.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\Weapon.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\WeaponSlot.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\DataModel\WeaponSlots.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\ActivationType.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\AiBulletBehaviour.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Enums\AiDifficultyLevel.cs" />
@@ -353,6 +356,7 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipModSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipToValue.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\ShipVisualEffects.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Skill.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\SkillSettings.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\SoundTrackSerializable.cs" />
@@ -364,6 +368,8 @@
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\VisualEffect.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\VisualEffectElement.cs" />
     <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\Weapon.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\WeaponSlot.cs" />
+    <Compile Include="GameDatabase\GeneratedEditorCode\Serializable\WeaponSlots.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\DatabaseException.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\DatabaseUpgrader.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Enums\ActivationType.cs" />
@@ -474,6 +480,7 @@
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\ShipModSettings.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\ShipSettings.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\ShipToValue.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\ShipVisualEffects.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\Skill.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\SkillSettings.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\SoundTrack.cs" />
@@ -485,6 +492,8 @@
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\VisualEffect.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\VisualEffectElement.cs" />
     <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\Weapon.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\WeaponSlot.cs" />
+    <Compile Include="GameDatabase\GeneratedMigrationCode\v1\Serializable\WeaponSlots.cs" />
     <Compile Include="GameDatabase\Helpers\DataAdapter.cs" />
     <Compile Include="GameDatabase\Helpers\EnumExtensions.cs" />
     <Compile Include="GameDatabase\Helpers\Helpers.cs" />

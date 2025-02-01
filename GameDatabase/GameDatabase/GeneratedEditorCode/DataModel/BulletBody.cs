@@ -43,6 +43,7 @@ namespace EditorDatabase.DataModel
             CanBeDisarmed = serializable.CanBeDisarmed;
             FriendlyFire = serializable.FriendlyFire;
             AiBulletBehavior = serializable.AiBulletBehavior;
+            this.DetonateWhenDestroyed = serializable.DetonateWhenDestroyed;
             OnDataDeserialized( serializable, database );
         }
 
@@ -59,6 +60,7 @@ namespace EditorDatabase.DataModel
             serializable.Weight = Weight.Value;
             serializable.HitPoints = HitPoints.Value;
             serializable.Color = Helpers.ColorToString( Color );
+            serializable.DetonateWhenDestroyed = this.DetonateWhenDestroyed;
             serializable.BulletPrefab = BulletPrefab.Value;
             serializable.EnergyCost = EnergyCost.Value;
             serializable.CanBeDisarmed = CanBeDisarmed;
@@ -86,7 +88,7 @@ namespace EditorDatabase.DataModel
         public bool FriendlyFire;
         [TooltipText( "Hints for AI and auto-aim0 on usage of this weapon" )]
         public AiBulletBehavior AiBulletBehavior;
-
+        public bool DetonateWhenDestroyed;
         public static BulletBody DefaultValue { get; set; }
     }
 }

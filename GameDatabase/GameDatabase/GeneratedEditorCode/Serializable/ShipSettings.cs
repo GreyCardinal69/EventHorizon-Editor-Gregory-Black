@@ -14,6 +14,18 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class ShipSettingsSerializable : SerializableItem
     {
+        public int ShipExplosionEffect;
+
+
+        [DefaultValue("")]
+        public string ShipExplosionSound;
+
+
+        public int DroneExplosionEffect;
+
+
+        [DefaultValue("")]
+        public string DroneExplosionSound;
         public bool DisableCellsExpansions;
         public float DefaultWeightPerCell;
         public float MinimumWeightPerCell;

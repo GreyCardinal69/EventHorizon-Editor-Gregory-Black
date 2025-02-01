@@ -24,6 +24,10 @@ namespace EditorDatabase.DataModel
 
         public ShipSettings( ShipSettingsSerializable serializable, Database database )
         {
+            this.ShipExplosionEffect = database.GetVisualEffectId(serializable.ShipExplosionEffect);
+            this.ShipExplosionSound = serializable.ShipExplosionSound;
+            this.DroneExplosionEffect = database.GetVisualEffectId(serializable.DroneExplosionEffect);
+            this.DroneExplosionSound = serializable.DroneExplosionSound;
             DisableCellsExpansions = serializable.DisableCellsExpansions;
             DefaultWeightPerCell = new NumericValue<float>( serializable.DefaultWeightPerCell, 1f, 1000000f );
             MinimumWeightPerCell = new NumericValue<float>( serializable.MinimumWeightPerCell, 1f, 1000000f );
@@ -46,6 +50,10 @@ namespace EditorDatabase.DataModel
 
         public void Save( ShipSettingsSerializable serializable )
         {
+            serializable.ShipExplosionEffect = this.ShipExplosionEffect.Value;
+            serializable.ShipExplosionSound = this.ShipExplosionSound;
+            serializable.DroneExplosionEffect = this.DroneExplosionEffect.Value;
+            serializable.DroneExplosionSound = this.DroneExplosionSound;
             serializable.DisableCellsExpansions = this.DisableCellsExpansions;
             serializable.DefaultWeightPerCell = DefaultWeightPerCell.Value;
             serializable.MinimumWeightPerCell = MinimumWeightPerCell.Value;
@@ -84,6 +92,16 @@ namespace EditorDatabase.DataModel
         public NumericValue<float> MaxAcceleration = new NumericValue<float>( 0, 5f, 1000f );
         public NumericValue<float> MaxAngularAcceleration = new NumericValue<float>( 0, 5f, 1000f );
 
+        public ItemId<VisualEffect> ShipExplosionEffect = ItemId<VisualEffect>.Empty;
+
+
+        public string ShipExplosionSound;
+
+
+        public ItemId<VisualEffect> DroneExplosionEffect = ItemId<VisualEffect>.Empty;
+
+
+        public string DroneExplosionSound;
         public static ShipSettings DefaultValue { get; set; }
     }
 }

@@ -27,12 +27,12 @@ namespace EditorDatabase.DataModel
         {
             try
             {
+                this.Power = new NumericValue<float>(serializable.Power, -3.402823E+38f, 3.402823E+38f);
                 Id = new ItemId<Device>( serializable.Id, serializable.FileName );
                 DeviceClass = serializable.DeviceClass;
                 EnergyConsumption = new NumericValue<float>( serializable.EnergyConsumption, 0f, 1E+09f );
                 PassiveEnergyConsumption = new NumericValue<float>( serializable.PassiveEnergyConsumption, 0f, 1E+09f );
                 ScaleEnergyWithShipSize = serializable.ScaleEnergyWithShipSize;
-                Power = new NumericValue<float>( serializable.Power, 0f, 1000f );
                 Range = new NumericValue<float>( serializable.Range, 0f, 1000f );
                 Size = new NumericValue<float>( serializable.Size, 0f, 1000f );
                 Cooldown = new NumericValue<float>( serializable.Cooldown, 0f, 1000f );
@@ -46,6 +46,7 @@ namespace EditorDatabase.DataModel
                 ObjectPrefab = serializable.ObjectPrefab;
                 Prefab = database.GetGameObjectPrefabId( serializable.Prefab );
                 ControlButtonIcon = serializable.ControlButtonIcon;
+                this.AmmunitionId = database.GetAmmunitionId(serializable.AmmunitionId);
             }
             catch ( DatabaseException e )
             {
@@ -56,6 +57,7 @@ namespace EditorDatabase.DataModel
 
         public void Save( DeviceSerializable serializable )
         {
+            serializable.AmmunitionId = this.AmmunitionId.Value;
             serializable.DeviceClass = DeviceClass;
             serializable.EnergyConsumption = EnergyConsumption.Value;
             serializable.PassiveEnergyConsumption = PassiveEnergyConsumption.Value;
@@ -83,7 +85,7 @@ namespace EditorDatabase.DataModel
         public NumericValue<float> EnergyConsumption = new NumericValue<float>( 0, 0f, 1E+09f );
         public NumericValue<float> PassiveEnergyConsumption = new NumericValue<float>( 0, 0f, 1E+09f );
         public bool ScaleEnergyWithShipSize;
-        public NumericValue<float> Power = new NumericValue<float>( 0, 0f, 1000f );
+        public NumericValue<float> Power = new NumericValue<float>(0f, -3.402823E+38f, 3.402823E+38f);
         public NumericValue<float> Range = new NumericValue<float>( 0, 0f, 1000f );
         public NumericValue<float> Size = new NumericValue<float>( 0, 0f, 1000f );
         public NumericValue<float> Cooldown = new NumericValue<float>( 0, 0f, 1000f );
@@ -97,7 +99,7 @@ namespace EditorDatabase.DataModel
         public string ObjectPrefab;
         public ItemId<GameObjectPrefab> Prefab = ItemId<GameObjectPrefab>.Empty;
         public string ControlButtonIcon;
-
+        public ItemId<Ammunition> AmmunitionId = ItemId<Ammunition>.Empty;
         public static Device DefaultValue { get; set; }
     }
 }

@@ -44,6 +44,10 @@
             Value = defaultValue;
         }
 
+        public ObjectWrapper()
+        {
+        }
+
         public override string ToString()
         {
             return Value?.ToString();

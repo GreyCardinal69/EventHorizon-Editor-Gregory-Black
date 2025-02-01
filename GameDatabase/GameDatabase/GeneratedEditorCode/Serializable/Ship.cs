@@ -6,6 +6,7 @@
 //                                                                               
 //-------------------------------------------------------------------------------
 
+using DatabaseMigration.v1.Serializable;
 using EditorDatabase.Enums;
 using EditorDatabase.Model;
 using System;
@@ -16,6 +17,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class ShipSerializable : SerializableItem
     {
+        public ShipVisualEffectsSerializable VisualEffects;
         public ToggleState CellsExpansions;
         public ShipType ShipType;
         public ShipRarity ShipRarity;

@@ -16,6 +16,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class DeviceSerializable : SerializableItem
     {
+        public int AmmunitionId;
         public DeviceClass DeviceClass;
         public float EnergyConsumption;
         public float PassiveEnergyConsumption;

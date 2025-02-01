@@ -21,7 +21,7 @@ namespace DatabaseMigration.v1.Serializable
             ItemType = ItemType.Device;
             FileName = "Device.json";
         }
-
+        public int AmmunitionId;
         public DeviceClass DeviceClass;
         public float EnergyConsumption;
         public float PassiveEnergyConsumption;

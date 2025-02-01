@@ -14,6 +14,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class TechnologySerializable : SerializableItem
     {
+        public bool DoesnPreventUnlocking;
         public TechType Type;
         public int ItemId;
         public int Faction;

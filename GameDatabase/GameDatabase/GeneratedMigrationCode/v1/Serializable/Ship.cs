@@ -21,7 +21,7 @@ namespace DatabaseMigration.v1.Serializable
             ItemType = ItemType.Ship;
             FileName = "Ship.json";
         }
-
+        public ShipVisualEffectsSerializable VisualEffects;
         public ToggleState CellsExpansions;
         public ShipType ShipType;
         public ShipRarity ShipRarity;

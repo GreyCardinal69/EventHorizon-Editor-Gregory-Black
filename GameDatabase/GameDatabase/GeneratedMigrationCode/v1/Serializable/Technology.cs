@@ -20,6 +20,7 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "Technology.json";
         }
 
+        public bool DoesnPreventUnlocking;
         public TechType Type;
         public int ItemId;
         public int Faction;

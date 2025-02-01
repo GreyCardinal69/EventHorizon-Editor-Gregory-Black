@@ -21,6 +21,8 @@ namespace DatabaseMigration.v1.Serializable
         [DefaultValue( 1f )]
         public float ParentVelocityEffect = 1f;
         public bool AttachedToParent;
+        [DefaultValue(true)]
+        public bool DetonateWhenDestroyed = true;
         public float Range;
         public float Lifetime;
         public float Weight;

@@ -15,6 +15,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class BulletControllerSerializable
     {
+        public float Lifetime;
         public BulletControllerType Type;
         public float StartingVelocityModifier = 0.1f;
         public bool IgnoreRotation;
