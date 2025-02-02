@@ -42,7 +42,7 @@ namespace GameDatabase
             ChangeSorting( Settings.Default.SortingType );
         }
 
-        internal DBESettings DBESettings;
+        public DBESettings DBESettings;
         internal static MainWindow MainInstance;
         internal SerializableItem _copiedData;
         internal bool _isTryingToCopy;

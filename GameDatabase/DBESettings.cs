@@ -1,8 +1,8 @@
 ﻿namespace GameDatabase
 {
-    internal class DBESettings
+    public class DBESettings
     {
-        internal class Theme
+        public class Theme
         {
             public string BorderColor;
             public string BackgroundColor;
@@ -12,6 +12,7 @@
             public string Accent3;
         }
 
+        public bool KeepShipBuildsDefaultValues;
         public int ActiveTheme;
         public int ElementsPerPage;
         public Theme[] Themes;

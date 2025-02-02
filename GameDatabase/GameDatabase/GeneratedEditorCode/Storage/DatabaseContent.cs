@@ -10,6 +10,7 @@
 using EditorDatabase.Enums;
 using EditorDatabase.Model;
 using EditorDatabase.Serializable;
+using GameDatabase;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,8 +60,12 @@ namespace EditorDatabase.Storage
                 storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
             foreach ( var item in _shipMap.Values )
                 storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
-            foreach ( var item in _shipBuildMap.Values )
-                storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
+            foreach ( var item in _shipBuildMap.Values)
+            {
+                if ( MainWindow.MainInstance.DBESettings.KeepShipBuildsDefaultValues) _serializer.SwitchDefaults();
+                storage.SaveJson(item.FileName, jsonSerializer.ToJson(item));
+                if (MainWindow.MainInstance.DBESettings.KeepShipBuildsDefaultValues) _serializer.SwitchDefaults();
+            }
             foreach ( var item in _statUpgradeTemplateMap.Values )
                 storage.SaveJson( item.FileName, jsonSerializer.ToJson( item ) );
             foreach ( var item in _technologyMap.Values )

@@ -15,7 +15,18 @@ namespace EditorDatabase.Storage
                 ContractResolver = new BaseFirstContractResolver(),
                 Formatting = Formatting.Indented,
                 NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Include,
+                DefaultValueHandling = DefaultValueHandling.Ignore,
+            };
+        }
+
+        public void SwitchDefaults()
+        {
+            _settings = new JsonSerializerSettings
+            {
+                ContractResolver = new BaseFirstContractResolver(),
+                Formatting = Formatting.Indented,
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = (_settings.DefaultValueHandling == DefaultValueHandling.Ignore) ? DefaultValueHandling.Include : DefaultValueHandling.Ignore
             };
         }
 
@@ -29,7 +40,7 @@ namespace EditorDatabase.Storage
             return JsonConvert.SerializeObject( item, _settings ).Replace( "\r\n", "\n" );
         }
 
-        private readonly JsonSerializerSettings _settings;
+        private JsonSerializerSettings _settings;
 
         private class BaseFirstContractResolver : DefaultContractResolver
         {

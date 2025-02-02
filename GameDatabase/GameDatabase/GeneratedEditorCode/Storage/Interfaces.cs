@@ -14,6 +14,8 @@ namespace EditorDatabase.Storage
     {
         T FromJson<T>( string data );
         string ToJson<T>( T item );
+
+        void SwitchDefaults();
     }
 
     public partial interface IDataStorage
