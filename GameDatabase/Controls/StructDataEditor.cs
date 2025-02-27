@@ -128,27 +128,31 @@ namespace GameDatabase
 
         public void UpdateControls()
         {
-            foreach ( var bind in _binding )
+            foreach (var bind in _binding)
             {
                 var control = bind.Key;
                 var value = bind.Value;
-                if ( bind.Value.Type.IsEnum )
+                if (bind.Value.Type.IsEnum)
                 {
-                    ( ( ComboBox ) control ).SelectedItem = value.Value;
+                    ((ComboBox)control).SelectedItem = value.Value;
                 }
-                else if ( value.Type == typeof( NumericValue<int> ) )
+                else if (value.Type == typeof(NumericValue<int>))
                 {
-                    var numVal = ( NumericUpDown ) control;
-                    numVal.Value = ( ( NumericValue<int> ) value.Value ).Value;
+                    var numVal = (NumericUpDown)control;
+                    numVal.Value = ((NumericValue<int>)value.Value).Value;
                 }
-                else if ( value.Type == typeof( NumericValue<float> ) )
+                else if (value.Type == typeof(NumericValue<float>))
                 {
-                    var numVal = ( NumericUpDown ) control;
-                    numVal.Value = ( decimal ) ( ( NumericValue<float> ) value.Value ).Value;
+                    var numVal = (NumericUpDown)control;
+                    numVal.Value = (decimal)((NumericValue<float>)value.Value).Value;
                 }
-                else if ( value.Type == typeof( string ) )
+                else if (value.Type == typeof(string))
                 {
-                    ( ( TextBox ) control ).Text = ( string ) value.Value;
+                    ((TextBox)control).Text = (string)value.Value;
+                }
+                else if (value.Type == typeof(char))
+                {
+                    ((TextBox)control).Text = (string)value.Value;
                 }
                 else if ( value.Type == typeof( bool ) )
                 {

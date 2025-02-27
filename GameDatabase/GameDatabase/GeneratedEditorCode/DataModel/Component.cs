@@ -37,7 +37,7 @@ namespace EditorDatabase.DataModel
                 Stats = database.GetComponentStatsId( serializable.ComponentStatsId );
                 //    if ( Stats.IsNull )
                 // return;
-                this.WeaponSlotType = (string.IsNullOrEmpty(serializable.WeaponSlotType) ? '\0' : serializable.WeaponSlotType[0]);
+                this.WeaponSlotType = (string.IsNullOrEmpty(serializable.WeaponSlotType) ? "" : serializable.WeaponSlotType);
                 Faction = database.GetFactionId( serializable.Faction );
                 Level = new NumericValue<int>( serializable.Level, 0, 2147483647 );
                 Icon = serializable.Icon;
@@ -77,7 +77,7 @@ namespace EditorDatabase.DataModel
             serializable.AmmunitionId = AmmunitionObsolete.Value;
             serializable.DroneBayId = DroneBay.Value;
             serializable.DroneId = Drone.Value;
-            serializable.WeaponSlotType = ((this.WeaponSlotType == '\0') ? string.Empty : this.WeaponSlotType.ToString());
+            serializable.WeaponSlotType = ((this.WeaponSlotType == "") ? string.Empty : this.WeaponSlotType.ToString());
             serializable.Restrictions = Restrictions.Value?.Serialize();
             if ( PossibleModifications == null || PossibleModifications.Length == 0 )
                 serializable.PossibleModifications = null;

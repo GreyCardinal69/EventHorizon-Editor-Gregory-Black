@@ -1,5 +1,6 @@
 ﻿using EditorDatabase.Enums;
 using EditorDatabase.Serializable;
+using System.ComponentModel;
 using System.Linq;
 
 namespace EditorDatabase.DataModel
@@ -17,8 +18,8 @@ namespace EditorDatabase.DataModel
             serializable.AmmunitionId = Ammunition.IsNull ? AmmunitionObsolete.Value : Ammunition.Value;
             serializable.CellType = CellType != CellType.Empty ? ( ( char ) CellType ).ToString() : null;
         }
-
-        public char WeaponSlotType;
+        [DefaultValue("")]
+        public string WeaponSlotType;
         public CellType CellType;
     }
 }
