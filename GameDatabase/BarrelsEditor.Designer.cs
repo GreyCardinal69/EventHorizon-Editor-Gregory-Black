@@ -30,7 +30,7 @@
         {
             this.BackColor = MainWindow.BackgroundColor;
             this.ClientSize = new System.Drawing.Size( 284, 261 );
-            this.Font = new System.Drawing.Font( "Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( ( byte ) ( 0 ) ) );
+            this.Font = new System.Drawing.Font( "Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( ( byte ) ( 0 ) ) );
             this.ForeColor = MainWindow.FontColor;
             this.Name = "BarrelsEditor";
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarrelsEditor));

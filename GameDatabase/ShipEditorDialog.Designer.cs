@@ -190,7 +190,7 @@ namespace GameDatabase
             this.layoutEditor1.BorderSize = 32;
             this.layoutEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutEditor1.Engines = null;
-            this.layoutEditor1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutEditor1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutEditor1.ForeColor = MainWindow.FontColor;
             this.layoutEditor1.Image = null;
             this.layoutEditor1.Layout = "000000000";
@@ -225,7 +225,7 @@ namespace GameDatabase
             this.button1.BackColor = MainWindow.BackgroundColor;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = MainWindow.FontColor;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(2);

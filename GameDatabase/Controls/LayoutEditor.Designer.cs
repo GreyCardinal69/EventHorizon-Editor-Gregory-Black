@@ -278,7 +278,7 @@ namespace GameDatabase
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = MainWindow.BackgroundColor;
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = MainWindow.FontColor;
             this.Name = "LayoutEditor";
             this.Size = new System.Drawing.Size(600, 603);

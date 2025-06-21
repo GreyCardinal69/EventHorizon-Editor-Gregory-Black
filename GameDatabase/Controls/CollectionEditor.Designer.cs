@@ -65,7 +65,7 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutPanel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel.ForeColor = MainWindow.FontColor;
             this.tableLayoutPanel.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
@@ -114,7 +114,7 @@
             this.buttonsPanel.Controls.Add(this.collapseButton);
             this.buttonsPanel.Controls.Add(this.expandBtton);
             this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonsPanel.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonsPanel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonsPanel.ForeColor = MainWindow.FontColor;
             this.buttonsPanel.Location = new System.Drawing.Point(2, 296);
             this.buttonsPanel.Margin = new System.Windows.Forms.Padding(2);
@@ -216,7 +216,7 @@
             this.flowLayoutPanel1.Controls.Add(this.nextPageButton);
             this.flowLayoutPanel1.Controls.Add(this.JumpTo);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.ForeColor = MainWindow.FontColor;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 358);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -280,7 +280,7 @@
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.BackColor = MainWindow.BackgroundColor;
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Font = new System.Drawing.Font("Yu Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel2.ForeColor = MainWindow.FontColor;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 389);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);

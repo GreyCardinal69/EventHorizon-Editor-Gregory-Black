@@ -37,7 +37,7 @@
             // 
             this.nameBox.BackColor = MainWindow.BackgroundColor;
             this.nameBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nameBox.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameBox.ForeColor = MainWindow.FontColor;
             this.nameBox.Location = new System.Drawing.Point(12, 41);
             this.nameBox.MaxLength = 32;
@@ -48,7 +48,7 @@
             // confirmButton
             // 
             this.confirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.confirmButton.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmButton.ForeColor = MainWindow.FontColor;
             this.confirmButton.Location = new System.Drawing.Point(149, 80);
             this.confirmButton.Name = "confirmButton";
@@ -61,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = MainWindow.FontColor;
             this.label1.Location = new System.Drawing.Point(83, 9);
             this.label1.Name = "label1";

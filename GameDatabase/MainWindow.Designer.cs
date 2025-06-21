@@ -103,7 +103,7 @@ namespace GameDatabase
             this.DatabaseTreeView.BackColor = MainWindow.BorderColor;
             this.DatabaseTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DatabaseTreeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.DatabaseTreeView.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DatabaseTreeView.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DatabaseTreeView.ForeColor = MainWindow.FontColor;
             this.DatabaseTreeView.Location = new System.Drawing.Point(6, 3);
             this.DatabaseTreeView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -136,7 +136,7 @@ namespace GameDatabase
             this.splitContainer.Panel2.Controls.Add(this.EditButton);
             this.splitContainer.Panel2.Controls.Add(this.ItemTypeText);
             this.splitContainer.Panel2.Controls.Add(this.ItemTypeLabel);
-            this.splitContainer.Panel2.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.splitContainer.Panel2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.splitContainer.Panel2.ForeColor = MainWindow.FontColor;
             this.splitContainer.Size = new System.Drawing.Size(800, 605);
             this.splitContainer.SplitterDistance = 394;
@@ -179,7 +179,7 @@ namespace GameDatabase
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = MainWindow.BackgroundColor;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = MainWindow.FontColor;
             this.label1.Location = new System.Drawing.Point(207, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -193,7 +193,7 @@ namespace GameDatabase
             this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EditButton.FlatAppearance.BorderColor = MainWindow.FontColor;
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditButton.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = MainWindow.FontColor;
             this.EditButton.Location = new System.Drawing.Point(8, 537);
             this.EditButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -220,7 +220,7 @@ namespace GameDatabase
             // ItemTypeLabel
             // 
             this.ItemTypeLabel.AutoSize = true;
-            this.ItemTypeLabel.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemTypeLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ItemTypeLabel.ForeColor = MainWindow.FontColor;
             this.ItemTypeLabel.Location = new System.Drawing.Point(3, 3);
             this.ItemTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -495,7 +495,7 @@ namespace GameDatabase
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.customMenuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = MainWindow.FontColor;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
