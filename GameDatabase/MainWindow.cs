@@ -25,8 +25,10 @@ namespace GameDatabase
         public MainWindow()
         {
             DBESettings = JsonConvert.DeserializeObject<DBESettings>(File.ReadAllText(Directory.GetCurrentDirectory() + "\\Settings.gregory"));
+            MainInstance = this;
+            MainInstance.DBESettings = DBESettings;
 
-            ApplyTheme(DBESettings.Themes[DBESettings.ActiveTheme]);
+            ApplyTheme(DBESettings.Themes[DBESettings.ActiveTheme], DBESettings);
 
             InitializeComponent();
             folderBrowserDialog1 = new CommonOpenFileDialog();
@@ -45,9 +47,12 @@ namespace GameDatabase
         internal static MainWindow MainInstance;
         internal SerializableItem _copiedData;
         internal bool _isTryingToCopy;
+        internal static string FontInstance;   
+ 
 
-        private void ApplyTheme(DBESettings.Theme theme)
+        private void ApplyTheme(DBESettings.Theme theme, DBESettings settings)
         {
+            FontInstance = settings.Fonts[settings.FontIndex];
             BackgroundColor = ColorTranslator.FromHtml(theme.BackgroundColor);
             BorderColor = ColorTranslator.FromHtml(theme.BorderColor);
             FontColor = ColorTranslator.FromHtml(theme.FontColor);

@@ -218,7 +218,7 @@ namespace GameDatabase
                     StringFormat format = new StringFormat();
                     format.LineAlignment = StringAlignment.Center;
                     format.Alignment = StringAlignment.Center;
-                    Font drawFont = new Font("Arial", fontSize, GraphicsUnit.Pixel);
+                    Font drawFont = new Font(MainWindow.FontInstance, fontSize, GraphicsUnit.Pixel);
                     SolidBrush textBrush = new SolidBrush(MainWindow.BackgroundColor);
                     data.Graphics.DrawString((i + 1).ToString(), drawFont, textBrush, x, y, format);
                 }

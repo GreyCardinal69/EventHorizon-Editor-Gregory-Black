@@ -15,6 +15,8 @@
         public bool KeepShipBuildsDefaultValues;
         public int ActiveTheme;
         public int ElementsPerPage;
+        public int FontIndex;
+        public string[] Fonts;
         public Theme[] Themes;
     }
 }
