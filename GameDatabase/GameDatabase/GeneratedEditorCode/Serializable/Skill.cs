@@ -14,11 +14,11 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class SkillSerializable : SerializableItem
     {
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Icon;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Description;
         public float BaseRequirement;
         public float RequirementPerLevel;

@@ -14,9 +14,9 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class LocalizationSettingsSerializable : SerializableItem
     {
-        [DefaultValue( "$WeaponDamage" )]
+        [DefaultValue("$WeaponDamage")]
         public string CorrosiveDamageText = "$WeaponDamage";
-        [DefaultValue( "$WeaponDPS" )]
+        [DefaultValue("$WeaponDPS")]
         public string CorrosiveDpsText = "$WeaponDPS";
     }
 }

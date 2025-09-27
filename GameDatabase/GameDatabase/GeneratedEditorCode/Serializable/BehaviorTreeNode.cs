@@ -23,18 +23,18 @@ namespace EditorDatabase.Serializable
         public AiWeaponCategory WeaponType;
         public NodeExecutionMode ExecutionMode;
         public bool Result;
-        [DefaultValue( 0.1f )]
+        [DefaultValue(0.1f)]
         public float MinValue = 0.1f;
-        [DefaultValue( 0.9f )]
+        [DefaultValue(0.9f)]
         public float MaxValue = 0.9f;
         public float Cooldown;
         public bool InRange;
         public bool NoDrones;
         public bool UseSystems;
         public DeviceClass DeviceClass;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Text;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
     }
 }

@@ -20,8 +20,8 @@ namespace Cyotek.Windows.Forms
     /// <summary>
     /// Represents a grid control, which displays a collection of colors using different styles.
     /// </summary>
-    [DefaultProperty( "Color" )]
-    [DefaultEvent( "ColorChanged" )]
+    [DefaultProperty("Color")]
+    [DefaultEvent("ColorChanged")]
     public class ColorGrid : Control, IColorEditor
     {
         #region Constants
@@ -124,20 +124,20 @@ namespace Cyotek.Windows.Forms
 
         public ColorGrid()
         {
-            this.SetStyle( ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick | ControlStyles.SupportsTransparentBackColor, true );
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.Selectable | ControlStyles.StandardClick | ControlStyles.StandardDoubleClick | ControlStyles.SupportsTransparentBackColor, true);
             _previousHotIndex = InvalidIndex;
             _previousColorIndex = InvalidIndex;
             _hotIndex = InvalidIndex;
 
             _colorRegions = new Dictionary<int, Rectangle>();
             _colors = ColorPalettes.NamedColors;
-            _customColors = new ColorCollection( Enumerable.Repeat( Color.White, 16 ) );
+            _customColors = new ColorCollection(Enumerable.Repeat(Color.White, 16));
             _showCustomColors = true;
-            _cellSize = new Size( 12, 12 );
-            _spacing = new Size( 3, 3 );
+            _cellSize = new Size(12, 12);
+            _spacing = new Size(3, 3);
             _columns = 16;
             base.AutoSize = true;
-            this.Padding = new Padding( 5 );
+            this.Padding = new Padding(5);
             _autoAddColors = true;
             _cellBorderColor = SystemColors.ButtonShadow;
             _showToolTips = true;
@@ -156,477 +156,477 @@ namespace Cyotek.Windows.Forms
 
         #region Events
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler AutoAddColorsChanged
         {
-            add { this.Events.AddHandler( _eventAutoAddColorsChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventAutoAddColorsChanged, value ); }
+            add { this.Events.AddHandler(_eventAutoAddColorsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventAutoAddColorsChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler AutoFitChanged
         {
-            add { this.Events.AddHandler( _eventAutoFitChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventAutoFitChanged, value ); }
+            add { this.Events.AddHandler(_eventAutoFitChanged, value); }
+            remove { this.Events.RemoveHandler(_eventAutoFitChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler CellBorderColorChanged
         {
-            add { this.Events.AddHandler( _eventCellBorderColorChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventCellBorderColorChanged, value ); }
+            add { this.Events.AddHandler(_eventCellBorderColorChanged, value); }
+            remove { this.Events.RemoveHandler(_eventCellBorderColorChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler CellBorderStyleChanged
         {
-            add { this.Events.AddHandler( _eventCellBorderStyleChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventCellBorderStyleChanged, value ); }
+            add { this.Events.AddHandler(_eventCellBorderStyleChanged, value); }
+            remove { this.Events.RemoveHandler(_eventCellBorderStyleChanged, value); }
         }
 
         /// <summary>
         /// Occurs when the CellContextMenuStrip property value changes
         /// </summary>
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler CellContextMenuStripChanged
         {
-            add { this.Events.AddHandler( _eventCellContextMenuStripChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventCellContextMenuStripChanged, value ); }
+            add { this.Events.AddHandler(_eventCellContextMenuStripChanged, value); }
+            remove { this.Events.RemoveHandler(_eventCellContextMenuStripChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler CellSizeChanged
         {
-            add { this.Events.AddHandler( _eventCellSizeChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventCellSizeChanged, value ); }
+            add { this.Events.AddHandler(_eventCellSizeChanged, value); }
+            remove { this.Events.RemoveHandler(_eventCellSizeChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler ColorIndexChanged
         {
-            add { this.Events.AddHandler( _eventColorIndexChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventColorIndexChanged, value ); }
+            add { this.Events.AddHandler(_eventColorIndexChanged, value); }
+            remove { this.Events.RemoveHandler(_eventColorIndexChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler ColorsChanged
         {
-            add { this.Events.AddHandler( _eventColorsChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventColorsChanged, value ); }
+            add { this.Events.AddHandler(_eventColorsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventColorsChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler ColumnsChanged
         {
-            add { this.Events.AddHandler( _eventColumnsChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventColumnsChanged, value ); }
+            add { this.Events.AddHandler(_eventColumnsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventColumnsChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler CustomColorsChanged
         {
-            add { this.Events.AddHandler( _eventCustomColorsChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventCustomColorsChanged, value ); }
+            add { this.Events.AddHandler(_eventCustomColorsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventCustomColorsChanged, value); }
         }
 
-        [Category( "Action" )]
+        [Category("Action")]
         public event EventHandler<EditColorCancelEventArgs> EditingColor
         {
-            add { this.Events.AddHandler( _eventEditingColor, value ); }
-            remove { this.Events.RemoveHandler( _eventEditingColor, value ); }
+            add { this.Events.AddHandler(_eventEditingColor, value); }
+            remove { this.Events.RemoveHandler(_eventEditingColor, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler EditModeChanged
         {
-            add { this.Events.AddHandler( _eventEditModeChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventEditModeChanged, value ); }
+            add { this.Events.AddHandler(_eventEditModeChanged, value); }
+            remove { this.Events.RemoveHandler(_eventEditModeChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler HotIndexChanged
         {
-            add { this.Events.AddHandler( _eventHotIndexChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventHotIndexChanged, value ); }
+            add { this.Events.AddHandler(_eventHotIndexChanged, value); }
+            remove { this.Events.RemoveHandler(_eventHotIndexChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler PaletteChanged
         {
-            add { this.Events.AddHandler( _eventPaletteChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventPaletteChanged, value ); }
+            add { this.Events.AddHandler(_eventPaletteChanged, value); }
+            remove { this.Events.RemoveHandler(_eventPaletteChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler SelectedCellStyleChanged
         {
-            add { this.Events.AddHandler( _eventSelectedCellStyleChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventSelectedCellStyleChanged, value ); }
+            add { this.Events.AddHandler(_eventSelectedCellStyleChanged, value); }
+            remove { this.Events.RemoveHandler(_eventSelectedCellStyleChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler ShowCustomColorsChanged
         {
-            add { this.Events.AddHandler( _eventShowCustomColorsChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventShowCustomColorsChanged, value ); }
+            add { this.Events.AddHandler(_eventShowCustomColorsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventShowCustomColorsChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler ShowToolTipsChanged
         {
-            add { this.Events.AddHandler( _eventShowToolTipsChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventShowToolTipsChanged, value ); }
+            add { this.Events.AddHandler(_eventShowToolTipsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventShowToolTipsChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler SpacingChanged
         {
-            add { this.Events.AddHandler( _eventSpacingChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventSpacingChanged, value ); }
+            add { this.Events.AddHandler(_eventSpacingChanged, value); }
+            remove { this.Events.RemoveHandler(_eventSpacingChanged, value); }
         }
 
         #endregion
 
         #region Properties
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int ActualColumns { get; protected set; }
 
-        [Category( "Behavior" )]
-        [DefaultValue( true )]
+        [Category("Behavior")]
+        [DefaultValue(true)]
         public virtual bool AutoAddColors
         {
             get { return _autoAddColors; }
             set
             {
-                if ( this.AutoAddColors != value )
+                if (this.AutoAddColors != value)
                 {
                     _autoAddColors = value;
 
-                    this.OnAutoAddColorsChanged( EventArgs.Empty );
+                    this.OnAutoAddColorsChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( false )]
+        [Category("Appearance")]
+        [DefaultValue(false)]
         public virtual bool AutoFit
         {
             get { return _autoFit; }
             set
             {
-                if ( this.AutoFit != value )
+                if (this.AutoFit != value)
                 {
                     _autoFit = value;
 
-                    this.OnAutoFitChanged( EventArgs.Empty );
+                    this.OnAutoFitChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Browsable( true )]
-        [DefaultValue( true )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Visible )]
+        [Browsable(true)]
+        [DefaultValue(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public override bool AutoSize
         {
             get { return base.AutoSize; }
             set { base.AutoSize = value; }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Color ), "ButtonShadow" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Color), "ButtonShadow")]
         public virtual Color CellBorderColor
         {
             get { return _cellBorderColor; }
             set
             {
-                if ( this.CellBorderColor != value )
+                if (this.CellBorderColor != value)
                 {
                     _cellBorderColor = value;
 
-                    this.OnCellBorderColorChanged( EventArgs.Empty );
+                    this.OnCellBorderColorChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( ColorCellBorderStyle ), "FixedSingle" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(ColorCellBorderStyle), "FixedSingle")]
         public virtual ColorCellBorderStyle CellBorderStyle
         {
             get { return _cellBorderStyle; }
             set
             {
-                if ( this.CellBorderStyle != value )
+                if (this.CellBorderStyle != value)
                 {
                     _cellBorderStyle = value;
 
-                    this.OnCellBorderStyleChanged( EventArgs.Empty );
+                    this.OnCellBorderStyleChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Behavior" )]
-        [DefaultValue( typeof( ContextMenuStrip ), null )]
+        [Category("Behavior")]
+        [DefaultValue(typeof(ContextMenuStrip), null)]
         public ContextMenuStrip CellContextMenuStrip
         {
             get { return _cellContextMenuStrip; }
             set
             {
-                if ( _cellContextMenuStrip != value )
+                if (_cellContextMenuStrip != value)
                 {
                     _cellContextMenuStrip = value;
 
-                    this.OnCellContextMenuStripChanged( EventArgs.Empty );
+                    this.OnCellContextMenuStripChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Size ), "12, 12" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Size), "12, 12")]
         public virtual Size CellSize
         {
             get { return _cellSize; }
             set
             {
-                if ( this.CellSize != value )
+                if (this.CellSize != value)
                 {
                     _cellSize = value;
 
-                    this.OnCellSizeChanged( EventArgs.Empty );
+                    this.OnCellSizeChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual int ColorIndex
         {
             get { return _colorIndex; }
             set
             {
-                if ( this.ColorIndex != value )
+                if (this.ColorIndex != value)
                 {
                     _previousColorIndex = _colorIndex;
                     _colorIndex = value;
 
-                    if ( value != InvalidIndex )
+                    if (value != InvalidIndex)
                     {
-                        this.Color = this.GetColor( value );
+                        this.Color = this.GetColor(value);
                     }
 
-                    this.OnColorIndexChanged( EventArgs.Empty );
+                    this.OnColorIndexChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual ColorCollection Colors
         {
             get { return _colors; }
             set
             {
-                if ( value == null )
+                if (value == null)
                 {
-                    throw new ArgumentNullException( nameof( value ) );
+                    throw new ArgumentNullException(nameof(value));
                 }
 
-                if ( this.Colors != value )
+                if (this.Colors != value)
                 {
-                    this.RemoveEventHandlers( _colors );
+                    this.RemoveEventHandlers(_colors);
 
                     _colors = value;
 
-                    this.OnColorsChanged( EventArgs.Empty );
+                    this.OnColorsChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( 16 )]
+        [Category("Appearance")]
+        [DefaultValue(16)]
         public virtual int Columns
         {
             get { return _columns; }
             set
             {
-                if ( value < 0 )
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException( nameof( value ), value, "Number of columns cannot be less than zero." );
+                    throw new ArgumentOutOfRangeException(nameof(value), value, "Number of columns cannot be less than zero.");
                 }
 
-                if ( this.Columns != value )
+                if (this.Columns != value)
                 {
                     _columns = value;
                     this.CalculateGridSize();
 
-                    this.OnColumnsChanged( EventArgs.Empty );
+                    this.OnColumnsChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Browsable( false )]
+        [Browsable(false)]
         public Point CurrentCell
         {
-            get { return this.GetCell( this.ColorIndex ); }
+            get { return this.GetCell(this.ColorIndex); }
         }
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual ColorCollection CustomColors
         {
             get { return _customColors; }
             set
             {
-                if ( this.CustomColors != value )
+                if (this.CustomColors != value)
                 {
-                    this.RemoveEventHandlers( _customColors );
+                    this.RemoveEventHandlers(_customColors);
 
                     _customColors = value;
 
-                    this.OnCustomColorsChanged( EventArgs.Empty );
+                    this.OnCustomColorsChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Behavior" )]
-        [DefaultValue( typeof( ColorEditingMode ), "CustomOnly" )]
+        [Category("Behavior")]
+        [DefaultValue(typeof(ColorEditingMode), "CustomOnly")]
         public virtual ColorEditingMode EditMode
         {
             get { return _editMode; }
             set
             {
-                if ( this.EditMode != value )
+                if (this.EditMode != value)
                 {
                     _editMode = value;
 
-                    this.OnEditModeChanged( EventArgs.Empty );
+                    this.OnEditModeChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Font Font
         {
             get { return base.Font; }
             set { base.Font = value; }
         }
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color ForeColor
         {
             get { return base.ForeColor; }
             set { base.ForeColor = value; }
         }
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual int HotIndex
         {
             get { return _hotIndex; }
             set
             {
-                if ( this.HotIndex != value )
+                if (this.HotIndex != value)
                 {
                     _previousHotIndex = this.HotIndex;
                     _hotIndex = value;
 
-                    this.OnHotIndexChanged( EventArgs.Empty );
+                    this.OnHotIndexChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [DefaultValue( typeof( Padding ), "5, 5, 5, 5" )]
+        [DefaultValue(typeof(Padding), "5, 5, 5, 5")]
         public new Padding Padding
         {
             get { return base.Padding; }
             set { base.Padding = value; }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( ColorPalette ), "Named" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(ColorPalette), "Named")]
         public virtual ColorPalette Palette
         {
             get { return _palette; }
             set
             {
-                if ( this.Palette != value )
+                if (this.Palette != value)
                 {
                     _palette = value;
 
-                    this.OnPaletteChanged( EventArgs.Empty );
+                    this.OnPaletteChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( ColorGridSelectedCellStyle ), "Zoomed" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(ColorGridSelectedCellStyle), "Zoomed")]
         public virtual ColorGridSelectedCellStyle SelectedCellStyle
         {
             get { return _selectedCellStyle; }
             set
             {
-                if ( this.SelectedCellStyle != value )
+                if (this.SelectedCellStyle != value)
                 {
                     _selectedCellStyle = value;
 
-                    this.OnSelectedCellStyleChanged( EventArgs.Empty );
+                    this.OnSelectedCellStyleChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( true )]
+        [Category("Appearance")]
+        [DefaultValue(true)]
         public virtual bool ShowCustomColors
         {
             get { return _showCustomColors; }
             set
             {
-                if ( this.ShowCustomColors != value )
+                if (this.ShowCustomColors != value)
                 {
                     _showCustomColors = value;
 
-                    this.OnShowCustomColorsChanged( EventArgs.Empty );
+                    this.OnShowCustomColorsChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Behavior" )]
-        [DefaultValue( true )]
+        [Category("Behavior")]
+        [DefaultValue(true)]
         public virtual bool ShowToolTips
         {
             get { return _showToolTips; }
             set
             {
-                if ( this.ShowToolTips != value )
+                if (this.ShowToolTips != value)
                 {
                     _showToolTips = value;
 
-                    this.OnShowToolTipsChanged( EventArgs.Empty );
+                    this.OnShowToolTipsChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Size ), "3, 3" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Size), "3, 3")]
         public virtual Size Spacing
         {
             get { return _spacing; }
             set
             {
-                if ( this.Spacing != value )
+                if (this.Spacing != value)
                 {
                     _spacing = value;
 
-                    this.OnSpacingChanged( EventArgs.Empty );
+                    this.OnSpacingChanged(EventArgs.Empty);
                 }
             }
         }
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override string Text
         {
             get { return base.Text; }
@@ -661,31 +661,31 @@ namespace Cyotek.Windows.Forms
 
         #region Methods
 
-        public virtual int AddCustomColor( Color value )
+        public virtual int AddCustomColor(Color value)
         {
             int newIndex;
 
-            newIndex = this.GetColorIndex( value );
+            newIndex = this.GetColorIndex(value);
 
-            if ( newIndex == InvalidIndex )
+            if (newIndex == InvalidIndex)
             {
-                if ( this.AutoAddColors )
+                if (this.AutoAddColors)
                 {
-                    this.CustomColors.Add( value );
+                    this.CustomColors.Add(value);
                 }
                 else
                 {
-                    if ( this.CustomColors == null )
+                    if (this.CustomColors == null)
                     {
                         this.CustomColors = new ColorCollection();
-                        this.CustomColors.Add( value );
+                        this.CustomColors.Add(value);
                     }
                     else
                     {
                         this.CustomColors[0] = value;
                     }
 
-                    newIndex = this.GetColorIndex( value );
+                    newIndex = this.GetColorIndex(value);
                 }
 
                 this.RefreshColors();
@@ -707,12 +707,12 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         public virtual void EndUpdate()
         {
-            if ( _updateCount > 0 )
+            if (_updateCount > 0)
             {
                 _updateCount--;
             }
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
                 this.Invalidate();
             }
@@ -727,17 +727,17 @@ namespace Cyotek.Windows.Forms
         /// <returns>
         /// The cell bounds.
         /// </returns>
-        public Rectangle GetCellBounds( int index )
+        public Rectangle GetCellBounds(int index)
         {
-            if ( index < 0 || index > this.Colors.Count + this.CustomColors.Count - 1 )
+            if (index < 0 || index > this.Colors.Count + this.CustomColors.Count - 1)
             {
-                throw new ArgumentOutOfRangeException( nameof( index ) );
+                throw new ArgumentOutOfRangeException(nameof(index));
             }
 
             return _colorRegions[index];
         }
 
-        public Color GetColor( int index )
+        public Color GetColor(int index)
         {
             Color result;
             int colorCount;
@@ -746,7 +746,7 @@ namespace Cyotek.Windows.Forms
             colorCount = this.Colors != null ? this.Colors.Count : 0;
             customColorCount = this.CustomColors != null ? this.CustomColors.Count : 0;
 
-            if ( index < 0 || index > colorCount + customColorCount )
+            if (index < 0 || index > colorCount + customColorCount)
             {
                 result = Color.Empty;
             }
@@ -758,7 +758,7 @@ namespace Cyotek.Windows.Forms
             return result;
         }
 
-        public ColorSource GetColorSource( int colorIndex )
+        public ColorSource GetColorSource(int colorIndex)
         {
             ColorSource result;
             int colorCount;
@@ -767,7 +767,7 @@ namespace Cyotek.Windows.Forms
             colorCount = this.Colors != null ? this.Colors.Count : 0;
             customColorCount = this.CustomColors != null ? this.CustomColors.Count : 0;
 
-            if ( colorCount < 0 || colorIndex > colorCount + customColorCount )
+            if (colorCount < 0 || colorIndex > colorCount + customColorCount)
             {
                 result = ColorSource.None;
             }
@@ -779,31 +779,31 @@ namespace Cyotek.Windows.Forms
             return result;
         }
 
-        public ColorSource GetColorSource( Color color )
+        public ColorSource GetColorSource(Color color)
         {
             int index;
             ColorSource result;
 
-            index = this.Colors.IndexOf( color );
-            if ( index != InvalidIndex )
+            index = this.Colors.IndexOf(color);
+            if (index != InvalidIndex)
             {
                 result = ColorSource.Standard;
             }
             else
             {
-                index = this.CustomColors.IndexOf( color );
+                index = this.CustomColors.IndexOf(color);
                 result = index != InvalidIndex ? ColorSource.Custom : ColorSource.None;
             }
 
             return result;
         }
 
-        public override Size GetPreferredSize( Size proposedSize )
+        public override Size GetPreferredSize(Size proposedSize)
         {
-            return this.AutoSize ? this.GetAutoSize() : base.GetPreferredSize( proposedSize );
+            return this.AutoSize ? this.GetAutoSize() : base.GetPreferredSize(proposedSize);
         }
 
-        public ColorHitTestInfo HitTest( Point point )
+        public ColorHitTestInfo HitTest(Point point)
         {
             ColorHitTestInfo result;
             int colorIndex;
@@ -811,17 +811,17 @@ namespace Cyotek.Windows.Forms
             result = new ColorHitTestInfo();
             colorIndex = InvalidIndex;
 
-            foreach ( KeyValuePair<int, Rectangle> pair in _colorRegions.Where( pair => pair.Value.Contains( point ) ) )
+            foreach (KeyValuePair<int, Rectangle> pair in _colorRegions.Where(pair => pair.Value.Contains(point)))
             {
                 colorIndex = pair.Key;
                 break;
             }
 
             result.Index = colorIndex;
-            if ( colorIndex != InvalidIndex )
+            if (colorIndex != InvalidIndex)
             {
-                result.Color = colorIndex < this.Colors.Count + this.CustomColors.Count ? this.GetColor( colorIndex ) : Color.White;
-                result.Source = this.GetColorSource( colorIndex );
+                result.Color = colorIndex < this.Colors.Count + this.CustomColors.Count ? this.GetColor(colorIndex) : Color.White;
+                result.Source = this.GetColorSource(colorIndex);
             }
             else
             {
@@ -831,30 +831,30 @@ namespace Cyotek.Windows.Forms
             return result;
         }
 
-        public void Invalidate( int index )
+        public void Invalidate(int index)
         {
-            if ( this.AllowPainting && index != InvalidIndex )
+            if (this.AllowPainting && index != InvalidIndex)
             {
                 Rectangle bounds;
 
-                if ( _colorRegions.TryGetValue( index, out bounds ) )
+                if (_colorRegions.TryGetValue(index, out bounds))
                 {
-                    if ( this.SelectedCellStyle == ColorGridSelectedCellStyle.Zoomed )
+                    if (this.SelectedCellStyle == ColorGridSelectedCellStyle.Zoomed)
                     {
-                        bounds.Inflate( this.Padding.Left, this.Padding.Top );
+                        bounds.Inflate(this.Padding.Left, this.Padding.Top);
                     }
 
-                    this.Invalidate( bounds );
+                    this.Invalidate(bounds);
                 }
             }
         }
 
-        public void Navigate( int offsetX, int offsetY )
+        public void Navigate(int offsetX, int offsetY)
         {
-            this.Navigate( offsetX, offsetY, NavigationOrigin.Current );
+            this.Navigate(offsetX, offsetY, NavigationOrigin.Current);
         }
 
-        public virtual void Navigate( int offsetX, int offsetY, NavigationOrigin origin )
+        public virtual void Navigate(int offsetX, int offsetY, NavigationOrigin origin)
         {
             Point cellLocation;
             Point offsetCellLocation;
@@ -862,29 +862,29 @@ namespace Cyotek.Windows.Forms
             int column;
             int index;
 
-            switch ( origin )
+            switch (origin)
             {
                 case NavigationOrigin.Begin:
                     cellLocation = Point.Empty;
                     break;
                 case NavigationOrigin.End:
-                    cellLocation = new Point( this.ActualColumns - 1, this.PrimaryRows + this.CustomRows - 1 );
+                    cellLocation = new Point(this.ActualColumns - 1, this.PrimaryRows + this.CustomRows - 1);
                     break;
                 default:
                     cellLocation = this.CurrentCell;
                     break;
             }
 
-            if ( cellLocation.X == -1 && cellLocation.Y == -1 )
+            if (cellLocation.X == -1 && cellLocation.Y == -1)
             {
                 cellLocation = Point.Empty; // If no cell is selected, assume the first one is for the purpose of keyboard navigation
             }
 
-            offsetCellLocation = this.GetCellOffset( cellLocation, offsetX, offsetY );
+            offsetCellLocation = this.GetCellOffset(cellLocation, offsetX, offsetY);
             row = offsetCellLocation.Y;
             column = offsetCellLocation.X;
-            index = this.GetCellIndex( column, row );
-            if ( index != InvalidIndex )
+            index = this.GetCellIndex(column, row);
+            if (index != InvalidIndex)
             {
                 this.ColorIndex = index;
             }
@@ -895,12 +895,12 @@ namespace Cyotek.Windows.Forms
             int w;
             int h;
 
-            w = ( this.ClientSize.Width - this.Padding.Horizontal ) / this.ActualColumns - this.Spacing.Width;
-            h = ( this.ClientSize.Height - this.Padding.Vertical ) / ( this.PrimaryRows + this.CustomRows ) - this.Spacing.Height;
+            w = ((this.ClientSize.Width - this.Padding.Horizontal) / this.ActualColumns) - this.Spacing.Width;
+            h = ((this.ClientSize.Height - this.Padding.Vertical) / (this.PrimaryRows + this.CustomRows)) - this.Spacing.Height;
 
-            if ( w > 0 && h > 0 )
+            if (w > 0 && h > 0)
             {
-                this.CellSize = new Size( w, h );
+                this.CellSize = new Size(w, h);
             }
         }
 
@@ -909,19 +909,19 @@ namespace Cyotek.Windows.Forms
             int primaryRows;
             int customRows;
 
-            this.ActualColumns = this.Columns != 0 ? this.Columns : ( this.ClientSize.Width + this.Spacing.Width - this.Padding.Vertical ) / ( this.CellSize.Width + this.Spacing.Width );
-            if ( this.ActualColumns < 1 )
+            this.ActualColumns = this.Columns != 0 ? this.Columns : (this.ClientSize.Width + this.Spacing.Width - this.Padding.Vertical) / (this.CellSize.Width + this.Spacing.Width);
+            if (this.ActualColumns < 1)
             {
                 this.ActualColumns = 1;
             }
 
-            primaryRows = this.GetRows( this.Colors != null ? this.Colors.Count : 0 );
-            if ( primaryRows == 0 )
+            primaryRows = this.GetRows(this.Colors != null ? this.Colors.Count : 0);
+            if (primaryRows == 0)
             {
                 primaryRows = 1;
             }
 
-            customRows = this.ShowCustomColors ? this.GetRows( this.CustomColors != null ? this.CustomColors.Count : 0 ) : 0;
+            customRows = this.ShowCustomColors ? this.GetRows(this.CustomColors != null ? this.CustomColors.Count : 0) : 0;
 
             this.PrimaryRows = primaryRows;
             this.CustomRows = customRows;
@@ -931,31 +931,31 @@ namespace Cyotek.Windows.Forms
         {
             Type type;
 
-            type = typeof( ColorGrid );
+            type = typeof(ColorGrid);
 
-            using ( Bitmap background = new Bitmap( type.Assembly.GetManifestResourceStream( string.Concat( type.Namespace, ".Resources.cellbackground.png" ) ) ) )
+            using (Bitmap background = new Bitmap(type.Assembly.GetManifestResourceStream(string.Concat(type.Namespace, ".Resources.cellbackground.png"))))
             {
-                return new TextureBrush( background, WrapMode.Tile );
+                return new TextureBrush(background, WrapMode.Tile);
             }
         }
 
-        protected void DefineColorRegions( ColorCollection colors, int rangeStart, int offset )
+        protected void DefineColorRegions(ColorCollection colors, int rangeStart, int offset)
         {
-            if ( colors != null )
+            if (colors != null)
             {
                 int rows;
                 int index;
 
-                rows = this.GetRows( colors.Count );
+                rows = this.GetRows(colors.Count);
                 index = 0;
 
-                for ( int row = 0; row < rows; row++ )
+                for (int row = 0; row < rows; row++)
                 {
-                    for ( int column = 0; column < this.ActualColumns; column++ )
+                    for (int column = 0; column < this.ActualColumns; column++)
                     {
-                        if ( index < colors.Count )
+                        if (index < colors.Count)
                         {
-                            _colorRegions.Add( rangeStart + index, new Rectangle( this.Padding.Left + column * ( this.CellSize.Width + this.Spacing.Width ), offset + row * ( this.CellSize.Height + this.Spacing.Height ), this.CellSize.Width, this.CellSize.Height ) );
+                            _colorRegions.Add(rangeStart + index, new Rectangle(this.Padding.Left + (column * (this.CellSize.Width + this.Spacing.Width)), offset + (row * (this.CellSize.Height + this.Spacing.Height)), this.CellSize.Width, this.CellSize.Height));
                         }
 
                         index++;
@@ -964,30 +964,30 @@ namespace Cyotek.Windows.Forms
             }
         }
 
-        protected override void Dispose( bool disposing )
+        protected override void Dispose(bool disposing)
         {
-            if ( disposing )
+            if (disposing)
             {
-                this.RemoveEventHandlers( _colors );
-                this.RemoveEventHandlers( _customColors );
+                this.RemoveEventHandlers(_colors);
+                this.RemoveEventHandlers(_customColors);
 
                 _toolTip?.Dispose();
 
                 _cellBackgroundBrush?.Dispose();
             }
 
-            base.Dispose( disposing );
+            base.Dispose(disposing);
         }
 
-        protected virtual void EditColor( int colorIndex )
+        protected virtual void EditColor(int colorIndex)
         {
-            using ( ColorPickerDialog dialog = new ColorPickerDialog() )
+            using (ColorPickerDialog dialog = new ColorPickerDialog())
             {
-                dialog.Color = this.GetColor( colorIndex );
-                if ( dialog.ShowDialog( this ) == DialogResult.OK )
+                dialog.Color = this.GetColor(colorIndex);
+                if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     this.BeginUpdate();
-                    this.SetColor( colorIndex, dialog.Color );
+                    this.SetColor(colorIndex, dialog.Color);
                     this.Color = dialog.Color;
                     this.EndUpdate();
                 }
@@ -1000,43 +1000,43 @@ namespace Cyotek.Windows.Forms
             int width;
 
             offset = this.CustomRows != 0 ? this.SeparatorHeight : 0;
-            if ( this.Columns != 0 )
+            if (this.Columns != 0)
             {
-                width = ( this.CellSize.Width + this.Spacing.Width ) * this.ActualColumns + this.Padding.Horizontal - this.Spacing.Width;
+                width = ((this.CellSize.Width + this.Spacing.Width) * this.ActualColumns) + this.Padding.Horizontal - this.Spacing.Width;
             }
             else
             {
                 width = this.ClientSize.Width;
             }
 
-            return new Size( width, ( this.CellSize.Height + this.Spacing.Height ) * ( this.PrimaryRows + this.CustomRows ) + offset + this.Padding.Vertical - this.Spacing.Height );
+            return new Size(width, ((this.CellSize.Height + this.Spacing.Height) * (this.PrimaryRows + this.CustomRows)) + offset + this.Padding.Vertical - this.Spacing.Height);
         }
 
-        protected int GetCellIndex( Point point )
+        protected int GetCellIndex(Point point)
         {
-            return this.GetCellIndex( point.X, point.Y );
+            return this.GetCellIndex(point.X, point.Y);
         }
 
-        protected virtual int GetCellIndex( int column, int row )
+        protected virtual int GetCellIndex(int column, int row)
         {
             int result;
 
-            if ( column >= 0 && column < this.ActualColumns && row >= 0 && row < this.PrimaryRows + this.CustomRows )
+            if (column >= 0 && column < this.ActualColumns && row >= 0 && row < this.PrimaryRows + this.CustomRows)
             {
                 int lastStandardRowOffset;
 
-                lastStandardRowOffset = this.PrimaryRows * this.ActualColumns - this.Colors.Count;
-                result = row * this.ActualColumns + column;
-                if ( row == this.PrimaryRows - 1 && column >= this.ActualColumns - lastStandardRowOffset )
+                lastStandardRowOffset = (this.PrimaryRows * this.ActualColumns) - this.Colors.Count;
+                result = (row * this.ActualColumns) + column;
+                if (row == this.PrimaryRows - 1 && column >= this.ActualColumns - lastStandardRowOffset)
                 {
                     result -= lastStandardRowOffset;
                 }
-                if ( row >= this.PrimaryRows )
+                if (row >= this.PrimaryRows)
                 {
                     result -= lastStandardRowOffset;
                 }
 
-                if ( result > this.Colors.Count + this.CustomColors.Count - 1 )
+                if (result > this.Colors.Count + this.CustomColors.Count - 1)
                 {
                     result = InvalidIndex;
                 }
@@ -1049,59 +1049,59 @@ namespace Cyotek.Windows.Forms
             return result;
         }
 
-        protected Point GetCellOffset( int columnOffset, int rowOffset )
+        protected Point GetCellOffset(int columnOffset, int rowOffset)
         {
-            return this.GetCellOffset( this.CurrentCell, columnOffset, rowOffset );
+            return this.GetCellOffset(this.CurrentCell, columnOffset, rowOffset);
         }
 
-        protected Point GetCellOffset( Point cell, int columnOffset, int rowOffset )
+        protected Point GetCellOffset(Point cell, int columnOffset, int rowOffset)
         {
             int row;
             int column;
             int lastStandardRowOffset;
             int lastStandardRowLastColumn;
 
-            lastStandardRowOffset = this.PrimaryRows * this.ActualColumns - this.Colors.Count;
+            lastStandardRowOffset = (this.PrimaryRows * this.ActualColumns) - this.Colors.Count;
             lastStandardRowLastColumn = this.ActualColumns - lastStandardRowOffset;
             column = cell.X + columnOffset;
             row = cell.Y + rowOffset;
 
             // if the row is the last row, but there aren't enough columns to fill the row - nudge it to the last available
-            if ( row == this.PrimaryRows - 1 && column >= lastStandardRowLastColumn )
+            if (row == this.PrimaryRows - 1 && column >= lastStandardRowLastColumn)
             {
                 column = lastStandardRowLastColumn - 1;
             }
 
             // wrap the column to the end of the previous row
-            if ( column < 0 )
+            if (column < 0)
             {
                 column = this.ActualColumns - 1;
                 row--;
-                if ( row == this.PrimaryRows - 1 )
+                if (row == this.PrimaryRows - 1)
                 {
-                    column = this.ActualColumns - ( lastStandardRowOffset + 1 );
+                    column = this.ActualColumns - (lastStandardRowOffset + 1);
                 }
             }
 
             // wrap to column to the start of the next row
-            if ( row == this.PrimaryRows - 1 && column >= this.ActualColumns - lastStandardRowOffset || column >= this.ActualColumns )
+            if ((row == this.PrimaryRows - 1 && column >= this.ActualColumns - lastStandardRowOffset) || column >= this.ActualColumns)
             {
                 column = 0;
                 row++;
             }
 
-            return new Point( column, row );
+            return new Point(column, row);
         }
 
-        protected virtual int GetColorIndex( Color value )
+        protected virtual int GetColorIndex(Color value)
         {
             int index;
 
-            index = this.Colors != null ? this.Colors.IndexOf( value ) : InvalidIndex;
-            if ( index == InvalidIndex && this.ShowCustomColors && this.CustomColors != null )
+            index = this.Colors != null ? this.Colors.IndexOf(value) : InvalidIndex;
+            if (index == InvalidIndex && this.ShowCustomColors && this.CustomColors != null)
             {
-                index = this.CustomColors.IndexOf( value );
-                if ( index != InvalidIndex )
+                index = this.CustomColors.IndexOf(value);
+                if (index != InvalidIndex)
                 {
                     index += this.Colors.Count;
                 }
@@ -1112,17 +1112,17 @@ namespace Cyotek.Windows.Forms
 
         protected virtual ColorCollection GetPredefinedPalette()
         {
-            return ColorPalettes.GetPalette( this.Palette );
+            return ColorPalettes.GetPalette(this.Palette);
         }
 
-        protected int GetRows( int count )
+        protected int GetRows(int count)
         {
             int rows;
 
-            if ( count != 0 && this.ActualColumns > 0 )
+            if (count != 0 && this.ActualColumns > 0)
             {
                 rows = count / this.ActualColumns;
-                if ( count % this.ActualColumns != 0 )
+                if (count % this.ActualColumns != 0)
                 {
                     rows++;
                 }
@@ -1135,17 +1135,17 @@ namespace Cyotek.Windows.Forms
             return rows;
         }
 
-        protected override bool IsInputKey( Keys keyData )
+        protected override bool IsInputKey(Keys keyData)
         {
             bool result;
 
-            if ( keyData == Keys.Left || keyData == Keys.Up || keyData == Keys.Down || keyData == Keys.Right || keyData == Keys.Enter || keyData == Keys.Home || keyData == Keys.End )
+            if (keyData == Keys.Left || keyData == Keys.Up || keyData == Keys.Down || keyData == Keys.Right || keyData == Keys.Enter || keyData == Keys.Home || keyData == Keys.End)
             {
                 result = true;
             }
             else
             {
-                result = base.IsInputKey( keyData );
+                result = base.IsInputKey(keyData);
             }
 
             return result;
@@ -1155,45 +1155,45 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="AutoAddColorsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnAutoAddColorsChanged( EventArgs e )
+        protected virtual void OnAutoAddColorsChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventAutoAddColorsChanged];
+            handler = (EventHandler)this.Events[_eventAutoAddColorsChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="AutoFitChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnAutoFitChanged( EventArgs e )
+        protected virtual void OnAutoFitChanged(EventArgs e)
         {
             EventHandler handler;
 
-            if ( this.AutoFit && this.AutoSize )
+            if (this.AutoFit && this.AutoSize)
             {
                 this.AutoSize = false;
             }
 
             this.RefreshColors();
 
-            handler = ( EventHandler ) this.Events[_eventAutoFitChanged];
+            handler = (EventHandler)this.Events[_eventAutoFitChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
-        protected override void OnAutoSizeChanged( EventArgs e )
+        protected override void OnAutoSizeChanged(EventArgs e)
         {
-            if ( this.AutoSize && this.AutoFit )
+            if (this.AutoSize && this.AutoFit)
             {
                 this.AutoFit = false;
             }
 
-            base.OnAutoSizeChanged( e );
+            base.OnAutoSizeChanged(e);
 
-            if ( this.AutoSize )
+            if (this.AutoSize)
             {
                 this.SizeToFit();
             }
@@ -1203,188 +1203,188 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="CellBorderColorChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnCellBorderColorChanged( EventArgs e )
+        protected virtual void OnCellBorderColorChanged(EventArgs e)
         {
             EventHandler handler;
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
                 this.Invalidate();
             }
 
-            handler = ( EventHandler ) this.Events[_eventCellBorderColorChanged];
+            handler = (EventHandler)this.Events[_eventCellBorderColorChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="CellBorderStyleChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnCellBorderStyleChanged( EventArgs e )
+        protected virtual void OnCellBorderStyleChanged(EventArgs e)
         {
             EventHandler handler;
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
                 this.Invalidate();
             }
 
-            handler = ( EventHandler ) this.Events[_eventCellBorderStyleChanged];
+            handler = (EventHandler)this.Events[_eventCellBorderStyleChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="CellContextMenuStripChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnCellContextMenuStripChanged( EventArgs e )
+        protected virtual void OnCellContextMenuStripChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventCellContextMenuStripChanged];
+            handler = (EventHandler)this.Events[_eventCellContextMenuStripChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="CellSizeChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnCellSizeChanged( EventArgs e )
+        protected virtual void OnCellSizeChanged(EventArgs e)
         {
             EventHandler handler;
 
-            if ( this.AutoSize )
+            if (this.AutoSize)
             {
                 this.SizeToFit();
             }
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
                 this.RefreshColors();
                 this.Invalidate();
             }
 
-            handler = ( EventHandler ) this.Events[_eventCellSizeChanged];
+            handler = (EventHandler)this.Events[_eventCellSizeChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="ColorChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColorChanged( EventArgs e )
+        protected virtual void OnColorChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventColorChanged];
+            handler = (EventHandler)this.Events[_eventColorChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="ColorIndexChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColorIndexChanged( EventArgs e )
+        protected virtual void OnColorIndexChanged(EventArgs e)
         {
             EventHandler handler;
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
-                this.Invalidate( _previousColorIndex );
-                this.Invalidate( this.ColorIndex );
+                this.Invalidate(_previousColorIndex);
+                this.Invalidate(this.ColorIndex);
             }
 
-            handler = ( EventHandler ) this.Events[_eventColorIndexChanged];
+            handler = (EventHandler)this.Events[_eventColorIndexChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="ColorsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColorsChanged( EventArgs e )
+        protected virtual void OnColorsChanged(EventArgs e)
         {
             EventHandler handler;
 
-            this.AddEventHandlers( this.Colors );
+            this.AddEventHandlers(this.Colors);
 
             this.RefreshColors();
 
-            handler = ( EventHandler ) this.Events[_eventColorsChanged];
+            handler = (EventHandler)this.Events[_eventColorsChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="ColumnsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColumnsChanged( EventArgs e )
+        protected virtual void OnColumnsChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.RefreshColors();
 
-            handler = ( EventHandler ) this.Events[_eventColumnsChanged];
+            handler = (EventHandler)this.Events[_eventColumnsChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="CustomColorsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnCustomColorsChanged( EventArgs e )
+        protected virtual void OnCustomColorsChanged(EventArgs e)
         {
             EventHandler handler;
 
-            this.AddEventHandlers( this.CustomColors );
+            this.AddEventHandlers(this.CustomColors);
             this.RefreshColors();
 
-            handler = ( EventHandler ) this.Events[_eventCustomColorsChanged];
+            handler = (EventHandler)this.Events[_eventCustomColorsChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="EditingColor" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EditColorCancelEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnEditingColor( EditColorCancelEventArgs e )
+        protected virtual void OnEditingColor(EditColorCancelEventArgs e)
         {
             EventHandler<EditColorCancelEventArgs> handler;
 
-            handler = ( EventHandler<EditColorCancelEventArgs> ) this.Events[_eventEditingColor];
+            handler = (EventHandler<EditColorCancelEventArgs>)this.Events[_eventEditingColor];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="EditModeChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnEditModeChanged( EventArgs e )
+        protected virtual void OnEditModeChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventEditModeChanged];
+            handler = (EventHandler)this.Events[_eventEditModeChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
-        protected override void OnGotFocus( EventArgs e )
+        protected override void OnGotFocus(EventArgs e)
         {
-            base.OnGotFocus( e );
+            base.OnGotFocus(e);
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
-                this.Invalidate( this.ColorIndex );
+                this.Invalidate(this.ColorIndex);
             }
         }
 
@@ -1392,74 +1392,74 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="HotIndexChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnHotIndexChanged( EventArgs e )
+        protected virtual void OnHotIndexChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.SetToolTip();
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
-                this.Invalidate( _previousHotIndex );
-                this.Invalidate( this.HotIndex );
+                this.Invalidate(_previousHotIndex);
+                this.Invalidate(this.HotIndex);
             }
 
-            handler = ( EventHandler ) this.Events[_eventHotIndexChanged];
+            handler = (EventHandler)this.Events[_eventHotIndexChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
-        protected override void OnKeyDown( KeyEventArgs e )
+        protected override void OnKeyDown(KeyEventArgs e)
         {
             this.WasKeyPressed = true;
 
-            switch ( e.KeyData )
+            switch (e.KeyData)
             {
                 case Keys.Down:
-                    this.Navigate( 0, 1 );
+                    this.Navigate(0, 1);
                     e.Handled = true;
                     break;
                 case Keys.Up:
-                    this.Navigate( 0, -1 );
+                    this.Navigate(0, -1);
                     e.Handled = true;
                     break;
                 case Keys.Left:
-                    this.Navigate( -1, 0 );
+                    this.Navigate(-1, 0);
                     e.Handled = true;
                     break;
                 case Keys.Right:
-                    this.Navigate( 1, 0 );
+                    this.Navigate(1, 0);
                     e.Handled = true;
                     break;
                 case Keys.Home:
-                    this.Navigate( 0, 0, NavigationOrigin.Begin );
+                    this.Navigate(0, 0, NavigationOrigin.Begin);
                     e.Handled = true;
                     break;
                 case Keys.End:
-                    this.Navigate( 0, 0, NavigationOrigin.End );
+                    this.Navigate(0, 0, NavigationOrigin.End);
                     e.Handled = true;
                     break;
             }
 
-            base.OnKeyDown( e );
+            base.OnKeyDown(e);
         }
 
-        protected override void OnKeyUp( KeyEventArgs e )
+        protected override void OnKeyUp(KeyEventArgs e)
         {
-            if ( this.WasKeyPressed && this.ColorIndex != InvalidIndex )
+            if (this.WasKeyPressed && this.ColorIndex != InvalidIndex)
             {
-                switch ( e.KeyData )
+                switch (e.KeyData)
                 {
                     case Keys.Enter:
                         ColorSource source;
 
-                        source = this.GetColorSource( this.ColorIndex );
+                        source = this.GetColorSource(this.ColorIndex);
 
-                        if ( source == ColorSource.Custom && this.EditMode != ColorEditingMode.None || source == ColorSource.Standard && this.EditMode == ColorEditingMode.Both )
+                        if ((source == ColorSource.Custom && this.EditMode != ColorEditingMode.None) || (source == ColorSource.Standard && this.EditMode == ColorEditingMode.Both))
                         {
                             e.Handled = true;
 
-                            this.StartColorEdit( this.ColorIndex );
+                            this.StartColorEdit(this.ColorIndex);
                         }
                         break;
                     case Keys.Apps:
@@ -1472,162 +1472,162 @@ namespace Cyotek.Windows.Forms
                         x = location.X;
                         y = location.Y + _cellSize.Height;
 
-                        this.ShowContextMenu( new Point( x, y ) );
+                        this.ShowContextMenu(new Point(x, y));
                         break;
                 }
             }
 
             this.WasKeyPressed = false;
 
-            base.OnKeyUp( e );
+            base.OnKeyUp(e);
         }
 
-        protected override void OnLostFocus( EventArgs e )
+        protected override void OnLostFocus(EventArgs e)
         {
-            base.OnLostFocus( e );
+            base.OnLostFocus(e);
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
-                this.Invalidate( this.ColorIndex );
+                this.Invalidate(this.ColorIndex);
             }
         }
 
-        protected override void OnMouseDoubleClick( MouseEventArgs e )
+        protected override void OnMouseDoubleClick(MouseEventArgs e)
         {
             ColorHitTestInfo hitTest;
 
-            base.OnMouseDoubleClick( e );
+            base.OnMouseDoubleClick(e);
 
-            hitTest = this.HitTest( e.Location );
+            hitTest = this.HitTest(e.Location);
 
-            if ( e.Button == MouseButtons.Left && ( hitTest.Source == ColorSource.Custom && this.EditMode != ColorEditingMode.None || hitTest.Source == ColorSource.Standard && this.EditMode == ColorEditingMode.Both ) )
+            if (e.Button == MouseButtons.Left && ((hitTest.Source == ColorSource.Custom && this.EditMode != ColorEditingMode.None) || (hitTest.Source == ColorSource.Standard && this.EditMode == ColorEditingMode.Both)))
             {
-                this.StartColorEdit( hitTest.Index );
+                this.StartColorEdit(hitTest.Index);
             }
         }
 
-        protected override void OnMouseDown( MouseEventArgs e )
+        protected override void OnMouseDown(MouseEventArgs e)
         {
-            base.OnMouseDown( e );
+            base.OnMouseDown(e);
 
-            if ( !this.Focused && this.TabStop )
+            if (!this.Focused && this.TabStop)
             {
                 this.Focus();
             }
 
-            this.ProcessMouseClick( e );
+            this.ProcessMouseClick(e);
         }
 
-        protected override void OnMouseLeave( EventArgs e )
+        protected override void OnMouseLeave(EventArgs e)
         {
-            base.OnMouseLeave( e );
+            base.OnMouseLeave(e);
 
             this.HotIndex = InvalidIndex;
         }
 
-        protected override void OnMouseMove( MouseEventArgs e )
+        protected override void OnMouseMove(MouseEventArgs e)
         {
-            base.OnMouseMove( e );
+            base.OnMouseMove(e);
 
-            this.HotIndex = this.HitTest( e.Location ).Index;
+            this.HotIndex = this.HitTest(e.Location).Index;
 
-            this.ProcessMouseClick( e );
+            this.ProcessMouseClick(e);
         }
 
-        protected override void OnMouseUp( MouseEventArgs e )
+        protected override void OnMouseUp(MouseEventArgs e)
         {
-            base.OnMouseUp( e );
+            base.OnMouseUp(e);
 
-            if ( e.Button == MouseButtons.Right )
+            if (e.Button == MouseButtons.Right)
             {
                 int index;
 
-                index = this.HitTest( e.Location ).Index;
+                index = this.HitTest(e.Location).Index;
 
-                if ( index != InvalidIndex )
+                if (index != InvalidIndex)
                 {
                     this.Focus();
                     this.ColorIndex = index;
 
-                    this.ShowContextMenu( e.Location );
+                    this.ShowContextMenu(e.Location);
                 }
             }
         }
 
-        protected override void OnPaddingChanged( EventArgs e )
+        protected override void OnPaddingChanged(EventArgs e)
         {
-            base.OnPaddingChanged( e );
+            base.OnPaddingChanged(e);
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
                 this.RefreshColors();
                 this.Invalidate();
             }
         }
 
-        protected override void OnPaint( PaintEventArgs e )
+        protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint( e );
+            base.OnPaint(e);
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
                 int colorCount;
 
                 colorCount = this.Colors.Count;
 
-                Debug.Print( e.ClipRectangle.Size == this.ClientSize ? "Performing full paint!" : "Performing partial paint!" );
+                Debug.Print(e.ClipRectangle.Size == this.ClientSize ? "Performing full paint!" : "Performing partial paint!");
 
-                this.OnPaintBackground( e ); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc as the PaintBackground event is no longer being called
+                this.OnPaintBackground(e); // HACK: Easiest way of supporting things like BackgroundImage, BackgroundImageLayout etc as the PaintBackground event is no longer being called
 
                 // draw a design time dotted grid
-                if ( this.DesignMode )
+                if (this.DesignMode)
                 {
-                    using ( Pen pen = new Pen( SystemColors.ButtonShadow )
+                    using (Pen pen = new Pen(SystemColors.ButtonShadow)
                     {
                         DashStyle = DashStyle.Dot
-                    } )
+                    })
                     {
-                        e.Graphics.DrawRectangle( pen, 0, 0, this.Width - 1, this.Height - 1 );
+                        e.Graphics.DrawRectangle(pen, 0, 0, this.Width - 1, this.Height - 1);
                     }
                 }
 
                 // draw cells for all current colors
-                for ( int i = 0; i < colorCount; i++ )
+                for (int i = 0; i < colorCount; i++)
                 {
                     Rectangle bounds;
 
                     bounds = _colorRegions[i];
-                    if ( e.ClipRectangle.IntersectsWith( bounds ) )
+                    if (e.ClipRectangle.IntersectsWith(bounds))
                     {
-                        this.PaintCell( e, i, i, this.Colors[i], bounds );
+                        this.PaintCell(e, i, i, this.Colors[i], bounds);
                     }
                 }
 
-                if ( this.CustomColors.Count != 0 && this.ShowCustomColors )
+                if (this.CustomColors.Count != 0 && this.ShowCustomColors)
                 {
                     // draw a separator
-                    this.PaintSeparator( e );
+                    this.PaintSeparator(e);
 
                     // and the custom colors
-                    for ( int i = 0; i < this.CustomColors.Count; i++ )
+                    for (int i = 0; i < this.CustomColors.Count; i++)
                     {
                         Rectangle bounds;
 
-                        if ( _colorRegions.TryGetValue( colorCount + i, out bounds ) && e.ClipRectangle.IntersectsWith( bounds ) )
+                        if (_colorRegions.TryGetValue(colorCount + i, out bounds) && e.ClipRectangle.IntersectsWith(bounds))
                         {
-                            this.PaintCell( e, i, colorCount + i, this.CustomColors[i], bounds );
+                            this.PaintCell(e, i, colorCount + i, this.CustomColors[i], bounds);
                         }
                     }
                 }
 
                 // draw the selected color
-                if ( this.SelectedCellStyle != ColorGridSelectedCellStyle.None && this.ColorIndex >= 0 )
+                if (this.SelectedCellStyle != ColorGridSelectedCellStyle.None && this.ColorIndex >= 0)
                 {
                     Rectangle bounds;
 
-                    if ( _colorRegions.TryGetValue( this.ColorIndex, out bounds ) && e.ClipRectangle.IntersectsWith( bounds ) )
+                    if (_colorRegions.TryGetValue(this.ColorIndex, out bounds) && e.ClipRectangle.IntersectsWith(bounds))
                     {
-                        this.PaintSelectedCell( e, this.ColorIndex, this.Color, bounds );
+                        this.PaintSelectedCell(e, this.ColorIndex, this.Color, bounds);
                     }
                 }
             }
@@ -1637,214 +1637,214 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="PaletteChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnPaletteChanged( EventArgs e )
+        protected virtual void OnPaletteChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.Colors = this.GetPredefinedPalette();
 
-            handler = ( EventHandler ) this.Events[_eventPaletteChanged];
+            handler = (EventHandler)this.Events[_eventPaletteChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
-        protected override void OnResize( EventArgs e )
+        protected override void OnResize(EventArgs e)
         {
             this.RefreshColors();
 
-            base.OnResize( e );
+            base.OnResize(e);
         }
 
         /// <summary>
         /// Raises the <see cref="SelectedCellStyleChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnSelectedCellStyleChanged( EventArgs e )
+        protected virtual void OnSelectedCellStyleChanged(EventArgs e)
         {
             EventHandler handler;
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
                 this.Invalidate();
             }
 
-            handler = ( EventHandler ) this.Events[_eventSelectedCellStyleChanged];
+            handler = (EventHandler)this.Events[_eventSelectedCellStyleChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="ShowCustomColorsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnShowCustomColorsChanged( EventArgs e )
+        protected virtual void OnShowCustomColorsChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.RefreshColors();
 
-            handler = ( EventHandler ) this.Events[_eventShowCustomColorsChanged];
+            handler = (EventHandler)this.Events[_eventShowCustomColorsChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="ShowToolTipsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnShowToolTipsChanged( EventArgs e )
+        protected virtual void OnShowToolTipsChanged(EventArgs e)
         {
             EventHandler handler;
 
-            if ( this.ShowToolTips )
+            if (this.ShowToolTips)
             {
                 _toolTip = new ToolTip();
             }
-            else if ( _toolTip != null )
+            else if (_toolTip != null)
             {
                 _toolTip.Dispose();
                 _toolTip = null;
             }
 
-            handler = ( EventHandler ) this.Events[_eventShowToolTipsChanged];
+            handler = (EventHandler)this.Events[_eventShowToolTipsChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="SpacingChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnSpacingChanged( EventArgs e )
+        protected virtual void OnSpacingChanged(EventArgs e)
         {
             EventHandler handler;
 
-            if ( this.AutoSize )
+            if (this.AutoSize)
             {
                 this.SizeToFit();
             }
 
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
                 this.RefreshColors();
                 this.Invalidate();
             }
 
-            handler = ( EventHandler ) this.Events[_eventSpacingChanged];
+            handler = (EventHandler)this.Events[_eventSpacingChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
-        protected virtual void PaintCell( PaintEventArgs e, int colorIndex, int cellIndex, Color color, Rectangle bounds )
+        protected virtual void PaintCell(PaintEventArgs e, int colorIndex, int cellIndex, Color color, Rectangle bounds)
         {
-            if ( color.A != 255 )
+            if (color.A != 255)
             {
-                this.PaintTransparentCell( e, bounds );
+                this.PaintTransparentCell(e, bounds);
             }
 
-            using ( Brush brush = new SolidBrush( color ) )
+            using (Brush brush = new SolidBrush(color))
             {
-                e.Graphics.FillRectangle( brush, bounds );
+                e.Graphics.FillRectangle(brush, bounds);
             }
 
-            switch ( this.CellBorderStyle )
+            switch (this.CellBorderStyle)
             {
                 case ColorCellBorderStyle.FixedSingle:
-                    using ( Pen pen = new Pen( this.CellBorderColor ) )
+                    using (Pen pen = new Pen(this.CellBorderColor))
                     {
-                        e.Graphics.DrawRectangle( pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1 );
+                        e.Graphics.DrawRectangle(pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
                     break;
                 case ColorCellBorderStyle.DoubleSoft:
                     HslColor shadedOuter;
                     HslColor shadedInner;
 
-                    shadedOuter = new HslColor( color );
+                    shadedOuter = new HslColor(color);
                     shadedOuter.L -= 0.50;
 
-                    shadedInner = new HslColor( color );
+                    shadedInner = new HslColor(color);
                     shadedInner.L -= 0.20;
 
-                    using ( Pen pen = new Pen( this.CellBorderColor ) )
+                    using (Pen pen = new Pen(this.CellBorderColor))
                     {
-                        e.Graphics.DrawRectangle( pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1 );
+                        e.Graphics.DrawRectangle(pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
-                    e.Graphics.DrawRectangle( Pens.White, bounds.Left + 1, bounds.Top + 1, bounds.Width - 3, bounds.Height - 3 );
-                    using ( Pen pen = new Pen( Color.FromArgb( 32, shadedOuter.ToRgbColor() ) ) )
+                    e.Graphics.DrawRectangle(Pens.White, bounds.Left + 1, bounds.Top + 1, bounds.Width - 3, bounds.Height - 3);
+                    using (Pen pen = new Pen(Color.FromArgb(32, shadedOuter.ToRgbColor())))
                     {
-                        e.Graphics.DrawRectangle( pen, bounds.Left + 2, bounds.Top + 2, bounds.Width - 5, bounds.Height - 5 );
+                        e.Graphics.DrawRectangle(pen, bounds.Left + 2, bounds.Top + 2, bounds.Width - 5, bounds.Height - 5);
                     }
-                    using ( Pen pen = new Pen( Color.FromArgb( 32, shadedInner.ToRgbColor() ) ) )
+                    using (Pen pen = new Pen(Color.FromArgb(32, shadedInner.ToRgbColor())))
                     {
-                        e.Graphics.DrawRectangle( pen, bounds.Left + 3, bounds.Top + 3, bounds.Width - 7, bounds.Height - 7 );
+                        e.Graphics.DrawRectangle(pen, bounds.Left + 3, bounds.Top + 3, bounds.Width - 7, bounds.Height - 7);
                     }
                     break;
             }
 
-            if ( this.HotIndex != InvalidIndex && this.HotIndex == cellIndex )
+            if (this.HotIndex != InvalidIndex && this.HotIndex == cellIndex)
             {
-                e.Graphics.DrawRectangle( Pens.Black, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1 );
-                e.Graphics.DrawRectangle( Pens.White, bounds.Left + 1, bounds.Top + 1, bounds.Width - 3, bounds.Height - 3 );
+                e.Graphics.DrawRectangle(Pens.Black, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
+                e.Graphics.DrawRectangle(Pens.White, bounds.Left + 1, bounds.Top + 1, bounds.Width - 3, bounds.Height - 3);
             }
         }
 
-        protected virtual void PaintSelectedCell( PaintEventArgs e, int colorIndex, Color color, Rectangle bounds )
+        protected virtual void PaintSelectedCell(PaintEventArgs e, int colorIndex, Color color, Rectangle bounds)
         {
-            switch ( this.SelectedCellStyle )
+            switch (this.SelectedCellStyle)
             {
                 case ColorGridSelectedCellStyle.Standard:
-                    if ( this.Focused )
+                    if (this.Focused)
                     {
-                        ControlPaint.DrawFocusRectangle( e.Graphics, bounds );
+                        ControlPaint.DrawFocusRectangle(e.Graphics, bounds);
                     }
                     else
                     {
-                        e.Graphics.DrawRectangle( Pens.Black, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1 );
+                        e.Graphics.DrawRectangle(Pens.Black, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
                     break;
                 case ColorGridSelectedCellStyle.Zoomed:
                     // make the cell larger according to the padding
-                    if ( this.SelectedCellStyle == ColorGridSelectedCellStyle.Zoomed )
+                    if (this.SelectedCellStyle == ColorGridSelectedCellStyle.Zoomed)
                     {
-                        bounds.Inflate( this.Padding.Left, this.Padding.Top );
+                        bounds.Inflate(this.Padding.Left, this.Padding.Top);
                     }
 
                     // fill the inner
-                    e.Graphics.FillRectangle( Brushes.White, bounds );
-                    if ( this.SelectedCellStyle == ColorGridSelectedCellStyle.Zoomed )
+                    e.Graphics.FillRectangle(Brushes.White, bounds);
+                    if (this.SelectedCellStyle == ColorGridSelectedCellStyle.Zoomed)
                     {
-                        bounds.Inflate( -3, -3 );
+                        bounds.Inflate(-3, -3);
                     }
-                    if ( color.A != 255 )
+                    if (color.A != 255)
                     {
-                        this.PaintTransparentCell( e, bounds );
+                        this.PaintTransparentCell(e, bounds);
                     }
 
-                    using ( Brush brush = new SolidBrush( color ) )
+                    using (Brush brush = new SolidBrush(color))
                     {
-                        e.Graphics.FillRectangle( brush, bounds );
+                        e.Graphics.FillRectangle(brush, bounds);
                     }
 
                     // draw a border
-                    if ( this.Focused )
+                    if (this.Focused)
                     {
-                        bounds = new Rectangle( bounds.Left - 2, bounds.Top - 2, bounds.Width + 4, bounds.Height + 4 );
-                        ControlPaint.DrawFocusRectangle( e.Graphics, bounds );
+                        bounds = new Rectangle(bounds.Left - 2, bounds.Top - 2, bounds.Width + 4, bounds.Height + 4);
+                        ControlPaint.DrawFocusRectangle(e.Graphics, bounds);
                     }
                     else
                     {
-                        bounds = new Rectangle( bounds.Left - 2, bounds.Top - 2, bounds.Width + 3, bounds.Height + 3 );
+                        bounds = new Rectangle(bounds.Left - 2, bounds.Top - 2, bounds.Width + 3, bounds.Height + 3);
 
-                        using ( Pen pen = new Pen( this.CellBorderColor ) )
+                        using (Pen pen = new Pen(this.CellBorderColor))
                         {
-                            e.Graphics.DrawRectangle( pen, bounds );
+                            e.Graphics.DrawRectangle(pen, bounds);
                         }
                     }
                     break;
             }
         }
 
-        protected virtual void PaintSeparator( PaintEventArgs e )
+        protected virtual void PaintSeparator(PaintEventArgs e)
         {
             int x1;
             int y1;
@@ -1853,34 +1853,34 @@ namespace Cyotek.Windows.Forms
 
             x1 = this.Padding.Left;
             x2 = this.ClientSize.Width - this.Padding.Right;
-            y1 = this.SeparatorHeight / 2 + this.Padding.Top + this.PrimaryRows * ( this.CellSize.Height + this.Spacing.Height ) + 1 - this.Spacing.Height;
+            y1 = (this.SeparatorHeight / 2) + this.Padding.Top + (this.PrimaryRows * (this.CellSize.Height + this.Spacing.Height)) + 1 - this.Spacing.Height;
             y2 = y1;
 
-            using ( Pen pen = new Pen( this.CellBorderColor ) )
+            using (Pen pen = new Pen(this.CellBorderColor))
             {
-                e.Graphics.DrawLine( pen, x1, y1, x2, y2 );
+                e.Graphics.DrawLine(pen, x1, y1, x2, y2);
             }
         }
 
-        protected virtual void PaintTransparentCell( PaintEventArgs e, Rectangle bounds )
+        protected virtual void PaintTransparentCell(PaintEventArgs e, Rectangle bounds)
         {
-            if ( _cellBackgroundBrush == null )
+            if (_cellBackgroundBrush == null)
             {
                 _cellBackgroundBrush = this.CreateTransparencyBrush();
             }
 
-            e.Graphics.FillRectangle( _cellBackgroundBrush, bounds );
+            e.Graphics.FillRectangle(_cellBackgroundBrush, bounds);
         }
 
-        protected virtual void ProcessMouseClick( MouseEventArgs e )
+        protected virtual void ProcessMouseClick(MouseEventArgs e)
         {
-            if ( e.Button == MouseButtons.Left )
+            if (e.Button == MouseButtons.Left)
             {
                 ColorHitTestInfo hitTest;
 
-                hitTest = this.HitTest( e.Location );
+                hitTest = this.HitTest(e.Location);
 
-                if ( hitTest.Source != ColorSource.None )
+                if (hitTest.Source != ColorSource.None)
                 {
                     this.Color = hitTest.Color;
                     this.ColorIndex = hitTest.Index;
@@ -1890,35 +1890,35 @@ namespace Cyotek.Windows.Forms
 
         protected virtual void RefreshColors()
         {
-            if ( this.AllowPainting )
+            if (this.AllowPainting)
             {
-                Debug.Print( "Calculating colors..." );
+                Debug.Print("Calculating colors...");
 
                 this.CalculateGridSize();
-                if ( this.AutoFit )
+                if (this.AutoFit)
                 {
                     this.CalculateCellSize();
                 }
-                else if ( this.AutoSize )
+                else if (this.AutoSize)
                 {
                     this.SizeToFit();
                 }
 
                 _colorRegions.Clear();
 
-                if ( this.Colors != null )
+                if (this.Colors != null)
                 {
-                    this.DefineColorRegions( this.Colors, 0, this.Padding.Top );
-                    if ( this.ShowCustomColors )
+                    this.DefineColorRegions(this.Colors, 0, this.Padding.Top);
+                    if (this.ShowCustomColors)
                     {
-                        this.DefineColorRegions( this.CustomColors, this.Colors.Count, this.Padding.Top + this.SeparatorHeight + ( this.CellSize.Height + this.Spacing.Height ) * this.PrimaryRows );
+                        this.DefineColorRegions(this.CustomColors, this.Colors.Count, this.Padding.Top + this.SeparatorHeight + ((this.CellSize.Height + this.Spacing.Height) * this.PrimaryRows));
                     }
 
-                    this.ColorIndex = this.GetColorIndex( this.Color );
+                    this.ColorIndex = this.GetColorIndex(this.Color);
 
-                    if ( !this.Color.IsEmpty && this.ColorIndex == InvalidIndex && this.AutoAddColors && this.ShowCustomColors )
+                    if (!this.Color.IsEmpty && this.ColorIndex == InvalidIndex && this.AutoAddColors && this.ShowCustomColors)
                     {
-                        this.AddCustomColor( this.Color );
+                        this.AddCustomColor(this.Color);
                     }
 
                     this.Invalidate();
@@ -1926,18 +1926,18 @@ namespace Cyotek.Windows.Forms
             }
         }
 
-        protected virtual void SetColor( int colorIndex, Color color )
+        protected virtual void SetColor(int colorIndex, Color color)
         {
             int colorCount;
 
             colorCount = this.Colors.Count;
 
-            if ( colorIndex < 0 || colorIndex > colorCount + this.CustomColors.Count )
+            if (colorIndex < 0 || colorIndex > colorCount + this.CustomColors.Count)
             {
-                throw new ArgumentOutOfRangeException( nameof( colorIndex ) );
+                throw new ArgumentOutOfRangeException(nameof(colorIndex));
             }
 
-            if ( colorIndex > colorCount - 1 )
+            if (colorIndex > colorCount - 1)
             {
                 this.CustomColors[colorIndex - colorCount] = color;
             }
@@ -1947,9 +1947,9 @@ namespace Cyotek.Windows.Forms
             }
         }
 
-        private void AddEventHandlers( ColorCollection value )
+        private void AddEventHandlers(ColorCollection value)
         {
-            if ( value != null )
+            if (value != null)
             {
                 value.ItemInserted += this.ColorsCollectionChangedHandler;
                 value.ItemRemoved += this.ColorsCollectionChangedHandler;
@@ -1958,66 +1958,66 @@ namespace Cyotek.Windows.Forms
             }
         }
 
-        private void ColorsCollectionChangedHandler( object sender, ColorCollectionEventArgs e )
+        private void ColorsCollectionChangedHandler(object sender, ColorCollectionEventArgs e)
         {
             this.RefreshColors();
         }
 
-        private void ColorsCollectionItemReplacedHandler( object sender, ColorCollectionEventArgs e )
+        private void ColorsCollectionItemReplacedHandler(object sender, ColorCollectionEventArgs e)
         {
             ColorCollection collection;
             int index;
 
-            collection = ( ColorCollection ) sender;
+            collection = (ColorCollection)sender;
             index = _colorIndex;
-            if ( index != InvalidIndex && ReferenceEquals( collection, this.CustomColors ) )
+            if (index != InvalidIndex && ReferenceEquals(collection, this.CustomColors))
             {
                 index -= this.Colors.Count;
             }
 
-            if ( index >= 0 && index < collection.Count && collection[index] != this.Color )
+            if (index >= 0 && index < collection.Count && collection[index] != this.Color)
             {
-                Debug.Print( "Replacing index {0} with {1}", index, collection[index] );
+                Debug.Print("Replacing index {0} with {1}", index, collection[index]);
 
                 _previousColorIndex = index;
                 _colorIndex = -1;
                 this.ColorIndex = index;
             }
 
-            this.Invalidate( e.Index );
+            this.Invalidate(e.Index);
         }
 
-        private Point GetCell( int index )
+        private Point GetCell(int index)
         {
             int row;
             int column;
 
-            if ( index == InvalidIndex )
+            if (index == InvalidIndex)
             {
                 row = -1;
                 column = -1;
             }
-            else if ( index >= this.Colors.Count )
+            else if (index >= this.Colors.Count)
             {
                 // custom color
                 index -= this.Colors.Count;
                 row = index / this.ActualColumns;
-                column = index - row * this.ActualColumns;
+                column = index - (row * this.ActualColumns);
                 row += this.PrimaryRows;
             }
             else
             {
                 // normal row
                 row = index / this.ActualColumns;
-                column = index - row * this.ActualColumns;
+                column = index - (row * this.ActualColumns);
             }
 
-            return new Point( column, row );
+            return new Point(column, row);
         }
 
-        private void RemoveEventHandlers( ColorCollection value )
+        private void RemoveEventHandlers(ColorCollection value)
         {
-            if ( value != null )
+            if (value != null)
             {
                 value.ItemInserted -= this.ColorsCollectionChangedHandler;
                 value.ItemRemoved -= this.ColorsCollectionChangedHandler;
@@ -2028,9 +2028,9 @@ namespace Cyotek.Windows.Forms
 
         private void SetToolTip()
         {
-            if ( this.ShowToolTips )
+            if (this.ShowToolTips)
             {
-                if ( this.ShowToolTips )
+                if (this.ShowToolTips)
                 {
 #if USENAMEHACK
         string name;
@@ -2051,15 +2051,15 @@ namespace Cyotek.Windows.Forms
 
         _toolTip.SetToolTip(this, name);
 #else
-                    _toolTip.SetToolTip( this, this.HotIndex != InvalidIndex ? this.GetColor( this.HotIndex ).Name : null );
+                    _toolTip.SetToolTip(this, this.HotIndex != InvalidIndex ? this.GetColor(this.HotIndex).Name : null);
 #endif
                 }
             }
         }
 
-        private void ShowContextMenu( Point location )
+        private void ShowContextMenu(Point location)
         {
-            _cellContextMenuStrip?.Show( this, location );
+            _cellContextMenuStrip?.Show(this, location);
         }
 
         private void SizeToFit()
@@ -2067,16 +2067,16 @@ namespace Cyotek.Windows.Forms
             this.Size = this.GetAutoSize();
         }
 
-        private void StartColorEdit( int index )
+        private void StartColorEdit(int index)
         {
             EditColorCancelEventArgs e;
 
-            e = new EditColorCancelEventArgs( this.GetColor( index ), index );
-            this.OnEditingColor( e );
+            e = new EditColorCancelEventArgs(this.GetColor(index), index);
+            this.OnEditingColor(e);
 
-            if ( !e.Cancel )
+            if (!e.Cancel)
             {
-                this.EditColor( index );
+                this.EditColor(index);
             }
         }
 
@@ -2084,15 +2084,15 @@ namespace Cyotek.Windows.Forms
 
         #region IColorEditor Interface
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler ColorChanged
         {
-            add { this.Events.AddHandler( _eventColorChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventColorChanged, value ); }
+            add { this.Events.AddHandler(_eventColorChanged, value); }
+            remove { this.Events.RemoveHandler(_eventColorChanged, value); }
         }
 
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Color ), "Black" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Color), "Black")]
         public virtual Color Color
         {
             get { return _color; }
@@ -2102,16 +2102,16 @@ namespace Cyotek.Windows.Forms
 
                 _color = value;
 
-                if ( !value.IsEmpty )
+                if (!value.IsEmpty)
                 {
                     // the new color matches the color at the current index, so don't change the index
                     // this stops the selection hopping about if you have duplicate colors in a palette
                     // otherwise, if the colors don't match, then find the index that does
-                    newIndex = this.GetColor( this.ColorIndex ) == value ? this.ColorIndex : this.GetColorIndex( value );
+                    newIndex = this.GetColor(this.ColorIndex) == value ? this.ColorIndex : this.GetColorIndex(value);
 
-                    if ( newIndex == InvalidIndex )
+                    if (newIndex == InvalidIndex)
                     {
-                        newIndex = this.AddCustomColor( value );
+                        newIndex = this.AddCustomColor(value);
                     }
                 }
                 else
@@ -2121,7 +2121,7 @@ namespace Cyotek.Windows.Forms
 
                 this.ColorIndex = newIndex;
 
-                this.OnColorChanged( EventArgs.Empty );
+                this.OnColorChanged(EventArgs.Empty);
             }
         }
 

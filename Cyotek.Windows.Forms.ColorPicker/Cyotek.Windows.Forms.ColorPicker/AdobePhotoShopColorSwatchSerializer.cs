@@ -56,13 +56,13 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <returns><c>true</c> if this instance can read palette data from the specified stream; otherwise, <c>false</c>.</returns>
-        public override bool CanReadFrom( Stream stream )
+        public override bool CanReadFrom(Stream stream)
         {
             bool result;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             try
@@ -89,22 +89,22 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> that contains the palette to deserialize.</param>
         /// <returns>The <see cref="ColorCollection" /> being deserialized.</returns>
-        public override ColorCollection Deserialize( Stream stream )
+        public override ColorCollection Deserialize(Stream stream)
         {
             AdobePhotoshopColorSwatchFileVersion version;
             ColorCollection results;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             // read the version, which occupies two bytes
-            version = ( AdobePhotoshopColorSwatchFileVersion ) this.ReadInt16( stream );
+            version = (AdobePhotoshopColorSwatchFileVersion)this.ReadInt16(stream);
 
-            if ( version != AdobePhotoshopColorSwatchFileVersion.Version1 && version != AdobePhotoshopColorSwatchFileVersion.Version2 )
+            if (version != AdobePhotoshopColorSwatchFileVersion.Version1 && version != AdobePhotoshopColorSwatchFileVersion.Version2)
             {
-                throw new InvalidDataException( "Invalid version information." );
+                throw new InvalidDataException("Invalid version information.");
             }
 
             // the specification states that a version2 palette follows a version1
@@ -113,13 +113,13 @@ namespace Cyotek.Windows.Forms
             // but we can't support them all anyway
             // I noticed some files no longer include a version 1 palette
 
-            results = this.ReadPalette( stream, version );
-            if ( version == AdobePhotoshopColorSwatchFileVersion.Version1 )
+            results = this.ReadPalette(stream, version);
+            if (version == AdobePhotoshopColorSwatchFileVersion.Version1)
             {
-                version = ( AdobePhotoshopColorSwatchFileVersion ) this.ReadInt16( stream );
-                if ( version == AdobePhotoshopColorSwatchFileVersion.Version2 )
+                version = (AdobePhotoshopColorSwatchFileVersion)this.ReadInt16(stream);
+                if (version == AdobePhotoshopColorSwatchFileVersion.Version2)
                 {
-                    results = this.ReadPalette( stream, version );
+                    results = this.ReadPalette(stream, version);
                 }
             }
 
@@ -131,41 +131,41 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> used to write the palette.</param>
         /// <param name="palette">The <see cref="ColorCollection" /> to serialize.</param>
-        public override void Serialize( Stream stream, ColorCollection palette )
+        public override void Serialize(Stream stream, ColorCollection palette)
         {
-            this.Serialize( stream, palette, AdobePhotoshopColorSwatchColorSpace.Rgb );
+            this.Serialize(stream, palette, AdobePhotoshopColorSwatchColorSpace.Rgb);
         }
 
-        public void Serialize( Stream stream, ColorCollection palette, AdobePhotoshopColorSwatchColorSpace colorSpace )
+        public void Serialize(Stream stream, ColorCollection palette, AdobePhotoshopColorSwatchColorSpace colorSpace)
         {
-            this.Serialize( stream, palette, AdobePhotoshopColorSwatchFileVersion.Version2, colorSpace );
+            this.Serialize(stream, palette, AdobePhotoshopColorSwatchFileVersion.Version2, colorSpace);
         }
 
-        public void Serialize( Stream stream, ColorCollection palette, AdobePhotoshopColorSwatchFileVersion version )
+        public void Serialize(Stream stream, ColorCollection palette, AdobePhotoshopColorSwatchFileVersion version)
         {
-            this.Serialize( stream, palette, version, AdobePhotoshopColorSwatchColorSpace.Rgb );
+            this.Serialize(stream, palette, version, AdobePhotoshopColorSwatchColorSpace.Rgb);
         }
 
-        public void Serialize( Stream stream, ColorCollection palette, AdobePhotoshopColorSwatchFileVersion version, AdobePhotoshopColorSwatchColorSpace colorSpace )
+        public void Serialize(Stream stream, ColorCollection palette, AdobePhotoshopColorSwatchFileVersion version, AdobePhotoshopColorSwatchColorSpace colorSpace)
         {
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
-            if ( palette == null )
+            if (palette == null)
             {
-                throw new ArgumentNullException( nameof( palette ) );
+                throw new ArgumentNullException(nameof(palette));
             }
 
-            if ( version == AdobePhotoshopColorSwatchFileVersion.Version2 )
+            if (version == AdobePhotoshopColorSwatchFileVersion.Version2)
             {
-                this.WritePalette( stream, palette, AdobePhotoshopColorSwatchFileVersion.Version1, colorSpace );
+                this.WritePalette(stream, palette, AdobePhotoshopColorSwatchFileVersion.Version1, colorSpace);
             }
-            this.WritePalette( stream, palette, version, colorSpace );
+            this.WritePalette(stream, palette, version, colorSpace);
         }
 
-        protected virtual ColorCollection ReadPalette( Stream stream, AdobePhotoshopColorSwatchFileVersion version )
+        protected virtual ColorCollection ReadPalette(Stream stream, AdobePhotoshopColorSwatchFileVersion version)
         {
             int colorCount;
             ColorCollection results;
@@ -173,9 +173,9 @@ namespace Cyotek.Windows.Forms
             results = new ColorCollection();
 
             // read the number of colors, which also occupies two bytes
-            colorCount = this.ReadInt16( stream );
+            colorCount = this.ReadInt16(stream);
 
-            for ( int i = 0; i < colorCount; i++ )
+            for (int i = 0; i < colorCount; i++)
             {
                 AdobePhotoshopColorSwatchColorSpace colorSpace;
                 int value1;
@@ -184,27 +184,27 @@ namespace Cyotek.Windows.Forms
                 string name;
 
                 // again, two bytes for the color space
-                colorSpace = ( AdobePhotoshopColorSwatchColorSpace ) this.ReadInt16( stream );
+                colorSpace = (AdobePhotoshopColorSwatchColorSpace)this.ReadInt16(stream);
 
-                value1 = this.ReadInt16( stream );
-                value2 = this.ReadInt16( stream );
-                value3 = this.ReadInt16( stream );
-                this.ReadInt16( stream ); // only CMYK supports this field. As we can't handle CMYK colors, we read the value to advance the stream but don't do anything with it
+                value1 = this.ReadInt16(stream);
+                value2 = this.ReadInt16(stream);
+                value3 = this.ReadInt16(stream);
+                this.ReadInt16(stream); // only CMYK supports this field. As we can't handle CMYK colors, we read the value to advance the stream but don't do anything with it
 
-                if ( version == AdobePhotoshopColorSwatchFileVersion.Version2 )
+                if (version == AdobePhotoshopColorSwatchFileVersion.Version2)
                 {
                     int length;
 
                     // need to read the name even though currently our colour collection doesn't support names
-                    length = this.ReadInt32( stream );
-                    name = this.ReadString( stream, length );
+                    length = this.ReadInt32(stream);
+                    name = this.ReadString(stream, length);
                 }
                 else
                 {
                     name = string.Empty;
                 }
 
-                switch ( colorSpace )
+                switch (colorSpace)
                 {
                     case AdobePhotoshopColorSwatchColorSpace.Rgb:
                         int red;
@@ -219,7 +219,7 @@ namespace Cyotek.Windows.Forms
                         green = value2 / 256;
                         blue = value3 / 256;
 
-                        results.Add( Color.FromArgb( red, green, blue ) );
+                        results.Add(Color.FromArgb(red, green, blue));
                         break;
 
                     case AdobePhotoshopColorSwatchColorSpace.Hsb:
@@ -235,7 +235,7 @@ namespace Cyotek.Windows.Forms
                         saturation = value2 / 655.35;
                         brightness = value3 / 655.35;
 
-                        results.Add( new HslColor( hue, saturation, brightness ).ToRgbColor() );
+                        results.Add(new HslColor(hue, saturation, brightness).ToRgbColor());
                         break;
 
                     case AdobePhotoshopColorSwatchColorSpace.Grayscale:
@@ -244,13 +244,13 @@ namespace Cyotek.Windows.Forms
 
                         // Grayscale.
                         // The first value in the color data is the gray value, from 0...10000.
-                        gray = ( int ) ( value1 / 39.0625 );
+                        gray = (int)(value1 / 39.0625);
 
-                        results.Add( Color.FromArgb( gray, gray, gray ) );
+                        results.Add(Color.FromArgb(gray, gray, gray));
                         break;
 
                     default:
-                        throw new InvalidDataException( string.Format( "Color space '{0}' not supported.", colorSpace ) );
+                        throw new InvalidDataException(string.Format("Color space '{0}' not supported.", colorSpace));
                 }
 
 #if USENAMEHACK
@@ -261,16 +261,16 @@ namespace Cyotek.Windows.Forms
             return results;
         }
 
-        protected virtual void WritePalette( Stream stream, ColorCollection palette, AdobePhotoshopColorSwatchFileVersion version, AdobePhotoshopColorSwatchColorSpace colorSpace )
+        protected virtual void WritePalette(Stream stream, ColorCollection palette, AdobePhotoshopColorSwatchFileVersion version, AdobePhotoshopColorSwatchColorSpace colorSpace)
         {
             int swatchIndex;
 
-            this.WriteInt16( stream, ( short ) version );
-            this.WriteInt16( stream, ( short ) palette.Count );
+            this.WriteInt16(stream, (short)version);
+            this.WriteInt16(stream, (short)palette.Count);
 
             swatchIndex = 0;
 
-            foreach ( Color color in palette )
+            foreach (Color color in palette)
             {
                 short value1;
                 short value2;
@@ -279,46 +279,46 @@ namespace Cyotek.Windows.Forms
 
                 swatchIndex++;
 
-                switch ( colorSpace )
+                switch (colorSpace)
                 {
                     case AdobePhotoshopColorSwatchColorSpace.Rgb:
-                        value1 = ( short ) ( color.R * 256 );
-                        value2 = ( short ) ( color.G * 256 );
-                        value3 = ( short ) ( color.B * 256 );
+                        value1 = (short)(color.R * 256);
+                        value2 = (short)(color.G * 256);
+                        value3 = (short)(color.B * 256);
                         value4 = 0;
                         break;
                     case AdobePhotoshopColorSwatchColorSpace.Hsb:
-                        value1 = ( short ) ( color.GetHue() * 182.04 );
-                        value2 = ( short ) ( color.GetSaturation() * 655.35 );
-                        value3 = ( short ) ( color.GetBrightness() * 655.35 );
+                        value1 = (short)(color.GetHue() * 182.04);
+                        value2 = (short)(color.GetSaturation() * 655.35);
+                        value3 = (short)(color.GetBrightness() * 655.35);
                         value4 = 0;
                         break;
                     case AdobePhotoshopColorSwatchColorSpace.Grayscale:
-                        if ( color.R == color.G && color.R == color.B )
+                        if (color.R == color.G && color.R == color.B)
                         {
                             // already grayscale
-                            value1 = ( short ) ( color.R * 39.0625 );
+                            value1 = (short)(color.R * 39.0625);
                         }
                         else
                         {
                             // color is not grayscale, convert
-                            value1 = ( short ) ( ( color.R + color.G + color.B ) / 3.0 * 39.0625 );
+                            value1 = (short)((color.R + color.G + color.B) / 3.0 * 39.0625);
                         }
                         value2 = 0;
                         value3 = 0;
                         value4 = 0;
                         break;
                     default:
-                        throw new InvalidOperationException( "Color space not supported." );
+                        throw new InvalidOperationException("Color space not supported.");
                 }
 
-                this.WriteInt16( stream, ( short ) colorSpace );
-                this.WriteInt16( stream, value1 );
-                this.WriteInt16( stream, value2 );
-                this.WriteInt16( stream, value3 );
-                this.WriteInt16( stream, value4 );
+                this.WriteInt16(stream, (short)colorSpace);
+                this.WriteInt16(stream, value1);
+                this.WriteInt16(stream, value2);
+                this.WriteInt16(stream, value3);
+                this.WriteInt16(stream, value4);
 
-                if ( version == AdobePhotoshopColorSwatchFileVersion.Version2 )
+                if (version == AdobePhotoshopColorSwatchFileVersion.Version2)
                 {
                     string name;
 
@@ -329,11 +329,11 @@ namespace Cyotek.Windows.Forms
             name = string.Format("Swatch {0}", swatchIndex);
           }
 #else
-                    name = color.IsNamedColor ? color.Name : string.Format( "Swatch {0}", swatchIndex );
+                    name = color.IsNamedColor ? color.Name : string.Format("Swatch {0}", swatchIndex);
 #endif
 
-                    this.WriteInt32( stream, name.Length );
-                    this.WriteString( stream, name );
+                    this.WriteInt32(stream, name.Length);
+                    this.WriteString(stream, name);
                 }
             }
         }

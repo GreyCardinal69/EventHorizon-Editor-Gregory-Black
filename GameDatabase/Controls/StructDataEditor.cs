@@ -11,7 +11,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using static EditorDatabase.Property;
-using static GameDatabase.Reusables;
 using AdvancedButton = GameDatabase.Controls.AdvancedButton;
 
 namespace GameDatabase
@@ -20,24 +19,24 @@ namespace GameDatabase
     {
         public static void SetDoubleBuffered(this Control control, bool enable)
         {
-            var doubleBufferPropertyInfo = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            PropertyInfo doubleBufferPropertyInfo = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             doubleBufferPropertyInfo?.SetValue(control, enable, null);
         }
     }
     public partial class StructDataEditor : UserControl
     {
-        private SolidBrush _comboItemSelectedBrush = new SolidBrush(Color.FromArgb(60, 60, 60));
-        private SolidBrush _comboItemDefaultBrush = new SolidBrush(MainWindow.BackgroundColor);
-        private SolidBrush _comboItemTextBrush = new SolidBrush(MainWindow.FontColor);
+        private readonly SolidBrush _comboItemSelectedBrush = new SolidBrush(Color.FromArgb(60, 60, 60));
+        private readonly SolidBrush _comboItemDefaultBrush = new SolidBrush(MainWindow.BackgroundColor);
+        private readonly SolidBrush _comboItemTextBrush = new SolidBrush(MainWindow.FontColor);
 
-        [Description( "Data" ), Category( "Data" )]
+        [Description("Data"), Category("Data")]
         public IDataAdapter Data
         {
             get { return _data; }
             set
             {
                 _data = value;
-                if ( _data == null )
+                if (_data == null)
                 {
                     Cleanup();
                     return;
@@ -49,28 +48,28 @@ namespace GameDatabase
             }
         }
 
-        [Description( "Database" ), Category( "Data" )]
+        [Description("Database"), Category("Data")]
         public Database Database
         {
             get { return _database; }
             set { _database = value; }
         }
 
-        [Description( "ContentAutoScroll" ), Category( "Layout" )]
+        [Description("ContentAutoScroll"), Category("Layout")]
         public bool ContentAutoScroll
         {
             get { return tableLayoutPanel.AutoScroll; }
             set { tableLayoutPanel.AutoScroll = value; }
         }
 
-        [Description( "Exclusions" ), Category( "Data" )]
+        [Description("Exclusions"), Category("Data")]
         public List<string> Exclusions
         {
             get { return _exclusions.ToList(); }
-            set { _exclusions = value is null ? new HashSet<string>() : new HashSet<string>( value ); }
+            set { _exclusions = value is null ? new HashSet<string>() : new HashSet<string>(value); }
         }
 
-        [Description( "CellBorderStyle" ), Category( "Layout" )]
+        [Description("CellBorderStyle"), Category("Layout")]
         public TableLayoutPanelCellBorderStyle CellBorderStyle
         {
             get { return tableLayoutPanel.CellBorderStyle; }
@@ -97,7 +96,7 @@ namespace GameDatabase
         {
             const int defaultRowHeight = 28;
 
-            var type = item.Type;
+            Type type = item.Type;
             if (type.IsArray ||
                 typeof(IDataAdapter).IsAssignableFrom(type) ||
                 type == typeof(Layout) ||
@@ -113,36 +112,36 @@ namespace GameDatabase
         {
             Cleanup();
 
-            if ( _data == null )
+            if (_data == null)
                 return;
 
             tableLayoutPanel.SuspendLayout();
-            var fields = _data.Properties.ToArray();
+            IProperty[] fields = _data.Properties.ToArray();
 
             tableLayoutPanel.RowCount = fields.Length + 1;
-             
 
-            _ignoreEvents = true; 
-            var rowId = 0;
-            foreach ( var item in fields )
+
+            _ignoreEvents = true;
+            int rowId = 0;
+            foreach (IProperty item in fields)
             {
                 tableLayoutPanel.RowStyles.Add(GetRowStyleForProperty(item));
-                var name = item.Name;
+                string name = item.Name;
 
-                if ( _exclusions.Contains( name ) )
+                if (_exclusions.Contains(name))
                     continue;
 
-                CreateLabel( name, 0, rowId );
+                CreateLabel(name, 0, rowId);
 
-                var value = item.Value;
-                var control = item.IsReadOnly ? null : CreateControl( value, item.Type, rowId );
-                if ( control != null )
-                    _binding.Add( control, item );
+                object value = item.Value;
+                Control control = item.IsReadOnly ? null : CreateControl(value, item.Type, rowId);
+                if (control != null)
+                    _binding.Add(control, item);
                 else
-                    control = CreateLabel( value?.ToString() ?? "[empty]", 1, rowId );
+                    control = CreateLabel(value?.ToString() ?? "[empty]", 1, rowId);
 
-                if ( !string.IsNullOrEmpty( item.Tooltip ) )
-                    toolTip.SetToolTip( control, item.Tooltip );
+                if (!string.IsNullOrEmpty(item.Tooltip))
+                    toolTip.SetToolTip(control, item.Tooltip);
 
                 rowId++;
             }
@@ -153,22 +152,22 @@ namespace GameDatabase
 
         public void UpdateControls()
         {
-            foreach (var bind in _binding)
+            foreach (KeyValuePair<object, IProperty> bind in _binding)
             {
-                var control = bind.Key;
-                var value = bind.Value;
+                object control = bind.Key;
+                IProperty value = bind.Value;
                 if (bind.Value.Type.IsEnum)
                 {
                     ((ComboBox)control).SelectedItem = value.Value;
                 }
                 else if (value.Type == typeof(NumericValue<int>))
                 {
-                    var numVal = (NumericUpDown)control;
+                    NumericUpDown numVal = (NumericUpDown)control;
                     numVal.Value = ((NumericValue<int>)value.Value).Value;
                 }
                 else if (value.Type == typeof(NumericValue<float>))
                 {
-                    var numVal = (NumericUpDown)control;
+                    NumericUpDown numVal = (NumericUpDown)control;
                     numVal.Value = (decimal)((NumericValue<float>)value.Value).Value;
                 }
                 else if (value.Type == typeof(string))
@@ -179,34 +178,34 @@ namespace GameDatabase
                 {
                     ((TextBox)control).Text = (string)value.Value;
                 }
-                else if ( value.Type == typeof( bool ) )
+                else if (value.Type == typeof(bool))
                 {
-                    ( ( CheckBox ) control ).Checked = ( bool ) value.Value;
+                    ((CheckBox)control).Checked = (bool)value.Value;
                 }
-                else if ( value.Type.IsArray )
+                else if (value.Type.IsArray)
                 {
-                    ( ( CollectionEditor ) control ).UpdateControls();
+                    ((CollectionEditor)control).UpdateControls();
                 }
-                else if ( value.Type == typeof( Vector2 ) )
+                else if (value.Type == typeof(Vector2))
                 {
-                    ( ( VectorEditor ) control ).Value = ( Vector2 ) value.Value;
+                    ((VectorEditor)control).Value = (Vector2)value.Value;
                 }
-                else if ( typeof( IItemId ).IsAssignableFrom( value.Type ) )
+                else if (typeof(IItemId).IsAssignableFrom(value.Type))
                 {
-                    ( ( ComboBox ) value ).SelectedValue = value.Value;
+                    ((ComboBox)value).SelectedValue = value.Value;
                 }
-                else if ( typeof( IDataAdapter ).IsAssignableFrom( value.Type ) )
+                else if (typeof(IDataAdapter).IsAssignableFrom(value.Type))
                 {
-                    ( ( StructDataEditor ) control ).UpdateControls();
+                    ((StructDataEditor)control).UpdateControls();
                 }
-                else if ( value.Type.IsClass )
+                else if (value.Type.IsClass)
                 {
-                    ( ( StructDataEditor ) control ).UpdateControls();
+                    ((StructDataEditor)control).UpdateControls();
                 }
             }
         }
 
-        private Control CreateContainerControl( IObjectWrapper wrapper, int column, int row )
+        private Control CreateContainerControl(IObjectWrapper wrapper, int column, int row)
         {
             ContainerEditor container = new ContainerEditor()
             {
@@ -217,81 +216,81 @@ namespace GameDatabase
             };
 
             container.Data = wrapper;
-            tableLayoutPanel.Controls.Add( container, column, row );
+            tableLayoutPanel.Controls.Add(container, column, row);
             return container;
         }
 
-        private Control CreateControl( object value, Type type, int rowId )
+        private Control CreateControl(object value, Type type, int rowId)
         {
-            if ( type.IsEnum )
+            if (type.IsEnum)
             {
-                var items = Enum.GetValues( type ).OfType<object>();
-                return CreateComboBox( items, value, 1, rowId );
+                IEnumerable<object> items = Enum.GetValues(type).OfType<object>();
+                return CreateComboBox(items, value, 1, rowId);
             }
 
-            if ( type == typeof( NumericValue<int> ) )
+            if (type == typeof(NumericValue<int>))
             {
-                var numeric = ( NumericValue<int> ) value;
-                return CreateNumericContol( numeric.Value, numeric.Min, numeric.Max, 1, 0, 1, rowId );
+                NumericValue<int> numeric = (NumericValue<int>)value;
+                return CreateNumericContol(numeric.Value, numeric.Min, numeric.Max, 1, 0, 1, rowId);
             }
 
-            if ( type == typeof( NumericValue<float> ) )
+            if (type == typeof(NumericValue<float>))
             {
-                var numeric = ( NumericValue<float> ) value;
-                return CreateNumericContol( ( decimal ) numeric.Value, FloatToDecimal( numeric.Min ), FloatToDecimal( numeric.Max ), ( decimal ) 0.1f, 5, 1, rowId );
+                NumericValue<float> numeric = (NumericValue<float>)value;
+                return CreateNumericContol((decimal)numeric.Value, FloatToDecimal(numeric.Min), FloatToDecimal(numeric.Max), (decimal)0.1f, 5, 1, rowId);
             }
 
-            if ( typeof( IObjectWrapper ).IsAssignableFrom( type ) )
-                return CreateContainerControl( ( IObjectWrapper ) value, 1, rowId );
+            if (typeof(IObjectWrapper).IsAssignableFrom(type))
+                return CreateContainerControl((IObjectWrapper)value, 1, rowId);
 
-            if ( type == typeof( string ) )
-                return CreateTextBox( ( string ) value, 1, rowId );
+            if (type == typeof(string))
+                return CreateTextBox((string)value, 1, rowId);
 
-            if ( type == typeof( bool ) )
-                return CreateCheckBox( ( bool ) value, 1, rowId );
+            if (type == typeof(bool))
+                return CreateCheckBox((bool)value, 1, rowId);
 
-            if ( type == typeof( Color ) )
-                return CreateColorButton( ( Color ) value, 1, rowId );
+            if (type == typeof(Color))
+                return CreateColorButton((Color)value, 1, rowId);
 
-            if ( type == typeof( Layout ) )
-                return CreateLayout( ( Layout ) value ?? new Layout( null ), 1, rowId );
+            if (type == typeof(Layout))
+                return CreateLayout((Layout)value ?? new Layout(null), 1, rowId);
 
-            if ( type.IsArray )
-                return CreateCollection( ( Array ) value ?? ( Array ) Activator.CreateInstance( type, 0 ), 1, rowId );
+            if (type.IsArray)
+                return CreateCollection((Array)value ?? (Array)Activator.CreateInstance(type, 0), 1, rowId);
 
-            if ( type == typeof( Vector2 ) )
-                return CreateVectorEditor( ( Vector2 ) value, 1, rowId );
-            if ( typeof( IItemId ).IsAssignableFrom( type ) )
-                return CreateObjectList( value, 1, rowId );
+            if (type == typeof(Vector2))
+                return CreateVectorEditor((Vector2)value, 1, rowId);
+            if (typeof(IItemId).IsAssignableFrom(type))
+                return CreateObjectList(value, 1, rowId);
 
-            if ( typeof( IDataAdapter ).IsAssignableFrom( type ) )
-                return CreateStructEditor( ( IDataAdapter ) value, 1, rowId );
+            if (typeof(IDataAdapter).IsAssignableFrom(type))
+                return CreateStructEditor((IDataAdapter)value, 1, rowId);
 
-            if ( type.IsClass )
-                return CreateStructEditor( new DataAdapter( value ), 1, rowId );
+            if (type.IsClass)
+                return CreateStructEditor(new DataAdapter(value), 1, rowId);
 
             return null;
         }
 
-        private static decimal FloatToDecimal( float value )
+        private static decimal FloatToDecimal(float value)
         {
-            if ( value >= ( float ) decimal.MaxValue ) return decimal.MaxValue;
-            if ( value <= ( float ) decimal.MinValue ) return decimal.MinValue;
-            return ( decimal ) value;
+            if (value >= (float)decimal.MaxValue) return decimal.MaxValue;
+            if (value <= (float)decimal.MinValue) return decimal.MinValue;
+            return (decimal)value;
         }
 
-        private Control CreateObjectList( object value, int column, int row )
+        private Control CreateObjectList(object value, int column, int row)
         {
-            var itemType = ( ( IItemId ) value ).ItemType;
-            var empty = Activator.CreateInstance( typeof( ItemId<> ).MakeGenericType( itemType ) );
-            var itemList = Enumerable.Repeat( empty, 1 ).Concat( _database.GetItemList( itemType ) );
+            Type itemType = ((IItemId)value).ItemType;
+            object empty = Activator.CreateInstance(typeof(ItemId<>).MakeGenericType(itemType));
+            IEnumerable<object> itemList = Enumerable.Repeat(empty, 1).Concat(_database.GetItemList(itemType));
 
-            return CreateComboBox( itemList, value, column, row );
+            return CreateComboBox(itemList, value, column, row);
         }
 
-        private Label CreateLabel( string text, int column, int row )
+        private Label CreateLabel(string text, int column, int row)
         {
-            var label = new Label()
+            Label label = new Label()
             {
                 Text = text,
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
@@ -302,11 +301,11 @@ namespace GameDatabase
                 ForeColor = MainWindow.FontColor
             };
 
-            tableLayoutPanel.Controls.Add( label, column, row );
+            tableLayoutPanel.Controls.Add(label, column, row);
             return label;
         }
 
-        private TextBox CreateTextBox( string text, int column, int row )
+        private TextBox CreateTextBox(string text, int column, int row)
         {
             AdvancedTextBox textbox = new AdvancedTextBox()
             {
@@ -321,11 +320,11 @@ namespace GameDatabase
 
             textbox.TextChanged += OnTextBoxValueChanged;
 
-            tableLayoutPanel.Controls.Add( textbox, column, row );
+            tableLayoutPanel.Controls.Add(textbox, column, row);
             return textbox;
         }
 
-        private ComboBox CreateComboBox( IEnumerable<object> items, object value, int column, int row )
+        private ComboBox CreateComboBox(IEnumerable<object> items, object value, int column, int row)
         {
             FlatCombo comboBox = new FlatCombo()
             {
@@ -342,9 +341,9 @@ namespace GameDatabase
             comboBox.BorderColor = MainWindow.Accent2;
             comboBox.ButtonColor = MainWindow.FontColor;
 
-            comboBox.DrawItem += new DrawItemEventHandler( comboBoxDb_DrawItem );
+            comboBox.DrawItem += new DrawItemEventHandler(comboBoxDb_DrawItem);
 
-            comboBox.Items.AddRange( items.ToArray() );
+            comboBox.Items.AddRange(items.ToArray());
 
             comboBox.SelectedItem = value;
 
@@ -352,53 +351,53 @@ namespace GameDatabase
             comboBox.ValueMemberChanged += OnComboBoxValueChanged;
             comboBox.MouseWheel += DisableMouseWheel;
 
-            var memberInfo = value.GetType().GetMember( value.ToString() ).FirstOrDefault();
-            if ( memberInfo != null )
+            MemberInfo memberInfo = value.GetType().GetMember(value.ToString()).FirstOrDefault();
+            if (memberInfo != null)
             {
-                var attribute = memberInfo.GetCustomAttribute<TooltipText>();
-                if ( attribute != null )
-                    toolTip.SetToolTip( comboBox, attribute.Text );
+                TooltipText attribute = memberInfo.GetCustomAttribute<TooltipText>();
+                if (attribute != null)
+                    toolTip.SetToolTip(comboBox, attribute.Text);
             }
 
-            tableLayoutPanel.Controls.Add( comboBox, column, row );
+            tableLayoutPanel.Controls.Add(comboBox, column, row);
             return comboBox;
         }
 
-        protected override bool ProcessCmdKey( ref Message msg, Keys keyData )
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if ( keyData == ( Keys.Control | Keys.S ) )
+            if (keyData == (Keys.Control | Keys.S))
             {
                 MainWindow.SaveDataBase();
-                MessageBox.Show( "The Database has been saved!" );
+                MessageBox.Show("The Database has been saved!");
                 return true;
             }
-            else if ( keyData == ( Keys.Control | Keys.F ) )
+            else if (keyData == (Keys.Control | Keys.F))
             {
-                MainWindow.MainInstance.createModMenuItem_Click( null, null );
+                MainWindow.MainInstance.createModMenuItem_Click(null, null);
             }
-            return base.ProcessCmdKey( ref msg, keyData );
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private void comboBoxDb_DrawItem( object sender, DrawItemEventArgs e )
+        private void comboBoxDb_DrawItem(object sender, DrawItemEventArgs e)
         {
-            if ( e.Index == -1 ) return;
+            if (e.Index == -1) return;
             FlatCombo combo = sender as FlatCombo;
 
-            var backgroundBrush = (e.State & DrawItemState.Selected) == DrawItemState.Selected
+            SolidBrush backgroundBrush = (e.State & DrawItemState.Selected) == DrawItemState.Selected
                 ? _comboItemSelectedBrush
                 : _comboItemDefaultBrush;
 
             e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
 
-            e.Graphics.DrawString( combo.Items[e.Index].ToString(),
+            e.Graphics.DrawString(combo.Items[e.Index].ToString(),
                                           e.Font,
                                             _comboItemTextBrush,
-                                          new Point( e.Bounds.X, e.Bounds.Y ) );
+                                          new Point(e.Bounds.X, e.Bounds.Y));
         }
 
-        private CheckBox CreateCheckBox( bool value, int column, int row )
+        private CheckBox CreateCheckBox(bool value, int column, int row)
         {
-            var check = new CheckBox()
+            CheckBox check = new CheckBox()
             {
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,
                 Dock = DockStyle.Fill,
@@ -409,11 +408,11 @@ namespace GameDatabase
 
             check.CheckedChanged += OnCheckedChanged;
 
-            tableLayoutPanel.Controls.Add( check, column, row );
+            tableLayoutPanel.Controls.Add(check, column, row);
             return check;
         }
 
-        private Button CreateColorButton( Color color, int column, int row )
+        private Button CreateColorButton(Color color, int column, int row)
         {
             AdvancedButton button = new AdvancedButton()
             {
@@ -428,13 +427,13 @@ namespace GameDatabase
 
             button.Click += OnColorButtonClicked;
 
-            tableLayoutPanel.Controls.Add( button, column, row );
+            tableLayoutPanel.Controls.Add(button, column, row);
             return button;
         }
 
-        private LayoutEditor CreateLayout( Layout layout, int column, int row )
+        private LayoutEditor CreateLayout(Layout layout, int column, int row)
         {
-            var panel = new TableLayoutPanel
+            TableLayoutPanel panel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
                 AutoSize = true,
@@ -444,13 +443,13 @@ namespace GameDatabase
                 ForeColor = MainWindow.Accent3
             };
 
-            panel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 100 ) );
-            panel.ColumnStyles.Add( new ColumnStyle( SizeType.AutoSize ) );
-            panel.RowStyles.Add( new RowStyle( SizeType.Percent, 100 ) );
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 
             panel.SuspendLayout();
 
-            var layoutEditor = new LayoutEditor
+            LayoutEditor layoutEditor = new LayoutEditor
             {
                 Dock = DockStyle.Fill,
                 Layout = layout.Data,
@@ -461,23 +460,23 @@ namespace GameDatabase
 
             layoutEditor.ValueChanged += OnLayoutChanged;
 
-            var sizeControl = CreateNumericContol( layout.Size, 1, 1000, 1, 0, 1, row );
+            NumericUpDown sizeControl = CreateNumericContol(layout.Size, 1, 1000, 1, 0, 1, row);
             sizeControl.ValueChanged += OnLayoutSizeChanged;
 
-            panel.Controls.Add( layoutEditor, 0, 0 );
-            panel.Controls.Add( sizeControl, 1, 0 );
+            panel.Controls.Add(layoutEditor, 0, 0);
+            panel.Controls.Add(sizeControl, 1, 0);
 
-            _layouts.Add( sizeControl, layoutEditor );
-            tableLayoutPanel.Controls.Add( panel, column, row );
+            _layouts.Add(sizeControl, layoutEditor);
+            tableLayoutPanel.Controls.Add(panel, column, row);
 
             panel.ResumeLayout();
 
             return layoutEditor;
         }
 
-        private Control CreateCollection( Array value, int column, int row )
+        private Control CreateCollection(Array value, int column, int row)
         {
-            var collection = new CollectionEditor
+            CollectionEditor collection = new CollectionEditor
             {
                 Dock = DockStyle.Fill,
                 AutoSize = true,
@@ -491,12 +490,12 @@ namespace GameDatabase
             collection.CollectionChanged += OnCollectionChanged;
             collection.DataChanged += DataChanged;
 
-            tableLayoutPanel.Controls.Add( collection, column, row );
+            tableLayoutPanel.Controls.Add(collection, column, row);
 
             return collection;
         }
 
-        private Control CreateStructEditor( IDataAdapter data, int column, int row )
+        private Control CreateStructEditor(IDataAdapter data, int column, int row)
         {
             StructDataEditor editor = new StructDataEditor
             {
@@ -511,11 +510,11 @@ namespace GameDatabase
             };
 
             editor.DataChanged += DataChanged;
-            tableLayoutPanel.Controls.Add( editor, column, row );
+            tableLayoutPanel.Controls.Add(editor, column, row);
             return editor;
         }
 
-        private VectorEditor CreateVectorEditor( Vector2 value, int column, int row )
+        private VectorEditor CreateVectorEditor(Vector2 value, int column, int row)
         {
             VectorEditor vector = new VectorEditor()
             {
@@ -530,13 +529,13 @@ namespace GameDatabase
 
 
 
-            tableLayoutPanel.Controls.Add( vector, column, row );
+            tableLayoutPanel.Controls.Add(vector, column, row);
             vector.ValueChanged += OnVectorValueChanged;
 
             return vector;
         }
 
-        private NumericUpDown CreateNumericContol( decimal value, decimal min, decimal max, decimal increment, int decimalPlaces, int column, int row )
+        private NumericUpDown CreateNumericContol(decimal value, decimal min, decimal max, decimal increment, int decimalPlaces, int column, int row)
         {
             AdvancedNumericUpDown numeric = new AdvancedNumericUpDown()
             {
@@ -557,49 +556,49 @@ namespace GameDatabase
             numeric.ValueChanged += OnNumericValueChanged;
             numeric.MouseWheel += DisableMouseWheel;
 
-            tableLayoutPanel.Controls.Add( numeric, column, row );
+            tableLayoutPanel.Controls.Add(numeric, column, row);
             return numeric;
         }
 
-        private void OnColorButtonClicked( object sender, EventArgs eventArgs )
+        private void OnColorButtonClicked(object sender, EventArgs eventArgs)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
-            AdvancedButton button = ( AdvancedButton ) sender;
+            AdvancedButton button = (AdvancedButton)sender;
 
-            var colorDialog = new ColorPickerDialog();
+            ColorPickerDialog colorDialog = new ColorPickerDialog();
 
             colorDialog.BackColor = MainWindow.BackgroundColor;
             colorDialog.ForeColor = MainWindow.FontColor;
             colorDialog.Color = button.BackColor;
 
-            var c = ( Button ) colorDialog.CancelButton;
+            Button c = (Button)colorDialog.CancelButton;
 
             c.BackColor = MainWindow.BackgroundColor;
             c.ForeColor = MainWindow.FontColor;
 
-            var o = ( Button ) colorDialog.AcceptButton;
+            Button o = (Button)colorDialog.AcceptButton;
 
             o.BackColor = MainWindow.BackgroundColor;
             o.ForeColor = MainWindow.FontColor;
 
-            if ( colorDialog.ShowDialog() == DialogResult.OK )
+            if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 button.BackColor = colorDialog.Color;
                 _binding[sender].Value = colorDialog.Color;
             }
         }
 
-        private void OnLayoutSizeChanged( object sender, EventArgs eventArgs )
+        private void OnLayoutSizeChanged(object sender, EventArgs eventArgs)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
             LayoutEditor layoutEditor;
-            if ( !_layouts.TryGetValue( sender, out layoutEditor ) )
+            if (!_layouts.TryGetValue(sender, out layoutEditor))
                 return;
 
-            var layout = new Layout( layoutEditor.Layout );
-            layout.Size = ( int ) ( ( NumericUpDown ) sender ).Value;
+            Layout layout = new Layout(layoutEditor.Layout);
+            layout.Size = (int)((NumericUpDown)sender).Value;
 
             layoutEditor.Layout = layout.Data;
             layoutEditor.Height = layout.Size * 24;
@@ -607,96 +606,96 @@ namespace GameDatabase
             layoutEditor.BackColor = MainWindow.BackgroundColor;
             layoutEditor.ForeColor = MainWindow.FontColor;
 
-            OnLayoutChanged( layoutEditor, EventArgs.Empty );
+            OnLayoutChanged(layoutEditor, EventArgs.Empty);
         }
 
-        private void OnLayoutChanged( object sender, EventArgs args )
+        private void OnLayoutChanged(object sender, EventArgs args)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
-            _binding[sender].Value = new Layout( ( ( LayoutEditor ) sender ).Layout );
+            _binding[sender].Value = new Layout(((LayoutEditor)sender).Layout);
         }
 
-        private void OnComboBoxValueChanged( object sender, EventArgs args )
+        private void OnComboBoxValueChanged(object sender, EventArgs args)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
-            _binding[sender].Value = ( ( ComboBox ) sender ).SelectedItem;
+            _binding[sender].Value = ((ComboBox)sender).SelectedItem;
 
-            if ( !_binding.ContainsKey( sender ) ) return;
+            if (!_binding.ContainsKey(sender)) return;
 
             object value = _binding[sender].Value;
             Type type = value.GetType();
 
-            if ( type.IsEnum )
+            if (type.IsEnum)
             {
                 string enumValueString = value.ToString();
-                object tip = EnumExtensions.ParseToEnumNonGeneric( enumValueString, type );
+                object tip = EnumExtensions.ParseToEnumNonGeneric(enumValueString, type);
 
-                toolTip.SetToolTip( ( ( FlatCombo ) sender ), EnumExtensions.GetTooltipText( ( Enum ) tip ) );
+                toolTip.SetToolTip((FlatCombo)sender, EnumExtensions.GetTooltipText((Enum)tip));
             }
         }
 
-        private void OnTextBoxValueChanged( object sender, EventArgs args )
+        private void OnTextBoxValueChanged(object sender, EventArgs args)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
-            var newValue = ( ( TextBox ) sender ).Text;
-            _binding[sender].Value = string.IsNullOrWhiteSpace( newValue ) ? null : newValue;
+            string newValue = ((TextBox)sender).Text;
+            _binding[sender].Value = string.IsNullOrWhiteSpace(newValue) ? null : newValue;
         }
 
-        private void OnNumericValueChanged( object sender, EventArgs args )
+        private void OnNumericValueChanged(object sender, EventArgs args)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
             IProperty property;
-            if ( !_binding.TryGetValue( sender, out property ) )
+            if (!_binding.TryGetValue(sender, out property))
                 return;
 
-            var value = ( ( NumericUpDown ) sender ).Value;
-            var oldValue = property.Value;
-            property.Value = ConvertDecimal( value, oldValue );
+            decimal value = ((NumericUpDown)sender).Value;
+            object oldValue = property.Value;
+            property.Value = ConvertDecimal(value, oldValue);
         }
 
-        private void OnVectorValueChanged( object sender, EventArgs args )
+        private void OnVectorValueChanged(object sender, EventArgs args)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
             IProperty property;
-            if ( !_binding.TryGetValue( sender, out property ) )
+            if (!_binding.TryGetValue(sender, out property))
                 return;
 
-            var value = ( ( VectorEditor ) sender ).Value;
+            Vector2 value = ((VectorEditor)sender).Value;
             property.Value = value;
         }
 
-        private void OnCheckedChanged( object sender, EventArgs args )
+        private void OnCheckedChanged(object sender, EventArgs args)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
-            _binding[sender].Value = ( ( CheckBox ) sender ).Checked;
+            _binding[sender].Value = ((CheckBox)sender).Checked;
         }
 
-        private void OnCollectionChanged( object sender, EventArgs args )
+        private void OnCollectionChanged(object sender, EventArgs args)
         {
-            if ( _ignoreEvents ) return;
+            if (_ignoreEvents) return;
 
-            _binding[sender].Value = ( ( CollectionEditor ) sender ).Data;
+            _binding[sender].Value = ((CollectionEditor)sender).Data;
         }
 
-        private static object ConvertDecimal( decimal value, object oldValue )
+        private static object ConvertDecimal(decimal value, object oldValue)
         {
-            if ( oldValue is NumericValue<int> )
+            if (oldValue is NumericValue<int>)
             {
-                var numeric = ( NumericValue<int> ) oldValue;
-                numeric.Value = ( int ) value;
+                NumericValue<int> numeric = (NumericValue<int>)oldValue;
+                numeric.Value = (int)value;
                 return numeric;
             }
 
-            if ( oldValue is NumericValue<float> )
+            if (oldValue is NumericValue<float>)
             {
-                var numeric = ( NumericValue<float> ) oldValue;
-                numeric.Value = ( float ) value;
+                NumericValue<float> numeric = (NumericValue<float>)oldValue;
+                numeric.Value = (float)value;
                 return numeric;
             }
 
@@ -705,12 +704,12 @@ namespace GameDatabase
 
         private void OnDataChanged()
         {
-            DataChanged?.Invoke( this, EventArgs.Empty );
+            DataChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        private static void DisableMouseWheel( object sender, EventArgs args )
+        private static void DisableMouseWheel(object sender, EventArgs args)
         {
-            ( ( HandledMouseEventArgs ) args ).Handled = true;
+            ((HandledMouseEventArgs)args).Handled = true;
         }
 
         private bool _ignoreEvents;
@@ -720,16 +719,16 @@ namespace GameDatabase
         private readonly Dictionary<object, IProperty> _binding = new Dictionary<object, IProperty>();
         private readonly Dictionary<object, LayoutEditor> _layouts = new Dictionary<object, LayoutEditor>();
 
-        SolidBrush blackBrush = new SolidBrush( MainWindow.BackgroundColor );
+        readonly SolidBrush blackBrush = new SolidBrush(MainWindow.BackgroundColor);
 
-        private void tableLayoutPanel_Paint( object sender, PaintEventArgs e )
+        private void tableLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillRectangle( blackBrush, e.Graphics.ClipBounds );
+            e.Graphics.FillRectangle(blackBrush, e.Graphics.ClipBounds);
         }
 
-        private void tableLayoutPanel_CellPaint( object sender, TableLayoutCellPaintEventArgs e )
+        private void tableLayoutPanel_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
-            e.Graphics.FillRectangle( blackBrush, e.Graphics.ClipBounds );
+            e.Graphics.FillRectangle(blackBrush, e.Graphics.ClipBounds);
         }
     }
 }

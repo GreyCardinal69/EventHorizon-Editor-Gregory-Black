@@ -14,13 +14,13 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class StatUpgradeTemplateSerializable : SerializableItem
     {
-        [DefaultValue( 20 )]
+        [DefaultValue(20)]
         public int MaxLevel = 20;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Stars;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Credits;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Resources;
     }
 }

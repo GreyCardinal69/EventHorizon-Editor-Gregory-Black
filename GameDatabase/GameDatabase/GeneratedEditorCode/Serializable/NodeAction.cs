@@ -16,7 +16,7 @@ namespace EditorDatabase.Serializable
     {
         public int TargetNode;
         public RequirementSerializable Requirement;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ButtonText;
     }
 }

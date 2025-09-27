@@ -22,7 +22,7 @@ namespace Cyotek.Windows.Forms
         {
             get
             {
-                return new ColorCollection( new[]
+                return new ColorCollection(new[]
                                            {
                                      Color.FromArgb(0, 48, 96),
                                      Color.FromArgb(47, 96, 144),
@@ -159,7 +159,7 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(192, 192, 192),
                                      Color.FromArgb(127, 127, 127),
                                      Color.FromArgb(48, 48, 48)
-                                   } );
+                                   });
             }
         }
 
@@ -171,20 +171,20 @@ namespace Cyotek.Windows.Forms
 
                 results = new List<Color>();
 
-                foreach ( PropertyInfo property in typeof( Color ).GetProperties( BindingFlags.Public | BindingFlags.Static ).Where( property => property.PropertyType == typeof( Color ) ) )
+                foreach (PropertyInfo property in typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static).Where(property => property.PropertyType == typeof(Color)))
                 {
                     Color color;
 
-                    color = ( Color ) property.GetValue( typeof( Color ), null );
-                    if ( !color.IsEmpty )
+                    color = (Color)property.GetValue(typeof(Color), null);
+                    if (!color.IsEmpty)
                     {
-                        results.Add( color );
+                        results.Add(color);
                     }
                 }
 
-                results.Sort( ColorComparer.Brightness );
+                results.Sort(ColorComparer.Brightness);
 
-                return new ColorCollection( results );
+                return new ColorCollection(results);
             }
         }
 
@@ -192,7 +192,7 @@ namespace Cyotek.Windows.Forms
         {
             get
             {
-                return ScaledPalette( new[]
+                return ScaledPalette(new[]
                                      {
                                Color.FromArgb(255, 255, 255),
                                Color.FromArgb(0, 0, 0),
@@ -204,7 +204,7 @@ namespace Cyotek.Windows.Forms
                                Color.FromArgb(128, 100, 162),
                                Color.FromArgb(75, 172, 198),
                                Color.FromArgb(247, 150, 70)
-                             } );
+                             });
             }
         }
 
@@ -212,7 +212,7 @@ namespace Cyotek.Windows.Forms
         {
             get
             {
-                return new ColorCollection( new[]
+                return new ColorCollection(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(64, 64, 64),
@@ -310,7 +310,7 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(128, 87, 0, 127),
                                      Color.FromArgb(128, 127, 0, 110),
                                      Color.FromArgb(128, 127, 0, 55)
-                                   } );
+                                   });
             }
         }
 
@@ -318,7 +318,7 @@ namespace Cyotek.Windows.Forms
         {
             get
             {
-                return new ColorCollection( new[]
+                return new ColorCollection(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(128, 0, 0),
@@ -336,7 +336,7 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(255, 0, 255),
                                      Color.FromArgb(0, 255, 255),
                                      Color.FromArgb(255, 255, 255)
-                                   } );
+                                   });
             }
         }
 
@@ -344,7 +344,7 @@ namespace Cyotek.Windows.Forms
         {
             get
             {
-                return new ColorCollection( new[]
+                return new ColorCollection(new[]
                                            {
                                      Color.FromArgb(0, 0, 0),
                                      Color.FromArgb(128, 0, 0),
@@ -602,7 +602,7 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(245, 177, 255),
                                      Color.FromArgb(248, 205, 254),
                                      Color.FromArgb(252, 233, 255)
-                                   } );
+                                   });
             }
         }
 
@@ -610,7 +610,7 @@ namespace Cyotek.Windows.Forms
         {
             get
             {
-                return new ColorCollection( new[]
+                return new ColorCollection(new[]
                                            {
                                      Color.FromArgb(255, 0, 255),
                                      Color.FromArgb(255, 51, 255),
@@ -828,7 +828,7 @@ namespace Cyotek.Windows.Forms
                                      Color.FromArgb(102, 102, 102),
                                      Color.FromArgb(51, 51, 51),
                                      Color.FromArgb(0, 0, 0)
-                                   } );
+                                   });
             }
         }
 
@@ -836,11 +836,11 @@ namespace Cyotek.Windows.Forms
 
         #region Static Methods
 
-        public static ColorCollection GetPalette( ColorPalette palette )
+        public static ColorCollection GetPalette(ColorPalette palette)
         {
             ColorCollection result;
 
-            switch ( palette )
+            switch (palette)
             {
                 case ColorPalette.Named:
                     result = NamedColors;
@@ -864,31 +864,31 @@ namespace Cyotek.Windows.Forms
                     result = StandardPalette;
                     break;
                 default:
-                    throw new ArgumentException( "Invalid palette", nameof( palette ) );
+                    throw new ArgumentException("Invalid palette", nameof(palette));
             }
 
             return result;
         }
 
-        public static ColorCollection ScaledPalette( IEnumerable<Color> topRow )
+        public static ColorCollection ScaledPalette(IEnumerable<Color> topRow)
         {
             ColorCollection results;
 
             results = new ColorCollection();
 
             topRow = topRow.ToArray();
-            results.AddRange( topRow );
+            results.AddRange(topRow);
 
-            for ( int i = 5; i >= 0; i-- )
+            for (int i = 5; i >= 0; i--)
             {
-                foreach ( Color color in topRow )
+                foreach (Color color in topRow)
                 {
                     HslColor hsl;
 
-                    hsl = new HslColor( color );
-                    hsl.L = ( 5 + i + 16 * i ) / 100D;
+                    hsl = new HslColor(color);
+                    hsl.L = (5 + i + (16 * i)) / 100D;
 
-                    results.Add( hsl.ToRgbColor() );
+                    results.Add(hsl.ToRgbColor());
                 }
             }
 

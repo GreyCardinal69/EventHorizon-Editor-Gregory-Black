@@ -18,18 +18,18 @@ namespace EditorDatabase.DataModel
 
     public interface ITechnologyContent
     {
-        void Load( TechnologySerializable serializable, Database database );
-        void Save( ref TechnologySerializable serializable );
+        void Load(TechnologySerializable serializable, Database database);
+        void Save(ref TechnologySerializable serializable);
     }
 
     public partial class Technology : IDataAdapter
     {
-        partial void OnDataDeserialized( TechnologySerializable serializable, Database database );
-        partial void OnDataSerialized( ref TechnologySerializable serializable );
+        partial void OnDataDeserialized(TechnologySerializable serializable, Database database);
+        partial void OnDataSerialized(ref TechnologySerializable serializable);
 
-        public static ITechnologyContent CreateContent( TechType type )
+        public static ITechnologyContent CreateContent(TechType type)
         {
-            switch ( type )
+            switch (type)
             {
                 case TechType.Component:
                     return new Technology_Component();
@@ -38,14 +38,14 @@ namespace EditorDatabase.DataModel
                 case TechType.Satellite:
                     return new Technology_Satellite();
                 default:
-                    throw new DatabaseException( "Technology: Invalid content type - " + type );
+                    throw new DatabaseException("Technology: Invalid content type - " + type);
             }
         }
 
-        public static Technology Create( TechnologySerializable serializable, Database database )
+        public static Technology Create(TechnologySerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new Technology( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new Technology(serializable, database);
         }
 
         public Technology()
@@ -53,37 +53,37 @@ namespace EditorDatabase.DataModel
             _content = new TechnologyEmptyContent();
         }
 
-        public Technology( TechnologySerializable serializable, Database database )
+        public Technology(TechnologySerializable serializable, Database database)
         {
-            Id = new ItemId<Technology>( serializable );
+            Id = new ItemId<Technology>(serializable);
 
             Type = serializable.Type;
-            Price = new NumericValue<int>( serializable.Price, 0, 10000 );
+            Price = new NumericValue<int>(serializable.Price, 0, 10000);
             Hidden = serializable.Hidden;
             Special = serializable.Special;
-            Dependencies = serializable.Dependencies?.Select( id => new Wrapper<Technology> { Item = database.GetTechnologyId( id ) } ).ToArray();
-            _content = CreateContent( serializable.Type );
-            _content.Load( serializable, database );
-            this.CustomCraftingLevel = new NumericValue<int>( serializable.CustomCraftingLevel, 0, int.MaxValue );
-            OnDataDeserialized( serializable, database );
+            Dependencies = serializable.Dependencies?.Select(id => new Wrapper<Technology> { Item = database.GetTechnologyId(id) }).ToArray();
+            _content = CreateContent(serializable.Type);
+            _content.Load(serializable, database);
+            this.CustomCraftingLevel = new NumericValue<int>(serializable.CustomCraftingLevel, 0, int.MaxValue);
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( TechnologySerializable serializable )
+        public void Save(TechnologySerializable serializable)
         {
             serializable.DoesnPreventUnlocking = false;
             serializable.ItemId = 0;
             serializable.Faction = 0;
-            _content.Save( ref serializable );
+            _content.Save(ref serializable);
             serializable.Type = Type;
             serializable.Price = Price.Value;
             serializable.Hidden = Hidden;
             serializable.Special = Special;
             serializable.CustomCraftingLevel = this.CustomCraftingLevel.Value;
-            if ( Dependencies == null || Dependencies.Length == 0 )
+            if (Dependencies == null || Dependencies.Length == 0)
                 serializable.Dependencies = null;
             else
-                serializable.Dependencies = Dependencies.Select( wrapper => wrapper.Item.Value ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.Dependencies = Dependencies.Select(wrapper => wrapper.Item.Value).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public event System.Action LayoutChangedEvent;
@@ -93,22 +93,22 @@ namespace EditorDatabase.DataModel
         {
             get
             {
-                var type = GetType();
+                System.Type type = GetType();
 
-                yield return new Property( this, type.GetField( "Type" ), OnTypeChanged );
-                yield return new Property( this, type.GetField( "Price" ), DataChangedEvent );
-                yield return new Property( this, type.GetField( "Hidden" ), DataChangedEvent );
-                yield return new Property( this, type.GetField( "Special" ), DataChangedEvent );
-                yield return new Property( this, type.GetField( "Dependencies" ), DataChangedEvent );
-                yield return new Property( this, type.GetField( "CustomCraftingLevel" ), this.DataChangedEvent );
-                foreach ( var item in _content.GetType().GetFields().Where( f => f.IsPublic && !f.IsStatic ) )
-                    yield return new Property( _content, item, DataChangedEvent );
+                yield return new Property(this, type.GetField("Type"), OnTypeChanged);
+                yield return new Property(this, type.GetField("Price"), DataChangedEvent);
+                yield return new Property(this, type.GetField("Hidden"), DataChangedEvent);
+                yield return new Property(this, type.GetField("Special"), DataChangedEvent);
+                yield return new Property(this, type.GetField("Dependencies"), DataChangedEvent);
+                yield return new Property(this, type.GetField("CustomCraftingLevel"), this.DataChangedEvent);
+                foreach (System.Reflection.FieldInfo item in _content.GetType().GetFields().Where(f => f.IsPublic && !f.IsStatic))
+                    yield return new Property(_content, item, DataChangedEvent);
             }
         }
 
         public void OnTypeChanged()
         {
-            _content = CreateContent( Type );
+            _content = CreateContent(Type);
             DataChangedEvent?.Invoke();
             LayoutChangedEvent?.Invoke();
         }
@@ -117,11 +117,11 @@ namespace EditorDatabase.DataModel
 
         public ITechnologyContent _content;
         public TechType Type;
-        public NumericValue<int> Price = new NumericValue<int>( 0, 0, 10000 );
+        public NumericValue<int> Price = new NumericValue<int>(0, 0, 10000);
         public bool Hidden;
         public bool Special;
         public Wrapper<Technology>[] Dependencies;
-        public NumericValue<int> CustomCraftingLevel = new NumericValue<int>( 0, 0, int.MaxValue );
+        public NumericValue<int> CustomCraftingLevel = new NumericValue<int>(0, 0, int.MaxValue);
         [TooltipText("If this flag is set, locked components on ships can be unlocked even if the technology has not yet been researched.")]
         public bool DoesnPreventUnlocking;
         public static Technology DefaultValue { get; set; }
@@ -129,31 +129,31 @@ namespace EditorDatabase.DataModel
 
     public class TechnologyEmptyContent : ITechnologyContent
     {
-        public void Load( TechnologySerializable serializable, Database database ) { }
-        public void Save( ref TechnologySerializable serializable ) { }
+        public void Load(TechnologySerializable serializable, Database database) { }
+        public void Save(ref TechnologySerializable serializable) { }
     }
 
     public partial class Technology_Component : ITechnologyContent
     {
-        partial void OnDataDeserialized( TechnologySerializable serializable, Database database );
-        partial void OnDataSerialized( ref TechnologySerializable serializable );
+        partial void OnDataDeserialized(TechnologySerializable serializable, Database database);
+        partial void OnDataSerialized(ref TechnologySerializable serializable);
 
-        public void Load( TechnologySerializable serializable, Database database )
+        public void Load(TechnologySerializable serializable, Database database)
         {
-            Component = database.GetComponentId( serializable.ItemId );
-            if ( Component.IsNull )
-                throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Component cannot be null" );
-            Faction = database.GetFactionId( serializable.Faction );
+            Component = database.GetComponentId(serializable.ItemId);
+            if (Component.IsNull)
+                throw new DatabaseException(this.GetType().Name + " (" + serializable.Id + "): Component cannot be null");
+            Faction = database.GetFactionId(serializable.Faction);
             this.DoesnPreventUnlocking = serializable.DoesnPreventUnlocking;
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref TechnologySerializable serializable )
+        public void Save(ref TechnologySerializable serializable)
         {
             serializable.DoesnPreventUnlocking = this.DoesnPreventUnlocking;
             serializable.ItemId = Component.Value;
             serializable.Faction = Faction.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
         [TooltipText("If this flag is set, locked components on ships can be unlocked even if the technology has not yet been researched.")]
         public bool DoesnPreventUnlocking;
@@ -163,22 +163,22 @@ namespace EditorDatabase.DataModel
 
     public partial class Technology_Ship : ITechnologyContent
     {
-        partial void OnDataDeserialized( TechnologySerializable serializable, Database database );
-        partial void OnDataSerialized( ref TechnologySerializable serializable );
+        partial void OnDataDeserialized(TechnologySerializable serializable, Database database);
+        partial void OnDataSerialized(ref TechnologySerializable serializable);
 
-        public void Load( TechnologySerializable serializable, Database database )
+        public void Load(TechnologySerializable serializable, Database database)
         {
-            Ship = database.GetShipId( serializable.ItemId );
-            if ( Ship.IsNull )
-                throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Ship cannot be null" );
+            Ship = database.GetShipId(serializable.ItemId);
+            if (Ship.IsNull)
+                throw new DatabaseException(this.GetType().Name + " (" + serializable.Id + "): Ship cannot be null");
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref TechnologySerializable serializable )
+        public void Save(ref TechnologySerializable serializable)
         {
             serializable.ItemId = Ship.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public ItemId<Ship> Ship = ItemId<Ship>.Empty;
@@ -186,24 +186,24 @@ namespace EditorDatabase.DataModel
 
     public partial class Technology_Satellite : ITechnologyContent
     {
-        partial void OnDataDeserialized( TechnologySerializable serializable, Database database );
-        partial void OnDataSerialized( ref TechnologySerializable serializable );
+        partial void OnDataDeserialized(TechnologySerializable serializable, Database database);
+        partial void OnDataSerialized(ref TechnologySerializable serializable);
 
-        public void Load( TechnologySerializable serializable, Database database )
+        public void Load(TechnologySerializable serializable, Database database)
         {
-            Satellite = database.GetSatelliteId( serializable.ItemId );
-            if ( Satellite.IsNull )
-                throw new DatabaseException( this.GetType().Name + " (" + serializable.Id + "): Satellite cannot be null" );
-            Faction = database.GetFactionId( serializable.Faction );
+            Satellite = database.GetSatelliteId(serializable.ItemId);
+            if (Satellite.IsNull)
+                throw new DatabaseException(this.GetType().Name + " (" + serializable.Id + "): Satellite cannot be null");
+            Faction = database.GetFactionId(serializable.Faction);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref TechnologySerializable serializable )
+        public void Save(ref TechnologySerializable serializable)
         {
             serializable.ItemId = Satellite.Value;
             serializable.Faction = Faction.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
         [TooltipText("If this flag is set, locked components on ships can be unlocked even if the technology has not yet been researched.")]
         public bool DoesnPreventUnlocking;

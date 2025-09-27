@@ -30,14 +30,14 @@ namespace EditorDatabase.Storage
             };
         }
 
-        public T FromJson<T>( string data )
+        public T FromJson<T>(string data)
         {
-            return JsonConvert.DeserializeObject<T>( data );
+            return JsonConvert.DeserializeObject<T>(data);
         }
 
-        public string ToJson<T>( T item )
+        public string ToJson<T>(T item)
         {
-            return JsonConvert.SerializeObject( item, _settings ).Replace( "\r\n", "\n" );
+            return JsonConvert.SerializeObject(item, _settings).Replace("\r\n", "\n");
         }
 
         private JsonSerializerSettings _settings;
@@ -49,11 +49,11 @@ namespace EditorDatabase.Storage
             // http://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_Serialization_DefaultContractResolver__ctor_1.htm
             // "Use the parameterless constructor and cache instances of the contract resolver within your application for optimal performance."
 
-            protected override IList<JsonProperty> CreateProperties( Type type, MemberSerialization memberSerialization )
+            protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
             {
-                var properties = base.CreateProperties( type, memberSerialization );
-                if ( properties != null )
-                    return properties.OrderBy( p => p.DeclaringType.BaseTypesAndSelf().Count() ).ToList();
+                IList<JsonProperty> properties = base.CreateProperties(type, memberSerialization);
+                if (properties != null)
+                    return properties.OrderBy(p => p.DeclaringType.BaseTypesAndSelf().Count()).ToList();
                 return properties;
             }
         }
@@ -61,9 +61,9 @@ namespace EditorDatabase.Storage
 
     public static class TypeExtensions
     {
-        public static IEnumerable<Type> BaseTypesAndSelf( this Type type )
+        public static IEnumerable<Type> BaseTypesAndSelf(this Type type)
         {
-            while ( type != null )
+            while (type != null)
             {
                 yield return type;
                 type = type.BaseType;

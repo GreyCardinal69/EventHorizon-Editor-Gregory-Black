@@ -19,9 +19,9 @@ namespace Cyotek.Windows.Forms
     /// <summary>
     /// Represents a control for selecting a value from a scale
     /// </summary>
-    [DefaultValue( "Value" )]
-    [DefaultEvent( "ValueChanged" )]
-    [ToolboxItem( false )]
+    [DefaultValue("Value")]
+    [DefaultEvent("ValueChanged")]
+    [ToolboxItem(false)]
     public class ColorSlider : Control
     {
         #region Constants
@@ -109,15 +109,15 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         public ColorSlider()
         {
-            this.SetStyle( ControlStyles.SupportsTransparentBackColor | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.Selectable, true );
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.Selectable, true);
             this.Orientation = Orientation.Horizontal;
             this.Color1 = Color.Black;
-            this.Color2 = Color.FromArgb( 127, 127, 127 );
+            this.Color2 = Color.FromArgb(127, 127, 127);
             this.Color3 = Color.White;
             this.Minimum = 0;
             this.Maximum = 100;
             this.NubStyle = ColorSliderNubStyle.BottomRight;
-            this.NubSize = new Size( 8, 8 );
+            this.NubSize = new Size(8, 8);
             this.NubColor = Color.Black;
             this.SmallChange = 1;
             this.LargeChange = 10;
@@ -127,130 +127,130 @@ namespace Cyotek.Windows.Forms
 
         #region Events
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler BarBoundsChanged
         {
-            add { this.Events.AddHandler( _eventBarBoundsChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventBarBoundsChanged, value ); }
+            add { this.Events.AddHandler(_eventBarBoundsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventBarBoundsChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler BarPaddingChanged
         {
-            add { this.Events.AddHandler( _eventBarPaddingChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventBarPaddingChanged, value ); }
+            add { this.Events.AddHandler(_eventBarPaddingChanged, value); }
+            remove { this.Events.RemoveHandler(_eventBarPaddingChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler BarStyleChanged
         {
-            add { this.Events.AddHandler( _eventBarStyleChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventBarStyleChanged, value ); }
+            add { this.Events.AddHandler(_eventBarStyleChanged, value); }
+            remove { this.Events.RemoveHandler(_eventBarStyleChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler Color1Changed
         {
-            add { this.Events.AddHandler( _eventColor1Changed, value ); }
-            remove { this.Events.RemoveHandler( _eventColor1Changed, value ); }
+            add { this.Events.AddHandler(_eventColor1Changed, value); }
+            remove { this.Events.RemoveHandler(_eventColor1Changed, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler Color2Changed
         {
-            add { this.Events.AddHandler( _eventColor2Changed, value ); }
-            remove { this.Events.RemoveHandler( _eventColor2Changed, value ); }
+            add { this.Events.AddHandler(_eventColor2Changed, value); }
+            remove { this.Events.RemoveHandler(_eventColor2Changed, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler Color3Changed
         {
-            add { this.Events.AddHandler( _eventColor3Changed, value ); }
-            remove { this.Events.RemoveHandler( _eventColor3Changed, value ); }
+            add { this.Events.AddHandler(_eventColor3Changed, value); }
+            remove { this.Events.RemoveHandler(_eventColor3Changed, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler CustomColorsChanged
         {
-            add { this.Events.AddHandler( _eventCustomColorsChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventCustomColorsChanged, value ); }
+            add { this.Events.AddHandler(_eventCustomColorsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventCustomColorsChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler DividerStyleChanged
         {
-            add { this.Events.AddHandler( _eventDividerStyleChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventDividerStyleChanged, value ); }
+            add { this.Events.AddHandler(_eventDividerStyleChanged, value); }
+            remove { this.Events.RemoveHandler(_eventDividerStyleChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler LargeChangeChanged
         {
-            add { this.Events.AddHandler( _eventLargeChangeChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventLargeChangeChanged, value ); }
+            add { this.Events.AddHandler(_eventLargeChangeChanged, value); }
+            remove { this.Events.RemoveHandler(_eventLargeChangeChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler MaximumChanged
         {
-            add { this.Events.AddHandler( _eventMaximumChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventMaximumChanged, value ); }
+            add { this.Events.AddHandler(_eventMaximumChanged, value); }
+            remove { this.Events.RemoveHandler(_eventMaximumChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler MinimumChanged
         {
-            add { this.Events.AddHandler( _eventMinimumChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventMinimumChanged, value ); }
+            add { this.Events.AddHandler(_eventMinimumChanged, value); }
+            remove { this.Events.RemoveHandler(_eventMinimumChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler NubColorChanged
         {
-            add { this.Events.AddHandler( _eventNubColorChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventNubColorChanged, value ); }
+            add { this.Events.AddHandler(_eventNubColorChanged, value); }
+            remove { this.Events.RemoveHandler(_eventNubColorChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler NubSizeChanged
         {
-            add { this.Events.AddHandler( _eventNubSizeChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventNubSizeChanged, value ); }
+            add { this.Events.AddHandler(_eventNubSizeChanged, value); }
+            remove { this.Events.RemoveHandler(_eventNubSizeChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler NubStyleChanged
         {
-            add { this.Events.AddHandler( _eventNubStyleChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventNubStyleChanged, value ); }
+            add { this.Events.AddHandler(_eventNubStyleChanged, value); }
+            remove { this.Events.RemoveHandler(_eventNubStyleChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler OrientationChanged
         {
-            add { this.Events.AddHandler( _eventOrientationChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventOrientationChanged, value ); }
+            add { this.Events.AddHandler(_eventOrientationChanged, value); }
+            remove { this.Events.RemoveHandler(_eventOrientationChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler ShowValueDividerChanged
         {
-            add { this.Events.AddHandler( _eventShowValueDividerChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventShowValueDividerChanged, value ); }
+            add { this.Events.AddHandler(_eventShowValueDividerChanged, value); }
+            remove { this.Events.RemoveHandler(_eventShowValueDividerChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler SmallChangeChanged
         {
-            add { this.Events.AddHandler( _eventSmallChangeChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventSmallChangeChanged, value ); }
+            add { this.Events.AddHandler(_eventSmallChangeChanged, value); }
+            remove { this.Events.RemoveHandler(_eventSmallChangeChanged, value); }
         }
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler ValueChanged
         {
-            add { this.Events.AddHandler( _eventValueChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventValueChanged, value ); }
+            add { this.Events.AddHandler(_eventValueChanged, value); }
+            remove { this.Events.RemoveHandler(_eventValueChanged, value); }
         }
 
         #endregion
@@ -261,18 +261,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the location and size of the color bar.
         /// </summary>
         /// <value>The location and size of the color bar.</value>
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual Rectangle BarBounds
         {
             get { return _barBounds; }
             protected set
             {
-                if ( this.BarBounds != value )
+                if (this.BarBounds != value)
                 {
                     _barBounds = value;
 
-                    this.OnBarBoundsChanged( EventArgs.Empty );
+                    this.OnBarBoundsChanged(EventArgs.Empty);
                 }
             }
         }
@@ -281,18 +281,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the bar padding.
         /// </summary>
         /// <value>The bar padding.</value>
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual Padding BarPadding
         {
             get { return _barPadding; }
             protected set
             {
-                if ( this.BarPadding != value )
+                if (this.BarPadding != value)
                 {
                     _barPadding = value;
 
-                    this.OnBarPaddingChanged( EventArgs.Empty );
+                    this.OnBarPaddingChanged(EventArgs.Empty);
                 }
             }
         }
@@ -301,18 +301,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the bar style.
         /// </summary>
         /// <value>The bar style.</value>
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( ColorBarStyle ), "TwoColor" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(ColorBarStyle), "TwoColor")]
         public virtual ColorBarStyle BarStyle
         {
             get { return _barStyle; }
             set
             {
-                if ( this.BarStyle != value )
+                if (this.BarStyle != value)
                 {
                     _barStyle = value;
 
-                    this.OnBarStyleChanged( EventArgs.Empty );
+                    this.OnBarStyleChanged(EventArgs.Empty);
                 }
             }
         }
@@ -322,18 +322,18 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <value>The first color.</value>
         /// <remarks>This property is ignored if the <see cref="BarStyle"/> property is set to Custom and a valid color set has been specified</remarks>
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Color ), "Black" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Color), "Black")]
         public virtual Color Color1
         {
             get { return _color1; }
             set
             {
-                if ( this.Color1 != value )
+                if (this.Color1 != value)
                 {
                     _color1 = value;
 
-                    this.OnColor1Changed( EventArgs.Empty );
+                    this.OnColor1Changed(EventArgs.Empty);
                 }
             }
         }
@@ -343,18 +343,18 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <value>The second color.</value>
         /// <remarks>This property is ignored if the <see cref="BarStyle"/> property is set to Custom and a valid color set has been specified</remarks>
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Color ), "127, 127, 127" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Color), "127, 127, 127")]
         public virtual Color Color2
         {
             get { return _color2; }
             set
             {
-                if ( this.Color2 != value )
+                if (this.Color2 != value)
                 {
                     _color2 = value;
 
-                    this.OnColor2Changed( EventArgs.Empty );
+                    this.OnColor2Changed(EventArgs.Empty);
                 }
             }
         }
@@ -364,18 +364,18 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <value>The third color.</value>
         /// <remarks>This property is ignored if the <see cref="BarStyle"/> property is set to Custom and a valid color set has been specified, or if the BarStyle is set to TwoColor.</remarks>
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Color ), "White" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Color), "White")]
         public virtual Color Color3
         {
             get { return _color3; }
             set
             {
-                if ( this.Color3 != value )
+                if (this.Color3 != value)
                 {
                     _color3 = value;
 
-                    this.OnColor3Changed( EventArgs.Empty );
+                    this.OnColor3Changed(EventArgs.Empty);
                 }
             }
         }
@@ -385,18 +385,18 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <value>The custom colors.</value>
         /// <remarks>This property is ignored if the <see cref="BarStyle"/> property is not set to Custom</remarks>
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual ColorCollection CustomColors
         {
             get { return _customColors; }
             set
             {
-                if ( this.CustomColors != value )
+                if (this.CustomColors != value)
                 {
                     _customColors = value;
 
-                    this.OnCustomColorsChanged( EventArgs.Empty );
+                    this.OnCustomColorsChanged(EventArgs.Empty);
                 }
             }
         }
@@ -406,8 +406,8 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <value>The font.</value>
         /// <returns>The <see cref="T:System.Drawing.Font" /> to apply to the text displayed by the control. The default is the value of the <see cref="P:System.Windows.Forms.Control.DefaultFont" /> property.</returns>
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Font Font
         {
             get { return base.Font; }
@@ -419,8 +419,8 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <value>The color of the fore.</value>
         /// <returns>The foreground <see cref="T:System.Drawing.Color" /> of the control. The default is the value of the <see cref="P:System.Windows.Forms.Control.DefaultForeColor" /> property.</returns>
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color ForeColor
         {
             get { return base.ForeColor; }
@@ -431,18 +431,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets a value to be added to or subtracted from the <see cref="Value"/> property when the selection is moved a large distance.
         /// </summary>
         /// <value>A numeric value. The default value is 10.</value>
-        [Category( "Behavior" )]
-        [DefaultValue( 10 )]
+        [Category("Behavior")]
+        [DefaultValue(10)]
         public virtual int LargeChange
         {
             get { return _largeChange; }
             set
             {
-                if ( this.LargeChange != value )
+                if (this.LargeChange != value)
                 {
                     _largeChange = value;
 
-                    this.OnLargeChangeChanged( EventArgs.Empty );
+                    this.OnLargeChangeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -451,20 +451,20 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the upper limit of values of the selection range.
         /// </summary>
         /// <value>A numeric value. The default value is 100.</value>
-        [Category( "Behavior" )]
-        [DefaultValue( 100F )]
+        [Category("Behavior")]
+        [DefaultValue(100F)]
         public virtual float Maximum
         {
             get { return _maximum; }
             set
             {
                 // ReSharper disable CompareOfFloatsByEqualityOperator
-                if ( this.Maximum != value )
+                if (this.Maximum != value)
                 // ReSharper restore CompareOfFloatsByEqualityOperator
                 {
                     _maximum = value;
 
-                    this.OnMaximumChanged( EventArgs.Empty );
+                    this.OnMaximumChanged(EventArgs.Empty);
                 }
             }
         }
@@ -473,20 +473,20 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the lower limit of values of the selection range.
         /// </summary>
         /// <value>A numeric value. The default value is 0.</value>
-        [Category( "Behavior" )]
-        [DefaultValue( 0F )]
+        [Category("Behavior")]
+        [DefaultValue(0F)]
         public virtual float Minimum
         {
             get { return _minimum; }
             set
             {
                 // ReSharper disable CompareOfFloatsByEqualityOperator
-                if ( this.Minimum != value )
+                if (this.Minimum != value)
                 // ReSharper restore CompareOfFloatsByEqualityOperator
                 {
                     _minimum = value;
 
-                    this.OnMinimumChanged( EventArgs.Empty );
+                    this.OnMinimumChanged(EventArgs.Empty);
                 }
             }
         }
@@ -495,18 +495,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the color of the selection nub.
         /// </summary>
         /// <value>The color of the nub.</value>
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Color ), "Black" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Color), "Black")]
         public virtual Color NubColor
         {
             get { return _nubColor; }
             set
             {
-                if ( this.NubColor != value )
+                if (this.NubColor != value)
                 {
                     _nubColor = value;
 
-                    this.OnNubColorChanged( EventArgs.Empty );
+                    this.OnNubColorChanged(EventArgs.Empty);
                 }
             }
         }
@@ -515,18 +515,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the size of the selection nub.
         /// </summary>
         /// <value>The size of the nub.</value>
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Size ), "8, 8" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Size), "8, 8")]
         public virtual Size NubSize
         {
             get { return _nubSize; }
             set
             {
-                if ( this.NubSize != value )
+                if (this.NubSize != value)
                 {
                     _nubSize = value;
 
-                    this.OnNubSizeChanged( EventArgs.Empty );
+                    this.OnNubSizeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -535,18 +535,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the selection nub style.
         /// </summary>
         /// <value>The nub style.</value>
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( ColorSliderNubStyle ), "BottomRight" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(ColorSliderNubStyle), "BottomRight")]
         public virtual ColorSliderNubStyle NubStyle
         {
             get { return _nubStyle; }
             set
             {
-                if ( this.NubStyle != value )
+                if (this.NubStyle != value)
                 {
                     _nubStyle = value;
 
-                    this.OnNubStyleChanged( EventArgs.Empty );
+                    this.OnNubStyleChanged(EventArgs.Empty);
                 }
             }
         }
@@ -555,18 +555,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the orientation of the color bar.
         /// </summary>
         /// <value>The orientation.</value>
-        [Category( "Appearance" )]
-        [DefaultValue( typeof( Orientation ), "Horizontal" )]
+        [Category("Appearance")]
+        [DefaultValue(typeof(Orientation), "Horizontal")]
         public virtual Orientation Orientation
         {
             get { return _orientation; }
             set
             {
-                if ( this.Orientation != value )
+                if (this.Orientation != value)
                 {
                     _orientation = value;
 
-                    this.OnOrientationChanged( EventArgs.Empty );
+                    this.OnOrientationChanged(EventArgs.Empty);
                 }
             }
         }
@@ -575,18 +575,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets a value indicating whether a divider is shown at the selection nub location.
         /// </summary>
         /// <value><c>true</c> if a value divider is to be shown; otherwise, <c>false</c>.</value>
-        [Category( "Appearance" )]
-        [DefaultValue( false )]
+        [Category("Appearance")]
+        [DefaultValue(false)]
         public virtual bool ShowValueDivider
         {
             get { return _showValueDivider; }
             set
             {
-                if ( this.ShowValueDivider != value )
+                if (this.ShowValueDivider != value)
                 {
                     _showValueDivider = value;
 
-                    this.OnShowValueDividerChanged( EventArgs.Empty );
+                    this.OnShowValueDividerChanged(EventArgs.Empty);
                 }
             }
         }
@@ -595,18 +595,18 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets the value to be added to or subtracted from the <see cref="Value"/> property when the selection is moved a small distance.
         /// </summary>
         /// <value>A numeric value. The default value is 1.</value>
-        [Category( "Behavior" )]
-        [DefaultValue( 1 )]
+        [Category("Behavior")]
+        [DefaultValue(1)]
         public virtual int SmallChange
         {
             get { return _smallChange; }
             set
             {
-                if ( this.SmallChange != value )
+                if (this.SmallChange != value)
                 {
                     _smallChange = value;
 
-                    this.OnSmallChangeChanged( EventArgs.Empty );
+                    this.OnSmallChangeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -616,8 +616,8 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <value>The text.</value>
         /// <returns>The text associated with this control.</returns>
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override string Text
         {
             get { return base.Text; }
@@ -628,29 +628,29 @@ namespace Cyotek.Windows.Forms
         /// Gets or sets a numeric value that represents the current position of the selection numb on the color slider control.
         /// </summary>
         /// <value>A numeric value that is within the <see cref="Minimum"/> and <see cref="Maximum"/> range. The default value is 0.</value>
-        [Category( "Appearance" )]
-        [DefaultValue( 0F )]
+        [Category("Appearance")]
+        [DefaultValue(0F)]
         public virtual float Value
         {
             get { return _value; }
             set
             {
-                if ( value < this.Minimum )
+                if (value < this.Minimum)
                 {
                     value = this.Minimum;
                 }
-                if ( value > this.Maximum )
+                if (value > this.Maximum)
                 {
                     value = this.Maximum;
                 }
 
                 // ReSharper disable CompareOfFloatsByEqualityOperator
-                if ( this.Value != value )
+                if (this.Value != value)
                 // ReSharper restore CompareOfFloatsByEqualityOperator
                 {
                     _value = value;
 
-                    this.OnValueChanged( EventArgs.Empty );
+                    this.OnValueChanged(EventArgs.Empty);
                 }
             }
         }
@@ -673,43 +673,43 @@ namespace Cyotek.Windows.Forms
         {
             Image image;
 
-            image = new Bitmap( this.NubSize.Width + 1, this.NubSize.Height + 1, PixelFormat.Format32bppArgb );
+            image = new Bitmap(this.NubSize.Width + 1, this.NubSize.Height + 1, PixelFormat.Format32bppArgb);
 
-            using ( Graphics g = Graphics.FromImage( image ) )
+            using (Graphics g = Graphics.FromImage(image))
             {
                 Point[] outer;
                 Point firstCorner;
                 Point lastCorner;
                 Point tipCorner;
 
-                if ( this.NubStyle == ColorSliderNubStyle.BottomRight )
+                if (this.NubStyle == ColorSliderNubStyle.BottomRight)
                 {
-                    lastCorner = new Point( this.NubSize.Width, this.NubSize.Height );
+                    lastCorner = new Point(this.NubSize.Width, this.NubSize.Height);
 
-                    if ( this.Orientation == Orientation.Horizontal )
+                    if (this.Orientation == Orientation.Horizontal)
                     {
-                        firstCorner = new Point( 0, this.NubSize.Height );
-                        tipCorner = new Point( this.NubSize.Width / 2, 0 );
+                        firstCorner = new Point(0, this.NubSize.Height);
+                        tipCorner = new Point(this.NubSize.Width / 2, 0);
                     }
                     else
                     {
-                        firstCorner = new Point( this.NubSize.Width, 0 );
-                        tipCorner = new Point( 0, this.NubSize.Height / 2 );
+                        firstCorner = new Point(this.NubSize.Width, 0);
+                        tipCorner = new Point(0, this.NubSize.Height / 2);
                     }
                 }
                 else
                 {
                     firstCorner = Point.Empty;
 
-                    if ( this.Orientation == Orientation.Horizontal )
+                    if (this.Orientation == Orientation.Horizontal)
                     {
-                        lastCorner = new Point( this.NubSize.Width, 0 );
-                        tipCorner = new Point( this.NubSize.Width / 2, this.NubSize.Height );
+                        lastCorner = new Point(this.NubSize.Width, 0);
+                        tipCorner = new Point(this.NubSize.Width / 2, this.NubSize.Height);
                     }
                     else
                     {
-                        lastCorner = new Point( 0, this.NubSize.Height );
-                        tipCorner = new Point( this.NubSize.Width, this.NubSize.Height / 2 );
+                        lastCorner = new Point(0, this.NubSize.Height);
+                        tipCorner = new Point(this.NubSize.Width, this.NubSize.Height / 2);
                     }
                 }
 
@@ -725,9 +725,9 @@ namespace Cyotek.Windows.Forms
 
                 g.SmoothingMode = SmoothingMode.AntiAlias;
 
-                using ( Brush brush = new SolidBrush( this.NubColor ) )
+                using (Brush brush = new SolidBrush(this.NubColor))
                 {
-                    g.FillPolygon( brush, outer );
+                    g.FillPolygon(brush, outer);
                 }
             }
 
@@ -739,7 +739,7 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         protected virtual void DefineBar()
         {
-            if ( this.SelectionGlyph != null )
+            if (this.SelectionGlyph != null)
             {
                 this.SelectionGlyph.Dispose();
             }
@@ -753,14 +753,14 @@ namespace Cyotek.Windows.Forms
         /// Releases the unmanaged resources used by the <see cref="T:System.Windows.Forms.Control" /> and its child controls and optionally releases the managed resources.
         /// </summary>
         /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
-        protected override void Dispose( bool disposing )
+        protected override void Dispose(bool disposing)
         {
-            if ( disposing && this.SelectionGlyph != null )
+            if (disposing && this.SelectionGlyph != null)
             {
                 this.SelectionGlyph.Dispose();
             }
 
-            base.Dispose( disposing );
+            base.Dispose(disposing);
         }
 
         /// <summary>
@@ -775,7 +775,7 @@ namespace Cyotek.Windows.Forms
             clientRectangle = this.ClientRectangle;
             padding = this.BarPadding + this.Padding;
 
-            return new Rectangle( clientRectangle.Left + padding.Left, clientRectangle.Top + padding.Top, clientRectangle.Width - padding.Horizontal, clientRectangle.Height - padding.Vertical );
+            return new Rectangle(clientRectangle.Left + padding.Left, clientRectangle.Top + padding.Top, clientRectangle.Width - padding.Horizontal, clientRectangle.Height - padding.Vertical);
         }
 
         /// <summary>
@@ -794,39 +794,39 @@ namespace Cyotek.Windows.Forms
             right = 0;
             bottom = 0;
 
-            switch ( this.NubStyle )
+            switch (this.NubStyle)
             {
                 case ColorSliderNubStyle.BottomRight:
-                    if ( this.Orientation == Orientation.Horizontal )
+                    if (this.Orientation == Orientation.Horizontal)
                     {
                         bottom = this.NubSize.Height + 1;
-                        left = this.NubSize.Width / 2 + 1;
+                        left = (this.NubSize.Width / 2) + 1;
                         right = left;
                     }
                     else
                     {
                         right = this.NubSize.Width + 1;
-                        top = this.NubSize.Height / 2 + 1;
+                        top = (this.NubSize.Height / 2) + 1;
                         bottom = top;
                     }
                     break;
                 case ColorSliderNubStyle.TopLeft:
-                    if ( this.Orientation == Orientation.Horizontal )
+                    if (this.Orientation == Orientation.Horizontal)
                     {
                         top = this.NubSize.Height + 1;
-                        left = this.NubSize.Width / 2 + 1;
+                        left = (this.NubSize.Width / 2) + 1;
                         right = left;
                     }
                     else
                     {
                         left = this.NubSize.Width + 1;
-                        top = this.NubSize.Height / 2 + 1;
+                        top = (this.NubSize.Height / 2) + 1;
                         bottom = top;
                     }
                     break;
             }
 
-            return new Padding( left, top, right, bottom );
+            return new Padding(left, top, right, bottom);
         }
 
         /// <summary>
@@ -834,17 +834,17 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="keyData">One of the <see cref="T:System.Windows.Forms.Keys" /> values.</param>
         /// <returns>true if the specified key is a regular input key; otherwise, false.</returns>
-        protected override bool IsInputKey( Keys keyData )
+        protected override bool IsInputKey(Keys keyData)
         {
             bool result;
 
-            if ( ( keyData & Keys.Left ) == Keys.Left || ( keyData & Keys.Up ) == Keys.Up || ( keyData & Keys.Down ) == Keys.Down || ( keyData & Keys.Right ) == Keys.Right || ( keyData & Keys.PageUp ) == Keys.PageUp || ( keyData & Keys.PageDown ) == Keys.PageDown || ( keyData & Keys.Home ) == Keys.Home || ( keyData & Keys.End ) == Keys.End )
+            if ((keyData & Keys.Left) == Keys.Left || (keyData & Keys.Up) == Keys.Up || (keyData & Keys.Down) == Keys.Down || (keyData & Keys.Right) == Keys.Right || (keyData & Keys.PageUp) == Keys.PageUp || (keyData & Keys.PageDown) == Keys.PageDown || (keyData & Keys.Home) == Keys.Home || (keyData & Keys.End) == Keys.End)
             {
                 result = true;
             }
             else
             {
-                result = base.IsInputKey( keyData );
+                result = base.IsInputKey(keyData);
             }
 
             return result;
@@ -854,128 +854,128 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="BarBoundsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnBarBoundsChanged( EventArgs e )
+        protected virtual void OnBarBoundsChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventBarBoundsChanged];
+            handler = (EventHandler)this.Events[_eventBarBoundsChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="BarPaddingChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnBarPaddingChanged( EventArgs e )
+        protected virtual void OnBarPaddingChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventBarPaddingChanged];
+            handler = (EventHandler)this.Events[_eventBarPaddingChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="BarStyleChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnBarStyleChanged( EventArgs e )
+        protected virtual void OnBarStyleChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventBarStyleChanged];
+            handler = (EventHandler)this.Events[_eventBarStyleChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="Color1Changed" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColor1Changed( EventArgs e )
+        protected virtual void OnColor1Changed(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventColor1Changed];
+            handler = (EventHandler)this.Events[_eventColor1Changed];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="Color2Changed" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColor2Changed( EventArgs e )
+        protected virtual void OnColor2Changed(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventColor2Changed];
+            handler = (EventHandler)this.Events[_eventColor2Changed];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="Color3Changed" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColor3Changed( EventArgs e )
+        protected virtual void OnColor3Changed(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventColor3Changed];
+            handler = (EventHandler)this.Events[_eventColor3Changed];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="CustomColorsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnCustomColorsChanged( EventArgs e )
+        protected virtual void OnCustomColorsChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventCustomColorsChanged];
+            handler = (EventHandler)this.Events[_eventCustomColorsChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="DividerStyleChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnDividerStyleChanged( EventArgs e )
+        protected virtual void OnDividerStyleChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.DefineBar();
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventDividerStyleChanged];
+            handler = (EventHandler)this.Events[_eventDividerStyleChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.GotFocus" /> event.
         /// </summary>
         /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
-        protected override void OnGotFocus( EventArgs e )
+        protected override void OnGotFocus(EventArgs e)
         {
-            base.OnGotFocus( e );
+            base.OnGotFocus(e);
 
             this.Invalidate();
         }
@@ -984,7 +984,7 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="E:System.Windows.Forms.Control.KeyDown" /> event.
         /// </summary>
         /// <param name="e">A <see cref="T:System.Windows.Forms.KeyEventArgs" /> that contains the event data.</param>
-        protected override void OnKeyDown( KeyEventArgs e )
+        protected override void OnKeyDown(KeyEventArgs e)
         {
             int step;
             float value;
@@ -992,7 +992,7 @@ namespace Cyotek.Windows.Forms
             step = e.Shift ? this.LargeChange : this.SmallChange;
             value = this.Value;
 
-            switch ( e.KeyCode )
+            switch (e.KeyCode)
             {
                 case Keys.Right:
                 case Keys.Down:
@@ -1016,18 +1016,18 @@ namespace Cyotek.Windows.Forms
                     break;
             }
 
-            if ( value < this.Minimum )
+            if (value < this.Minimum)
             {
                 value = this.Minimum;
             }
 
-            if ( value > this.Maximum )
+            if (value > this.Maximum)
             {
                 value = this.Maximum;
             }
 
             // ReSharper disable CompareOfFloatsByEqualityOperator
-            if ( value != this.Value )
+            if (value != this.Value)
             // ReSharper restore CompareOfFloatsByEqualityOperator
             {
                 this.Value = value;
@@ -1035,29 +1035,29 @@ namespace Cyotek.Windows.Forms
                 e.Handled = true;
             }
 
-            base.OnKeyDown( e );
+            base.OnKeyDown(e);
         }
 
         /// <summary>
         /// Raises the <see cref="LargeChangeChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnLargeChangeChanged( EventArgs e )
+        protected virtual void OnLargeChangeChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventLargeChangeChanged];
+            handler = (EventHandler)this.Events[_eventLargeChangeChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.LostFocus" /> event.
         /// </summary>
         /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
-        protected override void OnLostFocus( EventArgs e )
+        protected override void OnLostFocus(EventArgs e)
         {
-            base.OnLostFocus( e );
+            base.OnLostFocus(e);
 
             this.Invalidate();
         }
@@ -1066,46 +1066,46 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="MaximumChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnMaximumChanged( EventArgs e )
+        protected virtual void OnMaximumChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventMaximumChanged];
+            handler = (EventHandler)this.Events[_eventMaximumChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="MinimumChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnMinimumChanged( EventArgs e )
+        protected virtual void OnMinimumChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventMinimumChanged];
+            handler = (EventHandler)this.Events[_eventMinimumChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.MouseDown" /> event.
         /// </summary>
         /// <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs" /> that contains the event data.</param>
-        protected override void OnMouseDown( MouseEventArgs e )
+        protected override void OnMouseDown(MouseEventArgs e)
         {
-            base.OnMouseDown( e );
+            base.OnMouseDown(e);
 
-            if ( !this.Focused && this.TabStop )
+            if (!this.Focused && this.TabStop)
             {
                 this.Focus();
             }
 
-            if ( e.Button == MouseButtons.Left )
+            if (e.Button == MouseButtons.Left)
             {
-                this.PointToValue( e.Location );
+                this.PointToValue(e.Location);
             }
         }
 
@@ -1113,13 +1113,13 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="E:System.Windows.Forms.Control.MouseMove" /> event.
         /// </summary>
         /// <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs" /> that contains the event data.</param>
-        protected override void OnMouseMove( MouseEventArgs e )
+        protected override void OnMouseMove(MouseEventArgs e)
         {
-            base.OnMouseMove( e );
+            base.OnMouseMove(e);
 
-            if ( e.Button == MouseButtons.Left )
+            if (e.Button == MouseButtons.Left)
             {
-                this.PointToValue( e.Location );
+                this.PointToValue(e.Location);
             }
         }
 
@@ -1127,20 +1127,20 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="E:System.Windows.Forms.Control.MouseWheel"/> event.
         /// </summary>
         /// <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs"/> that contains the event data. </param>
-        protected override void OnMouseWheel( MouseEventArgs e )
+        protected override void OnMouseWheel(MouseEventArgs e)
         {
             float value;
 
-            base.OnMouseWheel( e );
+            base.OnMouseWheel(e);
 
-            value = this.Value + -( e.Delta / SystemInformation.MouseWheelScrollDelta * SystemInformation.MouseWheelScrollLines );
+            value = this.Value + -(e.Delta / SystemInformation.MouseWheelScrollDelta * SystemInformation.MouseWheelScrollLines);
 
-            if ( value < this.Minimum )
+            if (value < this.Minimum)
             {
                 value = this.Minimum;
             }
 
-            if ( value > this.Maximum )
+            if (value > this.Maximum)
             {
                 value = this.Maximum;
             }
@@ -1152,72 +1152,72 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="NubColorChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnNubColorChanged( EventArgs e )
+        protected virtual void OnNubColorChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventNubColorChanged];
+            handler = (EventHandler)this.Events[_eventNubColorChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="NubSizeChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnNubSizeChanged( EventArgs e )
+        protected virtual void OnNubSizeChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.DefineBar();
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventNubSizeChanged];
+            handler = (EventHandler)this.Events[_eventNubSizeChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="NubStyleChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnNubStyleChanged( EventArgs e )
+        protected virtual void OnNubStyleChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.DefineBar();
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventNubStyleChanged];
+            handler = (EventHandler)this.Events[_eventNubStyleChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="OrientationChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnOrientationChanged( EventArgs e )
+        protected virtual void OnOrientationChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.DefineBar();
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventOrientationChanged];
+            handler = (EventHandler)this.Events[_eventOrientationChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.PaddingChanged" /> event.
         /// </summary>
         /// <param name="e">A <see cref="T:System.EventArgs" /> that contains the event data.</param>
-        protected override void OnPaddingChanged( EventArgs e )
+        protected override void OnPaddingChanged(EventArgs e)
         {
-            base.OnPaddingChanged( e );
+            base.OnPaddingChanged(e);
 
             this.DefineBar();
         }
@@ -1226,21 +1226,21 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="E:System.Windows.Forms.Control.Paint" /> event.
         /// </summary>
         /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
-        protected override void OnPaint( PaintEventArgs e )
+        protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint( e );
+            base.OnPaint(e);
 
-            this.PaintBar( e );
-            this.PaintAdornments( e );
+            this.PaintBar(e);
+            this.PaintAdornments(e);
         }
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
         /// </summary>
         /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
-        protected override void OnResize( EventArgs e )
+        protected override void OnResize(EventArgs e)
         {
-            base.OnResize( e );
+            base.OnResize(e);
 
             this.DefineBar();
         }
@@ -1249,91 +1249,91 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="ShowValueDividerChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnShowValueDividerChanged( EventArgs e )
+        protected virtual void OnShowValueDividerChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.Invalidate();
 
-            handler = ( EventHandler ) this.Events[_eventShowValueDividerChanged];
+            handler = (EventHandler)this.Events[_eventShowValueDividerChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="SmallChangeChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnSmallChangeChanged( EventArgs e )
+        protected virtual void OnSmallChangeChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventSmallChangeChanged];
+            handler = (EventHandler)this.Events[_eventSmallChangeChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Raises the <see cref="ValueChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnValueChanged( EventArgs e )
+        protected virtual void OnValueChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.Refresh();
 
-            handler = ( EventHandler ) this.Events[_eventValueChanged];
+            handler = (EventHandler)this.Events[_eventValueChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
         /// <summary>
         /// Paints control adornments.
         /// </summary>
         /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
-        protected virtual void PaintAdornments( PaintEventArgs e )
+        protected virtual void PaintAdornments(PaintEventArgs e)
         {
             Point point;
 
-            point = this.ValueToPoint( this.Value );
+            point = this.ValueToPoint(this.Value);
 
             // divider
-            if ( this.ShowValueDivider )
+            if (this.ShowValueDivider)
             {
                 Point start;
                 Point end;
                 IntPtr hdc;
 
-                if ( this.Orientation == Orientation.Horizontal )
+                if (this.Orientation == Orientation.Horizontal)
                 {
-                    start = new Point( point.X, this.BarBounds.Top );
-                    end = new Point( point.X, this.BarBounds.Bottom );
+                    start = new Point(point.X, this.BarBounds.Top);
+                    end = new Point(point.X, this.BarBounds.Bottom);
                 }
                 else
                 {
-                    start = new Point( this.BarBounds.Left, point.Y );
-                    end = new Point( this.BarBounds.Right, point.Y );
+                    start = new Point(this.BarBounds.Left, point.Y);
+                    end = new Point(this.BarBounds.Right, point.Y);
                 }
 
                 // draw a XOR'd line using Win32 API as this functionality isn't part of .NET
                 hdc = e.Graphics.GetHdc();
-                NativeMethods.SetROP2( hdc, NativeMethods.R2_NOT );
-                NativeMethods.MoveToEx( hdc, start.X, start.Y, IntPtr.Zero );
-                NativeMethods.LineTo( hdc, end.X, end.Y );
-                e.Graphics.ReleaseHdc( hdc );
+                NativeMethods.SetROP2(hdc, NativeMethods.R2_NOT);
+                NativeMethods.MoveToEx(hdc, start.X, start.Y, IntPtr.Zero);
+                NativeMethods.LineTo(hdc, end.X, end.Y);
+                e.Graphics.ReleaseHdc(hdc);
             }
 
             // drag nub
-            if ( this.NubStyle != ColorSliderNubStyle.None && this.SelectionGlyph != null )
+            if (this.NubStyle != ColorSliderNubStyle.None && this.SelectionGlyph != null)
             {
                 int x;
                 int y;
 
-                if ( this.Orientation == Orientation.Horizontal )
+                if (this.Orientation == Orientation.Horizontal)
                 {
-                    x = point.X - this.NubSize.Width / 2;
-                    if ( this.NubStyle == ColorSliderNubStyle.BottomRight )
+                    x = point.X - (this.NubSize.Width / 2);
+                    if (this.NubStyle == ColorSliderNubStyle.BottomRight)
                     {
                         y = this.BarBounds.Bottom;
                     }
@@ -1344,8 +1344,8 @@ namespace Cyotek.Windows.Forms
                 }
                 else
                 {
-                    y = point.Y - this.NubSize.Height / 2;
-                    if ( this.NubStyle == ColorSliderNubStyle.BottomRight )
+                    y = point.Y - (this.NubSize.Height / 2);
+                    if (this.NubStyle == ColorSliderNubStyle.BottomRight)
                     {
                         x = this.BarBounds.Right;
                     }
@@ -1355,13 +1355,13 @@ namespace Cyotek.Windows.Forms
                     }
                 }
 
-                e.Graphics.DrawImage( this.SelectionGlyph, x, y );
+                e.Graphics.DrawImage(this.SelectionGlyph, x, y);
             }
 
             // focus
-            if ( this.Focused )
+            if (this.Focused)
             {
-                ControlPaint.DrawFocusRectangle( e.Graphics, Rectangle.Inflate( this.BarBounds, -2, -2 ) );
+                ControlPaint.DrawFocusRectangle(e.Graphics, Rectangle.Inflate(this.BarBounds, -2, -2));
             }
         }
 
@@ -1369,22 +1369,22 @@ namespace Cyotek.Windows.Forms
         /// Paints the bar.
         /// </summary>
         /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
-        protected virtual void PaintBar( PaintEventArgs e )
+        protected virtual void PaintBar(PaintEventArgs e)
         {
             float angle;
 
             angle = this.Orientation == Orientation.Horizontal ? 0 : 90;
 
-            if ( this.BarBounds.Height > 0 && this.BarBounds.Width > 0 )
+            if (this.BarBounds.Height > 0 && this.BarBounds.Width > 0)
             {
                 ColorBlend blend;
 
                 // HACK: Inflating the brush rectangle by 1 seems to get rid of a odd issue where the last color is drawn on the first pixel
 
                 blend = new ColorBlend();
-                using ( LinearGradientBrush brush = new LinearGradientBrush( Rectangle.Inflate( this.BarBounds, 1, 1 ), Color.Empty, Color.Empty, angle, false ) )
+                using (LinearGradientBrush brush = new LinearGradientBrush(Rectangle.Inflate(this.BarBounds, 1, 1), Color.Empty, Color.Empty, angle, false))
                 {
-                    switch ( this.BarStyle )
+                    switch (this.BarStyle)
                     {
                         case ColorBarStyle.TwoColor:
                             blend.Colors = new[]
@@ -1419,10 +1419,10 @@ namespace Cyotek.Windows.Forms
                             custom = this.CustomColors;
                             count = custom?.Count ?? 0;
 
-                            if ( custom != null && count > 0 )
+                            if (custom != null && count > 0)
                             {
                                 blend.Colors = custom.ToArray();
-                                blend.Positions = Enumerable.Range( 0, count ).Select( i => i == 0 ? 0 : i == count - 1 ? 1 : ( float ) ( 1.0D / count ) * i ).ToArray();
+                                blend.Positions = Enumerable.Range(0, count).Select(i => i == 0 ? 0 : i == count - 1 ? 1 : (float)(1.0D / count) * i).ToArray();
                             }
                             else
                             {
@@ -1441,7 +1441,7 @@ namespace Cyotek.Windows.Forms
                     }
 
                     brush.InterpolationColors = blend;
-                    e.Graphics.FillRectangle( brush, this.BarBounds );
+                    e.Graphics.FillRectangle(brush, this.BarBounds);
                 }
             }
         }
@@ -1450,29 +1450,29 @@ namespace Cyotek.Windows.Forms
         /// Computes the location of the specified client point into value coordinates.
         /// </summary>
         /// <param name="location">The client coordinate <see cref="Point"/> to convert.</param>
-        protected virtual void PointToValue( Point location )
+        protected virtual void PointToValue(Point location)
         {
             float value;
 
             location.X += this.ClientRectangle.X - this.BarBounds.X;
             location.Y += this.ClientRectangle.Y - this.BarBounds.Y;
 
-            switch ( this.Orientation )
+            switch (this.Orientation)
             {
                 case Orientation.Horizontal:
-                    value = this.Minimum + location.X / ( float ) this.BarBounds.Width * ( this.Minimum + this.Maximum );
+                    value = this.Minimum + (location.X / (float)this.BarBounds.Width * (this.Minimum + this.Maximum));
                     break;
                 default:
-                    value = this.Minimum + location.Y / ( float ) this.BarBounds.Height * ( this.Minimum + this.Maximum );
+                    value = this.Minimum + (location.Y / (float)this.BarBounds.Height * (this.Minimum + this.Maximum));
                     break;
             }
 
-            if ( value < this.Minimum )
+            if (value < this.Minimum)
             {
                 value = this.Minimum;
             }
 
-            if ( value > this.Maximum )
+            if (value > this.Maximum)
             {
                 value = this.Maximum;
             }
@@ -1485,7 +1485,7 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="value">The value coordinate <see cref="Point"/> to convert.</param>
         /// <returns>A <see cref="Point"/> that represents the converted <see cref="Point"/>, value, in client coordinates.</returns>
-        protected virtual Point ValueToPoint( float value )
+        protected virtual Point ValueToPoint(float value)
         {
             double x;
             double y;
@@ -1495,7 +1495,7 @@ namespace Cyotek.Windows.Forms
             x = 0;
             y = 0;
 
-            switch ( this.Orientation )
+            switch (this.Orientation)
             {
                 case Orientation.Horizontal:
                     x = this.BarBounds.Width / this.Maximum * value;
@@ -1505,7 +1505,7 @@ namespace Cyotek.Windows.Forms
                     break;
             }
 
-            return new Point( ( int ) x + padding.Left, ( int ) y + padding.Top );
+            return new Point((int)x + padding.Left, (int)y + padding.Top);
         }
 
         #endregion

@@ -6,7 +6,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class SoundTrackSerializable
     {
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Audio;
     }
 }

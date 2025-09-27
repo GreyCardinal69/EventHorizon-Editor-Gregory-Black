@@ -16,8 +16,8 @@ namespace Cyotek.Windows.Forms
 
     // If you use this code in your applications, donations or attribution are welcome
 
-    [DefaultEvent( "PreviewColorChanged" )]
-    [DefaultProperty( "Color" )]
+    [DefaultEvent("PreviewColorChanged")]
+    [DefaultProperty("Color")]
     public partial class ColorPickerDialog : Form
     {
         #region Constants
@@ -45,11 +45,11 @@ namespace Cyotek.Windows.Forms
 
         #region Events
 
-        [Category( "Property Changed" )]
+        [Category("Property Changed")]
         public event EventHandler PreviewColorChanged
         {
-            add { this.Events.AddHandler( _eventPreviewColorChanged, value ); }
-            remove { this.Events.RemoveHandler( _eventPreviewColorChanged, value ); }
+            add { this.Events.AddHandler(_eventPreviewColorChanged, value); }
+            remove { this.Events.RemoveHandler(_eventPreviewColorChanged, value); }
         }
 
         #endregion
@@ -62,8 +62,8 @@ namespace Cyotek.Windows.Forms
             set { colorEditorManager.Color = value; }
         }
 
-        [Browsable( false )]
-        [DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden )]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowAlphaChannel { get; set; }
 
         #endregion
@@ -74,45 +74,45 @@ namespace Cyotek.Windows.Forms
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose( bool disposing )
+        protected override void Dispose(bool disposing)
         {
-            if ( disposing )
+            if (disposing)
             {
-                if ( components != null )
+                if (components != null)
                 {
                     components.Dispose();
                 }
 
-                if ( _textureBrush != null )
+                if (_textureBrush != null)
                 {
                     _textureBrush.Dispose();
                     _textureBrush = null;
                 }
             }
 
-            base.Dispose( disposing );
+            base.Dispose(disposing);
         }
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Form.Load"/> event.
         /// </summary>
         /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data. </param>
-        protected override void OnLoad( EventArgs e )
+        protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad( e );
+            base.OnLoad(e);
 
             colorEditor.ShowAlphaChannel = this.ShowAlphaChannel;
 
-            if ( !this.ShowAlphaChannel )
+            if (!this.ShowAlphaChannel)
             {
-                for ( int i = 0; i < colorGrid.Colors.Count; i++ )
+                for (int i = 0; i < colorGrid.Colors.Count; i++)
                 {
                     Color color;
 
                     color = colorGrid.Colors[i];
-                    if ( color.A != 255 )
+                    if (color.A != 255)
                     {
-                        colorGrid.Colors[i] = Color.FromArgb( 255, color );
+                        colorGrid.Colors[i] = Color.FromArgb(255, color);
                     }
                 }
             }
@@ -122,87 +122,87 @@ namespace Cyotek.Windows.Forms
         /// Raises the <see cref="PreviewColorChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnPreviewColorChanged( EventArgs e )
+        protected virtual void OnPreviewColorChanged(EventArgs e)
         {
             EventHandler handler;
 
-            handler = ( EventHandler ) this.Events[_eventPreviewColorChanged];
+            handler = (EventHandler)this.Events[_eventPreviewColorChanged];
 
-            handler?.Invoke( this, e );
+            handler?.Invoke(this, e);
         }
 
-        private void cancelButton_Click( object sender, EventArgs e )
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void colorEditorManager_ColorChanged( object sender, EventArgs e )
+        private void colorEditorManager_ColorChanged(object sender, EventArgs e)
         {
             previewPanel.Invalidate();
 
-            this.OnPreviewColorChanged( e );
+            this.OnPreviewColorChanged(e);
         }
 
-        private void colorGrid_EditingColor( object sender, EditColorCancelEventArgs e )
+        private void colorGrid_EditingColor(object sender, EditColorCancelEventArgs e)
         {
             e.Cancel = true;
 
-            using ( ColorDialog dialog = new ColorDialog
+            using (ColorDialog dialog = new ColorDialog
             {
                 FullOpen = true,
                 Color = e.Color
-            } )
+            })
             {
-                if ( dialog.ShowDialog( this ) == DialogResult.OK )
+                if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     colorGrid.Colors[e.ColorIndex] = dialog.Color;
                 }
             }
         }
 
-        private void loadPaletteButton_Click( object sender, EventArgs e )
+        private void loadPaletteButton_Click(object sender, EventArgs e)
         {
-            using ( FileDialog dialog = new OpenFileDialog
+            using (FileDialog dialog = new OpenFileDialog
             {
                 Filter = PaletteSerializer.DefaultOpenFilter,
                 DefaultExt = "pal",
                 Title = "Open Palette File"
-            } )
+            })
             {
-                if ( dialog.ShowDialog( this ) == DialogResult.OK )
+                if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     try
                     {
                         IPaletteSerializer serializer;
 
-                        serializer = PaletteSerializer.GetSerializer( dialog.FileName );
-                        if ( serializer != null )
+                        serializer = PaletteSerializer.GetSerializer(dialog.FileName);
+                        if (serializer != null)
                         {
                             ColorCollection palette;
 
-                            if ( !serializer.CanRead )
+                            if (!serializer.CanRead)
                             {
-                                throw new InvalidOperationException( "Serializer does not support reading palettes." );
+                                throw new InvalidOperationException("Serializer does not support reading palettes.");
                             }
 
-                            using ( FileStream file = File.OpenRead( dialog.FileName ) )
+                            using (FileStream file = File.OpenRead(dialog.FileName))
                             {
-                                palette = serializer.Deserialize( file );
+                                palette = serializer.Deserialize(file);
                             }
 
-                            if ( palette != null )
+                            if (palette != null)
                             {
                                 // we can only display 96 colors in the color grid due to it's size, so if there's more, bin them
-                                while ( palette.Count > 96 )
+                                while (palette.Count > 96)
                                 {
-                                    palette.RemoveAt( palette.Count - 1 );
+                                    palette.RemoveAt(palette.Count - 1);
                                 }
 
                                 // or if we have less, fill in the blanks
-                                while ( palette.Count < 96 )
+                                while (palette.Count < 96)
                                 {
-                                    palette.Add( Color.White );
+                                    palette.Add(Color.White);
                                 }
 
                                 colorGrid.Colors = palette;
@@ -210,86 +210,86 @@ namespace Cyotek.Windows.Forms
                         }
                         else
                         {
-                            MessageBox.Show( "Sorry, unable to open palette, the file format is not supported or is not recognized.", "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+                            MessageBox.Show("Sorry, unable to open palette, the file format is not supported or is not recognized.", "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
-                    catch ( Exception ex )
+                    catch (Exception ex)
                     {
-                        MessageBox.Show( string.Format( "Sorry, unable to open palette. {0}", ex.GetBaseException().Message ), "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                        MessageBox.Show(string.Format("Sorry, unable to open palette. {0}", ex.GetBaseException().Message), "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
 
-        private void okButton_Click( object sender, EventArgs e )
+        private void okButton_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        private void previewPanel_Paint( object sender, PaintEventArgs e )
+        private void previewPanel_Paint(object sender, PaintEventArgs e)
         {
             Rectangle region;
 
             region = previewPanel.ClientRectangle;
 
-            if ( this.Color.A != 255 )
+            if (this.Color.A != 255)
             {
-                if ( _textureBrush == null )
+                if (_textureBrush == null)
                 {
-                    using ( Bitmap background = new Bitmap( this.GetType().Assembly.GetManifestResourceStream( string.Concat( this.GetType().Namespace, ".Resources.cellbackground.png" ) ) ) )
+                    using (Bitmap background = new Bitmap(this.GetType().Assembly.GetManifestResourceStream(string.Concat(this.GetType().Namespace, ".Resources.cellbackground.png"))))
                     {
-                        _textureBrush = new TextureBrush( background, WrapMode.Tile );
+                        _textureBrush = new TextureBrush(background, WrapMode.Tile);
                     }
                 }
 
-                e.Graphics.FillRectangle( _textureBrush, region );
+                e.Graphics.FillRectangle(_textureBrush, region);
             }
 
-            using ( Brush brush = new SolidBrush( this.Color ) )
+            using (Brush brush = new SolidBrush(this.Color))
             {
-                e.Graphics.FillRectangle( brush, region );
+                e.Graphics.FillRectangle(brush, region);
             }
 
-            e.Graphics.DrawRectangle( SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1 );
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
         }
 
-        private void savePaletteButton_Click( object sender, EventArgs e )
+        private void savePaletteButton_Click(object sender, EventArgs e)
         {
-            using ( FileDialog dialog = new SaveFileDialog
+            using (FileDialog dialog = new SaveFileDialog
             {
                 Filter = PaletteSerializer.DefaultSaveFilter,
                 DefaultExt = "pal",
                 Title = "Save Palette File As"
-            } )
+            })
             {
-                if ( dialog.ShowDialog( this ) == DialogResult.OK )
+                if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     IPaletteSerializer serializer;
 
-                    serializer = PaletteSerializer.AllSerializers.Where( s => s.CanWrite ).ElementAt( dialog.FilterIndex - 1 );
-                    if ( serializer != null )
+                    serializer = PaletteSerializer.AllSerializers.Where(s => s.CanWrite).ElementAt(dialog.FilterIndex - 1);
+                    if (serializer != null)
                     {
-                        if ( !serializer.CanWrite )
+                        if (!serializer.CanWrite)
                         {
-                            throw new InvalidOperationException( "Serializer does not support writing palettes." );
+                            throw new InvalidOperationException("Serializer does not support writing palettes.");
                         }
 
                         try
                         {
-                            using ( FileStream file = File.OpenWrite( dialog.FileName ) )
+                            using (FileStream file = File.OpenWrite(dialog.FileName))
                             {
-                                serializer.Serialize( file, colorGrid.Colors );
+                                serializer.Serialize(file, colorGrid.Colors);
                             }
                         }
-                        catch ( Exception ex )
+                        catch (Exception ex)
                         {
-                            MessageBox.Show( string.Format( "Sorry, unable to save palette. {0}", ex.GetBaseException().Message ), "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                            MessageBox.Show(string.Format("Sorry, unable to save palette. {0}", ex.GetBaseException().Message), "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show( "Sorry, unable to save palette, the file format is not supported or is not recognized.", "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+                        MessageBox.Show("Sorry, unable to save palette, the file format is not supported or is not recognized.", "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }

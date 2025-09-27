@@ -15,42 +15,42 @@ namespace EditorDatabase.DataModel
 {
     public partial class ShipBuild
     {
-        partial void OnDataDeserialized( ShipBuildSerializable serializable, Database database );
-        partial void OnDataSerialized( ref ShipBuildSerializable serializable );
+        partial void OnDataDeserialized(ShipBuildSerializable serializable, Database database);
+        partial void OnDataSerialized(ref ShipBuildSerializable serializable);
 
-        public static ShipBuild Create( ShipBuildSerializable serializable, Database database )
+        public static ShipBuild Create(ShipBuildSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new ShipBuild( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new ShipBuild(serializable, database);
         }
 
-        public ShipBuild( ShipBuildSerializable serializable, Database database )
+        public ShipBuild(ShipBuildSerializable serializable, Database database)
         {
             try
             {
-                Id = new ItemId<ShipBuild>( serializable.Id, serializable.FileName );
-                Ship = database.GetShipId( serializable.ShipId );
+                Id = new ItemId<ShipBuild>(serializable.Id, serializable.FileName);
+                Ship = database.GetShipId(serializable.ShipId);
 
                 AvailableForPlayer = serializable.AvailableForPlayer;
                 AvailableForEnemy = serializable.AvailableForEnemy;
                 DifficultyClass = serializable.DifficultyClass;
-                BuildFaction = database.GetFactionId( serializable.BuildFaction );
-                CustomAI = database.GetBehaviorTreeId( serializable.CustomAI );
-                Components = serializable.Components?.Where(item => item != null ).Select( item => InstalledComponent.Create( item, database ) ).ToArray();
-                Perks.Value = DataModel.ShipBuildPerks.Create( serializable.Perks, database );
+                BuildFaction = database.GetFactionId(serializable.BuildFaction);
+                CustomAI = database.GetBehaviorTreeId(serializable.CustomAI);
+                Components = serializable.Components?.Where(item => item != null).Select(item => InstalledComponent.Create(item, database)).ToArray();
+                Perks.Value = DataModel.ShipBuildPerks.Create(serializable.Perks, database);
                 ExtendedLayout = serializable.ExtendedLayout;
                 RandomColor = serializable.RandomColor;
-                LeftSatelliteBuild = database.GetSatelliteBuildId( serializable.LeftSatelliteBuild );
-                RightSatelliteBuild = database.GetSatelliteBuildId( serializable.RightSatelliteBuild );
+                LeftSatelliteBuild = database.GetSatelliteBuildId(serializable.LeftSatelliteBuild);
+                RightSatelliteBuild = database.GetSatelliteBuildId(serializable.RightSatelliteBuild);
             }
-            catch ( DatabaseException e )
+            catch (DatabaseException e)
             {
-                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+                throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
             }
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ShipBuildSerializable serializable )
+        public void Save(ShipBuildSerializable serializable)
         {
             serializable.ShipId = Ship.Value;
             serializable.AvailableForPlayer = AvailableForPlayer;
@@ -58,16 +58,16 @@ namespace EditorDatabase.DataModel
             serializable.DifficultyClass = DifficultyClass;
             serializable.BuildFaction = BuildFaction.Value;
             serializable.CustomAI = CustomAI.Value;
-            if ( Components == null || Components.Length == 0 )
+            if (Components == null || Components.Length == 0)
                 serializable.Components = null;
             else
-                serializable.Components = Components.Select( item => item.Serialize() ).ToArray();
+                serializable.Components = Components.Select(item => item.Serialize()).ToArray();
             serializable.Perks = Perks.Value?.Serialize();
             serializable.ExtendedLayout = ExtendedLayout;
             serializable.RandomColor = RandomColor;
             serializable.LeftSatelliteBuild = LeftSatelliteBuild.Value;
             serializable.RightSatelliteBuild = RightSatelliteBuild.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public readonly ItemId<ShipBuild> Id;
@@ -79,7 +79,7 @@ namespace EditorDatabase.DataModel
         public ItemId<Faction> BuildFaction = ItemId<Faction>.Empty;
         public ItemId<BehaviorTreeModel> CustomAI = ItemId<BehaviorTreeModel>.Empty;
         public InstalledComponent[] Components;
-        public ObjectWrapper<ShipBuildPerks> Perks = new ObjectWrapper<ShipBuildPerks>( DataModel.ShipBuildPerks.DefaultValue );
+        public ObjectWrapper<ShipBuildPerks> Perks = new ObjectWrapper<ShipBuildPerks>(DataModel.ShipBuildPerks.DefaultValue);
         public bool ExtendedLayout;
         public bool RandomColor;
         public ItemId<SatelliteBuild> LeftSatelliteBuild = ItemId<SatelliteBuild>.Empty;

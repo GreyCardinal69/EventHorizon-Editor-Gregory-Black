@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace GameDatabase.Controls
@@ -13,7 +12,7 @@ namespace GameDatabase.Controls
             get { return _backgroundColor; }
             set
             {
-                if ( _backgroundColor != value )
+                if (_backgroundColor != value)
                 {
                     _backgroundColor = value;
                     Invalidate();
@@ -21,16 +20,16 @@ namespace GameDatabase.Controls
             }
         }
 
-        protected override void OnPaint( PaintEventArgs e )
+        protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint( e );
+            base.OnPaint(e);
 
-            if ( BorderStyle != BorderStyle.None )
+            if (BorderStyle != BorderStyle.None)
             {
-                using ( var pen = new Pen( BorderColor, 1 ) )
-                    e.Graphics.DrawRectangle( pen,
+                using (Pen pen = new Pen(BorderColor, 1))
+                    e.Graphics.DrawRectangle(pen,
                         ClientRectangle.Left, ClientRectangle.Top,
-                        ClientRectangle.Width - 1, ClientRectangle.Height - 1 );
+                        ClientRectangle.Width - 1, ClientRectangle.Height - 1);
             }
         }
     }

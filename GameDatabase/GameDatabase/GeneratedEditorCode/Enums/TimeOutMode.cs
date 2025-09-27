@@ -14,7 +14,7 @@ namespace EditorDatabase.Enums
     {
         CallNextEnemy = 0,
         DrainPlayerHp = 1,
-        [TooltipText( "Calls next enemy if any and resets the timer, draws the battle otherwise" )]
+        [TooltipText("Calls next enemy if any and resets the timer, draws the battle otherwise")]
         CallNextEnemyOrDraw = 2,
     }
 }

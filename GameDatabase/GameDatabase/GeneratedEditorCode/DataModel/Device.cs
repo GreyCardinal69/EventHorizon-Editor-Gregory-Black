@@ -14,48 +14,48 @@ namespace EditorDatabase.DataModel
 {
     public partial class Device
     {
-        partial void OnDataDeserialized( DeviceSerializable serializable, Database database );
-        partial void OnDataSerialized( ref DeviceSerializable serializable );
+        partial void OnDataDeserialized(DeviceSerializable serializable, Database database);
+        partial void OnDataSerialized(ref DeviceSerializable serializable);
 
-        public static Device Create( DeviceSerializable serializable, Database database )
+        public static Device Create(DeviceSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new Device( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new Device(serializable, database);
         }
 
-        public Device( DeviceSerializable serializable, Database database )
+        public Device(DeviceSerializable serializable, Database database)
         {
             try
             {
                 this.Power = new NumericValue<float>(serializable.Power, -3.402823E+38f, 3.402823E+38f);
-                Id = new ItemId<Device>( serializable.Id, serializable.FileName );
+                Id = new ItemId<Device>(serializable.Id, serializable.FileName);
                 DeviceClass = serializable.DeviceClass;
-                EnergyConsumption = new NumericValue<float>( serializable.EnergyConsumption, 0f, 1E+09f );
-                PassiveEnergyConsumption = new NumericValue<float>( serializable.PassiveEnergyConsumption, 0f, 1E+09f );
+                EnergyConsumption = new NumericValue<float>(serializable.EnergyConsumption, 0f, 1E+09f);
+                PassiveEnergyConsumption = new NumericValue<float>(serializable.PassiveEnergyConsumption, 0f, 1E+09f);
                 ScaleEnergyWithShipSize = serializable.ScaleEnergyWithShipSize;
-                Range = new NumericValue<float>( serializable.Range, 0f, 1000f );
-                Size = new NumericValue<float>( serializable.Size, 0f, 1000f );
-                Cooldown = new NumericValue<float>( serializable.Cooldown, 0f, 1000f );
-                Lifetime = new NumericValue<float>( serializable.Lifetime, 0f, 1000f );
+                Range = new NumericValue<float>(serializable.Range, 0f, 1000f);
+                Size = new NumericValue<float>(serializable.Size, 0f, 1000f);
+                Cooldown = new NumericValue<float>(serializable.Cooldown, 0f, 1000f);
+                Lifetime = new NumericValue<float>(serializable.Lifetime, 0f, 1000f);
                 Offset = serializable.Offset;
                 ActivationType = serializable.ActivationType;
-                Color = Helpers.ColorFromString( serializable.Color );
+                Color = Helpers.ColorFromString(serializable.Color);
                 Sound = serializable.Sound;
                 EffectPrefab = serializable.EffectPrefab;
-                VisualEffect = database.GetVisualEffectId( serializable.VisualEffect );
+                VisualEffect = database.GetVisualEffectId(serializable.VisualEffect);
                 ObjectPrefab = serializable.ObjectPrefab;
-                Prefab = database.GetGameObjectPrefabId( serializable.Prefab );
+                Prefab = database.GetGameObjectPrefabId(serializable.Prefab);
                 ControlButtonIcon = serializable.ControlButtonIcon;
                 this.AmmunitionId = database.GetAmmunitionId(serializable.AmmunitionId);
             }
-            catch ( DatabaseException e )
+            catch (DatabaseException e)
             {
-                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+                throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
             }
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( DeviceSerializable serializable )
+        public void Save(DeviceSerializable serializable)
         {
             serializable.AmmunitionId = this.AmmunitionId.Value;
             serializable.DeviceClass = DeviceClass;
@@ -69,27 +69,27 @@ namespace EditorDatabase.DataModel
             serializable.Lifetime = Lifetime.Value;
             serializable.Offset = Offset;
             serializable.ActivationType = ActivationType;
-            serializable.Color = Helpers.ColorToString( Color );
+            serializable.Color = Helpers.ColorToString(Color);
             serializable.Sound = Sound;
             serializable.EffectPrefab = EffectPrefab;
             serializable.VisualEffect = VisualEffect.Value;
             serializable.ObjectPrefab = ObjectPrefab;
             serializable.Prefab = Prefab.Value;
             serializable.ControlButtonIcon = ControlButtonIcon;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public readonly ItemId<Device> Id;
 
         public DeviceClass DeviceClass;
-        public NumericValue<float> EnergyConsumption = new NumericValue<float>( 0, 0f, 1E+09f );
-        public NumericValue<float> PassiveEnergyConsumption = new NumericValue<float>( 0, 0f, 1E+09f );
+        public NumericValue<float> EnergyConsumption = new NumericValue<float>(0, 0f, 1E+09f);
+        public NumericValue<float> PassiveEnergyConsumption = new NumericValue<float>(0, 0f, 1E+09f);
         public bool ScaleEnergyWithShipSize;
         public NumericValue<float> Power = new NumericValue<float>(0f, -3.402823E+38f, 3.402823E+38f);
-        public NumericValue<float> Range = new NumericValue<float>( 0, 0f, 1000f );
-        public NumericValue<float> Size = new NumericValue<float>( 0, 0f, 1000f );
-        public NumericValue<float> Cooldown = new NumericValue<float>( 0, 0f, 1000f );
-        public NumericValue<float> Lifetime = new NumericValue<float>( 0, 0f, 1000f );
+        public NumericValue<float> Range = new NumericValue<float>(0, 0f, 1000f);
+        public NumericValue<float> Size = new NumericValue<float>(0, 0f, 1000f);
+        public NumericValue<float> Cooldown = new NumericValue<float>(0, 0f, 1000f);
+        public NumericValue<float> Lifetime = new NumericValue<float>(0, 0f, 1000f);
         public Vector2 Offset;
         public ActivationType ActivationType;
         public System.Drawing.Color Color;

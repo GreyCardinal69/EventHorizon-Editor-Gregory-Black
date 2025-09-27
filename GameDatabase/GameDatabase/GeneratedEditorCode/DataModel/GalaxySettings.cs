@@ -14,42 +14,42 @@ namespace EditorDatabase.DataModel
 {
     public partial class GalaxySettings
     {
-        partial void OnDataDeserialized( GalaxySettingsSerializable serializable, Database database );
-        partial void OnDataSerialized( ref GalaxySettingsSerializable serializable );
+        partial void OnDataDeserialized(GalaxySettingsSerializable serializable, Database database);
+        partial void OnDataSerialized(ref GalaxySettingsSerializable serializable);
 
-        public static GalaxySettings Create( GalaxySettingsSerializable serializable, Database database )
+        public static GalaxySettings Create(GalaxySettingsSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new GalaxySettings( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new GalaxySettings(serializable, database);
         }
 
-        public GalaxySettings( GalaxySettingsSerializable serializable, Database database )
+        public GalaxySettings(GalaxySettingsSerializable serializable, Database database)
         {
-            AbandonedStarbaseFaction = database.GetFactionId( serializable.AbandonedStarbaseFaction );
-            StartingShipBuilds = serializable.StartingShipBuilds?.Select( id => new Wrapper<ShipBuild> { Item = database.GetShipBuildId( id ) } ).ToArray();
-            StartingInventory = database.GetLootId( serializable.StartingInventory );
-            SupporterPackShip = database.GetShipBuildId( serializable.SupporterPackShip );
-            DefaultStarbaseBuild = database.GetShipBuildId( serializable.DefaultStarbaseBuild );
-            MaxEnemyShipsLevel = new NumericValue<int>( serializable.MaxEnemyShipsLevel, 0, 500 );
+            AbandonedStarbaseFaction = database.GetFactionId(serializable.AbandonedStarbaseFaction);
+            StartingShipBuilds = serializable.StartingShipBuilds?.Select(id => new Wrapper<ShipBuild> { Item = database.GetShipBuildId(id) }).ToArray();
+            StartingInventory = database.GetLootId(serializable.StartingInventory);
+            SupporterPackShip = database.GetShipBuildId(serializable.SupporterPackShip);
+            DefaultStarbaseBuild = database.GetShipBuildId(serializable.DefaultStarbaseBuild);
+            MaxEnemyShipsLevel = new NumericValue<int>(serializable.MaxEnemyShipsLevel, 0, 500);
             EnemyLevel = serializable.EnemyLevel;
             ShipMinSpawnDistance = serializable.ShipMinSpawnDistance;
-            CaptureStarbaseQuest = database.GetQuestId( serializable.CaptureStarbaseQuest );
-            SurvivalCombatRules = database.GetCombatRulesId( serializable.SurvivalCombatRules );
-            StarbaseCombatRules = database.GetCombatRulesId( serializable.StarbaseCombatRules );
-            FlagshipCombatRules = database.GetCombatRulesId( serializable.FlagshipCombatRules );
-            ArenaCombatRules = database.GetCombatRulesId( serializable.ArenaCombatRules );
-            ChallengeCombatRules = database.GetCombatRulesId( serializable.ChallengeCombatRules );
-            QuickCombatRules = database.GetCombatRulesId( serializable.QuickCombatRules );
-            OnDataDeserialized( serializable, database );
+            CaptureStarbaseQuest = database.GetQuestId(serializable.CaptureStarbaseQuest);
+            SurvivalCombatRules = database.GetCombatRulesId(serializable.SurvivalCombatRules);
+            StarbaseCombatRules = database.GetCombatRulesId(serializable.StarbaseCombatRules);
+            FlagshipCombatRules = database.GetCombatRulesId(serializable.FlagshipCombatRules);
+            ArenaCombatRules = database.GetCombatRulesId(serializable.ArenaCombatRules);
+            ChallengeCombatRules = database.GetCombatRulesId(serializable.ChallengeCombatRules);
+            QuickCombatRules = database.GetCombatRulesId(serializable.QuickCombatRules);
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( GalaxySettingsSerializable serializable )
+        public void Save(GalaxySettingsSerializable serializable)
         {
             serializable.AbandonedStarbaseFaction = AbandonedStarbaseFaction.Value;
-            if ( StartingShipBuilds == null || StartingShipBuilds.Length == 0 )
+            if (StartingShipBuilds == null || StartingShipBuilds.Length == 0)
                 serializable.StartingShipBuilds = null;
             else
-                serializable.StartingShipBuilds = StartingShipBuilds.Select( wrapper => wrapper.Item.Value ).ToArray();
+                serializable.StartingShipBuilds = StartingShipBuilds.Select(wrapper => wrapper.Item.Value).ToArray();
             serializable.StartingInventory = StartingInventory.Value;
             serializable.SupporterPackShip = SupporterPackShip.Value;
             serializable.DefaultStarbaseBuild = DefaultStarbaseBuild.Value;
@@ -63,7 +63,7 @@ namespace EditorDatabase.DataModel
             serializable.ArenaCombatRules = ArenaCombatRules.Value;
             serializable.ChallengeCombatRules = ChallengeCombatRules.Value;
             serializable.QuickCombatRules = QuickCombatRules.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public ItemId<Faction> AbandonedStarbaseFaction = ItemId<Faction>.Empty;
@@ -71,7 +71,7 @@ namespace EditorDatabase.DataModel
         public ItemId<LootModel> StartingInventory = ItemId<LootModel>.Empty;
         public ItemId<ShipBuild> SupporterPackShip = ItemId<ShipBuild>.Empty;
         public ItemId<ShipBuild> DefaultStarbaseBuild = ItemId<ShipBuild>.Empty;
-        public NumericValue<int> MaxEnemyShipsLevel = new NumericValue<int>( 0, 0, 500 );
+        public NumericValue<int> MaxEnemyShipsLevel = new NumericValue<int>(0, 0, 500);
         public string EnemyLevel;
         public string ShipMinSpawnDistance;
         public ItemId<QuestModel> CaptureStarbaseQuest = ItemId<QuestModel>.Empty;

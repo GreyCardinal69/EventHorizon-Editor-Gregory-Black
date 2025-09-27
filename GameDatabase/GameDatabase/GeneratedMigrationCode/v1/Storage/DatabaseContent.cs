@@ -38,263 +38,263 @@ namespace DatabaseMigration.v1.Storage
 
         public void LoadJson(string name, string content)
         {
-            var item = _serializer.FromJson<SerializableItem>(content);
-            var type = item.ItemType;
+            SerializableItem item = _serializer.FromJson<SerializableItem>(content);
+            ItemType type = item.ItemType;
 
             // if exception like "unknown item type, check if an else is missing.
             if (type == ItemType.AmmunitionObsolete)
             {
-                var data = _serializer.FromJson<AmmunitionObsoleteSerializable>(content);
+                AmmunitionObsoleteSerializable data = _serializer.FromJson<AmmunitionObsoleteSerializable>(content);
                 data.FileName = name;
                 AmmunitionObsoleteList.Add(data);
             }
             else if (type == ItemType.ComponentStatUpgrade)
             {
-                var data = _serializer.FromJson<ComponentStatUpgradeSerializable>(content);
+                ComponentStatUpgradeSerializable data = _serializer.FromJson<ComponentStatUpgradeSerializable>(content);
                 data.FileName = name;
                 ComponentStatUpgradeList.Add(data);
             }
             else if (type == ItemType.StatUpgradeTemplate)
             {
-                
-                    var data = _serializer.FromJson<StatUpgradeTemplateSerializable>(content);
-                    data.FileName = name;
-                    StatUpgradeTemplateList.Add(data);
-                
+
+                StatUpgradeTemplateSerializable data = _serializer.FromJson<StatUpgradeTemplateSerializable>(content);
+                data.FileName = name;
+                StatUpgradeTemplateList.Add(data);
+
             }
             else if (type == ItemType.WeaponSlots)
             {
 
-                var data = _serializer.FromJson<WeaponSlotsSerializable>(content);
+                WeaponSlotsSerializable data = _serializer.FromJson<WeaponSlotsSerializable>(content);
                 data.FileName = name;
                 WeaponSlotsList.Add(data);
 
             }
             else if (type == ItemType.LocalizationSettings)
             {
-                var data = _serializer.FromJson<LocalizationSettingsSerializable>(content);
+                LocalizationSettingsSerializable data = _serializer.FromJson<LocalizationSettingsSerializable>(content);
                 data.FileName = name;
                 LocalizationSettings = data;
             }
             else if (type == ItemType.MusicPlaylist)
             {
-                var data = _serializer.FromJson<MusicPlaylistSerializable>(content);
+                MusicPlaylistSerializable data = _serializer.FromJson<MusicPlaylistSerializable>(content);
                 data.FileName = name;
                 MusicPlaylist = data;
             }
             else if (item.ItemType == ItemType.Component)
             {
-                var data = _serializer.FromJson<ComponentSerializable>(content);
+                ComponentSerializable data = _serializer.FromJson<ComponentSerializable>(content);
                 data.FileName = name;
                 ComponentList.Add(data);
             }
             else if (type == ItemType.ComponentMod)
             {
-                var data = _serializer.FromJson<ComponentModSerializable>(content);
+                ComponentModSerializable data = _serializer.FromJson<ComponentModSerializable>(content);
                 data.FileName = name;
                 ComponentModList.Add(data);
             }
             else if (type == ItemType.ComponentStats)
             {
-                var data = _serializer.FromJson<ComponentStatsSerializable>(content);
+                ComponentStatsSerializable data = _serializer.FromJson<ComponentStatsSerializable>(content);
                 data.FileName = name;
                 ComponentStatsList.Add(data);
             }
             else if (type == ItemType.Device)
             {
-                var data = _serializer.FromJson<DeviceSerializable>(content);
+                DeviceSerializable data = _serializer.FromJson<DeviceSerializable>(content);
                 data.FileName = name;
                 DeviceList.Add(data);
             }
             else if (type == ItemType.GameObjectPrefab)
             {
-                var data = _serializer.FromJson<GameObjectPrefabSerializable>(content);
+                GameObjectPrefabSerializable data = _serializer.FromJson<GameObjectPrefabSerializable>(content);
                 data.FileName = name;
                 GameObjectPrefabList.Add(data);
             }
             if (type == ItemType.ComponentGroupTag)
             {
-                var data = _serializer.FromJson<ComponentGroupTagSerializable>(content);
+                ComponentGroupTagSerializable data = _serializer.FromJson<ComponentGroupTagSerializable>(content);
                 data.FileName = name;
                 ComponentGroupTagList.Add(data);
             }
             else if (type == ItemType.CombatRules)
             {
-                var data = _serializer.FromJson<CombatRulesSerializable>(content);
+                CombatRulesSerializable data = _serializer.FromJson<CombatRulesSerializable>(content);
                 data.FileName = name;
                 CombatRulesList.Add(data);
             }
             else if (type == ItemType.UiSettings)
             {
-                var data = _serializer.FromJson<UiSettingsSerializable>(content);
+                UiSettingsSerializable data = _serializer.FromJson<UiSettingsSerializable>(content);
                 data.FileName = name;
                 UiSettings = data;
             }
             else if (type == ItemType.BehaviorTree)
             {
-                var data = _serializer.FromJson<BehaviorTreeSerializable>(content);
+                BehaviorTreeSerializable data = _serializer.FromJson<BehaviorTreeSerializable>(content);
                 data.FileName = name;
                 BehaviorTreeList.Add(data);
             }
             else if (type == ItemType.CombatSettings)
             {
-                var data = _serializer.FromJson<CombatSettingsSerializable>(content);
+                CombatSettingsSerializable data = _serializer.FromJson<CombatSettingsSerializable>(content);
                 data.FileName = name;
                 CombatSettings = data;
             }
             else if (type == ItemType.DroneBay)
             {
-                var data = _serializer.FromJson<DroneBaySerializable>(content);
+                DroneBaySerializable data = _serializer.FromJson<DroneBaySerializable>(content);
                 data.FileName = name;
                 DroneBayList.Add(data);
             }
             else if (type == ItemType.Faction)
             {
-                var data = _serializer.FromJson<FactionSerializable>(content);
+                FactionSerializable data = _serializer.FromJson<FactionSerializable>(content);
                 data.FileName = name;
                 FactionList.Add(data);
             }
             else if (type == ItemType.Satellite)
             {
-                var data = _serializer.FromJson<SatelliteSerializable>(content);
+                SatelliteSerializable data = _serializer.FromJson<SatelliteSerializable>(content);
                 data.FileName = name;
                 SatelliteList.Add(data);
             }
             else if (type == ItemType.SatelliteBuild)
             {
-                var data = _serializer.FromJson<SatelliteBuildSerializable>(content);
+                SatelliteBuildSerializable data = _serializer.FromJson<SatelliteBuildSerializable>(content);
                 data.FileName = name;
                 SatelliteBuildList.Add(data);
             }
             else if (type == ItemType.Ship)
             {
-                var data = _serializer.FromJson<ShipSerializable>(content);
+                ShipSerializable data = _serializer.FromJson<ShipSerializable>(content);
                 data.FileName = name;
                 ShipList.Add(data);
             }
             else if (type == ItemType.ShipBuild)
             {
-                var data = _serializer.FromJson<ShipBuildSerializable>(content);
+                ShipBuildSerializable data = _serializer.FromJson<ShipBuildSerializable>(content);
                 data.FileName = name;
                 ShipBuildList.Add(data);
             }
             else if (type == ItemType.Technology)
             {
-                var data = _serializer.FromJson<TechnologySerializable>(content);
+                TechnologySerializable data = _serializer.FromJson<TechnologySerializable>(content);
                 data.FileName = name;
                 TechnologyList.Add(data);
             }
             else if (type == ItemType.Character)
             {
-                var data = _serializer.FromJson<CharacterSerializable>(content);
+                CharacterSerializable data = _serializer.FromJson<CharacterSerializable>(content);
                 data.FileName = name;
                 CharacterList.Add(data);
             }
             else if (type == ItemType.Fleet)
             {
-                var data = _serializer.FromJson<FleetSerializable>(content);
+                FleetSerializable data = _serializer.FromJson<FleetSerializable>(content);
                 data.FileName = name;
                 FleetList.Add(data);
             }
             else if (type == ItemType.Loot)
             {
-                var data = _serializer.FromJson<LootSerializable>(content);
+                LootSerializable data = _serializer.FromJson<LootSerializable>(content);
                 data.FileName = name;
                 LootList.Add(data);
             }
             else if (type == ItemType.Quest)
             {
-                var data = _serializer.FromJson<QuestSerializable>(content);
+                QuestSerializable data = _serializer.FromJson<QuestSerializable>(content);
                 data.FileName = name;
                 QuestList.Add(data);
             }
             else if (type == ItemType.QuestItem)
             {
-                var data = _serializer.FromJson<QuestItemSerializable>(content);
+                QuestItemSerializable data = _serializer.FromJson<QuestItemSerializable>(content);
                 data.FileName = name;
                 QuestItemList.Add(data);
             }
             else if (type == ItemType.Ammunition)
             {
-                var data = _serializer.FromJson<AmmunitionSerializable>(content);
+                AmmunitionSerializable data = _serializer.FromJson<AmmunitionSerializable>(content);
                 data.FileName = name;
                 AmmunitionList.Add(data);
             }
             else if (type == ItemType.BulletPrefab)
             {
-                var data = _serializer.FromJson<BulletPrefabSerializable>(content);
+                BulletPrefabSerializable data = _serializer.FromJson<BulletPrefabSerializable>(content);
                 data.FileName = name;
                 BulletPrefabList.Add(data);
             }
             else if (type == ItemType.FactionsSettings)
             {
-                var data = _serializer.FromJson<FactionsSettingsSerializable>(content);
+                FactionsSettingsSerializable data = _serializer.FromJson<FactionsSettingsSerializable>(content);
                 data.FileName = name;
                 FactionsSettings = data;
             }
             else if (type == ItemType.VisualEffect)
             {
-                var data = _serializer.FromJson<VisualEffectSerializable>(content);
+                VisualEffectSerializable data = _serializer.FromJson<VisualEffectSerializable>(content);
                 data.FileName = name;
                 VisualEffectList.Add(data);
             }
             else if (type == ItemType.Weapon)
             {
-                var data = _serializer.FromJson<WeaponSerializable>(content);
+                WeaponSerializable data = _serializer.FromJson<WeaponSerializable>(content);
                 data.FileName = name;
                 WeaponList.Add(data);
             }
             else if (type == ItemType.DatabaseSettings)
             {
-                var data = _serializer.FromJson<DatabaseSettingsSerializable>(content);
+                DatabaseSettingsSerializable data = _serializer.FromJson<DatabaseSettingsSerializable>(content);
                 data.FileName = name;
                 DatabaseSettings = data;
             }
             else if (type == ItemType.DebugSettings)
             {
-                var data = _serializer.FromJson<DebugSettingsSerializable>(content);
+                DebugSettingsSerializable data = _serializer.FromJson<DebugSettingsSerializable>(content);
                 data.FileName = name;
                 DebugSettings = data;
             }
             else if (type == ItemType.ExplorationSettings)
             {
-                var data = _serializer.FromJson<ExplorationSettingsSerializable>(content);
+                ExplorationSettingsSerializable data = _serializer.FromJson<ExplorationSettingsSerializable>(content);
                 data.FileName = name;
                 ExplorationSettings = data;
             }
             else if (type == ItemType.FrontierSettings)
             {
-                var data = _serializer.FromJson<FrontierSettingsSerializable>(content);
+                FrontierSettingsSerializable data = _serializer.FromJson<FrontierSettingsSerializable>(content);
                 data.FileName = name;
                 FrontierSettings = data;
             }
             else if (type == ItemType.GalaxySettings)
             {
-                var data = _serializer.FromJson<GalaxySettingsSerializable>(content);
+                GalaxySettingsSerializable data = _serializer.FromJson<GalaxySettingsSerializable>(content);
                 data.FileName = name;
                 GalaxySettings = data;
             }
             else if (type == ItemType.ShipModSettings)
             {
-                var data = _serializer.FromJson<ShipModSettingsSerializable>(content);
+                ShipModSettingsSerializable data = _serializer.FromJson<ShipModSettingsSerializable>(content);
                 data.FileName = name;
                 ShipModSettings = data;
             }
             else if (type == ItemType.ShipSettings)
             {
-                var data = _serializer.FromJson<ShipSettingsSerializable>(content);
+                ShipSettingsSerializable data = _serializer.FromJson<ShipSettingsSerializable>(content);
                 data.FileName = name;
                 ShipSettings = data;
             }
             else if (type == ItemType.SkillSettings)
             {
-                var data = _serializer.FromJson<SkillSettingsSerializable>(content);
+                SkillSettingsSerializable data = _serializer.FromJson<SkillSettingsSerializable>(content);
                 data.FileName = name;
                 SkillSettings = data;
             }
             else if (type == ItemType.SpecialEventSettings)
             {
-                var data = _serializer.FromJson<SpecialEventSettingsSerializable>(content);
+                SpecialEventSettingsSerializable data = _serializer.FromJson<SpecialEventSettingsSerializable>(content);
                 data.FileName = name;
                 SpecialEventSettings = data;
             }
@@ -304,61 +304,61 @@ namespace DatabaseMigration.v1.Storage
         {
             foreach (ComponentGroupTagSerializable item in this.ComponentGroupTagList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in ComponentStatUpgradeList)
+            foreach (ComponentStatUpgradeSerializable item in ComponentStatUpgradeList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in CombatRulesList)
+            foreach (CombatRulesSerializable item in CombatRulesList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in GameObjectPrefabList)
+            foreach (GameObjectPrefabSerializable item in GameObjectPrefabList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in AmmunitionObsoleteList)
+            foreach (AmmunitionObsoleteSerializable item in AmmunitionObsoleteList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in ComponentList)
+            foreach (ComponentSerializable item in ComponentList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in ComponentModList)
+            foreach (ComponentModSerializable item in ComponentModList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in ComponentStatsList)
+            foreach (ComponentStatsSerializable item in ComponentStatsList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in DeviceList)
+            foreach (DeviceSerializable item in DeviceList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in DroneBayList)
+            foreach (DroneBaySerializable item in DroneBayList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in FactionList)
+            foreach (FactionSerializable item in FactionList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in SatelliteList)
+            foreach (SatelliteSerializable item in SatelliteList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in SatelliteBuildList)
+            foreach (SatelliteBuildSerializable item in SatelliteBuildList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in ShipList)
+            foreach (ShipSerializable item in ShipList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in ShipBuildList)
+            foreach (ShipBuildSerializable item in ShipBuildList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in WeaponSlotsList)
+            foreach (WeaponSlotsSerializable item in WeaponSlotsList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in StatUpgradeTemplateList)
+            foreach (StatUpgradeTemplateSerializable item in StatUpgradeTemplateList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in BehaviorTreeList)
+            foreach (BehaviorTreeSerializable item in BehaviorTreeList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in TechnologyList)
+            foreach (TechnologySerializable item in TechnologyList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in CharacterList)
+            foreach (CharacterSerializable item in CharacterList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in FleetList)
+            foreach (FleetSerializable item in FleetList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in LootList)
+            foreach (LootSerializable item in LootList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in QuestList)
+            foreach (QuestSerializable item in QuestList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in QuestItemList)
+            foreach (QuestItemSerializable item in QuestItemList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in AmmunitionList)
+            foreach (AmmunitionSerializable item in AmmunitionList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in BulletPrefabList)
+            foreach (BulletPrefabSerializable item in BulletPrefabList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in VisualEffectList)
+            foreach (VisualEffectSerializable item in VisualEffectList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in WeaponList)
+            foreach (WeaponSerializable item in WeaponList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
-            foreach (var item in WeaponSlotsList)
+            foreach (WeaponSlotsSerializable item in WeaponSlotsList)
                 contentLoader.LoadJson(item.FileName, _serializer.ToJson(item));
             if (LocalizationSettings != null)
                 contentLoader.LoadJson(LocalizationSettings.FileName, _serializer.ToJson(LocalizationSettings));
@@ -388,11 +388,11 @@ namespace DatabaseMigration.v1.Storage
                 contentLoader.LoadJson(UiSettings.FileName, _serializer.ToJson(UiSettings));
             if (FactionsSettings != null)
                 contentLoader.LoadJson(FactionsSettings.FileName, _serializer.ToJson(FactionsSettings));
-            foreach (var item in _images)
+            foreach (KeyValuePair<string, IImageData> item in _images)
                 contentLoader.LoadImage(item.Key, item.Value);
-            foreach (var item in _audioClips)
+            foreach (KeyValuePair<string, IAudioClipData> item in _audioClips)
                 contentLoader.LoadAudioClip(item.Key, item.Value);
-            foreach (var item in _localizations)
+            foreach (KeyValuePair<string, string> item in _localizations)
                 contentLoader.LoadLocalization(item.Key, item.Value);
         }
 

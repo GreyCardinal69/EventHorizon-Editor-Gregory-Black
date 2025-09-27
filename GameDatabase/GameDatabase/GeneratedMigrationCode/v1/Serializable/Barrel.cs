@@ -21,9 +21,9 @@ namespace DatabaseMigration.v1.Serializable
         public int PlatformType;
         public float AutoAimingArc;
         public float RotationSpeed;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string WeaponClass;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Image;
         public float Size;
     }

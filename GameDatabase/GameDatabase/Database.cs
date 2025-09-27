@@ -5,11 +5,11 @@ namespace EditorDatabase
 {
     public partial class Database
     {
-        public static Database MigrateFrom( IDataStorage storage )
+        public static Database MigrateFrom(IDataStorage storage)
         {
-            var database = new Database( null );
-            var upgrader = new DatabaseUpgrader( database._serializer, storage );
-            upgrader.Upgrade( database._content );
+            Database database = new Database(null);
+            DatabaseUpgrader upgrader = new DatabaseUpgrader(database._serializer, storage);
+            upgrader.Upgrade(database._content);
             return database;
         }
     }

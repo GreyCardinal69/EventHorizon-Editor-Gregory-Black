@@ -13,27 +13,27 @@ namespace EditorDatabase.DataModel
 {
     public partial class DatabaseSettings
     {
-        partial void OnDataDeserialized( DatabaseSettingsSerializable serializable, Database database );
-        partial void OnDataSerialized( ref DatabaseSettingsSerializable serializable );
+        partial void OnDataDeserialized(DatabaseSettingsSerializable serializable, Database database);
+        partial void OnDataSerialized(ref DatabaseSettingsSerializable serializable);
 
-        public static DatabaseSettings Create( DatabaseSettingsSerializable serializable, Database database )
+        public static DatabaseSettings Create(DatabaseSettingsSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new DatabaseSettings( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new DatabaseSettings(serializable, database);
         }
 
-        public DatabaseSettings( DatabaseSettingsSerializable serializable, Database database )
+        public DatabaseSettings(DatabaseSettingsSerializable serializable, Database database)
         {
-            DatabaseVersion = new NumericValue<int>( serializable.DatabaseVersion, 1, 2147483647 );
-            DatabaseVersionMinor = new NumericValue<int>( serializable.DatabaseVersionMinor, 0, 2147483647 );
+            DatabaseVersion = new NumericValue<int>(serializable.DatabaseVersion, 1, 2147483647);
+            DatabaseVersionMinor = new NumericValue<int>(serializable.DatabaseVersionMinor, 0, 2147483647);
             ModName = serializable.ModName;
             ModId = serializable.ModId;
-            ModVersion = new NumericValue<int>( serializable.ModVersion, -2147483648, 2147483647 );
+            ModVersion = new NumericValue<int>(serializable.ModVersion, -2147483648, 2147483647);
             UnloadOriginalDatabase = serializable.UnloadOriginalDatabase;
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( DatabaseSettingsSerializable serializable )
+        public void Save(DatabaseSettingsSerializable serializable)
         {
             serializable.DatabaseVersion = DatabaseVersion.Value;
             serializable.DatabaseVersionMinor = DatabaseVersionMinor.Value;
@@ -41,14 +41,14 @@ namespace EditorDatabase.DataModel
             serializable.ModId = ModId;
             serializable.ModVersion = ModVersion.Value;
             serializable.UnloadOriginalDatabase = UnloadOriginalDatabase;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        public NumericValue<int> DatabaseVersion = new NumericValue<int>( 0, 1, 2147483647 );
-        public NumericValue<int> DatabaseVersionMinor = new NumericValue<int>( 0, 0, 2147483647 );
+        public NumericValue<int> DatabaseVersion = new NumericValue<int>(0, 1, 2147483647);
+        public NumericValue<int> DatabaseVersionMinor = new NumericValue<int>(0, 0, 2147483647);
         public string ModName;
         public string ModId;
-        public NumericValue<int> ModVersion = new NumericValue<int>( 0, -2147483648, 2147483647 );
+        public NumericValue<int> ModVersion = new NumericValue<int>(0, -2147483648, 2147483647);
         public bool UnloadOriginalDatabase;
 
         public static DatabaseSettings DefaultValue { get; set; }

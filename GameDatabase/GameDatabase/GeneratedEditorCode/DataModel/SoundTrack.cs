@@ -12,28 +12,28 @@ namespace EditorDatabase.DataModel
 {
     public partial class SoundTrack
     {
-        partial void OnDataDeserialized( SoundTrackSerializable serializable, Database database );
-        partial void OnDataSerialized( ref SoundTrackSerializable serializable );
+        partial void OnDataDeserialized(SoundTrackSerializable serializable, Database database);
+        partial void OnDataSerialized(ref SoundTrackSerializable serializable);
 
-        public static SoundTrack Create( SoundTrackSerializable serializable, Database database )
+        public static SoundTrack Create(SoundTrackSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new SoundTrack( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new SoundTrack(serializable, database);
         }
 
         public SoundTrack() { }
 
-        public SoundTrack( SoundTrackSerializable serializable, Database database )
+        public SoundTrack(SoundTrackSerializable serializable, Database database)
         {
             Audio = serializable.Audio;
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
         public SoundTrackSerializable Serialize()
         {
-            var serializable = new SoundTrackSerializable();
+            SoundTrackSerializable serializable = new SoundTrackSerializable();
             serializable.Audio = Audio;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
             return serializable;
         }
 

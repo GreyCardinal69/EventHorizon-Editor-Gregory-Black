@@ -15,7 +15,7 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class QuestSerializable : SerializableItem
     {
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
         public QuestType QuestType;
         public StartCondition StartCondition;

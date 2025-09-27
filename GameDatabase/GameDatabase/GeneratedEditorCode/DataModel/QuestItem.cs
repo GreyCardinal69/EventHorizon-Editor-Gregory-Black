@@ -13,41 +13,41 @@ namespace EditorDatabase.DataModel
 {
     public partial class QuestItem
     {
-        partial void OnDataDeserialized( QuestItemSerializable serializable, Database database );
-        partial void OnDataSerialized( ref QuestItemSerializable serializable );
+        partial void OnDataDeserialized(QuestItemSerializable serializable, Database database);
+        partial void OnDataSerialized(ref QuestItemSerializable serializable);
 
-        public static QuestItem Create( QuestItemSerializable serializable, Database database )
+        public static QuestItem Create(QuestItemSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new QuestItem( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new QuestItem(serializable, database);
         }
 
-        public QuestItem( QuestItemSerializable serializable, Database database )
+        public QuestItem(QuestItemSerializable serializable, Database database)
         {
             try
             {
-                Id = new ItemId<QuestItem>( serializable.Id, serializable.FileName );
+                Id = new ItemId<QuestItem>(serializable.Id, serializable.FileName);
                 Name = serializable.Name;
                 Description = serializable.Description;
                 Icon = serializable.Icon;
-                Color = Helpers.ColorFromString( serializable.Color );
-                Price = new NumericValue<int>( serializable.Price, 0, 999999999 );
+                Color = Helpers.ColorFromString(serializable.Color);
+                Price = new NumericValue<int>(serializable.Price, 0, 999999999);
             }
-            catch ( DatabaseException e )
+            catch (DatabaseException e)
             {
-                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+                throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
             }
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( QuestItemSerializable serializable )
+        public void Save(QuestItemSerializable serializable)
         {
             serializable.Name = Name;
             serializable.Description = Description;
             serializable.Icon = Icon;
-            serializable.Color = Helpers.ColorToString( Color );
+            serializable.Color = Helpers.ColorToString(Color);
             serializable.Price = Price.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public readonly ItemId<QuestItem> Id;
@@ -56,7 +56,7 @@ namespace EditorDatabase.DataModel
         public string Description;
         public string Icon;
         public System.Drawing.Color Color;
-        public NumericValue<int> Price = new NumericValue<int>( 0, 0, 999999999 );
+        public NumericValue<int> Price = new NumericValue<int>(0, 0, 999999999);
 
         public static QuestItem DefaultValue { get; set; }
     }

@@ -19,7 +19,7 @@ namespace DatabaseMigration.v1.Serializable
         public DeviceClass DeviceClass;
         public AiDifficultyLevel DifficultyLevel;
         public SizeClass SizeClass;
-        [DefaultValue( 1f )]
+        [DefaultValue(1f)]
         public float Value = 1f;
         public BehaviorNodeRequirementSerializable[] Requirements;
     }

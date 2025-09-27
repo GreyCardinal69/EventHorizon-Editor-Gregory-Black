@@ -22,9 +22,9 @@ namespace DatabaseMigration.v1.Serializable
         }
 
         public int ShipId;
-        [DefaultValue( true )]
+        [DefaultValue(true)]
         public bool AvailableForPlayer = true;
-        [DefaultValue( true )]
+        [DefaultValue(true)]
         public bool AvailableForEnemy = true;
         public DifficultyClass DifficultyClass;
         public int BuildFaction;

@@ -14,37 +14,37 @@ namespace EditorDatabase.DataModel
 {
     public partial class FrontierSettings
     {
-        partial void OnDataDeserialized( FrontierSettingsSerializable serializable, Database database );
-        partial void OnDataSerialized( ref FrontierSettingsSerializable serializable );
+        partial void OnDataDeserialized(FrontierSettingsSerializable serializable, Database database);
+        partial void OnDataSerialized(ref FrontierSettingsSerializable serializable);
 
 
-        public FrontierSettings( FrontierSettingsSerializable serializable, Database database )
+        public FrontierSettings(FrontierSettingsSerializable serializable, Database database)
         {
-            BaseCommandPoints = new NumericValue<int>( serializable.BaseCommandPoints, 0, 2147483647 );
-            MaxExtraCommandPoints = new NumericValue<int>( serializable.MaxExtraCommandPoints, 0, 2147483647 );
-            SupporterPackShip = database.GetShipId( serializable.SupporterPackShip );
-            FalconPackShip = database.GetShipId( serializable.FalconPackShip );
-            BigBossEasyBuild = database.GetShipBuildId( serializable.BigBossEasyBuild );
-            BigBossNormalBuild = database.GetShipBuildId( serializable.BigBossNormalBuild );
-            BigBossHardBuild = database.GetShipBuildId( serializable.BigBossHardBuild );
-            DemoSceneStarbaseBuild = database.GetShipBuildId( serializable.DemoSceneStarbaseBuild );
-            TutorialStarbaseBuild = database.GetShipBuildId( serializable.TutorialStarbaseBuild );
-            DefaultStarbaseBuild = database.GetShipBuildId( serializable.DefaultStarbaseBuild );
-            ExplorationStarbase = database.GetShipId( serializable.ExplorationStarbase );
-            MerchantShipBuild = database.GetShipBuildId( serializable.MerchantShipBuild );
-            SmugglerShipBuild = database.GetShipBuildId( serializable.SmugglerShipBuild );
-            EngineerShipBuild = database.GetShipBuildId( serializable.EngineerShipBuild );
-            MercenaryShipBuild = database.GetShipBuildId( serializable.MercenaryShipBuild );
-            ShipyardShipBuild = database.GetShipBuildId( serializable.ShipyardShipBuild );
-            SantaShipBuild = database.GetShipBuildId( serializable.SantaShipBuild );
-            SalvageDroneBuild = database.GetShipBuildId( serializable.SalvageDroneBuild );
-            CustomShipLevels = serializable.CustomShipLevels?.Select( item => new ShipToValue( item, database ) ).ToArray();
-            CustomShipPrices = serializable.CustomShipPrices?.Select( item => new ShipToValue( item, database ) ).ToArray();
-            ExplorationShips = serializable.ExplorationShips?.Select( id => new Wrapper<Ship> { Item = database.GetShipId( id ) } ).ToArray();
-            OnDataDeserialized( serializable, database );
+            BaseCommandPoints = new NumericValue<int>(serializable.BaseCommandPoints, 0, 2147483647);
+            MaxExtraCommandPoints = new NumericValue<int>(serializable.MaxExtraCommandPoints, 0, 2147483647);
+            SupporterPackShip = database.GetShipId(serializable.SupporterPackShip);
+            FalconPackShip = database.GetShipId(serializable.FalconPackShip);
+            BigBossEasyBuild = database.GetShipBuildId(serializable.BigBossEasyBuild);
+            BigBossNormalBuild = database.GetShipBuildId(serializable.BigBossNormalBuild);
+            BigBossHardBuild = database.GetShipBuildId(serializable.BigBossHardBuild);
+            DemoSceneStarbaseBuild = database.GetShipBuildId(serializable.DemoSceneStarbaseBuild);
+            TutorialStarbaseBuild = database.GetShipBuildId(serializable.TutorialStarbaseBuild);
+            DefaultStarbaseBuild = database.GetShipBuildId(serializable.DefaultStarbaseBuild);
+            ExplorationStarbase = database.GetShipId(serializable.ExplorationStarbase);
+            MerchantShipBuild = database.GetShipBuildId(serializable.MerchantShipBuild);
+            SmugglerShipBuild = database.GetShipBuildId(serializable.SmugglerShipBuild);
+            EngineerShipBuild = database.GetShipBuildId(serializable.EngineerShipBuild);
+            MercenaryShipBuild = database.GetShipBuildId(serializable.MercenaryShipBuild);
+            ShipyardShipBuild = database.GetShipBuildId(serializable.ShipyardShipBuild);
+            SantaShipBuild = database.GetShipBuildId(serializable.SantaShipBuild);
+            SalvageDroneBuild = database.GetShipBuildId(serializable.SalvageDroneBuild);
+            CustomShipLevels = serializable.CustomShipLevels?.Select(item => new ShipToValue(item, database)).ToArray();
+            CustomShipPrices = serializable.CustomShipPrices?.Select(item => new ShipToValue(item, database)).ToArray();
+            ExplorationShips = serializable.ExplorationShips?.Select(id => new Wrapper<Ship> { Item = database.GetShipId(id) }).ToArray();
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( FrontierSettingsSerializable serializable )
+        public void Save(FrontierSettingsSerializable serializable)
         {
             serializable.BaseCommandPoints = BaseCommandPoints.Value;
             serializable.MaxExtraCommandPoints = MaxExtraCommandPoints.Value;
@@ -64,23 +64,23 @@ namespace EditorDatabase.DataModel
             serializable.ShipyardShipBuild = ShipyardShipBuild.Value;
             serializable.SantaShipBuild = SantaShipBuild.Value;
             serializable.SalvageDroneBuild = SalvageDroneBuild.Value;
-            if ( CustomShipLevels == null || CustomShipLevels.Length == 0 )
+            if (CustomShipLevels == null || CustomShipLevels.Length == 0)
                 serializable.CustomShipLevels = null;
             else
-                serializable.CustomShipLevels = CustomShipLevels.Select( item => item.Serialize() ).ToArray();
-            if ( CustomShipPrices == null || CustomShipPrices.Length == 0 )
+                serializable.CustomShipLevels = CustomShipLevels.Select(item => item.Serialize()).ToArray();
+            if (CustomShipPrices == null || CustomShipPrices.Length == 0)
                 serializable.CustomShipPrices = null;
             else
-                serializable.CustomShipPrices = CustomShipPrices.Select( item => item.Serialize() ).ToArray();
-            if ( ExplorationShips == null || ExplorationShips.Length == 0 )
+                serializable.CustomShipPrices = CustomShipPrices.Select(item => item.Serialize()).ToArray();
+            if (ExplorationShips == null || ExplorationShips.Length == 0)
                 serializable.ExplorationShips = null;
             else
-                serializable.ExplorationShips = ExplorationShips.Select( wrapper => wrapper.Item.Value ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.ExplorationShips = ExplorationShips.Select(wrapper => wrapper.Item.Value).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
-        public NumericValue<int> BaseCommandPoints = new NumericValue<int>( 0, 0, 2147483647 );
-        public NumericValue<int> MaxExtraCommandPoints = new NumericValue<int>( 0, 0, 2147483647 );
+        public NumericValue<int> BaseCommandPoints = new NumericValue<int>(0, 0, 2147483647);
+        public NumericValue<int> MaxExtraCommandPoints = new NumericValue<int>(0, 0, 2147483647);
         public ItemId<Ship> SupporterPackShip = ItemId<Ship>.Empty;
         public ItemId<Ship> FalconPackShip = ItemId<Ship>.Empty;
         public ItemId<ShipBuild> BigBossEasyBuild = ItemId<ShipBuild>.Empty;

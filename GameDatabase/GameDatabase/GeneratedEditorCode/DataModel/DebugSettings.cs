@@ -13,30 +13,30 @@ namespace EditorDatabase.DataModel
 {
     public partial class DebugSettings
     {
-        partial void OnDataDeserialized( DebugSettingsSerializable serializable, Database database );
-        partial void OnDataSerialized( ref DebugSettingsSerializable serializable );
+        partial void OnDataDeserialized(DebugSettingsSerializable serializable, Database database);
+        partial void OnDataSerialized(ref DebugSettingsSerializable serializable);
 
-        public static DebugSettings Create( DebugSettingsSerializable serializable, Database database )
+        public static DebugSettings Create(DebugSettingsSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new DebugSettings( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new DebugSettings(serializable, database);
         }
 
-        public DebugSettings( DebugSettingsSerializable serializable, Database database )
+        public DebugSettings(DebugSettingsSerializable serializable, Database database)
         {
-            Codes = serializable.Codes?.Select( item => DebugCode.Create( item, database ) ).ToArray();
+            Codes = serializable.Codes?.Select(item => DebugCode.Create(item, database)).ToArray();
             EnableDebugConsole = serializable.EnableDebugConsole;
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( DebugSettingsSerializable serializable )
+        public void Save(DebugSettingsSerializable serializable)
         {
-            if ( Codes == null || Codes.Length == 0 )
+            if (Codes == null || Codes.Length == 0)
                 serializable.Codes = null;
             else
-                serializable.Codes = Codes.Select( item => item.Serialize() ).ToArray();
+                serializable.Codes = Codes.Select(item => item.Serialize()).ToArray();
             serializable.EnableDebugConsole = EnableDebugConsole;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public DebugCode[] Codes;

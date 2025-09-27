@@ -47,18 +47,18 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <returns><c>true</c> if this instance can read palette data from the specified stream; otherwise, <c>false</c>.</returns>
-        public override bool CanReadFrom( Stream stream )
+        public override bool CanReadFrom(Stream stream)
         {
             bool result;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             try
             {
-                using ( StreamReader reader = new StreamReader( stream ) )
+                using (StreamReader reader = new StreamReader(stream))
                 {
                     string header;
                     string version;
@@ -83,18 +83,18 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> that contains the palette to deserialize.</param>
         /// <returns>The <see cref="ColorCollection" /> being deserialized.</returns>
-        public override ColorCollection Deserialize( Stream stream )
+        public override ColorCollection Deserialize(Stream stream)
         {
             ColorCollection results;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             results = new ColorCollection();
 
-            using ( StreamReader reader = new StreamReader( stream ) )
+            using (StreamReader reader = new StreamReader(stream))
             {
                 string header;
                 string version;
@@ -104,13 +104,13 @@ namespace Cyotek.Windows.Forms
                 header = reader.ReadLine();
                 version = reader.ReadLine();
 
-                if ( header != "JASC-PAL" || version != "0100" )
+                if (header != "JASC-PAL" || version != "0100")
                 {
-                    throw new InvalidDataException( "Invalid palette file" );
+                    throw new InvalidDataException("Invalid palette file");
                 }
 
-                colorCount = Convert.ToInt32( reader.ReadLine() );
-                for ( int i = 0; i < colorCount; i++ )
+                colorCount = Convert.ToInt32(reader.ReadLine());
+                for (int i = 0; i < colorCount; i++)
                 {
                     int r;
                     int g;
@@ -119,18 +119,18 @@ namespace Cyotek.Windows.Forms
                     string[] parts;
 
                     data = reader.ReadLine();
-                    parts = !string.IsNullOrEmpty( data ) ? data.Split( new[]
+                    parts = !string.IsNullOrEmpty(data) ? data.Split(new[]
                                                                      {
                                                              ' ',
                                                              '\t'
-                                                           }, StringSplitOptions.RemoveEmptyEntries ) : new string[0];
+                                                           }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
 
-                    if ( !int.TryParse( parts[0], out r ) || !int.TryParse( parts[1], out g ) || !int.TryParse( parts[2], out b ) )
+                    if (!int.TryParse(parts[0], out r) || !int.TryParse(parts[1], out g) || !int.TryParse(parts[2], out b))
                     {
-                        throw new InvalidDataException( string.Format( "Invalid palette contents found with data '{0}'", data ) );
+                        throw new InvalidDataException(string.Format("Invalid palette contents found with data '{0}'", data));
                     }
 
-                    results.Add( Color.FromArgb( r, g, b ) );
+                    results.Add(Color.FromArgb(r, g, b));
                 }
             }
 
@@ -142,28 +142,28 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> used to write the palette.</param>
         /// <param name="palette">The <see cref="ColorCollection" /> to serialize.</param>
-        public override void Serialize( Stream stream, ColorCollection palette )
+        public override void Serialize(Stream stream, ColorCollection palette)
         {
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
-            if ( palette == null )
+            if (palette == null)
             {
-                throw new ArgumentNullException( nameof( palette ) );
+                throw new ArgumentNullException(nameof(palette));
             }
 
-            using ( StreamWriter writer = new StreamWriter( stream, Encoding.UTF8 ) )
+            using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8))
             {
-                writer.WriteLine( "JASC-PAL" );
-                writer.WriteLine( "0100" );
-                writer.WriteLine( palette.Count );
-                foreach ( Color color in palette )
+                writer.WriteLine("JASC-PAL");
+                writer.WriteLine("0100");
+                writer.WriteLine(palette.Count);
+                foreach (Color color in palette)
                 {
-                    writer.Write( "{0} ", color.R );
-                    writer.Write( "{0} ", color.G );
-                    writer.Write( "{0} ", color.B );
+                    writer.Write("{0} ", color.R);
+                    writer.Write("{0} ", color.G);
+                    writer.Write("{0} ", color.B);
                     writer.WriteLine();
                 }
             }

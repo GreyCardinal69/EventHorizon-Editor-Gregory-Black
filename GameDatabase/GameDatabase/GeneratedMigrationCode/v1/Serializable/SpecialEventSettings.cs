@@ -21,15 +21,15 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "SpecialEventSettings.json";
         }
 
-        [DefaultValue( true )]
+        [DefaultValue(true)]
         public bool EnableXmasEvent = true;
-        [DefaultValue( 24 )]
+        [DefaultValue(24)]
         public int XmasDaysBefore = 24;
-        [DefaultValue( 15 )]
+        [DefaultValue(15)]
         public int XmasDaysAfter = 15;
         public int XmasQuest;
         public int XmasCombatRules;
-        [DefaultValue( "1 + credits/500" )]
+        [DefaultValue("1 + credits/500")]
         public string ConvertCreditsToSnowflakes = "1 + credits/500";
         public bool EnableEasterEvent;
         public int EasterDaysBefore;

@@ -58,13 +58,13 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <returns><c>true</c> if this instance can read palette data from the specified stream; otherwise, <c>false</c>.</returns>
-        public override bool CanReadFrom( Stream stream )
+        public override bool CanReadFrom(Stream stream)
         {
             bool result;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             try
@@ -77,14 +77,14 @@ namespace Cyotek.Windows.Forms
                 formHeaderData = new byte[4];
                 imageHeaderData = new byte[4];
 
-                stream.Read( formHeaderData, 0, formHeaderData.Length );
-                this.ReadInt32( stream );
-                stream.Read( imageHeaderData, 0, imageHeaderData.Length );
+                stream.Read(formHeaderData, 0, formHeaderData.Length);
+                this.ReadInt32(stream);
+                stream.Read(imageHeaderData, 0, imageHeaderData.Length);
 
-                formHeader = Encoding.ASCII.GetString( formHeaderData );
-                imageHeader = Encoding.ASCII.GetString( imageHeaderData );
+                formHeader = Encoding.ASCII.GetString(formHeaderData);
+                imageHeader = Encoding.ASCII.GetString(imageHeaderData);
 
-                result = formHeader == "FORM" && ( imageHeader == "PBM " || imageHeader == "ILBM" );
+                result = formHeader == "FORM" && (imageHeader == "PBM " || imageHeader == "ILBM");
             }
             catch
             {
@@ -99,56 +99,56 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> that contains the palette to deserialize.</param>
         /// <returns>The <see cref="ColorCollection" /> being deserialized.</returns>
-        public override ColorCollection Deserialize( Stream stream )
+        public override ColorCollection Deserialize(Stream stream)
         {
             byte[] buffer;
             string header;
             ColorCollection results;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             results = new ColorCollection();
 
             // read the FORM header that identifies the document as an IFF file
             buffer = new byte[4];
-            stream.Read( buffer, 0, buffer.Length );
-            if ( Encoding.ASCII.GetString( buffer ) != "FORM" )
+            stream.Read(buffer, 0, buffer.Length);
+            if (Encoding.ASCII.GetString(buffer) != "FORM")
             {
-                throw new InvalidDataException( "Form header not found." );
+                throw new InvalidDataException("Form header not found.");
             }
 
             // the next value is the size of all the data in the FORM chunk
             // We don't actually need this value, but we have to read it
             // regardless to advance the stream
-            this.ReadInt32( stream );
+            this.ReadInt32(stream);
 
             // read either the PBM or ILBM header that identifies this document as an image file
-            stream.Read( buffer, 0, buffer.Length );
-            header = Encoding.ASCII.GetString( buffer );
-            if ( header != "PBM " && header != "ILBM" )
+            stream.Read(buffer, 0, buffer.Length);
+            header = Encoding.ASCII.GetString(buffer);
+            if (header != "PBM " && header != "ILBM")
             {
-                throw new InvalidDataException( "Bitmap header not found." );
+                throw new InvalidDataException("Bitmap header not found.");
             }
 
-            while ( stream.Read( buffer, 0, buffer.Length ) == buffer.Length )
+            while (stream.Read(buffer, 0, buffer.Length) == buffer.Length)
             {
                 int chunkLength;
 
-                chunkLength = this.ReadInt32( stream );
+                chunkLength = this.ReadInt32(stream);
 
-                if ( Encoding.ASCII.GetString( buffer ) != "CMAP" )
+                if (Encoding.ASCII.GetString(buffer) != "CMAP")
                 {
                     // some other LBM chunk, skip it
-                    if ( stream.CanSeek )
+                    if (stream.CanSeek)
                     {
-                        stream.Seek( chunkLength, SeekOrigin.Current );
+                        stream.Seek(chunkLength, SeekOrigin.Current);
                     }
                     else
                     {
-                        for ( int i = 0; i < chunkLength; i++ )
+                        for (int i = 0; i < chunkLength; i++)
                         {
                             stream.ReadByte();
                         }
@@ -157,7 +157,7 @@ namespace Cyotek.Windows.Forms
                 else
                 {
                     // color map chunk!
-                    for ( int i = 0; i < chunkLength / 3; i++ )
+                    for (int i = 0; i < chunkLength / 3; i++)
                     {
                         int r;
                         int g;
@@ -167,7 +167,7 @@ namespace Cyotek.Windows.Forms
                         g = stream.ReadByte();
                         b = stream.ReadByte();
 
-                        results.Add( Color.FromArgb( r, g, b ) );
+                        results.Add(Color.FromArgb(r, g, b));
                     }
 
                     // all done so stop reading the rest of the file
@@ -176,7 +176,7 @@ namespace Cyotek.Windows.Forms
 
                 // chunks always contain an even number of bytes even if the recorded length is odd
                 // if the length is odd, then there's a padding byte in the file - just read and discard
-                if ( chunkLength % 2 != 0 )
+                if (chunkLength % 2 != 0)
                 {
                     stream.ReadByte();
                 }
@@ -190,16 +190,16 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> used to write the palette.</param>
         /// <param name="palette">The <see cref="ColorCollection" /> to serialize.</param>
-        public override void Serialize( Stream stream, ColorCollection palette )
+        public override void Serialize(Stream stream, ColorCollection palette)
         {
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
-            if ( palette == null )
+            if (palette == null)
             {
-                throw new ArgumentNullException( nameof( palette ) );
+                throw new ArgumentNullException(nameof(palette));
             }
 
             throw new NotSupportedException();

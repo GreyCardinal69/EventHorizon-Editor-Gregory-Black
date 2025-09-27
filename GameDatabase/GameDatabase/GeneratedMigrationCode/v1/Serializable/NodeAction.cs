@@ -16,7 +16,7 @@ namespace DatabaseMigration.v1.Serializable
     {
         public int TargetNode;
         public RequirementSerializable Requirement;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ButtonText;
     }
 }

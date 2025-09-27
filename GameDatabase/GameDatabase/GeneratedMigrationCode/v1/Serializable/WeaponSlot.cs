@@ -1,5 +1,4 @@
-﻿using DatabaseMigration.v1.Enums;
-using System;
+﻿using System;
 using System.ComponentModel;
 
 namespace DatabaseMigration.v1.Serializable

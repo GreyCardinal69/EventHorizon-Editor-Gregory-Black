@@ -17,18 +17,18 @@ namespace EditorDatabase.DataModel
 
     public interface IGameObjectPrefabContent
     {
-        void Load( GameObjectPrefabSerializable serializable, Database database );
-        void Save( ref GameObjectPrefabSerializable serializable );
+        void Load(GameObjectPrefabSerializable serializable, Database database);
+        void Save(ref GameObjectPrefabSerializable serializable);
     }
 
     public partial class GameObjectPrefab : IDataAdapter
     {
-        partial void OnDataDeserialized( GameObjectPrefabSerializable serializable, Database database );
-        partial void OnDataSerialized( ref GameObjectPrefabSerializable serializable );
+        partial void OnDataDeserialized(GameObjectPrefabSerializable serializable, Database database);
+        partial void OnDataSerialized(ref GameObjectPrefabSerializable serializable);
 
-        public static IGameObjectPrefabContent CreateContent( ObjectPrefabType type )
+        public static IGameObjectPrefabContent CreateContent(ObjectPrefabType type)
         {
-            switch ( type )
+            switch (type)
             {
                 case ObjectPrefabType.Undefined:
                     return new GameObjectPrefabEmptyContent();
@@ -39,14 +39,14 @@ namespace EditorDatabase.DataModel
                 case ObjectPrefabType.CircularOutlineObject:
                     return new GameObjectPrefab_CircularOutlineObject();
                 default:
-                    throw new DatabaseException( "GameObjectPrefab: Invalid content type - " + type );
+                    throw new DatabaseException("GameObjectPrefab: Invalid content type - " + type);
             }
         }
 
-        public static GameObjectPrefab Create( GameObjectPrefabSerializable serializable, Database database )
+        public static GameObjectPrefab Create(GameObjectPrefabSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new GameObjectPrefab( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new GameObjectPrefab(serializable, database);
         }
 
         public GameObjectPrefab()
@@ -54,18 +54,18 @@ namespace EditorDatabase.DataModel
             _content = new GameObjectPrefabEmptyContent();
         }
 
-        public GameObjectPrefab( GameObjectPrefabSerializable serializable, Database database )
+        public GameObjectPrefab(GameObjectPrefabSerializable serializable, Database database)
         {
-            Id = new ItemId<GameObjectPrefab>( serializable );
+            Id = new ItemId<GameObjectPrefab>(serializable);
 
             Type = serializable.Type;
-            _content = CreateContent( serializable.Type );
-            _content.Load( serializable, database );
+            _content = CreateContent(serializable.Type);
+            _content.Load(serializable, database);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( GameObjectPrefabSerializable serializable )
+        public void Save(GameObjectPrefabSerializable serializable)
         {
             serializable.Image1 = string.Empty;
             serializable.Image2 = string.Empty;
@@ -78,9 +78,9 @@ namespace EditorDatabase.DataModel
             serializable.Offset2 = 0f;
             serializable.Angle1 = 0f;
             serializable.Angle2 = 0f;
-            _content.Save( ref serializable );
+            _content.Save(ref serializable);
             serializable.Type = Type;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public event System.Action LayoutChangedEvent;
@@ -90,18 +90,18 @@ namespace EditorDatabase.DataModel
         {
             get
             {
-                var type = GetType();
+                System.Type type = GetType();
 
-                yield return new Property( this, type.GetField( "Type" ), OnTypeChanged );
+                yield return new Property(this, type.GetField("Type"), OnTypeChanged);
 
-                foreach ( var item in _content.GetType().GetFields().Where( f => f.IsPublic && !f.IsStatic ) )
-                    yield return new Property( _content, item, DataChangedEvent );
+                foreach (System.Reflection.FieldInfo item in _content.GetType().GetFields().Where(f => f.IsPublic && !f.IsStatic))
+                    yield return new Property(_content, item, DataChangedEvent);
             }
         }
 
         public void OnTypeChanged()
         {
-            _content = CreateContent( Type );
+            _content = CreateContent(Type);
             DataChangedEvent?.Invoke();
             LayoutChangedEvent?.Invoke();
         }
@@ -116,31 +116,31 @@ namespace EditorDatabase.DataModel
 
     public class GameObjectPrefabEmptyContent : IGameObjectPrefabContent
     {
-        public void Load( GameObjectPrefabSerializable serializable, Database database ) { }
-        public void Save( ref GameObjectPrefabSerializable serializable ) { }
+        public void Load(GameObjectPrefabSerializable serializable, Database database) { }
+        public void Save(ref GameObjectPrefabSerializable serializable) { }
     }
 
     public partial class GameObjectPrefab_WormTailSegment : IGameObjectPrefabContent
     {
-        partial void OnDataDeserialized( GameObjectPrefabSerializable serializable, Database database );
-        partial void OnDataSerialized( ref GameObjectPrefabSerializable serializable );
+        partial void OnDataDeserialized(GameObjectPrefabSerializable serializable, Database database);
+        partial void OnDataSerialized(ref GameObjectPrefabSerializable serializable);
 
-        public void Load( GameObjectPrefabSerializable serializable, Database database )
+        public void Load(GameObjectPrefabSerializable serializable, Database database)
         {
             BodyImage = serializable.Image1;
             JointImage = serializable.Image2;
-            JointImageScale = new NumericValue<float>( serializable.ImageScale, 0f, 10f );
-            JointImageOffset = new NumericValue<float>( serializable.ImageOffset, -1f, 1f );
-            BoneLength = new NumericValue<float>( serializable.Length, 0f, 1f );
-            JointOffset = new NumericValue<float>( serializable.Offset1, 0f, 1f );
-            HeadOffset = new NumericValue<float>( serializable.Offset2, -1f, 1f );
-            MaxRotation = new NumericValue<float>( serializable.Angle1, 0f, 180f );
-            MaxHeadRotation = new NumericValue<float>( serializable.Angle2, 0f, 180f );
+            JointImageScale = new NumericValue<float>(serializable.ImageScale, 0f, 10f);
+            JointImageOffset = new NumericValue<float>(serializable.ImageOffset, -1f, 1f);
+            BoneLength = new NumericValue<float>(serializable.Length, 0f, 1f);
+            JointOffset = new NumericValue<float>(serializable.Offset1, 0f, 1f);
+            HeadOffset = new NumericValue<float>(serializable.Offset2, -1f, 1f);
+            MaxRotation = new NumericValue<float>(serializable.Angle1, 0f, 180f);
+            MaxHeadRotation = new NumericValue<float>(serializable.Angle2, 0f, 180f);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref GameObjectPrefabSerializable serializable )
+        public void Save(ref GameObjectPrefabSerializable serializable)
         {
             serializable.Image1 = BodyImage;
             serializable.Image2 = JointImage;
@@ -151,72 +151,72 @@ namespace EditorDatabase.DataModel
             serializable.Offset2 = HeadOffset.Value;
             serializable.Angle1 = MaxRotation.Value;
             serializable.Angle2 = MaxHeadRotation.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public string BodyImage;
         public string JointImage;
-        public NumericValue<float> JointImageScale = new NumericValue<float>( 0, 0f, 10f );
-        public NumericValue<float> JointImageOffset = new NumericValue<float>( 0, -1f, 1f );
-        public NumericValue<float> BoneLength = new NumericValue<float>( 0, 0f, 1f );
-        public NumericValue<float> JointOffset = new NumericValue<float>( 0, 0f, 1f );
-        public NumericValue<float> HeadOffset = new NumericValue<float>( 0, -1f, 1f );
-        public NumericValue<float> MaxRotation = new NumericValue<float>( 0, 0f, 180f );
-        public NumericValue<float> MaxHeadRotation = new NumericValue<float>( 0, 0f, 180f );
+        public NumericValue<float> JointImageScale = new NumericValue<float>(0, 0f, 10f);
+        public NumericValue<float> JointImageOffset = new NumericValue<float>(0, -1f, 1f);
+        public NumericValue<float> BoneLength = new NumericValue<float>(0, 0f, 1f);
+        public NumericValue<float> JointOffset = new NumericValue<float>(0, 0f, 1f);
+        public NumericValue<float> HeadOffset = new NumericValue<float>(0, -1f, 1f);
+        public NumericValue<float> MaxRotation = new NumericValue<float>(0, 0f, 180f);
+        public NumericValue<float> MaxHeadRotation = new NumericValue<float>(0, 0f, 180f);
     }
 
     public partial class GameObjectPrefab_CircularSpriteObject : IGameObjectPrefabContent
     {
-        partial void OnDataDeserialized( GameObjectPrefabSerializable serializable, Database database );
-        partial void OnDataSerialized( ref GameObjectPrefabSerializable serializable );
+        partial void OnDataDeserialized(GameObjectPrefabSerializable serializable, Database database);
+        partial void OnDataSerialized(ref GameObjectPrefabSerializable serializable);
 
-        public void Load( GameObjectPrefabSerializable serializable, Database database )
+        public void Load(GameObjectPrefabSerializable serializable, Database database)
         {
             Image = serializable.Image1;
-            ImageScale = new NumericValue<float>( serializable.ImageScale, 0f, 10f );
+            ImageScale = new NumericValue<float>(serializable.ImageScale, 0f, 10f);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref GameObjectPrefabSerializable serializable )
+        public void Save(ref GameObjectPrefabSerializable serializable)
         {
             serializable.Image1 = Image;
             serializable.ImageScale = ImageScale.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public string Image;
-        public NumericValue<float> ImageScale = new NumericValue<float>( 0, 0f, 10f );
+        public NumericValue<float> ImageScale = new NumericValue<float>(0, 0f, 10f);
     }
 
     public partial class GameObjectPrefab_CircularOutlineObject : IGameObjectPrefabContent
     {
-        partial void OnDataDeserialized( GameObjectPrefabSerializable serializable, Database database );
-        partial void OnDataSerialized( ref GameObjectPrefabSerializable serializable );
+        partial void OnDataDeserialized(GameObjectPrefabSerializable serializable, Database database);
+        partial void OnDataSerialized(ref GameObjectPrefabSerializable serializable);
 
-        public void Load( GameObjectPrefabSerializable serializable, Database database )
+        public void Load(GameObjectPrefabSerializable serializable, Database database)
         {
             Image = serializable.Image1;
-            ImageScale = new NumericValue<float>( serializable.ImageScale, 0f, 10f );
-            Thickness = new NumericValue<float>( serializable.Thickness, 0f, 1f );
-            AspectRatio = new NumericValue<float>( serializable.AspectRatio, 0f, 100f );
+            ImageScale = new NumericValue<float>(serializable.ImageScale, 0f, 10f);
+            Thickness = new NumericValue<float>(serializable.Thickness, 0f, 1f);
+            AspectRatio = new NumericValue<float>(serializable.AspectRatio, 0f, 100f);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref GameObjectPrefabSerializable serializable )
+        public void Save(ref GameObjectPrefabSerializable serializable)
         {
             serializable.Image1 = Image;
             serializable.ImageScale = ImageScale.Value;
             serializable.Thickness = Thickness.Value;
             serializable.AspectRatio = AspectRatio.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public string Image;
-        public NumericValue<float> ImageScale = new NumericValue<float>( 0, 0f, 10f );
-        public NumericValue<float> Thickness = new NumericValue<float>( 0, 0f, 1f );
-        public NumericValue<float> AspectRatio = new NumericValue<float>( 0, 0f, 100f );
+        public NumericValue<float> ImageScale = new NumericValue<float>(0, 0f, 10f);
+        public NumericValue<float> Thickness = new NumericValue<float>(0, 0f, 1f);
+        public NumericValue<float> AspectRatio = new NumericValue<float>(0, 0f, 100f);
     }
 
 }

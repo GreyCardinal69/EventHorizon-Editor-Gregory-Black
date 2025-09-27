@@ -21,22 +21,22 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "Component.json";
         }
 
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Description;
         public ComponentCategory DisplayCategory;
         public Availability Availability;
         public int ComponentStatsId;
         public int Faction;
         public int Level;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Icon;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Layout;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string CellType;
         public int DeviceId;
         public int WeaponId;

@@ -13,33 +13,33 @@ namespace EditorDatabase.DataModel
 {
     public partial class ExplorationSettings
     {
-        partial void OnDataDeserialized( ExplorationSettingsSerializable serializable, Database database );
-        partial void OnDataSerialized( ref ExplorationSettingsSerializable serializable );
+        partial void OnDataDeserialized(ExplorationSettingsSerializable serializable, Database database);
+        partial void OnDataSerialized(ref ExplorationSettingsSerializable serializable);
 
-        public static ExplorationSettings Create( ExplorationSettingsSerializable serializable, Database database )
+        public static ExplorationSettings Create(ExplorationSettingsSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new ExplorationSettings( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new ExplorationSettings(serializable, database);
         }
 
-        public ExplorationSettings( ExplorationSettingsSerializable serializable, Database database )
+        public ExplorationSettings(ExplorationSettingsSerializable serializable, Database database)
         {
-            OutpostShip = database.GetShipId( serializable.OutpostShip );
-            TurretShip = database.GetShipId( serializable.TurretShip );
-            InfectedPlanetFaction = database.GetFactionId( serializable.InfectedPlanetFaction );
-            HiveShipBuild = database.GetShipBuildId( serializable.HiveShipBuild );
+            OutpostShip = database.GetShipId(serializable.OutpostShip);
+            TurretShip = database.GetShipId(serializable.TurretShip);
+            InfectedPlanetFaction = database.GetFactionId(serializable.InfectedPlanetFaction);
+            HiveShipBuild = database.GetShipBuildId(serializable.HiveShipBuild);
             GasCloudDPS = serializable.GasCloudDPS;
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ExplorationSettingsSerializable serializable )
+        public void Save(ExplorationSettingsSerializable serializable)
         {
             serializable.OutpostShip = OutpostShip.Value;
             serializable.TurretShip = TurretShip.Value;
             serializable.InfectedPlanetFaction = InfectedPlanetFaction.Value;
             serializable.HiveShipBuild = HiveShipBuild.Value;
             serializable.GasCloudDPS = GasCloudDPS;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public ItemId<Ship> OutpostShip = ItemId<Ship>.Empty;

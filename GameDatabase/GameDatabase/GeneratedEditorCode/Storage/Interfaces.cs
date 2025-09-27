@@ -12,23 +12,23 @@ namespace EditorDatabase.Storage
 {
     public interface IJsonSerializer
     {
-        T FromJson<T>( string data );
-        string ToJson<T>( T item );
+        T FromJson<T>(string data);
+        string ToJson<T>(T item);
 
         void SwitchDefaults();
     }
 
     public partial interface IDataStorage
     {
-        void LoadContent( IContentLoader loader );
-        void SaveJson( string name, string data );
+        void LoadContent(IContentLoader loader);
+        void SaveJson(string name, string data);
     }
 
     public interface IContentLoader
     {
-        void LoadJson( string name, string data );
-        void LoadLocalization( string name, string data );
-        void LoadImage( string name, IImageData image );
-        void LoadAudioClip( string name, IAudioClipData audioClip );
+        void LoadJson(string name, string data);
+        void LoadLocalization(string name, string data);
+        void LoadImage(string name, IImageData image);
+        void LoadAudioClip(string name, IAudioClipData audioClip);
     }
 }

@@ -31,11 +31,11 @@ namespace DatabaseMigration.v1.Serializable
         public bool ImprovedAi;
         public int Capacity;
         public ActivationType ActivationType;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string LaunchSound;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string LaunchEffectPrefab;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ControlButtonIcon;
         public int DefensiveDroneAI;
         public int OffensiveDroneAI;

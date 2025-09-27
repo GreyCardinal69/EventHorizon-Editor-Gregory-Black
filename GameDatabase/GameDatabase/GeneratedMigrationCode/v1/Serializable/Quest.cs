@@ -21,7 +21,7 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "Quest.json";
         }
 
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
         public QuestType QuestType;
         public StartCondition StartCondition;

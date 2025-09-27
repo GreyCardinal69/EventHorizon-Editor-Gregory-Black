@@ -1,9 +1,5 @@
-﻿using EditorDatabase.Enums;
-using EditorDatabase.Model;
-using EditorDatabase.Serializable;
-using System.Collections.Generic;
+﻿using EditorDatabase.Serializable;
 using System.Linq;
-using static EditorDatabase.Property;
 
 namespace EditorDatabase.DataModel
 {
@@ -23,8 +19,8 @@ namespace EditorDatabase.DataModel
         public WeaponSlots(WeaponSlotsSerializable serializable, Database database)
         {
             WeaponSlotSerializable[] slots = serializable.Slots;
-            this.Slots = ((slots != null) ? (from item in slots
-                                             select WeaponSlot.Create(item, database)).ToArray<WeaponSlot>() : null);
+            this.Slots = (slots != null) ? (from item in slots
+                                            select WeaponSlot.Create(item, database)).ToArray<WeaponSlot>() : null;
             this.DefaultSlotName = serializable.DefaultSlotName;
             this.DefaultSlotIcon = serializable.DefaultSlotIcon;
         }

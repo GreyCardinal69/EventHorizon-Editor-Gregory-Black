@@ -13,28 +13,28 @@ namespace EditorDatabase.DataModel
 {
     public partial class CombatSettings
     {
-        partial void OnDataDeserialized( CombatSettingsSerializable serializable, Database database );
-        partial void OnDataSerialized( ref CombatSettingsSerializable serializable );
+        partial void OnDataDeserialized(CombatSettingsSerializable serializable, Database database);
+        partial void OnDataSerialized(ref CombatSettingsSerializable serializable);
 
-        public static CombatSettings Create( CombatSettingsSerializable serializable, Database database )
+        public static CombatSettings Create(CombatSettingsSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new CombatSettings( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new CombatSettings(serializable, database);
         }
 
-        public CombatSettings( CombatSettingsSerializable serializable, Database database )
+        public CombatSettings(CombatSettingsSerializable serializable, Database database)
         {
-            EnemyAI = database.GetBehaviorTreeId( serializable.EnemyAI );
-            AutopilotAI = database.GetBehaviorTreeId( serializable.AutopilotAI );
-            CloneAI = database.GetBehaviorTreeId( serializable.CloneAI );
-            DefensiveDroneAI = database.GetBehaviorTreeId( serializable.DefensiveDroneAI );
-            OffensiveDroneAI = database.GetBehaviorTreeId( serializable.OffensiveDroneAI );
-            StarbaseAI = database.GetBehaviorTreeId( serializable.StarbaseAI );
-            DefaultCombatRules = database.GetCombatRulesId( serializable.DefaultCombatRules );
-            OnDataDeserialized( serializable, database );
+            EnemyAI = database.GetBehaviorTreeId(serializable.EnemyAI);
+            AutopilotAI = database.GetBehaviorTreeId(serializable.AutopilotAI);
+            CloneAI = database.GetBehaviorTreeId(serializable.CloneAI);
+            DefensiveDroneAI = database.GetBehaviorTreeId(serializable.DefensiveDroneAI);
+            OffensiveDroneAI = database.GetBehaviorTreeId(serializable.OffensiveDroneAI);
+            StarbaseAI = database.GetBehaviorTreeId(serializable.StarbaseAI);
+            DefaultCombatRules = database.GetCombatRulesId(serializable.DefaultCombatRules);
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( CombatSettingsSerializable serializable )
+        public void Save(CombatSettingsSerializable serializable)
         {
             serializable.EnemyAI = EnemyAI.Value;
             serializable.AutopilotAI = AutopilotAI.Value;
@@ -43,7 +43,7 @@ namespace EditorDatabase.DataModel
             serializable.OffensiveDroneAI = OffensiveDroneAI.Value;
             serializable.StarbaseAI = StarbaseAI.Value;
             serializable.DefaultCombatRules = DefaultCombatRules.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public ItemId<BehaviorTreeModel> EnemyAI = ItemId<BehaviorTreeModel>.Empty;

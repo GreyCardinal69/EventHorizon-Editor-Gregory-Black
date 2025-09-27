@@ -20,15 +20,15 @@ namespace EditorDatabase.Serializable
         public float Spread;
         public int Magazine;
         public ActivationType ActivationType;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ShotSound;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ChargeSound;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ShotEffectPrefab;
         public int VisualEffect;
         public float EffectSize;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ControlButtonIcon;
     }
 }

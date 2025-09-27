@@ -22,15 +22,15 @@ namespace DatabaseMigration.v1.Serializable
         }
 
         public BulletShape Shape;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Image;
         public float Size;
         public float Margins;
         public float Deformation;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string MainColor;
         public ColorMode MainColorMode;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string SecondColor;
         public ColorMode SecondColorMode;
     }

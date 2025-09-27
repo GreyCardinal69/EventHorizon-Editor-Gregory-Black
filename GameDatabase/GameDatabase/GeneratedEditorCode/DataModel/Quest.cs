@@ -15,38 +15,38 @@ namespace EditorDatabase.DataModel
 {
     public partial class QuestModel
     {
-        partial void OnDataDeserialized( QuestSerializable serializable, Database database );
-        partial void OnDataSerialized( ref QuestSerializable serializable );
+        partial void OnDataDeserialized(QuestSerializable serializable, Database database);
+        partial void OnDataSerialized(ref QuestSerializable serializable);
 
-        public static QuestModel Create( QuestSerializable serializable, Database database )
+        public static QuestModel Create(QuestSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new QuestModel( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new QuestModel(serializable, database);
         }
 
-        public QuestModel( QuestSerializable serializable, Database database )
+        public QuestModel(QuestSerializable serializable, Database database)
         {
             try
             {
-                Id = new ItemId<QuestModel>( serializable.Id, serializable.FileName );
+                Id = new ItemId<QuestModel>(serializable.Id, serializable.FileName);
                 Name = serializable.Name;
                 QuestType = serializable.QuestType;
                 StartCondition = serializable.StartCondition;
-                Weight = new NumericValue<float>( serializable.Weight, 0f, 1000f );
-                Origin.Value = DataModel.QuestOrigin.Create( serializable.Origin, database );
-                Requirement.Value = DataModel.Requirement.Create( serializable.Requirement, database );
-                Level = new NumericValue<int>( serializable.Level, 0, 1000 );
+                Weight = new NumericValue<float>(serializable.Weight, 0f, 1000f);
+                Origin.Value = DataModel.QuestOrigin.Create(serializable.Origin, database);
+                Requirement.Value = DataModel.Requirement.Create(serializable.Requirement, database);
+                Level = new NumericValue<int>(serializable.Level, 0, 1000);
                 UseRandomSeed = serializable.UseRandomSeed;
-                Nodes = serializable.Nodes?.Select( item => Node.Create( item, database ) ).ToArray();
+                Nodes = serializable.Nodes?.Select(item => Node.Create(item, database)).ToArray();
             }
-            catch ( DatabaseException e )
+            catch (DatabaseException e)
             {
-                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+                throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
             }
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( QuestSerializable serializable )
+        public void Save(QuestSerializable serializable)
         {
             serializable.Name = Name;
             serializable.QuestType = QuestType;
@@ -56,11 +56,11 @@ namespace EditorDatabase.DataModel
             serializable.Requirement = Requirement.Value?.Serialize();
             serializable.Level = Level.Value;
             serializable.UseRandomSeed = UseRandomSeed;
-            if ( Nodes == null || Nodes.Length == 0 )
+            if (Nodes == null || Nodes.Length == 0)
                 serializable.Nodes = null;
             else
-                serializable.Nodes = Nodes.Select( item => item.Serialize() ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.Nodes = Nodes.Select(item => item.Serialize()).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public readonly ItemId<QuestModel> Id;
@@ -68,10 +68,10 @@ namespace EditorDatabase.DataModel
         public string Name;
         public QuestType QuestType;
         public StartCondition StartCondition;
-        public NumericValue<float> Weight = new NumericValue<float>( 0, 0f, 1000f );
-        public ObjectWrapper<QuestOrigin> Origin = new ObjectWrapper<QuestOrigin>( DataModel.QuestOrigin.DefaultValue );
-        public ObjectWrapper<Requirement> Requirement = new ObjectWrapper<Requirement>( DataModel.Requirement.DefaultValue );
-        public NumericValue<int> Level = new NumericValue<int>( 0, 0, 1000 );
+        public NumericValue<float> Weight = new NumericValue<float>(0, 0f, 1000f);
+        public ObjectWrapper<QuestOrigin> Origin = new ObjectWrapper<QuestOrigin>(DataModel.QuestOrigin.DefaultValue);
+        public ObjectWrapper<Requirement> Requirement = new ObjectWrapper<Requirement>(DataModel.Requirement.DefaultValue);
+        public NumericValue<int> Level = new NumericValue<int>(0, 0, 1000);
         public bool UseRandomSeed;
         public Node[] Nodes;
 

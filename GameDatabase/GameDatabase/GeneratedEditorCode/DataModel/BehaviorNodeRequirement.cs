@@ -18,18 +18,18 @@ namespace EditorDatabase.DataModel
 
     public interface IBehaviorNodeRequirementContent
     {
-        void Load( BehaviorNodeRequirementSerializable serializable, Database database );
-        void Save( ref BehaviorNodeRequirementSerializable serializable );
+        void Load(BehaviorNodeRequirementSerializable serializable, Database database);
+        void Save(ref BehaviorNodeRequirementSerializable serializable);
     }
 
     public partial class BehaviorNodeRequirement : IDataAdapter
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public static IBehaviorNodeRequirementContent CreateContent( BehaviorRequirementType type )
+        public static IBehaviorNodeRequirementContent CreateContent(BehaviorRequirementType type)
         {
-            switch ( type )
+            switch (type)
             {
                 case BehaviorRequirementType.Empty:
                     return new BehaviorNodeRequirementEmptyContent();
@@ -76,14 +76,14 @@ namespace EditorDatabase.DataModel
                 case BehaviorRequirementType.HasHighRammingDamage:
                     return new BehaviorNodeRequirement_HasHighRammingDamage();
                 default:
-                    throw new DatabaseException( "BehaviorNodeRequirement: Invalid content type - " + type );
+                    throw new DatabaseException("BehaviorNodeRequirement: Invalid content type - " + type);
             }
         }
 
-        public static BehaviorNodeRequirement Create( BehaviorNodeRequirementSerializable serializable, Database database )
+        public static BehaviorNodeRequirement Create(BehaviorNodeRequirementSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new BehaviorNodeRequirement( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new BehaviorNodeRequirement(serializable, database);
         }
 
         public BehaviorNodeRequirement()
@@ -91,26 +91,26 @@ namespace EditorDatabase.DataModel
             _content = new BehaviorNodeRequirementEmptyContent();
         }
 
-        public BehaviorNodeRequirement( BehaviorNodeRequirementSerializable serializable, Database database )
+        public BehaviorNodeRequirement(BehaviorNodeRequirementSerializable serializable, Database database)
         {
             Type = serializable.Type;
-            _content = CreateContent( serializable.Type );
-            _content.Load( serializable, database );
+            _content = CreateContent(serializable.Type);
+            _content.Load(serializable, database);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
         public BehaviorNodeRequirementSerializable Serialize()
         {
-            var serializable = new BehaviorNodeRequirementSerializable();
+            BehaviorNodeRequirementSerializable serializable = new BehaviorNodeRequirementSerializable();
             serializable.DeviceClass = 0;
             serializable.DifficultyLevel = 0;
             serializable.SizeClass = 0;
             serializable.Value = 1f;
             serializable.Requirements = null;
-            _content.Save( ref serializable );
+            _content.Save(ref serializable);
             serializable.Type = Type;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
             return serializable;
         }
 
@@ -121,18 +121,18 @@ namespace EditorDatabase.DataModel
         {
             get
             {
-                var type = GetType();
+                System.Type type = GetType();
 
-                yield return new Property( this, type.GetField( "Type" ), OnTypeChanged );
+                yield return new Property(this, type.GetField("Type"), OnTypeChanged);
 
-                foreach ( var item in _content.GetType().GetFields().Where( f => f.IsPublic && !f.IsStatic ) )
-                    yield return new Property( _content, item, DataChangedEvent );
+                foreach (System.Reflection.FieldInfo item in _content.GetType().GetFields().Where(f => f.IsPublic && !f.IsStatic))
+                    yield return new Property(_content, item, DataChangedEvent);
             }
         }
 
         public void OnTypeChanged()
         {
-            _content = CreateContent( Type );
+            _content = CreateContent(Type);
             DataChangedEvent?.Invoke();
             LayoutChangedEvent?.Invoke();
         }
@@ -145,29 +145,29 @@ namespace EditorDatabase.DataModel
 
     public class BehaviorNodeRequirementEmptyContent : IBehaviorNodeRequirementContent
     {
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database ) { }
-        public void Save( ref BehaviorNodeRequirementSerializable serializable ) { }
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database) { }
+        public void Save(ref BehaviorNodeRequirementSerializable serializable) { }
     }
 
     public partial class BehaviorNodeRequirement_Any : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
-            Requirements = serializable.Requirements?.Select( item => BehaviorNodeRequirement.Create( item, database ) ).ToArray();
+            Requirements = serializable.Requirements?.Select(item => BehaviorNodeRequirement.Create(item, database)).ToArray();
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
-            if ( Requirements == null || Requirements.Length == 0 )
+            if (Requirements == null || Requirements.Length == 0)
                 serializable.Requirements = null;
             else
-                serializable.Requirements = Requirements.Select( item => item.Serialize() ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.Requirements = Requirements.Select(item => item.Serialize()).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public BehaviorNodeRequirement[] Requirements;
@@ -175,23 +175,23 @@ namespace EditorDatabase.DataModel
 
     public partial class BehaviorNodeRequirement_All : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
-            Requirements = serializable.Requirements?.Select( item => BehaviorNodeRequirement.Create( item, database ) ).ToArray();
+            Requirements = serializable.Requirements?.Select(item => BehaviorNodeRequirement.Create(item, database)).ToArray();
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
-            if ( Requirements == null || Requirements.Length == 0 )
+            if (Requirements == null || Requirements.Length == 0)
                 serializable.Requirements = null;
             else
-                serializable.Requirements = Requirements.Select( item => item.Serialize() ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.Requirements = Requirements.Select(item => item.Serialize()).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public BehaviorNodeRequirement[] Requirements;
@@ -199,23 +199,23 @@ namespace EditorDatabase.DataModel
 
     public partial class BehaviorNodeRequirement_None : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
-            Requirements = serializable.Requirements?.Select( item => BehaviorNodeRequirement.Create( item, database ) ).ToArray();
+            Requirements = serializable.Requirements?.Select(item => BehaviorNodeRequirement.Create(item, database)).ToArray();
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
-            if ( Requirements == null || Requirements.Length == 0 )
+            if (Requirements == null || Requirements.Length == 0)
                 serializable.Requirements = null;
             else
-                serializable.Requirements = Requirements.Select( item => item.Serialize() ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.Requirements = Requirements.Select(item => item.Serialize()).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public BehaviorNodeRequirement[] Requirements;
@@ -223,64 +223,64 @@ namespace EditorDatabase.DataModel
 
     public partial class BehaviorNodeRequirement_AiLevel : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
             DifficultyLevel = serializable.DifficultyLevel;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
             serializable.DifficultyLevel = DifficultyLevel;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        [TooltipText( "AiLevel rises with the level of enemies. Always High for drones and autopilot" )]
+        [TooltipText("AiLevel rises with the level of enemies. Always High for drones and autopilot")]
         public AiDifficultyLevel DifficultyLevel;
     }
 
     public partial class BehaviorNodeRequirement_MinAiLevel : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
             DifficultyLevel = serializable.DifficultyLevel;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
             serializable.DifficultyLevel = DifficultyLevel;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        [TooltipText( "AiLevel rises with the level of enemies. Always High for drones and autopilot" )]
+        [TooltipText("AiLevel rises with the level of enemies. Always High for drones and autopilot")]
         public AiDifficultyLevel DifficultyLevel;
     }
 
     public partial class BehaviorNodeRequirement_SizeClass : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
             SizeClass = serializable.SizeClass;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
             serializable.SizeClass = SizeClass;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public SizeClass SizeClass;
@@ -288,20 +288,20 @@ namespace EditorDatabase.DataModel
 
     public partial class BehaviorNodeRequirement_HasDevice : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
             DeviceClass = serializable.DeviceClass;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
             serializable.DeviceClass = DeviceClass;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public DeviceClass DeviceClass;
@@ -309,86 +309,86 @@ namespace EditorDatabase.DataModel
 
     public partial class BehaviorNodeRequirement_HasLongRangeWeapon : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
-            Range = new NumericValue<float>( serializable.Value, 0f, 3.402823E+38f );
+            Range = new NumericValue<float>(serializable.Value, 0f, 3.402823E+38f);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
             serializable.Value = Range.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        public NumericValue<float> Range = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+        public NumericValue<float> Range = new NumericValue<float>(0, 0f, 3.402823E+38f);
     }
 
     public partial class BehaviorNodeRequirement_HasKineticResistance : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
-            Value = new NumericValue<float>( serializable.Value, 0f, 3.402823E+38f );
+            Value = new NumericValue<float>(serializable.Value, 0f, 3.402823E+38f);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
             serializable.Value = Value.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        public NumericValue<float> Value = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+        public NumericValue<float> Value = new NumericValue<float>(0, 0f, 3.402823E+38f);
     }
 
     public partial class BehaviorNodeRequirement_HasHighManeuverability : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
-            Value = new NumericValue<float>( serializable.Value, 0f, 3.402823E+38f );
+            Value = new NumericValue<float>(serializable.Value, 0f, 3.402823E+38f);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
             serializable.Value = Value.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        public NumericValue<float> Value = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+        public NumericValue<float> Value = new NumericValue<float>(0, 0f, 3.402823E+38f);
     }
 
     public partial class BehaviorNodeRequirement_HasHighRammingDamage : IBehaviorNodeRequirementContent
     {
-        partial void OnDataDeserialized( BehaviorNodeRequirementSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BehaviorNodeRequirementSerializable serializable );
+        partial void OnDataDeserialized(BehaviorNodeRequirementSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BehaviorNodeRequirementSerializable serializable);
 
-        public void Load( BehaviorNodeRequirementSerializable serializable, Database database )
+        public void Load(BehaviorNodeRequirementSerializable serializable, Database database)
         {
-            Value = new NumericValue<float>( serializable.Value, 0f, 3.402823E+38f );
+            Value = new NumericValue<float>(serializable.Value, 0f, 3.402823E+38f);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BehaviorNodeRequirementSerializable serializable )
+        public void Save(ref BehaviorNodeRequirementSerializable serializable)
         {
             serializable.Value = Value.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        public NumericValue<float> Value = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+        public NumericValue<float> Value = new NumericValue<float>(0, 0f, 3.402823E+38f);
     }
 
 }

@@ -12,27 +12,27 @@ namespace EditorDatabase.DataModel
 {
     public partial class LocalizationSettings
     {
-        partial void OnDataDeserialized( LocalizationSettingsSerializable serializable, Database database );
-        partial void OnDataSerialized( ref LocalizationSettingsSerializable serializable );
+        partial void OnDataDeserialized(LocalizationSettingsSerializable serializable, Database database);
+        partial void OnDataSerialized(ref LocalizationSettingsSerializable serializable);
 
-        public static LocalizationSettings Create( LocalizationSettingsSerializable serializable, Database database )
+        public static LocalizationSettings Create(LocalizationSettingsSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new LocalizationSettings( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new LocalizationSettings(serializable, database);
         }
 
-        public LocalizationSettings( LocalizationSettingsSerializable serializable, Database database )
+        public LocalizationSettings(LocalizationSettingsSerializable serializable, Database database)
         {
             CorrosiveDamageText = serializable.CorrosiveDamageText;
             CorrosiveDpsText = serializable.CorrosiveDpsText;
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( LocalizationSettingsSerializable serializable )
+        public void Save(LocalizationSettingsSerializable serializable)
         {
             serializable.CorrosiveDamageText = CorrosiveDamageText;
             serializable.CorrosiveDpsText = CorrosiveDpsText;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public string CorrosiveDamageText;

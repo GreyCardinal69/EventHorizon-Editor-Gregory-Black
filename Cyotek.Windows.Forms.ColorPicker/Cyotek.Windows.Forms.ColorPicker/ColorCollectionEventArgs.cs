@@ -21,7 +21,7 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="index">The color index that the event is responding to.</param>
         /// <param name="color">The %Color% that the event is responding to.</param>
-        public ColorCollectionEventArgs( int index, Color color )
+        public ColorCollectionEventArgs(int index, Color color)
         {
             this.Index = index;
             this.Color = color;

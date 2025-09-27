@@ -14,9 +14,9 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class CharacterSerializable : SerializableItem
     {
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string AvatarIcon;
         public int Faction;
         public int Inventory;

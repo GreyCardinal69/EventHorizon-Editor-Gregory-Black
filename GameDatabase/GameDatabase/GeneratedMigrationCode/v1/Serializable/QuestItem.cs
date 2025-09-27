@@ -21,13 +21,13 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "QuestItem.json";
         }
 
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Description;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Icon;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
         public int Price;
     }

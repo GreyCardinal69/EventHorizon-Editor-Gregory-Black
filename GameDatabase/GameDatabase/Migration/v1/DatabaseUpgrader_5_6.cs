@@ -8,15 +8,15 @@ namespace DatabaseMigration.v1
     {
         partial void Migrate_5_6()
         {
-            Console.WriteLine( "Database migration: v1.5 -> v1.6" );
+            Console.WriteLine("Database migration: v1.5 -> v1.6");
 
-            foreach ( var item in Content.AmmunitionList )
-                UpgradeAmmunition( item );
+            foreach (AmmunitionSerializable item in Content.AmmunitionList)
+                UpgradeAmmunition(item);
         }
 
-        private static void UpgradeBulletBody( BulletBodySerializable bulletBody )
+        private static void UpgradeBulletBody(BulletBodySerializable bulletBody)
         {
-            switch ( bulletBody.Type )
+            switch (bulletBody.Type)
             {
                 case BulletTypeObsolete.Projectile:
                     bulletBody.AiBulletBehavior = AiBulletBehavior.Projectile;
@@ -43,15 +43,15 @@ namespace DatabaseMigration.v1
             }
         }
 
-        private static void UpgradeAmmunition( AmmunitionSerializable ammunition )
+        private static void UpgradeAmmunition(AmmunitionSerializable ammunition)
         {
-            if ( ammunition.Body == null || ammunition.Body.Type == BulletTypeObsolete.Projectile )
+            if (ammunition.Body == null || ammunition.Body.Type == BulletTypeObsolete.Projectile)
                 return;
 
-            UpgradeBulletBody( ammunition.Body );
+            UpgradeBulletBody(ammunition.Body);
             ammunition.Controller = new BulletControllerSerializable();
 
-            switch ( ammunition.Body.Type )
+            switch (ammunition.Body.Type)
             {
                 // Projectile and static methods don't have special controllers
                 case BulletTypeObsolete.Projectile:

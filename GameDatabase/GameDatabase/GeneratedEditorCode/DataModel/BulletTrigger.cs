@@ -17,18 +17,18 @@ namespace EditorDatabase.DataModel
 
     public interface IBulletTriggerContent
     {
-        void Load( BulletTriggerSerializable serializable, Database database );
-        void Save( ref BulletTriggerSerializable serializable );
+        void Load(BulletTriggerSerializable serializable, Database database);
+        void Save(ref BulletTriggerSerializable serializable);
     }
 
     public partial class BulletTrigger : IDataAdapter
     {
-        partial void OnDataDeserialized( BulletTriggerSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BulletTriggerSerializable serializable );
+        partial void OnDataDeserialized(BulletTriggerSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BulletTriggerSerializable serializable);
 
-        public static IBulletTriggerContent CreateContent( BulletEffectType type )
+        public static IBulletTriggerContent CreateContent(BulletEffectType type)
         {
-            switch ( type )
+            switch (type)
             {
                 case BulletEffectType.None:
                     return new BulletTriggerEmptyContent();
@@ -43,14 +43,14 @@ namespace EditorDatabase.DataModel
                 case BulletEffectType.GravityField:
                     return new BulletTrigger_GravityField();
                 default:
-                    throw new DatabaseException( "BulletTrigger: Invalid content type - " + type );
+                    throw new DatabaseException("BulletTrigger: Invalid content type - " + type);
             }
         }
 
-        public static BulletTrigger Create( BulletTriggerSerializable serializable, Database database )
+        public static BulletTrigger Create(BulletTriggerSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new BulletTrigger( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new BulletTrigger(serializable, database);
         }
 
         public BulletTrigger()
@@ -58,20 +58,20 @@ namespace EditorDatabase.DataModel
             _content = new BulletTriggerEmptyContent();
         }
 
-        public BulletTrigger( BulletTriggerSerializable serializable, Database database )
+        public BulletTrigger(BulletTriggerSerializable serializable, Database database)
         {
             Condition = serializable.Condition;
             EffectType = serializable.EffectType;
-            Cooldown = new NumericValue<float>( serializable.Cooldown, 0f, 1000f );
-            _content = CreateContent( serializable.EffectType );
-            _content.Load( serializable, database );
+            Cooldown = new NumericValue<float>(serializable.Cooldown, 0f, 1000f);
+            _content = CreateContent(serializable.EffectType);
+            _content.Load(serializable, database);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
         public BulletTriggerSerializable Serialize()
         {
-            var serializable = new BulletTriggerSerializable();
+            BulletTriggerSerializable serializable = new BulletTriggerSerializable();
             serializable.VisualEffect = 0;
             serializable.AudioClip = string.Empty;
             serializable.Ammunition = 0;
@@ -89,11 +89,11 @@ namespace EditorDatabase.DataModel
             serializable.OffsetX = "IF(Quantity <= 1, 0, Size / 2)";
             serializable.OffsetY = "0";
             serializable.SyncLifetimeWithBullet = false;
-            _content.Save( ref serializable );
+            _content.Save(ref serializable);
             serializable.Condition = Condition;
             serializable.EffectType = EffectType;
             serializable.Cooldown = Cooldown.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
             return serializable;
         }
 
@@ -104,20 +104,20 @@ namespace EditorDatabase.DataModel
         {
             get
             {
-                var type = GetType();
+                System.Type type = GetType();
 
-                yield return new Property( this, type.GetField( "Condition" ), DataChangedEvent );
-                yield return new Property( this, type.GetField( "EffectType" ), OnTypeChanged );
-                yield return new Property( this, type.GetField( "Cooldown" ), DataChangedEvent );
+                yield return new Property(this, type.GetField("Condition"), DataChangedEvent);
+                yield return new Property(this, type.GetField("EffectType"), OnTypeChanged);
+                yield return new Property(this, type.GetField("Cooldown"), DataChangedEvent);
 
-                foreach ( var item in _content.GetType().GetFields().Where( f => f.IsPublic && !f.IsStatic ) )
-                    yield return new Property( _content, item, DataChangedEvent );
+                foreach (System.Reflection.FieldInfo item in _content.GetType().GetFields().Where(f => f.IsPublic && !f.IsStatic))
+                    yield return new Property(_content, item, DataChangedEvent);
             }
         }
 
         public void OnTypeChanged()
         {
-            _content = CreateContent( EffectType );
+            _content = CreateContent(EffectType);
             DataChangedEvent?.Invoke();
             LayoutChangedEvent?.Invoke();
         }
@@ -125,57 +125,57 @@ namespace EditorDatabase.DataModel
         public IBulletTriggerContent _content;
         public BulletTriggerCondition Condition;
         public BulletEffectType EffectType;
-        public NumericValue<float> Cooldown = new NumericValue<float>( 0, 0f, 1000f );
+        public NumericValue<float> Cooldown = new NumericValue<float>(0, 0f, 1000f);
 
         public static BulletTrigger DefaultValue { get; set; }
     }
 
     public class BulletTriggerEmptyContent : IBulletTriggerContent
     {
-        public void Load( BulletTriggerSerializable serializable, Database database ) { }
-        public void Save( ref BulletTriggerSerializable serializable ) { }
+        public void Load(BulletTriggerSerializable serializable, Database database) { }
+        public void Save(ref BulletTriggerSerializable serializable) { }
     }
 
     public partial class BulletTrigger_PlaySfx : IBulletTriggerContent
     {
-        partial void OnDataDeserialized( BulletTriggerSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BulletTriggerSerializable serializable );
+        partial void OnDataDeserialized(BulletTriggerSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BulletTriggerSerializable serializable);
 
-        public void Load( BulletTriggerSerializable serializable, Database database )
+        public void Load(BulletTriggerSerializable serializable, Database database)
         {
-			SyncLifetimeWithBullet = serializable.SyncLifetimeWithBullet;
-            VisualEffect = database.GetVisualEffectId( serializable.VisualEffect );
+            SyncLifetimeWithBullet = serializable.SyncLifetimeWithBullet;
+            VisualEffect = database.GetVisualEffectId(serializable.VisualEffect);
             AudioClip = serializable.AudioClip;
-            Color = Helpers.ColorFromString( serializable.Color );
+            Color = Helpers.ColorFromString(serializable.Color);
             ColorMode = serializable.ColorMode;
-            Size = new NumericValue<float>( serializable.Size, 0f, 100f );
-            Lifetime = new NumericValue<float>( serializable.Lifetime, 0f, 1000f );
+            Size = new NumericValue<float>(serializable.Size, 0f, 100f);
+            Lifetime = new NumericValue<float>(serializable.Lifetime, 0f, 1000f);
             OncePerCollision = serializable.OncePerCollision;
             UseBulletPosition = serializable.UseBulletPosition;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BulletTriggerSerializable serializable )
+        public void Save(ref BulletTriggerSerializable serializable)
         {
             serializable.SyncLifetimeWithBullet = false;
             serializable.VisualEffect = VisualEffect.Value;
             serializable.AudioClip = AudioClip;
-            serializable.Color = Helpers.ColorToString( Color );
+            serializable.Color = Helpers.ColorToString(Color);
             serializable.ColorMode = ColorMode;
             serializable.Size = Size.Value;
             serializable.Lifetime = Lifetime.Value;
             serializable.OncePerCollision = OncePerCollision;
             serializable.UseBulletPosition = UseBulletPosition;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public ItemId<VisualEffect> VisualEffect = ItemId<VisualEffect>.Empty;
         public string AudioClip;
         public System.Drawing.Color Color;
         public ColorMode ColorMode;
-        public NumericValue<float> Size = new NumericValue<float>( 0, 0f, 100f );
-        public NumericValue<float> Lifetime = new NumericValue<float>( 0, 0f, 1000f );
+        public NumericValue<float> Size = new NumericValue<float>(0, 0f, 100f);
+        public NumericValue<float> Lifetime = new NumericValue<float>(0, 0f, 1000f);
         public bool OncePerCollision;
         public bool UseBulletPosition;
         public bool SyncLifetimeWithBullet;
@@ -183,32 +183,32 @@ namespace EditorDatabase.DataModel
 
     public partial class BulletTrigger_SpawnBullet : IBulletTriggerContent
     {
-        partial void OnDataDeserialized( BulletTriggerSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BulletTriggerSerializable serializable );
+        partial void OnDataDeserialized(BulletTriggerSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BulletTriggerSerializable serializable);
 
-        public void Load( BulletTriggerSerializable serializable, Database database )
+        public void Load(BulletTriggerSerializable serializable, Database database)
         {
             AudioClip = serializable.AudioClip;
-            Ammunition = database.GetAmmunitionId( serializable.Ammunition );
-            Color = Helpers.ColorFromString( serializable.Color );
+            Ammunition = database.GetAmmunitionId(serializable.Ammunition);
+            Color = Helpers.ColorFromString(serializable.Color);
             ColorMode = serializable.ColorMode;
-            Quantity = new NumericValue<int>( serializable.Quantity, 0, 1000 );
-            Size = new NumericValue<float>( serializable.Size, 0f, 100f );
-            RandomFactor = new NumericValue<float>( serializable.RandomFactor, 0f, 1f );
-            PowerMultiplier = new NumericValue<float>( serializable.PowerMultiplier, 0f, 3.402823E+38f );
-            MaxNestingLevel = new NumericValue<int>( serializable.MaxNestingLevel, 0, 100 );
+            Quantity = new NumericValue<int>(serializable.Quantity, 0, 1000);
+            Size = new NumericValue<float>(serializable.Size, 0f, 100f);
+            RandomFactor = new NumericValue<float>(serializable.RandomFactor, 0f, 1f);
+            PowerMultiplier = new NumericValue<float>(serializable.PowerMultiplier, 0f, 3.402823E+38f);
+            MaxNestingLevel = new NumericValue<int>(serializable.MaxNestingLevel, 0, 100);
             Rotation = serializable.Rotation;
             OffsetX = serializable.OffsetX;
             OffsetY = serializable.OffsetY;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BulletTriggerSerializable serializable )
+        public void Save(ref BulletTriggerSerializable serializable)
         {
             serializable.AudioClip = AudioClip;
             serializable.Ammunition = Ammunition.Value;
-            serializable.Color = Helpers.ColorToString( Color );
+            serializable.Color = Helpers.ColorToString(Color);
             serializable.ColorMode = ColorMode;
             serializable.Quantity = Quantity.Value;
             serializable.Size = Size.Value;
@@ -218,18 +218,18 @@ namespace EditorDatabase.DataModel
             serializable.Rotation = Rotation;
             serializable.OffsetX = OffsetX;
             serializable.OffsetY = OffsetY;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public string AudioClip;
         public ItemId<Ammunition> Ammunition = ItemId<Ammunition>.Empty;
         public System.Drawing.Color Color;
         public ColorMode ColorMode;
-        public NumericValue<int> Quantity = new NumericValue<int>( 0, 0, 1000 );
-        public NumericValue<float> Size = new NumericValue<float>( 0, 0f, 100f );
-        public NumericValue<float> RandomFactor = new NumericValue<float>( 0, 0f, 1f );
-        public NumericValue<float> PowerMultiplier = new NumericValue<float>( 0, 0f, 3.402823E+38f );
-        public NumericValue<int> MaxNestingLevel = new NumericValue<int>( 0, 0, 100 );
+        public NumericValue<int> Quantity = new NumericValue<int>(0, 0, 1000);
+        public NumericValue<float> Size = new NumericValue<float>(0, 0f, 100f);
+        public NumericValue<float> RandomFactor = new NumericValue<float>(0, 0f, 1f);
+        public NumericValue<float> PowerMultiplier = new NumericValue<float>(0, 0f, 3.402823E+38f);
+        public NumericValue<int> MaxNestingLevel = new NumericValue<int>(0, 0, 100);
         public string Rotation;
         public string OffsetX;
         public string OffsetY;
@@ -237,65 +237,65 @@ namespace EditorDatabase.DataModel
 
     public partial class BulletTrigger_SpawnStaticSfx : IBulletTriggerContent
     {
-        partial void OnDataDeserialized( BulletTriggerSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BulletTriggerSerializable serializable );
+        partial void OnDataDeserialized(BulletTriggerSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BulletTriggerSerializable serializable);
 
-        public void Load( BulletTriggerSerializable serializable, Database database )
+        public void Load(BulletTriggerSerializable serializable, Database database)
         {
-            VisualEffect = database.GetVisualEffectId( serializable.VisualEffect );
+            VisualEffect = database.GetVisualEffectId(serializable.VisualEffect);
             AudioClip = serializable.AudioClip;
-            Color = Helpers.ColorFromString( serializable.Color );
+            Color = Helpers.ColorFromString(serializable.Color);
             ColorMode = serializable.ColorMode;
-            Size = new NumericValue<float>( serializable.Size, 0f, 100f );
-            Lifetime = new NumericValue<float>( serializable.Lifetime, 0f, 1000f );
+            Size = new NumericValue<float>(serializable.Size, 0f, 100f);
+            Lifetime = new NumericValue<float>(serializable.Lifetime, 0f, 1000f);
             OncePerCollision = serializable.OncePerCollision;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BulletTriggerSerializable serializable )
+        public void Save(ref BulletTriggerSerializable serializable)
         {
             serializable.VisualEffect = VisualEffect.Value;
             serializable.AudioClip = AudioClip;
-            serializable.Color = Helpers.ColorToString( Color );
+            serializable.Color = Helpers.ColorToString(Color);
             serializable.ColorMode = ColorMode;
             serializable.Size = Size.Value;
             serializable.Lifetime = Lifetime.Value;
             serializable.OncePerCollision = OncePerCollision;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public ItemId<VisualEffect> VisualEffect = ItemId<VisualEffect>.Empty;
         public string AudioClip;
         public System.Drawing.Color Color;
         public ColorMode ColorMode;
-        public NumericValue<float> Size = new NumericValue<float>( 0, 0f, 100f );
-        public NumericValue<float> Lifetime = new NumericValue<float>( 0, 0f, 1000f );
+        public NumericValue<float> Size = new NumericValue<float>(0, 0f, 100f);
+        public NumericValue<float> Lifetime = new NumericValue<float>(0, 0f, 1000f);
         public bool OncePerCollision;
     }
 
     public partial class BulletTrigger_GravityField : IBulletTriggerContent
     {
-        partial void OnDataDeserialized( BulletTriggerSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BulletTriggerSerializable serializable );
+        partial void OnDataDeserialized(BulletTriggerSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BulletTriggerSerializable serializable);
 
-        public void Load( BulletTriggerSerializable serializable, Database database )
+        public void Load(BulletTriggerSerializable serializable, Database database)
         {
-            Size = new NumericValue<float>( serializable.Size, 0f, 100f );
-            PowerMultiplier = new NumericValue<float>( serializable.PowerMultiplier, 0f, 3.402823E+38f );
+            Size = new NumericValue<float>(serializable.Size, 0f, 100f);
+            PowerMultiplier = new NumericValue<float>(serializable.PowerMultiplier, 0f, 3.402823E+38f);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BulletTriggerSerializable serializable )
+        public void Save(ref BulletTriggerSerializable serializable)
         {
             serializable.Size = Size.Value;
             serializable.PowerMultiplier = PowerMultiplier.Value;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        public NumericValue<float> Size = new NumericValue<float>( 0, 0f, 100f );
-        public NumericValue<float> PowerMultiplier = new NumericValue<float>( 0, 0f, 3.402823E+38f );
+        public NumericValue<float> Size = new NumericValue<float>(0, 0f, 100f);
+        public NumericValue<float> PowerMultiplier = new NumericValue<float>(0, 0f, 3.402823E+38f);
     }
 
 }

@@ -37,15 +37,15 @@ namespace DatabaseMigration.v1.Serializable
         public bool IgnoresShipVelocity;
         public float EnergyCost;
         public int CoupledAmmunitionId;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string FireSound;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string HitSound;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string HitEffectPrefab;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string BulletPrefab;
     }
 }

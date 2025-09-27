@@ -16,15 +16,15 @@ namespace EditorDatabase.Serializable
     public class BulletPrefabSerializable : SerializableItem
     {
         public BulletShape Shape;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Image;
         public float Size;
         public float Margins;
         public float Deformation;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string MainColor;
         public ColorMode MainColorMode;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string SecondColor;
         public ColorMode SecondColorMode;
     }

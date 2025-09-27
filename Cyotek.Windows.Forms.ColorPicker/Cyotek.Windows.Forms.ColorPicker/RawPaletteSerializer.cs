@@ -68,13 +68,13 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <returns><c>true</c> if this instance can read palette data from the specified stream; otherwise, <c>false</c>.</returns>
-        public override bool CanReadFrom( Stream stream )
+        public override bool CanReadFrom(Stream stream)
         {
             bool result;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             try
@@ -94,18 +94,18 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> that contains the palette to deserialize.</param>
         /// <returns>The <see cref="ColorCollection" /> being deserialized.</returns>
-        public override ColorCollection Deserialize( Stream stream )
+        public override ColorCollection Deserialize(Stream stream)
         {
             ColorCollection results;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             results = new ColorCollection();
 
-            for ( int i = 0; i < stream.Length / 3; i++ )
+            for (int i = 0; i < stream.Length / 3; i++)
             {
                 int r;
                 int g;
@@ -115,7 +115,7 @@ namespace Cyotek.Windows.Forms
                 g = stream.ReadByte();
                 b = stream.ReadByte();
 
-                results.Add( Color.FromArgb( r, g, b ) );
+                results.Add(Color.FromArgb(r, g, b));
             }
 
             return results;
@@ -126,23 +126,23 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> used to write the palette.</param>
         /// <param name="palette">The <see cref="ColorCollection" /> to serialize.</param>
-        public override void Serialize( Stream stream, ColorCollection palette )
+        public override void Serialize(Stream stream, ColorCollection palette)
         {
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
-            if ( palette == null )
+            if (palette == null)
             {
-                throw new ArgumentNullException( nameof( palette ) );
+                throw new ArgumentNullException(nameof(palette));
             }
 
-            foreach ( Color color in palette )
+            foreach (Color color in palette)
             {
-                stream.WriteByte( color.R );
-                stream.WriteByte( color.G );
-                stream.WriteByte( color.B );
+                stream.WriteByte(color.R);
+                stream.WriteByte(color.G);
+                stream.WriteByte(color.B);
             }
 
             stream.Flush();

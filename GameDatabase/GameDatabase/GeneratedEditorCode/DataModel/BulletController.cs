@@ -17,18 +17,18 @@ namespace EditorDatabase.DataModel
 
     public interface IBulletControllerContent
     {
-        void Load( BulletControllerSerializable serializable, Database database );
-        void Save( ref BulletControllerSerializable serializable );
+        void Load(BulletControllerSerializable serializable, Database database);
+        void Save(ref BulletControllerSerializable serializable);
     }
 
     public partial class BulletController : IDataAdapter
     {
-        partial void OnDataDeserialized( BulletControllerSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BulletControllerSerializable serializable );
+        partial void OnDataDeserialized(BulletControllerSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BulletControllerSerializable serializable);
 
-        public static IBulletControllerContent CreateContent( BulletControllerType type )
+        public static IBulletControllerContent CreateContent(BulletControllerType type)
         {
-            switch ( type )
+            switch (type)
             {
                 case BulletControllerType.Projectile:
                     return new BulletControllerEmptyContent();
@@ -45,14 +45,14 @@ namespace EditorDatabase.DataModel
                 case BulletControllerType.StickyMine:
                     return new BulletController_StickyMine();
                 default:
-                    throw new DatabaseException( "BulletController: Invalid content type - " + type );
+                    throw new DatabaseException("BulletController: Invalid content type - " + type);
             }
         }
 
-        public static BulletController Create( BulletControllerSerializable serializable, Database database )
+        public static BulletController Create(BulletControllerSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new BulletController( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new BulletController(serializable, database);
         }
 
         public BulletController()
@@ -60,18 +60,18 @@ namespace EditorDatabase.DataModel
             _content = new BulletControllerEmptyContent();
         }
 
-        public BulletController( BulletControllerSerializable serializable, Database database )
+        public BulletController(BulletControllerSerializable serializable, Database database)
         {
             Type = serializable.Type;
-            _content = CreateContent( serializable.Type );
-            _content.Load( serializable, database );
+            _content = CreateContent(serializable.Type);
+            _content.Load(serializable, database);
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
         public BulletControllerSerializable Serialize()
         {
-            var serializable = new BulletControllerSerializable();
+            BulletControllerSerializable serializable = new BulletControllerSerializable();
             serializable.StartingVelocityModifier = 0.1f;
             serializable.IgnoreRotation = false;
             serializable.SmartAim = false;
@@ -81,9 +81,9 @@ namespace EditorDatabase.DataModel
             serializable.Size = "1";
             serializable.Length = "1";
             serializable.Lifetime = 0f;
-            _content.Save( ref serializable );
+            _content.Save(ref serializable);
             serializable.Type = Type;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
             return serializable;
         }
 
@@ -94,18 +94,18 @@ namespace EditorDatabase.DataModel
         {
             get
             {
-                var type = GetType();
+                System.Type type = GetType();
 
-                yield return new Property( this, type.GetField( "Type" ), OnTypeChanged );
+                yield return new Property(this, type.GetField("Type"), OnTypeChanged);
 
-                foreach ( var item in _content.GetType().GetFields().Where( f => f.IsPublic && !f.IsStatic ) )
-                    yield return new Property( _content, item, DataChangedEvent );
+                foreach (System.Reflection.FieldInfo item in _content.GetType().GetFields().Where(f => f.IsPublic && !f.IsStatic))
+                    yield return new Property(_content, item, DataChangedEvent);
             }
         }
 
         public void OnTypeChanged()
         {
-            _content = CreateContent( Type );
+            _content = CreateContent(Type);
             DataChangedEvent?.Invoke();
             LayoutChangedEvent?.Invoke();
         }
@@ -118,8 +118,8 @@ namespace EditorDatabase.DataModel
 
     public class BulletControllerEmptyContent : IBulletControllerContent
     {
-        public void Load( BulletControllerSerializable serializable, Database database ) { }
-        public void Save( ref BulletControllerSerializable serializable ) { }
+        public void Load(BulletControllerSerializable serializable, Database database) { }
+        public void Save(ref BulletControllerSerializable serializable) { }
     }
 
     public class BulletController_StickyMine : IBulletControllerContent
@@ -140,37 +140,37 @@ namespace EditorDatabase.DataModel
 
     public partial class BulletController_Homing : IBulletControllerContent
     {
-        partial void OnDataDeserialized( BulletControllerSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BulletControllerSerializable serializable );
+        partial void OnDataDeserialized(BulletControllerSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BulletControllerSerializable serializable);
 
-        public void Load( BulletControllerSerializable serializable, Database database )
+        public void Load(BulletControllerSerializable serializable, Database database)
         {
-            StartingVelocityModifier = new NumericValue<float>( serializable.StartingVelocityModifier, 0f, 1000f );
+            StartingVelocityModifier = new NumericValue<float>(serializable.StartingVelocityModifier, 0f, 1000f);
             IgnoreRotation = serializable.IgnoreRotation;
             SmartAim = serializable.SmartAim;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BulletControllerSerializable serializable )
+        public void Save(ref BulletControllerSerializable serializable)
         {
             serializable.StartingVelocityModifier = StartingVelocityModifier.Value;
             serializable.IgnoreRotation = IgnoreRotation;
             serializable.SmartAim = SmartAim;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
-        public NumericValue<float> StartingVelocityModifier = new NumericValue<float>( 0, 0f, 1000f );
+        public NumericValue<float> StartingVelocityModifier = new NumericValue<float>(0, 0f, 1000f);
         public bool IgnoreRotation;
         public bool SmartAim;
     }
 
     public partial class BulletController_Parametric : IBulletControllerContent
     {
-        partial void OnDataDeserialized( BulletControllerSerializable serializable, Database database );
-        partial void OnDataSerialized( ref BulletControllerSerializable serializable );
+        partial void OnDataDeserialized(BulletControllerSerializable serializable, Database database);
+        partial void OnDataSerialized(ref BulletControllerSerializable serializable);
 
-        public void Load( BulletControllerSerializable serializable, Database database )
+        public void Load(BulletControllerSerializable serializable, Database database)
         {
             X = serializable.X;
             Y = serializable.Y;
@@ -178,17 +178,17 @@ namespace EditorDatabase.DataModel
             Size = serializable.Size;
             Length = serializable.Length;
 
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ref BulletControllerSerializable serializable )
+        public void Save(ref BulletControllerSerializable serializable)
         {
             serializable.X = X;
             serializable.Y = Y;
             serializable.Rotation = Rotation;
             serializable.Size = Size;
             serializable.Length = Length;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public string X;

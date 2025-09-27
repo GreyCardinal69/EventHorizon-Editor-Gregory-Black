@@ -20,7 +20,7 @@ namespace EditorDatabase.Serializable
         public bool NotForMechanicShips;
         public int MaxComponentAmount;
         public int ComponentGroupTag;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string UniqueComponentTag;
     }
 }

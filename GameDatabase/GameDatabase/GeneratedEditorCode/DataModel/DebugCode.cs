@@ -13,35 +13,35 @@ namespace EditorDatabase.DataModel
 {
     public partial class DebugCode
     {
-        partial void OnDataDeserialized( DebugCodeSerializable serializable, Database database );
-        partial void OnDataSerialized( ref DebugCodeSerializable serializable );
+        partial void OnDataDeserialized(DebugCodeSerializable serializable, Database database);
+        partial void OnDataSerialized(ref DebugCodeSerializable serializable);
 
-        public static DebugCode Create( DebugCodeSerializable serializable, Database database )
+        public static DebugCode Create(DebugCodeSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new DebugCode( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new DebugCode(serializable, database);
         }
 
         public DebugCode() { }
 
-        public DebugCode( DebugCodeSerializable serializable, Database database )
+        public DebugCode(DebugCodeSerializable serializable, Database database)
         {
-            Code = new NumericValue<int>( serializable.Code, 0, 999999 );
-            Loot.Value = DataModel.LootContent.Create( serializable.Loot, database );
-            OnDataDeserialized( serializable, database );
+            Code = new NumericValue<int>(serializable.Code, 0, 999999);
+            Loot.Value = DataModel.LootContent.Create(serializable.Loot, database);
+            OnDataDeserialized(serializable, database);
         }
 
         public DebugCodeSerializable Serialize()
         {
-            var serializable = new DebugCodeSerializable();
+            DebugCodeSerializable serializable = new DebugCodeSerializable();
             serializable.Code = Code.Value;
             serializable.Loot = Loot.Value?.Serialize();
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
             return serializable;
         }
 
-        public NumericValue<int> Code = new NumericValue<int>( 0, 0, 999999 );
-        public ObjectWrapper<LootContent> Loot = new ObjectWrapper<LootContent>( DataModel.LootContent.DefaultValue );
+        public NumericValue<int> Code = new NumericValue<int>(0, 0, 999999);
+        public ObjectWrapper<LootContent> Loot = new ObjectWrapper<LootContent>(DataModel.LootContent.DefaultValue);
 
         public static DebugCode DefaultValue { get; set; }
     }

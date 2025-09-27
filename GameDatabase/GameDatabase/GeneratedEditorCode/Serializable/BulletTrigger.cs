@@ -19,10 +19,10 @@ namespace EditorDatabase.Serializable
         public BulletTriggerCondition Condition;
         public BulletEffectType EffectType;
         public int VisualEffect;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string AudioClip;
         public int Ammunition;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
         public ColorMode ColorMode;
         public int Quantity;
@@ -34,11 +34,11 @@ namespace EditorDatabase.Serializable
         public int MaxNestingLevel;
         public bool OncePerCollision;
         public bool UseBulletPosition;
-        [DefaultValue( "IF(Quantity <= 1, 0, RANDOM(0, 360))" )]
+        [DefaultValue("IF(Quantity <= 1, 0, RANDOM(0, 360))")]
         public string Rotation = "IF(Quantity <= 1, 0, RANDOM(0, 360))";
-        [DefaultValue( "IF(Quantity <= 1, 0, Size / 2)" )]
+        [DefaultValue("IF(Quantity <= 1, 0, Size / 2)")]
         public string OffsetX = "IF(Quantity <= 1, 0, Size / 2)";
-        [DefaultValue( "0" )]
+        [DefaultValue("0")]
         public string OffsetY = "0";
     }
 }

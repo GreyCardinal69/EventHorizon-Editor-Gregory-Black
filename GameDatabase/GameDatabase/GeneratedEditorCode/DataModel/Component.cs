@@ -15,51 +15,51 @@ namespace EditorDatabase.DataModel
 {
     public partial class Component
     {
-        partial void OnDataDeserialized( ComponentSerializable serializable, Database database );
-        partial void OnDataSerialized( ref ComponentSerializable serializable );
+        partial void OnDataDeserialized(ComponentSerializable serializable, Database database);
+        partial void OnDataSerialized(ref ComponentSerializable serializable);
 
-        public static Component Create( ComponentSerializable serializable, Database database )
+        public static Component Create(ComponentSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new Component( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new Component(serializable, database);
         }
 
-        public Component( ComponentSerializable serializable, Database database )
+        public Component(ComponentSerializable serializable, Database database)
         {
-            if ( serializable == null ) serializable = new ComponentSerializable();
+            if (serializable == null) serializable = new ComponentSerializable();
             try
             {
-                Id = new ItemId<Component>( serializable.Id, serializable.FileName );
+                Id = new ItemId<Component>(serializable.Id, serializable.FileName);
                 Name = serializable.Name;
                 Description = serializable.Description;
                 DisplayCategory = serializable.DisplayCategory;
                 Availability = serializable.Availability;
-                Stats = database.GetComponentStatsId( serializable.ComponentStatsId );
+                Stats = database.GetComponentStatsId(serializable.ComponentStatsId);
                 //    if ( Stats.IsNull )
                 // return;
-                this.WeaponSlotType = (string.IsNullOrEmpty(serializable.WeaponSlotType) ? "" : serializable.WeaponSlotType);
-                Faction = database.GetFactionId( serializable.Faction );
-                Level = new NumericValue<int>( serializable.Level, 0, 2147483647 );
+                this.WeaponSlotType = string.IsNullOrEmpty(serializable.WeaponSlotType) ? "" : serializable.WeaponSlotType;
+                Faction = database.GetFactionId(serializable.Faction);
+                Level = new NumericValue<int>(serializable.Level, 0, 2147483647);
                 Icon = serializable.Icon;
-                Color = Helpers.ColorFromString( serializable.Color );
-                Layout = new Layout( serializable.Layout );
-                Device = database.GetDeviceId( serializable.DeviceId );
-                Weapon = database.GetWeaponId( serializable.WeaponId );
-                Ammunition = database.GetAmmunitionId( serializable.AmmunitionId );
-                AmmunitionObsolete = database.GetAmmunitionObsoleteId( serializable.AmmunitionId );
-                DroneBay = database.GetDroneBayId( serializable.DroneBayId );
-                Drone = database.GetShipBuildId( serializable.DroneId );
-                Restrictions.Value = DataModel.ComponentRestrictions.Create( serializable.Restrictions, database );
-                PossibleModifications = serializable.PossibleModifications?.Select( id => new Wrapper<ComponentMod> { Item = database.GetComponentModId( id ) } ).ToArray();
+                Color = Helpers.ColorFromString(serializable.Color);
+                Layout = new Layout(serializable.Layout);
+                Device = database.GetDeviceId(serializable.DeviceId);
+                Weapon = database.GetWeaponId(serializable.WeaponId);
+                Ammunition = database.GetAmmunitionId(serializable.AmmunitionId);
+                AmmunitionObsolete = database.GetAmmunitionObsoleteId(serializable.AmmunitionId);
+                DroneBay = database.GetDroneBayId(serializable.DroneBayId);
+                Drone = database.GetShipBuildId(serializable.DroneId);
+                Restrictions.Value = DataModel.ComponentRestrictions.Create(serializable.Restrictions, database);
+                PossibleModifications = serializable.PossibleModifications?.Select(id => new Wrapper<ComponentMod> { Item = database.GetComponentModId(id) }).ToArray();
             }
-            catch ( DatabaseException e )
+            catch (DatabaseException e)
             {
-                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+                throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
             }
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ComponentSerializable serializable )
+        public void Save(ComponentSerializable serializable)
         {
             serializable.Name = Name;
             serializable.Description = Description;
@@ -69,7 +69,7 @@ namespace EditorDatabase.DataModel
             serializable.Faction = Faction.Value;
             serializable.Level = Level.Value;
             serializable.Icon = Icon;
-            serializable.Color = Helpers.ColorToString( Color );
+            serializable.Color = Helpers.ColorToString(Color);
             serializable.Layout = Layout.Data;
             serializable.DeviceId = Device.Value;
             serializable.WeaponId = Weapon.Value;
@@ -77,13 +77,13 @@ namespace EditorDatabase.DataModel
             serializable.AmmunitionId = AmmunitionObsolete.Value;
             serializable.DroneBayId = DroneBay.Value;
             serializable.DroneId = Drone.Value;
-            serializable.WeaponSlotType = ((this.WeaponSlotType == "") ? string.Empty : this.WeaponSlotType.ToString());
+            serializable.WeaponSlotType = (this.WeaponSlotType == "") ? string.Empty : this.WeaponSlotType.ToString();
             serializable.Restrictions = Restrictions.Value?.Serialize();
-            if ( PossibleModifications == null || PossibleModifications.Length == 0 )
+            if (PossibleModifications == null || PossibleModifications.Length == 0)
                 serializable.PossibleModifications = null;
             else
-                serializable.PossibleModifications = PossibleModifications.Select( wrapper => wrapper.Item.Value ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.PossibleModifications = PossibleModifications.Select(wrapper => wrapper.Item.Value).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public readonly ItemId<Component> Id;
@@ -94,7 +94,7 @@ namespace EditorDatabase.DataModel
         public Availability Availability;
         public ItemId<ComponentStats> Stats = ItemId<ComponentStats>.Empty;
         public ItemId<Faction> Faction = ItemId<Faction>.Empty;
-        public NumericValue<int> Level = new NumericValue<int>( 0, 0, 2147483647 );
+        public NumericValue<int> Level = new NumericValue<int>(0, 0, 2147483647);
         public string Icon;
         public System.Drawing.Color Color;
         public Layout Layout;
@@ -104,7 +104,7 @@ namespace EditorDatabase.DataModel
         public ItemId<AmmunitionObsolete> AmmunitionObsolete = ItemId<AmmunitionObsolete>.Empty;
         public ItemId<DroneBay> DroneBay = ItemId<DroneBay>.Empty;
         public ItemId<ShipBuild> Drone = ItemId<ShipBuild>.Empty;
-        public ObjectWrapper<ComponentRestrictions> Restrictions = new ObjectWrapper<ComponentRestrictions>( DataModel.ComponentRestrictions.DefaultValue );
+        public ObjectWrapper<ComponentRestrictions> Restrictions = new ObjectWrapper<ComponentRestrictions>(DataModel.ComponentRestrictions.DefaultValue);
         public Wrapper<ComponentMod>[] PossibleModifications;
 
         public static Component DefaultValue { get; set; }

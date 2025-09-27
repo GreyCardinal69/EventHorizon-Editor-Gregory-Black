@@ -30,20 +30,20 @@ namespace Cyotek.Windows.Forms
 
         #region Public Class Members
 
-        [DllImport( "user32.dll", EntryPoint = "GetDC", CallingConvention = CallingConvention.StdCall )]
-        public static extern IntPtr GetDC( IntPtr hWnd );
+        [DllImport("user32.dll", EntryPoint = "GetDC", CallingConvention = CallingConvention.StdCall)]
+        public static extern IntPtr GetDC(IntPtr hWnd);
 
-        [DllImport( "gdi32.dll", EntryPoint = "LineTo", CallingConvention = CallingConvention.StdCall )]
-        public static extern bool LineTo( IntPtr hdc, int x, int y );
+        [DllImport("gdi32.dll", EntryPoint = "LineTo", CallingConvention = CallingConvention.StdCall)]
+        public static extern bool LineTo(IntPtr hdc, int x, int y);
 
-        [DllImport( "gdi32.dll", EntryPoint = "MoveToEx", CallingConvention = CallingConvention.StdCall )]
-        public static extern bool MoveToEx( IntPtr hdc, int x, int y, IntPtr lpPoint );
+        [DllImport("gdi32.dll", EntryPoint = "MoveToEx", CallingConvention = CallingConvention.StdCall)]
+        public static extern bool MoveToEx(IntPtr hdc, int x, int y, IntPtr lpPoint);
 
-        [DllImport( "user32.dll", EntryPoint = "ReleaseDC", CallingConvention = CallingConvention.StdCall )]
-        public static extern IntPtr ReleaseDC( IntPtr hWnd, IntPtr hDC );
+        [DllImport("user32.dll", EntryPoint = "ReleaseDC", CallingConvention = CallingConvention.StdCall)]
+        public static extern IntPtr ReleaseDC(IntPtr hWnd, IntPtr hDC);
 
-        [DllImport( "gdi32.dll", EntryPoint = "SetROP2", CallingConvention = CallingConvention.StdCall )]
-        public static extern int SetROP2( IntPtr hdc, int fnDrawMode );
+        [DllImport("gdi32.dll", EntryPoint = "SetROP2", CallingConvention = CallingConvention.StdCall)]
+        public static extern int SetROP2(IntPtr hdc, int fnDrawMode);
 
         #endregion
 

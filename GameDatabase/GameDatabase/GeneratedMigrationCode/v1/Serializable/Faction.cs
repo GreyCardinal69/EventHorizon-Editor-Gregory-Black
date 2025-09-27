@@ -21,9 +21,9 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "Faction.json";
         }
 
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
         public bool NoTerritories;
         public int HomeStarDistance;

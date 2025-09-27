@@ -7,7 +7,7 @@ namespace Cyotek.Windows.Forms
     {
         #region Constructors
 
-        public EditColorCancelEventArgs( Color color, int colorIndex )
+        public EditColorCancelEventArgs(Color color, int colorIndex)
         {
             this.Color = color;
             this.ColorIndex = colorIndex;

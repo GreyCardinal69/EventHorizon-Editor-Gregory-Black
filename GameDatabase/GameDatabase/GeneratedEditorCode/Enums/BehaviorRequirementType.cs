@@ -16,9 +16,9 @@ namespace EditorDatabase.Enums
         Any = 1,
         All = 2,
         None = 3,
-        [TooltipText( "Condition met if AI level equals to this value" )]
+        [TooltipText("Condition met if AI level equals to this value")]
         AiLevel = 5,
-        [TooltipText( "Condition met if AI level is equals or higher than this value" )]
+        [TooltipText("Condition met if AI level is equals or higher than this value")]
         MinAiLevel = 6,
         SizeClass = 7,
         HasDevice = 10,
@@ -34,7 +34,7 @@ namespace EditorDatabase.Enums
         CanRechargeAllies = 20,
         IsDrone = 50,
         HasKineticResistance = 100,
-        [TooltipText( "Condition met when forward acceleration > Value" )]
+        [TooltipText("Condition met when forward acceleration > Value")]
         HasHighManeuverability = 101,
         HasHighRammingDamage = 102,
     }

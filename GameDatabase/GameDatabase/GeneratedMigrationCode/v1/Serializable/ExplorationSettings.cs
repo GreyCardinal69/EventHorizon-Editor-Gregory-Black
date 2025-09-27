@@ -25,7 +25,7 @@ namespace DatabaseMigration.v1.Serializable
         public int TurretShip;
         public int InfectedPlanetFaction;
         public int HiveShipBuild;
-        [DefaultValue( "MIN(level*2,500)" )]
+        [DefaultValue("MIN(level*2,500)")]
         public string GasCloudDPS = "MIN(level*2,500)";
     }
 }

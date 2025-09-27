@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace GameDatabase
+﻿namespace GameDatabase
 {
     public static class Reusables
     {

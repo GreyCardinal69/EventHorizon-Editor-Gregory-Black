@@ -15,43 +15,43 @@ namespace EditorDatabase.DataModel
     {
         public MusicPlaylist() { }
 
-        partial void OnDataDeserialized( MusicPlaylistSerializable serializable, Database database );
-        partial void OnDataSerialized( ref MusicPlaylistSerializable serializable );
+        partial void OnDataDeserialized(MusicPlaylistSerializable serializable, Database database);
+        partial void OnDataSerialized(ref MusicPlaylistSerializable serializable);
 
-        public static MusicPlaylist Create( MusicPlaylistSerializable serializable, Database database )
+        public static MusicPlaylist Create(MusicPlaylistSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new MusicPlaylist( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new MusicPlaylist(serializable, database);
         }
 
-        public MusicPlaylist( MusicPlaylistSerializable serializable, Database database )
+        public MusicPlaylist(MusicPlaylistSerializable serializable, Database database)
         {
-            MainMenuMusic = serializable.MainMenuMusic?.Select( item => SoundTrack.Create( item, database ) ).ToArray();
-            GalaxyMapMusic = serializable.GalaxyMapMusic?.Select( item => SoundTrack.Create( item, database ) ).ToArray();
-            CombatMusic = serializable.CombatMusic?.Select( item => SoundTrack.Create( item, database ) ).ToArray();
-            ExplorationMusic = serializable.ExplorationMusic?.Select( item => SoundTrack.Create( item, database ) ).ToArray();
-            OnDataDeserialized( serializable, database );
+            MainMenuMusic = serializable.MainMenuMusic?.Select(item => SoundTrack.Create(item, database)).ToArray();
+            GalaxyMapMusic = serializable.GalaxyMapMusic?.Select(item => SoundTrack.Create(item, database)).ToArray();
+            CombatMusic = serializable.CombatMusic?.Select(item => SoundTrack.Create(item, database)).ToArray();
+            ExplorationMusic = serializable.ExplorationMusic?.Select(item => SoundTrack.Create(item, database)).ToArray();
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( MusicPlaylistSerializable serializable )
+        public void Save(MusicPlaylistSerializable serializable)
         {
-            if ( MainMenuMusic == null || MainMenuMusic.Length == 0 )
+            if (MainMenuMusic == null || MainMenuMusic.Length == 0)
                 serializable.MainMenuMusic = null;
             else
-                serializable.MainMenuMusic = MainMenuMusic.Select( item => item.Serialize() ).ToArray();
-            if ( GalaxyMapMusic == null || GalaxyMapMusic.Length == 0 )
+                serializable.MainMenuMusic = MainMenuMusic.Select(item => item.Serialize()).ToArray();
+            if (GalaxyMapMusic == null || GalaxyMapMusic.Length == 0)
                 serializable.GalaxyMapMusic = null;
             else
-                serializable.GalaxyMapMusic = GalaxyMapMusic.Select( item => item.Serialize() ).ToArray();
-            if ( CombatMusic == null || CombatMusic.Length == 0 )
+                serializable.GalaxyMapMusic = GalaxyMapMusic.Select(item => item.Serialize()).ToArray();
+            if (CombatMusic == null || CombatMusic.Length == 0)
                 serializable.CombatMusic = null;
             else
-                serializable.CombatMusic = CombatMusic.Select( item => item.Serialize() ).ToArray();
-            if ( ExplorationMusic == null || ExplorationMusic.Length == 0 )
+                serializable.CombatMusic = CombatMusic.Select(item => item.Serialize()).ToArray();
+            if (ExplorationMusic == null || ExplorationMusic.Length == 0)
                 serializable.ExplorationMusic = null;
             else
-                serializable.ExplorationMusic = ExplorationMusic.Select( item => item.Serialize() ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.ExplorationMusic = ExplorationMusic.Select(item => item.Serialize()).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public SoundTrack[] MainMenuMusic;

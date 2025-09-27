@@ -16,9 +16,9 @@ namespace EditorDatabase.Serializable
     public class ShipBuildSerializable : SerializableItem
     {
         public int ShipId;
-        [DefaultValue( true )]
+        [DefaultValue(true)]
         public bool AvailableForPlayer = true;
-        [DefaultValue( true )]
+        [DefaultValue(true)]
         public bool AvailableForEnemy = true;
         public DifficultyClass DifficultyClass;
         public int BuildFaction;

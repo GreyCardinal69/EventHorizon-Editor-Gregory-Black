@@ -31,14 +31,14 @@
     public class ObjectWrapper<T> : IObjectWrapper where T : class, new()
     {
         public T Value;
-        private T _defaultValue;
+        private readonly T _defaultValue;
 
         public object CurrentValue => Value;
         public object DefaultValue => _defaultValue;
         public void CreateNew() => Value = new T();
         public void Clear() => Value = _defaultValue;
 
-        public ObjectWrapper( T defaultValue )
+        public ObjectWrapper(T defaultValue)
         {
             _defaultValue = defaultValue;
             Value = defaultValue;

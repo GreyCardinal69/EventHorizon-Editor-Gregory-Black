@@ -1,5 +1,4 @@
-﻿using EditorDatabase.Enums;
-using System;
+﻿using System;
 using System.ComponentModel;
 
 namespace EditorDatabase.Serializable

@@ -21,13 +21,13 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "CombatRules.json";
         }
 
-        [DefaultValue( "1" )]
+        [DefaultValue("1")]
         public string InitialEnemyShips = "1";
-        [DefaultValue( "12" )]
+        [DefaultValue("12")]
         public string MaxEnemyShips = "12";
-        [DefaultValue( 200 )]
+        [DefaultValue(200)]
         public int BattleMapSize = 200;
-        [DefaultValue( "MAX(40, 100 - level)" )]
+        [DefaultValue("MAX(40, 100 - level)")]
         public string TimeLimit = "MAX(40, 100 - level)";
         public TimeOutMode TimeOutMode;
         public RewardCondition LootCondition;
@@ -37,7 +37,7 @@ namespace DatabaseMigration.v1.Serializable
         public bool DisableRandomLoot;
         public bool DisableAsteroids;
         public bool DisablePlanet;
-        [DefaultValue( true )]
+        [DefaultValue(true)]
         public bool NextEnemyButton = true;
         public bool KillThemAllButton;
         public SoundTrackSerializable[] CustomSoundtrack;

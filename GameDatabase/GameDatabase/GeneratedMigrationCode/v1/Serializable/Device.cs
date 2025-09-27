@@ -25,7 +25,7 @@ namespace DatabaseMigration.v1.Serializable
         public DeviceClass DeviceClass;
         public float EnergyConsumption;
         public float PassiveEnergyConsumption;
-        [DefaultValue( true )]
+        [DefaultValue(true)]
         public bool ScaleEnergyWithShipSize = true;
         public float Power;
         public float Range;
@@ -34,17 +34,17 @@ namespace DatabaseMigration.v1.Serializable
         public float Lifetime;
         public Vector2 Offset;
         public ActivationType ActivationType;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Sound;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string EffectPrefab;
         public int VisualEffect;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ObjectPrefab;
         public int Prefab;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ControlButtonIcon;
     }
 }

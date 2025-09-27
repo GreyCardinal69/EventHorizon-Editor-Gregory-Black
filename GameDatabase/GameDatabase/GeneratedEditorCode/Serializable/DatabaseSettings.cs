@@ -16,9 +16,9 @@ namespace EditorDatabase.Serializable
     {
         public int DatabaseVersion;
         public int DatabaseVersionMinor;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ModName;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ModId;
         public int ModVersion;
         public bool UnloadOriginalDatabase;

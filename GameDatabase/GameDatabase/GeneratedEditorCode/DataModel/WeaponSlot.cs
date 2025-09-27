@@ -1,9 +1,4 @@
-﻿using EditorDatabase.Enums;
-using EditorDatabase.Model;
-using EditorDatabase.Serializable;
-using System.Collections.Generic;
-using System.Linq;
-using static EditorDatabase.Property;
+﻿using EditorDatabase.Serializable;
 
 namespace EditorDatabase.DataModel
 {
@@ -27,7 +22,7 @@ namespace EditorDatabase.DataModel
 
         private WeaponSlot(WeaponSlotSerializable serializable, Database database)
         {
-            this.Letter = (string.IsNullOrEmpty(serializable.Letter) ? '\0' : serializable.Letter[0]);
+            this.Letter = string.IsNullOrEmpty(serializable.Letter) ? '\0' : serializable.Letter[0];
             this.Name = serializable.Name;
             this.Icon = serializable.Icon;
         }
@@ -37,7 +32,7 @@ namespace EditorDatabase.DataModel
         {
             return new WeaponSlotSerializable
             {
-                Letter = ((this.Letter == '\0') ? string.Empty : this.Letter.ToString()),
+                Letter = (this.Letter == '\0') ? string.Empty : this.Letter.ToString(),
                 Name = this.Name,
                 Icon = this.Icon
             };

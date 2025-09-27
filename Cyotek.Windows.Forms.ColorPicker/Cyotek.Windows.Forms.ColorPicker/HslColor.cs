@@ -51,20 +51,20 @@ namespace Cyotek.Windows.Forms
 
         #region Constructors
 
-        public HslColor( double hue, double saturation, double lightness )
-          : this( 255, hue, saturation, lightness )
+        public HslColor(double hue, double saturation, double lightness)
+          : this(255, hue, saturation, lightness)
         { }
 
-        public HslColor( int alpha, double hue, double saturation, double lightness )
+        public HslColor(int alpha, double hue, double saturation, double lightness)
         {
-            _hue = Math.Min( 359, hue );
-            _saturation = Math.Min( 1, saturation );
-            _lightness = Math.Min( 1, lightness );
+            _hue = Math.Min(359, hue);
+            _saturation = Math.Min(1, saturation);
+            _lightness = Math.Min(1, lightness);
             _alpha = alpha;
             _isEmpty = false;
         }
 
-        public HslColor( Color color )
+        public HslColor(Color color)
         {
             _alpha = color.A;
             _hue = color.GetHue();
@@ -77,26 +77,26 @@ namespace Cyotek.Windows.Forms
 
         #region Operators
 
-        public static bool operator ==( HslColor a, HslColor b )
+        public static bool operator ==(HslColor a, HslColor b)
         {
             // ReSharper disable CompareOfFloatsByEqualityOperator
             return a.H == b.H && a.L == b.L && a.S == b.S && a.A == b.A;
             // ReSharper restore CompareOfFloatsByEqualityOperator
         }
 
-        public static implicit operator HslColor( Color color )
+        public static implicit operator HslColor(Color color)
         {
-            return new HslColor( color );
+            return new HslColor(color);
         }
 
-        public static implicit operator Color( HslColor color )
+        public static implicit operator Color(HslColor color)
         {
             return color.ToRgbColor();
         }
 
-        public static bool operator !=( HslColor a, HslColor b )
+        public static bool operator !=(HslColor a, HslColor b)
         {
-            return !( a == b );
+            return !(a == b);
         }
 
         #endregion
@@ -106,7 +106,7 @@ namespace Cyotek.Windows.Forms
         public int A
         {
             get { return _alpha; }
-            set { _alpha = Math.Min( 0, Math.Max( 255, value ) ); }
+            set { _alpha = Math.Min(0, Math.Max(255, value)); }
         }
 
         public double H
@@ -116,11 +116,11 @@ namespace Cyotek.Windows.Forms
             {
                 _hue = value;
 
-                if ( _hue > 359 )
+                if (_hue > 359)
                 {
                     _hue = 0;
                 }
-                if ( _hue < 0 )
+                if (_hue < 0)
                 {
                     _hue = 359;
                 }
@@ -136,28 +136,28 @@ namespace Cyotek.Windows.Forms
         public double L
         {
             get { return _lightness; }
-            set { _lightness = Math.Min( 1, Math.Max( 0, value ) ); }
+            set { _lightness = Math.Min(1, Math.Max(0, value)); }
         }
 
         public double S
         {
             get { return _saturation; }
-            set { _saturation = Math.Min( 1, Math.Max( 0, value ) ); }
+            set { _saturation = Math.Min(1, Math.Max(0, value)); }
         }
 
         #endregion
 
         #region Methods
 
-        public override bool Equals( object obj )
+        public override bool Equals(object obj)
         {
             bool result;
 
-            if ( obj is HslColor )
+            if (obj is HslColor)
             {
                 HslColor color;
 
-                color = ( HslColor ) obj;
+                color = (HslColor)obj;
                 result = this == color;
             }
             else
@@ -175,29 +175,29 @@ namespace Cyotek.Windows.Forms
 
         public Color ToRgbColor()
         {
-            return this.ToRgbColor( this.A );
+            return this.ToRgbColor(this.A);
         }
 
-        public Color ToRgbColor( int alpha )
+        public Color ToRgbColor(int alpha)
         {
             double q;
-            if ( this.L < 0.5 )
+            if (this.L < 0.5)
             {
-                q = this.L * ( 1 + this.S );
+                q = this.L * (1 + this.S);
             }
             else
             {
-                q = this.L + this.S - this.L * this.S;
+                q = this.L + this.S - (this.L * this.S);
             }
-            double p = 2 * this.L - q;
+            double p = (2 * this.L) - q;
             double hk = this.H / 360;
 
             // r,g,b colors
             double[] tc = new[]
                           {
-                      hk + 1d / 3d,
+                      hk + (1d / 3d),
                       hk,
-                      hk - 1d / 3d
+                      hk - (1d / 3d)
                     };
             double[] colors = new[]
                               {
@@ -206,28 +206,28 @@ namespace Cyotek.Windows.Forms
                           0.0
                         };
 
-            for ( int color = 0; color < colors.Length; color++ )
+            for (int color = 0; color < colors.Length; color++)
             {
-                if ( tc[color] < 0 )
+                if (tc[color] < 0)
                 {
                     tc[color] += 1;
                 }
-                if ( tc[color] > 1 )
+                if (tc[color] > 1)
                 {
                     tc[color] -= 1;
                 }
 
-                if ( tc[color] < 1d / 6d )
+                if (tc[color] < 1d / 6d)
                 {
-                    colors[color] = p + ( q - p ) * 6 * tc[color];
+                    colors[color] = p + ((q - p) * 6 * tc[color]);
                 }
-                else if ( tc[color] >= 1d / 6d && tc[color] < 1d / 2d )
+                else if (tc[color] >= 1d / 6d && tc[color] < 1d / 2d)
                 {
                     colors[color] = q;
                 }
-                else if ( tc[color] >= 1d / 2d && tc[color] < 2d / 3d )
+                else if (tc[color] >= 1d / 2d && tc[color] < 2d / 3d)
                 {
-                    colors[color] = p + ( q - p ) * 6 * ( 2d / 3d - tc[color] );
+                    colors[color] = p + ((q - p) * 6 * ((2d / 3d) - tc[color]));
                 }
                 else
                 {
@@ -237,7 +237,7 @@ namespace Cyotek.Windows.Forms
                 colors[color] *= 255;
             }
 
-            return Color.FromArgb( alpha, ( int ) colors[0], ( int ) colors[1], ( int ) colors[2] );
+            return Color.FromArgb(alpha, (int)colors[0], (int)colors[1], (int)colors[2]);
         }
 
         public override string ToString()
@@ -245,15 +245,15 @@ namespace Cyotek.Windows.Forms
             StringBuilder builder;
 
             builder = new StringBuilder();
-            builder.Append( this.GetType().Name );
-            builder.Append( " [" );
-            builder.Append( "H=" );
-            builder.Append( this.H );
-            builder.Append( ", S=" );
-            builder.Append( this.S );
-            builder.Append( ", L=" );
-            builder.Append( this.L );
-            builder.Append( "]" );
+            builder.Append(this.GetType().Name);
+            builder.Append(" [");
+            builder.Append("H=");
+            builder.Append(this.H);
+            builder.Append(", S=");
+            builder.Append(this.S);
+            builder.Append(", L=");
+            builder.Append(this.L);
+            builder.Append("]");
 
             return builder.ToString();
         }

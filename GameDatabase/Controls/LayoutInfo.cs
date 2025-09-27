@@ -3,7 +3,6 @@ using EditorDatabase.DataModel;
 using EditorDatabase.Enums;
 using System;
 using System.Collections.Generic;
-using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace GameDatabase.Controls
@@ -14,17 +13,17 @@ namespace GameDatabase.Controls
         public Ship _shipData { get; set; }
         public Database _database { get; set; }
 
-        private Label CellsNum;
-        private Dictionary<CellType, Label> Sizes;
-        private Label BaseArmor;
-        private Label BaseWeigth;
-        private Label MinWeigth;
-        private Label BaseEnergyResistance;
-        private Label BaseKineticResistance;
-        private Label BaseHeatResistance;
-        private Label CreditsCost;
-        private Label StarCost;
-        private Label MinSpawnDistance;
+        private readonly Label CellsNum;
+        private readonly Dictionary<CellType, Label> Sizes;
+        private readonly Label BaseArmor;
+        private readonly Label BaseWeigth;
+        private readonly Label MinWeigth;
+        private readonly Label BaseEnergyResistance;
+        private readonly Label BaseKineticResistance;
+        private readonly Label BaseHeatResistance;
+        private readonly Label CreditsCost;
+        private readonly Label StarCost;
+        private readonly Label MinSpawnDistance;
 
         public LayoutInfo()
         {
@@ -32,19 +31,19 @@ namespace GameDatabase.Controls
             tableLayoutPanel.RowCount = 11;
 
             tableLayoutPanel.SuspendLayout();
-            for (var i = 0; i <= tableLayoutPanel.RowCount; ++i)
+            for (int i = 0; i <= tableLayoutPanel.RowCount; ++i)
                 tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
-            var lastRow = 0;
+            int lastRow = 0;
 
             CreateLabel("Cells Number", 0, lastRow);
             CellsNum = CreateLabel("-", 1, lastRow++);
 
             Sizes = new Dictionary<CellType, Label>();
 
-            foreach (var type in (CellType[])Enum.GetValues(typeof(CellType)))
+            foreach (CellType type in (CellType[])Enum.GetValues(typeof(CellType)))
             {
-                var name = _nameOf(type);
+                string name = _nameOf(type);
                 if (string.IsNullOrEmpty(name)) continue;
                 CreateLabel($"{name} cells count", 0, lastRow);
                 Sizes[type] = CreateLabel("-", 1, lastRow++);
@@ -99,9 +98,9 @@ namespace GameDatabase.Controls
             }
         }
 
-        public long CraftingPrice( Ship ship)
+        public long CraftingPrice(Ship ship)
         {
-            int price = (int)ship.Layout.CellCount * ship.Layout.CellCount * 5;
+            int price = ship.Layout.CellCount * ship.Layout.CellCount * 5;
 
             if (ship.SizeClass == SizeClass.Titan)
                 return price * 3;
@@ -111,12 +110,12 @@ namespace GameDatabase.Controls
                 return price;
         }
 
-        public long CraftingStars( Ship ship)
+        public long CraftingStars(Ship ship)
         {
             if (ship.SizeClass == SizeClass.Titan)
                 return ship.Layout.CellCount / 10;
             else if (ship.ShipRarity == ShipRarity.Rare)
-                return 1 + (ship.Layout.CellCount - 30) / 10;
+                return 1 + ((ship.Layout.CellCount - 30) / 10);
             else
                 return ship.Layout.CellCount / 70;
         }
@@ -134,10 +133,10 @@ namespace GameDatabase.Controls
             string data = _layout.Layout;
 
             int size = data.Replace("0", "").Length;
-            CellsNum.Text = (size.ToString() + (featuresNull ? "\n\n FOR ACCURATE STATS ADD A FEATURES FIELD\n\n" : ""));
+            CellsNum.Text = size.ToString() + (featuresNull ? "\n\n FOR ACCURATE STATS ADD A FEATURES FIELD\n\n" : "");
 
             string layoutOnly = data.Replace("0", "");
-            foreach (var type in (CellType[])Enum.GetValues(typeof(CellType)))
+            foreach (CellType type in (CellType[])Enum.GetValues(typeof(CellType)))
             {
                 Label control;
                 if (Sizes.TryGetValue(type, out control))
@@ -150,7 +149,7 @@ namespace GameDatabase.Controls
 
             if (_shipData.Features.Value != null && _shipData.Features != null && _shipData.Features.CurrentValue != null)
             {
-                var armor = (_database.ShipSettings.BaseArmorPoints.Value + _database.ShipSettings.ArmorPointsPerCell.Value * size) * (_shipData.Features.Value.ArmorBonus.Value == 0 ? 1 : 1 + _shipData.Features.Value.ArmorBonus.Value);
+                float armor = (_database.ShipSettings.BaseArmorPoints.Value + (_database.ShipSettings.ArmorPointsPerCell.Value * size)) * (_shipData.Features.Value.ArmorBonus.Value == 0 ? 1 : 1 + _shipData.Features.Value.ArmorBonus.Value);
                 BaseArmor.Text = armor.ToString("0.00");
 
                 BaseWeigth.Text = (_database.ShipSettings.DefaultWeightPerCell.Value * size * (1 + _shipData.Features.Value.ShipWeightBonus.Value)).ToString("0.0");
@@ -162,7 +161,7 @@ namespace GameDatabase.Controls
             }
             else
             {
-                var armor = (_database.ShipSettings.BaseArmorPoints.Value + 0 * size) * (1 + 0);
+                float armor = (_database.ShipSettings.BaseArmorPoints.Value + (0 * size)) * (1 + 0);
                 BaseArmor.Text = armor.ToString("0.00");
 
                 BaseWeigth.Text = (_database.ShipSettings.DefaultWeightPerCell.Value * size * (1 + 0)).ToString("0.0");
@@ -173,8 +172,6 @@ namespace GameDatabase.Controls
                 BaseHeatResistance.Text = CalculateResistances(0).ToString("0.00");
             }
 
-            long starcost;
-
             StarCost.Text = CraftingStars(_shipData).ToString();
             MinSpawnDistance.Text = Math.Max((size - 55) / 2, 0).ToString();
 
@@ -183,12 +180,12 @@ namespace GameDatabase.Controls
 
         private float CalculateResistances(float number)
         {
-            return 100 - 100 / (number + 1);
+            return 100 - (100 / (number + 1));
         }
 
         private Label CreateLabel(string text, int column, int row)
         {
-            var label = new Label()
+            Label label = new Label()
             {
                 Text = text,
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left,

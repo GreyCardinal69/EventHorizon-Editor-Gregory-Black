@@ -21,9 +21,9 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "LocalizationSettings.json";
         }
 
-        [DefaultValue( "$WeaponDamage" )]
+        [DefaultValue("$WeaponDamage")]
         public string CorrosiveDamageText = "$WeaponDamage";
-        [DefaultValue( "$WeaponDPS" )]
+        [DefaultValue("$WeaponDPS")]
         public string CorrosiveDpsText = "$WeaponDPS";
     }
 }

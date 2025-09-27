@@ -14,7 +14,7 @@ namespace DatabaseMigration.v1.Serializable
     [Serializable]
     public class SoundTrackSerializable
     {
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Audio;
     }
 }

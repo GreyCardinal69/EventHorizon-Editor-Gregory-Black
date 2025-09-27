@@ -21,9 +21,9 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "Character.json";
         }
 
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string AvatarIcon;
         public int Faction;
         public int Inventory;

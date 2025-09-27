@@ -13,31 +13,31 @@ namespace EditorDatabase.DataModel
 {
     public partial class ComponentStatUpgrade
     {
-        partial void OnDataDeserialized( ComponentStatUpgradeSerializable serializable, Database database );
-        partial void OnDataSerialized( ref ComponentStatUpgradeSerializable serializable );
+        partial void OnDataDeserialized(ComponentStatUpgradeSerializable serializable, Database database);
+        partial void OnDataSerialized(ref ComponentStatUpgradeSerializable serializable);
 
-        public static ComponentStatUpgrade Create( ComponentStatUpgradeSerializable serializable, Database database )
+        public static ComponentStatUpgrade Create(ComponentStatUpgradeSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new ComponentStatUpgrade( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new ComponentStatUpgrade(serializable, database);
         }
 
-        public ComponentStatUpgrade( ComponentStatUpgradeSerializable serializable, Database database )
+        public ComponentStatUpgrade(ComponentStatUpgradeSerializable serializable, Database database)
         {
             try
             {
-                Id = new ItemId<ComponentStatUpgrade>( serializable.Id, serializable.FileName );
+                Id = new ItemId<ComponentStatUpgrade>(serializable.Id, serializable.FileName);
             }
-            catch ( DatabaseException e )
+            catch (DatabaseException e)
             {
-                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+                throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
             }
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ComponentStatUpgradeSerializable serializable )
+        public void Save(ComponentStatUpgradeSerializable serializable)
         {
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
         }
 
         public readonly ItemId<ComponentStatUpgrade> Id;

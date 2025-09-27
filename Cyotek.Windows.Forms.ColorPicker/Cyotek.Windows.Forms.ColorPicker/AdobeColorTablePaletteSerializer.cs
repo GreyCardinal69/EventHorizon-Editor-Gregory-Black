@@ -74,13 +74,13 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The stream.</param>
         /// <returns><c>true</c> if this instance can read palette data from the specified stream; otherwise, <c>false</c>.</returns>
-        public override bool CanReadFrom( Stream stream )
+        public override bool CanReadFrom(Stream stream)
         {
             bool result;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             try
@@ -100,21 +100,21 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> that contains the palette to deserialize.</param>
         /// <returns>The <see cref="ColorCollection" /> being deserialized.</returns>
-        public override ColorCollection Deserialize( Stream stream )
+        public override ColorCollection Deserialize(Stream stream)
         {
             ColorCollection results;
             int count;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
             results = new ColorCollection();
 
-            count = ( int ) ( stream.Length / 3 );
+            count = (int)(stream.Length / 3);
 
-            for ( int i = 0; i < count; i++ )
+            for (int i = 0; i < count; i++)
             {
                 int r;
                 int g;
@@ -124,10 +124,10 @@ namespace Cyotek.Windows.Forms
                 g = stream.ReadByte();
                 b = stream.ReadByte();
 
-                results.Add( Color.FromArgb( r, g, b ) );
+                results.Add(Color.FromArgb(r, g, b));
             }
 
-            if ( count == 257 )
+            if (count == 257)
             {
                 int realCount;
 
@@ -139,9 +139,9 @@ namespace Cyotek.Windows.Forms
 
                 realCount = results[256].G;
 
-                while ( results.Count > realCount )
+                while (results.Count > realCount)
                 {
-                    results.RemoveAt( realCount );
+                    results.RemoveAt(realCount);
                 }
             }
 
@@ -153,50 +153,50 @@ namespace Cyotek.Windows.Forms
         /// </summary>
         /// <param name="stream">The <see cref="Stream" /> used to write the palette.</param>
         /// <param name="palette">The <see cref="ColorCollection" /> to serialize.</param>
-        public override void Serialize( Stream stream, ColorCollection palette )
+        public override void Serialize(Stream stream, ColorCollection palette)
         {
             int count;
 
-            if ( stream == null )
+            if (stream == null)
             {
-                throw new ArgumentNullException( nameof( stream ) );
+                throw new ArgumentNullException(nameof(stream));
             }
 
-            if ( palette == null )
+            if (palette == null)
             {
-                throw new ArgumentNullException( nameof( palette ) );
+                throw new ArgumentNullException(nameof(palette));
             }
 
             count = palette.Count;
 
-            if ( count > 256 )
+            if (count > 256)
             {
-                throw new InvalidDataException( "A maximum of 255 colors are supported by this format." );
+                throw new InvalidDataException("A maximum of 255 colors are supported by this format.");
             }
 
-            foreach ( Color color in palette )
+            foreach (Color color in palette)
             {
-                stream.WriteByte( color.R );
-                stream.WriteByte( color.G );
-                stream.WriteByte( color.B );
+                stream.WriteByte(color.R);
+                stream.WriteByte(color.G);
+                stream.WriteByte(color.B);
             }
 
-            if ( count < 256 )
+            if (count < 256)
             {
                 // add padding
-                for ( int i = count; i < 256; i++ )
+                for (int i = count; i < 256; i++)
                 {
-                    stream.WriteByte( 0 );
-                    stream.WriteByte( 0 );
-                    stream.WriteByte( 0 );
+                    stream.WriteByte(0);
+                    stream.WriteByte(0);
+                    stream.WriteByte(0);
                 }
 
                 // add an extra four bytes which seem to describe the number
                 // of used colours
-                stream.WriteByte( 0 );
-                stream.WriteByte( ( byte ) count );
-                stream.WriteByte( 0 );
-                stream.WriteByte( 0 );
+                stream.WriteByte(0);
+                stream.WriteByte((byte)count);
+                stream.WriteByte(0);
+                stream.WriteByte(0);
             }
 
             stream.Flush();

@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using static GameDatabase.Reusables;
 
 namespace GameDatabase.Controls
 {
@@ -9,7 +8,7 @@ namespace GameDatabase.Controls
     {
         private Color _backgroundColor = MainWindow.BackgroundColor;
 
-        public AdvancedContextMenuStrip( IContainer container ) : base( container )
+        public AdvancedContextMenuStrip(IContainer container) : base(container)
         {
         }
 
@@ -18,7 +17,7 @@ namespace GameDatabase.Controls
             get { return _backgroundColor; }
             set
             {
-                if ( _backgroundColor != value )
+                if (_backgroundColor != value)
                 {
                     _backgroundColor = value;
                     Invalidate();
@@ -26,14 +25,14 @@ namespace GameDatabase.Controls
             }
         }
 
-        protected override void OnPaint( PaintEventArgs e )
+        protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint( e );
+            base.OnPaint(e);
 
-            using ( var pen = new Pen( BorderColor, 1 ) )
-                e.Graphics.DrawRectangle( pen,
+            using (Pen pen = new Pen(BorderColor, 1))
+                e.Graphics.DrawRectangle(pen,
                     e.ClipRectangle.Left, e.ClipRectangle.Top,
-                     e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1 );
+                     e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
         }
     }
 }

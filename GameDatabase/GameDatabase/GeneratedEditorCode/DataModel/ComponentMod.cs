@@ -14,38 +14,38 @@ namespace EditorDatabase.DataModel
 {
     public partial class ComponentMod
     {
-        partial void OnDataDeserialized( ComponentModSerializable serializable, Database database );
-        partial void OnDataSerialized( ref ComponentModSerializable serializable );
+        partial void OnDataDeserialized(ComponentModSerializable serializable, Database database);
+        partial void OnDataSerialized(ref ComponentModSerializable serializable);
 
-        public static ComponentMod Create( ComponentModSerializable serializable, Database database )
+        public static ComponentMod Create(ComponentModSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new ComponentMod( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new ComponentMod(serializable, database);
         }
 
-        public ComponentMod( ComponentModSerializable serializable, Database database )
+        public ComponentMod(ComponentModSerializable serializable, Database database)
         {
             try
             {
-                Id = new ItemId<ComponentMod>( serializable.Id, serializable.FileName );
+                Id = new ItemId<ComponentMod>(serializable.Id, serializable.FileName);
                 Description = serializable.Description;
-                Modifications = serializable.Modifications?.Select( item => StatModification.Create( item, database ) ).ToArray();
+                Modifications = serializable.Modifications?.Select(item => StatModification.Create(item, database)).ToArray();
             }
-            catch ( DatabaseException e )
+            catch (DatabaseException e)
             {
-                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+                throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
             }
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( ComponentModSerializable serializable )
+        public void Save(ComponentModSerializable serializable)
         {
             serializable.Description = Description;
-            if ( Modifications == null || Modifications.Length == 0 )
+            if (Modifications == null || Modifications.Length == 0)
                 serializable.Modifications = null;
             else
-                serializable.Modifications = Modifications.Select( item => item.Serialize() ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.Modifications = Modifications.Select(item => item.Serialize()).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public readonly ItemId<ComponentMod> Id;

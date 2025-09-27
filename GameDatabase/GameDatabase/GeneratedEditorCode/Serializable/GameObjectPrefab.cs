@@ -16,15 +16,15 @@ namespace EditorDatabase.Serializable
     public class GameObjectPrefabSerializable : SerializableItem
     {
         public ObjectPrefabType Type;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Image1;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Image2;
-        [DefaultValue( 1f )]
+        [DefaultValue(1f)]
         public float ImageScale = 1f;
-        [DefaultValue( 0.1f )]
+        [DefaultValue(0.1f)]
         public float Thickness = 0.1f;
-        [DefaultValue( 1f )]
+        [DefaultValue(1f)]
         public float AspectRatio = 1f;
         public float ImageOffset;
         public float Length;

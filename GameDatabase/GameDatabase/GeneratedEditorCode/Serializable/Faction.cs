@@ -14,9 +14,9 @@ namespace EditorDatabase.Serializable
     [Serializable]
     public class FactionSerializable : SerializableItem
     {
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
         public bool NoTerritories;
         public int HomeStarDistance;

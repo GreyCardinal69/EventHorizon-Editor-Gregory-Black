@@ -20,14 +20,14 @@ namespace EditorDatabase.Serializable
         public float Size;
         public float Length;
         public float Velocity;
-        [DefaultValue( 1f )]
+        [DefaultValue(1f)]
         public float ParentVelocityEffect = 1f;
         public bool AttachedToParent;
         public float Range;
         public float Lifetime;
         public float Weight;
         public int HitPoints;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Color;
         public int BulletPrefab;
         public float EnergyCost;

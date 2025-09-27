@@ -21,13 +21,13 @@ namespace DatabaseMigration.v1.Serializable
             FileName = "Satellite.json";
         }
 
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Name;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string ModelImage;
         public float ModelScale;
         public SizeClass SizeClass;
-        [DefaultValue( "" )]
+        [DefaultValue("")]
         public string Layout;
         public BarrelSerializable[] Barrels;
     }

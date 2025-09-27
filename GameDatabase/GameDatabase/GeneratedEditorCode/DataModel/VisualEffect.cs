@@ -14,36 +14,36 @@ namespace EditorDatabase.DataModel
 {
     public partial class VisualEffect
     {
-        partial void OnDataDeserialized( VisualEffectSerializable serializable, Database database );
-        partial void OnDataSerialized( ref VisualEffectSerializable serializable );
+        partial void OnDataDeserialized(VisualEffectSerializable serializable, Database database);
+        partial void OnDataSerialized(ref VisualEffectSerializable serializable);
 
-        public static VisualEffect Create( VisualEffectSerializable serializable, Database database )
+        public static VisualEffect Create(VisualEffectSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new VisualEffect( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new VisualEffect(serializable, database);
         }
 
-        public VisualEffect( VisualEffectSerializable serializable, Database database )
+        public VisualEffect(VisualEffectSerializable serializable, Database database)
         {
             try
             {
-                Id = new ItemId<VisualEffect>( serializable.Id, serializable.FileName );
-                Elements = serializable.Elements?.Select( item => VisualEffectElement.Create( item, database ) ).ToArray();
+                Id = new ItemId<VisualEffect>(serializable.Id, serializable.FileName);
+                Elements = serializable.Elements?.Select(item => VisualEffectElement.Create(item, database)).ToArray();
             }
-            catch ( DatabaseException e )
+            catch (DatabaseException e)
             {
-                throw new DatabaseException( this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e );
+                throw new DatabaseException(this.GetType() + ": deserialization failed. " + serializable.FileName + " (" + serializable.Id + ")", e);
             }
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
-        public void Save( VisualEffectSerializable serializable )
+        public void Save(VisualEffectSerializable serializable)
         {
-            if ( Elements == null || Elements.Length == 0 )
+            if (Elements == null || Elements.Length == 0)
                 serializable.Elements = null;
             else
-                serializable.Elements = Elements.Select( item => item.Serialize() ).ToArray();
-            OnDataSerialized( ref serializable );
+                serializable.Elements = Elements.Select(item => item.Serialize()).ToArray();
+            OnDataSerialized(ref serializable);
         }
 
         public readonly ItemId<VisualEffect> Id;

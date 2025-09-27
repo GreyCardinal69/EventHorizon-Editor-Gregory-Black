@@ -13,32 +13,32 @@ namespace EditorDatabase.DataModel
 {
     public partial class ShipBuildPerks
     {
-        partial void OnDataDeserialized( ShipBuildPerksSerializable serializable, Database database );
-        partial void OnDataSerialized( ref ShipBuildPerksSerializable serializable );
+        partial void OnDataDeserialized(ShipBuildPerksSerializable serializable, Database database);
+        partial void OnDataSerialized(ref ShipBuildPerksSerializable serializable);
 
-        public static ShipBuildPerks Create( ShipBuildPerksSerializable serializable, Database database )
+        public static ShipBuildPerks Create(ShipBuildPerksSerializable serializable, Database database)
         {
-            if ( serializable == null ) return DefaultValue;
-            return new ShipBuildPerks( serializable, database );
+            if (serializable == null) return DefaultValue;
+            return new ShipBuildPerks(serializable, database);
         }
 
         public ShipBuildPerks() { }
 
-        public ShipBuildPerks( ShipBuildPerksSerializable serializable, Database database )
+        public ShipBuildPerks(ShipBuildPerksSerializable serializable, Database database)
         {
             Perk1 = serializable.Perk1;
             Perk2 = serializable.Perk2;
             Perk3 = serializable.Perk3;
-            OnDataDeserialized( serializable, database );
+            OnDataDeserialized(serializable, database);
         }
 
         public ShipBuildPerksSerializable Serialize()
         {
-            var serializable = new ShipBuildPerksSerializable();
+            ShipBuildPerksSerializable serializable = new ShipBuildPerksSerializable();
             serializable.Perk1 = Perk1;
             serializable.Perk2 = Perk2;
             serializable.Perk3 = Perk3;
-            OnDataSerialized( ref serializable );
+            OnDataSerialized(ref serializable);
             return serializable;
         }
 
