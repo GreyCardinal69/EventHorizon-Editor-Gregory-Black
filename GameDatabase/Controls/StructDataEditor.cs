@@ -16,8 +16,20 @@ using AdvancedButton = GameDatabase.Controls.AdvancedButton;
 
 namespace GameDatabase
 {
+    public static class ControlExtensions
+    {
+        public static void SetDoubleBuffered(this Control control, bool enable)
+        {
+            var doubleBufferPropertyInfo = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            doubleBufferPropertyInfo?.SetValue(control, enable, null);
+        }
+    }
     public partial class StructDataEditor : UserControl
     {
+        private SolidBrush _comboItemSelectedBrush = new SolidBrush(Color.FromArgb(60, 60, 60));
+        private SolidBrush _comboItemDefaultBrush = new SolidBrush(MainWindow.BackgroundColor);
+        private SolidBrush _comboItemTextBrush = new SolidBrush(MainWindow.FontColor);
+
         [Description( "Data" ), Category( "Data" )]
         public IDataAdapter Data
         {
@@ -70,6 +82,7 @@ namespace GameDatabase
         public StructDataEditor()
         {
             InitializeComponent();
+            this.tableLayoutPanel.SetDoubleBuffered(true);
         }
 
         private void Cleanup()
@@ -79,6 +92,21 @@ namespace GameDatabase
             _layouts.Clear();
             _binding.Clear();
             toolTip.RemoveAll();
+        }
+        private RowStyle GetRowStyleForProperty(IProperty item)
+        {
+            const int defaultRowHeight = 28;
+
+            var type = item.Type;
+            if (type.IsArray ||
+                typeof(IDataAdapter).IsAssignableFrom(type) ||
+                type == typeof(Layout) ||
+                (type.IsClass && !type.IsPrimitive && type != typeof(string) && type != typeof(Vector2)))
+            {
+                return new RowStyle(SizeType.AutoSize);
+            }
+
+            return new RowStyle(SizeType.Absolute, defaultRowHeight);
         }
 
         private void BuildLayout()
@@ -91,17 +119,14 @@ namespace GameDatabase
             tableLayoutPanel.SuspendLayout();
             var fields = _data.Properties.ToArray();
 
-            tableLayoutPanel.Controls.Clear();
             tableLayoutPanel.RowCount = fields.Length + 1;
+             
 
-            for ( var i = 0; i <= tableLayoutPanel.RowCount; ++i )
-                tableLayoutPanel.RowStyles.Add( new RowStyle( SizeType.AutoSize ) );
-
-            _ignoreEvents = true;
-
+            _ignoreEvents = true; 
             var rowId = 0;
             foreach ( var item in fields )
             {
+                tableLayoutPanel.RowStyles.Add(GetRowStyleForProperty(item));
                 var name = item.Name;
 
                 if ( _exclusions.Contains( name ) )
@@ -359,18 +384,15 @@ namespace GameDatabase
             if ( e.Index == -1 ) return;
             FlatCombo combo = sender as FlatCombo;
 
-            if ( ( e.State & DrawItemState.Selected ) == DrawItemState.Selected )
-            {
-                e.Graphics.FillRectangle( new SolidBrush( Color.FromArgb( 60, 60, 60 ) ), e.Bounds );
-            }
-            else
-            {
-                e.Graphics.FillRectangle( new SolidBrush( MainWindow.BackgroundColor ), e.Bounds );
-            }
+            var backgroundBrush = (e.State & DrawItemState.Selected) == DrawItemState.Selected
+                ? _comboItemSelectedBrush
+                : _comboItemDefaultBrush;
+
+            e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
 
             e.Graphics.DrawString( combo.Items[e.Index].ToString(),
                                           e.Font,
-                                          new SolidBrush( MainWindow.FontColor ),
+                                            _comboItemTextBrush,
                                           new Point( e.Bounds.X, e.Bounds.Y ) );
         }
 

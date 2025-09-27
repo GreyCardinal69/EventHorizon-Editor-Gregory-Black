@@ -13,6 +13,7 @@ namespace GameDatabase
             _dialogName = name;
 
             InitializeComponent();
+            this.SetDoubleBuffered(true);
         }
 
         private void EditorDialog_Load( object sender, EventArgs e )

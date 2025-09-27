@@ -55,6 +55,8 @@ namespace GameDatabase.Controls
         public VectorEditor()
         {
             InitializeComponent();
+            this.tableLayoutPanel1.SetDoubleBuffered(true);
+            this.SetDoubleBuffered(true);
         }
 
         private Vector2 _vector;

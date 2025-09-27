@@ -540,9 +540,7 @@
     <Compile Include="ShipEditorDialog.Designer.cs">
       <DependentUpon>ShipEditorDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\StructDataEditor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controls\StructDataEditor.cs" />
     <Compile Include="Controls\StructDataEditor.Designer.cs">
       <DependentUpon>StructDataEditor.cs</DependentUpon>
     </Compile>

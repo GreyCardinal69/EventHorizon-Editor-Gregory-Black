@@ -38,6 +38,8 @@ namespace GameDatabase.Controls
         public ContainerEditor()
         {
             InitializeComponent();
+            this.tableLayoutOuterPanel.SetDoubleBuffered(true);
+            this.SetDoubleBuffered(true);
         }
 
         private void Cleanup()

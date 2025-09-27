@@ -32,6 +32,8 @@ namespace GameDatabase.Controls
         public StructDataView()
         {
             InitializeComponent();
+            this.tableLayoutPanel.SetDoubleBuffered(true);
+            this.SetDoubleBuffered(true);
         }
 
         private void Cleanup()

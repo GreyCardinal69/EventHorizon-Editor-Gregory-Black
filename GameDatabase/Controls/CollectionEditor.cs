@@ -74,6 +74,8 @@ namespace GameDatabase.Controls
         {
             InitializeComponent();
             rowsPerPage = MainWindow.MainInstance.DBESettings.ElementsPerPage;
+            this.tableLayoutPanel.SetDoubleBuffered(true);
+            this.SetDoubleBuffered(true);
         }
 
         protected void Cleanup()
