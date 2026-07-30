@@ -77,7 +77,7 @@ namespace EditorDatabase.DataModel
             serializable.AmmunitionId = AmmunitionObsolete.Value;
             serializable.DroneBayId = DroneBay.Value;
             serializable.DroneId = Drone.Value;
-            serializable.WeaponSlotType = (this.WeaponSlotType == "") ? string.Empty : this.WeaponSlotType.ToString();
+            serializable.WeaponSlotType = WeaponSlotType == null ? "" : WeaponSlotType.ToString();
             serializable.Restrictions = Restrictions.Value?.Serialize();
             if (PossibleModifications == null || PossibleModifications.Length == 0)
                 serializable.PossibleModifications = null;
