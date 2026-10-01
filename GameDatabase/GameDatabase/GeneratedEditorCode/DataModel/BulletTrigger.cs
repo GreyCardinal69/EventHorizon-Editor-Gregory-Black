@@ -158,7 +158,7 @@ namespace EditorDatabase.DataModel
 
         public void Save(ref BulletTriggerSerializable serializable)
         {
-            serializable.SyncLifetimeWithBullet = false;
+            serializable.SyncLifetimeWithBullet = SyncLifetimeWithBullet;
             serializable.VisualEffect = VisualEffect.Value;
             serializable.AudioClip = AudioClip;
             serializable.Color = Helpers.ColorToString(Color);
