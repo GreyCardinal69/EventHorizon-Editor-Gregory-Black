@@ -29,12 +29,15 @@ namespace GameDatabase
         }
 
         [Description("Layout"), Category("Margins")]
+        [DefaultValue(0)]
         public int BorderSize { get; set; }
 
-        [Description("Image"), Category("Data")]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Image Image { get; set; }
 
-        [Description("Layout"), Category("Data")]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new string Layout
         {
             get { return _layout.Data; }
@@ -59,7 +62,8 @@ namespace GameDatabase
             public float Y;
         }
 
-        [Description("Barrels"), Category("Data")]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IList<BarrelData> Barrels
         {
             get { return _barrels; }
@@ -88,6 +92,7 @@ namespace GameDatabase
         }
 
         [Description("SelectedCategory"), Category("Data")]
+        [DefaultValue('1')]
         public char SelectedCategory { get; set; }
 
         [Description("BarrelsCollectionEditor"), Category("Data")]

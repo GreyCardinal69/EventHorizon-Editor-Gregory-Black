@@ -11,6 +11,8 @@ namespace GameDatabase
             Name = string.Empty;
         }
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string Name { get; set; }
 
         private void confirmButton_Click(object sender, EventArgs e)

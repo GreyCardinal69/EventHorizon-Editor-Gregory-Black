@@ -1,8 +1,8 @@
-﻿using Ionic.Zlib;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
+using Ionic.Zlib;
 
 namespace GameDatabase
 {
@@ -24,15 +24,6 @@ namespace GameDatabase
             return TryReadSignature(path, out name, out guid) ? new ModBuilder(path, name, guid, versionMajor, versionMinor) : null;
         }
 
-        private ModBuilder(string datapath, string name, string id, int versionMajor, int versionMinor)
-        {
-            _datapath = datapath;
-            _name = name;
-            _id = id;
-            _versionMajor = versionMajor;
-            _versionMinor = versionMinor;
-        }
-
         public static bool TryReadSignature(string path, out string name, out string guid)
         {
             name = string.Empty;
@@ -40,11 +31,11 @@ namespace GameDatabase
 
             try
             {
-                FileInfo id = new DirectoryInfo(path).GetFiles(SignatureFileName).FirstOrDefault();
+                var id = new DirectoryInfo(path).GetFiles(SignatureFileName).FirstOrDefault();
                 if (id == null)
                     return false;
 
-                string[] data = File.ReadAllLines(id.FullName);
+                var data = File.ReadAllLines(id.FullName);
                 if (data.Length < 2)
                     return false;
 
@@ -67,87 +58,78 @@ namespace GameDatabase
 
         public void Build(FileStream stream)
         {
+            byte[] rawData = null;
+            byte[] compressedData = null;
+            byte[] encryptedFile = null;
+
             try
             {
-                byte[] header = SerializeHeader().ToArray();
-                byte[] rawdata = SerializeData().ToArray();
-                byte[] data = ZlibStream.CompressBuffer(rawdata.ToArray());
-
-                uint size = (uint)data.Length;
-                byte checksumm = 0;
-                uint w = 0x12345678 ^ size;
-                uint z = 0x87654321 ^ size;
-                for (int i = 0; i < size; ++i)
-                {
-                    checksumm += data[i];
-                    data[i] = (byte)(data[i] ^ (byte)random(ref w, ref z));
-                }
-                stream.Write(header, 0, header.Length);
-                stream.Write(data, 0, data.Length);
-                stream.WriteByte((byte)(checksumm ^ (byte)random(ref w, ref z)));
+                rawData = SerializeData().ToArray();
+                compressedData = ZlibStream.CompressBuffer(rawData);
+                encryptedFile = ModEncryption.Encrypt(compressedData);
+                stream.Write(encryptedFile, 0, encryptedFile.Length);
             }
             finally
             {
+                Clear(rawData);
+                Clear(compressedData);
+                Clear(encryptedFile);
                 stream.Close();
             }
-        }
-        private IEnumerable<byte> SerializeHeader()
-        {
-            return Serialize(unchecked((int)_header));
         }
 
         private IEnumerable<byte> SerializeData()
         {
-            foreach (byte value in Serialize(_version))
+            foreach (var value in Serialize(_version))
                 yield return value;
-            foreach (byte value in Serialize(_name))
+            foreach (var value in Serialize(_name))
                 yield return value;
-            foreach (byte value in Serialize(_id))
+            foreach (var value in Serialize(_id))
                 yield return value;
-            foreach (byte value in Serialize(_versionMajor))
+            foreach (var value in Serialize(_versionMajor))
                 yield return value;
-            foreach (byte value in Serialize(_versionMinor))
+            foreach (var value in Serialize(_versionMinor))
                 yield return value;
 
-            foreach (FileInfo file in new DirectoryInfo(_datapath).EnumerateFiles("*", SearchOption.AllDirectories))
+            foreach (var file in new DirectoryInfo(_datapath).EnumerateFiles("*", SearchOption.AllDirectories))
             {
-                string ext = file.Extension.ToLower();
+                var ext = file.Extension.ToLower();
                 if (ext == ".json")
                 {
                     yield return (byte)FileType.Data;
-                    foreach (byte value in SerializeTextFile(file.FullName))
+                    foreach (var value in SerializeTextFile(file.FullName))
                         yield return value;
                 }
                 else if (ext == ".png" || ext == ".jpg" || ext == ".jpeg")
                 {
                     yield return (byte)FileType.Image;
-                    foreach (byte value in Serialize(file.Name))
+                    foreach (var value in Serialize(file.Name))
                         yield return value;
-                    foreach (byte value in SerializeBinaryFile(file.FullName))
+                    foreach (var value in SerializeBinaryFile(file.FullName))
                         yield return value;
                 }
                 else if (ext == ".wav")
                 {
                     yield return (byte)FileType.WaveAudio;
-                    foreach (byte value in Serialize(Path.GetFileNameWithoutExtension(file.Name)))
+                    foreach (var value in Serialize(Path.GetFileNameWithoutExtension(file.Name)))
                         yield return value;
-                    foreach (byte value in SerializeBinaryFile(file.FullName))
-                        yield return value;
-                }
-                else if (ext == ".xml")
-                {
-                    yield return (byte)FileType.Localization;
-                    foreach (byte value in Serialize(Path.GetFileNameWithoutExtension(file.Name)))
-                        yield return value;
-                    foreach (byte value in SerializeTextFile(file.FullName))
+                    foreach (var value in SerializeBinaryFile(file.FullName))
                         yield return value;
                 }
                 else if (ext == ".ogg")
                 {
                     yield return (byte)FileType.OggAudio;
-                    foreach (byte value in Serialize(Path.GetFileNameWithoutExtension(file.Name)))
+                    foreach (var value in Serialize(Path.GetFileNameWithoutExtension(file.Name)))
                         yield return value;
-                    foreach (byte value in SerializeBinaryFile(file.FullName))
+                    foreach (var value in SerializeBinaryFile(file.FullName))
+                        yield return value;
+                }
+                else if (ext == ".xml")
+                {
+                    yield return (byte)FileType.Localization;
+                    foreach (var value in Serialize(Path.GetFileNameWithoutExtension(file.Name)))
+                        yield return value;
+                    foreach (var value in SerializeTextFile(file.FullName))
                         yield return value;
                 }
                 else
@@ -161,56 +143,57 @@ namespace GameDatabase
 
         private IEnumerable<byte> SerializeBinaryFile(string name)
         {
-            byte[] fileData = File.ReadAllBytes(name);
-            foreach (byte value in BitConverter.GetBytes(fileData.Length))
+            var fileData = File.ReadAllBytes(name);
+            foreach (var value in BitConverter.GetBytes(fileData.Length))
                 yield return value;
-            foreach (byte value in fileData)
+            foreach (var value in fileData)
                 yield return value;
         }
 
         private IEnumerable<byte> SerializeTextFile(string name)
         {
-            string fileData = File.ReadAllText(name);
+            var fileData = File.ReadAllText(name);
             return Serialize(fileData);
+        }
+
+        private static IEnumerable<byte> Serialize(int data)
+        {
+            yield return (byte)(data);
+            yield return (byte)(data >> 8);
+            yield return (byte)(data >> 16);
+            yield return (byte)(data >> 24);
         }
 
         private static IEnumerable<byte> Serialize(string data)
         {
             if (string.IsNullOrEmpty(data))
             {
-                foreach (byte value in BitConverter.GetBytes(0))
+                foreach (var value in BitConverter.GetBytes(0))
                     yield return value;
                 yield break;
             }
 
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(data);
+            var bytes = System.Text.Encoding.UTF8.GetBytes(data);
 
-            foreach (byte value in BitConverter.GetBytes(bytes.Length))
+            foreach (var value in BitConverter.GetBytes(bytes.Length))
                 yield return value;
-            foreach (byte value in System.Text.Encoding.UTF8.GetBytes(data))
+            foreach (var value in System.Text.Encoding.UTF8.GetBytes(data))
                 yield return value;
         }
 
-        private static uint random(ref uint w, ref uint z)
+        private static void Clear(byte[] data)
         {
-            z = (36969 * (z & 65535)) + (z >> 16);
-            w = (18000 * (w & 65535)) + (w >> 16);
-            return (z << 16) + w;  /* 32-bit result */
+            if (data != null)
+                Array.Clear(data, 0, data.Length);
         }
 
-        private static IEnumerable<byte> Serialize(int data)
-        {
-            yield return (byte)data;
-            yield return (byte)(data >> 8);
-            yield return (byte)(data >> 16);
-            yield return (byte)(data >> 24);
-        }
-
-        private ModBuilder(string datapath, string name, string id)
+        private ModBuilder(string datapath, string name, string id, int versionMajor, int versionMinor)
         {
             _datapath = datapath;
             _name = name;
             _id = id;
+            _versionMajor = versionMajor;
+            _versionMinor = versionMinor;
         }
 
         private readonly int _versionMinor;
@@ -218,7 +201,7 @@ namespace GameDatabase
         private readonly string _datapath;
         private readonly string _name;
         private readonly string _id;
-        private const uint _header = 0xDA7ABA5E;
+
         private const int _version = 1;
         public const string SignatureFileName = "id";
     }

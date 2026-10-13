@@ -29,7 +29,8 @@ namespace GameDatabase
         private readonly SolidBrush _comboItemDefaultBrush = new SolidBrush(MainWindow.BackgroundColor);
         private readonly SolidBrush _comboItemTextBrush = new SolidBrush(MainWindow.FontColor);
 
-        [Description("Data"), Category("Data")]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IDataAdapter Data
         {
             get { return _data; }
@@ -48,7 +49,8 @@ namespace GameDatabase
             }
         }
 
-        [Description("Database"), Category("Data")]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Database Database
         {
             get { return _database; }
@@ -56,20 +58,24 @@ namespace GameDatabase
         }
 
         [Description("ContentAutoScroll"), Category("Layout")]
+        [DefaultValue(false)]
         public bool ContentAutoScroll
         {
             get { return tableLayoutPanel.AutoScroll; }
             set { tableLayoutPanel.AutoScroll = value; }
         }
 
-        [Description("Exclusions"), Category("Data")]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<string> Exclusions
         {
             get { return _exclusions.ToList(); }
             set { _exclusions = value is null ? new HashSet<string>() : new HashSet<string>(value); }
         }
 
+
         [Description("CellBorderStyle"), Category("Layout")]
+        [DefaultValue(TableLayoutPanelCellBorderStyle.Single)]
         public TableLayoutPanelCellBorderStyle CellBorderStyle
         {
             get { return tableLayoutPanel.CellBorderStyle; }
